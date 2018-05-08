@@ -9,7 +9,7 @@ hc() {
 hc emit_hook reload
 
 # Reload the xresource data
-xrdb $HOME/lib/xorg/xresources -I $HOME
+xrdb -I$HOME $HOME/lib/xorg/xresources
 
 # Set the background
 # $HOME/.fehbg
@@ -164,7 +164,7 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # do multi monitor setup here, e.g.:
 # hc set_monitors 1280x1024+0+0 1280x1024+1280+0
 # or simply:
-# hc detect_monitors
+hc detect_monitors
 
 # find the panel
 panel=~/.config/herbstluftwm/panel.sh
