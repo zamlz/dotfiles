@@ -1,0 +1,70 @@
+
+{Bold}{Green} C o n d a   C h e a t   S h e e t
+{Rst}
+{Rst}/=====================================================\
+|{Green}Simplified version of                                {Rst}|
+|{Purple}https://conda.io/docs/_downloads/conda-cheatsheet.pdf{Rst}|
+{Rst}\=====================================================/
+
+{Purple}~~~~~~~~~~~~
+{Green}CONDA BASICS
+{Purple}~~~~~~~~~~~~
+
+Verify if conda is installed, check version number
+{Cyan}conda info
+
+Update conda to the current version
+{Cyan}conda update conda
+
+Install a package included in Anaconda
+{Cyan}conda install {Yellow}PACKAGE_NAME
+
+Run a package after install
+{Yellow}PACKAGE_NAME
+
+Update any installed program
+{Cyan}Conda update {Yellow}PACKAGE_NAME
+
+Command line help
+{Yellow}COMMAND_NAME {Cyan}--help
+{Cyan}conda install --help
+
+{Purple}~~~~~~~~~~~~~~~~~~
+{Green}Using Environments
+{Purple}~~~~~~~~~~~~~~~~~~
+
+Create a new environment
+{Cyan}conda create --name {Yellow}ENV_NAME {Cyan}python={Yellow}PYTHON_VERSION
+
+Activate the new environment
+{Red}Windows:    {Cyan}activate {Yellow}ENV_NAME
+{Red}Linux, Mac: {Cyan}source activate {Yellow}ENV_NAME
+
+Get a list of all my environments
+Active Env => *
+{Cyan}conda env list
+
+Make exact copy of an environment
+{Cyan}conda create --clone {Yellow}PARENT_ENV {Cyan}--name {Yellow}CHILD_ENV
+
+List all packages and versions in active environment
+{Cyan}conda list
+
+List the history of each change to the environment
+{Cyan}conda list --revisions
+
+Restore environment to a previous revision
+{Cyan} conda install --revision 2
+
+Save environment to a text file
+{Cyan}conda list --explicit > {Yellow}TXT_FILE
+
+Create environment from a text file
+{Cyan}conda env create --file {Yellow}TXT_FILE
+
+Delete an environment and everything in it
+{Cyan}conda env remove --name {Yellow}ENV_NAME
+
+Deactivate the current environment
+{Red}Windows:    {Cyan}deactivate
+{Red}Linux, Max: {Cyan}source deactivate

@@ -1,0 +1,5 @@
+#!/bin/sh
+
+curl -L git.io/unix
+echo " "
+

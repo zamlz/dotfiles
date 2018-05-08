@@ -1,0 +1,34 @@
+!###############
+! URXVT settings
+!###############
+
+URxvt.depth:                32
+URxvt.geometry:             96x33
+URxvt.loginShell:           false
+URxvt.internalBorder:       10
+URxvt.lineSpace:            0
+
+
+! transparency - true or false (default)
+!URxvt*transparent: true
+
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!   some nice listings are at:
+!     http://www.nisrv.com/drupal/?q=node/11
+!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor: S_base03
+
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+!   Dont use with tintColor; just use a darker or lighter color instead.
+URxvt*shading: 15
+
+URxvt*saveLines: 12000
+
+! scrollbar - true (default) or false
+URxvt*scrollBar: false
+
+! scrollbar position - left=false (default) or right=true
+URxvt*scrollBar_right: false
+
+! scrollbar style - rxvt (default), plain, next, or xterm
+URxvt*scrollstyle: plain

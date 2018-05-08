@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Source the color library file
+source ~/lib/shell/colorenv.sh
+
+corpus="${Cyan}Notes v1.3${Rst}"
+
+#echo -ne "\n"
+#echo -ne "$corpus"
+#echo -ne "\n\n"
+
+if [ -z $1 ]; then
+    echo "Missing File!";
+    exit
+else
+    corpus=$( sed \
+        -e "s/{Bold}/\\${Bold}/g" \
+        -e "s/{Undr}/\\${Undr}/g" \
+        -e "s/{Inv}/\\${Inv}/g" \
+        -e "s/{Reg}/\\${Reg}/g" \
+        -e "s/{RegF}/\\${RegF}/g" \
+        -e "s/{RegB}/\\${RegB}/g" \
+        -e "s/{Rst}/\\${Rst}/g" \
+        -e "s/{Black}/\\${Black}/g" \
+        -e "s/{Red}/\\${Red}/g" \
+        -e "s/{Green}/\\${Green}/g" \
+        -e "s/{Yellow}/\\${Yellow}/g" \
+        -e "s/{Blue}/\\${Blue}/g" \
+        -e "s/{Purple}/\\${Purple}/g" \
+        -e "s/{Cyan}/\\${Cyan}/g" \
+        -e "s/{White}/\\${White}/g" \
+        $1 );
+        # -e "s/\${}/\\${}/g" \
+fi
+
+echo -e "$corpus" | less -R

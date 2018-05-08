@@ -1,0 +1,46 @@
+#!/bin/zsh
+
+# History
+export HISTSIZE=2000
+export HISTFILE="$HOME/.zhistory"
+export SAVEHIST=$HISTSIZE
+
+# Various Settings
+setopt hist_ignore_all_dups
+setopt hist_ignore_space
+
+# Miscellaneous Settings
+setopt autocd
+# setopt extendedglob
+bindkey -v
+
+# Shell Completions
+autoload -U compinit
+compinit
+
+# Shell Correction
+# setopt correctall
+
+# Shell Prompt
+autoload -U promptinit
+promptinit
+
+# Choose a prompt based on if we are in Xserver
+prompt adam1 background
+
+# System Variables
+export HTOPRC="$HOME/etc/htoprc"
+export BROWSER="$(which firefox)"
+
+# Update our Path
+export PATH="$HOME/bin:$PATH"
+
+# Update our ls colors
+eval $(dircolors -b $HOME/etc/lscolors)
+
+# Source our alises
+source $HOME/etc/aliases
+
+# Source some special programs
+source $HOME/sys/PATH.sh 2> /dev/null
+

@@ -1,0 +1,26 @@
+
+# Regular StartX Boot for Herbsluftwm
+if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
+    export WINDOW_MANAGER='herbstluftwm'
+    exec startx ~/etc/xinitrc herbstluftwm
+
+# Trying to Boot to Unity (For Ubuntu Only)
+# sudo systemctl disable lightdm.service
+# sudo systemctl set-default multi-user.target
+# edit /etc/default/grub, remove splash
+# sudo update-grub
+# To restore: sudo systemctl set-default graphical.target
+#
+# elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
+#     echo "Bypassing Startx; Evoking Unity Desktop" | tee -a $XLOG/startx
+#     echo "You will need to restart to use any other Window Manager"
+#     echo "Enter password to proceed, or fail three times to cancel"
+#     sudo systemctl start lightdm.service
+
+# This is for our testing of dwm
+#
+# elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 3 ]; then
+#     export WINDOW_MANAGER='dwm'
+#     exec startx ~/etc/xinitrc dwm >> $XLOG/startx 2>&1
+
+fi

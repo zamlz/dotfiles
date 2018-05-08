@@ -1,0 +1,7 @@
+
+! Rofi Settings
+
+rofi.font:  Terminus 8
+rofi.bw: 4
+
+rofi.terminal: urxvt

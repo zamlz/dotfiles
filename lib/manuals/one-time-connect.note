@@ -1,0 +1,19 @@
+{Purple}Stop the current dhcpcd service if its running
+
+{Rst}       sudo sv stop dhcpcd
+
+{Purple}Bring up the wireless interface
+{Cyan} * Replace {Red}<device>{Cyan} with name of wireless interface
+{Cyan} * which can be found with the help of command "{Yellow}ip addr{Cyan}"
+
+{Rst}       sudo ip link set {Red}<device> {Rst}up
+
+{Purple} Find the SSID of the establishment and connect to it
+{Cyan} * Here {Green}<SSID>{Cyan} is found with the help of grep
+
+{Rst}       sudo iw dev {Red}<device> {Rst}scan | grep -i ssid
+{Rst}       sudo iw dev {Red}<device> {Rst}connect -w "{Green}<SSID>{Rst}"
+
+{Purple} Now we must obtain ip address from the network.
+
+{Rst}       sudo dhcpcd {Red}<device>{Rst}

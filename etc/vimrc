@@ -1,0 +1,75 @@
+
+set number          " Show Line numbers
+set background=dark
+set ruler
+set cursorline      " highlight current line
+
+" Setup a color for when a given token crosses
+" column 80
+" set colorcolumn=81
+" match ErrorMsg '\%>80v.\+'
+" highlight ColorColumn ctermbg=0 guibg=lightgrey
+"
+"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+"match OverLength /\%81v.\+/
+"call matchadd('ColorColumn', '\%81v', 100)
+
+set tabstop=4		" number of visual spaces per TAB
+set softtabstop=4 	" number of space in TAB while editing
+set expandtab		" TABs are now SPACEs
+
+" filetype indent on  " Load filetype-specific indent files
+set wildmenu        " visual autocomplete for command menu
+set lazyredraw      " redraw only when we need to
+
+set showmatch       " highlight matching brackets [{()}]
+set incsearch       " search as characters are entered
+set hlsearch        " highlight matches
+
+set noshowmode      " Stop showing the default mode
+
+set mouse=a         " Set mouse wheel to scroll
+
+" turn off the highlighed search
+" nnoremap <leader><space> :nohlsearch<CR>
+
+" Enable Code Folding
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent    " fold based on ident level
+
+" Load plugins for VimPlug
+call plug#begin('~/.vim/plugged')
+
+" vim-airline:
+" Lean & mean status/tabline for vim thats light as air
+Plug 'bling/vim-airline'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+" Plug 'valloric/youcompleteme'
+
+call plug#end()
+
+" Configuration settings for plugins
+"---------------------------------------
+
+
+" vim-airline {{{
+let laststatus = 2
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
+
+" Vim colorschemes
+" colorscheme gruvbox
+" colorscheme solarized
+" colorscheme nord
+colorscheme peachpuff
+
+" vim-airline-themes
+" let g:airline_theme = 'luna'
+
+"}}}
+
+filetype indent off
