@@ -27,9 +27,9 @@ alias hotkeys="cat $HOME/lib/bspwm/hotkeys | less"
 
 # Teleportation Jutsu
 alias ..="cd .."
-alias ....="cd ../../"
-alias ......="cd ../../../"
-alias ........="cd ../../../../"
+alias ...="cd ../../"
+alias ....="cd ../../../"
+alias .....="cd ../../../../"
 
 # Teleport to root of git repo
 groot() {

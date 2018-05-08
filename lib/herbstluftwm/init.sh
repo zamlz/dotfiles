@@ -9,7 +9,7 @@ hc() {
 hc emit_hook reload
 
 # Reload the xresource data
-xrdb $HOME/etc/xresources
+xrdb $HOME/lib/xorg/xresources -I $HOME
 
 # Set the background
 # $HOME/.fehbg
