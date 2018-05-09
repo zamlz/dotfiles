@@ -54,7 +54,7 @@ List the history of each change to the environment
 {Cyan}conda list --revisions
 
 Restore environment to a previous revision
-{Cyan} conda install --revision 2
+{Cyan}conda install --revision 2
 
 Save environment to a text file
 {Cyan}conda list --explicit > {Yellow}TXT_FILE

@@ -15,7 +15,7 @@ xrdb -I$HOME $HOME/lib/xorg/xresources
 # $HOME/.fehbg
 
 # Specify the primary terminal
-TERMINAL=urxvtc
+TERMINAL="urxvtc +j +ss"
 
 # remove all existing keybindings
 hc keyunbind --all
