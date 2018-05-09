@@ -5,9 +5,6 @@ alias ls="LC_COLLATE=C ls -F --color=always"
 alias ll="ls -l"
 alias la="ls -la"
 
-# System Variables
-export EDITOR=vim
-
 # Clearning fix
 alias clear="TERM='xterm' clear"
 alias eselect="TERM='xterm' eselect"
