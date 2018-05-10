@@ -12,7 +12,7 @@ hc emit_hook reload
 xrdb -I$HOME $HOME/lib/xorg/xresources
 
 # Set the background
-# $HOME/.fehbg
+$HOME/.fehbg
 
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
