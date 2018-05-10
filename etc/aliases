@@ -20,7 +20,7 @@ alias tmux="tmux -f $HOME/etc/tmuxrc"
 
 # Random Stuff
 alias fping="ping -c 3 www.google.com"
-alias hotkeys="cat $HOME/lib/bspwm/hotkeys | less"
+alias ed=$EDITOR
 
 # Teleportation Jutsu
 alias ..="cd .."

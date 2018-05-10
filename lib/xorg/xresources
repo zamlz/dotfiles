@@ -42,4 +42,5 @@ Xft.hintstyle:              hintslight
 
 ! Some other Special Programs
 #include "lib/xorg/urxvt"
+#include "lib/xorg/st"
 #include "lib/xorg/rofi"
