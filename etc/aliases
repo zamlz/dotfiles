@@ -20,7 +20,6 @@ alias tmux="tmux -f $HOME/etc/tmuxrc"
 
 # Random Stuff
 alias fping="ping -c 3 www.google.com"
-alias ed=$EDITOR
 
 # Teleportation Jutsu
 alias ..="cd .."
@@ -84,6 +83,11 @@ alias -s png=sxiv
 alias -s jpg=sxiv
 alias -s jpeg=sxiv
 alias -s pdf=mupdf
+
+# Specially select a certain vim
+if [ ! -z $(which nvim) ]; then
+    alias vim=nvim;
+fi
 
 # Special Window manager Aliases
 if [ "$WINDOW_MANAGER" = "bspwm" ]; then
