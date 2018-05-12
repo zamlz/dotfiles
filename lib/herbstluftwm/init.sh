@@ -10,6 +10,7 @@ hc emit_hook reload
 
 # Reload the xresource data
 xrdb -I$HOME $HOME/lib/xorg/xresources
+killall -USR1 st &
 
 # Set the background
 $HOME/.fehbg
@@ -17,6 +18,10 @@ $HOME/.fehbg
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
 TERMINAL="st"
+BROWSER=$(echo "$( \
+          which qutebrowser || \
+          which firefox || \
+          which w3m )" | grep bin)
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -30,6 +35,7 @@ hc keybind $Mod-Ctrl-Alt-q quit
 hc keybind $Mod-Ctrl-Alt-r reload
 hc keybind $Mod-q close
 hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
+hc keybind $Mod-w spawn ${BROWSER} # use your $BROWSER
 
 # basic movement
 # focusing clients

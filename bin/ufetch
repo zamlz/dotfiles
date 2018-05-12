@@ -20,10 +20,12 @@ if [ -z "${WM}" ]; then
 	elif [ "${DESKTOP_SESSION}" ]; then
 		envtype='DE'
 		WM="${DESKTOP_SESSION}"
-	else
+	elif [ ! -z "$DISPLAY" ]; then
 		envtype='WM'
-		#WM="$(tail -n 1 "${HOME}/.xinitrc" | cut -d ' ' -f 2)"
 		WM="$WINDOW_MANAGER"
+    else
+		envtype='TTY'
+        WM="$(fgconsole)"
 	fi
 else
 	envtype='WM'
