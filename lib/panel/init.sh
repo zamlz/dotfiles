@@ -18,11 +18,11 @@ MONITOR=$1
 . $HOME/lib/panel/bars/datetime.sh
 
 # Specify various other settings for lemonbar
-height=$2
+border=0
+height=$(($2 - $border - $border))
 width=1600
 xoff=0
 yoff=0
-border=0
 font=$(xrdb -query | grep '*font' | \
         awk '{print $2}' | sed -e 's|xft:||g')
 
@@ -44,4 +44,4 @@ content () {
 
 # Serve the content function to lemonbar
 (while true; do echo "$(content)"; sleep .5; done;) | \
-    lemonbar ${options} -n "${WINDOW_MANAGER}_bar" &
+    lemonbar ${options} &

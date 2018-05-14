@@ -22,7 +22,7 @@ if [ -z "${WM}" ]; then
 		WM="${DESKTOP_SESSION}"
 	elif [ ! -z "$DISPLAY" ]; then
 		envtype='WM'
-		WM="$WINDOW_MANAGER"
+		WM=$(xprop -root _NET_WM_NAME | awk '{print $3}' | tr -d "\"")
     else
 		envtype='TTY'
         WM="$(fgconsole)"
