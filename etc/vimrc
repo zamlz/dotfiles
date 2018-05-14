@@ -17,6 +17,7 @@ set cursorline      " highlight current line
 set tabstop=4		" number of visual spaces per TAB
 set softtabstop=4 	" number of space in TAB while editing
 set expandtab		" TABs are now SPACEs
+set shiftwidth=4    " Allows helps to make it 4 spaces in neovim
 
 " filetype indent on  " Load filetype-specific indent files
 set wildmenu        " visual autocomplete for command menu
