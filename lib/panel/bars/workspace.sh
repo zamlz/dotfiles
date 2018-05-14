@@ -4,7 +4,7 @@
 . $HOME/lib/xorg/xcolor.sh
 
 # Workspace function
-# Needs xprop and bc to be installed
+# Needs xprop (typically installed with xorg)
 
 workspace() {
     cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
@@ -19,7 +19,7 @@ workspace() {
     done
 
     for ws in $(seq $all); do
-        wid="$(echo "$ws - 1" | bc)"
+        wid=$(($ws - 1))
 
         # If there are open windows check
         if [ -n "$(echo ${activews} | grep ${wid})" ]; then
