@@ -13,6 +13,7 @@ MONITOR=$1
 . $HOME/lib/xorg/xcolor.sh
 
 # Import the individual bar functions
+. $HOME/lib/panel/bars/userathost.sh
 . $HOME/lib/panel/bars/workspace.sh
 . $HOME/lib/panel/bars/battery.sh
 . $HOME/lib/panel/bars/datetime.sh
@@ -34,12 +35,14 @@ options="-g ${width}x${height}+${xoff}+${yoff}
 # Create the content function
 content () {
     echo -n "%{S${MONITOR}}"
-    echo -n "%{l}"
+    echo -n "%{l} "
+    userathost
     workspace
     echo -n "%{c}"
     datetime
     echo -n "%{r}"
     battery
+    echo -n " ";
 }
 
 # Serve the content function to lemonbar

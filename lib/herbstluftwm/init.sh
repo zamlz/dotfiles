@@ -10,7 +10,7 @@ hc emit_hook reload
 
 # Reload the xresource data
 xrdb -I$HOME $HOME/lib/xorg/xresources
-killall -USR1 st &
+killall -USR1 st > /dev/null 2>&1 &
 
 # Set the background
 $HOME/.fehbg
@@ -175,8 +175,10 @@ hc detect_monitors
 
 # find the panel
 panel=$HOME/lib/panel/init.sh
-killall lemonbar
+killall lemonbar > /dev/null 2>&1
+
 PANEL_HEIGHT=20
+
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     hc pad $monitor $PANEL_HEIGHT

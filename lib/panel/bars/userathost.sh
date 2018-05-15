@@ -3,9 +3,9 @@
 # Sourced the xcolors init.sh
 # . $HOME/lib/xorg/xcolor.sh
 
-# Battery function
+# userathost function
 
-datetime() {
-    out="%{F${GREEN}}$(date +'%a %b %d %I:%M')%{F-}"
+userathost() {
+    out="%{F${RED}}$(whoami)@$(hostname)%{F-}"
     echo -n $out
 }

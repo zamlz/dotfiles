@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-# Source the xcolors
-. $HOME/lib/xorg/xcolor.sh
+# Sourced the xcolors init.sh
+# . $HOME/lib/xorg/xcolor.sh
 
 # Workspace function
 # Needs xprop (typically installed with xorg)
@@ -9,7 +9,7 @@
 workspace() {
     cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
     all=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
-    out=""
+    out="%{F${BLUE}}"
 
     # Construct a list of active workspaces
     winlist=$(xprop -root _NET_CLIENT_LIST | cut -d " " -f5- | tr -d ',')
@@ -23,19 +23,20 @@ workspace() {
 
         # If there are open windows check
         if [ -n "$(echo ${activews} | grep ${wid})" ]; then
-            wsc="%{+o}${ws}%{-o}"
+            wsc="%{+u}${ws}%{-u}"
         else
             wsc="${ws}"
         fi
 
         # Current desktop check
         if [ "$wid" = "$cur" ]; then
-            out="${out} %{+u}${wsc}%{-u}"
+            out="${out} %{+o}${wsc}%{-o}"
         else
             out="${out}  ${wsc} "
         fi
 
     done
+    out="${out}%{F-}"
 
     echo -n $out
 }

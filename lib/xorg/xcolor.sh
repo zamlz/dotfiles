@@ -35,3 +35,21 @@ XCOLOR14=$(xrdb -query | grep "color14:" | awk '{print $2}')
 # LightGrey + White
 XCOLOR7=$(xrdb -query | grep "color7:" | awk '{print $2}')
 XCOLOR15=$(xrdb -query | grep "color15:" | awk '{print $2}')
+
+# Alternative Naming scheme
+BLACK=$XCOLOR0
+RED=$XCOLOR1
+GREEN=$XCOLOR2
+YELLOW=$XCOLOR3
+BLUE=$XCOLOR4
+MAGENTA=$XCOLOR5
+CYAN=$XCOLOR6
+WHITE=$XCOLOR7
+BBLACK=$XCOLOR8
+BRED=$XCOLOR9
+BGREEN=$XCOLOR10
+BYELLOW=$XCOLOR11
+BBLUE=$XCOLOR12
+BMAGENTA=$XCOLOR13
+BCYAN=$XCOLOR14
+BWHITE=$XCOLOR15
