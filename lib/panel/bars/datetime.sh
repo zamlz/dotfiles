@@ -6,6 +6,6 @@
 # Battery function
 
 datetime() {
-    out="%{F${GREEN}}$(date +'%a %b %d %I:%M')%{F-}"
+    out="[date %{F${GREEN}}$(date +'%a %b %d %I:%M')%{F-}]"
     echo -n $out
 }

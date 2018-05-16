@@ -9,7 +9,7 @@
 workspace() {
     cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
     all=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
-    out="%{F${BLUE}}"
+    out="[workspace%{F${BLUE}}"
 
     # Construct a list of active workspaces
     winlist=$(xprop -root _NET_CLIENT_LIST | cut -d " " -f5- | tr -d ',')
@@ -18,6 +18,7 @@ workspace() {
         activews="${activews} $(xprop -id ${win} _NET_WM_DESKTOP)"
     done
 
+    # Write each workspace
     for ws in $(seq $all); do
         wid=$(($ws - 1))
 
@@ -32,11 +33,11 @@ workspace() {
         if [ "$wid" = "$cur" ]; then
             out="${out} %{+o}${wsc}%{-o}"
         else
-            out="${out}  ${wsc} "
+            out="${out}  ${wsc}"
         fi
 
     done
-    out="${out}%{F-}"
+    out="${out}%{F-}]"
 
     echo -n $out
 }

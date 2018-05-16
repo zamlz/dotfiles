@@ -8,14 +8,14 @@
 battery() {
     batloc="/sys/class/power_supply/"
     batlist=$(ls $batloc | grep "BAT")
-    out="%{F${CYAN}}"
+    out="[power%{F${CYAN}}"
 
     for bat in $batlist; do
         cap="$(cat ${batloc}${bat}/capacity)"
         stat="$(cat ${batloc}${bat}/status)"
         out="${out} ${bat}: ${cap}% (${stat})"
     done
-    out="${out}%{F-}"
+    out="${out}%{F-}]"
 
     echo -n $out
 }

@@ -15,8 +15,10 @@ MONITOR=$1
 # Import the individual bar functions
 . $HOME/lib/panel/bars/userathost.sh
 . $HOME/lib/panel/bars/workspace.sh
-. $HOME/lib/panel/bars/battery.sh
 . $HOME/lib/panel/bars/datetime.sh
+. $HOME/lib/panel/bars/system.sh
+. $HOME/lib/panel/bars/network.sh
+. $HOME/lib/panel/bars/battery.sh
 
 # Specify various other settings for lemonbar
 border=0
@@ -37,14 +39,24 @@ content () {
     echo -n "%{S${MONITOR}}"
     echo -n "%{l} "
     userathost
+    datetime
     workspace
     echo -n "%{c}"
-    datetime
     echo -n "%{r}"
+    system
+    network
     battery
     echo -n " ";
 }
 
-# Serve the content function to lemonbar
-(while true; do echo "$(content)"; sleep .5; done;) | \
-    lemonbar ${options} &
+
+# Serve the content function 
+HZ=".5"
+if [ -n "$MONITOR" ]; then
+    # Serve the content function to lemonbar
+    (while true; do echo "$(content)"; sleep $HZ; done;) | \
+        lemonbar ${options} &
+else
+    # Server the content function to STDOUT
+    while true; do echo "$(content)"; sleep $HZ; done;
+fi
