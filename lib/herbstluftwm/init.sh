@@ -11,6 +11,7 @@ hc emit_hook reload
 # Reload the xresource data
 xrdb -I$HOME $HOME/lib/xorg/xresources
 killall -USR1 st > /dev/null 2>&1 &
+. $HOME/lib/xorg/xcolor.sh
 
 # Set the background
 $HOME/.fehbg
@@ -18,10 +19,6 @@ $HOME/.fehbg
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
 TERMINAL="st"
-BROWSER=$(echo "$( \
-          which qutebrowser || \
-          which firefox || \
-          which w3m )" | grep bin)
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -35,7 +32,6 @@ hc keybind $Mod-Ctrl-Alt-q quit
 hc keybind $Mod-Ctrl-Alt-r reload
 hc keybind $Mod-q close
 hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
-hc keybind $Mod-w spawn ${BROWSER} # use your $BROWSER
 
 # basic movement
 # focusing clients
@@ -91,8 +87,8 @@ for i in ${!tag_names[@]} ; do
 done
 
 # cycle through tags
-hc keybind $Mod-period use_index +1 --skip-visible
-hc keybind $Mod-comma  use_index -1 --skip-visible
+hc keybind $Mod-bracketright use_index +1 --skip-visible
+hc keybind $Mod-bracketleft  use_index -1 --skip-visible
 
 # layouting
 hc keybind $Mod-r remove
@@ -184,3 +180,7 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     hc pad $monitor $PANEL_HEIGHT
     "$panel" $monitor $PANEL_HEIGHT &
 done
+
+LAUNCHER="$HOME/lib/herbstluftwm/dmenu_path"
+LAUNCHER="${LAUNCHER} -nb ${XBACKGROUND}"
+hc keybind $Mod-grave spawn ${LAUNCHER}
