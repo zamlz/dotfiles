@@ -14,7 +14,8 @@ killall -USR1 st > /dev/null 2>&1 &
 . $HOME/lib/xorg/xcolor.sh
 
 # Set the background
-$HOME/.fehbg
+# $HOME/.fehbg
+xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
 
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
@@ -173,7 +174,7 @@ hc detect_monitors
 panel=$HOME/lib/panel/init.sh
 killall lemonbar > /dev/null 2>&1
 
-PANEL_HEIGHT=20
+PANEL_HEIGHT=24
 
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor

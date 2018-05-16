@@ -21,9 +21,9 @@ MONITOR=$1
 . $HOME/lib/panel/bars/battery.sh
 
 # Specify various other settings for lemonbar
-border=0
+border=2
 height=$(($2 - $border - $border))
-width=1600
+width=$((1600 - $border - $border))
 xoff=0
 yoff=0
 font=$(xrdb -query | grep '*font' | \
@@ -32,7 +32,7 @@ font=$(xrdb -query | grep '*font' | \
 # Construction our configuration for lemonbar
 options="-g ${width}x${height}+${xoff}+${yoff}
          -B ${XBACKGROUND} -F ${XFOREGROUND}
-         -f ${font} -r ${border}"
+         -f ${font} -r ${border} -R ${BLACK}"
 
 # Create the content function
 content () {
