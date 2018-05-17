@@ -5,6 +5,7 @@
 #   the bar takes in two arguments
 #       1) monitor number
 #       2) height of the bar
+#       3) border of the bar
 
 # Get the monitor
 MONITOR=$1
@@ -21,7 +22,7 @@ MONITOR=$1
 . $HOME/lib/panel/bars/battery.sh
 
 # Specify various other settings for lemonbar
-border=2
+border=$3
 height=$(($2 - $border - $border))
 width=$((1600 - $border - $border))
 xoff=0
