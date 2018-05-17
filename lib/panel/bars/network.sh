@@ -4,24 +4,27 @@
 # . $HOME/lib/xorg/xcolor.sh
 
 # Network function
-#   Requires to have nmcli installed.
-#   Bad dependency but I don't know any other way yet.
+#   Uses ip for network info,
+#   but I still can't figure out how to get SSID
 
 network() {
-    net=$(nmcli device | grep ' connected')
+    net=$(ip -br addr | grep 'UP')
     color=${MAGENTA}
 
     if [ -z "${net}" ]; then
-        net=$(nmcli device | grep 'unmanaged')
+        net=$(ip -br addr | grep 'UNKNOWN')
         color=${RED}
     fi
 
+    # We can use ip to get the following
     DEVICE=$(echo $net | awk '{print $1}')
-    TYPE=$(echo $net | awk '{print $2}')
-    STATE=$(echo $net | awk '{print $3}')
-    CONNECTION=$(echo $net | awk '{print $4}')
-    SSID=" : ${CONNECTION}"
+    STATUS=$(echo $net | awk '{print $2}')
+    IPADDR=$(echo $net | awk '{print $3}')
+   
+    # TODO: Obtain SSID somehow
+    CONNECTION=$(echo $net | awk '{print $9}')
+    SSID=": ${CONNECTION}"
 
-    out="[${TYPE} %{F${color}}${DEVICE}${SSID}%{F-}]"
+    out="[network %{F${color}}${DEVICE}: ${IPADDR}%{F-}]"
     echo -n $out
 }
