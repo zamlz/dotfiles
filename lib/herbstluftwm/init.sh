@@ -20,7 +20,7 @@ xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
 
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
-TERMINAL="st"
+TERMINAL="$HOME/lib/herbstluftwm/term.sh"
 
 # remove all existing keybindings
 hc keyunbind --all

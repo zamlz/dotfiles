@@ -34,7 +34,6 @@ options="-w ${width} -h ${height} -x ${xoff} -y ${yoff}
         -nb ${XBACKGROUND} -nf ${XFOREGROUND}
         -sb ${BLACK} -sf ${XFOREGROUND}
         -fn ${font} -s ${monitor}"
-echo "$options"
 
 # Pass the path to the
-dmenu_path | dmenu $options | /bin/sh &
+echo "$(dmenu_path | dmenu $options) &" | /bin/sh &
