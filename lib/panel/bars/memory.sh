@@ -5,11 +5,11 @@
 
 # System function
 
-system() {
+memory() {
     mem=$(free -h | grep Mem | awk '{print $3}')
-    swap=$(free -h | grep Swap | awk '{print $3}')
+    tot=$(free -h | grep Mem | awk '{print $2}')
 
-    out="[system %{F${YELLOW}}mem: $mem swap: $swap%{F-}]"
+    out="[memory %{F${BLUE}}${mem}/${tot}%{F-}]"
 
     echo -n $out
 }

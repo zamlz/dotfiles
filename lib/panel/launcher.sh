@@ -35,5 +35,5 @@ options="-w ${width} -h ${height} -x ${xoff} -y ${yoff}
         -sb ${BLACK} -sf ${XFOREGROUND}
         -fn ${font} -s ${monitor}"
 
-# Pass the path to the
+# To allow truly dettached 
 echo "$(dmenu_path | dmenu $options) &" | /bin/sh &

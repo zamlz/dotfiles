@@ -178,7 +178,7 @@ PANEL_BORDER=2
 
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
-    hc pad $monitor $PANEL_HEIGHT
+    hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT
     "$panel" $monitor $PANEL_HEIGHT $PANEL_BORDER &
 done
 
