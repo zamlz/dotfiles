@@ -9,10 +9,10 @@
 #       4) border of the bar
 
 # Get the monitor
-MONITOR=$1
-HEIGHT=$2
-WIDTH=$3
-BORDER=$4
+MONITOR=${1:-""}
+HEIGHT=${2:-16}
+WIDTH=${3:-512}
+BORDER=${4:-2}
 
 # Import the colors
 . $HOME/lib/xorg/xcolor.sh
@@ -31,7 +31,7 @@ BORDER=$4
 . $HOME/lib/panel/bars/cpu.sh
 
 # Specify various other settings for lemonbar
-border=$4
+border=$BORDER
 height=$(($HEIGHT - $border - $border))
 width=$(($WIDTH - $border - $border))
 xoff=0
@@ -68,9 +68,9 @@ top_content () {
 bot_content() {
     echo -n "%{S${MONITOR}}"
     echo -n "%{l} "
+    filesystems
     echo -n "%{c}"
     echo -n "%{r}"
-    filesystems
     swap
     memory
     cpu
@@ -78,7 +78,7 @@ bot_content() {
 }
 
 
-# Serve the content function 
+# Serve the content function
 HZ=".5"
 if [ -n "$MONITOR" ]; then
     # Serve the content function to lemonbar
@@ -87,6 +87,10 @@ if [ -n "$MONITOR" ]; then
     (while true; do echo "$(bot_content)"; sleep $HZ; done;) | \
         lemonbar ${opt_bot} -b &
 else
-    # Server the content function to STDOUT
-    while true; do echo "$(top_content)"; sleep $HZ; done;
+    # Serve the content function to STDOUT
+    while true; do
+        echo "$(top_content)";
+        echo "$(bot_content)";
+        sleep $HZ;
+    done;
 fi

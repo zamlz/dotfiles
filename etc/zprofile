@@ -10,7 +10,8 @@ if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
 # edit /etc/default/grub, remove splash
 # sudo update-grub
 # To restore: sudo systemctl set-default graphical.target
- elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ] && [ -n "$(uname -a | grep Ubuntu)"]; then
+ elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ] \
+                        && [ -n "$(uname -a | grep Ubuntu)" ]; then
      echo "Bypassing Startx; Evoking Unity Desktop"
      echo "You will need to restart to use any other Window Manager"
      echo "Enter password to proceed, or fail three times to cancel"

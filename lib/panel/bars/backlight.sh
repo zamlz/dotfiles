@@ -9,7 +9,10 @@
 backlight() {
     bl=$(xbacklight | awk -F. '{print $1}')
 
-    out="[light %{F${YELLOW}}${bl}%%{F-}]"
-
+    if [ -n "${bl}" ]; then
+        out="[light %{F${YELLOW}}${bl}%%{F-}]"
+    else
+        out="[light %{F${YELLOW}}N/A%{F-}]"
+    fi
     echo -n $out
 }
