@@ -5,10 +5,14 @@
 #   the bar takes in two arguments
 #       1) monitor number
 #       2) height of the bar
-#       3) border of the bar
+#       3) width of the bar
+#       4) border of the bar
 
 # Get the monitor
 MONITOR=$1
+HEIGHT=$2
+WIDTH=$3
+BORDER=$4
 
 # Import the colors
 . $HOME/lib/xorg/xcolor.sh
@@ -27,9 +31,9 @@ MONITOR=$1
 . $HOME/lib/panel/bars/cpu.sh
 
 # Specify various other settings for lemonbar
-border=$3
-height=$(($2 - $border - $border))
-width=$((1600 - $border - $border))
+border=$4
+height=$(($HEIGHT - $border - $border))
+width=$(($WIDTH - $border - $border))
 xoff=0
 yoff=0
 font=$(xrdb -query | grep '*font' | \

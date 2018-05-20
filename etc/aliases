@@ -85,7 +85,7 @@ alias -s jpeg=sxiv
 alias -s pdf=mupdf
 
 # Specially select a certain vim
-if [ ! -z $(which nvim) ]; then
+if [ "nvim not found" != "$(which nvim)" ]; then
     alias vim=nvim;
 fi
 

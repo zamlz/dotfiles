@@ -179,9 +179,10 @@ PANEL_BORDER=2
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
     hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT
-    "$panel" $monitor $PANEL_HEIGHT $PANEL_BORDER &
+    PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
+    "$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER &
 done
 
 # Create the program launcher
-LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_BORDER"
+LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER"
 hc keybind $Mod-grave spawn ${LAUNCHER}
