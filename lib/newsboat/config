@@ -1,0 +1,21 @@
+
+# General user settings
+confirm-exit yes
+browser     "$BROWSER %u"
+
+# Specify better keybindings
+
+bind-key    j   next
+bind-key    k   prev
+bind-key    h   quit
+bind-key    l   open
+
+bind-key    J   next-feed
+bind-key    K   prev-feed
+#bind-key    H
+#bind-key    L
+
+# Specify various files
+#urls-source ~/lib/newsboat/urls
+cache-file ~/.cache/newsboat.db
+cookie-cache ~/.cache/newsboat.cookies.txt
