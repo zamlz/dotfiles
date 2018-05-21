@@ -1,6 +1,8 @@
 .*
 src/
+src
 sys/
 tmp/
 usr/
+usr
 var/
