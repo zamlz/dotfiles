@@ -27,7 +27,7 @@ fi
 xrdb -I$HOME $HOME/lib/xorg/xresources
 
 # Start the urxvt daemon
-# urxvtd -q -o -f
+urxvtd -q -o -f
 
 # We need to start the compositor as well
 # If we would like to kill our CPU so no.

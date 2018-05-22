@@ -3,6 +3,7 @@
 # ufetch-gentoo - tiny system info for gentoo
 
 ## INFO
+TERM="xterm"
 clear
 
 # user is already defined

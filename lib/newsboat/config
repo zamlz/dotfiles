@@ -2,6 +2,18 @@
 # General user settings
 confirm-exit yes
 browser     "$BROWSER %u"
+max-items   100
+always-display-description  true
+display-article-progress    yes
+
+# Specify the color configuration
+color background        white   default
+color listnormal        white   default
+color listfocus         white   default bold
+color listnormal_unread blue    default
+color listfocus_unread  white   default bold 
+color info              green   default bold
+color article           white   default bold
 
 # Specify better keybindings
 
