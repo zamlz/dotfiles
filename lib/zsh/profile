@@ -2,7 +2,7 @@
 # Regular StartX Boot for Herbsluftwm
 if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
     export WINDOW_MANAGER='herbstluftwm'
-    exec startx ~/etc/xinitrc herbstluftwm
+    exec startx ~/lib/xorg/xinitrc herbstluftwm
 
 # Trying to Boot to Unity (For Ubuntu Only)
 # sudo systemctl disable lightdm.service

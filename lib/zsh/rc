@@ -42,7 +42,7 @@ export PATH="$HOME/bin:$PATH"
 eval $(dircolors -b $HOME/etc/lscolors)
 
 # Source our alises
-source $HOME/etc/aliases
+source $HOME/lib/zsh/aliases
 
 # Source some special programs
 source $HOME/sys/PATH.sh 2> /dev/null
