@@ -30,7 +30,7 @@ hc keyunbind --all
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 
-hc keybind $Mod-Ctrl-Alt-q quit
+hc keybind $Mod-Ctrl-Alt-Escape quit
 hc keybind $Mod-Ctrl-Alt-r reload
 hc keybind $Mod-q close
 hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
@@ -186,3 +186,8 @@ done
 # Create the program launcher
 LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER"
 hc keybind $Mod-grave spawn ${LAUNCHER}
+
+# Finally start i3lock
+LOCKER="i3lock -nefc 000000"
+hc keybind $Mod-Escape spawn ${LOCKER}
+exec xautolock -detectsleep -time 10 -locker ${LOCKER}
