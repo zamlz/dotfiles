@@ -182,6 +182,7 @@ EXEC 01;32
 .pdf 01;35
 .ps 00;32
 .tex 00;32
+.html 00;32
 .txt 00;32
 # audio formats
 .aac 00;36
