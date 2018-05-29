@@ -1,7 +1,7 @@
 
 # General user settings
 confirm-exit yes
-browser     "$BROWSER %u"
+browser     "$BROWSER %u > /dev/null 2>&1 &"
 max-items   100
 always-display-description  true
 display-article-progress    yes
