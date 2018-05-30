@@ -8,6 +8,9 @@ hc() {
 
 hc emit_hook reload
 
+# Start the urxvt daemon
+urxvtd -q -o -f
+
 # Reload the xresource data
 xrdb -I$HOME $HOME/lib/xorg/xresources
 killall -USR1 st > /dev/null 2>&1
@@ -174,7 +177,7 @@ hc detect_monitors
 # Find the panel
 panel=$HOME/lib/panel/init.sh
 PANEL_HEIGHT=24
-PANEL_BORDER=2
+PANEL_BORDER=0
 
 for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
     # start it on each monitor
