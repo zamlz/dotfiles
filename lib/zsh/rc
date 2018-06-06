@@ -30,10 +30,6 @@ prompt adam1 background
 
 # System Variables
 export HTOPRC="$HOME/etc/htoprc"
-export BROWSER=$(echo "$( \
-                 which qutebrowser || \
-                 which firefox || \
-                 which w3m)" | grep bin)
 
 # Update our Path
 export PATH="$HOME/bin:$PATH"
