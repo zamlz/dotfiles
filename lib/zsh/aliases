@@ -5,6 +5,11 @@ alias ls="LC_COLLATE=C ls -F --color=always"
 alias ll="ls -l"
 alias la="ls -la"
 
+# The GIT Aliases
+alias gs="git status"
+alias ga="git add"
+alias gc="git commit"
+
 # Clearning fix
 alias clear="TERM='xterm' clear"
 alias eselect="TERM='xterm' eselect"
