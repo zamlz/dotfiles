@@ -26,6 +26,15 @@ filesystems() {
         rootdir=$(echo $rootdir | tr -d ' ')
         out="${out} $root($rootdir):$rootused/$rootsize"
     fi
+    
+    userdir='/usr '
+    user=$(lsblk -rpo MOUNTPOINT,NAME | grep "$userdir" | awk '{print $2}')
+    if [ -n "$user" ]; then
+        usersize=$(df -h | grep ${user} | awk '{print $2}')
+        userused=$(df -h | grep ${user} | awk '{print $3}')
+        userdir=$(echo $userdir| tr -d ' ')
+        out="${out} $user($userdir):$userused/$usersize"
+    fi
    
     homedir='/home '
     home=$(lsblk -rpo MOUNTPOINT,NAME | grep "$homedir" | awk '{print $2}')
