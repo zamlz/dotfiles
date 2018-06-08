@@ -50,6 +50,7 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Plug 'valloric/youcompleteme'
+Plug 'chrisbra/csv.vim'
 
 call plug#end()
 
