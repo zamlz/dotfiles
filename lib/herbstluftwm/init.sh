@@ -8,14 +8,18 @@ hc() {
 
 hc emit_hook reload
 
-# Start the urxvt daemon
-urxvtd -q -o -f
+# Kill all dangling processes
+killall -USR1 st > /dev/null 2>&1
+killall lemonbar > /dev/null 2>&1
 
 # Reload the xresource data
 xrdb -I$HOME $HOME/lib/xorg/xresources
-killall -USR1 st > /dev/null 2>&1
-killall lemonbar > /dev/null 2>&1
 . $HOME/lib/xorg/xcolor.sh
+
+# Start the urxvt daemon
+if [ -z "$(ps -x | grep urxvtd | grep -v grep)" ]; then
+    urxvtd -q -o -f
+fi
 
 # Set the background
 # $HOME/.fehbg
@@ -187,7 +191,8 @@ for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
 done
 
 # Create the program launcher
-LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER"
+# LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER"
+LAUNCHER="rofi -modi 'window,run,ssh' -show run"
 hc keybind $Mod-grave spawn ${LAUNCHER}
 
 # Finally start i3lock
