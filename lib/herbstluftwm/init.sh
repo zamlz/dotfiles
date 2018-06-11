@@ -191,7 +191,7 @@ PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
 
 # Create the program launcher
 # LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER"
-LAUNCHER="rofi -modi 'window,run,ssh' -show run"
+LAUNCHER="rofi -show run"
 hc keybind $Mod-grave spawn ${LAUNCHER}
 
 # Finally start i3lock
