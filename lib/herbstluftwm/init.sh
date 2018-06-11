@@ -183,12 +183,11 @@ panel=$HOME/lib/panel/init.sh
 PANEL_HEIGHT=24
 PANEL_BORDER=0
 
-for monitor in $(herbstclient list_monitors | cut -d: -f1) ; do
-    # start it on each monitor
-    hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT
-    PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
-    "$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER &
-done
+# Spawn the bar on the primary monitor (i.e. 0)
+monitor=0
+hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
+PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
+"$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER &
 
 # Create the program launcher
 # LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER"
