@@ -198,4 +198,4 @@ hc keybind $Mod-grave spawn ${LAUNCHER}
 # Finally start i3lock
 LOCKER="i3lock -nefc 000000"
 hc keybind $Mod-Escape spawn ${LOCKER}
-exec xautolock -detectsleep -time 10 -locker "${LOCKER}"
+exec xautolock -detectsleep -time 60 -locker "${LOCKER}"

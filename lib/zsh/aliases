@@ -90,6 +90,7 @@ alias cp="cp -i"
 alias -s note=notes
 alias -s png=sxiv
 alias -s jpg=sxiv
+alias -s gif=sxiv
 alias -s jpeg=sxiv
 alias -s pdf=mupdf
 
