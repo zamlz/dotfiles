@@ -26,7 +26,8 @@ autoload -U promptinit
 promptinit
 
 # Choose a prompt based on if we are in Xserver
-prompt adam1 background
+# prompt adam1 background
+prompt adam2
 
 # System Variables
 export HTOPRC="$HOME/etc/htoprc"
