@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Go back to git root
+#   needs git and figlet
+
+cd $(git rev-parse --show-top-level);
+
+BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
+
+figlet $BRANCH
+git status

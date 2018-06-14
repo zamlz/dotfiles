@@ -36,16 +36,6 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias .....="cd ../../../../"
 
-# Teleport to root of git repo
-groot() {
-    cd $(git rev-parse --show-toplevel);
-    BRANCH=$(git branch --list --no-color );
-    BRANCH=$(echo $BRANCH | cut -d " " -f 2);
-    BRANCH=$(echo $BRANCH | tr -d '\n');
-    figlet $BRANCH;
-    git status;
-}
-
 # Teleport to my usc dir
 alias usc='cd ~/src/usc; groot; '
 # Teleport to my dotfiles
@@ -66,14 +56,6 @@ infos() {
     scrot --delay 3 --count --quality 100 ~/.myscrot.png
     imgur ~/.myscrot.png
     rm ~/.myscrot.png
-}
-
-# Evaluate a README file
-readme() {
-    README=$(/bin/ls | /bin/grep -i "README")
-    if [ ! -z $README ]; then
-        less $README;
-    fi;
 }
 
 # You done fucked up kiddo
@@ -97,18 +79,4 @@ alias -s pdf=zathura
 # Specially select a certain vim
 if [ "nvim not found" != "$(which nvim)" ]; then
     alias vim="nvim -u $HOME/.vimrc";
-fi
-
-# Special Window manager Aliases
-if [ "$WINDOW_MANAGER" = "bspwm" ]; then
-    # This special cd command keeps track of directories externally
-    cd() {
-        if [ -z "$1" ]; then
-            echo "$(readlink -f $HOME)" > $HOME/tmp/.$(bspc query -N -n)
-            builtin cd
-        else
-            echo "$(readlink -f $1)" > $HOME/tmp/.$(bspc query -N -n)
-            builtin cd $1
-        fi
-    }
 fi

@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# TODO
+# * add a option flag so that it can check if its markdown
+#   and render it as a pdf with pandoc.
+
+# Open up a readme file in ls
+README=$(ls | grep -i "README")
+if [ ! -z $README ]; then
+    less $README;
+fi;
