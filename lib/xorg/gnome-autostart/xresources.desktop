@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=xresources
+GenericName=Start up the xresources
+Comment=What more do I say lol
+Exec=/home/zamlz/.config/autostart/xrdb.sh
+Terminal=false
+Type=Application
+X-GNOME-Autostart-enable=true
