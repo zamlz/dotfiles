@@ -5,7 +5,9 @@
 #   and render it as a pdf with pandoc.
 
 # Open up a readme file in ls
-README=$(ls | grep -i "README")
-if [ ! -z $README ]; then
-    less $README;
+MDFILE=${1}
+if [ ! -z $MDFILE ]; then
+    TMPFILE="/home/zamlz/tmp/.md2pdf.pdf"
+    pandoc -s -o ${TMPFILE} ${README}
+    zathura ${TMPFILE}
 fi;
