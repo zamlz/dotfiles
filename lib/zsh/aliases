@@ -41,6 +41,16 @@ alias usc='cd ~/src/usc; groot; '
 # Teleport to my dotfiles
 alias dots='cd; groot;'
 
+# Teleport to the root of a git directory
+#   needs git and figlet
+groot() {
+    cd $(git rev-parse --show-toplevel);
+    BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
+    figlet $BRANCH
+    git status
+}
+
+
 # Information Functions
 info() {
     clear
