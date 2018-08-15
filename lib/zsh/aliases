@@ -45,8 +45,9 @@ alias dots='cd; groot;'
 #   needs git and figlet
 groot() {
     cd $(git rev-parse --show-toplevel);
+    NAME=$(basename -s .git `git config --get remote.origin.url`)
     BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
-    figlet $BRANCH
+    figlet -t -f slant $@ "${NAME}.${BRANCH}"
     git status
 }
 
