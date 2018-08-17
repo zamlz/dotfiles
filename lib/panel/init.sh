@@ -6,13 +6,11 @@
 #       1) monitor number
 #       2) height of the bar
 #       3) width of the bar
-#       4) border of the bar
 
 # Get the monitor
 MONITOR=${1:-""}
 HEIGHT=${2:-16}
 WIDTH=${3:-512}
-BORDER=${4:-2}
 
 # Import the colors
 . $HOME/lib/xorg/xcolor.sh
@@ -31,23 +29,16 @@ BORDER=${4:-2}
 . $HOME/lib/panel/bars/cpu.sh
 
 # Specify various other settings for lemonbar
-border=$BORDER
-height=$(($HEIGHT - $border - $border))
-width=$(($WIDTH - $border - $border))
 xoff=0
 yoff=0
 font=$(xrdb -query | grep '*font' | \
         awk '{print $2}' | sed -e 's|xft:||g')
 
 # Construction our configuration for lemonbar
-opt_top="-g ${width}x${height}+${xoff}+${yoff}
-         -B ${XBACKGROUND} -F ${XFOREGROUND}
-         -f ${font} -r ${border} -R ${BLACK}"
+opts="-g ${WIDTH}x${HEIGHT}+${xoff}+${yoff}
+      -B ${XBACKGROUND} -F ${XFOREGROUND}
+      -f ${font}"
 
-yoff=$((${yoff} + ${border} + ${border}))
-opt_bot="-g ${width}x${height}+${xoff}+${yoff}
-         -B ${XBACKGROUND} -F ${XFOREGROUND}
-         -f ${font} -r ${border} -R ${BLACK}"
 
 # Create the top content function
 top_content () {
@@ -83,9 +74,9 @@ HZ=".5"
 if [ -n "$MONITOR" ]; then
     # Serve the content function to lemonbar
     (while true; do echo "$(top_content)"; sleep $HZ; done;) | \
-        lemonbar ${opt_top} &
+        lemonbar ${opts} &
     (while true; do echo "$(bot_content)"; sleep $HZ; done;) | \
-        lemonbar ${opt_bot} -b &
+        lemonbar ${opts} -b &
 else
     # Serve the content function to STDOUT
     while true; do

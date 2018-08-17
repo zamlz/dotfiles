@@ -181,16 +181,14 @@ hc detect_monitors
 # Find the panel
 panel=$HOME/lib/panel/init.sh
 PANEL_HEIGHT=24
-PANEL_BORDER=0
 
 # Spawn the bar on the primary monitor (i.e. 0)
 monitor=0
 hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
 PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
-"$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER &
+"$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH &
 
 # Create the program launcher
-# LAUNCHER="$HOME/lib/panel/launcher.sh 0 $PANEL_HEIGHT $PANEL_WIDTH $PANEL_BORDER"
 LAUNCHER="rofi -show run"
 hc keybind $Mod-grave spawn ${LAUNCHER}
 
