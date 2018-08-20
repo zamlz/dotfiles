@@ -6,6 +6,6 @@
 # userathost function
 
 userathost() {
-    out="[user %{F${RED}}$(whoami)@$(hostname)%{F-}]"
+    out="[user %{F${RED}}$(whoami)@$(hostname) $(uname -r)%{F-}]"
     echo -n $out
 }
