@@ -8,6 +8,9 @@ MDFILE=${1}
 
 if [ ! -z "$MDFILE" ]; then
     TMPFILE="${HOME}/tmp/.temp.pdf"
+    if [ -f "${TMPFILE}" ]; then
+        rm ${TMPFILE}
+    fi
     pandoc -s -o ${TMPFILE} ${MDFILE}
     zathura ${TMPFILE}
 fi;

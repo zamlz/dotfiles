@@ -86,6 +86,7 @@ alias -s jpg=sxiv
 alias -s gif=sxiv
 alias -s jpeg=sxiv
 alias -s pdf=zathura
+alias -s md=md2pdf
 
 # Specially select a certain vim
 if [ "nvim not found" != "$(which nvim)" ]; then
