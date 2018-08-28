@@ -22,8 +22,11 @@ if [ -z "$(ps -x | grep urxvtd | grep -v grep)" ]; then
 fi
 
 # Set the background
-# $HOME/.fehbg
-xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
+if [ -f "$HOME/.fehbg" ]; then
+    $HOME/.fehbg
+else
+    xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
+fi
 
 # Specify the primary terminal
 TERMINAL="urxvtc +j +ss"

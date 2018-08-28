@@ -42,5 +42,5 @@ eval $(dircolors -b $HOME/etc/lscolors)
 source $HOME/lib/zsh/aliases
 
 # Source some special programs
-source $HOME/sys/PATH.sh 2> /dev/null
+source $HOME/sys/path.sh 2> /dev/null
 
