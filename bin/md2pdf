@@ -11,6 +11,6 @@ if [ ! -z "$MDFILE" ]; then
     if [ -f "${TMPFILE}" ]; then
         rm ${TMPFILE}
     fi
-    pandoc -s -o ${TMPFILE} ${MDFILE}
+    pandoc -s -o "${TMPFILE}" "${MDFILE}"
     zathura ${TMPFILE}
 fi;

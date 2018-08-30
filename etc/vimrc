@@ -3,6 +3,8 @@ set number          " Show Line numbers
 set background=dark
 set ruler
 set cursorline      " highlight current line
+set cursorcolumn
+set colorcolumn=80
 
 " Setup a color for when a given token crosses
 " column 80
@@ -50,7 +52,10 @@ Plug 'bling/vim-airline'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 " Plug 'valloric/youcompleteme'
+
 Plug 'chrisbra/csv.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
 
 call plug#end()
 
@@ -68,6 +73,9 @@ let g:airline#extensions#tabline#enabled = 1
 " colorscheme solarized
 " colorscheme nord
 colorscheme peachpuff
+
+highlight ColorColumn ctermbg=black
+highlight CursorColumn ctermbg=black
 
 " vim-airline-themes
 " let g:airline_theme = 'luna'
