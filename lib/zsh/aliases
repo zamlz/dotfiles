@@ -90,5 +90,5 @@ alias -s md=md2pdf
 
 # Specially select a certain vim
 if [ "nvim not found" != "$(which nvim)" ]; then
-    alias vim="nvim -u $HOME/.vimrc";
+    alias vim="nvim";
 fi

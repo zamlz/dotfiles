@@ -1,0 +1,8 @@
+#!/bin/sh
+
+IMG="$HOME/tmp/.curdesk.png"
+BLUR="10x10"
+
+scrot $IMG
+convert $IMG -blur $BLUR $IMG
+i3lock -nefi $IMG

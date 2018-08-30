@@ -196,6 +196,7 @@ LAUNCHER="rofi -show run"
 hc keybind $Mod-grave spawn ${LAUNCHER}
 
 # Finally start i3lock
-LOCKER="i3lock -nefc 000000"
+# LOCKER="i3lock -nefc 000000"
+LOCKER="$HOME/lib/herbstluftwm/lockme"
 hc keybind $Mod-Escape spawn ${LOCKER}
 exec xautolock -detectsleep -time 10 -locker "${LOCKER}"
