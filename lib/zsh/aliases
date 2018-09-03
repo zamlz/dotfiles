@@ -92,3 +92,19 @@ alias -s md=md2pdf
 if [ "nvim not found" != "$(which nvim)" ]; then
     alias vim="nvim";
 fi
+
+# This is a special alias that overrides the
+# default behaviour of cd.
+# instead it makes cd behave such that it saves the
+# directory that we enter.
+if [ -n "$WINDOW_MANAGER" ]; then
+
+# Build our custom cd
+cd () {
+    builtin cd $@
+    pwd > ${HOME}/tmp/.wid_${WINDOWID}
+}
+# Terminal should generate its id file on spawn
+pwd > ${HOME}/tmp/.wid_${WINDOWID}
+
+fi

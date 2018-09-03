@@ -43,7 +43,15 @@ Mod=Mod4   # Use the super key as the main modifier
 hc keybind $Mod-Ctrl-Alt-Escape quit
 hc keybind $Mod-Ctrl-Alt-r reload
 hc keybind $Mod-q close
-hc keybind $Mod-Return spawn ${TERMINAL:-xterm} # use your $TERMINAL with xterm as fallback
+
+# use your $TERMINAL with xterm as fallback
+hc keybind $Mod-Return spawn ${TERMINAL:-xterm}
+
+# Super Special Terminal Warp Spawn.
+# open a terminal in the same directory
+# the currently focused window.
+TERMWARP="$HOME/lib/herbstluftwm/pwdcfw ${TERMINAL}"
+hc keybind $Mod-Shift-Return spawn ${TERMWARP}
 
 # basic movement
 # focusing clients
@@ -199,4 +207,4 @@ hc keybind $Mod-grave spawn ${LAUNCHER}
 # LOCKER="i3lock -nefc 000000"
 LOCKER="$HOME/lib/herbstluftwm/lockme"
 hc keybind $Mod-Escape spawn ${LOCKER}
-exec xautolock -detectsleep -time 10 -locker "${LOCKER}"
+exec xautolock -detectsleep -time 15 -locker "${LOCKER}"
