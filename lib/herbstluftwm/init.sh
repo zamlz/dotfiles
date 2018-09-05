@@ -29,8 +29,8 @@ else
 fi
 
 # Specify the primary terminal
-TERMINAL="urxvtc +j +ss"
-# TERMINAL="$HOME/lib/herbstluftwm/term.sh"
+# TERMINAL="urxvtc +j +ss"
+TERMINAL="urxvtc"
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -142,11 +142,11 @@ hc attr theme.floating.reset 1
 hc set frame_border_active_color '#222222'
 hc set frame_border_normal_color '#101010'
 hc set frame_bg_normal_color '#565656'
-hc set frame_bg_active_color '#345F0C'
+hc set frame_bg_active_color '#9fbc00'
 hc set frame_border_width 1
-hc set always_show_frame 1
+hc set always_show_frame 0
 hc set frame_bg_transparent 1
-hc set frame_transparent_width 5
+hc set frame_transparent_width 1
 hc set frame_gap 4
 
 hc attr theme.active.color '#9fbc00'
@@ -207,4 +207,4 @@ hc keybind $Mod-grave spawn ${LAUNCHER}
 # LOCKER="i3lock -nefc 000000"
 LOCKER="$HOME/lib/herbstluftwm/lockme"
 hc keybind $Mod-Escape spawn ${LOCKER}
-exec xautolock -detectsleep -time 15 -locker "${LOCKER}"
+exec xautolock -time 5 -locker "${LOCKER}"
