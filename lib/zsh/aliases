@@ -53,21 +53,8 @@ groot() {
 
 
 # Information Functions
-info() {
-    clear
-    echo
-    neofetch
-    echo
-    colors
-    echo
-}
-
-infos() {
-    info
-    scrot --delay 3 --count --quality 100 ~/.myscrot.png
-    imgur ~/.myscrot.png
-    rm ~/.myscrot.png
-}
+alias info="clear;echo;neofetch;colors;"
+alias infos="info;scrot --delay 3 --count --quality 100 ~/tmp/myscrot.png"
 
 # You done fucked up kiddo
 if [ $UID -ne 0 ]; then
@@ -99,12 +86,14 @@ fi
 # directory that we enter.
 if [ -n "$DISPLAY" ]; then
 
-# Build our custom cd
-cd () {
-    builtin cd $@
+    # Build our custom cd
+    cd () {
+        builtin cd $@
+        pwd > ${HOME}/tmp/.wid_${WINDOWID}
+    }
+    
+    # Every terminal should generate its id file on spawn
     pwd > ${HOME}/tmp/.wid_${WINDOWID}
-}
-# Terminal should generate its id file on spawn
-pwd > ${HOME}/tmp/.wid_${WINDOWID}
 
 fi
+

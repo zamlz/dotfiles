@@ -207,4 +207,4 @@ hc keybind $Mod-grave spawn ${LAUNCHER}
 # LOCKER="i3lock -nefc 000000"
 LOCKER="$HOME/lib/herbstluftwm/lockme"
 hc keybind $Mod-Escape spawn ${LOCKER}
-exec xautolock -time 5 -locker "${LOCKER}"
+exec xautolock -time 30 -locker "${LOCKER}"
