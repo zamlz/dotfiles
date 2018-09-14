@@ -29,17 +29,16 @@ promptinit
 # prompt adam1 background
 prompt adam2
 
-# System Variables
-export HTOPRC="$HOME/etc/htoprc"
-
-# Update our Path
-export PATH="$HOME/bin:$PATH"
-
 # Update our ls colors
-eval $(dircolors -b $HOME/etc/lscolors)
+eval $(dircolors -b $HOME/lib/shell/lscolors)
+
+# Necessary exports 
+export PATH="$HOME/bin:$PATH"
+export HTOPRC="$HOME/etc/htop/rc"
+export GPG_TTY=$(tty)
 
 # Source our alises
-source $HOME/lib/zsh/aliases
+source $HOME/etc/zsh/aliases
 
 # Source some special programs
 source $HOME/sys/path.sh 2> /dev/null

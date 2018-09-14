@@ -21,11 +21,11 @@ alias tree="tree -C"
 alias dog="pygmentize"
 
 # Config override
-alias neofetch="neofetch --config $HOME/etc/neofetchrc"
-alias tmux="tmux -f $HOME/etc/tmuxrc"
+alias neofetch="neofetch --config $HOME/etc/neofetch/rc"
+alias tmux="tmux -f $HOME/etc/tmux/rc"
 alias irc="weechat"
-alias rss="newsboat --config-file=$HOME/lib/newsboat/config \
-    --url-file=$HOME/lib/newsboat/urls"
+alias rss="newsboat --config-file=$HOME/etc/newsboat/config \
+    --url-file=$HOME/etc/newsboat/urls"
 
 # Random Stuff
 alias fping="ping -c 3 www.google.com"
@@ -36,8 +36,10 @@ alias ...="cd ../../"
 alias ....="cd ../../../"
 alias .....="cd ../../../../"
 
-# Teleport to my usc dir
+# Teleport to my school dirs
+alias ucsc='cd ~/src/ucsc; groot; '
 alias usc='cd ~/src/usc; groot; '
+
 # Teleport to my dotfiles
 alias dots='cd; groot;'
 

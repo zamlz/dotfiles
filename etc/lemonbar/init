@@ -13,20 +13,20 @@ HEIGHT=${2:-16}
 WIDTH=${3:-512}
 
 # Import the colors
-. $HOME/lib/xorg/xcolor.sh
+. $HOME/lib/shell/xrdb_colors
 
 # Import the individual bar functions
-. $HOME/lib/panel/bars/userathost.sh
-. $HOME/lib/panel/bars/workspace.sh
-. $HOME/lib/panel/bars/datetime.sh
-. $HOME/lib/panel/bars/network.sh
-. $HOME/lib/panel/bars/backlight.sh
-. $HOME/lib/panel/bars/battery.sh
+. $HOME/etc/lemonbar/bars/userathost
+. $HOME/etc/lemonbar/bars/workspace
+. $HOME/etc/lemonbar/bars/datetime
+. $HOME/etc/lemonbar/bars/network
+. $HOME/etc/lemonbar/bars/backlight
+. $HOME/etc/lemonbar/bars/battery
 
-. $HOME/lib/panel/bars/filesystems.sh
-. $HOME/lib/panel/bars/memory.sh
-. $HOME/lib/panel/bars/swap.sh
-. $HOME/lib/panel/bars/cpu.sh
+. $HOME/etc/lemonbar/bars/filesystems
+. $HOME/etc/lemonbar/bars/memory
+. $HOME/etc/lemonbar/bars/swap
+. $HOME/etc/lemonbar/bars/cpu
 
 # Specify various other settings for lemonbar
 xoff=0

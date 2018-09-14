@@ -3,7 +3,7 @@
 if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
     export WINDOW_MANAGER='herbstluftwm'
     export XLOG="$HOME/var/$(date --iso-8601=seconds)"
-    exec startx ~/lib/xorg/xinitrc herbstluftwm >> $XLOG 2>&1
+    exec startx $HOME/etc/xorg/xinitrc herbstluftwm >> $XLOG 2>&1
 
 # Trying to Boot to Unity (For Ubuntu Only)
 # sudo systemctl disable lightdm.service

@@ -13,8 +13,8 @@ killall -USR1 st > /dev/null 2>&1
 killall lemonbar > /dev/null 2>&1
 
 # Reload the xresource data
-xrdb -I$HOME $HOME/lib/xorg/xresources
-. $HOME/lib/xorg/xcolor.sh
+xrdb -I$HOME $HOME/etc/xorg/xresources
+. $HOME/lib/shell/xrdb_colors
 
 # Start the urxvt daemon
 if [ -z "$(ps -x | grep urxvtd | grep -v grep)" ]; then
@@ -50,7 +50,7 @@ hc keybind $Mod-Return spawn ${TERMINAL:-xterm}
 # Super Special Terminal Warp Spawn.
 # open a terminal in the same directory
 # the currently focused window.
-TERMWARP="$HOME/lib/herbstluftwm/pwdcfw ${TERMINAL}"
+TERMWARP="$HOME/etc/herbstluftwm/pwdcfw ${TERMINAL}"
 hc keybind $Mod-Shift-Return spawn ${TERMWARP}
 
 # basic movement
@@ -190,7 +190,7 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 hc detect_monitors
 
 # Find the panel
-panel=$HOME/lib/panel/init.sh
+panel=$HOME/etc/lemonbar/init
 PANEL_HEIGHT=24
 
 # Spawn the bar on the primary monitor (i.e. 0)
@@ -205,6 +205,6 @@ hc keybind $Mod-grave spawn ${LAUNCHER}
 
 # Finally start i3lock
 # LOCKER="i3lock -nefc 000000"
-LOCKER="$HOME/lib/herbstluftwm/lockme"
+LOCKER="$HOME/etc/herbstluftwm/lockme"
 hc keybind $Mod-Escape spawn ${LOCKER}
 exec xautolock -time 30 -locker "${LOCKER}"

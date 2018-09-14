@@ -18,9 +18,7 @@ fi
 session=${1:-herbstluftwm}
 
 case $session in
-    herbstluftwm)
-	    exec herbstluftwm -c $HOME/lib/herbstluftwm/init.sh;;
-    *)
-        exec $1;;
+    herbstluftwm)   exec herbstluftwm -c $HOME/etc/herbstluftwm/init;;
+    *)              exec $1;;
 esac
 
