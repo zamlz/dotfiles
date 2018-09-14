@@ -12,7 +12,7 @@ fi
 # We need to start the compositor as well
 # If we would like to kill our CPU so no.
 # But hey, it definetly looks crisp af tho.
-# compton --config $HOME/etc/comptonrc &
+compton --config $HOME/etc/compton/rc &
 
 # Start Window Manager
 session=${1:-herbstluftwm}
