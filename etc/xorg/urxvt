@@ -9,6 +9,8 @@ URxvt.internalBorder:       10
 URxvt.lineSpace:            0
 URxvt.termName:             xterm-256color
 
+! These are the extra extensions we are loading
+!URxvt.perl-ext-common: default, config-reload
 
 ! transparency - true or false (default)
 !URxvt*transparent: true
@@ -33,3 +35,4 @@ URxvt*scrollBar_right: false
 
 ! scrollbar style - rxvt (default), plain, next, or xterm
 URxvt*scrollstyle: plain
+
