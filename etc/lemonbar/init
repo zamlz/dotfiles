@@ -28,6 +28,9 @@ WIDTH=${3:-512}
 . $HOME/etc/lemonbar/bars/swap
 . $HOME/etc/lemonbar/bars/cpu
 
+# If you want the bar to be transparent.
+# XBACKGROUND="#00000000"
+
 # Specify various other settings for lemonbar
 xoff=0
 yoff=0

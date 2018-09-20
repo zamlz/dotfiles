@@ -12,8 +12,12 @@ URxvt.termName:             xterm-256color
 ! These are the extra extensions we are loading
 !URxvt.perl-ext-common: default, config-reload
 
-! transparency - true or false (default)
+! fake transparency - true or false (default)
 !URxvt*transparent: true
+
+! Real transparency (needs compositor like compton)
+!URxvt*depth: 32
+!URxvt*background: rgba:1111/1111/1111/0000
 
 ! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
 !   some nice listings are at:
