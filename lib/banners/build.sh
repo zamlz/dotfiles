@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. $HOME/lib/zsh/colorenv
+. $HOME/lib/shell/colorenv
 
 TMP=/tmp/banner
 
