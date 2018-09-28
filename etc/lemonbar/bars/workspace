@@ -9,7 +9,7 @@
 workspace() {
     cur=$(xprop -root _NET_CURRENT_DESKTOP | awk '{print $3}')
     all=$(xprop -root _NET_NUMBER_OF_DESKTOPS | awk '{print $3}')
-    out="[workspace%{F${BLUE}}"
+    out="[WSP%{F${BLUE}}"
 
     # Construct a list of active workspaces
     winlist=$(xprop -root _NET_CLIENT_LIST | cut -d " " -f5- | tr -d ',')

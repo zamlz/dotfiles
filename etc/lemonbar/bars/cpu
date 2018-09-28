@@ -7,7 +7,7 @@
 
 cpu() {
 
-    out="[cpu %{F${RED}}--%%{F-}]"
+    out="[CPU %{F${RED}}--%%{F-}]"
 
     echo -n $out
 }

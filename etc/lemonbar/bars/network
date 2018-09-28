@@ -25,6 +25,6 @@ network() {
     CONNECTION=$(echo $net | awk '{print $9}')
     SSID=": ${CONNECTION}"
 
-    out="[network %{F${color}}${DEVICE}: ${IPADDR}%{F-}]"
+    out="[NET %{F${color}}${DEVICE}: ${IPADDR}%{F-}]"
     echo -n $out
 }

@@ -13,9 +13,9 @@ volume() {
             awk '{print $5}' | tr -d '[]')
 
     if [ -z "$status" ]; then
-        out="[volume %{F${CYAN}}${vol}%{F-}]"
+        out="[VOL %{F${CYAN}}${vol}%{F-}]"
     else
-        out="[volume %{F${RED}}MUTED%{F-}]"
+        out="[VOL %{F${RED}}MUTED%{F-}]"
     fi
     echo -n $out
 }

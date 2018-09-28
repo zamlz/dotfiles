@@ -7,7 +7,7 @@
 
 filesystems() {
 
-    out="[filesystems %{F${YELLOW}}"
+    out="[FSD %{F${YELLOW}}"
 
     bootdir='/boot '
     boot=$(lsblk -rpo MOUNTPOINT,NAME | grep "$bootdir" | awk '{print $2}')

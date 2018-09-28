@@ -9,7 +9,7 @@ swap() {
     swap=$(free -h | grep Swap | awk '{print $3}')
     tot=$(free -h | grep Swap | awk '{print $2}')
 
-    out="[swap %{F${GREEN}}${swap}/${tot}%{F-}]"
+    out="[SWP %{F${GREEN}}${swap}/${tot}%{F-}]"
 
     echo -n $out
 }
