@@ -21,6 +21,7 @@ WIDTH=${3:-512}
 . $HOME/etc/lemonbar/bars/datetime
 . $HOME/etc/lemonbar/bars/network
 . $HOME/etc/lemonbar/bars/backlight
+. $HOME/etc/lemonbar/bars/volume
 . $HOME/etc/lemonbar/bars/battery
 
 . $HOME/etc/lemonbar/bars/filesystems
@@ -54,6 +55,7 @@ top_content () {
     echo -n "%{r}"
     network
     backlight
+    volume
     battery
     echo -n " ";
 }
