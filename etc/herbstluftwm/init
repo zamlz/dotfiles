@@ -35,6 +35,13 @@ TERMINAL="urxvtc"
 # remove all existing keybindings
 hc keyunbind --all
 
+# Add the XF86 keybinds 
+hc keybind XF86MonBrightnessUp spawn xbacklight -inc 10
+hc keybind XF86MonBrightnessDown spawn xbacklight -dec 10
+hc keybind XF86AudioMute spawn amixer set Master toggle
+hc keybind XF86AudioRaiseVolume spawn amixer set Master 5%+
+hc keybind XF86AudioLowerVolume spawn amixer set Master 5%-
+
 # keybindings
 # if you have a super key you will be much happier with Mod set to Mod4
 #Mod=Mod1    # Use alt as the main modifier
