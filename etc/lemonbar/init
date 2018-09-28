@@ -77,18 +77,18 @@ bot_content() {
 
 
 # Serve the content function
-HZ=".5"
+T=".5"
 if [ -n "$MONITOR" ]; then
     # Serve the content function to lemonbar
-    (while true; do echo "$(top_content)"; sleep $HZ; done;) | \
+    (while true; do echo "$(top_content)"; sleep $T; done;) | \
         lemonbar ${opts} &
-    (while true; do echo "$(bot_content)"; sleep $HZ; done;) | \
+    (while true; do echo "$(bot_content)"; sleep $T; done;) | \
         lemonbar ${opts} -b &
 else
     # Serve the content function to STDOUT
     while true; do
         echo "$(top_content)";
         echo "$(bot_content)";
-        sleep $HZ;
+        sleep $T;
     done;
 fi
