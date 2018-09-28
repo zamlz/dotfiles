@@ -55,7 +55,6 @@ top_content () {
     echo -n "%{r}"
     network
     backlight
-    volume
     battery
     echo -n " ";
 }
@@ -64,9 +63,10 @@ top_content () {
 bot_content() {
     echo -n "%{S${MONITOR}}"
     echo -n "%{l} "
-    filesystems
+    volume
     echo -n "%{c}"
     echo -n "%{r}"
+    filesystems
     swap
     memory
     cpu
