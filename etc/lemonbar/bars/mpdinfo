@@ -1,0 +1,18 @@
+#!/usr/bin/env sh
+
+# Sourced the xcolors init.sh
+# . $HOME/lib/xorg/xcolor.sh
+
+# MPD function
+#   Needs mpd installed
+
+mpdinfo() {
+
+    status=$(mpc current)
+    if [ -z "$status" ]; then
+        out="[MPD %{F${MAGENTA}}mpd error: Connection refused%{F-}]"
+    else
+        out="[MPD %{F${MAGENTA}}$(mpc current)%{F-}]"
+    fi
+    echo -n $out
+}
