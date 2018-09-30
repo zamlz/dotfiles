@@ -18,7 +18,11 @@ network() {
     else
         color=${MAGENTA}
         DEVICE=$(echo $net | sed 's/:.*//g')
-        CONNECTION=$(echo $net | sed 's/.*://g')
+        if [ -z "$(echo $net | grep 'ethernet')" ]; then
+            CONNECTION=$(echo $net | sed 's/.*://g')
+        else
+            CONNECTION="ethernet"
+        fi
     fi
 
     out="[NET %{F${color}}${DEVICE}: ${CONNECTION}%{F-}]"
