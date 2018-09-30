@@ -1,6 +1,6 @@
 #!/bin/sh
 
-IMG="$HOME/tmp/.curdesk.png"
+IMG="/tmp/.curdesk.png"
 BLUR="10x10"
 
 scrot $IMG

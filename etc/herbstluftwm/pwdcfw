@@ -4,7 +4,9 @@
 # Warp the newly spawned terminal to the
 # (P)resent (W)orking (D)irectory of the
 # (C)urrently (F)ocused (W)indow.
+#
+# Needs xdotool to be installed
 
 # Assume its urxvt
-$@ -e sh -c "cd $(cat $HOME/tmp/.wid_$(xdotool getwindowfocus)); zsh"
+$@ -e sh -c "cd $(cat /tmp/.wid_$(xdotool getwindowfocus)); zsh"
 

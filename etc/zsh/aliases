@@ -91,11 +91,11 @@ if [ -n "$DISPLAY" ]; then
     # Build our custom cd
     cd () {
         builtin cd $@
-        pwd > ${HOME}/tmp/.wid_${WINDOWID}
+        pwd > /tmp/.wid_${WINDOWID}
     }
     
     # Every terminal should generate its id file on spawn
-    pwd > ${HOME}/tmp/.wid_${WINDOWID}
+    pwd > /tmp/.wid_${WINDOWID}
 
 fi
 
