@@ -81,9 +81,9 @@ T=".5"
 if [ -n "$MONITOR" ]; then
     # Serve the content function to lemonbar
     (while true; do echo "$(top_content)"; sleep $T; done;) | \
-        lemonbar ${opts} &
+        lemonbar ${opts} | sh &
     (while true; do echo "$(bot_content)"; sleep $T; done;) | \
-        lemonbar ${opts} -b &
+        lemonbar ${opts} -b | sh &
 else
     # Serve the content function to STDOUT
     while true; do
