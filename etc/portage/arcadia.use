@@ -49,6 +49,8 @@ www-client/firefox 		bindist custom-cflags custom-optimization
 www-client/firefox		system-harfbuzz system-icu system-jpeg
 www-client/firefox		system-libevent system-libvpx system-sqlite
 
+x11-base/xorg-server		xvfb
+
 x11-misc/rofi 			windowmode
 
 x11-terms/rxvt-unicode 		256-color blink fading-colors
