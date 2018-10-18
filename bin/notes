@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Source the color library file
-source ~/lib/zsh/colorenv
+source ~/lib/shell/colorenv
 
 corpus="${Cyan}Notes v1.3${Rst}"
 
