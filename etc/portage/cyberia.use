@@ -116,3 +116,40 @@ x11-terms/rxvt-unicode 256-color blink fading-colors
 # required by net-print/cups-filters-1.20.4::gentoo[postscript]
 >=app-text/xmlto-0.0.26-r1 text
 
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=dev-python/PyQt5-5.10.1-r1 gui printsupport network widgets sql webengine opengl declarative multimedia webchannel
+# required by dev-python/PyQt5-5.10.1-r1::gentoo[multimedia]
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=dev-qt/qtmultimedia-5.11.1 widgets
+# required by dev-python/PyQt5-5.10.1-r1::gentoo[webengine]
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=dev-qt/qtwebengine-5.11.1 widgets
+# required by dev-qt/qtwebengine-5.11.1::gentoo
+# required by dev-python/PyQt5-5.10.1-r1::gentoo[webengine]
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=dev-qt/qtwebchannel-5.11.1 qml
+# required by dev-qt/qtwebengine-5.11.1::gentoo
+# required by dev-python/PyQt5-5.10.1-r1::gentoo[webengine]
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=dev-libs/libxml2-2.9.8 icu
+# required by dev-qt/qtwebengine-5.11.1::gentoo
+# required by dev-python/PyQt5-5.10.1-r1::gentoo[webengine]
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=media-libs/libvpx-1.5.0 svc
+# required by dev-qt/qtwebengine-5.11.1::gentoo
+# required by dev-python/PyQt5-5.10.1-r1::gentoo[webengine]
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=sys-libs/zlib-1.2.11-r2 minizip
+# required by dev-qt/qtcore-5.11.1-r1::gentoo
+# required by dev-qt/qtxml-5.11.1::gentoo
+# required by dev-python/PyQt5-5.10.1-r1::gentoo
+# required by www-client/qutebrowser-1.5.1::gentoo
+# required by qutebrowser (argument)
+>=dev-libs/libpcre2-10.30 pcre16
