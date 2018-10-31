@@ -15,7 +15,7 @@ PDFTEST   = mupdf
 DVITEST   = dvi2tty
 
 TEXSRC    = main.tex
-BIBSRC    = rlib.bib
+BIBSRC    = lib.bib
 
 OUTFILE   = ${TEXSRC:.tex=.pdf}
 ENDFILE   = ${OUTFILE}
@@ -32,14 +32,14 @@ MAKEARGS  = --no-print-directory -C
 
 ###################################################
 
-${OUTFILE}: setup ${TEXSRC} ${BIBSRC}
+${OUTFILE}: ${TEXSRC} ${BIBSRC}
 	-${PDFEXE} ${TEXSRC}
 	-${BIBEXE} ${TEXSRC:.tex=.aux}
 	-${PDFEXE} ${TEXSRC}
 	-${PDFEXE} ${TEXSRC}
 	mv ${OUTFILE} ${ENDFILE}
 
-${OUTFILE:.pdf=.dvi}: setup ${TEXSRC} ${BIBSRC}
+${OUTFILE:.pdf=.dvi}: ${TEXSRC} ${BIBSRC}
 	-${DVIEXE} ${TEXSRC}
 	-${BIBEXE} ${TEXSRC:.tex=.aux}
 	-${DVIEXE} ${TEXSRC}
@@ -59,7 +59,7 @@ clean:
 	-rm -fv ${MISCFILE}
 	-rm -rfv _minted*/
 
-spotless: setup clean 
+spotless: clean 
 	-rm ${OUTFILE}
 	-rm ${OUTFILE:.pdf=.dvi}
 	-rm ${ENDFILE}
