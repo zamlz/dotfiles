@@ -27,12 +27,22 @@ promptinit
 
 # Choose a prompt based on if we are in Xserver
 # prompt adam1 background
-prompt adam2
+# prompt adam2
+
+# Generate our own custom prompt.
+ps1_gen() {
+    echo -ne "%B%F{cyan}.-"
+    echo -ne "%F{black}(%b%F{magenta}%n%F{white}@%F{blue}%M%F{black}%B)"
+    echo -ne "%F{cyan}-%F{black}[%F{green}%~%F{black}]"
+    echo -ne "\n"
+    echo -ne "%F{cyan}\`--%B%F{white}>%b "
+}
+export PS1=$(ps1_gen)
 
 # Update our ls colors
 eval $(dircolors -b $HOME/lib/shell/lscolors)
 
-# Necessary exports 
+# Necessary exports
 export PATH="$HOME/bin:$PATH"
 export HTOPRC="$HOME/etc/htop/rc"
 export GPG_TTY=$(tty)
