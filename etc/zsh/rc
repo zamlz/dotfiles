@@ -49,7 +49,7 @@ ps1_generate() {
         fi
     fi
     if [ -n "$ENV_NAME" ]; then
-        echo -ne "%F{cyan}-%F{black}{%F{red}$ENV_NAME%F{black}}"
+        echo -ne "%F{cyan}-%F{black}{%F{yellow}$ENV_NAME%F{black}}"
     fi
     echo -ne "\n"
     echo -ne "%F{cyan}\`--%B%F{white}>%b "
