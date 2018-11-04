@@ -1,4 +1,8 @@
+
+# In reality, ignore all dotfiles.
 .*
+
+# Avoid these directories like the plague
 src/
 src
 sys/
