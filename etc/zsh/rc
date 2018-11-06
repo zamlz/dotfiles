@@ -40,7 +40,7 @@ ps1_generate() {
         # (yes/no add ; no commited)
         #GIT_YA=$(git status --porcelain 2>/dev/null| egrep "^M" | wc -l)
         #GIT_NA=$(git status --porcelain 2>/dev/null| egrep "^ M" | wc -l)
-        GIT_NC=$(git status --porcelain 2>/dev/null| egrep "^(M| M)" | wc -l)
+        GIT_NC=$(git status --porcelain 2>/dev/null| egrep "^(M| M | D)" | wc -l)
         # Use this info to construct our real status
         if [ $GIT_NC -eq 0 ]; then
         echo -ne "%F{cyan}-%F{black}<%F{green}$GIT_NAME.$GIT_BRANCH%F{black}>"
