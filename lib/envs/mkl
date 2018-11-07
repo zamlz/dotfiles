@@ -1,0 +1,21 @@
+
+# State what we are doing
+echo "Initializing Environment for Intel Math Kernel Library"
+echo ""
+
+# Setup the environment name
+NAME='intel_mkl'
+if [ -n "$ENV_NAME" ]; then
+    export ENV_NAME="$ENV_NAME/$NAME"
+else
+    export ENV_NAME="$NAME"
+fi
+
+# This is for the Intel MKL library.
+echo 'export LD_LIBRARY_PATH=/opt/intel/lib/intel64:/opt/intel/mkl/lib/intel64:${LD_LIBRARY_PATH}'
+export LD_LIBRARY_PATH=/opt/intel/lib/intel64:/opt/intel/mkl/lib/intel64:${LD_LIBRARY_PATH}
+
+# This is for setting up the graphnn toolkit
+echo 'source /opt/intel/parallel_studio_xe_2017/bin/psxevars.sh'
+source /opt/intel/parallel_studio_xe_2017/bin/psxevars.sh
+echo ""
