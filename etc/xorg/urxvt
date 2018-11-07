@@ -40,3 +40,6 @@ URxvt*scrollBar_right: false
 ! scrollbar style - rxvt (default), plain, next, or xterm
 URxvt*scrollstyle: plain
 
+! Remap the copy and paste functionaility
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
