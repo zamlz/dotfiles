@@ -48,8 +48,17 @@ ps1_generate() {
         echo -ne "%F{cyan}-%F{black}<%F{red}$GIT_NAME.$GIT_BRANCH%F{black}>"
         fi
     fi
-    if [ -n "$ENV_NAME" ]; then
-        echo -ne "%F{cyan}-%F{black}{%F{yellow}$ENV_NAME%F{black}}"
+    if [ -n "${ENV_NAME}${CONDA_DEFAULT_ENV}" ]; then
+        echo -ne "%F{cyan}-%F{black}{%F{yellow}"
+        MOD=""
+        if [ -n "$CONDA_DEFAULT_ENV" ]; then
+            echo -ne "$CONDA_DEFAULT_ENV"
+            MOD="/"
+        fi
+        if [ -n "$ENV_NAME" ]; then
+            echo -ne "$MOD$ENV_NAME"
+        fi
+        echo -ne "%F{black}}"
     fi
     echo -ne "\n"
     echo -ne "%F{cyan}\`--%B%F{white}>%b "
