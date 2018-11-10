@@ -64,6 +64,8 @@ ps1_generate() {
     echo -ne "%F{cyan}\`--%B%F{white}>%b "
 }
 
+# Thanks to this wonderful command in ZSH prompt is always regenerated
+# after every command!
 precmd() {
     export PS1=$(ps1_generate)
 }
