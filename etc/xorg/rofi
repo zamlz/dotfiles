@@ -11,19 +11,19 @@
 ! "Font to use" Set from: XResources
 rofi.font:                           Dina 8
 
-! Color Guidlines                       BG          FG          BG_ALT      HL_BG       HL_FG
-! "Color scheme for normal row" Set from: Default
- rofi.color-normal:                     #000000,    #ebdbb2,    #000000,    #282828,    #ebdbb2
-! "Color scheme for urgent row" Set from: Default
- rofi.color-urgent:                     #000000,    #ebdbb2,    #000000,    #282828,    #ebdbb2
-! "Color scheme for active row" Set from: Default
- rofi.color-active:                     #000000,    #ebdbb2,    #000000,    #282828,    #ebdbb2
+! Color Guidlines                       BG -  FG - BG_ALT - HL_BG - HL_FG
+! "Color scheme for normal row"
+ rofi.color-normal:                     xbackground, xforeground, xbackground, xcolor8, xforeground
+! "Color scheme for urgent row"
+ rofi.color-urgent:                     xbackground, xforeground, xbackground, xcolor8, xforeground
+! "Color scheme for active row"
+ rofi.color-active:                     xbackground, xforeground, xbackground, xcolor8, xforeground
 
 ! Color Guidlines                       BG          BORDER      SEPEARATOR
-! "Color scheme window" Set from: Default
- rofi.color-window:                     #000000,    #9fbc00,    #282828
+! "Color scheme window"
+ rofi.color-window:                     xbackground,    xcolor5,    xcolor8
 ! "Border width" Set from: XResources
-rofi.bw:                             2
+rofi.bw:                             4
 
 ! "Location on screen" Set from: Default
 ! rofi.location:                       0

@@ -43,3 +43,33 @@ URxvt*scrollstyle: plain
 ! Remap the copy and paste functionaility
 URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+!                   Urxvt Color Scheme                     !
+!+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+URxvt.foreground: xforeground
+URxvt.background: xbackground 
+URxvt.cursorColor: xcursorColor
+
+! This is for fading windows if not active
+! URxvt.fading: 35
+! URxvt.fadeColor: background
+
+URxvt.color0:  xcolor0
+URxvt.color1:  xcolor1
+URxvt.color2:  xcolor2
+URxvt.color3:  xcolor3
+URxvt.color4:  xcolor4
+URxvt.color5:  xcolor5
+URxvt.color6:  xcolor6
+URxvt.color7:  xcolor7
+URxvt.color8:  xcolor8
+URxvt.color9:  xcolor9
+URxvt.color10: xcolor10
+URxvt.color11: xcolor11
+URxvt.color12: xcolor12
+URxvt.color13: xcolor13
+URxvt.color14: xcolor14
+URxvt.color15: xcolor15
+
