@@ -39,7 +39,7 @@ ${ENDFILE}: ${TEXSRC} ${BIBSRC}
 
 ${ENDFILE:.pdf=.dvi}: ${TEXSRC} ${BIBSRC}
 	${DVIEXE} ${TEXSRC}
-	${BIBEXE} ${TEXSRC:.tex=.aux}
+	-${BIBEXE} ${TEXSRC:.tex=.aux}
 	${DVIEXE} ${TEXSRC}
 	${DVIEXE} ${TEXSRC}
 	mv ${OUTFILE:.pdf=.dvi} ${ENDFILE:.pdf=.dvi}
