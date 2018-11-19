@@ -2,22 +2,6 @@
 ! Load some important Stuff Here
 !###############################
 
-!#include "../lib/colorshemes/autumnal"
-!#include "../lib/colorshemes/base16-ocean-dark"
-!#include "../lib/colorshemes/gruvbox-dark-hard"
-!#include "../lib/colorshemes/gruvbox-dark-hardest"
-!#include "../lib/colorshemes/gruvbox-dark-medium"
-!#include "../lib/colorshemes/gruvbox-light-medium"
-!#include "../lib/colorshemes/h4xor"
-!#include "../lib/colorshemes/in-the-thaw"
-!#include "../lib/colorshemes/monochrome_green"
-!#include "../lib/colorshemes/monokai"
-!#include "../lib/colorshemes/monokai-redone"
-!#include "../lib/colorshemes/navy-and-ivory"
-!#include "../lib/colorshemes/nord"
-!#include "../lib/colorshemes/resolved"
-!#include "../lib/colorshemes/solarized-dark"
-!#include "../lib/colorshemes/spacesurf"
 #include ".xcolorscheme"
 
 !#############
