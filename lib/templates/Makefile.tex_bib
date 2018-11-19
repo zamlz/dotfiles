@@ -32,7 +32,7 @@ MISCFILE  = ${TEXSRC:.tex=.aux} \
 
 ${ENDFILE}: ${TEXSRC} ${BIBSRC}
 	${PDFEXE} ${TEXSRC}
-	${BIBEXE} ${TEXSRC:.tex=.aux}
+	-${BIBEXE} ${TEXSRC:.tex=.aux}
 	${PDFEXE} ${TEXSRC}
 	${PDFEXE} ${TEXSRC}
 	mv ${OUTFILE} ${ENDFILE}
