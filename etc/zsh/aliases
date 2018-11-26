@@ -46,11 +46,20 @@ alias dots='cd; groot;'
 # Teleport to the root of a git directory
 #   needs git and figlet
 groot() {
-    cd $(git rev-parse --show-toplevel);
-    NAME=$(basename -s .git `git config --get remote.origin.url`)
+    GITROOT=$(git rev-parse --show-toplevel 2> /dev/null);
+    ROOTEXIST=$?  
+    if [ $ROOTEXIST -eq 0 ]; then
+    
+    cd $GITROOT;
+    NAME=$(basename -s .git `git config --get remote.origin.url` 2> /dev/null)
+    if [ -z "$NAME" ]; then
+        NAME="[ ]"
+    fi
     BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
     figlet -t -f slant $@ "${NAME}.${BRANCH}"
     git status
+
+    fi
 }
 
 
