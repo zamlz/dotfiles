@@ -8,8 +8,6 @@ xdef="$HOME/.xcolorscheme"
 colors=( $(sed -re '/^!/d; /^$/d; s/#define //g; s/(xcolor)([0-9]) /\10\2 /g;' $xdef | \
     grep 'xcolor[01][0-9]' | sort | sed 's/^.* //g') )
 
-echo ${colors[0]}
-
 echo -e "\e[1;37m
  Black    Red      Green    Yellow   Blue     Magenta   Cyan    White
  ──────────────────────────────────────────────────────────────────────\e[0m"
