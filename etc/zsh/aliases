@@ -78,7 +78,6 @@ alias mv="mv -i"
 alias cp="cp -i"
 
 # Suffix Aliases
-alias -s note=notes
 alias -s png=sxiv
 alias -s jpg=sxiv
 alias -s gif=sxiv
