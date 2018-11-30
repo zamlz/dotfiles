@@ -74,7 +74,7 @@ ps1_generate() {
         echo -ne "%F{black}}"
     fi
     echo -ne "\n"
-    echo -ne "%F{cyan}\`--%B%F{white}> \e[0m"
+    echo -ne "%F{cyan}\`--%B%F{white}> %{\e[0m%}"
 }
 
 # Thanks to this wonderful command in ZSH prompt is always regenerated
