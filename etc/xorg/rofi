@@ -13,11 +13,11 @@ rofi.font:                           Dina 8
 
 ! Color Guidlines                       BG -  FG - BG_ALT - HL_BG - HL_FG
 ! "Color scheme for normal row"
- rofi.color-normal:                     xbackground, xforeground, xbackground, xcolor8, xforeground
+ rofi.color-normal:                     xbackground, xforeground, xbackground, xcolor0, xforeground
 ! "Color scheme for urgent row"
- rofi.color-urgent:                     xbackground, xforeground, xbackground, xcolor8, xforeground
+ rofi.color-urgent:                     xbackground, xforeground, xbackground, xcolor0, xforeground
 ! "Color scheme for active row"
- rofi.color-active:                     xbackground, xforeground, xbackground, xcolor8, xforeground
+ rofi.color-active:                     xbackground, xforeground, xbackground, xcolor0, xforeground
 
 ! Color Guidlines                       BG          BORDER      SEPEARATOR
 ! "Color scheme window"
@@ -45,7 +45,7 @@ rofi.terminal:                       urxvtc
 ! "Run command to execute" Set from: Default
 ! rofi.run-command:                    {cmd}
 ! "Command to get extra run targets" Set from: Default
-! rofi.run-list-command:               
+! rofi.run-list-command:
 ! "Run command to execute that runs in shell" Set from: Default
 ! rofi.run-shell-command:              {terminal} -e {cmd}
 ! "Command executed on accep-entry-custom for window modus" Set from: Default
@@ -86,7 +86,7 @@ rofi.terminal:                       urxvtc
 ! "Padding within rows" Set from: Default
 ! rofi.line-padding:                   1
 ! "Pre-set filter" Set from: Default
-! rofi.filter:                         
+! rofi.filter:
 ! "Separator style (none, dash, solid)" Set from: Default
 ! rofi.separator-style:                dash
 ! "Hide scroll-bar" Set from: Default
@@ -228,10 +228,10 @@ rofi.terminal:                       urxvtc
 ! rofi.kb-custom-19:                   Alt+parenleft
 
 ! "The display name of this browser" Set from: Default
-! rofi.display-ssh:                    
+! rofi.display-ssh:
 ! "The display name of this browser" Set from: Default
-! rofi.display-run:                    
+! rofi.display-run:
 ! "The display name of this browser" Set from: Default
-! rofi.display-drun:                   
+! rofi.display-drun:
 ! "The display name of this browser" Set from: Default
-! rofi.display-combi:                  
+! rofi.display-combi:
