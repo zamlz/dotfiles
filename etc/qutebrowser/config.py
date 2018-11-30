@@ -1671,6 +1671,8 @@ c.fonts.monospace = ' Dina, "xos4 Terminus", Terminus, Monospace, "DejaVu Sans M
 # config.bind('yy', 'yank')
 # config.bind('{{', 'navigate prev -t')
 # config.bind('}}', 'navigate next -t')
+config.bind(',n',
+    'config-cycle content.user_stylesheets ~/etc/qutebrowser/css/solarized.css "" ;; reload')
 
 ## Bindings for caret mode
 # config.bind('$', 'move-to-end-of-line', mode='caret')
