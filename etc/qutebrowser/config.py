@@ -3,6 +3,13 @@
 ##   qute://help/configuring.html
 ##   qute://help/settings.html
 
+# Obtain the current colors I use
+def read_colorscheme(path):
+    with open(path, 'r') as f:
+        return dict(l[8:].split() for l in f.readlines() if l[:7] == '#define')
+
+xcs = read_colorscheme('/home/zamlz/.xcolorscheme')
+
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
 # config.load_autoconfig()
@@ -324,11 +331,11 @@ c.auto_save.session = True
 
 ## Background color of unselected even tabs.
 ## Type: QtColor
-# c.colors.tabs.even.bg = 'darkgrey'
+c.colors.tabs.even.bg = xcs['xcolor0']
 
 ## Foreground color of unselected even tabs.
 ## Type: QtColor
-# c.colors.tabs.even.fg = 'white'
+c.colors.tabs.even.fg = xcs['xcolor8']
 
 ## Color for the tab indicator on errors.
 ## Type: QtColor
@@ -353,27 +360,27 @@ c.auto_save.session = True
 
 ## Background color of unselected odd tabs.
 ## Type: QtColor
-# c.colors.tabs.odd.bg = 'grey'
+c.colors.tabs.odd.bg = xcs['xcolor0'] 
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor
-# c.colors.tabs.odd.fg = 'white'
+c.colors.tabs.odd.fg = xcs['xcolor8']
 
 ## Background color of selected even tabs.
 ## Type: QtColor
-# c.colors.tabs.selected.even.bg = 'black'
+c.colors.tabs.selected.even.bg = xcs['xbackground']
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
-# c.colors.tabs.selected.even.fg = 'white'
+c.colors.tabs.selected.even.fg = xcs['xforeground']
 
 ## Background color of selected odd tabs.
 ## Type: QtColor
-# c.colors.tabs.selected.odd.bg = 'black'
+c.colors.tabs.selected.odd.bg = xcs['xbackground']
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor
-# c.colors.tabs.selected.odd.fg = 'white'
+c.colors.tabs.selected.odd.fg = xcs['xforeground']
 
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).
