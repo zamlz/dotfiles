@@ -8,7 +8,7 @@ def read_colorscheme(path):
     with open(path, 'r') as f:
         return dict(l[8:].split() for l in f.readlines() if l[:7] == '#define')
 
-xcs = read_colorscheme('/home/zamlz/.xcolorscheme')
+cs = read_colorscheme('/home/zamlz/.xcolorscheme')
 
 ## This is here so configs done via the GUI are still loaded.
 ## Remove it to not load settings done via the GUI.
@@ -54,6 +54,7 @@ c.auto_save.session = True
 ## Background color of the completion widget category headers.
 ## Type: QssColor
 # c.colors.completion.category.bg = 'qlineargradient(x1:0, y1:0, x2:0, y2:1, stop:0 #888888, stop:1 #505050)'
+c.colors.completion.category.bg = cs['xcolor0']
 
 ## Bottom border color of the completion widget category headers.
 ## Type: QssColor
@@ -65,16 +66,16 @@ c.auto_save.session = True
 
 ## Foreground color of completion widget category headers.
 ## Type: QtColor
-# c.colors.completion.category.fg = 'white'
+c.colors.completion.category.fg = cs['xforeground']
 
 ## Background color of the completion widget for even rows.
 ## Type: QssColor
-# c.colors.completion.even.bg = '#333333'
+c.colors.completion.even.bg = cs['xcolor0']
 
 ## Text color of the completion widget. May be a single color to use for
 ## all columns or a list of three colors, one for each column.
 ## Type: List of QtColor, or QtColor
-# c.colors.completion.fg = ['white', 'white', 'white']
+c.colors.completion.fg = [cs['xforeground']]*3
 
 ## Background color of the selected completion item.
 ## Type: QssColor
@@ -98,7 +99,7 @@ c.auto_save.session = True
 
 ## Background color of the completion widget for odd rows.
 ## Type: QssColor
-# c.colors.completion.odd.bg = '#444444'
+c.colors.completion.odd.bg = cs['xbackground']
 
 ## Color of the scrollbar in the completion view.
 ## Type: QssColor
@@ -331,11 +332,11 @@ c.auto_save.session = True
 
 ## Background color of unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.even.bg = xcs['xcolor0']
+c.colors.tabs.even.bg = cs['xbackground']
 
 ## Foreground color of unselected even tabs.
 ## Type: QtColor
-c.colors.tabs.even.fg = xcs['xcolor8']
+c.colors.tabs.even.fg = cs['xcolor8']
 
 ## Color for the tab indicator on errors.
 ## Type: QtColor
@@ -360,32 +361,32 @@ c.colors.tabs.even.fg = xcs['xcolor8']
 
 ## Background color of unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.odd.bg = xcs['xcolor0'] 
+c.colors.tabs.odd.bg = cs['xbackground'] 
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.odd.fg = xcs['xcolor8']
+c.colors.tabs.odd.fg = cs['xcolor8']
 
 ## Background color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.bg = xcs['xbackground']
+c.colors.tabs.selected.even.bg = cs['xbackground']
 
 ## Foreground color of selected even tabs.
 ## Type: QtColor
-c.colors.tabs.selected.even.fg = xcs['xforeground']
+c.colors.tabs.selected.even.fg = cs['xforeground']
 
 ## Background color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.bg = xcs['xbackground']
+c.colors.tabs.selected.odd.bg = cs['xbackground']
 
 ## Foreground color of selected odd tabs.
 ## Type: QtColor
-c.colors.tabs.selected.odd.fg = xcs['xforeground']
+c.colors.tabs.selected.odd.fg = cs['xforeground']
 
 ## Background color for webpages if unset (or empty to use the theme's
 ## color).
 ## Type: QtColor
-# c.colors.webpage.bg = 'white'
+c.colors.webpage.bg = '#ffffff'
 
 ## Number of commands to save in the command history. 0: no history / -1:
 ## unlimited
