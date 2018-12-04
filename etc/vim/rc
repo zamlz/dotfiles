@@ -75,8 +75,8 @@ let g:airline#extensions#tabline#enabled = 1
 " colorscheme nord
 colorscheme peachpuff
 
-highlight ColorColumn ctermbg=darkgrey
-highlight CursorColumn ctermbg=darkgrey
+highlight ColorColumn ctermbg=black
+highlight CursorColumn ctermbg=black
 
 " vim-airline-themes
 " let g:airline_theme = 'luna'

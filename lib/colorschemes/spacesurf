@@ -4,7 +4,7 @@
 #define xcursorColor  #d8d8d8
 
 ! black
-#define xcolor0       #181818
+#define xcolor0       #282828
 #define xcolor8       #585858
 
 ! red
