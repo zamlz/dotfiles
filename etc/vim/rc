@@ -5,6 +5,7 @@ set ruler
 set cursorline      " highlight current line
 set cursorcolumn
 set colorcolumn=80
+set modeline
 
 " Setup a color for when a given token crosses
 " column 80
