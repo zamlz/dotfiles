@@ -1,28 +1,26 @@
 
+"        _
+" __   _(_)_ __ ___  _ __ ___
+" \ \ / / | '_ ` _ \| '__/ __|
+"  \ V /| | | | | | | | | (__
+"   \_/ |_|_| |_| |_|_|  \___|
+
 set number          " Show Line numbers
-set background=dark
+set background=dark " Set the background to dark
 set ruler
 set cursorline      " highlight current line
-set cursorcolumn
-set colorcolumn=80
-set modeline
+set cursorcolumn    " Create a column for where the cursor is
+set colorcolumn=80  " Create a column to show where 80 chars are
+set modeline        " Allow source files to configure vim as well
 
-" Setup a color for when a given token crosses
-" column 80
-" set colorcolumn=81
-" match ErrorMsg '\%>80v.\+'
-" highlight ColorColumn ctermbg=0 guibg=lightgrey
-"
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
-"call matchadd('ColorColumn', '\%81v', 100)
-
+" TAB = 4 SPACES
 set tabstop=4		" number of visual spaces per TAB
 set softtabstop=4 	" number of space in TAB while editing
 set expandtab		" TABs are now SPACEs
 set shiftwidth=4    " Allows helps to make it 4 spaces in neovim
 
-" filetype indent on  " Load filetype-specific indent files
+filetype indent off " Load filetype-specific indent files
+
 set wildmenu        " visual autocomplete for command menu
 set lazyredraw      " redraw only when we need to
 
@@ -52,7 +50,6 @@ Plug 'bling/vim-airline'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-" Plug 'valloric/youcompleteme'
 
 Plug 'chrisbra/csv.vim'
 Plug 'godlygeek/tabular'
@@ -63,29 +60,29 @@ call plug#end()
 " Configuration settings for plugins
 "---------------------------------------
 
-
 " vim-airline {{{
 let laststatus = 2
 let g:airline_powerline_fonts = 0
 let g:airline#extensions#tabline#enabled = 1
-
-" Vim colorschemes
-" colorscheme gruvbox
-" colorscheme solarized
-" colorscheme nord
-colorscheme peachpuff
-
-highlight ColorColumn ctermbg=black
-highlight CursorColumn ctermbg=black
 
 " vim-airline-themes
 " let g:airline_theme = 'luna'
 
 "}}}
 
-filetype indent off
 
-" Special Vim Functions
+" Post Plugin Load Configurations
+"---------------------------------------
+
+" Vim colorschemes
+colorscheme peachpuff
+
+" Color of the Columns
+highlight ColorColumn ctermbg=black
+highlight CursorColumn ctermbg=black
+
+" Custom Vim Functions
+"---------------------------------------
 
 fun! TrimWhitespace()
     let l:save = winsaveview()
