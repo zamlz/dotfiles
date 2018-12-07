@@ -59,6 +59,7 @@ ci: spotless
 
 preview: spotless pdf
 	while true; do \
-		make ${ENDFILE} > /dev/null; \
+		make PDFEXE="${PDFEXE} -interaction=nonstopmode" ${ENDFILE} > \
+		/dev/null; \
 		sleep 1; \
 	done;
