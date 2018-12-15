@@ -18,11 +18,10 @@ SOURCES  = ${MAINFILE} ${SUPPFILE}
 
 HEADERS  = ${SUPPFILE:.c=.h}
 OBJECTS  = ${SOURCES:.c=.o}
-EXECBIN  = runx
+EXECBIN  = prog
 
 ########################################################
 
-# Build the humble HummusPlus Assembler
 ${EXECBIN}: ${HEADERS} ${OBJECTS} 
 	${CC} -o ${EXECBIN} ${OBJECTS}
 
