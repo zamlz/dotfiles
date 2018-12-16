@@ -61,12 +61,12 @@ error = red
 
 # ui elements
 filepath = yellow
-citekey = blue
+citekey = yellow
 tag = green
 
 # bibliographic fields
-author = bold
-title = yellow
+author = blue
+title = bold
 publisher = ""
 year = cyan
 volume = bold
@@ -82,6 +82,9 @@ active = alias,
 # new subcommands can be defined, e.g.:
 # print = open --with lp
 # evince = open --with evince
+mv = rename
+rm = remove
+
 
 # shell commands can also be defined, by prefixing them with a bang `!`, e.g:
 # count = !pubs list -k | wc -l
@@ -92,6 +95,9 @@ active = alias,
 # [[[count]]]
 # command = !pubs list -k | wc -l
 # description = lists number of pubs in repo
+[[[git]]]
+command = !git -C ~/.pubs
+description ="Perform git operations in your pubs directory"
 
 [internal]
 # The version of this configuration file. Do not edit.
