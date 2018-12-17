@@ -90,3 +90,6 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
+
+" Odd, but this needs to be run again. Not sure why
+filetype indent off " Load filetype-specific indent files

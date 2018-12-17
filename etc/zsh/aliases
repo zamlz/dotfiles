@@ -23,7 +23,7 @@ alias dog="pygmentize"
 # Config override
 alias neofetch="neofetch --config $HOME/etc/neofetch/rc"
 alias tmux="tmux -f $HOME/etc/tmux/rc"
-alias irc="weechat"
+alias irc='WEECHAT_PASSPHRASE=$(pass social/irc/weechat) weechat'
 alias rss="newsboat --config-file=$HOME/etc/newsboat/config \
     --url-file=$HOME/etc/newsboat/urls"
 

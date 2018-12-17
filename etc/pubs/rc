@@ -76,7 +76,7 @@ pages = ""
 [plugins]
 # Comma-separated list of the plugins to load.
 # The only current available plugin is alias.
-active = alias,
+active = alias, git
 
 [[alias]]
 # new subcommands can be defined, e.g.:
@@ -95,9 +95,6 @@ rm = remove
 # [[[count]]]
 # command = !pubs list -k | wc -l
 # description = lists number of pubs in repo
-[[[git]]]
-command = !git -C ~/.pubs
-description ="Perform git operations in your pubs directory"
 
 [internal]
 # The version of this configuration file. Do not edit.
