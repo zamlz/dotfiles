@@ -53,8 +53,8 @@ URxvt.background: xbackground
 URxvt.cursorColor: xcursorColor
 
 ! This is for fading windows if not active
-! URxvt.fading: 35
-! URxvt.fadeColor: background
+URxvt.fading: xfade  
+URxvt.fadeColor: xbackground
 
 URxvt.color0:  xcolor0
 URxvt.color1:  xcolor1

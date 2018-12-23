@@ -1,3 +1,5 @@
+! Gruvbox (Black) Colorscheme
+
 ! Special 
 #define xbackground     #000000
 #define xforeground     #ebdbb2
