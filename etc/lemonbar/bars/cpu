@@ -7,7 +7,8 @@
 
 cpu() {
 
-    out="[CPU %{F${RED}}--%%{F-}]"
-
+    cpu="$(cat /proc/loadavg | awk '{print $1}')"
+    out="[CPU %{F${RED}}${cpu}%{F-}]"
+    
     echo -n $out
 }
