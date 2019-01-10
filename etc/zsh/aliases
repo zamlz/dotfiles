@@ -11,7 +11,10 @@ alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
 
-# Clearning fix
+# Awesome Curl Aliases
+alias weather="curl wttr.in"
+
+# Clearing fix
 alias clear="TERM='xterm' clear"
 alias eselect="TERM='xterm' eselect"
 

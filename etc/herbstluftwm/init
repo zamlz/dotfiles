@@ -35,7 +35,7 @@ TERMINAL="urxvtc"
 # remove all existing keybindings
 hc keyunbind --all
 
-# Add the XF86 keybinds 
+# Add the XF86 keybinds
 hc keybind XF86MonBrightnessUp spawn xbacklight -inc 10
 hc keybind XF86MonBrightnessDown spawn xbacklight -dec 10
 hc keybind XF86AudioMute spawn amixer set Master toggle
