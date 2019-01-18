@@ -121,7 +121,7 @@ hc keybind $Mod-bracketleft  use_index -1 --skip-visible
 hc keybind $Mod-r remove
 hc keybind $Mod-s floating toggle
 hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-p pseudotile toggle
+hc keybind $Mod-t pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
@@ -212,6 +212,10 @@ PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
 # Create the program launcher
 LAUNCHER="rofi -show run"
 hc keybind $Mod-grave spawn ${LAUNCHER}
+
+# Use rofi to launch a dialog for password database
+PASSLIB="$HOME/etc/herbstluftwm/rofi-pass"
+hc keybind $Mod-p spawn ${PASSLIB}
 
 # Finally start i3lock
 # LOCKER="i3lock -nefc 000000"
