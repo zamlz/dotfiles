@@ -6,8 +6,9 @@ DESC=""
 ERROR=""
 PROMPT=""
 
-# TODO: Figure out a way to naturally set this.
-export DISPLAY=":0"
+if [ -z "${DISPLAY}" ]; then
+    export DISPLAY=":0"
+fi
 
 #echo "pinentry-rofi started" > /tmp/pinentry-rofi.log
 #echo "DISPLAY=< $DISPLAY >" >> /tmp/pinentry-rofi.log
