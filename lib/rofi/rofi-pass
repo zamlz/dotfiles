@@ -1,9 +1,12 @@
 #!/bin/sh
 
+# Find the password I want
+
 pass_name=$(find ~/.password-store -type f | grep "gpg" | \
     sed -e "s|$HOME\/\.password-store\/||g" -e "s|\.gpg||g" | \
     rofi -dmenu -i -p "pass" )
 
-if [ $pass_name != "" ]; then
+if [ "$pass_name" != "" ]; then
+    export PINENTRY_USER_DATA='rofi'
     pass -c $pass_name
 fi

@@ -214,7 +214,7 @@ LAUNCHER="rofi -show run"
 hc keybind $Mod-grave spawn ${LAUNCHER}
 
 # Use rofi to launch a dialog for password database
-PASSLIB="$HOME/lib/rofi/pass.sh"
+PASSLIB="$HOME/lib/rofi/rofi-pass"
 hc keybind $Mod-p spawn ${PASSLIB}
 
 # Finally start i3lock
