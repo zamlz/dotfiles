@@ -94,6 +94,7 @@ export PATH="$HOME/lib/private/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export HTOPRC="$HOME/etc/htop/rc"
 export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA='tty'
 
 # My default perferance for where pipenv venvs should be located
 export PIPENV_VENV_IN_PROJECT=1
