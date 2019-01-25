@@ -120,7 +120,6 @@ venv() {
     if [ -z "$@" ]; then
         echo "Starting virtualenv environment"
         source ./.venv/bin/activate
-        echo "Closing virtualenv environment"
     else
         virtualenv "$@"
     fi
