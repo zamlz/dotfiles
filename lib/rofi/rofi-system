@@ -21,6 +21,9 @@ elif [ "$systask" == "QUIT HERBSTLUFTWM" ]; then
 
 elif [ "$systask" == "SYSTEM POWEROFF" ]; then
 
-    poweroff
+    # This can't be safe...
+    # TODO: Figure out a better way to poweroff from a script
+    rofi -dmenu -input /dev/null -password -lines 0 -p "SUDO POWEROFF" | \
+        sudo -S poweroff
 
 fi
