@@ -11,6 +11,9 @@ case $PINENTRY_USER_DATA in
     qt)
         exec /usr/bin/pinentry-qt4 "$@"
         ;;
+    tty)
+        exec /usr/bin/pinentry-tty "$@"
+        ;;
     rofi)
         exec $HOME/lib/rofi/pinentry-rofi "$@"
         ;;
