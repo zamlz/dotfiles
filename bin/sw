@@ -1,7 +1,0 @@
-#!/bin/sh
-
-T=".$1_tmp"
-
-mv -vi $1 $T
-mv -vi $2 $1
-mv -vi $T $2

@@ -11,9 +11,6 @@ alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
 
-# Awesome Curl Aliases
-alias weather="curl wttr.in"
-
 # Clearing fix
 alias clear="TERM='xterm' clear"
 alias eselect="TERM='xterm' eselect"
@@ -32,6 +29,7 @@ alias rss="newsboat --config-file=$HOME/etc/newsboat/config \
 
 # Random Stuff
 alias fping="ping -c 3 www.google.com"
+alias weather="curl wttr.in"
 
 # Teleportation Jutsu
 alias ..="cd .."
@@ -45,26 +43,6 @@ alias usc='cd ~/src/usc; groot; '
 
 # Teleport to my dotfiles
 alias dots='cd; groot;'
-
-# Teleport to the root of a git directory
-#   needs git and figlet
-groot() {
-    GITROOT=$(git rev-parse --show-toplevel 2> /dev/null);
-    ROOTEXIST=$?  
-    if [ $ROOTEXIST -eq 0 ]; then
-    
-    cd $GITROOT;
-    NAME=$(basename -s .git `git config --get remote.origin.url` 2> /dev/null)
-    if [ -z "$NAME" ]; then
-        NAME="[ ]"
-    fi
-    BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
-    figlet -t -f slant $@ "${NAME}.${BRANCH}"
-    git status
-
-    fi
-}
-
 
 # Information Functions
 alias info="clear;echo;neofetch;colors;"
@@ -92,31 +70,3 @@ alias -s md=md2pdf
 if [ "nvim not found" != "$(which nvim)" ]; then
     alias vim="nvim";
 fi
-
-# This is a special alias that overrides the
-# default behaviour of cd.
-# instead it makes cd behave such that it saves the
-# directory that we enter.
-if [ -n "$DISPLAY" ]; then
-
-    # Build our custom cd
-    cd () {
-        builtin cd $@
-        pwd > /tmp/.wid_${WINDOWID}
-    }
-    
-    # Every terminal should generate its id file on spawn
-    pwd > /tmp/.wid_${WINDOWID}
-
-fi
-
-# A special function for changing the colorscheme
-xcolorscheme() {
-    if [ -z "$1" ]; then
-        ls $HOME/lib/colorschemes
-    else
-        rm $HOME/.xcolorscheme
-        ln -s $HOME/lib/colorschemes/$1 $HOME/.xcolorscheme
-    fi
-}
-

@@ -1,0 +1,127 @@
+#!/bin/zsh
+
+# Generate our own custom prompt for our shell
+ps1_generate() {
+    echo -ne "%B%F{cyan}.-"
+    echo -ne "%F{black}(%b%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)"
+    echo -ne "%F{cyan}-%F{black}[%F{blue}%~%F{black}]"
+
+    if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
+
+        GIT_NAME=$(basename -s .git `git config --get remote.origin.url` \
+            2> /dev/null)
+
+        if [ -z "$GIT_NAME" ]; then
+            GIT_NAME="[?]"
+        fi
+
+        GIT_BRANCH=$(git branch --list --no-color | cut -d " " -f 2 \
+            | tr -d '\n')
+
+        # (yes/no add ; no commited)
+        #YA=$(git status --porcelain 2>/dev/null| egrep "^M" | wc -l)
+        #NA=$(git status --porcelain 2>/dev/null| egrep "^ M" | wc -l)
+        NC=$(git status --porcelain 2>/dev/null| egrep "^(M| M | D)" | wc -l)
+
+        # Use this info to construct our real status
+        if [ $NC -eq 0 ]; then
+        echo -ne "%F{cyan}-%F{black}<%F{green}$GIT_NAME.$GIT_BRANCH%F{black}>"
+        else
+        echo -ne "%F{cyan}-%F{black}<%F{red}$GIT_NAME.$GIT_BRANCH%F{black}>"
+        fi
+
+    fi
+    if [ -n "${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
+
+        echo -ne "%F{cyan}-%F{black}{%F{yellow}"
+        MOD=""
+
+        if [ -n "$VIRTUAL_ENV" ]; then
+            VENV=$(echo $VIRTUAL_ENV | rev | cut -d '/' -f 2 | rev)
+            echo -ne "venv:$VENV"
+            MOD="/"
+        fi
+
+        if [ -n "$PIPENV_ACTIVE" ]; then
+            echo -ne "${MOD}pipenv"
+            MOD="/"
+        fi
+
+        if [ -n "$ENV_NAME" ]; then
+            echo -ne "$MOD$ENV_NAME"
+        fi
+
+        echo -ne "%F{black}}"
+    fi
+    echo -ne "\n"
+    echo -ne "%F{cyan}\`--%B%F{white}> %{\e[0m%}"
+}
+
+
+# This is a special alias that overrides the
+# default behaviour of cd.
+# instead it makes cd behave such that it saves the
+# directory that we enter.
+if [ -n "$DISPLAY" ]; then
+
+    # Build our custom cd
+    cd () {
+        builtin cd $@
+        pwd > /tmp/.wid_${WINDOWID}
+    }
+
+    # Every terminal should generate its id file on spawn
+    if [ -z "$WINDOWID" ]; then
+        echo "Terminal doesn't have a Window ID!!!"
+    else
+        pwd > /tmp/.wid_${WINDOWID}
+    fi
+fi
+
+# Teleport to the root of a git directory
+#   needs git and figlet
+groot() {
+    GITROOT=$(git rev-parse --show-toplevel 2> /dev/null);
+    ROOTEXIST=$?
+    if [ $ROOTEXIST -eq 0 ]; then
+
+    cd $GITROOT;
+    NAME=$(basename -s .git `git config --get remote.origin.url` 2> /dev/null)
+    if [ -z "$NAME" ]; then
+        NAME="[ ]"
+    fi
+    BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
+    figlet -t -f slant $@ "${NAME}.${BRANCH}"
+    git status
+
+    fi
+}
+
+# A simple swapper function
+sw() {
+    T=".$1_tmp"
+    mv -vi $1 $T
+    mv -vi $2 $1
+    mv -vi $T $2
+}
+
+# A special function for changing the colorscheme
+xcolorscheme() {
+    if [ -z "$1" ]; then
+        ls $HOME/lib/colorschemes
+    else
+        rm $HOME/.xcolorscheme
+        ln -s $HOME/lib/colorschemes/$1 $HOME/.xcolorscheme
+    fi
+}
+
+# A simple wrapper for virtualenv
+venv() {
+    if [ -z "$@" ]; then
+        echo "Starting virtualenv environment"
+        source ./.venv/bin/activate
+        echo "Closing virtualenv environment"
+    else
+        virtualenv "$@"
+    fi
+}
