@@ -1,3 +1,0 @@
-[submodule "dotfiles-private"]
-	path = lib/private
-	url = git@github.com:zamlz/dotfiles-private.git
