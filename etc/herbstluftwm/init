@@ -219,6 +219,7 @@ hc keybind $Mod-Shift-p spawn ${PASSLIB}
 
 # Finally start i3lock
 # LOCKER="i3lock -nefc 000000"
-LOCKER="$HOME/etc/herbstluftwm/lockme"
+# LOCKER="$HOME/etc/herbstluftwm/lockme"
+LOCKER="$HOME/lib/rofi/rofi-system"
 hc keybind $Mod-Escape spawn ${LOCKER}
 exec xautolock -time 30 -locker "${LOCKER}"

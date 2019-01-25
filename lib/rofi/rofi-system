@@ -1,0 +1,26 @@
+#!/bin/sh
+
+# Find the password I want
+
+OPTS="LOCK SCREEN|QUIT HERBSTLUFTWM|SYSTEM POWEROFF"
+
+systask=$( echo $OPTS | rofi -sep '|' -dmenu -i -p "SYSTEM" -lines 3)
+
+if [ "$systask" == "LOCK SCREEN" ]; then
+
+    sleep 1 # this ensures that rofi is closed before scrot is run
+    IMG="/tmp/.curdesk.png"
+    BLUR="10x10"
+    scrot $IMG
+    convert $IMG -blur $BLUR $IMG
+    exec i3lock -nefi $IMG
+
+elif [ "$systask" == "QUIT HERBSTLUFTWM" ]; then
+
+    herbstclient quit
+
+elif [ "$systask" == "SYSTEM POWEROFF" ]; then
+
+    poweroff
+
+fi
