@@ -1,31 +1,39 @@
 ! H4XOR
-! nxll <nxll@teknik.io>
+! Originally  nxll <nxll@teknik.io>
 
-*background: #1A3020 
-*foreground: #C2FFA0 
-*cursorColor: #C2FFA0 
+! Special
+#define xforeground     #C2FFA0
+#define xbackground     #1A3020
+#define xcursorColor    #C2FFA0
 
-!BLACK
-*color0: #1D3624 
-*color8: #1F3B27 
-!RED
-*color1: #9BCC80 
-*color9: #9CCE81 
-!GREEN
-*color2: #BAFF94 
-*color10: #BBFF95 
-!YELLOW
-*color3: #C2FFAF 
-*color11: #C3FFAF 
-!BLUE
-*color4: #5F7D4E 
-*color12: #607D4F 
-!MAGENTA
-*color5: #C2FFA0 
-*color13: #C3FFA1 
-!CYAN
-*color6: #C2FFA0 
-*color14: #C3FFA1 
-!WHITE
-*color7: #DBFFC7 
-*color15: #DCFFC8 
+! Black + DarkGrey
+#define xcolor0         #1D3624
+#define xcolor8         #1F3B27
+
+! DarkRed + Red
+#define xcolor1         #9BCC80
+#define xcolor9         #9CCE81
+
+! DarkGreen + Green
+#define xcolor2         #BAFF94
+#define xcolor10        #BBFF95
+
+! DarkYellow + Yellow
+#define xcolor3         #C2FFAF
+#define xcolor11        #C3FFAF
+
+! DarkBlue + Blue
+#define xcolor4         #5F7D4E
+#define xcolor12        #607D4F
+
+! DarkMagenta + Magenta
+#define xcolor5         #C2FFA0
+#define xcolor13        #C3FFA1
+
+! DarkCyan + Cyan
+#define xcolor6         #C2FFA0
+#define xcolor14        #C3FFA1
+
+! LightGrey + White
+#define xcolor7         #DBFFC7
+#define xcolor15        #DCFFC8

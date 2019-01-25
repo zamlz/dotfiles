@@ -1,6 +1,6 @@
 ! Gruvbox (Black) Colorscheme
 
-! Special 
+! Special
 #define xbackground     #000000
 #define xforeground     #ebdbb2
 #define xcursorColor    #ebdbb2
