@@ -60,13 +60,19 @@ ps1_generate() {
         fi
 
     fi
-    if [ -n "${ENV_NAME}${PIPENV_ACTIVE}" ]; then
+    if [ -n "${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
 
         echo -ne "%F{cyan}-%F{black}{%F{yellow}"
         MOD=""
 
+        if [ -n "$VIRTUAL_ENV" ]; then
+            VENV=$(echo $VIRTUAL_ENV | rev | cut -d '/' -f 2 | rev)
+            echo -ne "venv:$VENV"
+            MOD="/"
+        fi
+
         if [ -n "$PIPENV_ACTIVE" ]; then
-            echo -ne "pipenv"
+            echo -ne "${MOD}pipenv"
             MOD="/"
         fi
 
