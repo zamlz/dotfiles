@@ -3,6 +3,7 @@
 .*
 
 # Avoid these directories like the plague
+lib/private/
 src/
 src
 sys/

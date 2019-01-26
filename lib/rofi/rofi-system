@@ -6,7 +6,7 @@ OPTS="LOCK SCREEN|QUIT HERBSTLUFTWM|SYSTEM POWEROFF"
 
 systask=$( echo $OPTS | rofi -sep '|' -dmenu -i -p "SYSTEM" -lines 3)
 
-if [ "$systask" == "LOCK SCREEN" ]; then
+if [ "$systask" = "LOCK SCREEN" ]; then
 
     sleep 1 # this ensures that rofi is closed before scrot is run
     IMG="/tmp/.curdesk.png"
@@ -15,14 +15,14 @@ if [ "$systask" == "LOCK SCREEN" ]; then
     convert $IMG -blur $BLUR $IMG
     exec i3lock -nefi $IMG
 
-elif [ "$systask" == "QUIT HERBSTLUFTWM" ]; then
+elif [ "$systask" = "QUIT HERBSTLUFTWM" ]; then
 
     # This can't be safe...
     # TODO: Figure out a better way to poweroff from a script
     rofi -dmenu -input /dev/null -password -lines 0 -p "SUDO QUIT HERBSTLUFTWM" | \
         sudo -S herbstclient quit
 
-elif [ "$systask" == "SYSTEM POWEROFF" ]; then
+elif [ "$systask" = "SYSTEM POWEROFF" ]; then
 
     rofi -dmenu -input /dev/null -password -lines 0 -p "SUDO POWEROFF" | \
         sudo -S poweroff
