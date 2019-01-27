@@ -361,7 +361,7 @@ c.colors.tabs.even.fg = cs['xcolor8']
 
 ## Background color of unselected odd tabs.
 ## Type: QtColor
-c.colors.tabs.odd.bg = cs['xbackground'] 
+c.colors.tabs.odd.bg = cs['xbackground']
 
 ## Foreground color of unselected odd tabs.
 ## Type: QtColor
