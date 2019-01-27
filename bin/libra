@@ -1,0 +1,115 @@
+#!/bin/sh
+
+# Simple script to manage bookmarks
+#
+# Needs the following to function properly:
+#   tree
+
+# Don't put a leading / here or the code may fail.
+# TODO: Fix that bug.
+BMLIB=$HOME/lib/bookmarks
+
+cmd_add() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    #   $2 - Bookmark URl
+    if [ -z "$1" ]; then
+        (>&2 echo "ERROR: Name argument is missing (cmd_add)")
+    fi
+
+    if [ -f $BMLIB/$1 ]; then
+        echo -n "$1 already exists! Do you wish to overwrite it (type yes)? "
+        read opt
+        if [ "$opt" != "yes" ]; then
+            echo "Nothing changed..."
+            return 0
+        fi
+    fi
+
+    if [ -n "$2" ]; then
+        mkdir -p $(dirname $BMLIB/$1)
+        echo "$2" > $BMLIB/$1
+        echo "Boookmark Library updated."
+    else
+        (>&2 echo "ERROR: URL argument is missing (cmd_add)")
+    fi
+}
+
+cmd_remove() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    if [ -z "$1" ]; then
+        (>&2 echo "ERROR: Name argument is missing (cmd_remove)")
+    fi
+
+    if [ -f $BMLIB/$1 ]; then
+        echo -n "Are you sure you wish to remove $1 (type yes)? "
+        read opt
+        if [ "$opt" = "yes" ]; then
+            rm $BMLIB/$1
+            rec_rmdir $(dirname $BMLIB/$1)
+        fi
+    fi
+}
+
+rec_rmdir() {
+    # This function is here purely to make sure directories are deleted safely
+    # Just cause the bookmarks directory is empty doesn't mean it should
+    # delete the root folder.
+    #
+    # Argument List
+    #   $1 - directory name
+    if [ -z "$1" ]; then
+        (>&2 echo "ERROR: Directory argument is missing (rec_rmdir)")
+    fi
+
+    if [ "$BMLIB" != "$1" ]; then
+        rmdir --ignore-fail-on-non-empty $1
+        # echo $?; echo "TESTING $BMLIB :::: $1"; read
+        rec_rmdir $(dirname $1)
+    fi
+}
+
+cmd_show() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    if [ -f $BMLIB/$1 ]; then
+        cat $BMLIB/$1
+    else
+        (>&2 echo "ERROR: File does not exist (cmd_show): $1")
+    fi
+}
+
+cmd_edit() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    if [ -f $BMLIB/$1 ]; then
+        $EDITOR $BMLIB/$1
+    else
+        (>&2 echo "ERROR: File does not exist (cmd_edit): $1")
+    fi
+}
+
+cmd_list() {
+    echo "Bookmarks Library"
+    tree -C -l --noreport $BMLIB | tail -n +2
+}
+
+# Figure out what we want to do
+
+CMD=$1
+REST=$(echo "$@" | cut -d' ' -f2-)
+
+case "$CMD" in
+    add)    cmd_add $REST ;;
+    rm)     cmd_remove $REST ;;
+    show)   cmd_show $REST ;;
+    edit)   cmd_edit $REST ;;
+    ls)     cmd_list $REST ;;
+    *)      if [ -z "$@" ]; then
+                cmd_list
+            else
+                (>&2 echo "ERROR - Unrecognized arguments: $@")
+            fi ;;
+esac
+exit 0

@@ -4,6 +4,7 @@
 
 # Avoid these directories like the plague
 lib/private/
+lib/bookmarks/
 src/
 src
 sys/
