@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# This script will show a list of bookmarks.
+#
+# ex:
+#   foo/test1
+#   bar/test2
+#   etc/misc/test3
+#
+# Select the bookmark you want and its url will
+# be loaded into the clipboard.
+#
+# If one wishes to update a bookmark, all that
+# needs to be done is type the url right after
+# typing out the bookmark (before pressing
+# enter). The script should recongize that
+# there is a new bookmark being added. This can
+# also work with adding new bookmarks as well.
+
+# TODO:
+#   * Generate rofi dialogues for libra events.
+
+# Source this file to use my colorscheme
+. $HOME/lib/shell/xrdb_colors
+
+BMEXE=$HOME/bin/libra
+BMLIB=$HOME/lib/bookmarks
+
+# Find the bookmark I want
+bm_name=$(find $BMLIB -type f |  grep -v "\.git" | sed -e "s|$BMLIB\/||g" | \
+    rofi -dmenu -i -p "bookmark" )
+
+# See if the user gave us a new url
+bookmark=$(echo $bm_name | awk '{print $1}')
+new_url=$(echo $bm_name | awk '{print $2}')
+
+if [ "$bookmark" != "" ]; then
+
+    if [ "$new_url" = "" ]; then
+        $BMEXE clip $bookmark
+    else
+
+        prmt="(yes/no)"
+
+        printf -v mesg "%s\n" \
+            "Are you sure you wish to add this bookmark?" \
+            "NAME: <span fgcolor='$BLUE'>${bookmark}</span>"
+        printf -v mesg "%s" \
+            "${mesg}URL:  <span fgcolor='$GREEN'>${new_url}</span>"
+
+        opt=$(rofi -dmenu -input /dev/null -mesg "${mesg}" -p "$prmt" -lines 0)
+
+        if [ "$opt" = "yes" ]; then
+            $BMEXE add $bookmark $new_url
+        fi
+    fi
+fi

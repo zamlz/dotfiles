@@ -4,9 +4,17 @@
 #
 # Needs the following to function properly:
 #   tree
+#
+# This script is not meant to be used directly
+# from the command line. Its crudely written
+# use it with rofi-bookmarks
 
-# Don't put a leading / here or the code may fail.
-# TODO: Fix that bug.
+# TODO:
+#   * Fix bug that breaks if $BMLIB ends with '/'
+#   * Integrate git into this.
+#   * Maybe make the code more like a program than script
+
+# Don't put a '/' at the end or the code will fail.
 BMLIB=$HOME/lib/bookmarks
 
 cmd_add() {
@@ -80,6 +88,12 @@ cmd_show() {
     fi
 }
 
+cmd_clip() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    echo ""
+}
+
 cmd_edit() {
     # Argument list
     #   $1 - Bookmark name and location
@@ -104,6 +118,7 @@ case "$CMD" in
     add)    cmd_add $REST ;;
     rm)     cmd_remove $REST ;;
     show)   cmd_show $REST ;;
+    clip)   cmd_clip $REST ;;
     edit)   cmd_edit $REST ;;
     ls)     cmd_list $REST ;;
     *)      if [ -z "$@" ]; then

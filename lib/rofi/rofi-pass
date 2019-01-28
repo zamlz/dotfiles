@@ -4,7 +4,7 @@
 
 pass_name=$(find ~/.password-store -type f | grep -v "\.gpg-id" | \
     grep "\.gpg" | sed -e "s|$HOME\/\.password-store\/||g" -e "s|\.gpg||g" | \
-    rofi -dmenu -i -p "pass" )
+    rofi -dmenu -i -p "password" )
 
 if [ "$pass_name" != "" ]; then
     export PINENTRY_USER_DATA='rofi'

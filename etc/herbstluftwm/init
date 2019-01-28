@@ -214,9 +214,13 @@ PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
 LAUNCHER="rofi -show run"
 hc keybind $Mod-e spawn ${LAUNCHER} # used to be grave
 
-# Use rofi to launch a dialog for password database
+# Use rofi to launch a dialog for password manager
 PASSLIB="$HOME/lib/rofi/rofi-pass"
 hc keybind $Mod-p spawn ${PASSLIB}
+
+# Use rofi to launch a dialog for bookmark manager
+BOOKLIB="$HOME/lib/rofi/rofi-bookmarks"
+hc keybind $Mod-b spawn ${BOOKLIB}
 
 # Finally start i3lock
 # LOCKER="i3lock -nefc 000000"
