@@ -4,11 +4,16 @@
 
 OPTS="LOCK SCREEN|QUIT HERBSTLUFTWM|SYSTEM POWEROFF"
 
-systask=$( echo $OPTS | rofi -sep '|' -dmenu -i -p "SYSTEM" -lines 3)
+# Either pass what we want to do as an argument to the script
+# or get it through rofi
+systask="$@"
+if [ -z $systask ]; then
+    systask=$( echo $OPTS | rofi -sep '|' -dmenu -i -p "SYSTEM" -lines 3)
+fi
 
 if [ "$systask" = "LOCK SCREEN" ]; then
 
-    sleep 1 # this ensures that rofi is closed before scrot is run
+    sleep 0.3 # this ensures that rofi is closed before scrot is run
     IMG="/tmp/.curdesk.png"
     BLUR="10x10"
     scrot $IMG

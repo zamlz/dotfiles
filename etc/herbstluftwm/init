@@ -2,6 +2,9 @@
 
 # this is a simple config for herbstluftwm
 
+# TODO:
+#   * Cleanup this file. Maybe split it up into multiple pieces.
+
 hc() {
     herbstclient "$@"
 }
@@ -227,4 +230,4 @@ hc keybind $Mod-b spawn ${BOOKLIB}
 # LOCKER="$HOME/etc/herbstluftwm/lockme"
 LOCKER="$HOME/lib/rofi/rofi-system"
 hc keybind $Mod-Escape spawn ${LOCKER}
-exec xautolock -time 30 -locker "${LOCKER}"
+exec xautolock -time 30 -locker "${LOCKER} LOCK SCREEN"
