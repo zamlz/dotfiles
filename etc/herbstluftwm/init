@@ -50,7 +50,6 @@ hc keybind XF86AudioLowerVolume spawn amixer set Master 5%-
 #Mod=Mod1    # Use alt as the main modifier
 Mod=Mod4   # Use the super key as the main modifier
 
-hc keybind $Mod-Ctrl-Alt-Escape quit
 hc keybind $Mod-Ctrl-Alt-r reload
 hc keybind $Mod-q close
 
@@ -229,5 +228,5 @@ hc keybind $Mod-b spawn ${BOOKLIB}
 # LOCKER="i3lock -nefc 000000"
 # LOCKER="$HOME/etc/herbstluftwm/lockme"
 LOCKER="$HOME/lib/rofi/rofi-system"
-hc keybind $Mod-Escape spawn ${LOCKER}
+hc keybind $Mod-Ctrl-Alt-Escape spawn ${LOCKER}
 exec xautolock -time 30 -locker "${LOCKER} LOCK SCREEN"
