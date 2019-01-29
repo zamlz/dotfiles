@@ -23,12 +23,12 @@
 # Source this file to use my colorscheme
 . $HOME/lib/shell/xrdb_colors
 
-BMEXE=$HOME/bin/libra
+BMEXE=$HOME/bin/book
 BMLIB=$HOME/lib/bookmarks
 
 # Find the bookmark I want
 bm_name=$(find $BMLIB -type f |  grep -v "\.git" | sed -e "s|$BMLIB\/||g" | \
-    rofi -dmenu -i -p "bookmark" )
+    sort | rofi -dmenu -i -p "bookmark" )
 
 # See if the user gave us a new url
 bookmark=$(echo $bm_name | awk '{print $1}')

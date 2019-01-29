@@ -222,7 +222,7 @@ PASSLIB="$HOME/lib/rofi/rofi-pass"
 hc keybind $Mod-p spawn ${PASSLIB}
 
 # Use rofi to launch a dialog for bookmark manager
-BOOKLIB="$HOME/lib/rofi/rofi-bookmarks"
+BOOKLIB="$HOME/lib/rofi/rofi-book"
 hc keybind $Mod-b spawn ${BOOKLIB}
 
 # Finally start i3lock
