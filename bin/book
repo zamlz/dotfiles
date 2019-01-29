@@ -15,7 +15,6 @@
 #   * Integrate git into this.
 #   * Maybe make the code more like a program than script,
 #       for now, this script should do, but it could be much better.
-#   * clip shouldn't use cat, instead just get the first line.
 
 # Don't put a '/' at the end or the code will fail.
 BMLIB=$HOME/lib/bookmarks
@@ -95,7 +94,7 @@ cmd_clip() {
     # Argument list
     #   $1 - Bookmark name and location
     if [ -f $BMLIB/$1 ]; then
-        cat $BMLIB/$1 | xclip -selection "clipboard"
+        head -n 1 $BMLIB/$1 | xclip -selection "clipboard"
     else
         (>&2 echo "ERROR: File does not exist (cmd_show): $1")
     fi

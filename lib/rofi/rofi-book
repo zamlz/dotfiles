@@ -25,10 +25,22 @@
 
 BMEXE=$HOME/bin/book
 BMLIB=$HOME/lib/bookmarks
+CACHE=$HOME/.cache/bookmarks
+
+# Ensure the cache exists
+if [ ! -d "$CACHE" ]; then
+    mkdir -p $CACHE
+fi
+
+# Find the current commit, if a cached list doesn't exist for it, create it
+COMMIT=$(git -C ${BMLIB} rev-parse HEAD)
+if [ ! -f "$CACHE/$COMMIT" ]; then
+    find $BMLIB -type f |  grep -v "\.git" | \
+        sed -e "s|$BMLIB\/||g" | sort > $CACHE/$COMMIT
+fi
 
 # Find the bookmark I want
-bm_name=$(find $BMLIB -type f |  grep -v "\.git" | sed -e "s|$BMLIB\/||g" | \
-    sort | rofi -dmenu -i -p "bookmark" )
+bm_name=$(cat ${CACHE}/${COMMIT} | rofi -dmenu -i -p "bookmark")
 
 # See if the user gave us a new url
 bookmark=$(echo $bm_name | awk '{print $1}')
