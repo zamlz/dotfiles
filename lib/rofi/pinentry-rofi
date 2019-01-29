@@ -16,7 +16,12 @@ ERROR=""
 PROMPT=""
 
 if [ -z "${DISPLAY}" ]; then
-    export DISPLAY=":0"
+    # This is real jank hack. Got to figure out how to naturally get this var.
+    if [ -n "$(uname -v | grep -i "UBUNTU")" ]; then
+        export DISPLAY=":1"
+    else
+        export DISPLAY=":0"
+    fi
 fi
 
 #echo "pinentry-rofi started" > /tmp/pinentry-rofi.log
