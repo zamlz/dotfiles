@@ -7,7 +7,7 @@
 #define xfade 30
 
 ! Black + DarkGrey
-#define xcolor0         #282828
+#define xcolor0         #181818
 #define xcolor8         #928374
 
 ! DarkRed + Red

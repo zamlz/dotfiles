@@ -4,7 +4,7 @@
 ps1_generate() {
     echo -ne "%B%F{cyan}.-"
     echo -ne "%F{black}(%b%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)"
-    echo -ne "%F{cyan}-%F{black}[%F{blue}%~%F{black}]"
+    echo -ne "%F{cyan}-%F{black}[%b%F{blue}%~%B%F{black}]"
 
     if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
 
@@ -25,15 +25,16 @@ ps1_generate() {
 
         # Use this info to construct our real status
         if [ $NC -eq 0 ]; then
-        echo -ne "%F{cyan}-%F{black}<%F{green}$GIT_NAME.$GIT_BRANCH%F{black}>"
+            C='green'
         else
-        echo -ne "%F{cyan}-%F{black}<%F{red}$GIT_NAME.$GIT_BRANCH%F{black}>"
+            C='red'
         fi
+        echo -ne "%F{cyan}-%F{black}<%b%F{$C}$GIT_NAME.$GIT_BRANCH%B%F{black}>"
 
     fi
     if [ -n "${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
 
-        echo -ne "%F{cyan}-%F{black}{%F{yellow}"
+        echo -ne "%F{cyan}-%F{black}{%b%F{yellow}"
         MOD=""
 
         if [ -n "$VIRTUAL_ENV" ]; then
@@ -51,7 +52,7 @@ ps1_generate() {
             echo -ne "$MOD$ENV_NAME"
         fi
 
-        echo -ne "%F{black}}"
+        echo -ne "%B%F{black}}"
     fi
     echo -ne "\n"
     echo -ne "%F{cyan}\`--%B%F{white}> %{\e[0m%}"
