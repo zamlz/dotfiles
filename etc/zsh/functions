@@ -118,7 +118,7 @@ xcolorscheme() {
 
 # A simple wrapper for virtualenv
 venv() {
-    if [ -z "$@" ]; then
+    if [[ -z "$@" ]]; then
         echo "Starting virtualenv environment"
         source ./.venv/bin/activate
     else
