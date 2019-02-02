@@ -12,7 +12,8 @@ mpdinfo() {
     if [ -z "$status" ]; then
         out="[MPD %{F${MAGENTA}}mpd error: Connection refused%{F-}]"
     else
-        out="[MPD %{F${MAGENTA}}$(mpc current)%{F-}]"
+        mpd_fmt="[[[%artist% - ]%album% - ]%title%]|[%file%]"
+        out="[MPD %{F${MAGENTA}}$( mpc current -f "$mpd_fmt" )%{F-}]"
     fi
     echo -n $out
 }
