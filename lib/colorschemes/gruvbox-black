@@ -4,7 +4,7 @@
 #define xbackground     #000000
 #define xforeground     #ebdbb2
 #define xcursorColor    #ebdbb2
-#define xfade 30
+#define xfade           0
 
 ! Black + DarkGrey
 #define xcolor0         #181818

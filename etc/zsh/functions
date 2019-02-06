@@ -94,7 +94,7 @@ groot() {
     BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
     figlet -t -f slant $@ "${NAME}.${BRANCH}"
     git status
-
+    PAGER=cat git diff
     fi
 }
 
