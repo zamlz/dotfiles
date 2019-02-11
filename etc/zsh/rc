@@ -48,4 +48,4 @@ export PINENTRY_USER_DATA='tty'
 
 # Source some special programs
 source $HOME/sys/path.sh 2> /dev/null
-source $HOME/src/tabula-rasa/scripts/shell_source.sh
+source $HOME/src/tabula-rasa/scripts/shell_source.sh 2> /dev/null
