@@ -2,6 +2,11 @@
 
 # A super generic update script to update my system in one go.
 
+# TODO:
+#   * dont just update and upgrade packages, remove/purge packages not 
+#     used by the system anymore.
+#   * git update should be much smarter.
+
 # repo list
 GIT_DOTS="git -C $HOME"
 GIT_PASS="git -C $HOME/.password-store"
