@@ -1,37 +1,47 @@
 ! -----------------------------------------------------------------------------
 ! File: gruvbox-dark.xresources
 ! Description: Retro groove colorscheme generalized
-! Author: morhetz <morhetz@gmail.com>
-! Source: https://github.com/morhetz/gruvbox-generalized
-! Last Modified: 6 Sep 2014
+! Original Author: morhetz <morhetz@gmail.com>
 ! -----------------------------------------------------------------------------
 
-! hard contrast: *background: #1d2021
-! medium contrast: *background: #282828
-! soft contrast: *background: #32302f
-*background: #181818
-*foreground: #ebdbb2
+! hard contrast: #define xbackground: #1d2021
+! medium constrat: #define xbackground: #282828
+! soft contrast: #define xbackground: #32302f
+
+! Special
+#define xbackground     #181818
+#define xforeground     #ebdbb2
+#define xcursorColor    #ebdbb2
+#define xfade           0
+
 ! Black + DarkGrey
-*color0:  #282828
-*color8:  #928374
+#define xcolor0         #282828
+#define xcolor8         #928374
+
 ! DarkRed + Red
-*color1:  #cc241d
-*color9:  #fb4934
+#define xcolor1         #cc241d
+#define xcolor9         #fb4934
+
 ! DarkGreen + Green
-*color2:  #98971a
-*color10: #b8bb26
+#define xcolor2         #98971a
+#define xcolor10        #b8bb26
+
 ! DarkYellow + Yellow
-*color3:  #d79921
-*color11: #fabd2f
+#define xcolor3         #d79921
+#define xcolor11        #fabd2f
+
 ! DarkBlue + Blue
-*color4:  #458588
-*color12: #83a598
+#define xcolor4         #458588
+#define xcolor12        #83a598
+
 ! DarkMagenta + Magenta
-*color5:  #b16286
-*color13: #d3869b
+#define xcolor5         #b16286
+#define xcolor13        #d3869b
+
 ! DarkCyan + Cyan
-*color6:  #689d6a
-*color14: #8ec07c
+#define xcolor6         #689d6a
+#define xcolor14        #8ec07c
+
 ! LightGrey + White
-*color7:  #a89984
-*color15: #ebdbb2
+#define xcolor7         #a89984
+#define xcolor15        #ebdbb2
