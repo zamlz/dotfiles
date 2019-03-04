@@ -21,7 +21,7 @@ rofi.font:                           Dina 8
 
 ! Color Guidlines                       BG          BORDER      SEPEARATOR
 ! "Color scheme window"
- rofi.color-window:                     xbackground,    xcolor5,    xcolor8
+ rofi.color-window:                     xbackground,    xforeground,    xcolor8
 ! "Border width" Set from: XResources
 rofi.bw:                             4
 
