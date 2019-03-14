@@ -3,8 +3,9 @@
 # A super generic update script to update my system in one go.
 
 # TODO:
-#   * dont just update and upgrade packages, remove/purge packages not 
+#   * dont just update and upgrade packages, remove/purge packages not
 #     used by the system anymore (for ubuntu)
+#   * Make gentoo part smarted (use return codes)
 #   * git update should be much smarter.
 
 # repo list
