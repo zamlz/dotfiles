@@ -41,11 +41,12 @@ font=$(xrdb -query | grep '*font' | \
 
 # Other regional fonts (add as needed)
 ja_font=":slant=0:weight=100:pixelsize=13:antialias=True:minspace=True:lang=ja"
+ko_font=":slant=0:weight=100:pixelsize=13:antialias=True:minspace=True:lang=ko"
 
 # Construction our configuration for lemonbar
 opts="-g ${WIDTH}x${HEIGHT}+${xoff}+${yoff}
       -B ${XBACKGROUND} -F ${XFOREGROUND}
-      -f ${font} -f ${ja_font}"
+      -f ${font} -f ${ja_font} -f ${ko_font}"
 
 
 # Create the top content function
