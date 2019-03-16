@@ -63,6 +63,7 @@ if [ "$bookmark" != "" ]; then
         opt=$(rofi -dmenu -input /dev/null -mesg "${mesg}" -p "$prmt" -lines 0)
 
         if [ "$opt" = "yes" ]; then
+            export PINENTRY_USER_DATA='rofi' # this lets gpg use rofi
             $BMEXE add $bookmark $new_url
         fi
     fi

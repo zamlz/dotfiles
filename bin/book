@@ -18,6 +18,7 @@
 
 # Don't put a '/' at the end or the code will fail.
 BMLIB=$HOME/lib/bookmarks
+GITC="git -C $BMLIB"
 
 cmd_add() {
     # Argument list
@@ -40,6 +41,9 @@ cmd_add() {
         mkdir -p $(dirname $BMLIB/$1)
         echo "$2" > $BMLIB/$1
         echo "Boookmark Library updated."
+        # commit changes
+        $GITC add $1
+        $GITC commit -m "Added bookmark $1"
     else
         (>&2 echo "ERROR: URL argument is missing (cmd_add)")
     fi
