@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# This is just to make sure everything is sourced properly
+source /etc/profile
+
 # History
 export HISTSIZE=2000
 export HISTFILE="$HOME/.zhistory"
