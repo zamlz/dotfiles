@@ -42,6 +42,7 @@ precmd() {
 eval $(dircolors -b $HOME/lib/shell/lscolors)
 
 # Necessary exports
+export DISTRO=$(cat /etc/os-release | grep ID | tr '=' ' ' | awk '{print $2}')
 export PATH="$HOME/lib/private/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export HTOPRC="$HOME/etc/htop/rc"

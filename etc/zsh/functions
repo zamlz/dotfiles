@@ -11,7 +11,8 @@ ps1_generate() {
     fi
 
     echo -ne "%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)"
-    echo -ne "%F{cyan}-%F{black}[%b%F{blue}%~%B%F{black}]"
+    echo -ne "%F{cyan}-%F{black}[%b%F{blue}${DISTRO}"
+    echo -ne "%F{white}::%F{blue}%~%B%F{black}]"
 
     if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
 
