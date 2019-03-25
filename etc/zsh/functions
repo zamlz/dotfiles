@@ -3,15 +3,17 @@
 # Generate our own custom prompt for our shell
 ps1_generate() {
     echo -ne "%B%F{cyan}.-"
-    echo -ne "%F{black}(%b"
 
     # Check if we are in an SSH connection
     if [ -n "$SSH_TTY" ]; then
-        echo -ne "%F{yellow}ssh:"
+        echo -ne "%F{black}|%b%F{blue}ssh%F{black}%B|%F{cyan}-"
     fi
 
-    echo -ne "%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)"
-    echo -ne "%F{cyan}-%F{black}[%b%F{blue}${DISTRO}"
+    # user @ hostname
+    echo -ne "%F{black}(%b%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)"
+
+    # distro :: current working directory
+    echo -ne "%F{cyan}-%F{black}[%b%F{cyan}${DISTRO}"
     echo -ne "%F{white}::%F{blue}%~%B%F{black}]"
 
     if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
