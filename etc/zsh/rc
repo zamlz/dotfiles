@@ -47,8 +47,8 @@ export PATH="$HOME/bin:$PATH"
 export HTOPRC="$HOME/etc/htop/rc"
 export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA='tty'
-export DISTRO=$(cat /etc/os-release | grep ^ID | \
-        tr '=' ' ' | tr -d '"' | awk '{print $2}')
+export DISTRO=$(grep --color=none ^ID= /etc/os-release | tr '=' ' ' | \
+        tr -d '"' | awk '{print $2}')
 
 
 # Source some special programs
