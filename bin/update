@@ -10,18 +10,26 @@
 
 # repo list
 GIT_DOTS="git -C $HOME"
+GIT_PRIV="git -C $HOME/lib/private"
 GIT_PASS="git -C $HOME/.password-store"
 GIT_PUBS="git -C $HOME/.pubs"
 GIT_BOOK="git -C $HOME/lib/bookmarks"
 
 # Update system packages
-if [ -n "$(uname -v | grep -i "UBUNTU")" ]; then
+if [ "$DISTRO" = "ubuntu" ]; then
     echo "sudo apt-get update && sudo apt-get upgrade"
     sudo apt-get update && sudo apt-get upgrade
-else
+
+elif [ "$DISTRO" = "void" ]; then
+    sudo xbps-install -Su
+
+elif [ "$DISTRO" = "gentoo" ]; then
     echo "sudo emerge --sync && sudo emerge -DuvaN --with-bdeps=y @world"
-    sudo emerge --sync && sudo emerge -DuvaN --with-bdeps=y @world && \
-        sudo emerge --ask --depclean && sudo revdep-rebuild
+    sudo emerge --sync
+    sudo emerge -DuvaN --with-bdeps=y @world
+
+else 
+    echo "Don't have update commands for $DISTRO"
 fi
 
 # Git updater
@@ -38,6 +46,7 @@ ssh-add ~/.ssh/id_rsa
 
 # Update my git repositories
 git_update $GIT_DOTS
+git_update $GIT_PRIV
 git_update $GIT_PASS
 git_update $GIT_PUBS
 git_update $GIT_BOOK
