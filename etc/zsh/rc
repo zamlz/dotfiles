@@ -11,9 +11,9 @@ export SAVEHIST=$HISTSIZE
 # Various Settings
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
-
-# Miscellaneous Settings
 setopt autocd
+unsetopt BEEP # turn of audible beeps
+
 # setopt extendedglob
 bindkey -v
 
