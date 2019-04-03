@@ -11,6 +11,8 @@ alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
 alias gl="git log --graph --stat -p"
+alias gp="git push"
+alias gf="git fetch"
 
 # Clearing fix
 alias clear="TERM='xterm' clear"
