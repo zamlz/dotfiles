@@ -84,12 +84,19 @@ highlight CursorColumn ctermbg=black
 " Custom Vim Functions
 "---------------------------------------
 
+" Trim the whitespace present in a file
 fun! TrimWhitespace()
     let l:save = winsaveview()
     keeppatterns %s/\s\+$//e
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
+
+" Latex class files need to have tex syntax
+augroup cls_ft
+    au!
+    autocmd BufNewFile,BufRead *.cls set syntax=tex
+augroup END
 
 " Odd, but this needs to be run again. Not sure why
 filetype indent off " Load filetype-specific indent files
