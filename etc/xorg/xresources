@@ -26,5 +26,4 @@ Xft.hintstyle:              hintslight
 
 ! Some other Special Programs
 #include "etc/xorg/urxvt"
-#include "etc/xorg/st"
 #include "etc/xorg/rofi"
