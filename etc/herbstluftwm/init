@@ -13,7 +13,6 @@ hc emit_hook reload
 
 # Kill all dangling processes
 # killall -HUP urxvtd > /dev/null 2>&1
-killall lemonbar > /dev/null 2>&1
 
 # Reload the xresource data
 xrdb -I$HOME $HOME/etc/xorg/xresources
@@ -102,7 +101,7 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-tag_names=( {1..10})
+tag_names=({1..10})
 tag_keys=( {1..9} 0 )
 
 hc rename default "${tag_names[0]}" || true
@@ -204,15 +203,14 @@ herbstclient set tree_style '╾│ ├└╼─┐'
 # or simply:
 hc detect_monitors
 
-# Find the panel
-panel=$HOME/etc/lemonbar/init
 PANEL_HEIGHT=24
 
 # Spawn the bar on the primary monitor (i.e. 0)
 monitor=0
 hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
 PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
-"$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH &
+# "$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH &
+$HOME/etc/polybar/init.sh &
 
 # Create the program launcher
 LAUNCHER="rofi -show run"
