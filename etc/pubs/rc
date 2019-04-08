@@ -32,7 +32,7 @@ debug = False
 [formating]
 
 # Enable bold formatting, if the terminal supports it.
-bold = True
+bold = False
 
 # Enable italics, if the terminal supports it.
 italics = True
@@ -61,16 +61,16 @@ error = red
 
 # ui elements
 filepath = yellow
-citekey = yellow
+citekey = magenta 
 tag = green
 
 # bibliographic fields
 author = blue
-title = bold
-publisher = ""
-year = cyan
-volume = bold
-pages = ""
+title = "" 
+publisher = yellow
+year = cyan 
+volume = yellow 
+pages = yellow
 
 
 [plugins]
