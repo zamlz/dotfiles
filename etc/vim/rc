@@ -81,6 +81,9 @@ colorscheme peachpuff
 highlight ColorColumn ctermbg=black
 highlight CursorColumn ctermbg=black
 
+" Change the default coloring of line numbers
+highlight LineNr ctermfg=black
+
 " Custom Vim Functions
 "---------------------------------------
 
@@ -100,3 +103,5 @@ augroup END
 
 " Odd, but this needs to be run again. Not sure why
 filetype indent off " Load filetype-specific indent files
+
+" vim:ft=vim
