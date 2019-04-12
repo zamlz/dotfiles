@@ -49,11 +49,11 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 !+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 URxvt.foreground: xforeground
-URxvt.background: xbackground 
+URxvt.background: xbackground
 URxvt.cursorColor: xcursorColor
 
 ! This is for fading windows if not active
-URxvt.fading: xfade  
+URxvt.fading: xfade
 URxvt.fadeColor: xbackground
 
 URxvt.color0:  xcolor0
@@ -73,3 +73,4 @@ URxvt.color13: xcolor13
 URxvt.color14: xcolor14
 URxvt.color15: xcolor15
 
+! vim: set filetype=xmodmap:

@@ -235,3 +235,5 @@ rofi.terminal:                       urxvtc
 ! rofi.display-drun:
 ! "The display name of this browser" Set from: Default
 ! rofi.display-combi:
+
+! vim: set filetype=xmodmap:
