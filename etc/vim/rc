@@ -5,9 +5,47 @@
 "  \ V /| | | | | | | | | (__
 "   \_/ |_|_| |_| |_|_|  \___|
 
+"------------------------------------------------------------------------------
+" Load Vim Plugins (VimPlug)
+"------------------------------------------------------------------------------
+
+call plug#begin('~/.vim/plugged')
+
+" vim-airline:
+" Lean & mean status/tabline for vim thats light as air
+Plug 'bling/vim-airline'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'chrisbra/csv.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+
+call plug#end()
+
+"------------------------------------------------------------------------------
+" Configure loaded plugins
+"------------------------------------------------------------------------------
+
+" vim-airline
+let laststatus = 2
+let g:airline_powerline_fonts = 0
+let g:airline#extensions#tabline#enabled = 1
+
+" vim-airline-themes
+" let g:airline_theme = 'luna'
+
+" git-gutter
+nmap <C-M-j> <Plug>GitGutterNextHunk
+nmap <C-M-k> <Plug>GitGutterPrevHunk
+
+"------------------------------------------------------------------------------
+" Other various useful settings
+"------------------------------------------------------------------------------
+
 set number          " Show Line numbers
-set background=dark " Set the background to dark
-set ruler
+set ruler           " Show line and column number of the cursor
 set cursorline      " highlight current line
 set cursorcolumn    " Create a column for where the cursor is
 set colorcolumn=80  " Create a column to show where 80 chars are
@@ -32,49 +70,16 @@ set noshowmode      " Stop showing the default mode
 
 set mouse=a         " Set mouse wheel to scroll
 
-" turn off the highlighed search
-" nnoremap <leader><space> :nohlsearch<CR>
-
 " Enable Code Folding
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent    " fold based on ident level
 
-" Load plugins for VimPlug
-call plug#begin('~/.vim/plugged')
-
-" vim-airline:
-" Lean & mean status/tabline for vim thats light as air
-Plug 'bling/vim-airline'
-
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'chrisbra/csv.vim'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-
-call plug#end()
-
-" Configuration settings for plugins
-"---------------------------------------
-
-" vim-airline {{{
-let laststatus = 2
-let g:airline_powerline_fonts = 0
-let g:airline#extensions#tabline#enabled = 1
-
-" vim-airline-themes
-" let g:airline_theme = 'luna'
-
-"}}}
-
-
-" Post Plugin Load Configurations
-"---------------------------------------
-
+"------------------------------------------------------------------------------
 " Vim colorschemes
+"------------------------------------------------------------------------------
+"
 colorscheme peachpuff
 
 " Color of the Columns
@@ -84,8 +89,20 @@ highlight CursorColumn ctermbg=black
 " Change the default coloring of line numbers
 highlight LineNr ctermfg=black
 
+"------------------------------------------------------------------------------
+" Custom Keybindings
+"------------------------------------------------------------------------------
+
+" Sets a keybind to turn off highlighted searches
+nnoremap <leader><space> :nohlsearch<CR>
+" Keybinds to quickly switch buffers
+noremap <S-j> :bn<CR>
+noremap <S-k> :bp<CR>
+
+
+"------------------------------------------------------------------------------
 " Custom Vim Functions
-"---------------------------------------
+"------------------------------------------------------------------------------
 
 " Trim the whitespace present in a file
 fun! TrimWhitespace()
@@ -94,8 +111,5 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
-
-" Odd, but this needs to be run again. Not sure why
-filetype indent off " Load filetype-specific indent files
 
 " vim:ft=vim
