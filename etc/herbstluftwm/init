@@ -114,6 +114,9 @@ for i in ${!tag_names[@]} ; do
     fi
 done
 
+# Jump to previous tag
+hc keybind $Mod-grave use_previous
+
 # cycle through tags
 hc keybind $Mod-bracketright use_index +1 --skip-visible
 hc keybind $Mod-bracketleft  use_index -1 --skip-visible
