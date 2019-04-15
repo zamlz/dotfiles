@@ -9,10 +9,6 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
-# Specify some special keymaps
-setxkbmap -option caps:super
-# setxkbmap -option caps:escape
-
 # We need to start the compositor as well
 # If we would like to kill our CPU so no.
 # But hey, it definetly looks crisp af tho.

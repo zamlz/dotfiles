@@ -34,6 +34,9 @@ fi
 # TERMINAL="urxvtc +j +ss"
 TERMINAL="urxvtc"
 
+# Also have to set this here in case xorg isn't started via startx
+setxkbmap -option caps:super
+
 # remove all existing keybindings
 hc keyunbind --all
 
