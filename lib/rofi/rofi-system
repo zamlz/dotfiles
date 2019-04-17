@@ -32,9 +32,9 @@ elif [ "$systask" = "SYSTEM POWEROFF" ]; then
     rofi -dmenu -input /dev/null -password -lines 0 -p "SUDO POWEROFF" | \
         sudo -S poweroff
 
-elif [ "$systaks" = "SYSTEM REBOOT" ]; then
+elif [ "$systask" = "SYSTEM REBOOT" ]; then
 
-    rofi -dmenu -input /dev/null -password -lines 0 -p "SUDO POWEROFF" | \
+    rofi -dmenu -input /dev/null -password -lines 0 -p "SUDO REBOOT" | \
         sudo -S reboot
 
 fi
