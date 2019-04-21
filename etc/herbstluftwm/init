@@ -212,10 +212,13 @@ hc detect_monitors
 PANEL_HEIGHT=24
 
 # Spawn the bar on the primary monitor (i.e. 0)
-monitor=0
+monitor="$(grep monitor ~/.polybar.conf | awk '{print $3}')"
+monitor="$(polybar -m | grep $monitor | awk '{print $2}')"
+monitor="$(hc list_monitors | grep $monitor | awk '{print $1}' | tr -d ':')"
+
 hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
 PANEL_WIDTH=$(hc monitor_rect $monitor | awk '{print $3}')
-# "$panel" $monitor $PANEL_HEIGHT $PANEL_WIDTH &
+
 $HOME/etc/polybar/init.sh &
 
 # Create the program launcher
