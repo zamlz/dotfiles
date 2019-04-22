@@ -37,6 +37,9 @@ TERMINAL="urxvtc"
 # Also have to set this here in case xorg isn't started via startx
 setxkbmap -option caps:super
 
+# Increases the speed of the keyboard repeat rate
+xset r rate 400 100
+
 # remove all existing keybindings
 hc keyunbind --all
 
