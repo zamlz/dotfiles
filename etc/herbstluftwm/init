@@ -38,7 +38,7 @@ TERMINAL="urxvtc"
 setxkbmap -option caps:super
 
 # Increases the speed of the keyboard repeat rate
-xset r rate 400 100
+xset r rate 400 50
 
 # remove all existing keybindings
 hc keyunbind --all
