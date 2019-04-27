@@ -14,6 +14,7 @@
 data.location=~/usr/tasks
 
 # Color theme (uncomment one to use)
+include ~/etc/taskwarrior/colors.theme
 #include /usr/share/task/rc/light-16.theme
 #include /usr/share/task/rc/light-256.theme
 #include /usr/share/task/rc/dark-16.theme
@@ -25,7 +26,7 @@ data.location=~/usr/tasks
 #include /usr/share/task/rc/dark-yellow-green.theme
 #include /usr/share/task/rc/dark-gray-256.theme
 #include /usr/share/task/rc/dark-gray-blue-256.theme
-include /usr/share/task/rc/solarized-dark-256.theme
+#include /usr/share/task/rc/solarized-dark-256.theme
 #include /usr/share/task/rc/solarized-light-256.theme
 #include /usr/share/task/rc/no-color.theme
 
