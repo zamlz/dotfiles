@@ -44,12 +44,15 @@ eval $(dircolors -b $HOME/lib/shell/lscolors)
 # Necessary exports
 export PATH="$HOME/lib/private/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
-export HTOPRC="$HOME/etc/htop/rc"
 export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA='tty'
 export DISTRO=$(grep --color=none ^ID= /etc/os-release | tr '=' ' ' | \
         tr -d '"' | awk '{print $2}')
 
+# Export to configure certain apps
+export HTOPRC="$HOME/etc/htop/rc"
+export TASKRC="$HOME/etc/taskwarrior/rc"
+export PASSWORD_STORE_DIR="$HOME/usr/passwords"
 
 # Source some special programs
 source $HOME/sys/path.sh 2> /dev/null

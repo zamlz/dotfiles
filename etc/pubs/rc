@@ -2,10 +2,10 @@
 [main]
 
 # Where the pubs repository files (bibtex, metadata, notes) are located
-pubsdir = /home/zamlz/.pubs
+pubsdir = /home/zamlz/usr/papers
 
 # Where the documents files are located (default: $(pubsdir)/doc/)
-docsdir = /home/zamlz/.pubs/doc
+docsdir = /home/zamlz/usr/papers
 
 # Specify if a document should be copied or moved in the docdir, or only
 # linked when adding a publication.
@@ -69,7 +69,7 @@ author = blue
 title = "" 
 publisher = yellow
 year = cyan 
-volume = yellow 
+volume = yellow
 pages = yellow
 
 

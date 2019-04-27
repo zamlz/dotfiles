@@ -24,7 +24,7 @@
 . $HOME/lib/shell/xrdb_colors
 
 BMEXE=$HOME/bin/book
-BMLIB=$HOME/lib/bookmarks
+BMLIB=$HOME/usr/bookmarks
 CACHE=$HOME/.cache/bookmarks
 
 # Ensure the cache exists

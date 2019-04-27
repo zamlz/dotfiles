@@ -17,7 +17,7 @@
 #       for now, this script should do, but it could be much better.
 
 # Don't put a '/' at the end or the code will fail.
-BMLIB=$HOME/lib/bookmarks
+BMLIB=$HOME/usr/bookmarks
 GITC="git -C $BMLIB"
 
 cmd_add() {

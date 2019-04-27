@@ -12,8 +12,8 @@
 GIT_DOTS="git -C $HOME"
 GIT_PRIV="git -C $HOME/lib/private"
 GIT_PASS="git -C $HOME/.password-store"
-GIT_PUBS="git -C $HOME/.pubs"
-GIT_BOOK="git -C $HOME/lib/bookmarks"
+GIT_PUBS="git -C $HOME/usr/papers"
+GIT_BOOK="git -C $HOME/usr/bookmarks"
 
 # Update system packages
 if [ "$DISTRO" = "ubuntu" ]; then

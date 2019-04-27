@@ -2,8 +2,8 @@
 
 # Find the password I want
 
-pass_name=$(find ~/.password-store -type f | grep -v "\.gpg-id" | \
-    grep "\.gpg" | sed -e "s|$HOME\/\.password-store\/||g" -e "s|\.gpg||g" | \
+pass_name=$(find ~/usr/passwords -type f | grep -v "\.gpg-id" | \
+    grep "\.gpg" | sed -e "s|$HOME\/usr\/passwords\/||g" -e "s|\.gpg||g" | \
     rofi -dmenu -i -p "password" )
 
 if [ "$pass_name" != "" ]; then
