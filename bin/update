@@ -11,7 +11,7 @@
 # repo list
 GIT_DOTS="git -C $HOME"
 GIT_PRIV="git -C $HOME/lib/private"
-GIT_PASS="git -C $HOME/.password-store"
+GIT_PASS="git -C $HOME/usr/passwords"
 GIT_PUBS="git -C $HOME/usr/papers"
 GIT_BOOK="git -C $HOME/usr/bookmarks"
 
