@@ -5,7 +5,7 @@
 pubsdir = /home/zamlz/usr/papers
 
 # Where the documents files are located (default: $(pubsdir)/doc/)
-docsdir = /home/zamlz/usr/papers
+docsdir = /home/zamlz/usr/papers/doc
 
 # Specify if a document should be copied or moved in the docdir, or only
 # linked when adding a publication.
