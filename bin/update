@@ -14,6 +14,7 @@ GIT_PRIV="git -C $HOME/lib/private"
 GIT_PASS="git -C $HOME/usr/passwords"
 GIT_PUBS="git -C $HOME/usr/papers"
 GIT_BOOK="git -C $HOME/usr/bookmarks"
+GIT_NOTE="git -C $HOME/usr/notes"
 
 # Update system packages
 if [ "$DISTRO" = "ubuntu" ]; then
@@ -28,7 +29,7 @@ elif [ "$DISTRO" = "gentoo" ]; then
     sudo emerge --sync
     sudo emerge -DuvaN --with-bdeps=y @world
 
-else 
+else
     echo "Don't have update commands for $DISTRO"
 fi
 
@@ -50,6 +51,7 @@ git_update $GIT_PRIV
 git_update $GIT_PASS
 git_update $GIT_PUBS
 git_update $GIT_BOOK
+git_update $GIT_NOTE
 
 # Kill ssh-agent
 pkill ssh-agent
