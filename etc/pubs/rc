@@ -85,6 +85,9 @@ active = alias, git
 mv = rename
 rm = remove
 
+[[git]]
+manual = False
+quiet = False
 
 # shell commands can also be defined, by prefixing them with a bang `!`, e.g:
 # count = !pubs list -k | wc -l
