@@ -67,9 +67,18 @@ color.blocking=color14
 color.project.none=
 
 # Priority
-color.uda.priority.H=bold blue #color14
-color.uda.priority.M=bold yellow #color12
-color.uda.priority.L=bold green #color11
+color.uda.priority.SSS=black on red
+color.uda.priority.SS=black on green
+color.uda.priority.S=black on blue
+color.uda.priority.A=blue
+color.uda.priority.B=bold white
+color.uda.priority.C=
+color.uda.priority.D=
+color.uda.priority.E=color8
+color.uda.priority.F=color8
+color.uda.priority.H=
+color.uda.priority.L=
+color.uda.priority.M=
 
 # Tags
 color.tag.next=

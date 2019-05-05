@@ -13,22 +13,19 @@
 # Files
 data.location=~/usr/tasks
 
-# Color theme (uncomment one to use)
+# Color theme (some may be stored in /usr/share/task/rc/)
 include ~/etc/taskwarrior/colors.theme
-#include /usr/share/task/rc/light-16.theme
-#include /usr/share/task/rc/light-256.theme
-#include /usr/share/task/rc/dark-16.theme
-#include /usr/share/task/rc/dark-256.theme
-#include /usr/share/task/rc/dark-red-256.theme
-#include /usr/share/task/rc/dark-green-256.theme
-#include /usr/share/task/rc/dark-blue-256.theme
-#include /usr/share/task/rc/dark-violets-256.theme
-#include /usr/share/task/rc/dark-yellow-green.theme
-#include /usr/share/task/rc/dark-gray-256.theme
-#include /usr/share/task/rc/dark-gray-blue-256.theme
-#include /usr/share/task/rc/solarized-dark-256.theme
-#include /usr/share/task/rc/solarized-light-256.theme
-#include /usr/share/task/rc/no-color.theme
 
 # Set my own custom priority values
-uda.priority.values=SSS,SS,S,A,B,C,D,E,F
+uda.priority.values=SSS,SS,S,A,B,C,D,E,F,
+
+# The priority coeffs
+urgency.uda.priority.SSS.coefficient=100.0
+urgency.uda.priority.SS.coefficient=10.0
+urgency.uda.priority.S.coefficient=5.0
+urgency.uda.priority.A.coefficient=2.5
+urgency.uda.priority.B.coefficient=1.0
+urgency.uda.priority.C.coefficient=0.0
+urgency.uda.priority.D.coefficient=-1.0
+urgency.uda.priority.E.coefficient=-2.5
+urgency.uda.priority.F.coefficient=-5.0
