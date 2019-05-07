@@ -35,7 +35,7 @@ fi
 TERMINAL="urxvtc"
 
 # Also have to set this here in case xorg isn't started via startx
-setxkbmap -option caps:super
+setxkbmap -option caps:escape
 
 # Increases the speed of the keyboard repeat rate
 xset r rate 400 50
