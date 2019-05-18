@@ -1,0 +1,124 @@
+#!/bin/sh
+
+# Simple script to manage notes
+#
+# Needs the following to function properly:
+#   tree
+#
+
+# Don't put a '/' at the end or the code will fail.
+NOTES=$HOME/usr/notes
+GITC="git -C $NOTES"
+
+cmd_add() {
+    # Argument list
+    #   $1 - index.md location
+    if [ -z "$1" ]; then
+        (>&2 echo "ERROR: Name argument is missing (cmd_add)")
+    fi
+
+    if [ -f $NOTES/$1/index.md ]; then
+        echo -n "$1 already exists! Do you wish to overwrite it (type yes)? "
+        read opt
+        if [ "$opt" != "yes" ]; then
+            echo "Nothing changed..."
+            return 0
+        fi
+    fi
+
+    mkdir -p $NOTES/$1
+    echo "---"    >  $NOTES/$1/index.md
+    echo "title:" >> $NOTES/$1/index.md
+    echo ""       >> $NOTES/$1/index.md
+    echo "---"    >> $NOTES/$1/index.md
+    echo "Notes Library updated."
+    cmd_edit $1
+}
+
+
+cmd_remove() {
+    # Argument list
+    #   $1 - index.md location
+    if [ -z "$1" ]; then
+        (>&2 echo "ERROR: Name argument is missing (cmd_remove)")
+    fi
+
+    if [ -f $NOTES/$1/index.md ]; then
+        echo -n "Are you sure you wish to remove $1/index.md (type yes)? "
+        read opt
+        if [ "$opt" = "yes" ]; then
+            rm $NOTES/$1/index.md
+            rec_rmdir $(dirname $NOTES/$1)
+        fi
+    fi
+}
+
+rec_rmdir() {
+    # This function is here purely to make sure directories are deleted safely
+    # Just cause the bookmarks directory is empty doesn't mean it should
+    # delete the root folder.
+    #
+    # Argument List
+    #   $1 - directory name
+    if [ -z "$1" ]; then
+        (>&2 echo "ERROR: Directory argument is missing (rec_rmdir)")
+    fi
+
+    if [ "$NOTES" != "$1" ]; then
+        rmdir --ignore-fail-on-non-empty $1
+        # echo $?; echo "TESTING $NOTES :::: $1"; read
+        rec_rmdir $(dirname $1)
+    fi
+}
+
+cmd_view() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    if [ -f $NOTES/$1/index.md ]; then
+        cat $NOTES/$1/index.md
+    else
+        (>&2 echo "ERROR: File does not exist (cmd_show): $1")
+    fi
+}
+
+cmd_edit() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    if [ -f $NOTES/$1/index.md ]; then
+        $EDITOR $NOTES/$1/index.md
+        $GITC add $1/index.md
+        $GITC commit -m "Updated notes for $1"
+    else
+        (>&2 echo "ERROR: File does not exist (cmd_edit): $1")
+    fi
+}
+
+cmd_list() {
+    echo "Tabula Rasa"
+    tree -L 3 -C -l -d --noreport $NOTES | tail -n +2
+}
+
+cmd_git() {
+    # Argument List = Git Arguments
+    $GITC $@
+}
+
+# Figure out what we want to do
+
+CMD=$1
+REST=$(echo "$@" | cut -d' ' -f2-)
+
+case "$CMD" in
+    add)     cmd_add $REST ;;
+    rm)     cmd_remove $REST ;;
+    view)   cmd_view $REST ;;
+    edit)   cmd_edit $REST ;;
+    ls)     cmd_list $REST ;;
+    git)    cmd_git $REST ;;
+    *)      if [ -z "$@" ]; then
+                cmd_list
+            else
+                (>&2 echo "ERROR - Unrecognized arguments: $@")
+            fi ;;
+esac
+exit 0
