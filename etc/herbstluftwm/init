@@ -30,6 +30,11 @@ else
     xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
 fi
 
+# If the .arandr.sh file exists, configure the monitors as per its specs
+if [ -f "$HOME/.arandr.sh" ]; then
+    $HOME/.arandr.sh
+fi
+
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
 TERMINAL="urxvtc"
