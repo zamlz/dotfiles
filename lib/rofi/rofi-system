@@ -16,7 +16,7 @@ if [ "$systask" = "LOCK SCREEN" ]; then
     sleep 0.3 # this ensures that rofi is closed before scrot is run
     IMG="/tmp/.curdesk.png"
     BLUR="10x10"
-    scrot $IMG
+    scrot --overwrite $IMG
     convert $IMG -blur $BLUR $IMG
     exec i3lock -nefi $IMG
 

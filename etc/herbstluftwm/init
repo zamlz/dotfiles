@@ -43,7 +43,7 @@ TERMINAL="urxvtc"
 setxkbmap -option caps:escape
 
 # Increases the speed of the keyboard repeat rate
-xset r rate 400 50 
+xset r rate 400 50
 
 # remove all existing keybindings
 hc keyunbind --all
@@ -242,8 +242,6 @@ BOOKLIB="$HOME/lib/rofi/rofi-book"
 hc keybind $Mod-b spawn ${BOOKLIB}
 
 # Finally start i3lock
-# LOCKER="i3lock -nefc 000000"
-# LOCKER="$HOME/etc/herbstluftwm/lockme"
 LOCKER="$HOME/lib/rofi/rofi-system"
 hc keybind $Mod-Ctrl-Alt-Escape spawn ${LOCKER}
 exec xautolock -time 30 -locker "${LOCKER} LOCK SCREEN"
