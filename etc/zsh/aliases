@@ -2,8 +2,8 @@
 
 # The LS Family Aliases
 alias ls="LC_COLLATE=C ls -F --color=always"
-alias ll="ls -l"
-alias la="ls -la"
+alias ll="ls -oh"
+alias la="ls -lah"
 
 # The GIT Aliases
 alias gs="git status"
