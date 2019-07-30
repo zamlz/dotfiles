@@ -41,7 +41,7 @@ italics = True
 color = True
 
 # Format string for list command
-list_fmt = "[{citekey}]: {title} ({year})\n    authors: {authors}\n    journal: {journal}\n    meta   : {meta}\n"
+list_fmt = "[$citekey]: $title ($year)\n    authors: $authors\n    journal: $journal\n    meta   : $meta\n"
 
 
 [theme]
@@ -68,9 +68,9 @@ citekey = magenta
 tag = green
 
 # bibliographic fields
-author = blue 
-title = white 
-publisher = yellow 
+author = blue
+title = white
+publisher = yellow
 year = cyan
 volume = yellow
 pages = yellow
