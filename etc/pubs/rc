@@ -41,7 +41,7 @@ italics = True
 color = True
 
 # Format string for list command
-list_fmt = "[$citekey]: $title ($year)\n    authors: $authors{\n    journal: $journal:?$journal}{\n    meta:   :?$ext$tags}{ [$ext]:?$ext}{ |:?$ext,$tags}{ $tags:?$tags}\n"
+list_fmt = "[$citekey]: $title {($year):?$year}\n    authors: $authors{\n    journal: $journal:?$journal}{\n    meta:   :?$ext$tags}{ [$ext]:?$ext}{ |:?$ext,$tags}{ $tags:?$tags}\n"
 
 
 [theme]
