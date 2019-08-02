@@ -48,8 +48,8 @@ ps1_generate() {
         MOD=""
 
         if [ -n "$VIRTUAL_ENV" ]; then
-            VENV=$(echo $VIRTUAL_ENV | rev | cut -d '/' -f 2 | rev)
-            echo -ne "venv:$VENV"
+            # Support both the old way of using venvs and new way
+            echo -ne "venv:$(basename $VIRTUAL_ENV /.venv)"
             MOD="/"
         fi
 
@@ -128,10 +128,25 @@ xcolorscheme() {
 
 # A simple wrapper for virtualenv
 venv() {
-    if [[ -z "$@" ]]; then
-        echo "Starting virtualenv environment"
-        source ./.venv/bin/activate
+    if [[ ! -z "$@" ]]; then
+        vname=$1;
+        shift;
+        if [[ -z "$@" ]]; then
+            if [[ ! -d "$HOME/.venvs/$vname" ]]; then
+                echo "Create a new virtual environment named '$vname' ?";
+                echo 'Press any key to continue or Ctrl+C to exit...\n'
+                # note this is zsh read
+                read -k1 -rs
+                echo "Creating new venv: $vname";
+                python -m venv $HOME/.venvs/$vname
+            fi
+            echo "Starting venv: $vname"
+            source $HOME/.venvs/${vname}/bin/activate
+        else
+            python -m venv $HOME/.venvs/$vname $@
+        fi
     else
-        virtualenv "$@"
+        echo "Python Virtual Environments (venvs)"
+        tree -L 1 -d --noreport $HOME/.venvs/ | tail -n +2
     fi
 }
