@@ -20,9 +20,10 @@ Xft.hintstyle:              hintslight
 !#####
 
 !*font: xftPowerlineSymbols
-*font: xft:dina:size=8
+*font: xft:dina:size=10
 !*font:xft:Terminus:size=8
 !*font: xft:hack:size=10
+!*font: xft:Source Code Pro:Regular:size=10
 
 ! Some other Special Programs
 #include "etc/xorg/urxvt"
