@@ -43,7 +43,6 @@ color = True
 # Format string for list command
 list_fmt = "[$citekey]: $title {($year):?$year}\n    authors: $authors{\n    journal: $journal:?$journal}{\n    meta:   :?$ext$tags}{ [$ext]:?$ext}{ |:?$ext,$tags}{ $tags:?$tags}\n"
 
-
 [theme]
 
 # Here you can define the color theme used by pubs, if enabled in the

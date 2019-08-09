@@ -43,6 +43,7 @@ eval $(dircolors -b $HOME/lib/shell/lscolors)
 
 # Necessary exports
 export PATH="$HOME/lib/private/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/bin:$PATH"
 export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA='tty'
