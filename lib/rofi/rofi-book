@@ -27,6 +27,17 @@ BMEXE=$HOME/bin/book
 BMLIB=$HOME/usr/bookmarks
 CACHE=$HOME/.cache/bookmarks
 
+# Creates a message that will be passed to rofi for adding bookmarks
+# param $1: Name of the bookmark
+# param $2: URL of the bookmark
+add_bookmark_msg() {
+cat <<-EOF
+Are you sure you wish to add this bookmark?
+NAME: <span fgcolor='$BLUE'>${1}</span>
+URL:  <span fgcolor='$GREEN'>${2}</span>
+EOF
+}
+
 # Ensure the cache exists
 if [ ! -d "$CACHE" ]; then
     mkdir -p $CACHE
@@ -53,13 +64,7 @@ if [ "$bookmark" != "" ]; then
     else
 
         prmt="(yes/no)"
-
-        printf -v mesg "%s\n" \
-            "Are you sure you wish to add this bookmark?" \
-            "NAME: <span fgcolor='$BLUE'>${bookmark}</span>"
-        printf -v mesg "%s" \
-            "${mesg}URL:  <span fgcolor='$GREEN'>${new_url}</span>"
-
+        mesg=$(add_bookmark_msg ${bookmark} ${new_url})
         opt=$(rofi -dmenu -input /dev/null -mesg "${mesg}" -p "$prmt" -lines 0)
 
         if [ "$opt" = "yes" ]; then
