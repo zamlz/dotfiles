@@ -101,6 +101,8 @@ highlight Pmenu ctermfg=darkgrey ctermbg=black
 " Some syntax highlighting changes (maybe move this to its own file)
 highlight Function ctermfg=darkblue
 highlight String ctermfg=darkgreen
+highlight Comment ctermfg=darkgrey
+highlight Exception ctermfg=darkred
 
 "------------------------------------------------------------------------------
 " Custom Keybindings
