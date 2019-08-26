@@ -13,6 +13,7 @@ alias gd="git diff"
 alias gl="git log --graph --stat -p"
 alias gp="git push"
 alias gf="git fetch"
+alias gm="git merge"
 alias gb="PAGER=cat git branch -av"
 
 # Clearing fix
