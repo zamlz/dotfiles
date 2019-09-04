@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Make the unix experience wholesome
+alias please="sudo"
+
 # The LS Family Aliases
 alias ls="LC_COLLATE=C ls -F --color=always"
 alias ll="ls -oh"
