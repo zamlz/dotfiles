@@ -16,8 +16,9 @@ URxvt.termName:             xterm-256color
 !URxvt*transparent: true
 
 ! Real transparency (needs compositor like compton)
+! If using make sure to disable the background below.
 !URxvt*depth: 32
-!URxvt*background: rgba:1111/1111/1111/0000
+!URxvt*background: rgba:0000/0000/0000/5555
 
 ! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
 !   some nice listings are at:
