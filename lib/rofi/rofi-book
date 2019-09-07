@@ -70,6 +70,9 @@ if [ "$bookmark" != "" ]; then
         if [ "$opt" = "yes" ]; then
             export PINENTRY_USER_DATA='rofi' # this lets gpg use rofi
             $BMEXE add $bookmark $new_url
+            if [ "$?" -eq 1 ]; then
+                rofi -e "Error occured when trying to add a bookmark!"
+            fi
         fi
     fi
 fi
