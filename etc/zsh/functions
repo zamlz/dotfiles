@@ -68,6 +68,14 @@ ps1_generate() {
     echo -ne "%F{cyan}\`--%B%F{white}> %{\e[0m%}"
 }
 
+window_info() {
+    echo "WINDOW_PWD='$(pwd)'";
+    echo "VIRTUAL_ENV='${VIRTUAL_ENV}'";
+}
+
+save_window_info() {
+    window_info > /tmp/.wid_${WINDOWID}
+}
 
 # This is a special alias that overrides the
 # default behaviour of cd.
@@ -78,14 +86,14 @@ if [ -n "$DISPLAY" ]; then
     # Build our custom cd
     cd () {
         builtin cd $@
-        pwd > /tmp/.wid_${WINDOWID}
+        save_window_info
     }
 
     # Every terminal should generate its id file on spawn
     if [ -z "$WINDOWID" ]; then
         echo "Terminal doesn't have a Window ID!!!"
     else
-        pwd > /tmp/.wid_${WINDOWID}
+        save_window_info
     fi
 fi
 
@@ -142,8 +150,10 @@ venv() {
             fi
             echo "Starting venv: $vname"
             source $HOME/.venvs/${vname}/bin/activate
+            save_window_info
         else
             python -m venv $HOME/.venvs/$vname $@
+            save_window_info
         fi
     else
         echo "Python Virtual Environments (venvs)"

@@ -8,5 +8,12 @@
 # Needs xdotool to be installed
 
 # Assume its urxvt
-$@ -e sh -c "cd $(cat /tmp/.wid_$(xdotool getwindowfocus)); zsh"
+$@ -e sh -c "
+    source /tmp/.wid_$(xdotool getwindowfocus);
+    cd \${WINDOW_PWD};
+    if [ -z \${VIRTUAL_ENV} ]; then
+        exec zsh;
+    else
+        exec zsh -c \"source \${VIRTUAL_ENV}/bin/activate; zsh\"
+    fi"
 
