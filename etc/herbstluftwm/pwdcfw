@@ -14,6 +14,6 @@ $@ -e sh -c "
     if [ -z \${VIRTUAL_ENV} ]; then
         exec zsh;
     else
-        exec zsh -c \"source \${VIRTUAL_ENV}/bin/activate; zsh\"
+        exec zsh -c \"export VIRTUAL_ENV=\${VIRTUAL_ENV}; zsh\"
     fi"
 

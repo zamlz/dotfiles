@@ -58,3 +58,8 @@ export PASSWORD_STORE_DIR="$HOME/usr/passwords"
 # Source some special programs
 source $HOME/sys/path.sh 2> /dev/null
 source $HOME/src/tabula-rasa/scripts/shell_source.sh 2> /dev/null
+
+# Finally, if we are ina virtual environment start it
+if [ -n "$VIRTUAL_ENV" ]; then
+    source ${VIRTUAL_ENV}/bin/activate
+fi
