@@ -143,4 +143,3 @@ case "$CMD" in
                 (>&2 echo "ERROR - Unrecognized arguments: $@")
             fi ;;
 esac
-exit 0

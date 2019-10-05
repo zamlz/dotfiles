@@ -1,0 +1,28 @@
+#compdef _note note
+
+NOTE_DIR=$HOME/usr/notes
+
+_note () {
+    local line
+    _arguments -C \
+        "1: :(add rm view edit ls git)" \
+        "*::arg:->args"
+
+    case $line[1] in
+        add)    _note_list;;
+        rm)     _note_list;;
+        view)   _note_list;;
+        edit)   _note_list;;
+    esac
+}
+
+_note_complete_entries () {
+    find -L $NOTE_DIR -name index.md | \
+        sed -e 's|/index.md||g' -e "s|${NOTE_DIR}/||g" | sort
+}
+
+_note_list () {
+    _values -C 'notes' $(_note_complete_entries)
+}
+
+# vim:ft=zsh

@@ -18,6 +18,7 @@ unsetopt BEEP # turn of audible beeps
 bindkey -v
 
 # Shell Completions
+fpath=($HOME/etc/zsh/completions $fpath)
 autoload -U compinit
 compinit
 
