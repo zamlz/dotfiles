@@ -27,10 +27,7 @@ cmd_add() {
     fi
 
     mkdir -p $NOTES/$1
-    echo "---"    >  $NOTES/$1/index.md
-    echo "title:" >> $NOTES/$1/index.md
-    echo ""       >> $NOTES/$1/index.md
-    echo "---"    >> $NOTES/$1/index.md
+    touch $NOTES/$1/index.md
     echo "Notes Library updated."
     cmd_edit $1
 }
