@@ -11,6 +11,6 @@ if [ ! -z "$MDFILE" ]; then
     if [ -f "${TMPFILE}" ]; then
         rm ${TMPFILE}
     fi
-    pandoc --pdf-engine=xelatex -s -o "${TMPFILE}" "${MDFILE}"
+    pandoc --latex-engine=xelatex -s -o "${TMPFILE}" "${MDFILE}"
     zathura ${TMPFILE}
 fi;
