@@ -25,9 +25,11 @@ elif [ "$DISTRO" = "void" ]; then
     sudo xbps-install -Su
 
 elif [ "$DISTRO" = "gentoo" ]; then
-    echo "sudo emerge --sync && sudo emerge -DuvaN --with-bdeps=y @world"
+    echo "sudo emerge --sync; sudo emerge -DuvaN --with-bdeps=y @world"
     sudo emerge --sync
     sudo emerge -DuvaN --with-bdeps=y @world
+    sudo emerge --depclean
+    sudo revdep-rebuild
 
 else
     echo "Don't have update commands for $DISTRO"
