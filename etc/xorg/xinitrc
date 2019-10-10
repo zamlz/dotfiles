@@ -21,6 +21,7 @@ session=${1:-herbstluftwm}
 
 case $session in
     herbstluftwm)   exec herbstluftwm -c $HOME/etc/herbstluftwm/init;;
+    pyxwm)          PYTHONPATH="$HOME/src/pyxwm/src/" exec python3 $HOME/src/pyxwm/examples/run.py ;;
     *)              exec $1;;
 esac
 

@@ -5,6 +5,11 @@ if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
     export XLOG="$HOME/var/$(date --iso-8601=seconds)"
     exec startx $HOME/etc/xorg/xinitrc herbstluftwm >> $XLOG 2>&1
 
+elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
+    export WINDOW_MANAGER='pyxwm'
+    export XLOG="$HOME/var/$(date --iso-8601=seconds)"
+    exec startx $HOME/etc/xorg/xinitrc pyxwm >> $XLOG 2>&1
+
 # Trying to Boot to Unity (For Ubuntu Only)
 # sudo systemctl disable lightdm.service
 # sudo systemctl set-default multi-user.target
