@@ -3,10 +3,9 @@
 # A super generic update script to update my system in one go.
 
 # TODO:
-#   * dont just update and upgrade packages, remove/purge packages not
-#     used by the system anymore (for ubuntu)
 #   * Make gentoo part smarted (use return codes)
-#   * git update should be much smarter.
+
+. $HOME/lib/shell/colorenv
 
 # repo list
 GIT_DOTS="git -C $HOME"
@@ -25,10 +24,13 @@ elif [ "$DISTRO" = "void" ]; then
     sudo xbps-install -Su
 
 elif [ "$DISTRO" = "gentoo" ]; then
-    echo "sudo emerge --sync; sudo emerge -DuvaN --with-bdeps=y @world"
+    echo -e "${Blue}sudo emerge --sync${Rst}"
     sudo emerge --sync
+    echo -e "${Blue}sudo emerge -DuvaN --with-bdeps=y @world${Rst}"
     sudo emerge -DuvaN --with-bdeps=y @world
+    echo -e "${Blue}sudo emerge --depclean${Rst}"
     sudo emerge --depclean
+    echo -e "${Blue}sudo revdep-rebuild${Rst}"
     sudo revdep-rebuild
 
 else
@@ -39,8 +41,15 @@ fi
 git_update() {
     GIT="$@"
     DIR="$3"
-    echo -e "\nUpdated git repo in $DIR"
-    $GIT pull
+    if [ -z "$(git status --porcelain)" ]; then
+        echo -e "${Red}Local changes need to be resolved${Rst}"
+        $GIT status
+    else
+        REMOTE_BRANCH=$($GIT for-each-ref --format='%(upstream:short)' \
+                        "$( $GIT symbolic-ref -q HEAD )")
+        echo -e "${Green}Pulling from ${REMOTE_BRANCH} for repo: ${DIR}${Rst}"
+        $GIT pull
+    fi
 }
 
 # Start ssh-agent so we don't have to type passphrase multiple times
