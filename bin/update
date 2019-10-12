@@ -41,7 +41,7 @@ fi
 git_update() {
     GIT="$@"
     DIR="$3"
-    if [ -z "$(git status --porcelain)" ]; then
+    if [ -n "$($GIT status --porcelain)" ]; then
         echo -e "${Red}Local changes need to be resolved${Rst}"
         $GIT status
     else
