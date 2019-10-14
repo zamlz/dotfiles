@@ -15,6 +15,7 @@ fi
 if [ -f "$HOME/.xcompton" ]; then
     compton --config $HOME/etc/compton/rc &
 fi
+xrdb -I$HOME $HOME/etc/xorg/xresources
 
 # Start Window Manager
 session=${1:-herbstluftwm}

@@ -31,8 +31,8 @@ else
 fi
 
 # If the .arandr.sh file exists, configure the monitors as per its specs
-if [ -f "$HOME/.arandr.sh" ]; then
-    $HOME/.arandr.sh
+if [ -f "$HOME/.screenlayout/home_setup.sh" ]; then
+    $HOME/.screenlayout/home_setup.sh
 fi
 
 # Specify the primary terminal
