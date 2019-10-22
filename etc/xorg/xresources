@@ -20,7 +20,7 @@ Xft.hintstyle:              hintslight
 !#####
 
 !*font: xftPowerlineSymbols
-*font: xft:dina:size=11
+*font: xft:dina:size=9
 !*font:xft:Terminus:size=8
 !*font: xft:hack:size=10
 !*font: xft:Source Code Pro:Regular:size=10
