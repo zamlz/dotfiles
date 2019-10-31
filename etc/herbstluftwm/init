@@ -27,7 +27,9 @@ fi
 if [ -f "$HOME/.fehbg" ]; then
     $HOME/.fehbg
 else
-    xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
+    # xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
+    #xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#28292A' -bg '#010203'
+    xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
 fi
 
 # If the .arandr.sh file exists, configure the monitors as per its specs
