@@ -142,9 +142,9 @@ hc keybind $Mod-t pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Mod-space                                                           \
-            or , and . compare tags.focus.curframe_wcount = 2                   \
-                     . cycle_layout +1 vertical horizontal max vertical grid    \
+hc keybind $Mod-space                                                         \
+            or , and . compare tags.focus.curframe_wcount = 2                 \
+                     . cycle_layout +1 vertical horizontal max vertical grid  \
                , cycle_layout +1
 
 # mouse
@@ -179,11 +179,11 @@ hc attr theme.active.inner_color $XBACKGROUND
 hc attr theme.normal.color $BLACK
 hc attr theme.active.color $WHITE
 hc attr theme.urgent.color orange
-hc attr theme.border_width 8
+hc attr theme.border_width 9
 hc attr theme.inner_width 3
 hc attr theme.outer_width 3
 hc attr theme.inner_color black
-hc attr theme.floating.border_width 8
+hc attr theme.floating.border_width 9
 hc attr theme.floating.outer_width 3
 hc attr theme.floating.inner_width 3
 hc attr theme.floating.outer_color black
