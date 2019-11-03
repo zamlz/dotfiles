@@ -32,10 +32,7 @@ else
     xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
 fi
 
-# If the .arandr.sh file exists, configure the monitors as per its specs
-if [ -f "$HOME/.screenlayout/home_setup.sh" ]; then
-    $HOME/.screenlayout/home_setup.sh
-fi
+$HOME/etc/herbstluftwm/thinkpad_dock_toggle.sh
 
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
