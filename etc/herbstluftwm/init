@@ -41,7 +41,10 @@ TERMINAL="urxvtc"
 # Also have to set this here in case xorg isn't started via startx
 setxkbmap -option caps:escape
 
-# Increases the speed of the keyboard repeat rate
+# Use Display Power Management Settings to configure various things.
+# + Disable screen blanking (screensaver)
+xset s off
+# + Increases the speed of the keyboard repeat rate
 xset r rate 400 50
 
 # remove all existing keybindings
