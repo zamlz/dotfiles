@@ -255,4 +255,5 @@ hc keybind $Mod-b spawn ${BOOKLIB}
 # Finally start i3lock
 LOCKER="$HOME/lib/rofi/rofi-system"
 hc keybind $Mod-Ctrl-Alt-Escape spawn ${LOCKER}
+hc keybind $Mod-Escape spawn ${LOCKER} LOCK SCREEN
 exec xautolock -time 30 -locker "${LOCKER} LOCK SCREEN"
