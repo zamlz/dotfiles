@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REFRESH_BATTERY=2
+REFRESH_BATTERY=10
 
 while true; do
     batloc="/sys/class/power_supply/"

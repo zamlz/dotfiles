@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REFRESH_CLOCK=2
+REFRESH_CLOCK=0.5
 
 while true; do
     echo -e "CLOCK$(date +"%l:%M:%S %p")"
