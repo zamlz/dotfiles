@@ -1,0 +1,25 @@
+#!/bin/sh
+
+REFRESH_BATTERY=2
+
+while true; do
+    batloc="/sys/class/power_supply/"
+    batlist=$(ls $batloc | grep "BAT")
+    out=""
+
+    if [ -n "${batlist}" ]; then
+        for bat in $batlist; do
+            cap="$(cat ${batloc}${bat}/capacity)"
+            stat="$(cat ${batloc}${bat}/status)"
+            batid=$(echo $bat | tr -d 'BAT')
+            out="${out} ${batid}:${cap}"
+
+        done
+    else
+        out="${out} A/C"
+    fi
+
+    echo -n "BATTERY$out "
+
+    sleep $REFRESH_BATTERY
+done

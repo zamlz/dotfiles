@@ -1,0 +1,52 @@
+#!/bin/sh
+#  _                            _                                         _
+# | | ___ _ __ ___   ___  _ __ | |__   __ _ _ __   _ __   __ _ _ __   ___| |
+# | |/ _ \ '_ ` _ \ / _ \| '_ \| '_ \ / _` | '__| | '_ \ / _` | '_ \ / _ \ |
+# | |  __/ | | | | | (_) | | | | |_) | (_| | |    | |_) | (_| | | | |  __/ |
+# |_|\___|_| |_| |_|\___/|_| |_|_.__/ \__,_|_|    | .__/ \__,_|_| |_|\___|_|
+#                                                 |_|
+# New and improved lemonbar script
+
+# Import xresource colors
+. $HOME/lib/shell/xrdb_colors
+
+# GLOBALS
+PANEL_TOP_FIFO=/tmp/panel_top.fifo
+PANEL_BOT_FIFO=/tmp/panel_bot.fifo
+
+# Avoid running the panel multiple times
+if [ $(pgrep -cx panel) -gt 1 ]; then
+    printf "The panel is already running.\n" >&2
+    exit 1
+fi
+
+# Exit gracefully if terminated
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+# Remove old fifo files and add this one
+[ -e "$PANEL_TOP_FIFO" ] && rm $PANEL_TOP_FIFO
+[ -e "$PANEL_BOT_FIFO" ] && rm $PANEL_BOT_FIFO
+mkfifo $PANEL_TOP_FIFO; mkfifo $PANEL_BOT_FIFO
+
+# Add modules to the top fifo
+$HOME/etc/lemonbar/modules/userathost > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/clock > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/calendar > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/battery > $PANEL_TOP_FIFO &
+
+# Add modules to the bot fifo
+# $HOME/etc/lemonbar/modules/clock > $PANEL_BOT_FIFO &
+
+# Define lemonbar opts
+OPTS=" -g x24 \
+       -B $XBACKGROUND"
+
+# Start the top panel
+$HOME/etc/lemonbar/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
+
+# Start the bottom panel
+$HOME/etc/lemonbar/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
+
+wait
+
+# vim: set ft=sh:

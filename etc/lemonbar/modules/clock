@@ -1,0 +1,10 @@
+#!/bin/sh
+
+REFRESH_CLOCK=2
+
+while true; do
+    echo -e "CLOCK$(date +"%l:%M:%S %p")"
+    sleep $REFRESH_CLOCK
+done
+
+# vim: set ft=sh:

@@ -1,0 +1,46 @@
+#!/bin/sh
+
+# Import xresource colors
+. $HOME/lib/shell/xrdb_colors
+
+MODE="$1"
+
+while read -r line; do
+    echo "Current line: $line" >&2
+    case $line in
+        USERHOST*)
+            # Save the user at host information
+            user=""
+            user=" ${line#????????} "
+            ;;
+        CLOCK*)
+            # record the current time to a variable
+            clock=""
+            clock=" ${line#?????} "
+            ;;
+        CALENDAR*)
+            # record the current calendar date to a variable
+            cal=""
+            cal=" ${line#????????} "
+            ;;
+        BATTERY*)
+            # Record the battery information
+            bat=""
+            bat=" ${line#???????}"
+            ;;
+    esac
+
+    # Print the contents of our modules based on the mode
+    if [ "$MODE" == "TOP" ]; then
+        echo "BATTERY VALUE: ${bat}" >&2
+        printf "%s\n" "%{l}${user}%{c}${cal}${clock}%{r}${bat}"
+
+    elif [ "$MODE" == "BOT" ]; then
+        printf "%s\n" "%{l}%{c}%{r}"
+
+    else
+        printf "Panel loop given incorrect mode!\n" >&2
+    fi
+
+    # Clear all previous variables
+done

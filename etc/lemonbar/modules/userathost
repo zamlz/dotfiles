@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo -e "USERHOST$(whoami)@$(hostname) $(uname -r)"
