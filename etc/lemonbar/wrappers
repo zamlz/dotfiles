@@ -2,16 +2,12 @@
 
 # Minimal wrapper
 legacy_wrapper() {
-    icon=$1
-    color=$2
-    msg=$3
+    icon=$1 && shift && color=$1 && shift && msg=$@
     echo -ne "[$icon %{F$color}$msg%{F-}]"
 }
 
 # debug wrapper for testing
 debug_wrapper() {
-    icon=$1
-    color=$2
-    msg=$3
+    icon=$1 && shift && color=$1 && shift && msg=$@
     echo -ne "[DEBUG $icon $color $msg]"
 }

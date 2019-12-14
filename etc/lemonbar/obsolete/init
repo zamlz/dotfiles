@@ -36,8 +36,9 @@ WIDTH=${3:-512}
 # Specify various other settings for lemonbar
 xoff=0
 yoff=0
-font=$(xrdb -query | grep '*font' | \
-        awk '{print $2}' | sed -e 's|xft:||g')
+font=$(xrdb -query
+    | grep '*font' \
+    | sed -E "s/.*xft:([^:]+):.*/\\1/")
 
 # Other regional fonts (add as needed)
 ja_font=":slant=0:weight=100:pixelsize=13:antialias=True:minspace=True:lang=ja"
