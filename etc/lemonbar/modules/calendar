@@ -4,7 +4,7 @@
 REFRESH_CAL=$(($(date -d 23:59:59 +%s) - $(date +%s) + 1))
 
 while true; do
-    echo -e "CALENDAR$(date +"%A, %d %B %Y")"
+    echo -e "CALENDAR[CAL $(date +'%A, %d %B %Y')] "
     sleep $REFRESH_CAL
     # Update the seconds to total seconds in a day
     REFRESH_CAL=86400

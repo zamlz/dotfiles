@@ -37,9 +37,13 @@ $HOME/etc/lemonbar/modules/battery > $PANEL_TOP_FIFO &
 # Add modules to the bot fifo
 # $HOME/etc/lemonbar/modules/clock > $PANEL_BOT_FIFO &
 
+# Find th font to use.
+font=$(xrdb -query | grep '*font' | \
+    awk '{print $2}' | sed -e 's|xft:||g')
+
 # Define lemonbar opts
-OPTS=" -g x24 \
-       -B $XBACKGROUND"
+OPTS=" -g x24
+       -B ${XBACKGROUND}"
 
 # Start the top panel
 $HOME/etc/lemonbar/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &

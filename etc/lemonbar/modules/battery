@@ -1,6 +1,6 @@
 #!/bin/sh
 
-REFRESH_BATTERY=10
+REFRESH_BATTERY=2
 
 while true; do
     batloc="/sys/class/power_supply/"
@@ -19,7 +19,7 @@ while true; do
         out="${out} A/C"
     fi
 
-    echo -n "BATTERY$out "
+    echo "BATTERY[BAT $out]"
 
     sleep $REFRESH_BATTERY
 done

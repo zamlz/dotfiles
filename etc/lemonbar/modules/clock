@@ -3,7 +3,7 @@
 REFRESH_CLOCK=0.5
 
 while true; do
-    echo -e "CLOCK$(date +"%l:%M:%S %p")"
+    echo -e "CLOCK[TIME $(date +'%l:%M:%S %p')"
     sleep $REFRESH_CLOCK
 done
 
