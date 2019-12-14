@@ -9,6 +9,7 @@
 
 # Import xresource colors
 . $HOME/lib/shell/xrdb_colors
+. $HOME/etc/lemonbar/wrappers
 
 # GLOBALS
 PANEL_TOP_FIFO=/tmp/panel_top.fifo
@@ -28,11 +29,16 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 [ -e "$PANEL_BOT_FIFO" ] && rm $PANEL_BOT_FIFO
 mkfifo $PANEL_TOP_FIFO; mkfifo $PANEL_BOT_FIFO
 
+# Set the message wrapper to be used
+MSG_WRAPPER=legacy_wrapper
+
 # Add modules to the top fifo
-$HOME/etc/lemonbar/modules/userathost > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/clock > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/calendar > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/battery > $PANEL_TOP_FIFO &
+. $HOME/etc/lemonbar/modules/backlight  > $PANEL_TOP_FIFO &
+. $HOME/etc/lemonbar/modules/battery    > $PANEL_TOP_FIFO &
+. $HOME/etc/lemonbar/modules/calendar   > $PANEL_TOP_FIFO &
+. $HOME/etc/lemonbar/modules/clock      > $PANEL_TOP_FIFO &
+. $HOME/etc/lemonbar/modules/userathost > $PANEL_TOP_FIFO &
+. $HOME/etc/lemonbar/modules/windowinfo > $PANEL_TOP_FIFO &
 
 # Add modules to the bot fifo
 # $HOME/etc/lemonbar/modules/clock > $PANEL_BOT_FIFO &

@@ -5,14 +5,14 @@
 . $HOME/etc/lemonbar/wrappers
 wrapper=${MSG_WRAPPER:-debug_wrapper}
 
-REFRESH_CLOCK=0.5
-ICON="TIME"
+REFRESH_LIGHT=1
+ICON="BKL"
 
 while true; do
-    msg=$(date +'%l:%M:%S %p')
-    msg=$($wrapper $ICON $GREEN $msg)
-    echo "CLOCK$msg"
-    sleep $REFRESH_CLOCK
+    msg=$(xbacklight -get)
+    msg=$($wrapper $ICON $YELLOW $msg)
+    echo "BACKLIGHT$msg"
+    sleep $REFRESH_LIGHT
 done
 
 # vim: set ft=sh:

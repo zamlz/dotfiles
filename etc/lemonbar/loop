@@ -9,26 +9,22 @@ while read -r line; do
     # echo "Current line: $line" >&2
     case $line in
         USERHOST*)
-            # Save the user at host information
-            user="${line#????????}"
-            ;;
+            user="${line#????????}" ;;
         CLOCK*)
-            # record the current time to a variable
-            clock="${line#?????}"
-            ;;
+            clock="${line#?????}" ;;
         CALENDAR*)
-            # record the current calendar date to a variable
-            cal="${line#????????}"
-            ;;
+            cal="${line#????????}" ;;
         BATTERY*)
-            # Record the battery information
-            bat="${line#???????}"
-            ;;
+            bat="${line#???????}" ;;
+        BACKLIGHT*)
+            bkl="${line#?????????}" ;;
+        WININFO*)
+            win="${line#???????}" ;;
     esac
 
     # Print the contents of our modules based on the mode
     if [ "$MODE" == "TOP" ]; then
-        printf "%s\n" "%{l}${user}%{c}%{r}${bat}${cal}${clock}"
+        printf "%s\n" "%{l}${user}%{c}${win}%{r}${bat}${bkl}${cal}${clock}"
 
     elif [ "$MODE" == "BOT" ]; then
         printf "%s\n" "%{l}%{c}%{r}"

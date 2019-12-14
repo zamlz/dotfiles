@@ -1,6 +1,12 @@
 #!/bin/sh
 
+# Need to import again in case we use it as a standalone script
+. $HOME/lib/shell/xrdb_colors
+. $HOME/etc/lemonbar/wrappers
+wrapper=${MSG_WRAPPER:-debug_wrapper}
+
 REFRESH_BATTERY=2
+ICON="BAT"
 
 while true; do
     batloc="/sys/class/power_supply/"
@@ -19,7 +25,9 @@ while true; do
         out="${out} A/C"
     fi
 
-    echo "BATTERY[BAT $out]"
-
+    msg="[$ICON $out]"
+    echo "BATTERY$msg"
     sleep $REFRESH_BATTERY
 done
+
+# vim: set ft=sh:

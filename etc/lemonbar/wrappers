@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Minimal wrapper
+legacy_wrapper() {
+    icon=$1
+    color=$2
+    msg=$3
+    echo -ne "[$icon %{F$color}$msg%{F-}]"
+}
+
+# debug wrapper for testing
+debug_wrapper() {
+    icon=$1
+    color=$2
+    msg=$3
+    echo -ne "[DEBUG $icon $color $msg]"
+}

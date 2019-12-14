@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Need to import again in case we use it as a standalone script
+. $HOME/lib/shell/xrdb_colors
+. $HOME/etc/lemonbar/wrappers
+wrapper=${MSG_WRAPPER:-debug_wrapper}
+
+REFRESH_WININFO=0.5
+ICON="WIN"
+
+while true; do
+    win_active=$(xdotool getactivewindow)
+    win_class=$(xprop -id $win_active \
+        | grep WM_CLASS \
+        | awk '{print $NF}' \
+        | tr -d '"' )
+
+    msg="$win_class ($win_active)"
+    msg=$($wrapper $ICON $BLUE $msg)
+    echo "WININFO$msg"
+    sleep $REFRESH_WININFO
+done
+
+# vim: set ft=sh:
