@@ -103,7 +103,7 @@ hc keybind $Mod-o       split   right   0.5
 hc keybind $Mod-Control-space split explode
 
 # resizing frames
-resizestep=0.05
+resizestep=0.01
 hc keybind $Mod-Control-h       resize left +$resizestep
 hc keybind $Mod-Control-j       resize down +$resizestep
 hc keybind $Mod-Control-k       resize up +$resizestep
