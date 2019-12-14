@@ -24,7 +24,10 @@ while read -r line; do
 
     # Print the contents of our modules based on the mode
     if [ "$MODE" == "TOP" ]; then
-        printf "%s\n" "%{l}${user}%{c}${win}%{r}${bat}${bkl}${cal}${clock}"
+        m1="%{S0}%{c}$user"
+        m2="%{S1}%{c}$win"
+        m3="%{S2}%{l}$bat%{c}$cal$clock%{r}$bkl"
+        printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "BOT" ]; then
         printf "%s\n" "%{l}%{c}%{r}"

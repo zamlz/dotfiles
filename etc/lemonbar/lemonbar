@@ -16,7 +16,7 @@ PANEL_TOP_FIFO=/tmp/panel_top.fifo
 PANEL_BOT_FIFO=/tmp/panel_bot.fifo
 
 # Avoid running the panel multiple times
-if [ $(pgrep -cx panel) -gt 1 ]; then
+if [ $(pgrep -cx lemonbar) -gt 1 ]; then
     printf "The panel is already running.\n" >&2
     exit 1
 fi
