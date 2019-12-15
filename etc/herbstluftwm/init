@@ -114,7 +114,7 @@ hc keybind $Mod-Control-Up      resize up +$resizestep
 hc keybind $Mod-Control-Right   resize right +$resizestep
 
 # tags
-tag_names=({1..10})
+tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
 tag_keys=( {1..9} 0 )
 
 hc rename default "${tag_names[0]}" || true
@@ -259,4 +259,4 @@ hc keybind $Mod-b spawn ${BOOKLIB}
 LOCKER="$HOME/lib/rofi/rofi-system"
 hc keybind $Mod-Ctrl-Alt-Escape spawn ${LOCKER}
 hc keybind $Mod-Escape spawn ${LOCKER} LOCK SCREEN
-exec xautolock -time 30 -locker "${LOCKER} LOCK SCREEN"
+# exec xautolock -time 30 -locker "${LOCKER} LOCK SCREEN"
