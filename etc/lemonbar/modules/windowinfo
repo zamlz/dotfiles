@@ -15,7 +15,13 @@ herbstclient --idle '(focus_changed|window_title_changed|panel_init)' \
         | awk '{print $NF}' \
         | tr -d '"' )
 
-    msg="$win_class ($win_active)"
+    if [ -z "$win_class" ]; then
+        msg="<$(xprop -root _NET_WM_NAME \
+            | cut -d " " -f3- \
+            | tr -d '"')>"
+    else
+        msg="$win_class ($win_active)"
+    fi
     msg=$($wrapper $ICON $BLUE $msg)
     echo "WININFO$msg"
     sleep $REFRESH_WININFO
