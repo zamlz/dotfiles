@@ -19,9 +19,9 @@ xrdb -I$HOME $HOME/etc/xorg/xresources
 . $HOME/lib/shell/xrdb_colors
 
 # Start the urxvt daemon
-if [ -z "$(ps -x | grep urxvtd | grep -v grep)" ]; then
-    urxvtd -q -o -f
-fi
+#if [ -z "$(pgrep urxvtd)" ]; then
+#    urxvtd -q -o -f
+#fi
 
 # Set the background
 if [ -f "$HOME/.fehbg" ]; then
@@ -36,7 +36,7 @@ $HOME/etc/herbstluftwm/thinkpad_dock_toggle.sh
 
 # Specify the primary terminal
 # TERMINAL="urxvtc +j +ss"
-TERMINAL="urxvtc"
+TERMINAL="urxvt"
 
 # Also have to set this here in case xorg isn't started via startx
 setxkbmap -option caps:escape
