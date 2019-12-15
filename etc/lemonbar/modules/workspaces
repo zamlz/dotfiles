@@ -5,7 +5,7 @@
 . $HOME/etc/lemonbar/wrappers
 wrapper=${MSG_WRAPPER:-debug_wrapper}
 
-REFRESH_WORKSPACE=0.01
+REFRESH_WORKSPACE=0.0001
 ICON="WSP"
 
 while true; do

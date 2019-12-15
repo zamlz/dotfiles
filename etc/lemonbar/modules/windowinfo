@@ -5,7 +5,7 @@
 . $HOME/etc/lemonbar/wrappers
 wrapper=${MSG_WRAPPER:-debug_wrapper}
 
-REFRESH_WININFO=0.5
+REFRESH_WININFO=1.0
 ICON="WIN"
 
 while true; do
