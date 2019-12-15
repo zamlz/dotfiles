@@ -8,29 +8,39 @@ MODE="$1"
 while read -r line; do
     # echo "Current line: $line" >&2
     case $line in
-        USERHOST*)
-            user="${line#????????}" ;;
-        CLOCK*)
-            clock="${line#?????}" ;;
-        CALENDAR*)
-            cal="${line#????????}" ;;
-        BATTERY*)
-            bat="${line#???????}" ;;
         BACKLIGHT*)
             bkl="${line#?????????}" ;;
+        BATTERY*)
+            bat="${line#???????}" ;;
+        CALENDAR*)
+            cal="${line#????????}" ;;
+        CLOCK*)
+            clock="${line#?????}" ;;
+        NETWORK*)
+            net="${line#???????}" ;;
+        USERHOST*)
+            user="${line#????????}" ;;
         WININFO*)
             win="${line#???????}" ;;
+        WORKSPACE*)
+            wsp="${line#?????????}" ;;
     esac
 
     # Print the contents of our modules based on the mode
-    if [ "$MODE" == "TOP" ]; then
+    if [ "$MODE" == "TOP_FULL" ]; then
         m1="%{S0}%{c}$user"
         m2="%{S1}%{c}$win"
         m3="%{S2}%{l}$bat%{c}$cal$clock%{r}$bkl"
         printf "%s\n" "$m1$m2$m3"
 
+    elif [ "$MODE" == "TOP" ]; then
+        m1="%{l}$user"
+        m2="%{c}$win"
+        m3="%{r}$bat$cal$clock$bkl"
+        printf "%s\n" "$m1$m2$m3"
+
     elif [ "$MODE" == "BOT" ]; then
-        printf "%s\n" "%{l}%{c}%{r}"
+        printf "%s\n" "%{l}%{c}$wsp%{r}$net"
 
     else
         printf "Panel loop given incorrect mode!\n" >&2

@@ -1,0 +1,58 @@
+#!/bin/sh
+
+# Need to import again in case we use it as a standalone script
+. $HOME/lib/shell/xrdb_colors
+. $HOME/etc/lemonbar/wrappers
+wrapper=${MSG_WRAPPER:-debug_wrapper}
+
+REFRESH_WORKSPACE=0.01
+ICON="WSP"
+
+while true; do
+
+    # convert the current space id to index-1 format
+    current_space_id=$(xprop -root _NET_CURRENT_DESKTOP \
+        | awk '{print $3}')
+    total_spaces=$(xprop -root _NET_NUMBER_OF_DESKTOPS \
+        | awk '{print $3}')
+    all_space_names=$(xprop -root _NET_DESKTOP_NAMES \
+        | cut -d " " -f3- \
+        | tr -d ',"')
+    active_windows=$(xprop -root _NET_CLIENT_LIST \
+        | cut -d " " -f5- \
+        | tr -d ',')
+    active_spaces=$(for window in $active_windows; do \
+        xprop -id $window _NET_WM_DESKTOP \
+        | cut -d " " -f3- ; done)
+    msg=""
+
+
+    for space_id in $(seq $total_spaces); do
+
+        # Get the actual name of the workspace
+        ws=$(echo $all_space_names | awk -v N=$space_id '{print $N}')
+        # Fix the index of the space_id to be zero index
+        # (note, awk needs to be in index 1 format)
+        space_id=$((space_id - 1))
+
+        # check if the workspace is empty
+        if [ -z "$(echo $active_spaces | grep $space_id)" ]; then
+            ws="%{F#383838}$ws%{F-}"
+        else
+            ws="%{F$RED}$ws%{F-}"
+        fi
+
+        # mark output if currently focused
+        if [ $space_id -eq $current_space_id ]; then
+            msg="$msg %{+u}$ws%{-u}"
+        else
+            msg="$msg $ws"
+        fi
+    done;
+
+    msg=$($wrapper $ICON '-' $msg)
+    echo "WORKSPACE$msg"
+    sleep $REFRESH_WORKSPACE
+done
+
+# vim: set ft=sh:

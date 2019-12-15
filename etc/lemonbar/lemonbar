@@ -41,7 +41,8 @@ MSG_WRAPPER=legacy_wrapper
 . $HOME/etc/lemonbar/modules/windowinfo > $PANEL_TOP_FIFO &
 
 # Add modules to the bot fifo
-# $HOME/etc/lemonbar/modules/clock > $PANEL_BOT_FIFO &
+. $HOME/etc/lemonbar/modules/network    > $PANEL_BOT_FIFO &
+. $HOME/etc/lemonbar/modules/workspaces > $PANEL_BOT_FIFO &
 
 # Find th font to use.
 font=$(xrdb -query \
@@ -52,7 +53,8 @@ font=$(xrdb -query \
 OPTS="  -g x24
     -F ${XFOREGROUND}
     -B ${XBACKGROUND}
-    -f ${font}"
+    -f ${font}
+    -u 3"
 
 # Start the top panel
 $HOME/etc/lemonbar/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
