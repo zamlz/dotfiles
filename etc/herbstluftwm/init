@@ -242,6 +242,7 @@ done
 # $HOME/etc/polybar/init.sh &
 pkill -x lemonbar
 $HOME/etc/lemonbar/lemonbar &
+(sleep 0.2 && hc emit_hook panel_init) &
 
 # Create the program launcher
 LAUNCHER="rofi -show run"

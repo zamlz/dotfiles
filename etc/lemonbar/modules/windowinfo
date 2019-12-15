@@ -5,10 +5,10 @@
 . $HOME/etc/lemonbar/wrappers
 wrapper=${MSG_WRAPPER:-debug_wrapper}
 
-REFRESH_WININFO=1.0
 ICON="WIN"
 
-while true; do
+herbstclient --idle '(focus_changed|window_title_changed|panel_init)' \
+| while read -r window_event; do
     win_active=$(xdotool getactivewindow)
     win_class=$(xprop -id $win_active \
         | grep WM_CLASS \

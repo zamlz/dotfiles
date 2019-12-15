@@ -5,10 +5,10 @@
 . $HOME/etc/lemonbar/wrappers
 wrapper=${MSG_WRAPPER:-debug_wrapper}
 
-REFRESH_WORKSPACE=0.0001
 ICON="WSP"
 
-while true; do
+herbstclient --idle '(tag_changed|focus_changed|panel_init)' \
+| while read -r workspace_event; do
 
     # convert the current space id to index-1 format
     current_space_id=$(xprop -root _NET_CURRENT_DESKTOP \
@@ -52,7 +52,6 @@ while true; do
 
     msg=$($wrapper $ICON '-' $msg)
     echo "WORKSPACE$msg"
-    sleep $REFRESH_WORKSPACE
 done
 
 # vim: set ft=sh:
