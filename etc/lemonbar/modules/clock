@@ -1,18 +1,12 @@
 #!/bin/sh
 
-# Need to import again in case we use it as a standalone script
-. $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/config
-wrapper=${MSG_WRAPPER:-debug_wrapper}
-
-REFRESH_CLOCK=1.0
-ICON="TIME"
 
 while true; do
     msg=$(date +'%l:%M:%S %p')
-    msg=$($wrapper $ICON $GREEN $msg)
+    msg=$($MSG_WRAPPER $ICON_TIME $GREEN $msg)
     echo "CLOCK$msg"
-    sleep $REFRESH_CLOCK
+    sleep $REFRESH_TIME
 done
 
 # vim: set ft=sh:

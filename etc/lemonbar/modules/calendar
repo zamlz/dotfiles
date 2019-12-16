@@ -1,20 +1,16 @@
 #!/bin/sh
 
-# Need to import again in case we use it as a standalone script
-. $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/config
-wrapper=${MSG_WRAPPER:-debug_wrapper}
 
 # Set the refresh time to how many seconds till midnight
-REFRESH_CAL=$(($(date -d 23:59:59 +%s) - $(date +%s) + 1))
-ICON="CAL"
+REFRESH_DATE=$(($(date -d 23:59:59 +%s) - $(date +%s) + 1))
 
 while true; do
     msg=$(date +'%A, %d %B %Y')
-    msg=$($wrapper $ICON $GREEN $msg)
+    msg=$($MSG_WRAPPER $ICON_DATE $GREEN $msg)
     echo "CALENDAR$msg"
-    sleep $REFRESH_CAL
-    REFRESH_CAL=86400 # Update the seconds to total seconds in a day
+    sleep $REFRESH_DATE
+    REFRESH_DATE=86400 # Update the seconds to total seconds in a day
 done
 
 # vim: set ft=sh:

@@ -1,11 +1,6 @@
 #!/bin/sh
 
-# Need to import again in case we use it as a standalone script
-. $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/config
-wrapper=${MSG_WRAPPER:-debug_wrapper}
-
-ICON="WIN"
 
 while read -r window_event; do
     win_active=$(xdotool getactivewindow)
@@ -21,7 +16,7 @@ while read -r window_event; do
     else
         msg="$win_class ($win_active)"
     fi
-    msg=$($wrapper $ICON $BLUE $msg)
+    msg=$($MSG_WRAPPER $ICON_WININFO $BLUE $msg)
     echo "WININFO$msg"
     sleep $REFRESH_WININFO
 done

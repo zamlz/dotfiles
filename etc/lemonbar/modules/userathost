@@ -1,14 +1,9 @@
 #!/bin/sh
 
-# Need to import again in case we use it as a standalone script
-. $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/config
-wrapper=${MSG_WRAPPER:-debug_wrapper}
-
-ICON="USER"
 
 msg="$(whoami)@$(hostname) $(uname -r)"
-msg=$($wrapper $ICON $RED $msg)
+msg=$($MSG_WRAPPER $ICON_WHOAMI $RED $msg)
 echo "USERHOST$msg"
 
 # vim: set ft=sh:

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# Import modules needed but anything that imports this config
+. $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/wrappers
 
 # Config variables used by all components of lemonbar
@@ -15,3 +17,24 @@ EVENT_WIN_FIFO=/tmp/wininfo_event.fifo
 
 # Choose the output wrapper
 MSG_WRAPPER=legacy_wrapper
+
+# Refresh rates of non-event based modules
+REFRESH_BACKLIGHT=1
+REFRESH_BATTERY=2
+REFRESH_DATE=86400
+REFRESH_NETWORK=2
+REFRESH_TIME=1
+
+# Icons for various modules
+ICON_BACKLIGHT="BKL"
+ICON_BATTERY="BAT"
+ICON_DATE="DATE"
+ICON_NETWORK="NET"
+ICON_TIME="TIME"
+ICON_WHOAMI="USER"
+ICON_WININFO="WIN"
+ICON_WORKSPACES="WSP"
+
+# Hardware Specification
+WLAN0="wlp82s0"
+ETHO0="enp0s31f6"
