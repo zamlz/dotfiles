@@ -1,8 +1,5 @@
 #!/bin/sh
 
-# Import xresource colors
-. $HOME/lib/shell/xrdb_colors
-
 MODE="$1"
 
 while read -r line; do
@@ -13,7 +10,7 @@ while read -r line; do
         BATTERY*)
             bat="${line#???????}" ;;
         DATE*)
-            cal="${line#????????}" ;;
+            cal="${line#????}";;
         NETWORK*)
             net="${line#???????}" ;;
         TIME*)
@@ -36,11 +33,14 @@ while read -r line; do
     elif [ "$MODE" == "TOP" ]; then
         m1="%{l}$user"
         m2="%{c}$win"
-        m3="%{r}$bat$cal$clock$bkl"
+        m3="%{r}$cal$clock"
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "BOT" ]; then
-        printf "%s\n" "%{l}%{c}$wsp%{r}$net"
+        m1="%{l}"
+        m2="%{c}$wsp"
+        m3="%{r}$bkl$net$bat"
+        printf "%s\n" "$m1$m2$m3"
 
     else
         printf "Panel loop given incorrect mode!\n" >&2

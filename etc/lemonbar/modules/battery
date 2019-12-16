@@ -19,7 +19,7 @@ while true; do
         out="${out} A/C"
     fi
 
-    msg=$($MSG_WRAPPER $ICON_BATTERY $MAGENTA $out)
+    msg=$($MSG_WRAPPER $ICON_BATTERY $CYAN $out)
     echo "BATTERY$msg"
     sleep $REFRESH_BATTERY
 done

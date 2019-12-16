@@ -25,7 +25,7 @@ while true; do
         msg="OFFLINE"
     fi
 
-    msg=$($MSG_WRAPPER $ICON_NETWORK $CYAN $msg)
+    msg=$($MSG_WRAPPER $ICON_NETWORK $MAGENTA $msg)
     echo "NETWORK$msg"
     sleep $REFRESH_NETWORK
 done

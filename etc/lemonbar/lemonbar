@@ -19,14 +19,14 @@ fi
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # Add modules to the top fifo
-$HOME/etc/lemonbar/modules/backlight    > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/date         > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/time         > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/userathost   > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_TOP_FIFO &
 
 # Add modules to the bot fifo
+$HOME/etc/lemonbar/modules/backlight    > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/battery      > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/network      > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/workspaces   < $EVENT_WSP_FIFO > $PANEL_BOT_FIFO &
 
