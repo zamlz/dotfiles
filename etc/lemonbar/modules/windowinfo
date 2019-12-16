@@ -17,7 +17,7 @@ while read -r window_event; do
         msg="$win_class ($win_active)"
     fi
     msg=$($MSG_WRAPPER $ICON_WININFO $BLUE $msg)
-    echo "WININFO$msg"
+    echo "$ANCHOR_WININFO$msg"
     sleep $REFRESH_WININFO
 done
 

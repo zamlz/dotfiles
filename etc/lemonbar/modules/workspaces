@@ -45,7 +45,7 @@ while read -r workspace_event; do
     done;
 
     msg=$($MSG_WRAPPER $ICON_WORKSPACES '-' $msg)
-    echo "WORKSPACE$msg"
+    echo "$ANCHOR_WORKSPACES$msg"
 done
 
 # vim: set ft=sh:

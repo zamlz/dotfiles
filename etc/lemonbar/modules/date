@@ -8,7 +8,7 @@ REFRESH_DATE=$(($(date -d 23:59:59 +%s) - $(date +%s) + 1))
 while true; do
     msg=$(date +'%A, %d %B %Y')
     msg=$($MSG_WRAPPER $ICON_DATE $GREEN $msg)
-    echo "DATE$msg"
+    echo "$ANCHOR_DATE$msg"
     sleep $REFRESH_DATE
     REFRESH_DATE=86400 # Update the seconds to total seconds in a day
 done

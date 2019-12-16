@@ -20,7 +20,7 @@ while true; do
     fi
 
     msg=$($MSG_WRAPPER $ICON_BATTERY $CYAN $out)
-    echo "BATTERY$msg"
+    echo "$ANCHOR_BATTERY$msg"
     sleep $REFRESH_BATTERY
 done
 

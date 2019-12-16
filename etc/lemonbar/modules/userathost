@@ -4,6 +4,6 @@
 
 msg="$(whoami)@$(hostname) $(uname -r)"
 msg=$($MSG_WRAPPER $ICON_WHOAMI $RED $msg)
-echo "USERHOST$msg"
+echo "$ANCHOR_WHOAMI$msg"
 
 # vim: set ft=sh:

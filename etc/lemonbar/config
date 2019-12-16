@@ -18,6 +18,16 @@ EVENT_WIN_FIFO=/tmp/wininfo_event.fifo
 # Choose the output wrapper
 MSG_WRAPPER=legacy_wrapper
 
+# Specify the Anchor Character for each module
+ANCHOR_BACKLIGHT='L'
+ANCHOR_BATTERY='B'
+ANCHOR_DATE='D'
+ANCHOR_NETWORK='N'
+ANCHOR_TIME='T'
+ANCHOR_WHOAMI='U'
+ANCHOR_WININFO='X'
+ANCHOR_WORKSPACES='W'
+
 # Refresh rates of non-event based modules
 REFRESH_BACKLIGHT=1
 REFRESH_BATTERY=2

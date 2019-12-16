@@ -5,7 +5,7 @@
 while true; do
     msg=$(xbacklight -get)
     msg=$($MSG_WRAPPER $ICON_BACKLIGHT $YELLOW $msg)
-    echo "BACKLIGHT$msg"
+    echo "$ANCHOR_BACKLIGHT$msg"
     sleep $REFRESH_BACKLIGHT
 done
 

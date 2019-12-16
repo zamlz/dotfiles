@@ -1,39 +1,32 @@
 #!/bin/sh
 
+. $HOME/etc/lemonbar/config
 MODE="$1"
 
 while read -r line; do
     # echo "Current line: $line" >&2
     case $line in
-        BACKLIGHT*)
-            bkl="${line#?????????}" ;;
-        BATTERY*)
-            bat="${line#???????}" ;;
-        DATE*)
-            cal="${line#????}";;
-        NETWORK*)
-            net="${line#???????}" ;;
-        TIME*)
-            clock="${line#?????}" ;;
-        USERHOST*)
-            user="${line#????????}" ;;
-        WININFO*)
-            win="${line#???????}" ;;
-        WORKSPACE*)
-            wsp="${line#?????????}" ;;
+        $ANCHOR_BACKLIGHT*)     bkl="${line#?}" ;;
+        $ANCHOR_BATTERY*)       bat="${line#?}" ;;
+        $ANCHOR_DATE*)          cal="${line#?}" ;;
+        $ANCHOR_NETWORK*)       net="${line#?}" ;;
+        $ANCHOR_TIME*)          clk="${line#?}" ;;
+        $ANCHOR_WHOAMI*)        usr="${line#?}" ;;
+        $ANCHOR_WININFO*)       win="${line#?}" ;;
+        $ANCHOR_WORKSPACES*)    wsp="${line#?}" ;;
     esac
 
     # Print the contents of our modules based on the mode
     if [ "$MODE" == "TOP_FULL" ]; then
-        m1="%{S0}%{c}$user"
+        m1="%{S0}%{c}$usr"
         m2="%{S1}%{c}$win"
-        m3="%{S2}%{l}$bat%{c}$cal$clock%{r}$bkl"
+        m3="%{S2}%{l}$bat%{c}$cal$clk%{r}$bkl"
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "TOP" ]; then
-        m1="%{l}$user"
+        m1="%{l}$usr"
         m2="%{c}$win"
-        m3="%{r}$cal$clock"
+        m3="%{r}$cal$clk"
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "BOT" ]; then
