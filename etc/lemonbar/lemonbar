@@ -7,8 +7,6 @@
 #                                                 |_|
 # New and improved lemonbar script
 
-# Import xresource colors
-. $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/config
 
 # Avoid running the panel multiple times
@@ -23,8 +21,8 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 # Add modules to the top fifo
 $HOME/etc/lemonbar/modules/backlight    > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/calendar     > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/clock        > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/date         > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/time         > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/userathost   > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_TOP_FIFO &
 

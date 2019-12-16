@@ -5,7 +5,7 @@
 while true; do
     msg=$(date +'%l:%M:%S %p')
     msg=$($MSG_WRAPPER $ICON_TIME $GREEN $msg)
-    echo "CLOCK$msg"
+    echo "TIME$msg"
     sleep $REFRESH_TIME
 done
 
