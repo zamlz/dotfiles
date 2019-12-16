@@ -1,0 +1,19 @@
+#!/bin/sh
+
+# We use a seperate script to make the FIFOs so that other processes can
+# start buffering without having to wait for lemonbar to finish starting.
+# THEREFORE, this needs to be called before spawning lemonbar
+
+. $HOME/etc/lemonbar/config
+
+# Remake old panel fifo files
+[ -e "$PANEL_TOP_FIFO" ] && rm $PANEL_TOP_FIFO
+[ -e "$PANEL_BOT_FIFO" ] && rm $PANEL_BOT_FIFO
+mkfifo $PANEL_TOP_FIFO
+mkfifo $PANEL_BOT_FIFO
+
+# Remake old event fifos
+[ -e "$EVENT_WSP_FIFO" ] && rm $EVENT_WSP_FIFO
+[ -e "$EVENT_WIN_FIFO" ] && rm $EVENT_WIN_FIFO
+mkfifo $EVENT_WSP_FIFO
+mkfifo $EVENT_WIN_FIFO

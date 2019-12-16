@@ -1,0 +1,17 @@
+#!/bin/sh
+
+. $HOME/etc/lemonbar/wrappers
+
+# Config variables used by all components of lemonbar
+# ---------------------------------------------------
+
+# Primary FIFOs
+PANEL_TOP_FIFO=/tmp/panel_top.fifo
+PANEL_BOT_FIFO=/tmp/panel_bot.fifo
+
+# Event FIFOs
+EVENT_WSP_FIFO=/tmp/workspace_event.fifo
+EVENT_WIN_FIFO=/tmp/wininfo_event.fifo
+
+# Choose the output wrapper
+MSG_WRAPPER=legacy_wrapper

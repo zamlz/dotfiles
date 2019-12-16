@@ -9,11 +9,7 @@
 
 # Import xresource colors
 . $HOME/lib/shell/xrdb_colors
-. $HOME/etc/lemonbar/wrappers
-
-# GLOBALS
-PANEL_TOP_FIFO=/tmp/panel_top.fifo
-PANEL_BOT_FIFO=/tmp/panel_bot.fifo
+. $HOME/etc/lemonbar/config
 
 # Avoid running the panel multiple times
 if [ $(pgrep -cx lemonbar) -gt 1 ]; then
@@ -24,25 +20,17 @@ fi
 # Exit gracefully if terminated
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
-# Remove old fifo files and add this one
-[ -e "$PANEL_TOP_FIFO" ] && rm $PANEL_TOP_FIFO
-[ -e "$PANEL_BOT_FIFO" ] && rm $PANEL_BOT_FIFO
-mkfifo $PANEL_TOP_FIFO; mkfifo $PANEL_BOT_FIFO
-
-# Set the message wrapper to be used
-MSG_WRAPPER=legacy_wrapper
-
 # Add modules to the top fifo
-. $HOME/etc/lemonbar/modules/backlight  > $PANEL_TOP_FIFO &
-. $HOME/etc/lemonbar/modules/battery    > $PANEL_TOP_FIFO &
-. $HOME/etc/lemonbar/modules/calendar   > $PANEL_TOP_FIFO &
-. $HOME/etc/lemonbar/modules/clock      > $PANEL_TOP_FIFO &
-. $HOME/etc/lemonbar/modules/userathost > $PANEL_TOP_FIFO &
-. $HOME/etc/lemonbar/modules/windowinfo > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/backlight    > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/calendar     > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/clock        > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/userathost   > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_TOP_FIFO &
 
 # Add modules to the bot fifo
-. $HOME/etc/lemonbar/modules/network    > $PANEL_BOT_FIFO &
-. $HOME/etc/lemonbar/modules/workspaces > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/network      > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/workspaces   < $EVENT_WSP_FIFO > $PANEL_BOT_FIFO &
 
 # Find th font to use.
 font=$(xrdb -query \

@@ -2,7 +2,7 @@
 
 # Need to import again in case we use it as a standalone script
 . $HOME/lib/shell/xrdb_colors
-. $HOME/etc/lemonbar/wrappers
+. $HOME/etc/lemonbar/config
 wrapper=${MSG_WRAPPER:-debug_wrapper}
 
 WIFI_INTERFACE="wlp82s0"

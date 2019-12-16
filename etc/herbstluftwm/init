@@ -240,9 +240,17 @@ for monitor in $(seq 0 2); do
 done
 
 # $HOME/etc/polybar/init.sh &
+
+# Starting lemonbar is tricky because of the event fifos. We make them first
+# so other processes can start writing to them as fast as possible. However,
+# then it can also be too fast. herbstclient --idle may not be ready to
+# emit the hooks yet, so we delay it by a small fract of time
 pkill -x lemonbar
+. $HOME/etc/lemonbar/make_fifos
 $HOME/etc/lemonbar/lemonbar &
-(sleep 0.2 && hc emit_hook panel_init) &
+hc --idle > $EVENT_WSP_FIFO &
+hc --idle '(focus_changed|window_title|panel_init)' > $EVENT_WIN_FIFO &
+(sleep 0.1 && hc emit_hook panel_init) &
 
 # Create the program launcher
 LAUNCHER="rofi -show run"
