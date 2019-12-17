@@ -1,28 +1,49 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+ip_toggle=/tmp/.ip_toggle
 
 while true; do
-    msg=""
-    wifi_status=$(iw $WLAN0 link)
+
+    wifi_status=$(ip -br addr | grep $WIFI_INTERFACE)
+    ethernet_status=$(ip -br addr | grep $ETHERNET_INTERFACE)
+
+    interface=""
+    primary_msg=""
 
     # Check if wifi is online
-    if [ "$wifi_status" != "Not connected." ]; then
-        ssid=$(iw $WLAN0 link \
+    if [ "$(echo $wifi_status | awk '{print $2}')" = "UP" ]; then
+
+        ssid=$(iw $WIFI_INTERFACE link \
             | grep 'SSID:' \
             | sed -E "s/.*SSID:(.*)/\\1/")
-        signal=$(iw $WLAN0 link \
+
+        signal=$(iw $WIFI_INTERFACE link \
             | grep 'signal' \
             | awk '{print $2}')
-        msg="$WLAN0: $ssid ($signal dBm)"
+
+        interface=$WIFI_INTERFACE
+        primary_msg="$ssid ($signal dBm)"
+        ip_addr=$(echo $wifi_status | awk '{print $3}')
 
     # Check if ethernet is online
-    elif false; then
-        msg="Ethernet"
+    elif [ "$(echo $ethernet_status | awk '{print $2}')" = "UP" ]; then
+        interface=$ETHERNET_INTERFACE
+        primary_msg="Ethernet"
+        ip_addr=$(echo $ethernet_status | awk '{print $3}')
 
     # State we are offline
     else
-        msg="OFFLINE"
+        interface="localhost"
+        primary_msg="OFFLINE"
+        ip_addr="127.0.0.1/8"
+    fi
+
+    # If the ip toggle file exists, print the ip address
+    if [ -f "$ip_toggle" ]; then
+        msg="%{A:rm $ip_toggle:}$interface: $ip_addr%{A}"
+    else
+        msg="%{A:touch $ip_toggle:}$interface: $primary_msg%{A}"
     fi
 
     msg=$($MSG_WRAPPER $ICON_NETWORK $MAGENTA $msg)
