@@ -246,7 +246,7 @@ done
 # then it can also be too fast. herbstclient --idle may not be ready to
 # emit the hooks yet, so we delay it by a small fract of time
 pkill -x lemonbar
-. $HOME/etc/lemonbar/make_fifos
+. $HOME/etc/lemonbar/utils/make_fifos
 $HOME/etc/lemonbar/lemonbar &
 hc --idle > $EVENT_WSP_FIFO &
 hc --idle '(focus_changed|window_title|panel_init)' > $EVENT_WIN_FIFO &
