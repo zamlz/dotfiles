@@ -43,10 +43,10 @@ OPTS="  -g x24
     -u 3"
 
 # Start the top panel
-$HOME/etc/lemonbar/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
+$HOME/etc/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
 
 # Start the bottom panel
-$HOME/etc/lemonbar/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
+$HOME/etc/lemonbar/utils/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
 
 wait
 

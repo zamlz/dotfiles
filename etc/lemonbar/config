@@ -2,7 +2,7 @@
 
 # Import modules needed but anything that imports this config
 . $HOME/lib/shell/xrdb_colors
-. $HOME/etc/lemonbar/wrappers
+. $HOME/etc/lemonbar/utils/wrappers
 
 # Config variables used by all components of lemonbar
 # ---------------------------------------------------
