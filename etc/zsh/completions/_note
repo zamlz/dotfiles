@@ -1,6 +1,6 @@
 #compdef _note note
 
-NOTE_DIR=$HOME/usr/notes
+NOTE_DIR="$HOME/usr/notes/source"
 
 _note () {
     local line
