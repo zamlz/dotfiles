@@ -7,7 +7,7 @@
 #
 
 # Don't put a '/' at the end or the code will fail.
-NOTES="$HOME/usr/notes/source"
+NOTES="$HOME/usr/notes/notes"
 GITC="git -C $NOTES"
 
 cmd_add() {
