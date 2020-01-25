@@ -4,6 +4,10 @@
 
 while read -r workspace_event; do
 
+    # For whatever happens here so we can speed up the updates even further
+    # commented for now, but uncomment to make it faster
+    (
+
     # convert the current space id to index-1 format
     current_space_id=$(xprop -root _NET_CURRENT_DESKTOP \
         | awk '{print $3}')
@@ -46,6 +50,8 @@ while read -r workspace_event; do
 
     msg=$($MSG_WRAPPER $ICON_WORKSPACES '-' $msg)
     echo "$ANCHOR_WORKSPACES$msg"
+
+    ) &
 done
 
 # vim: set ft=sh:
