@@ -167,3 +167,25 @@ venv() {
         tree -L 1 -d --noreport $HOME/.venvs/ | tail -n +2
     fi
 }
+
+# simple gpg based lock and unlock per file
+gpg-unlock() {
+    infile=$1
+    if [ -n "$(echo $infile | grep -E '.+\.gpg$')" ]; then
+        outfile=$(echo ${infile} | sed -e 's/\.gpg$//g')
+        gpg --output $outfile --decrypt $infile
+    else
+        echo "Not a valid gpg locked file; Unable to unlock!"
+    fi
+}
+
+gpg-lock() {
+    infile=$1
+    if [ -z "$(echo $infile | grep -E '.+\.gpg$')" ]; then
+        gpg_id=$(cat ~/.gpg-id)
+        outfile="${1}.gpg"
+        gpg --output $outfile -r $gpg_id --encrypt $infile
+    else
+        echo "Trying to encrypt already encrypted file"
+    fi
+}
