@@ -10,10 +10,11 @@
 # repo list
 GIT_DOTS="git -C $HOME"
 GIT_PRIV="git -C $HOME/lib/private"
-GIT_PASS="git -C $HOME/usr/passwords"
-GIT_PUBS="git -C $HOME/usr/papers"
 GIT_BOOK="git -C $HOME/usr/bookmarks"
+GIT_DOCS="git -C $HOME/usr/documents"
 GIT_NOTE="git -C $HOME/usr/notes"
+GIT_PUBS="git -C $HOME/usr/papers"
+GIT_PASS="git -C $HOME/usr/passwords"
 
 # Update system packages
 if [ "$DISTRO" = "ubuntu" ]; then
@@ -59,10 +60,11 @@ ssh-add ~/.ssh/id_rsa
 # Update my git repositories
 git_update $GIT_DOTS
 git_update $GIT_PRIV
+git_update $GIT_NOTE
+git_update $GIT_BOOK
+git_update $GIT_DOCS
 git_update $GIT_PASS
 git_update $GIT_PUBS
-git_update $GIT_BOOK
-git_update $GIT_NOTE
 
 # Kill ssh-agent
 pkill ssh-agent
