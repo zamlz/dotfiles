@@ -32,6 +32,7 @@ else
     xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
 fi
 
+boltctl &
 $HOME/etc/herbstluftwm/thinkpad_dock_toggle.sh
 
 # Specify the primary terminal
