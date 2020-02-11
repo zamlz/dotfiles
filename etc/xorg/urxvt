@@ -17,8 +17,8 @@ URxvt.termName:             xterm-256color
 
 ! Real transparency (needs compositor like compton)
 ! If using make sure to disable the background below.
-!URxvt*depth: 32
-!URxvt*background: rgba:0000/0000/0000/5555
+URxvt*depth: 32
+URxvt*background: [85]xbackground
 
 ! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
 !   some nice listings are at:
@@ -50,7 +50,7 @@ URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 !+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 URxvt.foreground: xforeground
-URxvt.background: xbackground
+!URxvt.background: xbackground
 URxvt.cursorColor: xcursorColor
 
 ! This is for fading windows if not active
