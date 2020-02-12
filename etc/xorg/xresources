@@ -25,6 +25,8 @@ Xft.hintstyle:              hintslight
 !*font:xft:Terminus:size=8
 !*font: xft:hack:size=10
 !*font: xft:Source Code Pro:Regular:size=10
+!*font: xft:Iosevka Medium:style=Medium,Regular
+!*font: xft:Iosevka Light:style=Light,Regular
 
 ! Some other Special Programs
 #include "etc/xorg/urxvt"
