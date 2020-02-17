@@ -3,7 +3,7 @@
 . $HOME/etc/lemonbar/config
 
 while true; do
-    msg=$(xbacklight -get)
+    msg="$(xbacklight -get | sed -e 's/\.[0-9]*//g')%"
     msg=$($MSG_WRAPPER $ICON_BACKLIGHT $YELLOW $msg)
     echo "$ANCHOR_BACKLIGHT$msg"
     sleep $REFRESH_BACKLIGHT

@@ -12,7 +12,7 @@ while true; do
             cap="$(cat ${batloc}${bat}/capacity)"
             stat="$(cat ${batloc}${bat}/status)"
             batid=$(echo $bat | tr -d 'BAT')
-            out="${out} ${batid}:${cap}"
+            out="${out} ${batid}:${cap}%"
 
         done
     else
