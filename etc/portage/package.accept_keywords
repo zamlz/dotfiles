@@ -1,0 +1,62 @@
+# required by =sys-kernel/gentoo-sources (argument)
+=sys-kernel/gentoo-sources-5.2.14 ~amd64
+=sys-kernel/gentoo-sources-5.4.10 ~amd64
+
+# required by sys-power/throttled (argument)
+sys-power/throttled ~amd64
+
+# required by app-editors/neovim-0.3.8::gentoo
+# required by neovim (argument)
+=dev-libs/msgpack-3.2.0 ~amd64
+# required by neovim (argument)
+=app-editors/neovim-0.3.8 ~amd64
+# required by app-editors/neovim-0.3.8::gentoo[tui]
+# required by neovim (argument)
+=dev-libs/unibilium-2.0.0 ~amd64
+
+# required by =dev-util/nvidia-cuda-toolkit-10.1.168 (argument)
+=dev-util/nvidia-cuda-toolkit-10.1.168 ~amd64
+
+# required by =dev-libs/cudnn-7.6.2.24 (argument)
+=dev-libs/cudnn-7.6.2.24 ~amd64
+
+# required by qutebrowser (argument)
+=www-client/qutebrowser-1.7.0 ~amd64
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+=dev-python/pypeg2-2.15.2 ~amd64
+
+# required by net-im/discord-bin (argument)
+net-im/discord-bin ~amd64
+
+# required by www-plugins/pdfjs (argument)
+=www-plugins/pdfjs-2.1.266 ~amd64
+
+# required by =dev-python/python-xlib-0.23-r1 (argument)
+=dev-python/python-xlib-0.23-r1 ~amd64
+
+# required by sys-apps/bolt-0.8::gentoo
+# required by sys-apps/bolt (argument)
+=dev-util/umockdev-0.12.1 ~amd64
+# required by sys-apps/bolt (argument)
+sys-apps/bolt ~amd64
+
+# required by media-fonts/termsyn (argument)
+=media-fonts/termsyn-1.8.7 ~amd64
+
+# required by gtk2fontsel (argument)
+=x11-misc/gtk2fontsel-0.1-r1 ~amd64
+
+# required by lemonbar
+=x11-misc/lemonbar-9999 **
+=media-fonts/siji-9999 **
+
+# for setting up tags to use for vim
+dev-python/python-ctags
+
+# Good looking font
+media-fonts/iosevka ~amd64
+
+# Needed to isntall java eclipse
+=dev-util/eclipse-sdk-bin-4.5.2-r2 ~amd64
+=dev-util/eclipse-sdk-bin-4.6.2-r1 ~amd64

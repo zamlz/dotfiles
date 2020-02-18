@@ -1,0 +1,6 @@
+sys-auth/polkit consolekit
+
+# required by sys-auth/polkit-0.115-r4::gentoo[consolekit]
+# required by sys-apps/bolt-0.8::gentoo
+# required by sys-apps/bolt (argument)
+>=sys-auth/consolekit-1.2.1 policykit

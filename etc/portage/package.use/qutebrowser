@@ -1,0 +1,45 @@
+www-client/qutebrowser scripts
+
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=dev-python/pyyaml-5.1 libyaml
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=dev-python/PyQt5-5.12.2 widgets network opengl multimedia gui printsupport declarative sql webchannel
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=dev-qt/qtwebengine-5.12.3 widgets
+# required by dev-qt/qtwebengine-5.12.3::gentoo
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=dev-qt/qtwebchannel-5.12.3 qml
+# required by dev-qt/qtwebengine-5.12.3::gentoo
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=dev-libs/libxml2-2.9.9-r1 icu
+# required by dev-qt/qtwebengine-5.12.3::gentoo
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=media-libs/libvpx-1.7.0 svc
+# required by dev-qt/qtwebengine-5.12.3::gentoo
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=sys-libs/zlib-1.2.11-r2 minizip
+# required by dev-qt/qtcore-5.12.3::gentoo
+# required by dev-qt/qtxml-5.12.3::gentoo
+# required by dev-python/PyQt5-5.12.2::gentoo
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=dev-libs/libpcre2-10.32 pcre16
+# required by dev-python/PyQt5-5.12.2::gentoo[multimedia]
+# required by dev-python/PyQtWebEngine-5.12.1::gentoo
+# required by www-client/qutebrowser-1.7.0::gentoo
+# required by qutebrowser (argument)
+>=dev-qt/qtmultimedia-5.12.3 widgets

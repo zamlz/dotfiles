@@ -1,0 +1,10 @@
+dev-python/ipython matplotlib notebook
+
+# required by dev-python/pyzmq-17.1.0::gentoo
+# required by dev-python/notebook-5.7.8::gentoo
+# required by dev-python/widgetsnbextension-3.0.0::gentoo
+# required by dev-python/ipywidgets-7.0.0::gentoo
+# required by dev-python/ipython-5.4.1-r2::gentoo[notebook]
+# required by @selected
+# required by @world (argument)
+>=net-libs/zeromq-4.3.2 drafts

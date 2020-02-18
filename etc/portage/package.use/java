@@ -1,0 +1,4 @@
+
+# Java development environment and binaries
+dev-java/oracle-jdk-bin doc visualvm javafx
+dev-java/oracle-jre-bin javafx

@@ -1,0 +1,39 @@
+# required by sys-kernel/genkernel-3.5.3.3::gentoo[firmware]
+# required by sys-kernel/genkernel (argument)
+>=sys-kernel/linux-firmware-20190923 linux-fw-redistributable no-source-code
+
+# required by nvidia-drivers (argument)
+>=x11-drivers/nvidia-drivers-435.21 NVIDIA-r2
+
+# required by dina (argument)
+>=media-fonts/dina-2.89 Dina
+
+# required by =dev-util/nvidia-cuda-toolkit-10.1.168 (argument)
+>=dev-util/nvidia-cuda-toolkit-10.1.168 NVIDIA-CUDA
+
+# required by =dev-libs/cudnn-7.6.2.24 (argument)
+>=dev-libs/cudnn-7.6.2.24 NVIDIA-cuDNN
+
+# required by net-im/discord-bin (argument)
+>=net-im/discord-bin-0.0.9 all-rights-reserved
+
+# required by virtual/ttf-fonts-1-r1::gentoo
+# required by x11-libs/libXft-2.3.3::gentoo
+# required by x11-misc/rofi-1.5.2::gentoo
+# required by @selected
+# required by @world (argument)
+>=media-fonts/corefonts-1-r7 MSttfEULA
+
+# required by app-text/aspell-0.60.7_rc1::gentoo[l10n_nl]
+# required by app-dicts/aspell-af-0.50.0::gentoo
+>=app-dicts/aspell-nl-0.50.2 freedist
+
+# required by dev-java/oracle-jdk-bin (argument)
+>=dev-java/oracle-jdk-bin-1.8.0.202:1.8 Oracle-BCLA-JavaSE
+
+# required by dev-java/oracle-jdk-bin-1.8.0.202::gentoo[doc]
+# required by dev-java/oracle-jdk-bin (argument)
+>=dev-java/java-sdk-docs-1.8.0.202:1.8 oracle-java-documentation-8
+
+# required by dev-java/oracle-jre-bin (argument)
+>=dev-java/oracle-jre-bin-1.8.0.202 Oracle-BCLA-JavaSE
