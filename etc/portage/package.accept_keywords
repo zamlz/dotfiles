@@ -56,7 +56,3 @@ dev-python/python-ctags
 
 # Good looking font
 media-fonts/iosevka ~amd64
-
-# Needed to isntall java eclipse
-=dev-util/eclipse-sdk-bin-4.5.2-r2 ~amd64
-=dev-util/eclipse-sdk-bin-4.6.2-r1 ~amd64
