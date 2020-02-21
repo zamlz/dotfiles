@@ -5,13 +5,14 @@ NOTE_DIR="$HOME/usr/notes/notes"
 _note () {
     local line
     _arguments -C \
-        "1: :(add rm view edit ls git)" \
+        "1: :(add rm view pdf edit ls git)" \
         "*::arg:->args"
 
     case $line[1] in
         add)    _note_list;;
         rm)     _note_list;;
         view)   _note_list;;
+        pdf)   _note_list;;
         edit)   _note_list;;
     esac
 }

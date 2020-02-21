@@ -78,6 +78,16 @@ cmd_view() {
     fi
 }
 
+cmd_pdf() {
+    # Argument list
+    #   $1 - Bookmark name and location
+    if [ -f $NOTES/$1/index.md ]; then
+        $HOME/bin/md2pdf $NOTES/$1/index.md
+    else
+        (>&2 echo "ERROR: File does not exist (cmd_show): $1")
+    fi
+}
+
 cmd_edit() {
     # Argument list
     #   $1 - Bookmark name and location
@@ -106,9 +116,10 @@ CMD=$1
 REST=$(echo "$@" | cut -d' ' -f2-)
 
 case "$CMD" in
-    add)     cmd_add $REST ;;
+    add)    cmd_add $REST ;;
     rm)     cmd_remove $REST ;;
     view)   cmd_view $REST ;;
+    pdf)    cmd_pdf $REST ;;
     edit)   cmd_edit $REST ;;
     ls)     cmd_list $REST ;;
     git)    cmd_git $REST ;;
