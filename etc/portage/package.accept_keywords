@@ -57,3 +57,7 @@ dev-python/python-ctags
 
 # Good looking font
 media-fonts/iosevka ~amd64
+
+# required by pulseaudio-ctl (argument)
+=media-sound/pulseaudio-ctl-1.66 ~amd64
+
