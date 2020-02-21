@@ -14,6 +14,7 @@ while read -r line; do
         $ANCHOR_WHOAMI*)        usr="${line#?}" ;;
         $ANCHOR_WININFO*)       win="${line#?}" ;;
         $ANCHOR_WORKSPACES*)    wsp="${line#?}" ;;
+        $ANCHOR_VOLUME*)        vol="${line#?}" ;;
     esac
 
     # Print the contents of our modules based on the mode
@@ -30,7 +31,7 @@ while read -r line; do
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "BOT" ]; then
-        m1="%{l}"
+        m1="%{l}$vol"
         m2="%{c}$wsp"
         m3="%{r}$bkl$net$bat"
         printf "%s\n" "$m1$m2$m3"

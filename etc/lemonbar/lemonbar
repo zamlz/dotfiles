@@ -29,6 +29,7 @@ $HOME/etc/lemonbar/modules/backlight    > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/battery      > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/network      > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/workspaces   < $EVENT_WSP_FIFO > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/volume       > $PANEL_BOT_FIFO &
 
 # Find th font to use.
 font=$(xrdb -query \

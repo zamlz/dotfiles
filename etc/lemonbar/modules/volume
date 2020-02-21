@@ -1,0 +1,22 @@
+#!/bin/sh
+
+. $HOME/etc/lemonbar/config
+
+while true; do
+
+    stats=$(pulseaudio-ctl full-status)
+    vol=$(echo $stats | awk '{print $1}')
+    sink_state=$(echo $stats | awk '{print $2}')
+    # source_state=$(echo $stats | awk '{print $3}')
+
+    if [ "$sink_state" = "no" ]; then
+        msg=$($MSG_WRAPPER $ICON_VOLUME $GREEN "$vol%")
+    else
+        msg=$($MSG_WRAPPER $ICON_VOLUME $RED "MUTE")
+    fi
+
+    echo "$ANCHOR_VOLUME$msg"
+    sleep $REFRESH_VOLUME
+done
+
+# vim: set ft=sh:
