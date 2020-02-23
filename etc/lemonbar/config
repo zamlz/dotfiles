@@ -14,6 +14,7 @@ PANEL_BOT_FIFO=/tmp/panel_bot.fifo
 # Event FIFOs
 EVENT_WSP_FIFO=/tmp/workspace_event.fifo
 EVENT_WIN_FIFO=/tmp/wininfo_event.fifo
+EVENT_BKL_FIFO=/tmp/backlight_event.fifo
 
 # Choose the output wrapper
 MSG_WRAPPER=legacy_wrapper
@@ -30,12 +31,12 @@ ANCHOR_WORKSPACES='W'
 ANCHOR_VOLUME='V'
 
 # Refresh rates of non-event based modules
-REFRESH_BACKLIGHT=1
+REFRESH_BACKLIGHT=0.1
 REFRESH_BATTERY=2
 REFRESH_DATE=86400
 REFRESH_NETWORK=2
 REFRESH_TIME=1
-REFRESH_VOLUME=1
+REFRESH_VOLUME=0.01
 
 # Icons for various modules
 ICON_BACKLIGHT="BKL"

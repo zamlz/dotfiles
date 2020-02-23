@@ -19,7 +19,7 @@ fi
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
 # Add modules to the top fifo
-$HOME/etc/lemonbar/modules/backlight    > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/backlight    < $EVENT_BKL_FIFO > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/date         > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/network      > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/time         > $PANEL_TOP_FIFO &
