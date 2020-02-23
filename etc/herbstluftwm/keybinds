@@ -1,0 +1,151 @@
+#!/usr/bin/env bash
+
+# this contains all my keybindings for herbstluftwm
+# NOTES:
+#   + xev is a useful tool to identify keys
+
+hc() {
+    herbstclient "$@"
+}
+
+# remove all existing keybindings
+hc keyunbind --all
+
+# if you have a super key you will be much happier with Super set to Mod4
+
+#Super=Mod1# Use alt as the main modifier
+Super=Mod4   # Use the super key as the main modifier
+
+hc keybind $Super-Ctrl-Alt-r reload
+hc keybind $Super-q close
+
+TERMINAL="urxvt"
+
+# use your $TERMINAL with xterm as fallback
+hc keybind $Super-Return spawn $TERMINAL
+
+# Super Special Terminal Warp Spawn.
+# open a terminal in the same directory the currently focused window.
+TERMWARP="$HOME/etc/herbstluftwm/pwdcfw/${TERMINAL}"
+hc keybind $Super-Shift-Return spawn ${TERMWARP}
+
+# basic movement
+# focusing clients
+hc keybind $Super-Left  focus left
+hc keybind $Super-Down  focus down
+hc keybind $Super-Up    focus up
+hc keybind $Super-Right focus right
+hc keybind $Super-h     focus left
+hc keybind $Super-j     focus down
+hc keybind $Super-k     focus up
+hc keybind $Super-l     focus right
+
+# moving clients
+hc keybind $Super-Shift-Left  shift left
+hc keybind $Super-Shift-Down  shift down
+hc keybind $Super-Shift-Up    shift up
+hc keybind $Super-Shift-Right shift right
+hc keybind $Super-Shift-h     shift left
+hc keybind $Super-Shift-j     shift down
+hc keybind $Super-Shift-k     shift up
+hc keybind $Super-Shift-l     shift right
+
+# splitting frames
+# create an empty frame at the specified direction
+hc keybind $Super-u       split   bottom  0.5
+hc keybind $Super-o       split   right   0.5
+# let the current frame explode into subframes
+hc keybind $Super-Control-space split explode
+
+# resizing frames
+resizestep=0.01
+hc keybind $Super-Control-h       resize left +$resizestep
+hc keybind $Super-Control-j       resize down +$resizestep
+hc keybind $Super-Control-k       resize up +$resizestep
+hc keybind $Super-Control-l       resize right +$resizestep
+hc keybind $Super-Control-Left    resize left +$resizestep
+hc keybind $Super-Control-Down    resize down +$resizestep
+hc keybind $Super-Control-Up      resize up +$resizestep
+hc keybind $Super-Control-Right   resize right +$resizestep
+
+# tags
+tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
+tag_keys=( {1..9} 0 )
+
+hc rename default "${tag_names[0]}" || true
+for i in ${!tag_names[@]} ; do
+    hc add "${tag_names[$i]}"
+    key="${tag_keys[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Super-$key" use_index "$i"
+        hc keybind "$Super-Shift-$key" move_index "$i"
+    fi
+done
+
+# Jump to previous tag
+hc keybind $Super-grave use_previous
+
+# cycle through tags
+hc keybind $Super-bracketright use_index +1 --skip-visible
+hc keybind $Super-bracketleft  use_index -1 --skip-visible
+
+# layouting
+hc keybind $Super-r remove
+hc keybind $Super-s floating toggle
+hc keybind $Super-f fullscreen toggle
+hc keybind $Super-t pseudotile toggle
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Super-space                                                         \
+            or , and . compare tags.focus.curframe_wcount = 2                 \
+                     . cycle_layout +1 vertical horizontal max vertical grid  \
+               , cycle_layout +1
+
+# mouse
+hc mouseunbind --all
+hc mousebind $Super-Button1 move
+hc mousebind $Super-Button2 zoom
+hc mousebind $Super-Button3 resize
+
+# focus
+hc keybind $Super-BackSpace   cycle_monitor
+hc keybind $Super-Tab         cycle +1
+hc keybind $Super-Shift-Tab   cycle_frame +1
+hc keybind $Super-c           cycle_all +1
+hc keybind $Super-i jumpto urgent
+
+# Create the program launcher
+LAUNCHER="rofi -show run"
+hc keybind $Super-e spawn ${LAUNCHER} # used to be grave
+
+# Use rofi to launch a dialog for password manager
+PASSLIB="$HOME/lib/rofi/rofi-pass"
+hc keybind $Super-p spawn ${PASSLIB}
+
+# Use rofi to launch a dialog for bookmark manager
+BOOKLIB="$HOME/lib/rofi/rofi-book"
+hc keybind $Super-b spawn ${BOOKLIB}
+
+# Use rofi to launch my markdown notes
+NOTELIB="$HOME/lib/rofi/rofi-note"
+hc keybind $Super-n spawn ${NOTELIB}
+
+# Use rofi to also control display/power profiles
+PROFILE_SELECTOR="$HOME/lib/rofi/rofi-profile"
+hc keybind $Super-d spawn ${PROFILE_SELECTOR}
+hc keybind XF86Display spawn ${PROFILE_SELECTOR}
+
+# Add system locker keybinding
+LOCKER="$HOME/lib/rofi/rofi-system"
+hc keybind $Super-Ctrl-Alt-Escape spawn ${LOCKER}
+hc keybind $Super-Escape spawn ${LOCKER} LOCK SCREEN
+
+# Other misc keybindings
+hc keybind XF86MonBrightnessUp emit_hook xbacklight -inc 1 -time 10
+hc keybind XF86MonBrightnessDown emit_hook xbacklight -dec 1 -time 10
+hc keybind XF86AudioMute emit_hook pulseaudio-ctl mute
+hc keybind XF86AudioMicMute emit_hook pulseaudio-ctl mute-input
+hc keybind XF86AudioRaiseVolume emit_hook pulseaudio-ctl up 1
+hc keybind XF86AudioLowerVolume emit_hook pulseaudio-ctl down 1
+

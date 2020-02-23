@@ -11,17 +11,9 @@ hc() {
 
 hc emit_hook reload
 
-# Kill all dangling processes
-# killall -HUP urxvtd > /dev/null 2>&1
-
 # Reload the xresource data
 xrdb -I$HOME $HOME/etc/xorg/xresources
 . $HOME/lib/shell/xrdb_colors
-
-# Start the urxvt daemon
-#if [ -z "$(pgrep urxvtd)" ]; then
-#    urxvtd -q -o -f
-#fi
 
 # Set the background
 if [ -f "$HOME/.fehbg" ]; then
@@ -45,122 +37,8 @@ xset s off
 # + Increases the speed of the keyboard repeat rate
 xset r rate 400 50
 
-# remove all existing keybindings
-hc keyunbind --all
-
-# Add the XF86 keybinds
-
-hc keybind XF86MonBrightnessUp emit_hook xbacklight -inc 1 -time 10
-hc keybind XF86MonBrightnessDown emit_hook xbacklight -dec 1 -time 10
-
-hc keybind XF86AudioMute emit_hook pulseaudio-ctl mute
-hc keybind XF86AudioMicMute emit_hook pulseaudio-ctl mute-input
-hc keybind XF86AudioRaiseVolume emit_hook pulseaudio-ctl up 1
-hc keybind XF86AudioLowerVolume emit_hook pulseaudio-ctl down 1
-
-# keybindings
-# if you have a super key you will be much happier with Mod set to Mod4
-#Mod=Mod1    # Use alt as the main modifier
-Mod=Mod4   # Use the super key as the main modifier
-
-hc keybind $Mod-Ctrl-Alt-r reload
-hc keybind $Mod-q close
-
-TERMINAL="urxvt"
-
-# use your $TERMINAL with xterm as fallback
-hc keybind $Mod-Return spawn $TERMINAL
-
-# Super Special Terminal Warp Spawn.
-# open a terminal in the same directory the currently focused window.
-TERMWARP="$HOME/etc/herbstluftwm/pwdcfw/${TERMINAL}"
-hc keybind $Mod-Shift-Return spawn ${TERMWARP}
-
-# basic movement
-# focusing clients
-hc keybind $Mod-Left  focus left
-hc keybind $Mod-Down  focus down
-hc keybind $Mod-Up    focus up
-hc keybind $Mod-Right focus right
-hc keybind $Mod-h     focus left
-hc keybind $Mod-j     focus down
-hc keybind $Mod-k     focus up
-hc keybind $Mod-l     focus right
-
-# moving clients
-hc keybind $Mod-Shift-Left  shift left
-hc keybind $Mod-Shift-Down  shift down
-hc keybind $Mod-Shift-Up    shift up
-hc keybind $Mod-Shift-Right shift right
-hc keybind $Mod-Shift-h     shift left
-hc keybind $Mod-Shift-j     shift down
-hc keybind $Mod-Shift-k     shift up
-hc keybind $Mod-Shift-l     shift right
-
-# splitting frames
-# create an empty frame at the specified direction
-hc keybind $Mod-u       split   bottom  0.5
-hc keybind $Mod-o       split   right   0.5
-# let the current frame explode into subframes
-hc keybind $Mod-Control-space split explode
-
-# resizing frames
-resizestep=0.01
-hc keybind $Mod-Control-h       resize left +$resizestep
-hc keybind $Mod-Control-j       resize down +$resizestep
-hc keybind $Mod-Control-k       resize up +$resizestep
-hc keybind $Mod-Control-l       resize right +$resizestep
-hc keybind $Mod-Control-Left    resize left +$resizestep
-hc keybind $Mod-Control-Down    resize down +$resizestep
-hc keybind $Mod-Control-Up      resize up +$resizestep
-hc keybind $Mod-Control-Right   resize right +$resizestep
-
-# tags
-tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
-tag_keys=( {1..9} 0 )
-
-hc rename default "${tag_names[0]}" || true
-for i in ${!tag_names[@]} ; do
-    hc add "${tag_names[$i]}"
-    key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
-        hc keybind "$Mod-$key" use_index "$i"
-        hc keybind "$Mod-Shift-$key" move_index "$i"
-    fi
-done
-
-# Jump to previous tag
-hc keybind $Mod-grave use_previous
-
-# cycle through tags
-hc keybind $Mod-bracketright use_index +1 --skip-visible
-hc keybind $Mod-bracketleft  use_index -1 --skip-visible
-
-# layouting
-hc keybind $Mod-r remove
-hc keybind $Mod-s floating toggle
-hc keybind $Mod-f fullscreen toggle
-hc keybind $Mod-t pseudotile toggle
-# The following cycles through the available layouts within a frame, but skips
-# layouts, if the layout change wouldn't affect the actual window positions.
-# I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Mod-space                                                         \
-            or , and . compare tags.focus.curframe_wcount = 2                 \
-                     . cycle_layout +1 vertical horizontal max vertical grid  \
-               , cycle_layout +1
-
-# mouse
-hc mouseunbind --all
-hc mousebind $Mod-Button1 move
-hc mousebind $Mod-Button2 zoom
-hc mousebind $Mod-Button3 resize
-
-# focus
-hc keybind $Mod-BackSpace   cycle_monitor
-hc keybind $Mod-Tab         cycle +1
-hc keybind $Mod-Shift-Tab   cycle_frame +1
-hc keybind $Mod-c           cycle_all +1
-hc keybind $Mod-i jumpto urgent
+# Apply keybindings
+$HOME/etc/herbstluftwm/keybinds &
 
 # theme
 hc attr theme.tiling.reset 1
@@ -225,18 +103,9 @@ hc unlock
 
 herbstclient set tree_style '╾│ ├└╼─┐'
 
-# do multi monitor setup here, e.g.:
-# hc set_monitors 1280x1024+0+0 1280x1024+1280+0
-# or simply:
 hc detect_monitors
 
 PANEL_HEIGHT=24
-
-# Spawn the bar on the primary monitor (i.e. 0)
-#monitor="$(grep monitor ~/.polybar.conf | awk '{print $3}')"
-#monitor="$(polybar -m | grep $monitor | awk '{print $2}')"
-#monitor="$(hc list_monitors | grep $monitor | awk '{print $1}' | tr -d ':')"
-
 for monitor in $(seq 0 2); do
     hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
 done
@@ -244,30 +113,3 @@ done
 # Start our panel
 pkill -x lemonbar
 $HOME/etc/lemonbar/lemonbar &
-
-# Create the program launcher
-LAUNCHER="rofi -show run"
-hc keybind $Mod-e spawn ${LAUNCHER} # used to be grave
-
-# Use rofi to launch a dialog for password manager
-PASSLIB="$HOME/lib/rofi/rofi-pass"
-hc keybind $Mod-p spawn ${PASSLIB}
-
-# Use rofi to launch a dialog for bookmark manager
-BOOKLIB="$HOME/lib/rofi/rofi-book"
-hc keybind $Mod-b spawn ${BOOKLIB}
-
-# Use rofi to launch my markdown notes
-NOTELIB="$HOME/lib/rofi/rofi-note"
-hc keybind $Mod-n spawn ${NOTELIB}
-
-# Use rofi to also control display/power profiles
-PROFILE_SELECTOR="$HOME/lib/rofi/rofi-profile"
-hc keybind $Mod-d spawn ${PROFILE_SELECTOR}
-hc keybind XF86Display spawn ${PROFILE_SELECTOR}
-
-# Finally start i3lock
-LOCKER="$HOME/lib/rofi/rofi-system"
-hc keybind $Mod-Ctrl-Alt-Escape spawn ${LOCKER}
-hc keybind $Mod-Escape spawn ${LOCKER} LOCK SCREEN
-# exec xautolock -time 30 -locker "${LOCKER} LOCK SCREEN"
