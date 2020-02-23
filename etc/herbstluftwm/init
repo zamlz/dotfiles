@@ -73,7 +73,7 @@ hc keybind $Mod-Return spawn $TERMINAL
 
 # Super Special Terminal Warp Spawn.
 # open a terminal in the same directory the currently focused window.
-TERMWARP="$HOME/etc/herbstluftwm/${TERMINAL}-pwdcfw"
+TERMWARP="$HOME/etc/herbstluftwm/pwdcfw/${TERMINAL}"
 hc keybind $Mod-Shift-Return spawn ${TERMWARP}
 
 # basic movement
