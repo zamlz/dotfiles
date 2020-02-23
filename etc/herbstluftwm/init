@@ -58,9 +58,6 @@ hc keybind XF86AudioMicMute emit_hook pulseaudio-ctl mute-input
 hc keybind XF86AudioRaiseVolume emit_hook pulseaudio-ctl up 1
 hc keybind XF86AudioLowerVolume emit_hook pulseaudio-ctl down 1
 
-# These need to be updated
-hc keybind XF86Display spawn pulseaudio-ctl mute
-
 # keybindings
 # if you have a super key you will be much happier with Mod set to Mod4
 #Mod=Mod1    # Use alt as the main modifier
@@ -273,6 +270,11 @@ hc keybind $Mod-b spawn ${BOOKLIB}
 # Use rofi to launch my markdown notes
 NOTELIB="$HOME/lib/rofi/rofi-note"
 hc keybind $Mod-n spawn ${NOTELIB}
+
+# Use rofi to also control display/power profiles
+PROFILE_SELECTOR="$HOME/lib/rofi/rofi-profile"
+hc keybind $Mod-d spawn ${PROFILE_SELECTOR}
+hc keybind XF86Display spawn ${PROFILE_SELECTOR}
 
 # Finally start i3lock
 LOCKER="$HOME/lib/rofi/rofi-system"

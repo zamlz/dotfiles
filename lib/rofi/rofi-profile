@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# Find the password I want
+
+PROFILE_DIR="$HOME/lib/profiles"
+
+# There must be a cleaner way to get this choice
+profile=$( find  $PROFILE_DIR -type f | \
+    sed -e "s|${PROFILE_DIR}/||g" | \
+    rofi -dmenu -i -lines 2 -p "Profile" )
+
+if [ -n "$profile" ]; then
+    $PROFILE_DIR/$profile
+fi
