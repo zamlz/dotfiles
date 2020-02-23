@@ -56,6 +56,6 @@ BWHITE=$XCOLOR15
 
 # If transparency is turned on, we should fix it,
 _alpha_value=$(echo $XBACKGROUND | /bin/grep -Eo '\[[0-9]{1,2}\]' | tr -d '[]')
-_alpha_value=$(printf '%0.2x' "$((255 * ${_alpha_value}/100))")
+_alpha_value=$(printf '%0.2x' "$((255 * ${_alpha_value:=100}/100))")
 _background_value=$(echo $XBACKGROUND | /bin/grep -Eo '[A-Fa-f0-9]{6}')
 XBACKGROUND="#${_alpha_value}${_background_value}"
