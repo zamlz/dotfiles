@@ -2,7 +2,9 @@
 
 . $HOME/etc/lemonbar/config
 
-while true; do
+while read -r volume_event; do
+    (
+    $volume_event
 
     stats=$(pulseaudio-ctl full-status)
     vol=$(echo $stats | awk '{print $1}')
@@ -17,6 +19,7 @@ while true; do
 
     echo "$ANCHOR_VOLUME$msg"
     sleep $REFRESH_VOLUME
+    ) &
 done
 
 # vim: set ft=sh:

@@ -13,9 +13,11 @@ mkfifo $PANEL_TOP_FIFO
 mkfifo $PANEL_BOT_FIFO
 
 # Remake old event fifos
+[ -e "$EVENT_BKL_FIFO" ] && rm $EVENT_BKL_FIFO
+[ -e "$EVENT_VOL_FIFO" ] && rm $EVENT_VOL_FIFO
 [ -e "$EVENT_WSP_FIFO" ] && rm $EVENT_WSP_FIFO
 [ -e "$EVENT_WIN_FIFO" ] && rm $EVENT_WIN_FIFO
-[ -e "$EVENT_BKL_FIFO" ] && rm $EVENT_BKL_FIFO
+mkfifo $EVENT_BKL_FIFO
+mkfifo $EVENT_VOL_FIFO
 mkfifo $EVENT_WSP_FIFO
 mkfifo $EVENT_WIN_FIFO
-mkfifo $EVENT_BKL_FIFO
