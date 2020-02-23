@@ -1,0 +1,10 @@
+[commit]
+	gpgsign = true
+[user]
+	signingkey = 0x882C395C3B28902C
+	name = Amlesh Sivanantham (zamlz)
+	email = zamlz@pm.me
+[gpg]
+	program = gpg
+[core]
+	pager = less --no-init --quit-if-one-screen
