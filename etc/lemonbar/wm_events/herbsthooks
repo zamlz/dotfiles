@@ -1,0 +1,24 @@
+#!/bin/sh
+
+# Starting lemonbar is tricky because of the event fifos. We make them first
+# so other processes can start writing to them as fast as possible. However,
+# then it can also be too fast. herbstclient --idle may not be ready to
+# emit the hooks yet, so we delay it by a small fract of time
+
+. $HOME/etc/lemonbar/config
+
+if [ $(pgrep -cx herbsthooks) -gt 1 ]; then
+printf "The herbstluftwm event hooks for lemonbar are already running.\n" >&2
+exit 1
+fi
+
+# exit gracefully if terminated
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+
+herbstclient --idle > $EVENT_WSP_FIFO &
+herbstclient --idle '(focus_changed|window_title|panel_init)' > $EVENT_WIN_FIFO &
+herbstclient --idle '(xbacklight|panel_init)' > $EVENT_BKL_FIFO &
+herbstclient --idle '(pulseaudio-ctl|panel_init)' > $EVENT_VOL_FIFO &
+(sleep 0.1 && herbstclient emit_hook panel_init) &
+
+wait

@@ -18,6 +18,9 @@ fi
 # Exit gracefully if terminated
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 
+# Prepare the FIFOS
+$HOME/etc/lemonbar/utils/make_fifos
+
 # Add modules to the top fifo
 $HOME/etc/lemonbar/modules/backlight    < $EVENT_BKL_FIFO > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/date         > $PANEL_TOP_FIFO &
@@ -48,6 +51,10 @@ $HOME/etc/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
 
 # Start the bottom panel
 $HOME/etc/lemonbar/utils/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
+
+# Start the window manager hooks
+pkill -x herbsthooks
+$HOME/etc/lemonbar/wm_events/herbsthooks &
 
 wait
 
