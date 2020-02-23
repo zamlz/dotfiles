@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Find the password I want
+
+NOTE_DIR="$HOME/usr/notes/notes"
+
+note_file=$( find -L $NOTE_DIR -name index.md | \
+    sed -e 's|/index.md||g' -e "s|${NOTE_DIR}/||g" | sort | \
+    rofi -dmenu -i -p "Notes" )
+
+if [ "$note_file" != "" ]; then
+    $HOME/bin/md2pdf $NOTE_DIR/$note_name/index.md &
+fi
