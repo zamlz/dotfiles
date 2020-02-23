@@ -4,10 +4,12 @@
 
 NOTE_DIR="$HOME/usr/notes/notes"
 
-note_file=$( find -L $NOTE_DIR -name index.md | \
-    sed -e 's|/index.md||g' -e "s|${NOTE_DIR}/||g" | sort | \
-    rofi -dmenu -i -p "Notes" )
+# There must be a cleaner way to get this choice
+note_loc=$( find -L $NOTE_DIR -name index.md | \
+    sed -e 's|/index.md||g' -e "s|${NOTE_DIR}||g" -e "s|^/||g" | \
+    sort | tr '\n' ' ' | sed -e "s|^ ||g" | \
+    rofi -dmenu -i -sep ' ' -p "Notes" )
 
-if [ "$note_file" != "" ]; then
-    $HOME/bin/md2pdf $NOTE_DIR/$note_name/index.md &
+if [ -n "$note_loc" ]; then
+    $HOME/bin/md2pdf $NOTE_DIR/$note_loc/index.md &
 fi

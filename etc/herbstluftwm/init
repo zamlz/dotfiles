@@ -270,6 +270,10 @@ hc keybind $Mod-p spawn ${PASSLIB}
 BOOKLIB="$HOME/lib/rofi/rofi-book"
 hc keybind $Mod-b spawn ${BOOKLIB}
 
+# Use rofi to launch my markdown notes
+NOTELIB="$HOME/lib/rofi/rofi-note"
+hc keybind $Mod-n spawn ${NOTELIB}
+
 # Finally start i3lock
 LOCKER="$HOME/lib/rofi/rofi-system"
 hc keybind $Mod-Ctrl-Alt-Escape spawn ${LOCKER}
