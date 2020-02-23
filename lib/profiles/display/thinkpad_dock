@@ -1,5 +1,13 @@
 #!/bin/sh
 
+# attempt to wait for connection
+for _ in $(seq 20); do
+    if [ -n "$(xrandr | grep 'DP-1.1 connected')" ]; then
+        break;
+    fi
+    sleep 0.5;
+done
+
 xrandr --output DP-1.1 --mode 1920x1080 --pos 3000x656 --rotate normal \
     --output DP-1.2 --primary --mode 1920x1080 --pos 0x544 --rotate normal \
     --output DP-1.3 --mode 1920x1080 --pos 1920x0 --rotate left \
@@ -9,3 +17,4 @@ xrandr --output DP-1.1 --mode 1920x1080 --pos 3000x656 --rotate normal \
     --output DP-0 --off
     #--output DP-2 --mode 1920x1080 --pos 0x544 --rotate normal \
 
+herbstclient reload

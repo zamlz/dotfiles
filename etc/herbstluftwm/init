@@ -23,10 +23,6 @@ xrdb -I$HOME $HOME/etc/xorg/xresources
 #    urxvtd -q -o -f
 #fi
 
-# Setup monitors
-boltctl &
-$HOME/etc/herbstluftwm/thinkpad_dock_toggle.sh
-
 # Set the background
 if [ -f "$HOME/.fehbg" ]; then
     $HOME/.fehbg
