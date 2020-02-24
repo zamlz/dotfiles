@@ -19,20 +19,14 @@ xrdb -I$HOME $HOME/etc/xorg/xresources
 if [ -f "$HOME/.fehbg" ]; then
     $HOME/.fehbg
 else
-    # xsetroot -mod 4 4 -bg ${XBACKGROUND} -fg ${BLACK}
-    #xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#28292A' -bg '#010203'
     xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
 fi
-
-# Specify the primary terminal
-# TERMINAL="urxvtc +j +ss"
-TERMINAL="urxvt"
 
 # Also have to set this here in case xorg isn't started via startx
 setxkbmap -option caps:escape
 
 # Use Display Power Management Settings to configure various things.
-# + Disable screen blanking (screensaver)
+# + Disable screen blanking (screensaver) (I don't think this works)
 xset s off
 # + Increases the speed of the keyboard repeat rate
 xset r rate 400 50
@@ -43,61 +37,8 @@ $HOME/etc/herbstluftwm/keybinds &
 # Enable custom rules
 $HOME/etc/herbstluftwm/rules &
 
-# theme
-hc attr theme.tiling.reset 1
-hc attr theme.floating.reset 1
+# Set the theme
+$HOME/etc/herbstluftwm/theme &
 
-hc set frame_transparent_width 1
-hc set frame_border_width 1
-hc set frame_border_active_color $XBACKGROUND
-hc set frame_border_normal_color $XBACKGROUND
-
-hc set frame_bg_transparent 1
-hc set frame_bg_normal_color $XBACKGROUND
-hc set frame_bg_active_color $XCOLOR8
-
-hc set always_show_frame 0
-hc set frame_gap 8
-hc set frame_padding 0
-
-#hc attr theme.active.color $WHITE
-hc attr theme.active.outer_color $XBACKGROUND
-hc attr theme.active.inner_color $XBACKGROUND
-
-hc attr theme.normal.color $BLACK
-hc attr theme.active.color $WHITE
-hc attr theme.urgent.color orange
-
-hc attr theme.border_width 9
-hc attr theme.inner_width 3
-hc attr theme.outer_width 4
-
-hc attr theme.inner_color $XBACKGROUND
-hc attr theme.outer_color $XBACKGROUND
-
-hc attr theme.floating.border_width 9
-hc attr theme.floating.inner_width 3
-hc attr theme.floating.outer_width 4
-
-hc attr theme.floating.outer_color $XBACKGROUND
-hc attr theme.background_color '#141414'
-
-hc set window_gap 0
-hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 1
-hc set mouse_recenter_gap 0
-
-herbstclient set tree_style '╾│ ├└╼─┐'
-
-# unlock, just to be sure
-hc unlock
-hc detect_monitors
-
-PANEL_HEIGHT=24
-for monitor in $(seq 0 2); do
-    hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
-done
-
-# Start our panel
-pkill -x lemonbar
-$HOME/etc/lemonbar/lemonbar &
+# Finally start our panel
+pkill -x lemonbar; $HOME/etc/lemonbar/lemonbar &
