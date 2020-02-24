@@ -40,6 +40,9 @@ xset r rate 400 50
 # Apply keybindings
 $HOME/etc/herbstluftwm/keybinds &
 
+# Enable custom rules
+$HOME/etc/herbstluftwm/rules &
+
 # theme
 hc attr theme.tiling.reset 1
 hc attr theme.floating.reset 1
@@ -84,25 +87,10 @@ hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
 
-# rules
-hc unrule -F
-#hc rule class=XTerm tag=3 # move all xterms to tag 3
-
-hc rule focus=on # normally focus new clients
-#hc rule focus=off # normally do not focus new clients
-
-# give focus to most common terminals
-hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
-hc rule class~'(Discord|DiscordCanary)' focus=off
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
-hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+herbstclient set tree_style '╾│ ├└╼─┐'
 
 # unlock, just to be sure
 hc unlock
-
-herbstclient set tree_style '╾│ ├└╼─┐'
-
 hc detect_monitors
 
 PANEL_HEIGHT=24
