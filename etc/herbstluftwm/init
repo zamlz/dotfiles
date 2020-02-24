@@ -1,9 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
 # this is a simple config for herbstluftwm
-
-# TODO:
-#   * Cleanup this file. Maybe split it up into multiple pieces.
 
 hc() {
     herbstclient "$@"
@@ -12,7 +9,7 @@ hc() {
 hc emit_hook reload
 
 # Reapply certain XORG settings (do not fork this)
-$HOME/etc/xorg/wminit
+$HOME/etc/xorg/wminit &
 
 # Apply keybindings
 $HOME/etc/herbstluftwm/keybinds &
@@ -22,6 +19,3 @@ $HOME/etc/herbstluftwm/rules &
 
 # Set the theme
 $HOME/etc/herbstluftwm/theme &
-
-# Finally start our panel
-pkill -x lemonbar; $HOME/etc/lemonbar/lemonbar &

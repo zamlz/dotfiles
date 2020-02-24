@@ -1,9 +1,6 @@
-#!/usr/bin/env bash
+#!/usr/bin/env sh
 
-# this is a simple config for herbstluftwm
-
-# TODO:
-#   * Cleanup this file. Maybe split it up into multiple pieces.
+# theme settings for herbstluftwm
 
 hc() {
     herbstclient "$@"

@@ -4,11 +4,16 @@
 # If we would like to kill our CPU so no.
 # But hey, it definetly looks crisp af tho.
 if [ -f "$HOME/.xcompton" ]; then
+    pkill -x compton
     compton --config $HOME/etc/compton/rc &
 fi
 
 # Reload the xresource data
 xrdb -I$HOME $HOME/etc/xorg/xresources
+
+if [ -z "$(pgrep urxvtd)" ]; then
+    urxvtd -q -o -f
+fi
 
 # Once colors have been reloaded, generate env variables for them
 . $HOME/lib/shell/xrdb_colors
@@ -28,3 +33,8 @@ setxkbmap -option caps:escape
 xset s off
 # + Increases the speed of the keyboard repeat rate
 xset r rate 400 50
+
+# Start lemonbar after all X related stuff is finished
+pkill -x lemonbar
+$HOME/etc/lemonbar/lemonbar &
+
