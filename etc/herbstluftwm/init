@@ -11,25 +11,8 @@ hc() {
 
 hc emit_hook reload
 
-# Reload the xresource data
-xrdb -I$HOME $HOME/etc/xorg/xresources
-. $HOME/lib/shell/xrdb_colors
-
-# Set the background
-if [ -f "$HOME/.fehbg" ]; then
-    $HOME/.fehbg
-else
-    xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
-fi
-
-# Also have to set this here in case xorg isn't started via startx
-setxkbmap -option caps:escape
-
-# Use Display Power Management Settings to configure various things.
-# + Disable screen blanking (screensaver) (I don't think this works)
-xset s off
-# + Increases the speed of the keyboard repeat rate
-xset r rate 400 50
+# Reapply certain XORG settings (do not fork this)
+$HOME/etc/xorg/wminit
 
 # Apply keybindings
 $HOME/etc/herbstluftwm/keybinds &

@@ -1,0 +1,30 @@
+#!/bin/sh
+
+# We need to start the compositor as well
+# If we would like to kill our CPU so no.
+# But hey, it definetly looks crisp af tho.
+if [ -f "$HOME/.xcompton" ]; then
+    compton --config $HOME/etc/compton/rc &
+fi
+
+# Reload the xresource data
+xrdb -I$HOME $HOME/etc/xorg/xresources
+
+# Once colors have been reloaded, generate env variables for them
+. $HOME/lib/shell/xrdb_colors
+
+# Set the background
+if [ -f "$HOME/.fehbg" ]; then
+    $HOME/.fehbg
+else
+    xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
+fi
+
+# Also have to set this here in case xorg isn't started via startx
+setxkbmap -option caps:escape
+
+# Use Display Power Management Settings to configure various things.
+# + Disable screen blanking (screensaver) (I don't think this works)
+xset s off
+# + Increases the speed of the keyboard repeat rate
+xset r rate 400 50
