@@ -11,9 +11,9 @@ fi
 # Reload the xresource data
 xrdb -I$HOME $HOME/etc/xorg/xresources
 
-if [ -z "$(pgrep urxvtd)" ]; then
-    urxvtd -q -o -f
-fi
+#if [ -z "$(pgrep urxvtd)" ]; then
+#    urxvtd -q -o -f
+#fi
 
 # Once colors have been reloaded, generate env variables for them
 . $HOME/lib/shell/xrdb_colors
