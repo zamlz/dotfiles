@@ -9,7 +9,7 @@ hc() {
 hc emit_hook reload
 
 # Reapply certain XORG settings (do not fork this)
-$HOME/etc/xorg/wminit &
+$HOME/etc/xorg/wminit
 
 # Apply keybindings
 $HOME/etc/herbstluftwm/keybinds &
