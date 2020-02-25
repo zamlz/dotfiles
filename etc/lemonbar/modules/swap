@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. $HOME/etc/lemonbar/config
+
+while true; do
+    swap=$(free -h | grep 'Swap:')
+    swap_total=$(echo $swap | awk {'print $2'} | tr -d ' ')
+    swap_used=$(echo $swap | awk {'print $3'} | tr -d ' ')
+    msg="$swap_used/$swap_total"
+    msg=$($MSG_WRAPPER $ICON_SWAP $YELLOW $msg)
+    echo "$ANCHOR_SWAP $msg"
+    sleep $REFRESH_SWAP
+done
+
+# vim: set ft=sh:

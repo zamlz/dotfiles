@@ -4,10 +4,10 @@
 
 while true; do
     memory=$(free -h | grep 'Mem:')
-    memory_total=$(echo $memory | awk {'print $2'})
-    memory_used=$(echo $memory | awk {'print $3'})
+    memory_total=$(echo $memory | awk {'print $2'} | tr -d ' ')
+    memory_used=$(echo $memory | awk {'print $3'} | tr -d ' ')
     msg="$memory_used/$memory_total"
-    msg=$($MSG_WRAPPER $ICON_MEMORY $BLUE $msg)
+    msg=$($MSG_WRAPPER $ICON_MEMORY $GREEN $msg)
     echo "$ANCHOR_MEMORY$msg"
     sleep $REFRESH_MEMORY
 done
