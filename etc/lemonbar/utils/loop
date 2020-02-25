@@ -5,13 +5,25 @@ MODE="$1"
 
 # Define the monitors
 if [ -f $TRIPLE_MONITOR_TOGGLE ]; then
-MONITOR_1="%{S0}%{c}"
-MONITOR_2="%{S1}%{c}"
-MONITOR_3="%{S2}%{c}"
+
+    MONITOR_1="%{S0}"
+    MONITOR_2="%{S1}"
+    MONITOR_3="%{S2}"
+
+    M1L="%{l}" M1C="%{c}" M1R="%{r}"
+    M2L="%{l}" M2C="%{c}" M2R="%{r}"
+    M3L="%{l}" M3C="%{c}" M3R="%{r}"
+
 else
-MONITOR_1="%{S0}%{l}"
-MONITOR_2="%{S0}%{c}"
-MONITOR_3="%{S0}%{r}"
+
+    MONITOR_1="%{S0}%{l}"
+    MONITOR_2="%{S0}%{c}"
+    MONITOR_3="%{S0}%{r}"
+
+    M1L="" M1C="" M1R=""
+    M2L="" M2C="" M2R=""
+    M3L="" M3C="" M3R=""
+
 fi
 
 while read -r line; do
@@ -32,22 +44,16 @@ while read -r line; do
     esac
 
     # Print the contents of our modules based on the mode
-    if [ "$MODE" == "TOP_FULL" ]; then
-        m1="%{S0}%{c}$usr"
-        m2="%{S1}%{c}$win"
-        m3="%{S2}%{l}$bat%{c}$cal$clk%{r}$bkl"
-        printf "%s\n" "$m1$m2$m3"
-
-    elif [ "$MODE" == "TOP" ]; then
-        m1="${MONITOR_1}$usr"
-        m2="${MONITOR_2}$cal$clk"
-        m3="${MONITOR_3}$bkl$net$bat"
+    if [ "$MODE" == "TOP" ]; then
+        m1="${MONITOR_1}${M1L}${M1C}$usr${M1R}"
+        m2="${MONITOR_2}${M2L}${M2C}$cal$clk${M2R}"
+        m3="${MONITOR_3}${M3L}${M3C}$bkl$net$bat${M3R}"
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "BOT" ]; then
-        m1="${MONITOR_1}$vol"
-        m2="${MONITOR_2}$win$wsp"
-        m3="${MONITOR_3}$cpu$mem$swp"
+        m1="${MONITOR_1}${M1L}${M1C}$vol${M1R}"
+        m2="${MONITOR_2}${M2L}${M2C}$win$wsp${M2R}"
+        m3="${MONITOR_3}${M3L}${M3C}$cpu$mem$swp${M3R}"
         printf "%s\n" "$m1$m2$m3"
 
     else
