@@ -19,14 +19,10 @@ Xft.hintstyle:              hintslight
 ! Font
 !#####
 
-!*font: xftPowerlineSymbols
-*font: xft:dina:size=9
-!*font: xft:Misc Termsynu:style=Regular:pixelsize=14
-!*font:xft:Terminus:size=8
-!*font: xft:hack:size=10
-!*font: xft:Source Code Pro:Regular:size=10
-!*font: xft:Iosevka Medium:style=Medium,Regular
-!*font: xft:Iosevka Light:style=Light,Regular
+#define fonts xft:dina:size=9,\
+    -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+
+*font: fonts
 
 ! Some other Special Programs
 #include "etc/xorg/urxvt"

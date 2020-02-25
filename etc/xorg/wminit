@@ -34,6 +34,10 @@ xset s off
 # + Increases the speed of the keyboard repeat rate
 xset r rate 400 50
 
+# Rehash local fonts
+xset +fp $HOME/.local/share/fonts
+xset fp rehash
+
 # Start lemonbar after all X related stuff is finished
 pkill -x lemonbar
 $HOME/etc/lemonbar/lemonbar &

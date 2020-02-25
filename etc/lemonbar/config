@@ -18,7 +18,7 @@ EVENT_WSP_FIFO=/tmp/workspace_event.fifo
 EVENT_WIN_FIFO=/tmp/wininfo_event.fifo
 
 # Choose the output wrapper
-MSG_WRAPPER=legacy_wrapper
+MSG_WRAPPER=icon_wrapper
 
 # Specify the Anchor Character for each module
 ANCHOR_BACKLIGHT='L'
@@ -32,23 +32,20 @@ ANCHOR_WORKSPACES='W'
 ANCHOR_VOLUME='V'
 
 # Refresh rates of non-event based modules
-REFRESH_BACKLIGHT=0.1
 REFRESH_BATTERY=2
 REFRESH_DATE=86400
 REFRESH_NETWORK=2
 REFRESH_TIME=1
-REFRESH_VOLUME=0.01
 
-# Icons for various modules
-ICON_BACKLIGHT="BKL"
-ICON_BATTERY="BAT"
-ICON_DATE="DATE"
-ICON_NETWORK="NET"
-ICON_TIME="TIME"
-ICON_WHOAMI="USER"
-ICON_WININFO="WIN"
-ICON_WORKSPACES="WSP"
-ICON_VOLUME="VOL"
+# Actual Siji icons for various modules
+ICON_BACKLIGHT=$(echo -e "\ue1c3")
+ICON_BATTERY=$(echo -e "\ue1ff")
+ICON_DATE=$(echo -e "\ue266")
+ICON_NETWORK=$(echo -e "\ue222")
+ICON_TIME=$(echo -e "\ue015")
+ICON_WHOAMI=$(echo -e "\ue1ce")
+ICON_WORKSPACES=$(echo -e "\ue1d7")
+ICON_VOLUME=$(echo -e "\ue04d")
 
 # Hardware Specification
 WIFI_INTERFACE="wlp82s0"

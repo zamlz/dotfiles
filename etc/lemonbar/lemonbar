@@ -34,17 +34,16 @@ $HOME/etc/lemonbar/modules/workspaces   < $EVENT_WSP_FIFO > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/volume       < $EVENT_VOL_FIFO > $PANEL_BOT_FIFO &
 # $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_BOT_FIFO &
 
-# Find th font to use.
-font=$(xrdb -query \
-    | grep '*font' \
-    | sed -E "s/.*xft:(.*)/\\1/")
-
 # Define lemonbar opts
 OPTS="  -g x24
     -F ${XFOREGROUND}
     -B ${XBACKGROUND}
-    -f ${font}
+    -f dina:size=8
+    -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
     -u 3"
+
+# -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+# -f -wuncon-siji-medium-r-normal--17-120-100-100-c-0-iso10646-1
 
 # Start the top panel
 $HOME/etc/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
