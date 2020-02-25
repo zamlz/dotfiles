@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Triple Monitor Toggle File
+TRIPLE_MONITOR_TOGGLE=$HOME/.config/lemonbar/enable_triple_monitor

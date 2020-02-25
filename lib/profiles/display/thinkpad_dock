@@ -17,4 +17,8 @@ xrandr --output DP-1.1 --mode 1920x1080 --pos 3000x656 --rotate normal \
     --output DP-0 --off
     #--output DP-2 --mode 1920x1080 --pos 0x544 --rotate normal \
 
+# Allow lemonbar to draw to multiple displays
+. $HOME/etc/lemonbar/utils/multi_monitor_support
+touch $TRIPLE_MONITOR_TOGGLE
+
 herbstclient reload

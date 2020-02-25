@@ -3,6 +3,17 @@
 . $HOME/etc/lemonbar/config
 MODE="$1"
 
+# Define the monitors
+if [ -f $TRIPLE_MONITOR_TOGGLE ]; then
+MONITOR_1="%{S0}%{c}"
+MONITOR_2="%{S1}%{c}"
+MONITOR_3="%{S2}%{c}"
+else
+MONITOR_1="%{S0}%{l}"
+MONITOR_2="%{S0}%{c}"
+MONITOR_3="%{S0}%{r}"
+fi
+
 while read -r line; do
     # echo "Current line: $line" >&2
     case $line in
@@ -28,15 +39,15 @@ while read -r line; do
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "TOP" ]; then
-        m1="%{l}$usr"
-        m2="%{c}$cal$clk"
-        m3="%{r}$bkl$net$bat"
+        m1="${MONITOR_1}$usr"
+        m2="${MONITOR_2}$cal$clk"
+        m3="${MONITOR_3}$bkl$net$bat"
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" == "BOT" ]; then
-        m1="%{l}$vol"
-        m2="%{c}$win$wsp"
-        m3="%{r}$cpu$mem$swp"
+        m1="${MONITOR_1}$vol"
+        m2="${MONITOR_2}$win$wsp"
+        m3="${MONITOR_3}$cpu$mem$swp"
         printf "%s\n" "$m1$m2$m3"
 
     else

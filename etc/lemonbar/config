@@ -3,6 +3,7 @@
 # Import modules needed but anything that imports this config
 . $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/utils/wrappers
+. $HOME/etc/lemonbar/utils/multi_monitor_support
 
 # Config variables used by all components of lemonbar
 # ---------------------------------------------------
