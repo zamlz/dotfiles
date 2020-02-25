@@ -8,6 +8,7 @@ while read -r line; do
     case $line in
         $ANCHOR_BACKLIGHT*)     bkl="${line#?}" ;;
         $ANCHOR_BATTERY*)       bat="${line#?}" ;;
+        $ANCHOR_CPU*)           cpu="${line#?}" ;;
         $ANCHOR_DATE*)          cal="${line#?}" ;;
         $ANCHOR_MEMORY*)        mem="${line#?}" ;;
         $ANCHOR_NETWORK*)       net="${line#?}" ;;
@@ -34,7 +35,7 @@ while read -r line; do
     elif [ "$MODE" == "BOT" ]; then
         m1="%{l}$vol"
         m2="%{c}$win$wsp"
-        m3="%{r}$mem"
+        m3="%{r}$cpu$mem"
         printf "%s\n" "$m1$m2$m3"
 
     else

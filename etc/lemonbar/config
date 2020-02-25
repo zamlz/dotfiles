@@ -23,6 +23,7 @@ MSG_WRAPPER=icon_wrapper
 # Specify the Anchor Character for each module
 ANCHOR_BACKLIGHT='L'
 ANCHOR_BATTERY='B'
+ANCHOR_CPU='C'
 ANCHOR_DATE='D'
 ANCHOR_MEMORY='M'
 ANCHOR_NETWORK='N'
@@ -34,6 +35,7 @@ ANCHOR_VOLUME='V'
 
 # Refresh rates of non-event based modules
 REFRESH_BATTERY=2
+REFRESH_CPU=3
 REFRESH_DATE=86400
 REFRESH_MEMORY=3
 REFRESH_NETWORK=2
@@ -42,6 +44,7 @@ REFRESH_TIME=1
 # Actual Siji icons for various modules
 ICON_BACKLIGHT=$(echo -e "\ue1c3")
 ICON_BATTERY=$(echo -e "\ue1ff")
+ICON_CPU=$(echo -e "\ue026")
 ICON_DATE=$(echo -e "\ue266")
 ICON_MEMORY=$(echo -e "\ue021")
 ICON_NETWORK=$(echo -e "\ue222")

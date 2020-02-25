@@ -1,0 +1,12 @@
+#!/bin/sh
+
+. $HOME/etc/lemonbar/config
+
+while true; do
+    msg=$(cat /proc/loadavg | awk '{print $1}')
+    msg=$($MSG_WRAPPER $ICON_CPU $RED $msg)
+    echo "$ANCHOR_CPU$msg"
+    sleep $REFRESH_CPU
+done
+
+# vim: set ft=sh:
