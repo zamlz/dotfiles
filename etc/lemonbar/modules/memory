@@ -1,0 +1,15 @@
+#!/bin/sh
+
+. $HOME/etc/lemonbar/config
+
+while true; do
+    memory=$(free -h | grep 'Mem:')
+    memory_total=$(echo $memory | awk {'print $2'})
+    memory_used=$(echo $memory | awk {'print $3'})
+    msg="$memory_used/$memory_total"
+    msg=$($MSG_WRAPPER $ICON_MEMORY $BLUE $msg)
+    echo "$ANCHOR_MEMORY$msg"
+    sleep $REFRESH_MEMORY
+done
+
+# vim: set ft=sh:
