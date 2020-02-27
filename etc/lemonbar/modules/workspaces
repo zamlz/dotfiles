@@ -2,6 +2,10 @@
 
 . $HOME/etc/lemonbar/config
 
+hclm() {
+    herbstclient list_monitors
+}
+
 while read -r workspace_event; do
 
     # For whatever happens here so we can speed up the updates even further
@@ -24,6 +28,10 @@ while read -r workspace_event; do
         | cut -d " " -f3- ; done)
     msg=""
 
+    # Is there to get this info without relying on herbs?
+    mon_1=$(hclm | grep '0:' | awk '{print $5}' | tr -d '"')
+    mon_2=$(hclm | grep '1:' | awk '{print $5}' | tr -d '"')
+    mon_3=$(hclm | grep '2:' | awk '{print $5}' | tr -d '"')
 
     for space_id in $(seq $total_spaces); do
 
@@ -34,10 +42,16 @@ while read -r workspace_event; do
         space_id=$((space_id - 1))
 
         # check if the workspace is empty
-        if [ -z "$(echo $active_spaces | grep $space_id)" ]; then
-            ws="%{F#383838}$ws%{F-}"
-        else
+        if [ "$ws" = "$mon_1" ]; then
             ws="%{F$RED}$ws%{F-}"
+        elif [ "$ws" = "$mon_2" ]; then
+            ws="%{F$GREEN}$ws%{F-}"
+        elif [ "$ws" = "$mon_3" ]; then
+            ws="%{F$BLUE}$ws%{F-}"
+        elif [ -z "$(echo $active_spaces | grep $space_id)" ]; then
+            ws="%{F#282828}$ws%{F-}"
+        else
+            ws="%{F#888888}$ws%{F-}"
         fi
 
         # mark output if currently focused
