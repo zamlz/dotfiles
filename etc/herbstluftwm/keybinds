@@ -131,6 +131,10 @@ hc keybind $Super-b spawn ${BOOKLIB}
 NOTELIB="$HOME/lib/rofi/rofi-note"
 hc keybind $Super-n spawn ${NOTELIB}
 
+# Use rofi to launch webbrowser session
+BROWSER="$HOME/lib/rofi/rofi-browser"
+hc keybind $Super-w spawn ${BROWSER}
+
 # Use rofi to also control display/power profiles
 PROFILE_SELECTOR="$HOME/lib/rofi/rofi-profile"
 hc keybind $Super-d spawn ${PROFILE_SELECTOR}
