@@ -1,2 +1,2 @@
 # required by sys-power/throttled (argument)
-=sys-power/throttled-0.6 ~amd64
+sys-power/throttled ~amd64
