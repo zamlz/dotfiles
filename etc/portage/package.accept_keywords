@@ -4,7 +4,7 @@
 =sys-kernel/gentoo-sources-5.4.20 ~amd64
 
 # required by sys-power/throttled (argument)
-sys-power/throttled ~amd64
+=sys-power/throttled-0.6 ~amd64
 
 # required by app-editors/neovim-0.3.8::gentoo
 # required by neovim (argument)
