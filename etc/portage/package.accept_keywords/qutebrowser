@@ -1,0 +1,33 @@
+# required by qutebrowser (argument)
+www-client/qutebrowser ~amd64
+# required by www-client/qutebrowser-1.8.3::gentoo
+=dev-python/pyyaml-5.3 ~amd64
+
+# required by dev-python/PyQt5-5.14.1::gentoo
+# required by dev-python/PyQtWebEngine-5.14.0::gentoo
+# required by www-client/qutebrowser-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/PyQt5-sip-4.19.21 ~amd64
+# required by www-client/qutebrowser-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/colorama-0.4.3 ~amd64
+# required by www-client/qutebrowser-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/jinja-2.11.1 ~amd64
+# required by dev-python/PyQt5-5.14.1::gentoo
+# required by dev-python/PyQtWebEngine-5.14.0::gentoo
+# required by www-client/qutebrowser-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/sip-4.19.21 ~amd64
+# required by www-client/qutebrowser-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/PyQtWebEngine-5.14.0 ~amd64
+# required by www-client/qutebrowser-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/PyQt5-5.14.1 ~amd64

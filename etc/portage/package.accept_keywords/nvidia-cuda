@@ -1,0 +1,5 @@
+# required by =dev-util/nvidia-cuda-toolkit-10.1.168 (argument)
+=dev-util/nvidia-cuda-toolkit-10.1.168-r1 ~amd64
+
+# required by =dev-libs/cudnn-7.6.2.24 (argument)
+=dev-libs/cudnn-7.6.2.24 ~amd64

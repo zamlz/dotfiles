@@ -1,0 +1,2 @@
+# required by gtk2fontsel (argument)
+=x11-misc/gtk2fontsel-0.1-r1 ~amd64
