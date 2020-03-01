@@ -5,7 +5,7 @@
 PROFILE_DIR="$HOME/lib/profiles"
 
 # There must be a cleaner way to get this choice
-profile=$( find  $PROFILE_DIR -type f | \
+profile=$( find  $PROFILE_DIR -not -path '*/.*' -type f | \
     sed -e "s|${PROFILE_DIR}/||g" | \
     rofi -dmenu -i -lines 2 -p "Profile" )
 
