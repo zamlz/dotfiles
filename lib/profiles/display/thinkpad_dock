@@ -8,8 +8,7 @@ for _ in $(seq 20); do
     sleep 0.5;
 done
 
-# $HOME/lib/profiles/display/.triple_monitor_xrandr
-$HOME/.screenlayout/test.sh
+$HOME/lib/profiles/display/.triple_monitor_xrandr
 
 # Allow lemonbar to draw to multiple displays
 . $HOME/etc/lemonbar/utils/multi_monitor_support
