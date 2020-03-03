@@ -8,12 +8,14 @@
 # New and improved lemonbar script
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger $$)
 
 # Avoid running the panel multiple times
 if [ $(pgrep -cx lemonbar) -gt 1 ]; then
-    printf "The panel is already running.\n" >&2
+    $LOGGER -s "The panel is already running"
     exit 1
 fi
+$LOGGER "Starting lemonbar init script"
 
 # Exit gracefully if terminated
 trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
@@ -22,6 +24,7 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 $HOME/etc/lemonbar/utils/make_fifos
 
 # Add modules to the top fifo
+$LOGGER "Setting up top fifo modules"
 $HOME/etc/lemonbar/modules/backlight    < $EVENT_BKL_FIFO > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/date         > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/network      > $PANEL_TOP_FIFO &
@@ -30,6 +33,7 @@ $HOME/etc/lemonbar/modules/whoami       > $PANEL_TOP_FIFO &
 $HOME/etc/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
 
 # Add modules to the bot fifo
+$LOGGER "Setting up bot fifo modules"
 $HOME/etc/lemonbar/modules/cpu          > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/filesystems  > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/memory       > $PANEL_BOT_FIFO &
@@ -39,26 +43,30 @@ $HOME/etc/lemonbar/modules/volume       < $EVENT_VOL_FIFO > $PANEL_BOT_FIFO &
 # $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_BOT_FIFO &
 
 # Define lemonbar opts
-OPTS="  -g x24
-    -F ${XFOREGROUND}
-    -B ${XBACKGROUND}
-    -f dina:size=8
-    -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
-    -u 3"
-
+OPTS="-g x24
+-F ${XFOREGROUND}
+-B ${XBACKGROUND}
+-f dina:size=8
+-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+-u 3"
 # -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 # -f -wuncon-siji-medium-r-normal--17-120-100-100-c-0-iso10646-1
+$LOGGER "Lemonbar defined with the following opts : $OPTS"
 
 # Start the top panel
+$LOGGER "Initializing lemonbar using top fifo"
 $HOME/etc/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
 
 # Start the bottom panel
+$LOGGER "Initializing lemonbar using bot fifo"
 $HOME/etc/lemonbar/utils/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
 
 # Start the window manager hooks
+$LOGGER "Starting window manager event hooks"
 pkill -x herbsthooks
 $HOME/etc/lemonbar/wm_events/herbsthooks &
 
+$LOGGER "Lemonbar finished."
 wait
 
 # vim: set ft=sh:

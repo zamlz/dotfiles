@@ -1,0 +1,8 @@
+#!/bin/sh
+
+get_logger() {
+    # $1 is PID
+    # $2 is submodule
+    if [ -n "$2" ]; then module="/$2"; fi
+    echo "/usr/bin/logger -t lemonbar${module}[$1]"
+}
