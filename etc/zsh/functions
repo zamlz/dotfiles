@@ -20,6 +20,7 @@ ps1_generate() {
 
         GIT_NAME=$(basename -s .git `git config --get remote.origin.url` \
             2> /dev/null)
+        GIT_NAME=$(echo $GIT_NAME | sed -e 's|^.*:||g')
 
         if [ -z "$GIT_NAME" ]; then
             GIT_NAME="[?]"
