@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# attempt to wait for connection
+for _ in $(seq 20); do
+    if [ -n "$(xrandr | grep 'HDMI-0 connected')" ]; then
+        break;
+    fi
+    sleep 0.5;
+done
+
+xrandr  --output DP-0 --off  \
+    --output DP-1 --off \
+    --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal \
+    --output HDMI-0 --mode 1920x1080 --pos 1920x0 --rotate normal
+
+# Prevent from lemonbar from trying to draw to multiple displays
+. $HOME/etc/lemonbar/utils/multi_monitor_support
+rm $TRIPLE_MONITOR_TOGGLE
+
+herbstclient reload
