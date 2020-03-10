@@ -37,3 +37,6 @@
 
 # required by dev-java/oracle-jre-bin (argument)
 >=dev-java/oracle-jre-bin-1.8.0.202 Oracle-BCLA-JavaSE
+
+# required by app-arch/unrar (argument)
+=app-arch/unrar-5.8.5 unRAR
