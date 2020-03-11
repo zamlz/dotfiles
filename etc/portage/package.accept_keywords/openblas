@@ -1,0 +1,2 @@
+# required by =sci-libs/openblas-0.3.7 (argument)
+=sci-libs/openblas-0.3.7 ~amd64
