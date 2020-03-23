@@ -1,9 +1,3 @@
-
-sys-libs/glibc debugsyms installsources
-
 dev-java/oracle-jdk-bin debugsyms installsources
 dev-java/oracle-jre-bin debugsyms installsources
 dev-java/maven-bin debugsyms installsources
-
-sys-libs/openblas debugsyms installsources
-sys-libs/atlas debugsyms installsources
