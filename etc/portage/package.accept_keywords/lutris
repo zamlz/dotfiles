@@ -1,0 +1,5 @@
+# required by games-util/lutris (argument)
+=games-util/lutris-0.5.4-r1 ~amd64
+# required by games-util/lutris-0.5.4-r1::gentoo
+# required by games-util/lutris (argument)
+=dev-python/python-evdev-1.1.2-r1 ~amd64
