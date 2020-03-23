@@ -40,3 +40,6 @@
 
 # required by app-arch/unrar (argument)
 =app-arch/unrar-5.8.5 unRAR
+
+# required by games-util/steam-launcher (argument)
+>=games-util/steam-launcher-1.0.0.59-r3 ValveSteamLicense
