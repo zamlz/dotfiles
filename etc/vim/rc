@@ -23,6 +23,7 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " Plug 'valloric/youcompleteme'
+Plug 'ledger/vim-ledger'
 
 call plug#end()
 

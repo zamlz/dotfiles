@@ -42,10 +42,13 @@ precmd() {
 # Update our ls colors
 eval $(dircolors -b $HOME/lib/shell/lscolors)
 
-# Necessary exports
+# Update the path variable
 export PATH="$HOME/lib/private/bin:$PATH"
+export PATH="$HOME/usr/ledger/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/bin:$PATH"
+
+# Necessary exports
 export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA='tty'
 export DISTRO=$(grep --color=none ^ID= /etc/os-release | tr '=' ' ' | \
@@ -58,7 +61,6 @@ export PASSWORD_STORE_DIR="$HOME/usr/passwords"
 
 # Source some special programs
 source $HOME/sys/path.sh 2> /dev/null
-source $HOME/src/tabula-rasa/scripts/shell_source.sh 2> /dev/null
 
 # Finally, if we are ina virtual environment start it
 if [ -n "$VIRTUAL_ENV" ]; then
