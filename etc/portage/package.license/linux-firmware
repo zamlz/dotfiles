@@ -1,0 +1,3 @@
+# required by sys-kernel/genkernel-3.5.3.3::gentoo[firmware]
+# required by sys-kernel/genkernel (argument)
+>=sys-kernel/linux-firmware-20190923 linux-fw-redistributable no-source-code
