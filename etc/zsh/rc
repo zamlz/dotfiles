@@ -44,7 +44,6 @@ eval $(dircolors -b $HOME/lib/shell/lscolors)
 
 # Update the path variable
 export PATH="$HOME/lib/private/bin:$PATH"
-export PATH="$HOME/usr/ledger/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/bin:$PATH"
 
