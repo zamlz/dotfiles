@@ -57,6 +57,7 @@ export DISTRO=$(grep --color=none ^ID= /etc/os-release | tr '=' ' ' | \
 export HTOPRC="$HOME/etc/htop/rc"
 export TASKRC="$HOME/etc/taskwarrior/rc"
 export PASSWORD_STORE_DIR="$HOME/usr/passwords"
+export LEDGER_FILE="$HOME/usr/ledger/main.journal"
 
 # Source some special programs
 source $HOME/sys/path.sh 2> /dev/null
