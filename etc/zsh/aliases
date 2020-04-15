@@ -40,6 +40,7 @@ alias ncmpcpp="ncmpcpp --config=$HOME/etc/ncmpcpp/config \
 # Random Stuff
 alias fping="ping -c 3 www.google.com"
 alias weather="curl wttr.in"
+alias hl="hledger"
 
 # Teleportation Jutsu
 alias ..="cd .."
