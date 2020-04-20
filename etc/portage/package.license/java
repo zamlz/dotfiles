@@ -1,9 +1,0 @@
-# required by dev-java/oracle-jdk-bin (argument)
->=dev-java/oracle-jdk-bin-1.8.0.202:1.8 Oracle-BCLA-JavaSE
-
-# required by dev-java/oracle-jdk-bin-1.8.0.202::gentoo[doc]
-# required by dev-java/oracle-jdk-bin (argument)
->=dev-java/java-sdk-docs-1.8.0.202:1.8 oracle-java-documentation-8
-
-# required by dev-java/oracle-jre-bin (argument)
->=dev-java/oracle-jre-bin-1.8.0.202 Oracle-BCLA-JavaSE

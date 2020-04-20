@@ -1,3 +1,0 @@
-dev-java/oracle-jdk-bin debugsyms installsources
-dev-java/oracle-jre-bin debugsyms installsources
-dev-java/maven-bin debugsyms installsources
