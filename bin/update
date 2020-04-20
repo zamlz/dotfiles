@@ -15,6 +15,7 @@ GIT_DOCS="git -C $HOME/usr/documents"
 GIT_NOTE="git -C $HOME/usr/notes"
 GIT_PUBS="git -C $HOME/usr/papers"
 GIT_PASS="git -C $HOME/usr/passwords"
+GIT_LEDG="git -C $HOME/usr/ledger"
 
 # Update system packages
 if [ "$DISTRO" = "ubuntu" ]; then
@@ -65,6 +66,7 @@ git_update $GIT_BOOK
 git_update $GIT_DOCS
 git_update $GIT_PASS
 git_update $GIT_PUBS
+git_update $GIT_LEDG
 
 # Kill ssh-agent
 pkill ssh-agent
