@@ -29,6 +29,11 @@ compinit
 autoload -U promptinit
 promptinit
 
+# Update the path variable
+export PATH="$HOME/lib/private/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/bin:$PATH"
+
 # Source the important stuff
 source $HOME/etc/zsh/aliases
 source $HOME/etc/zsh/functions
@@ -42,10 +47,6 @@ precmd() {
 # Update our ls colors
 eval $(dircolors -b $HOME/lib/shell/lscolors)
 
-# Update the path variable
-export PATH="$HOME/lib/private/bin:$PATH"
-export PATH="$HOME/.local/bin/:$PATH"
-export PATH="$HOME/bin:$PATH"
 
 # Necessary exports
 export GPG_TTY=$(tty)
