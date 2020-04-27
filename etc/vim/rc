@@ -25,6 +25,8 @@ Plug 'plasticboy/vim-markdown'
 " Plug 'valloric/youcompleteme'
 Plug 'ledger/vim-ledger'
 
+Plug 'JuliaEditorSupport/julia-vim'
+
 call plug#end()
 
 "------------------------------------------------------------------------------
