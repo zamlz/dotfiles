@@ -1,9 +1,7 @@
-! Solarized Dark
-
 ! special
-#define xbackground    #002b36
-#define xforeground    #93a1a1
-#define xcursorColor   #93a1a1
+#define xbackground    #fdf6e3
+#define xforeground    #586e75
+#define xcursorColor   #586e75
 
 ! black
 #define xcolor0        #002b36
