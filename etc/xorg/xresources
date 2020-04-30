@@ -18,12 +18,7 @@ Xft.hintstyle:              hintslight
 !#####
 ! Font
 !#####
-
-#define fonts xft:Misc Termsyn:size=12,\
-    -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
-
-*font: fonts
-!*font: xft:Misc Termsyn:size=12
+*font: xft:Iosevka Term:size=10
 
 
 ! Some other Special Programs
