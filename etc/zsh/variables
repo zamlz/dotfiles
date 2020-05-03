@@ -1,0 +1,19 @@
+#!/bin/zsh
+
+# Update the path variable
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/lib/private/bin:$PATH"
+
+# Random useful
+export DISTRO=$(grep --color=none ^ID= /etc/os-release | sed -e 's/^ID=//g')
+
+# Configure GnuPG Variables
+export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA='tty'
+
+# Configuration files
+export HTOPRC="$HOME/etc/htop/rc"
+export TASKRC="$HOME/etc/taskwarrior/rc"
+export PASSWORD_STORE_DIR="$HOME/usr/passwords"
+export LEDGER_FILE="$HOME/usr/ledger/main.journal"

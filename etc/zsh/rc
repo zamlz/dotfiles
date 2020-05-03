@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-# This is just to make sure everything is sourced properly
-source /etc/profile
-
 # History
 export HISTSIZE=2000
 export HISTFILE="$HOME/.zhistory"
@@ -29,12 +26,8 @@ compinit
 autoload -U promptinit
 promptinit
 
-# Update the path variable
-export PATH="$HOME/lib/private/bin:$PATH"
-export PATH="$HOME/.local/bin/:$PATH"
-export PATH="$HOME/bin:$PATH"
-
 # Source the important stuff
+source $HOME/etc/zsh/variables
 source $HOME/etc/zsh/aliases
 source $HOME/etc/zsh/functions
 
@@ -46,19 +39,6 @@ precmd() {
 
 # Update our ls colors
 eval $(dircolors -b $HOME/lib/shell/lscolors)
-
-
-# Necessary exports
-export GPG_TTY=$(tty)
-export PINENTRY_USER_DATA='tty'
-export DISTRO=$(grep --color=none ^ID= /etc/os-release | tr '=' ' ' | \
-        tr -d '"' | awk '{print $2}')
-
-# Export to configure certain apps
-export HTOPRC="$HOME/etc/htop/rc"
-export TASKRC="$HOME/etc/taskwarrior/rc"
-export PASSWORD_STORE_DIR="$HOME/usr/passwords"
-export LEDGER_FILE="$HOME/usr/ledger/main.journal"
 
 # Source some special programs
 source $HOME/sys/path.sh 2> /dev/null
