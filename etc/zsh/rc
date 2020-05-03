@@ -32,7 +32,7 @@ source $HOME/etc/zsh/aliases
 # Setup ZSH functions
 fpath=("$HOME/etc/zsh/functions" $fpath)
 autoload groot
-autoload ps1_generate
+autoload prompt_generate
 autoload sh
 autoload sw
 autoload venv
@@ -43,7 +43,7 @@ autoload window-utils && window-utils
 # Thanks to this wonderful command in ZSH prompt is always regenerated
 # after every command!
 precmd() {
-    export PS1=$(ps1_generate)
+    export PROMPT=$(prompt_generate)
 }
 
 # Update our ls colors

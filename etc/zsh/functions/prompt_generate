@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Generate our own custom prompt for our shell
-function ps1_generate() {
+function prompt_generate() {
     echo -ne "%B%F{cyan}.-"
 
     # Check if we are in an SSH connection
