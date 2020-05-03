@@ -1,0 +1,11 @@
+#!/bin/zsh
+
+# A special function for changing the colorscheme
+function xcolorscheme() {
+    if [ -z "$1" ]; then
+        ls $HOME/lib/colorschemes
+    else
+        rm $HOME/.xcolorscheme
+        ln -s $HOME/lib/colorschemes/$1 $HOME/.xcolorscheme
+    fi
+}

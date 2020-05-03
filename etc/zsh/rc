@@ -6,30 +6,39 @@ export HISTFILE="$HOME/.zhistory"
 export SAVEHIST=$HISTSIZE
 
 # Various Settings
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt autocd
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+
+# Changing Directories
+setopt AUTO_CD
 unsetopt BEEP # turn of audible beeps
 
-# setopt extendedglob
+# Set autocorrect options for commands
+setopt CORRECT
+setopt CORRECT_ALL
+
 bindkey -v
 
 # Shell Completions
 fpath=($HOME/etc/zsh/completions $fpath)
-autoload -U compinit
-compinit
-
-# Shell Correction
-# setopt correctall
-
-# Shell Prompt
-autoload -U promptinit
-promptinit
+autoload -U compinit && compinit
+autoload -U promptinit && promptinit
 
 # Source the important stuff
 source $HOME/etc/zsh/variables
 source $HOME/etc/zsh/aliases
-source $HOME/etc/zsh/functions
+
+# Setup ZSH functions
+fpath=("$HOME/etc/zsh/functions" $fpath)
+autoload groot
+autoload ps1_generate
+autoload sh
+autoload sw
+autoload venv
+autoload xcolorscheme
+autoload gpg-utils && gpg-utils
+autoload window-utils && window-utils
 
 # Thanks to this wonderful command in ZSH prompt is always regenerated
 # after every command!

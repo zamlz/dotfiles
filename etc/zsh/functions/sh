@@ -1,0 +1,5 @@
+#!/bin/zsh
+
+# Because of this function above, the sh shell will not work anymore.
+# we'll need to override the value of a certain identifier
+/bin/sh -c "export precmd=''; exec /bin/sh"
