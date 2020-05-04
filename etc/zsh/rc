@@ -14,10 +14,6 @@ setopt HIST_IGNORE_SPACE
 setopt AUTO_CD
 unsetopt BEEP # turn of audible beeps
 
-# Set autocorrect options for commands
-setopt CORRECT
-setopt CORRECT_ALL
-
 bindkey -v
 
 # Shell Completions
