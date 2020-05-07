@@ -31,3 +31,7 @@ www-client/qutebrowser ~amd64
 # required by @selected
 # required by @world (argument)
 =dev-python/PyQt5-5.14.1 ~amd64
+# required by www-client/qutebrowser-1.10.1::gentoo
+# required by @selected
+# required by @world (argument)
+=dev-python/pypeg2-2.15.2-r1 ~amd64
