@@ -7,7 +7,7 @@ URxvt.geometry:             96x33
 URxvt.loginShell:           false
 URxvt.internalBorder:       10
 URxvt.lineSpace:            0
-URxvt.termName:             xterm-256color
+!URxvt.termName:             xterm-256color
 
 ! These are the extra extensions we are loading
 !URxvt.perl-ext-common: default, config-reload
