@@ -2,7 +2,7 @@
 
 # History
 export HISTSIZE=2000
-export HISTFILE="$HOME/.zhistory"
+export HISTFILE="$HOME/.local/share/zsh/history"
 export SAVEHIST=$HISTSIZE
 
 # Various Settings
@@ -18,7 +18,7 @@ bindkey -v
 
 # Shell Completions
 fpath=($HOME/etc/zsh/completions $fpath)
-autoload -U compinit && compinit
+autoload -U compinit && compinit -d "$HOME/.local/share/zsh/compdump"
 autoload -U promptinit && promptinit
 
 # Source the important stuff

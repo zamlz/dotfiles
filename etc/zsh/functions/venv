@@ -1,26 +1,28 @@
 #!/bin/zsh
 
+PYTHON_VENVS_DIRECTORY=${PYTHON_VENVS_DIRECTORY:-$HOME/.venvs}
+
 # A simple wrapper for virtualenv
 if [[ ! -z "$@" ]]; then
     vname=$1;
     shift;
     if [[ -z "$@" ]]; then
-        if [[ ! -d "$HOME/.venvs/$vname" ]]; then
+        if [[ ! -d "$PYTHON_VENVS_DIRECTORY/$vname" ]]; then
             echo "Create a new virtual environment named '$vname' ?";
             echo 'Press any key to continue or Ctrl+C to exit...\n'
             # note this is zsh read
             read -k1 -rs
             echo "Creating new venv: $vname";
-            python -m venv $HOME/.venvs/$vname
+            python -m venv $PYTHON_VENVS_DIRECTORY/$vname
         fi
         echo "Starting venv: $vname"
-        source $HOME/.venvs/${vname}/bin/activate
+        source $PYTHON_VENVS_DIRECTORY/${vname}/bin/activate
         save_window_info
     else
-        python -m venv $HOME/.venvs/$vname $@
+        python -m venv $PYTHON_VENVS_DIRECTORY/$vname $@
         save_window_info
     fi
 else
     echo "Python Virtual Environments (venvs)"
-    tree -L 1 -d --noreport $HOME/.venvs/ | tail -n +2
+    tree -L 1 -d --noreport $PYTHON_VENVS_DIRECTORY/ | tail -n +2
 fi
