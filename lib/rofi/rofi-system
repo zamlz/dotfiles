@@ -13,12 +13,7 @@ fi
 
 if [ "$systask" = "LOCK SCREEN" ]; then
 
-    sleep 0.3 # this ensures that rofi is closed before scrot is run
-    IMG="/tmp/.curdesk.png"
-    BLUR="10x10"
-    scrot --overwrite $IMG
-    convert $IMG -blur $BLUR $IMG
-    exec i3lock -nefi $IMG
+    exec i3lock -nefi $HOME/etc/xorg/hubble_legacy_field.png
 
 elif [ "$systask" = "QUIT HERBSTLUFTWM" ]; then
 
