@@ -13,7 +13,9 @@ call plug#begin('~/.vim/plugged')
 
 " vim-airline:
 " Lean & mean status/tabline for vim thats light as air
-Plug 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
@@ -25,6 +27,7 @@ Plug 'plasticboy/vim-markdown'
 " Plug 'valloric/youcompleteme'
 Plug 'ledger/vim-ledger'
 
+" Language Based Plugins
 Plug 'JuliaEditorSupport/julia-vim'
 
 call plug#end()
@@ -35,15 +38,16 @@ call plug#end()
 
 " vim-airline
 let laststatus = 2
-let g:airline_powerline_fonts = 0
+let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 
 " vim-airline-themes
-" let g:airline_theme = 'luna'
+let g:airline_theme = 'base16_gruvbox_dark_hard'
 
 " git-gutter
 nmap <C-M-j> <Plug>GitGutterNextHunk
 nmap <C-M-k> <Plug>GitGutterPrevHunk
+let g:gitgutter_set_sign_backgrounds = 1
 
 " YouCompleteMe stuff
 " let g:ycm_global_ycm_extra_conf = '~/etc/vim/ycm_extra_conf.py'
@@ -111,16 +115,22 @@ highlight String ctermfg=darkgreen
 highlight Comment ctermfg=darkgrey
 highlight Exception ctermfg=darkred
 
+" Fix colors on gitgutter after colorscheme has been set
+highlight SignColumn ctermbg=None
+highlight GitGutterAdd ctermbg=None ctermfg=green
+highlight GitGutterChange ctermbg=None ctermfg=yellow
+highlight GitGutterDelete ctermbg=None ctermfg=red
+
 "------------------------------------------------------------------------------
 " Custom Keybindings
 "------------------------------------------------------------------------------
 
 " Sets a keybind to turn off highlighted searches
 nnoremap <leader><space> :nohlsearch<CR>
+
 " Keybinds to quickly switch buffers
 noremap <S-j> :bn<CR>
 noremap <S-k> :bp<CR>
-
 
 "------------------------------------------------------------------------------
 " Custom Vim Functions
