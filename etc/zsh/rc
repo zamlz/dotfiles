@@ -18,7 +18,8 @@ bindkey -v
 
 # Shell Completions
 fpath=($HOME/etc/zsh/completions $fpath)
-autoload -U compinit && compinit -d "$HOME/.local/share/zsh/compdump"
+autoload -Uz compinit && compinit -d "$HOME/.local/share/zsh/compdump"
+autoload -U bashcompinit && bashcompinit
 autoload -U promptinit && promptinit
 
 # Source the important stuff
@@ -35,6 +36,9 @@ autoload venv
 autoload xcolorscheme
 autoload gpg-utils && gpg-utils
 autoload window-utils && window-utils
+
+# Add local python argparse complete
+eval "$(register-python-argcomplete pubs)"
 
 # Thanks to this wonderful command in ZSH prompt is always regenerated
 # after every command!
