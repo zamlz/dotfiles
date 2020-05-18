@@ -26,6 +26,7 @@ Plug 'plasticboy/vim-markdown'
 
 " Plug 'valloric/youcompleteme'
 Plug 'yggdroot/indentline'
+Plug 'mbbill/undotree'
 
 " Language Based Plugins
 Plug 'JuliaEditorSupport/julia-vim'
@@ -139,6 +140,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 " Keybinds to quickly switch buffers
 noremap <S-j> :bn<CR>
 noremap <S-k> :bp<CR>
+
+" Key binds to toggle the Undo Tree
+noremap <F5> :UndotreeToggle<CR>
 
 "------------------------------------------------------------------------------
 " Custom Vim Functions
