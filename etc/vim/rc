@@ -25,10 +25,11 @@ Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
 
 " Plug 'valloric/youcompleteme'
-Plug 'ledger/vim-ledger'
+Plug 'yggdroot/indentline'
 
 " Language Based Plugins
 Plug 'JuliaEditorSupport/julia-vim'
+Plug 'ledger/vim-ledger'
 
 call plug#end()
 
@@ -51,6 +52,13 @@ let g:gitgutter_set_sign_backgrounds = 1
 
 " YouCompleteMe stuff
 " let g:ycm_global_ycm_extra_conf = '~/etc/vim/ycm_extra_conf.py'
+
+" Indent Lines
+"let g:indentLine_char = '.'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_setColors = 1
+"let g:indentLine_bgcolor_term = 0
+let g:indentLine_color_term = 0
 
 "------------------------------------------------------------------------------
 " Other various useful settings
