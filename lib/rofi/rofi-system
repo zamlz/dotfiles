@@ -13,7 +13,7 @@ fi
 
 if [ "$systask" = "LOCK SCREEN" ]; then
 
-    exec i3lock -nefi $HOME/etc/xorg/hubble_legacy_field.png
+    exec i3lock -nef --color=000000 #i $HOME/etc/xorg/hubble_legacy_field.png
 
 elif [ "$systask" = "QUIT HERBSTLUFTWM" ]; then
 
