@@ -64,8 +64,9 @@ let g:indentLine_color_term = 0
 " Configure vim ledger
 let g:ledger_maxwidth = 80
 let g:ledger_bin = 'ledger'
-let g:ledger_extra_options = '--pedantic --explicit --check-payees'
+let g:ledger_extra_options = '--pedantic --explicit'
 let g:ledger_align_at = 77
+let g:ledger_date_format = '%Y-%m-%d'
 
 "------------------------------------------------------------------------------
 " Other various useful settings
@@ -153,6 +154,11 @@ noremap <S-k> :bp<CR>
 
 " Key binds to toggle the Undo Tree
 noremap <F5> :UndotreeToggle<CR>
+
+" Ledger remap tab completion
+au FileType ledger inoremap <silent> <Tab> <C-r>=ledger#autocomplete_and_align()<CR>
+au FileType ledger vnoremap <silent> <Tab> :LedgerAlign<CR>
+au FileType ledger nnoremap <silent> <C-m> :silent<space>make<bar>redraw!<bar>cwindow<CR>
 
 "------------------------------------------------------------------------------
 " Custom Vim Functions
