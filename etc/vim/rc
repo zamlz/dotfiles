@@ -61,6 +61,12 @@ let g:indentLine_setColors = 1
 "let g:indentLine_bgcolor_term = 0
 let g:indentLine_color_term = 0
 
+" Configure vim ledger
+let g:ledger_maxwidth = 80
+let g:ledger_bin = 'ledger'
+let g:ledger_extra_options = '--pedantic --explicit --check-payees'
+let g:ledger_align_at = 77
+
 "------------------------------------------------------------------------------
 " Other various useful settings
 "------------------------------------------------------------------------------
@@ -80,6 +86,7 @@ set shiftwidth=4    " Allows helps to make it 4 spaces in neovim
 
 filetype plugin on
 filetype indent on  " Load filetype-specific indent files
+syntax on
 
 set wildmenu        " visual autocomplete for command menu
 set lazyredraw      " redraw only when we need to
@@ -117,6 +124,9 @@ highlight LineNr ctermfg=black
 
 " Change colorscheme of Pmenus
 highlight Pmenu ctermfg=darkgrey ctermbg=black
+
+" Set background color of folded blocks
+highlight Folded ctermbg=black
 
 " Some syntax highlighting changes (maybe move this to its own file)
 highlight Function ctermfg=darkblue
