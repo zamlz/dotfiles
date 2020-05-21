@@ -1,0 +1,510 @@
+app-text/pandoc ~amd64
+
+# required by dev-haskell/http-4000.3.14::gentoo[network-uri]
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/network-2.6.3.1-r1 ~amd64
+# required by dev-haskell/resourcet-1.1.9::gentoo
+# required by dev-haskell/conduit-1.2.12.1::gentoo
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/monad-control-1.0.2.3 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/skylighting-0.3 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/base-compat-0.9.1 ~amd64
+# required by dev-haskell/pandoc-types-1.17.0.4::gentoo
+# required by dev-haskell/texmath-0.9.1::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/deepseq-generics-0.2.0.0 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/vector-0.11.0.0 ~amd64
+# required by dev-haskell/http-client-0.5.7.0::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/mime-types-0.1.0.9 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/http-types-0.9.1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/blaze-html-0.8.1.2 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/random-1.1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/temporary-1.2.0.4 ~amd64
+# required by dev-haskell/hxt-9.3.1.18::gentoo
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/hxt-charproperties-9.2.0.1 ~amd64
+# required by dev-haskell/data-default-0.5.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/data-default-instances-base-0.0.1 ~amd64
+# required by dev-haskell/http-types-0.9.1::gentoo
+# required by dev-haskell/http-client-0.5.7.0::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/blaze-builder-0.4.0.2 ~amd64
+# required by dev-haskell/http-client-0.5.7.0::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/cookie-0.4.4 ~amd64
+# required by dev-haskell/hxt-9.3.1.18::gentoo
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/hxt-regex-xmlschema-9.2.0.3 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/yaml-0.8.21.2 ~amd64
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/x509-system-1.6.4 ~amd64
+# required by dev-haskell/conduit-1.2.12.1::gentoo
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/mmorph-1.0.9 ~amd64
+# required by dev-haskell/conduit-1.2.12.1::gentoo
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/resourcet-1.1.9 ~amd64
+# required by dev-haskell/conduit-1.2.12.1::gentoo
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/exceptions-0.8.3 ~amd64
+# required by dev-haskell/memory-0.15.0::gentoo
+# required by dev-haskell/cryptonite-0.26-r1::gentoo
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/basement-0.0.11 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/data-default-0.5.3 ~amd64
+# required by dev-haskell/quickcheck-2.9.2::gentoo
+# required by dev-haskell/pandoc-types-1.17.0.4::gentoo
+# required by dev-haskell/texmath-0.9.1::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/tf-random-0.5 ~amd64
+# required by dev-haskell/tls-1.3.9::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/x509-validation-1.6.5 ~amd64
+# required by dev-haskell/juicypixels-3.2.8::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/zlib-0.6.2.1 ~amd64
+# required by dev-haskell/http-client-0.5.7.0::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/case-insensitive-1.2.1.0 ~amd64
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/tls-1.3.9 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/old-time-1.1.0.3-r1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/mtl-2.2.1-r1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/cmark-0.5.6 ~amd64
+# required by dev-haskell/tls-1.3.9::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/x509-1.6.5 ~amd64
+# required by dev-haskell/conduit-1.2.12.1::gentoo
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/void-0.7.3 ~amd64
+# required by dev-haskell/pem-0.2.2::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/base64-bytestring-1.0.0.2 ~amd64
+# required by dev-haskell/tagged-0.8.6::gentoo
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/transformers-compat-0.5.1.4 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/hslua-0.3.13 ~amd64
+# required by dev-haskell/asn1-encoding-0.9.6::gentoo
+# required by dev-haskell/asn1-parse-0.9.4::gentoo
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/hourglass-0.2.12 ~amd64
+# required by dev-haskell/tls-1.3.9::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/cryptonite-0.26-r1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/filemanip-0.3.6.3 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/http-4000.3.14 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/syb-0.5.1 ~amd64
+# required by dev-haskell/vector-0.11.0.0::gentoo
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/primitive-0.6.1.0-r1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/extensible-exceptions-0.1.1.4 ~amd64
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/connection-0.2.5 ~amd64
+# required by dev-haskell/async-2.1.1::gentoo
+# required by dev-haskell/streaming-commons-0.1.16::gentoo
+# required by dev-haskell/http-client-0.5.7.0::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/stm-2.4.4.1 ~amd64
+# required by dev-haskell/attoparsec-0.13.2.3::gentoo
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/text-1.2.2.1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/sha-1.6.4.4 ~amd64
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/conduit-1.2.12.1 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/hashable-1.2.7.0 ~amd64
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/utf8-string-1.0.1.1 ~amd64
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/http-client-0.5.7.0 ~amd64
+# required by dev-haskell/scientific-0.3.4.9::gentoo
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/bytestring-builder-0.10.8.2.0 ~amd64
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/socks-0.5.5 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[network-uri]
+# required by pandoc (argument)
+=dev-haskell/network-uri-2.6.1.0 ~amd64
+# required by dev-haskell/regex-pcre-0.94.4-r1::gentoo
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/regex-base-0.93.2-r1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/xml-1.3.14 ~amd64
+# required by dev-lang/ghc-8.0.2::gentoo[-ghcbootstrap]
+# required by dev-haskell/base-compat-0.9.1::gentoo
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=app-admin/haskell-updater-1.3.2 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/scientific-0.3.4.9 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/semigroups-0.18.2 ~amd64
+# required by dev-haskell/mtl-2.2.1-r1::gentoo
+# required by dev-haskell/filemanip-0.3.6.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/transformers-0.5.2.0 ~amd64
+# required by dev-haskell/x509-validation-1.6.5::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/pem-0.2.2 ~amd64
+# required by dev-haskell/streaming-commons-0.1.16::gentoo
+# required by dev-haskell/http-client-0.5.7.0::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/async-2.1.1 ~amd64
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/safe-0.3.17 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/http-client-tls-0.3.3 ~amd64
+# required by dev-haskell/tls-1.3.9::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/cereal-0.4.1.1 ~amd64
+# required by dev-haskell/pandoc-types-1.17.0.4::gentoo
+# required by dev-haskell/texmath-0.9.1::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/quickcheck-2.9.2 ~amd64
+# required by dev-haskell/asn1-encoding-0.9.6::gentoo
+# required by dev-haskell/asn1-parse-0.9.4::gentoo
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/asn1-types-0.3.3 ~amd64
+# required by dev-haskell/hxt-9.3.1.18::gentoo
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/hxt-unicode-9.0.2.4 ~amd64
+# required by dev-haskell/data-default-instances-containers-0.0.1::gentoo
+# required by dev-haskell/data-default-0.5.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/data-default-class-0.0.1 ~amd64
+# required by dev-haskell/basement-0.0.11::gentoo
+# required by dev-haskell/cryptonite-0.26-r1::gentoo
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-lang/ghc-8.0.2 ~amd64
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/asn1-encoding-0.9.6 ~amd64
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/enclosed-exceptions-1.0.3 ~amd64
+# required by dev-haskell/memory-0.15.0::gentoo
+# required by dev-haskell/cryptonite-0.26-r1::gentoo
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/cabal-1.24.2.0 ~amd64
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/hxt-9.3.1.18 ~amd64
+# required by dev-haskell/quickcheck-2.9.2::gentoo
+# required by dev-haskell/pandoc-types-1.17.0.4::gentoo
+# required by dev-haskell/texmath-0.9.1::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/nats-1 ~amd64
+# required by dev-haskell/http-client-0.5.7.0::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/streaming-commons-0.1.16 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/dlist-0.8.0.2 ~amd64
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/x509-store-1.6.2 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/zip-archive-0.3.3 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/texmath-0.9.1 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/tagsoup-0.13.10 ~amd64
+# required by dev-haskell/old-time-1.1.0.3-r1::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/old-locale-1.0.0.7 ~amd64
+# required by dev-haskell/data-default-0.5.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/data-default-instances-dlist-0.0.1 ~amd64
+# required by dev-haskell/network-uri-2.6.1.0::gentoo
+# required by dev-haskell/http-4000.3.14::gentoo[network-uri]
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/parsec-3.1.11 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/fail-4.9.0.0 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/haddock-library-1.4.2 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/unordered-containers-0.2.10.0 ~amd64
+# required by dev-haskell/x509-validation-1.6.5::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/byteable-0.1.1 ~amd64
+# required by dev-haskell/cryptonite-0.26-r1::gentoo
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/memory-0.15.0 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/pandoc-types-1.17.0.4 ~amd64
+# required by dev-haskell/monad-control-1.0.2.3::gentoo
+# required by dev-haskell/conduit-1.2.12.1::gentoo
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/transformers-base-0.4.4 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/juicypixels-3.2.8 ~amd64
+# required by dev-haskell/skylighting-0.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/regex-pcre-0.94.4-r1 ~amd64
+# required by dev-haskell/data-default-0.5.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/data-default-instances-old-locale-0.0.1 ~amd64
+# required by dev-haskell/enclosed-exceptions-1.0.3::gentoo
+# required by dev-haskell/yaml-0.8.21.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/lifted-base-0.2.3.12 ~amd64
+# required by dev-haskell/zip-archive-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/digest-0.0.1.2 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/doctemplates-0.1.0.2 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/time-locale-compat-0.1.1.5 ~amd64
+# required by dev-haskell/blaze-html-0.8.1.2::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/blaze-markup-0.7.1.0 ~amd64
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/aeson-1.0.2.1 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/tagged-0.8.6 ~amd64
+# required by dev-haskell/x509-1.6.5::gentoo
+# required by dev-haskell/x509-system-1.6.4::gentoo
+# required by dev-haskell/connection-0.2.5::gentoo
+# required by dev-haskell/http-client-tls-0.3.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo[https]
+# required by pandoc (argument)
+=dev-haskell/asn1-parse-0.9.4 ~amd64
+# required by dev-haskell/filemanip-0.3.6.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/unix-compat-0.4.3.1 ~amd64
+# required by dev-haskell/data-default-0.5.3::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/data-default-instances-containers-0.0.1 ~amd64
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/attoparsec-0.13.2.3 ~amd64
+# required by dev-haskell/scientific-0.3.4.9::gentoo
+# required by dev-haskell/aeson-1.0.2.1::gentoo
+# required by dev-haskell/doctemplates-0.1.0.2::gentoo
+# required by app-text/pandoc-1.19.2.1-r1::gentoo
+# required by pandoc (argument)
+=dev-haskell/binary-0.8.3.0 ~amd64
