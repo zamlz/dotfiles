@@ -7,4 +7,4 @@
 [gpg]
 	program = gpg
 [core]
-	pager = less --no-init --quit-if-one-screen
+	pager = less
