@@ -48,21 +48,23 @@ REFRESH_SWAP=3
 REFRESH_TIME=1
 
 # Actual Siji icons for various modules
-ICON_BACKLIGHT=$(echo -e "\ue1c3")
-ICON_BATTERY=$(echo -e "\ue1ff")
-ICON_CPU=$(echo -e "\ue026")
-ICON_DATE=$(echo -e "\ue266")
-ICON_FILESYSTEMS=$(echo -e "\ue1d8")
-ICON_MEMORY=$(echo -e "\ue021")
-ICON_NETWORK=$(echo -e "\ue222")
-ICON_SWAP=$(echo -e "\ue0c5")
-ICON_TIME=$(echo -e "\ue015")
-ICON_WHOAMI=$(echo -e "\ue1ce")
-ICON_WORKSPACES=$(echo -e "\ue1d7")
-ICON_VOLUME=$(echo -e "\ue04d")
+ICON_BACKLIGHT=$(env printf "\ue1c3")
+ICON_BATTERY=$(env printf "\ue1ff")
+ICON_CPU=$(env printf "\ue026")
+ICON_DATE=$(env printf "\ue266")
+ICON_FILESYSTEMS=$(env printf "\ue1d8")
+ICON_MEMORY=$(env printf "\ue021")
+ICON_NETWORK=$(env printf "\ue222")
+ICON_SWAP=$(env printf "\ue0c5")
+ICON_TIME=$(env printf "\ue015")
+ICON_WHOAMI=$(env printf "\ue1ce")
+ICON_WORKSPACES=$(env printf "\ue1d7")
+ICON_VOLUME=$(env printf "\ue04d")
 
 # Hardware Specification
 WIFI_INTERFACE="wlp82s0"
 ETHERNET_INTERFACE="enp0s31f6"
 FILESYSTEMS="/dev/nvme0n1p4 /home/zamlz/tmp"
 
+# Source local system config in case there are system specific changes
+. $HOME/.config/lemonbar/config

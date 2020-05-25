@@ -41,9 +41,9 @@ while true; do
 
     # If the ip toggle file exists, print the ip address
     if [ -f "$ip_toggle" ]; then
-        msg="%{A:rm $ip_toggle:}$interface: $ip_addr%{A}"
+        msg="%%{A:rm $ip_toggle:}$interface: $ip_addr%%{A}"
     else
-        msg="%{A:touch $ip_toggle:}$interface: $primary_msg%{A}"
+        msg="%%{A:touch $ip_toggle:}$interface: $primary_msg%%{A}"
     fi
 
     msg=$($MSG_WRAPPER $ICON_NETWORK $MAGENTA $msg)

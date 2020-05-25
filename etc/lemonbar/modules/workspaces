@@ -43,20 +43,20 @@ while read -r workspace_event; do
 
         # check if the workspace is empty
         if [ "$ws" = "$mon_1" ]; then
-            ws="%{F$RED}$ws%{F-}"
+            ws="%%{F$RED}$ws%%{F-}"
         elif [ "$ws" = "$mon_2" ]; then
-            ws="%{F$GREEN}$ws%{F-}"
+            ws="%%{F$GREEN}$ws%%{F-}"
         elif [ "$ws" = "$mon_3" ]; then
-            ws="%{F$BLUE}$ws%{F-}"
+            ws="%%{F$BLUE}$ws%%{F-}"
         elif [ -z "$(echo $active_spaces | grep $space_id)" ]; then
-            ws="%{F#282828}$ws%{F-}"
+            ws="%%{F#282828}$ws%%{F-}"
         else
-            ws="%{F#888888}$ws%{F-}"
+            ws="%%{F#888888}$ws%%{F-}"
         fi
 
         # mark output if currently focused
         if [ $space_id -eq $current_space_id ]; then
-            msg="$msg %{+u}$ws%{-u}"
+            msg="$msg %%{+u}$ws%%{-u}"
         else
             msg="$msg $ws"
         fi

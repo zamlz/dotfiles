@@ -4,7 +4,7 @@
 
 while read -r backlight_event; do
     $backlight_event;
-    msg="$(xbacklight -get | sed -e 's/\.[0-9]*//g')%"
+    msg="$(xbacklight -get | sed -e 's/\.[0-9]*//g')%%"
     msg=$($MSG_WRAPPER $ICON_BACKLIGHT $BLUE $msg)
     echo "$ANCHOR_BACKLIGHT$msg"
 done
