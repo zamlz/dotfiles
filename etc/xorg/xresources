@@ -2,7 +2,7 @@
 ! Load some important Stuff Here
 !###############################
 
-#include ".xcolorscheme"
+#include ".config/xcolorscheme"
 
 !#############
 ! Xft settings

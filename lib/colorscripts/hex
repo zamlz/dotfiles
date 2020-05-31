@@ -4,7 +4,7 @@
 # Source: http://crunchbang.org/forums/viewtopic.php?pid=135226#p135226
 # Modified: zamlz
 
-xdef="$HOME/.xcolorscheme"
+xdef="$HOME/.config/xcolorscheme"
 colors=( $(sed -re '/^!/d; /^$/d; s/#define //g; s/(xcolor)([0-9]) /\10\2 /g;' $xdef | \
     grep 'xcolor[01][0-9]' | sort | sed 's/^.* //g') )
 

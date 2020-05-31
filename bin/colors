@@ -1,7 +1,7 @@
 #!/bin/sh
 
 CLRDIR="$HOME/lib/colorscripts"
-CLRTAR="$HOME/.xcolortest"
+CLRTAR="$HOME/.config/xcolortest"
 
 EXEC=$(basename $0)
 
