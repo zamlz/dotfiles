@@ -1,0 +1,7 @@
+# Gentoo Rsync Repository Mirror List
+
+GM=""
+GM="${GM} https://mirrors.evowise.com/gentoo/"
+GM="${GM} https://mirrors.lug.mtu.edu/gentoo/"
+
+GENTOO_MIRRORS="${GM}"
