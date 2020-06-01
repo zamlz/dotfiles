@@ -1,0 +1,35 @@
+#!/bin/bash
+
+# The goal of this file is to open up my encrypted gpg drive.
+# (bash so we can guarantee proper echo"
+
+GPGHOME=$HOME/.gnupg
+
+if [ "$1" = "-q" ]; then
+    sudo pkill gpg-agent
+    sudo umount ${GPGHOME}
+    sudo cryptsetup luksClose gpgdrive
+    lsblk
+    exit
+fi
+
+# Check to see if a drive is passed as an argument
+if [ -z "$1" ]; then
+    lsblk
+    echo -ne "\nEnter device name [/dev/?]: "
+    read DEVNAME
+    DEVICE="/dev/${DEVNAME}"
+else
+    DEVICE="/dev/$1"
+    echo -ne "Using Device ; ${DEVICE}\n"
+fi
+
+# Do some gpgdrive stuff after you have the drive
+sudo cryptsetup luksOpen ${DEVICE} gpgdrive
+sudo mount /dev/mapper/gpgdrive ${GPGHOME}
+
+sudo chown -R $(whoami):$(whoami) ${GPGHOME}
+sudo chmod 700 ${GPGHOME}
+
+echo ""
+lsblk
