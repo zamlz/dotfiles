@@ -5,7 +5,7 @@ def read_colorscheme(path):
     with open(path, 'r') as f:
         return dict(l[8:].split() for l in f.readlines() if l[:7] == '#define')
 
-cs = read_colorscheme('/home/zamlz/.xcolorscheme')
+cs = read_colorscheme('/home/zamlz/.config/xcolor/scheme')
 
 ## Always restore open sites when qutebrowser is reopened.
 ## Type: Bool
