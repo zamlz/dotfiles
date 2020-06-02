@@ -1,0 +1,27 @@
+# Before installing anything in this set
+# make sure kernel is properly configured
+# to do so!
+
+# Random Basic Tools
+app-admin/sudo
+app-editors/nano
+app-editors/vim
+dev-vcs/git
+
+# Network Tools
+net-misc/dhcpcd
+net-misc/netifrc
+net-misc/networkmanager
+net-wireless/iw
+net-wireless/wpa_supplicant
+
+# System Hardware and Boot Tools
+sys-apps/pciutils
+sys-boot/grub:2
+sys-fs/cryptsetup
+sys-fs/dosfstools
+
+# Essential User Tools
+app-admin/sysklogd
+sys-apps/mlocate
+sys-process/cronie
