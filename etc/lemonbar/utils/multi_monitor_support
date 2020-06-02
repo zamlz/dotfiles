@@ -1,4 +1,7 @@
 #!/bin/sh
 
+# To make sure the lemonbar does multimonitor spanning,
+# make sure to touch the following file.
+
 # Triple Monitor Toggle File
 TRIPLE_MONITOR_TOGGLE=$HOME/.config/lemonbar/enable_triple_monitor
