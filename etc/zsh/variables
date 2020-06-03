@@ -9,11 +9,9 @@ export PATH="$HOME/lib/private/bin:$PATH"
 export DISTRO=$(grep --color=none ^ID= /etc/os-release | sed -e 's/^ID=//g')
 
 # Configure GnuPG Variables
+# MAKE SURE THAT SSH CONFIG IS ALSO CONFIGURED!
 export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA='tty'
-# This part seems a little sketch...
-# A lot of guides don't recommend setting this value
-# until after gpg-agent exists
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
 
 # Configuration files
