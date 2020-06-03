@@ -17,6 +17,7 @@ net-wireless/wpa_supplicant
 
 # System Hardware and Boot Tools
 sys-apps/pciutils
+sys-apps/usbutils
 sys-boot/grub:2
 sys-fs/cryptsetup
 sys-fs/dosfstools

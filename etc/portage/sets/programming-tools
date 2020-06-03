@@ -1,0 +1,19 @@
+# Collections of programming environments I need
+# ----------------------------------------------------------------------------
+
+# Generic Packages
+dev-util/ctags
+
+# C/C++ Packages
+dev-util/valgrind
+sys-devel/gdb
+
+# Python Packages
+dev-lang/python:3.8
+dev-lang/python:3.9
+dev-python/ipdb
+dev-python/ipython
+dev-python/pip
+
+# Julia packages
+dev-lang/julia-bin

@@ -1,0 +1,24 @@
+# Fundamental Tools
+# ----------------------------------------------------------------------------
+
+# Shell Related apps and operations
+app-shells/zsh
+app-shells/gentoo-zsh-completions
+app-shells/zsh-completions
+app-editors/neovim
+app-misc/tmux
+dev-python/argcomplete
+
+# Common cli programs I use
+app-admin/pass
+app-office/ledger
+sys-process/htop
+
+# Rare but good to have
+app-arch/unrar
+app-text/wgetpaste
+
+# Apps I keep for fun
+app-misc/cmatrix
+app-misc/figlet
+app-misc/neofetch
