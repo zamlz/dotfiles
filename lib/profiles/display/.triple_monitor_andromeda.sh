@@ -1,4 +1,5 @@
 #!/bin/sh
+xset -dpms
 xrandr \
     --output DVI-D-0 --off \
     --output HDMI-0 --mode 1920x1080 --pos 3000x502 --rotate normal \
