@@ -11,4 +11,4 @@
 # we attempt to fix this by running this command
 # before every SSH command.
 # https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9
-Match host * exec "gpg-connect-agent UPDATESTARTUPTTY /bye"
+Match host * exec "gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye"
