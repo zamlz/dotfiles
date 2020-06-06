@@ -11,6 +11,6 @@ if [ -n "$MDFILE" ]; then
     TMPFILE="${HOME}/tmp/.temp.pdf"
     rm ${TMPFILE} > /dev/null 2>&1
 
-    pandoc --pdf-engine=xelatex -s -o "${TMPFILE}" "${MDFILE}"
+    pandoc --latex-engine=xelatex -s -o "${TMPFILE}" "${MDFILE}"
     zathura ${TMPFILE}
 fi
