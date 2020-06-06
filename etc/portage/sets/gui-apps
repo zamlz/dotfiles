@@ -25,5 +25,10 @@ www-client/firefox-bin
 www-client/qutebrowser
 www-plugins/pdfjs
 
+# Audio Apps
+media-sound/alsa-utils
+media-sound/pavucontrol
+media-sound/spotify
+
 # Social Media stuff
 net-im/discord-bin
