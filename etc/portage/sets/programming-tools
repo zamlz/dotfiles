@@ -17,3 +17,6 @@ dev-python/pip
 
 # Julia packages
 dev-lang/julia-bin
+
+# Misc programming tools
+app-misc/jq
