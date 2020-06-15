@@ -1,0 +1,6 @@
+# required by media-libs/mesa-20.0.8::gentoo[zstd]
+# required by x11-base/xorg-server-1.20.8::gentoo[-minimal]
+# required by @desktop-env
+# required by @selected
+# required by @world (argument)
+>=app-arch/zstd-1.4.4-r4 abi_x86_32
