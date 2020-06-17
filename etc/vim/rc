@@ -68,6 +68,10 @@ let g:ledger_extra_options = '--pedantic --explicit'
 let g:ledger_align_at = 77
 let g:ledger_date_format = '%Y-%m-%d'
 
+" Markdown conceal
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+
 "------------------------------------------------------------------------------
 " Other various useful settings
 "------------------------------------------------------------------------------
