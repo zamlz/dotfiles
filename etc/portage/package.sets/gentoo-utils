@@ -4,6 +4,7 @@ app-portage/genlop
 app-portage/gentoolkit
 app-portage/layman
 app-portage/metagen
+app-portage/mirrorselect
 app-portage/pfl
 app-portage/repoman
 sys-kernel/genkernel
