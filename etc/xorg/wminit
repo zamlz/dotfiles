@@ -3,8 +3,8 @@
 # We need to start the compositor as well
 # If we would like to kill our CPU so no.
 # But hey, it definetly looks crisp af tho.
+pkill -x compton
 if [ -f "$HOME/.config/xcompton" ]; then
-    pkill -x compton
     compton --config $HOME/etc/compton/rc &
 fi
 
