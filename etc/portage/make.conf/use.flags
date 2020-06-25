@@ -1,4 +1,4 @@
 # Global Use flags
 USE=""
-USE="${USE} X -elogind consolekit -systemd udev networkmanager zsh-completion"
+USE="${USE} X elogind -systemd udev networkmanager zsh-completion"
 USE="${USE} xinerama jpeg png gif alsa pulseaudio"
