@@ -20,8 +20,10 @@ fi
 # Start Window Manager
 session=${1:-herbstluftwm}
 
+EXEC_DBUS="exec dbus-launch --exit-with-session"
+
 case $session in
-    herbstluftwm)   exec herbstluftwm -c $HOME/etc/herbstluftwm/init;;
+    herbstluftwm)   $EXEC_DBUS herbstluftwm -c $HOME/etc/herbstluftwm/init;;
     *)              exec $1;;
 esac
 
