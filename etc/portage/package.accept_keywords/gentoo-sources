@@ -1,3 +1,2 @@
 # required by =sys-kernel/gentoo-sources (argument)
-=sys-kernel/gentoo-sources-5.4.39 ~amd64
-=sys-kernel/gentoo-sources-5.4.44 ~amd64
+<sys-kernel/gentoo-sources-5.5 ~amd64
