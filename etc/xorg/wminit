@@ -37,7 +37,7 @@ xset fp rehash
 
 # Start dunst to catch notifications
 pkill -x dunst
-# dunst &
+dunst &
 
 # Start lemonbar after all X related stuff is finished
 pkill -x lemonbar
