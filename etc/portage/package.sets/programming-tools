@@ -20,3 +20,4 @@ dev-lang/julia-bin
 
 # Misc programming tools
 app-misc/jq
+sci-visualization/gnuplot

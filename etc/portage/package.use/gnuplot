@@ -1,1 +1,1 @@
-sci-visualization/gnuplot X qt5
+sci-visualization/gnuplot X latex libcaca qt5 wxwidgets
