@@ -17,7 +17,6 @@ media-gfx/sxiv
 
 # Video Tools
 media-video/mpv
-net-misc/youtube-dl
 x11-apps/mesa-progs
 
 # Web Browsers
