@@ -14,12 +14,10 @@ Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
-
 !#####
 ! Font
 !#####
-*font: xft:Iosevka Term:size=11
-
+*font: xft:Iosevka Term:size=10
 
 ! Some other Special Programs
 #include "etc/xorg/urxvt"

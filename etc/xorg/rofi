@@ -9,7 +9,7 @@
 ! rofi.columns:                        1
 
 ! "Font to use" Set from: XResources
-rofi.font:                           Dina 8
+rofi.font:                            Iosevka Term 10
 
 ! Color Guidlines                       BG -  FG - BG_ALT - HL_BG - HL_FG
 ! "Color scheme for normal row"

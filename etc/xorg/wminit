@@ -19,8 +19,11 @@ xrdb -I$HOME $HOME/etc/xorg/xresources
 . $HOME/lib/shell/xrdb_colors
 
 # Set the background
-#feh --no-fehbg --bg-fill --no-xinerama "$HOME/etc/xorg/hubble_legacy_field.png"
-xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
+if [ -f "$HOME/.fehbg" ]; then
+    $HOME/.fehbg
+else
+    xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
+fi
 
 # Also have to set this here in case xorg isn't started via startx
 setxkbmap -option caps:escape

@@ -29,8 +29,8 @@ hc set frame_padding 0
 hc attr theme.active.outer_color $XBACKGROUND
 hc attr theme.active.inner_color $XBACKGROUND
 
-hc attr theme.normal.color $BLACK
-hc attr theme.active.color $WHITE
+hc attr theme.normal.color $BLUE
+hc attr theme.active.color $MAGENTA
 hc attr theme.urgent.color orange
 
 hc attr theme.border_width 9
