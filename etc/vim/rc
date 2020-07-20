@@ -134,6 +134,8 @@ set foldmethod=indent    " fold based on ident level
 " Custom file search
 set path+=**
 
+au FileType vimwiki setlocal shiftwidth=2 tabstop=2
+
 "------------------------------------------------------------------------------
 " Vim colorschemes
 "------------------------------------------------------------------------------
@@ -167,10 +169,10 @@ highlight GitGutterChange ctermbg=None ctermfg=yellow
 highlight GitGutterDelete ctermbg=None ctermfg=red
 
 " Change colors to be more intuitive for vimwiki
-highlight VimwikiHeader1 ctermbg=None ctermfg=yellow
+highlight VimwikiHeader1 ctermbg=None ctermfg=red
 highlight VimwikiHeader2 ctermbg=None ctermfg=blue
 highlight VimwikiHeader3 ctermbg=None ctermfg=green
-highlight VimwikiHeader4 ctermbg=None ctermfg=red
+highlight VimwikiHeader4 ctermbg=None ctermfg=yellow
 highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
 highlight VimwikiHeader6 ctermbg=None ctermfg=magenta
 
