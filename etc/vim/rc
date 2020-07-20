@@ -85,7 +85,8 @@ let personal_wiki.path_html = '~/usr/wiki/.html'
 let personal_wiki.syntax = 'default'
 let personal_wiki.ext = '.wiki'
 let g:vimwiki_list = [personal_wiki]
-let g:vimwiki_listsyms = '✗○◐●✓'
+"let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_listsyms = ' ○◐●✓'
 let g:vimwiki_folding = 'expr'
 
 "------------------------------------------------------------------------------
