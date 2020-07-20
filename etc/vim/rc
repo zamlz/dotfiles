@@ -23,6 +23,8 @@ Plug 'airblade/vim-gitgutter'
 Plug 'chrisbra/csv.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki'
+Plug 'mattn/calendar-vim'
 
 " Plug 'valloric/youcompleteme'
 Plug 'yggdroot/indentline'
@@ -61,6 +63,8 @@ let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_setColors = 1
 "let g:indentLine_bgcolor_term = 0
 let g:indentLine_color_term = 0
+let g:indentLine_conceallevel = 2
+let g:indentLine_concealcursor = "n"
 
 " Configure vim ledger
 let g:ledger_maxwidth = 80
@@ -73,10 +77,22 @@ let g:ledger_date_format = '%Y-%m-%d'
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
 
+" Vim Wiki
+let personal_wiki = {}
+let personal_wiki.name = 'Tabula Rasa'
+let personal_wiki.path = '~/usr/wiki'
+let personal_wiki.path_html = '~/usr/wiki/.html'
+let personal_wiki.syntax = 'default'
+let personal_wiki.ext = '.wiki'
+let g:vimwiki_list = [personal_wiki]
+let g:vimwiki_listsyms = '✗○◐●✓'
+let g:vimwiki_folding = 'expr'
+
 "------------------------------------------------------------------------------
 " Other various useful settings
 "------------------------------------------------------------------------------
 
+set nocompatible
 set number          " Show Line numbers
 set ruler           " Show line and column number of the cursor
 set cursorline      " highlight current line
@@ -104,6 +120,10 @@ set hlsearch        " highlight matches
 set noshowmode      " Stop showing the default mode
 
 set mouse=a         " Set mouse wheel to scroll
+
+" Code concealing
+set conceallevel=2
+set concealcursor-=n
 
 " Enable Code Folding
 set foldenable
@@ -146,6 +166,14 @@ highlight GitGutterAdd ctermbg=None ctermfg=green
 highlight GitGutterChange ctermbg=None ctermfg=yellow
 highlight GitGutterDelete ctermbg=None ctermfg=red
 
+" Change colors to be more intuitive for vimwiki
+highlight VimwikiHeader1 ctermbg=None ctermfg=yellow
+highlight VimwikiHeader2 ctermbg=None ctermfg=blue
+highlight VimwikiHeader3 ctermbg=None ctermfg=green
+highlight VimwikiHeader4 ctermbg=None ctermfg=red
+highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
+highlight VimwikiHeader6 ctermbg=None ctermfg=magenta
+
 "------------------------------------------------------------------------------
 " Custom Keybindings
 "------------------------------------------------------------------------------
@@ -176,5 +204,21 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
+
+" Toggle calendar view within view if in vim wiki
+function! ToggleCalendar()
+    execute ":Calendar"
+    if exists("g:calendar_open")
+        if g:calendar_open == 1
+            execute "q"
+            unlet g:calendar_open
+        else
+            g:calendar_open = 1
+        end
+    else
+        let g:calendar_open = 1
+    end
+endfunction
+:autocmd FileType vimwiki map c :call ToggleCalendar()
 
 " vim:ft=vim

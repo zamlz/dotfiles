@@ -14,14 +14,16 @@ export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA='tty'
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
 
-# Configuration files
-export HTOPRC="$HOME/etc/htop/rc"
-export TASKRC="$HOME/etc/taskwarrior/rc"
-export PASSWORD_STORE_DIR="$HOME/usr/passwords"
-export LEDGER_FILE="$HOME/usr/ledger/main.journal"
-
 # Other less ariables
 export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
 
 # Other important directories
-PYTHON_VENVS_DIRECTORY="$HOME/.local/share/python-venvs"
+export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
+export PASSWORD_STORE_DIR="$HOME/usr/passwords"
+export LEDGER_DIR="$HOME/usr/ledger"
+export VIMWIKI_DIR="$HOME/usr/wiki"
+
+# Configuration files (or of the sort)
+export HTOPRC="$HOME/etc/htop/rc"
+export TASKRC="$HOME/etc/taskwarrior/rc"
+export LEDGER_FILE="$LEDGER_DIR/main.journal"

@@ -33,6 +33,7 @@ autoload prompt_generate
 autoload sh
 autoload sw
 autoload venv
+autoload wiki
 autoload xcolorscheme && xcolorscheme
 autoload gpg-utils && gpg-utils
 autoload window-utils && window-utils

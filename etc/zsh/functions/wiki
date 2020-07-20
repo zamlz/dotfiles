@@ -1,0 +1,13 @@
+#!/bin/zsh
+
+VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki}
+
+if [[ $# == 0 ]]; then
+    vim -c VimwikiIndex
+
+elif [[ $1 == 'git' ]]; then
+    git -C ${VIMWIKI_DIR} ${@:2}
+
+else
+    echo "Usage: ${0} [git] [args ...]"
+fi
