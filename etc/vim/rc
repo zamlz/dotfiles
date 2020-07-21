@@ -100,6 +100,7 @@ set cursorline      " highlight current line
 set cursorcolumn    " Create a column for where the cursor is
 set colorcolumn=80  " Create a column to show where 80 chars are
 set modeline        " Allow source files to configure vim as well
+set nowrap
 
 " TAB = 4 SPACES
 set tabstop=4		" number of visual spaces per TAB
