@@ -20,10 +20,10 @@ open_cmd = zathura
 # "kate --block"
 # If set to an empty string (default) pubs uses the value of the environment
 # variable $EDITOR.
-edit_cmd = ""
+edit_cmd = "__vimwiki_pubs_wrapper__"
 
 # Which default extension to use when creating a note file.
-note_extension = md
+note_extension = wiki
 
 # If true debug mode is on which means exceptions are not catched and
 # the full python stack is printed.
