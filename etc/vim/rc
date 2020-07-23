@@ -171,9 +171,9 @@ highlight GitGutterChange ctermbg=None ctermfg=yellow
 highlight GitGutterDelete ctermbg=None ctermfg=red
 
 " Change colors to be more intuitive for vimwiki
-highlight VimwikiHeader1 ctermbg=None ctermfg=red
-highlight VimwikiHeader2 ctermbg=None ctermfg=blue
-highlight VimwikiHeader3 ctermbg=None ctermfg=green
+highlight VimwikiHeader1 ctermbg=None ctermfg=darkred
+highlight VimwikiHeader2 ctermbg=None ctermfg=darkblue
+highlight VimwikiHeader3 ctermbg=None ctermfg=darkgreen
 highlight VimwikiHeader4 ctermbg=None ctermfg=yellow
 highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
 highlight VimwikiHeader6 ctermbg=None ctermfg=magenta

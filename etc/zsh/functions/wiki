@@ -8,6 +8,9 @@ if [[ $# == 0 ]]; then
 elif [[ $1 == 'git' ]]; then
     git -C ${VIMWIKI_DIR} ${@:2}
 
+elif [[ $1 == 'tree' ]]; then
+    tree ${VIMWIKI_DIR} ${@:2}
+
 else
     echo "Usage: ${0} [git] [args ...]"
 fi
