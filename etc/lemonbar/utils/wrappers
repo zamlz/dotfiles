@@ -1,12 +1,5 @@
 #!/bin/sh
 
-# Powerline Icons
-# We don't want to load icons from config so we have it here instead
-PL_R=$(env printf "\ue0b0")
-PL_Rb=$(env printf "\ue0b1")
-PL_L=$(env printf "\ue0b2")
-PL_Lb=$(env printf "\ue0b3")
-
 # Minimal wrapper
 legacy_wrapper() {
     icon=$1 && shift && color=$1 && shift && msg=$@
@@ -24,21 +17,3 @@ debug_wrapper() {
     icon=$1 && shift && color=$1 && shift && msg=$@
     echo -ne "[DEBUG $icon $color $msg]"
 }
-
-# Powerline output wrapper left & right
-powerline_wrapper_left() {
-    icon=$1 && shift && color=$1 && shift && msg=$@
-    printf "%%{B$color} $msg %%{B-}%%{F$color}${PL_R}%%{F-}"
-}
-
-powerline_wrapper_right() {
-    icon=$1 && shift && color=$1 && shift && msg=$@
-    printf "%%{F$color}${PL_L}%%{F-}%%{B$color} $msg"
-}
-
-powerline_wrapper_rightmost() {
-    icon=$1 && shift && color=$1 && shift && msg=$@
-    printf "%%{F$color}${PL_L}%%{F-}%%{B$color} $msg %%{B-}"
-}
-
-

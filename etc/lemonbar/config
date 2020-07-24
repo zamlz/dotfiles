@@ -65,6 +65,12 @@ ICON_WHOAMI=$(env printf "\ue1ce")
 ICON_WORKSPACES=$(env printf "\ue1d7")
 ICON_VOLUME=$(env printf "\ue04d")
 
+# Powerline Icons
+PL_R=$(env printf "\ue0b0")
+PL_Rb=$(env printf "\ue0b1")
+PL_L=$(env printf "\ue0b2")
+PL_Lb=$(env printf "\ue0b3")
+
 # Hardware Specification
 WIFI_INTERFACE="wlp82s0"
 ETHERNET_INTERFACE="enp0s31f6"
