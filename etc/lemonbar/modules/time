@@ -2,9 +2,10 @@
 
 . $HOME/etc/lemonbar/config
 
+# Colors are actually set in date!!!!
 while true; do
-    msg=$(date +'%l:%M:%S %p')
-    msg=$($MSG_WRAPPER $ICON_TIME $GREEN $msg)
+    msg="$(date +'%l:%M:%S %p') %{F-}%{B-}"
+    msg="$msg%{F$BLACK}${PL_R}%{F-}"
     echo "$ANCHOR_TIME$msg"
     sleep $REFRESH_TIME
 done

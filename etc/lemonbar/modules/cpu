@@ -4,7 +4,13 @@
 
 while true; do
     msg=$(cat /proc/loadavg | awk '{print $1}')
-    msg=$($MSG_WRAPPER $ICON_CPU $BLUE $msg)
+
+    # TODO: Dynamically set this based on cpu load
+    color=$MAGENTA
+
+    msg="%{B$color} $msg %{B-}"
+    msg="%{F$color}%{B$BLACK}${PL_L}%{B-}%{F-}$msg"
+
     echo "$ANCHOR_CPU$msg"
     sleep $REFRESH_CPU
 done

@@ -12,14 +12,19 @@ while true; do
             cap="$(cat ${batloc}${bat}/capacity)"
             stat="$(cat ${batloc}${bat}/status)"
             batid=$(echo $bat | tr -d 'BAT')
-            out="${out} ${batid}:${cap}%%"
+            out="${out} ${batid}:${cap}%"
 
         done
     else
         out="${out} A/C"
     fi
 
-    msg=$($MSG_WRAPPER $ICON_BATTERY $CYAN $out)
+    # TODO: Dynamically set this based on status
+    color=$GREEN
+
+    msg="%{B$color} $out %{B-}"
+    msg="%{F$color}%{B$BLACK}${PL_L}%{B-}%{F-}$msg"
+
     echo "$ANCHOR_BATTERY$msg"
     sleep $REFRESH_BATTERY
 done

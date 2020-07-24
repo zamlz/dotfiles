@@ -57,7 +57,7 @@ hc set tree_style '╾│ ├└╼─┐'
 hc unlock
 hc detect_monitors
 
-PANEL_HEIGHT=24
+PANEL_HEIGHT=20
 for monitor in $(seq 0 2); do
     hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
 done

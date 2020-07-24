@@ -2,8 +2,17 @@
 
 . $HOME/etc/lemonbar/config
 
-msg="$(whoami)@$(hostname) $(uname -r)"
-msg=$($MSG_WRAPPER $ICON_WHOAMI $RED $msg)
+wmsg="$(whoami)@$(hostname)"
+umsg="$(uname -r)"
+
+prm_color='#256568'
+alt_color=$BLACK
+
+msg="%{B$prm_color} $wmsg %{B-}"
+msg="$msg%{F$prm_color}%{B$alt_color}${PL_R}%{F-}"
+msg="$msg %{F$prm_color}$umsg%{F-} %{B-}"
+msg="$msg%{F$alt_color}${PL_R}%{F-}"
+
 echo "$ANCHOR_WHOAMI$msg"
 
 # vim: set ft=sh:

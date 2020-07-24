@@ -8,11 +8,13 @@ while true; do
     for FS in $FILESYSTEMS; do
         fs_info=$(df | grep $FS)
         fs_path=$(echo $fs_info | awk '{print $6}' | sed -e 's|/home/zamlz|~|g')
-        fs_used=$(echo $fs_info | awk '{print $5}')%
+        fs_used=$(echo $fs_info | awk '{print $5}')
         msg="$msg $fs_path:$fs_used"
     done
 
-    msg=$($MSG_WRAPPER $ICON_FILESYSTEMS $YELLOW $msg)
+    msg="%{B$BLACK}%{F$WHITE} $msg %{F-}%{B-}"
+    msg="%{F$BLACK}${PL_L}%{F-}$msg"
+
     echo "$ANCHOR_FILESYSTEMS$msg"
     sleep $REFRESH_FILESYSTEMS
 done

@@ -37,17 +37,17 @@ $LOGGER "Setting up bot fifo modules"
 $HOME/etc/lemonbar/modules/cpu          > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/filesystems  > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/memory       > $PANEL_BOT_FIFO &
-$HOME/etc/lemonbar/modules/swap         > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/workspaces   < $EVENT_WSP_FIFO > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/volume       < $EVENT_VOL_FIFO > $PANEL_BOT_FIFO &
 # $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_BOT_FIFO &
 
-#-f Iosevka\ Term:size=8
 # Define lemonbar opts
-OPTS="-g x24
--F ${XFOREGROUND}
+#-f dina:size=12
+#-f PowerlineSymbols:style=Medium:size=12
+OPTS="-g x20
+-F ${XBACKGROUND}
 -B ${XBACKGROUND}
--f dina:size=8
+-f Iosevka\ Term:size=8
 -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 -u 3"
 # -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
