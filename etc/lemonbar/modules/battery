@@ -2,6 +2,12 @@
 
 . $HOME/etc/lemonbar/config
 
+# TODO: Dynamically set this based on status
+bg_color=$GREEN
+fg_color=$XBACKGROUND
+oscillator=0
+refresh_rate=$REFRESH_BATTERY
+
 while true; do
     batloc="/sys/class/power_supply/"
     batlist=$(ls $batloc | grep "BAT")
@@ -14,19 +20,34 @@ while true; do
             batid=$(echo $bat | tr -d 'BAT')
             out="${out} ${batid}:${cap}%"
 
+            if [ $cap -lt 15 ]; then
+                refresh_rate="0.2"
+                if [ $oscillator -eq 0 ]; then
+                    bg_color=$RED
+                    fg_color=$XBACKGROUND
+                    oscillator=1
+                else
+                    fg_color=$RED
+                    bg_color=$XBACKGROUND
+                    oscillator=0
+                fi
+            else
+                bg_color=$GREEN
+                fg_color=$XBACKGROUND
+                oscillator=0
+                refresh_rate=$REFRESH_BATTERY
+            fi
+
         done
     else
         out="${out} A/C"
     fi
 
-    # TODO: Dynamically set this based on status
-    color=$GREEN
-
-    msg="%{B$color} $out %{B-}"
-    msg="%{F$color}%{B$BLACK}${PL_L}%{B-}%{F-}$msg"
+    msg="%{B$bg_color}%{F$fg_color} $out %{F-}%{B-}"
+    msg="%{F$bg_color}%{B$BLACK}${PL_L}%{B-}%{F-}$msg"
 
     echo "$ANCHOR_BATTERY$msg"
-    sleep $REFRESH_BATTERY
+    sleep $refresh_rate
 done
 
 # vim: set ft=sh:
