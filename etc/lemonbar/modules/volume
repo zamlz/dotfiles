@@ -12,10 +12,14 @@ while read -r volume_event; do
     # source_state=$(echo $stats | awk '{print $3}')
 
     if [ "$sink_state" = "no" ]; then
-        msg=$($MSG_WRAPPER_LEFT $ICON_VOLUME $CYAN "$vol%%")
+        msg="$vol%"
+        color=$CYAN
     else
-        msg=$($MSG_WRAPPER_LEFT $ICON_VOLUME $RED "MUTE")
+        msg="MUTE"
+        color=$RED
     fi
+    msg="%{B$color} $msg %{B-}"
+    msg="$msg%{F$color}%{B$BLACK}${PL_R}%{B-}%{F-}"
 
     echo "$ANCHOR_VOLUME$msg"
     sleep $REFRESH_VOLUME

@@ -36,6 +36,7 @@ while read -r line; do
         $ANCHOR_FILESYSTEMS*)   fsf="${line#?}" ;;
         $ANCHOR_MEMORY*)        mem="${line#?}" ;;
         $ANCHOR_NETWORK*)       net="${line#?}" ;;
+        $ANCHOR_SPOTIFY*)       mus="${line#?}" ;;
         $ANCHOR_TIME*)          clk="${line#?}" ;;
         $ANCHOR_WHOAMI*)        usr="${line#?}" ;;
         $ANCHOR_WININFO*)       win="${line#?}" ;;
@@ -51,7 +52,7 @@ while read -r line; do
         printf "%s\n" "$m1$m2$m3"
 
     elif [ "$MODE" = "BOT" ]; then
-        m1="${MONITOR_1}${M1L}$vol${M1C}${M1R}"
+        m1="${MONITOR_1}${M1L}$vol$mus${M1C}${M1R}"
         m2="${MONITOR_2}${M2L}${M2C}$win$wsp${M2R}"
         m3="${MONITOR_3}${M3L}$fsf$mem${M3C}${M3R}$cpu"
         printf "%s\n" "$m1$m2$m3"

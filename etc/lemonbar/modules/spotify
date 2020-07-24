@@ -1,0 +1,19 @@
+#!/bin/sh
+
+. $HOME/etc/lemonbar/config
+
+# Colors are actually set in date!!!!
+while true; do
+
+    title=""
+    seek=""
+
+    msg="%{B$BLACK}%{F$CYAN}$title"
+    msg="$msg${PL_Rb}%{F-}%{F$WHITE}"
+    msg="$msg$seek%{B-}%{F$BLACK}${PL_R}%{F-}"
+
+    echo "$ANCHOR_SPOTIFY$msg"
+    sleep $REFRESH_TIME
+done
+
+# vim: set ft=sh:

@@ -21,10 +21,6 @@ EVENT_WIN_FIFO=/tmp/wininfo_event.fifo
 
 # Choose the output wrapper
 MSG_WRAPPER=icon_wrapper
-MSG_WRAPPER_LEFT=powerline_wrapper_left
-MSG_WRAPPER_LEFTMOST=powerline_wrapper_leftmost
-MSG_WRAPPER_RIGHT=powerline_wrapper_right
-MSG_WRAPPER_RIGHTMOST=powerline_wrapper_rightmost
 
 # Specify the Anchor Character for each module
 ANCHOR_BACKLIGHT='L'
@@ -35,6 +31,7 @@ ANCHOR_FILESYSTEMS='F'
 ANCHOR_MEMORY='M'
 ANCHOR_NETWORK='N'
 ANCHOR_SWAP='S'
+ANCHOR_SPOTIFY='J'
 ANCHOR_TIME='T'
 ANCHOR_WHOAMI='U'
 ANCHOR_WININFO='X'
