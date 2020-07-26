@@ -2,15 +2,30 @@
 
 . $HOME/etc/lemonbar/config
 
+# You'll need to clone this repo
+spt_now="$HOME/sys/spotify-now/spotify-now"
+
 # Colors are actually set in date!!!!
 while true; do
 
-    title=""
-    seek=""
+    if [ -z "$($spt_now -e 'closed')" ]; then
+        artist=" $($spt_now -i '%artist') "
+        title=" $($spt_now -i '%title') "
+    else
+        artist=""
+        title=""
+    fi
 
-    msg="%{B$BLACK}%{F$CYAN}$title"
-    msg="$msg${PL_Rb}%{F-}%{F$WHITE}"
-    msg="$msg$seek%{B-}%{F$BLACK}${PL_R}%{F-}"
+
+    if [ -z "$($spt_now -p 'paused')" ]; then
+        status_color=$WHITE
+    else
+        status_color=$YELLOW
+    fi
+
+    msg="%{B$BLACK}%{F$CYAN}$artist"
+    msg="$msg${PL_Rb}%{F-}%{F$status_color}"
+    msg="$msg$title%{B-}%{F$BLACK}${PL_R}%{F-}"
 
     echo "$ANCHOR_SPOTIFY$msg"
     sleep $REFRESH_TIME
