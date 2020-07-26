@@ -2,7 +2,6 @@
 # Primary Programs
 x11-base/xorg-server
 x11-misc/compton
-x11-misc/dunst
 x11-misc/lemonbar
 x11-misc/i3lock
 x11-misc/rofi
