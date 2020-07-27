@@ -7,7 +7,7 @@ REFRESH_DATE=$(($(date -d 23:59:59 +%s) - $(date +%s) + 1))
 
 while true; do
     #msg="%{F$GREEN}$(date +'%A, %d %B %Y')%{F-}"
-    msg="%{B$BLACK}%{F$CYAN} $(date +'%a %Y/%m/%d')"
+    msg="%{B$BLACK}%{F$CYAN} ${ICON_DATE}$(date +'%a %Y/%m/%d')"
     msg="%{F$BLACK}${PL_L}%{F-}$msg "
     echo "$ANCHOR_DATE$msg"
     sleep $REFRESH_DATE

@@ -10,6 +10,7 @@ x11-wm/herbstluftwm
 
 # Required dependencies for the above programs
 media-fonts/dina
+media-fonts/fontawesome
 media-fonts/iosevka
 x11-apps/setxkbmap
 x11-apps/xset

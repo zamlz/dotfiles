@@ -45,11 +45,14 @@ $HOME/etc/lemonbar/modules/volume       < $EVENT_VOL_FIFO > $PANEL_BOT_FIFO &
 # Define lemonbar opts
 #-f dina:size=12
 #-f PowerlineSymbols:style=Medium:size=12
+#-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 OPTS="-g x20
 -F ${XBACKGROUND}
 -B ${XBACKGROUND}
--f Iosevka\ Term:size=8
--f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+-f IosevkaTerm:size=12
+-f FontAwesome5Free:style=Regular:size=14
+-f FontAwesome5Free:style=Solid:size=14
+-f FontAwesome5Brands:style=Regular:size=14
 -u 3"
 # -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 # -f -wuncon-siji-medium-r-normal--17-120-100-100-c-0-iso10646-1

@@ -2,8 +2,8 @@
 
 . $HOME/etc/lemonbar/config
 
-wmsg="$(whoami)@$(hostname)"
-umsg="$(uname -r)"
+wmsg="${ICON_WHOAMI}$(whoami)@$(hostname)"
+umsg="${ICON_LINUX}$(uname -r)"
 
 prm_color='#256568'
 alt_color=$BLACK

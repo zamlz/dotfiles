@@ -9,7 +9,7 @@ spt_now="$HOME/sys/spotify-now/spotify-now"
 while true; do
 
     if [ -z "$($spt_now -e 'closed')" ]; then
-        artist=" $($spt_now -i '%artist') "
+        artist=" ${ICON_MUSIC}$($spt_now -i '%artist') "
         title=" $($spt_now -i '%title') "
     else
         artist=""

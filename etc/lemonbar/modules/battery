@@ -12,6 +12,7 @@ while true; do
     batloc="/sys/class/power_supply/"
     batlist=$(ls $batloc | grep "BAT")
     out=""
+    icon=""
 
     if [ -n "${batlist}" ]; then
         for bat in $batlist; do
@@ -25,6 +26,7 @@ while true; do
 
             if [ $cap -lt 15 ] && [ $stat = "Discharging" ]; then
                 refresh_rate="0.2"
+                icon=$ICON_BATTERY_EMPTY
                 if [ $oscillator -eq 0 ]; then
                     bg_color=$RED
                     fg_color=$XBACKGROUND
@@ -39,14 +41,16 @@ while true; do
                 fg_color=$XBACKGROUND
                 oscillator=0
                 refresh_rate=$REFRESH_BATTERY
+                icon=$ICON_BATTERY_FULL
             fi
 
         done
     else
-        out="${out} A/C"
+        icon=$ICON_BATTERY_AC
+        out="${out}A/C"
     fi
 
-    msg="%{B$bg_color}%{F$fg_color} $out %{F-}%{B-}"
+    msg="%{B$bg_color}%{F$fg_color} ${icon}$out %{F-}%{B-}"
     msg="%{F$bg_color}%{B$BLACK}${PL_L}%{B-}%{F-}$msg"
 
     echo "$ANCHOR_BATTERY$msg"

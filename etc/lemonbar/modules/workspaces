@@ -65,7 +65,7 @@ while read -r workspace_event; do
     l_msg="%{F$BLACK}${PL_L}%{F-}%{B$BLACK}"
     r_msg="%{B-}%{F$BLACK}${PL_R}%{F-}"
 
-    msg="$l_msg $msg  $r_msg"
+    msg="$l_msg %{F$WHITE}${ICON_WORKSPACES}%{F-}$msg  $r_msg"
 
     echo "$ANCHOR_WORKSPACES$msg"
 

@@ -10,6 +10,7 @@ while true; do
 
     interface=""
     primary_msg=""
+    icon=""
 
     # Check if wifi is online
     if [ "$(echo $wifi_status | awk '{print $2}')" = "UP" ]; then
@@ -25,25 +26,28 @@ while true; do
         interface=$WIFI_INTERFACE
         primary_msg="$ssid ($signal dBm)"
         ip_addr=$(echo $wifi_status | awk '{print $3}')
+        icon=$ICON_NETWORK_WIFI
 
     # Check if ethernet is online
     elif [ "$(echo $ethernet_status | awk '{print $2}')" = "UP" ]; then
         interface=$ETHERNET_INTERFACE
         primary_msg="Ethernet"
         ip_addr=$(echo $ethernet_status | awk '{print $3}')
+        icon=$ICON_NETWORK_ETHERNET
 
     # State we are offline
     else
         interface="localhost"
         primary_msg="OFFLINE"
         ip_addr="127.0.0.1/8"
+        icon=$ICON_NETWORK_OFFLINE
     fi
 
     # If the ip toggle file exists, print the ip address
     if [ -f "$ip_toggle" ]; then
-        msg="%{A:rm $ip_toggle:}$interface: $ip_addr%{A}"
+        msg="%{A:rm $ip_toggle:}${icon}$interface: $ip_addr%{A}"
     else
-        msg="%{A:touch $ip_toggle:}$interface: $primary_msg%{A}"
+        msg="%{A:touch $ip_toggle:}${icon}$interface: $primary_msg%{A}"
     fi
 
     msg="%{B$BLACK}%{F$GREEN}${PL_Lb} $msg %{F-}%{B-}"

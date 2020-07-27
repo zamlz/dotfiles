@@ -5,7 +5,7 @@
 # Colors are actually set in date!!!!
 while true; do
     msg="$(date +'%l:%M:%S %p') %{F-}%{B-}"
-    msg="  %{F$CYAN}$msg%{F$BLACK}${PL_R}%{F-}"
+    msg="  %{F$CYAN}${ICON_TIME}$msg%{F$BLACK}${PL_R}%{F-}"
     echo "$ANCHOR_TIME$msg"
     sleep $REFRESH_TIME
 done

@@ -18,7 +18,7 @@ while read -r volume_event; do
         msg="MUTE"
         color=$RED
     fi
-    msg="%{B$color} $msg %{B-}"
+    msg="%{B$color} ${ICON_VOLUME}$msg %{B-}"
     msg="$msg%{F$color}%{B$BLACK}${PL_R}%{B-}%{F-}"
 
     echo "$ANCHOR_VOLUME$msg"
