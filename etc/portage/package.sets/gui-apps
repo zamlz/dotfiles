@@ -27,6 +27,7 @@ www-plugins/pdfjs
 # Audio Apps
 media-sound/alsa-utils
 media-sound/pavucontrol
+media-sound/pulseaudio-ctl
 media-sound/spotify
 
 # Social Media stuff
