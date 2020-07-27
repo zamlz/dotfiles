@@ -18,9 +18,12 @@ while true; do
             cap="$(cat ${batloc}${bat}/capacity)"
             stat="$(cat ${batloc}${bat}/status)"
             batid=$(echo $bat | tr -d 'BAT')
-            out="${out} ${batid}:${cap}%"
 
-            if [ $cap -lt 15 ]; then
+            # Uncomment this if I use a laptop with more than 1 battery again
+            #out="${out} ${batid}:${cap}%"
+            out="${out}${cap}%"
+
+            if [ $cap -lt 15 ] && [ $stat = "Discharging" ]; then
                 refresh_rate="0.2"
                 if [ $oscillator -eq 0 ]; then
                     bg_color=$RED
