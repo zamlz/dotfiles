@@ -50,7 +50,7 @@ while true; do
         msg="%{A:touch $ip_toggle:}${icon}$interface: $primary_msg%{A}"
     fi
 
-    msg="%{B$BLACK}%{F$GREEN}${PL_Lb} $msg %{F-}%{B-}"
+    msg="%{B$BLACK}%{F$GREEN} $msg %{F-}%{B-}"
     echo "$ANCHOR_NETWORK$msg"
     sleep $REFRESH_NETWORK
 done

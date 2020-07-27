@@ -9,23 +9,29 @@ spt_now="$HOME/sys/spotify-now/spotify-now"
 while true; do
 
     if [ -z "$($spt_now -e 'closed')" ]; then
+        
+        # Notice how the first message doesn't have a foreground color open
+        # statement but has a close statement. This is because we are capturing
+        # the color change from the [volume] module.
+        msg="%{B$BLACK}${PL_R}%{B-}%{F-}"
+        
         artist=" ${ICON_MUSIC}$($spt_now -i '%artist') "
         title=" $($spt_now -i '%title') "
+
+        if [ -z "$($spt_now -p 'paused')" ]; then
+            status_color=$WHITE
+        else
+            status_color=$XBACKGROUND
+        fi
+
+        msg="$msg%{B$BLACK}%{F$CYAN}$artist"
+        msg="$msg${PL_Rb}%{F-}%{F$status_color}"
+        msg="$msg$title%{B-}%{F$BLACK}${PL_R}%{F-}"
     else
-        artist=""
-        title=""
+
+        # IMPORTANT: look at comment above
+        msg="%{B$XBACKGROUND}${PL_R}%{B-}%{F-}"
     fi
-
-
-    if [ -z "$($spt_now -p 'paused')" ]; then
-        status_color=$WHITE
-    else
-        status_color=$YELLOW
-    fi
-
-    msg="%{B$BLACK}%{F$CYAN}$artist"
-    msg="$msg${PL_Rb}%{F-}%{F$status_color}"
-    msg="$msg$title%{B-}%{F$BLACK}${PL_R}%{F-}"
 
     echo "$ANCHOR_SPOTIFY$msg"
     sleep $REFRESH_TIME
