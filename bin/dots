@@ -1,0 +1,47 @@
+#!/usr/bin/env sh
+
+# A simple script that manages dotfiles repo and beyond
+. $HOME/etc/repos
+
+help_prompt() {
+    echo "Usage:"
+}
+
+# Print the locations of the repos
+print_repo_dirs() {
+    echo "DOTFILES_DIR       = ${DOTFILES_DIR}"
+    echo "BOOKMARKS_DIR      = ${BOOKMARKS_DIR}"
+    echo "DOCUMENTS_DIR      = ${DOCUMENTS_DIR}"
+    echo "LEDGER_DIR         = ${LEDGER_DIR}"
+    echo "PAPERS_DIR         = ${PAPERS_DIR}"
+    echo "PASSWORD_STORE_DIR = ${PASSWORD_STORE_DIR}"
+    echo "VIMWIKI_DIR        = ${VIMWIKI_DIR}"
+}
+
+# Run a git command (${2-}) in a given repo (${1})
+run_git() {
+    REPO_DIR=$1 && shift && GIT_ARGS=$@;
+    echo "git -C $REPO_DIR $GIT_ARGS"
+    git -C $REPO_DIR $GIT_ARGS
+}
+
+run_git_over_all() {
+    GIT_ARGS=$@;
+    run_git ${DOTFILES_DIR} $GIT_ARGS;
+    run_git ${BOOKMARKS_DIR} $GIT_ARGS;
+    run_git ${DOCUMENTS_DIR} $GIT_ARGS;
+    run_git ${LEDGER_DIR} $GIT_ARGS;
+    run_git ${PASSWORD_STORE_DIR} $GIT_ARGS;
+    run_git ${VIMWIKI_DIR} $GIT_ARGS;
+}
+
+CMD=$1
+ARGS=$(echo "$@" | cut -d' ' -f2-)
+
+case "$CMD" in
+    "status")       run_git_over_all "status";;
+    "update")       run_git_over_all "fetch origin";;
+    "pull")         run_git_over_all "pull";;
+    "info")         print_repo_dirs;;
+    *)              help_prompt;
+esac

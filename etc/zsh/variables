@@ -1,5 +1,7 @@
 #!/bin/zsh
 
+source $HOME/etc/repos
+
 # Update the path variable
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
@@ -19,9 +21,6 @@ export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
 
 # Other important directories
 export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
-export PASSWORD_STORE_DIR="$HOME/usr/passwords"
-export LEDGER_DIR="$HOME/usr/ledger"
-export VIMWIKI_DIR="$HOME/usr/wiki"
 
 # Configuration files (or of the sort)
 export HTOPRC="$HOME/etc/htop/rc"

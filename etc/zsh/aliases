@@ -51,9 +51,6 @@ alias .....="cd ../../../../"
 alias ucsc='cd ~/src/ucsc; groot; '
 alias usc='cd ~/src/usc; groot; '
 
-# Teleport to my dotfiles
-alias dots='cd; groot;'
-
 # Information Functions
 alias info="clear;echo;neofetch;colors;"
 alias infos="info;scrot --delay 3 --count --quality 100 ~/tmp/myscrot.png"
