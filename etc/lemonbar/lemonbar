@@ -39,7 +39,8 @@ $HOME/etc/lemonbar/modules/filesystems  > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/memory       > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/spotify      > $PANEL_BOT_FIFO &
 $HOME/etc/lemonbar/modules/workspaces   < $EVENT_WSP_FIFO > $PANEL_BOT_FIFO &
-$HOME/etc/lemonbar/modules/volume       < $EVENT_VOL_FIFO > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/volume/event < $EVENT_VOL_FIFO > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/volume/const > $PANEL_BOT_FIFO &
 # $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_BOT_FIFO &
 
 # Define lemonbar opts

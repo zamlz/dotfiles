@@ -50,10 +50,11 @@ REFRESH_MEMORY=3
 REFRESH_NETWORK=2
 REFRESH_SWAP=3
 REFRESH_TIME=1
+REFRESH_VOLUME=2
 
 # Font Awesome icons for various modules
 # https://fontawesome.com/icons?d=gallery&m=free
-if [ -z "$LEMONBAR_DISABLE_ICONS" ]; then
+if [ -n "$LEMONBAR_ENABLE_ICONS" ]; then
     ICON_BACKLIGHT=$(env printf "\uf042 ")
     ICON_BATTERY_AC=$(env printf "\uf1e6 ")
     ICON_BATTERY_EMPTY=$(env printf "\uf244 ")
@@ -97,7 +98,7 @@ PL_Rb=$(env printf "\ue0b1")
 PL_L=$(env printf "\ue0b2")
 PL_Lb=$(env printf "\ue0b3")
 
-# Hardware Specification
-WIFI_INTERFACE=${WIFI_INTERFACE:-"wlp82s0"}
-ETHERNET_INTERFACE=${ETHERNET_INTERFACE:-"enp0s31f6"}
-FILESYSTEMS=${FILESYSTEMS:-"/dev/nvme0n1p4 /home/zamlz/tmp"}
+# Hardware Specification (override this values in local config)
+WIFI_INTERFACE=${WIFI_INTERFACE:-"wlan0"}
+ETHERNET_INTERFACE=${ETHERNET_INTERFACE:-"eth0"}
+FILESYSTEMS=${FILESYSTEMS:-"/dev/sda4"}

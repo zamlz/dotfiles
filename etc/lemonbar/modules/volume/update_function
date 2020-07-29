@@ -1,11 +1,8 @@
 #!/bin/sh
 
-. $HOME/etc/lemonbar/config
+# Lemonbar Volume Update function
 
-while read -r volume_event; do
-    (
-    $volume_event
-
+volume_status_update() {
     stats=$(pulseaudio-ctl full-status)
     vol=$(echo $stats | awk '{print $1}')
     sink_state=$(echo $stats | awk '{print $2}')
@@ -21,8 +18,4 @@ while read -r volume_event; do
     msg="%{B$color} ${ICON_VOLUME}$msg %{B-}%{F$color}"
 
     echo "$ANCHOR_VOLUME$msg"
-    sleep $REFRESH_VOLUME
-    ) &
-done
-
-# vim: set ft=sh:
+}

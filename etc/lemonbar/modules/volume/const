@@ -1,0 +1,11 @@
+#!/bin/sh
+
+# Constantly running volume module
+
+. $HOME/etc/lemonbar/config
+. $HOME/etc/lemonbar/modules/volume/update_function
+
+while true; do
+    volume_status_update;
+    sleep $REFRESH_VOLUME
+done
