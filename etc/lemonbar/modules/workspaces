@@ -3,7 +3,7 @@
 . $HOME/etc/lemonbar/config
 LOGGER=$(get_logger lemonbar.workspaces)
 
-$LOGGER "Initializing workspaces[herbstluftwm] module"
+$LOGGER "Initializing workspaces module [herbstluftwm]"
 
 hclm() {
     herbstclient list_monitors
