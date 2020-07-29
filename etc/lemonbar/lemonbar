@@ -8,7 +8,7 @@
 # New and improved lemonbar script
 
 . $HOME/etc/lemonbar/config
-LOGGER=$(get_logger $$)
+LOGGER=$(get_logger lemonbar)
 
 # Avoid running the panel multiple times
 if [ $(pgrep -cx lemonbar) -gt 1 ]; then

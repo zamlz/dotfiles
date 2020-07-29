@@ -1,7 +1,12 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
-ip_toggle=/tmp/.ip_toggle
+LOGGER=$(get_logger lemonbar.network)
+
+$LOGGER "Initializing network module"
+
+# State file for identifying if lemonbar displays ip address or not
+ip_toggle="/tmp/.ip_toggle"
 
 while true; do
 

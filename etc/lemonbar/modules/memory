@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.memory)
+
+$LOGGER "Initializing memory module"
 
 while true; do
     memory=$(free -h | grep 'Mem:')

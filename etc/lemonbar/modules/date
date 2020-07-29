@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.date)
+
+$LOGGER "Initializing date module"
 
 # Set the refresh time to how many seconds till midnight
 REFRESH_DATE=$(($(date -d 23:59:59 +%s) - $(date +%s) + 1))

@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.battery)
+
+$LOGGER "Initializing battery module"
 
 # TODO: Dynamically set this based on status
 bg_color=$GREEN

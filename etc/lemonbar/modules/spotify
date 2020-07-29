@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.spotify)
+
+$LOGGER "Initializing spotify module"
 
 # You'll need to clone this repo
 spt_now="$HOME/sys/spotify-now/spotify-now"
@@ -9,12 +12,12 @@ spt_now="$HOME/sys/spotify-now/spotify-now"
 while true; do
 
     if [ -z "$($spt_now -e 'closed')" ]; then
-        
+
         # Notice how the first message doesn't have a foreground color open
         # statement but has a close statement. This is because we are capturing
         # the color change from the [volume] module.
         msg="%{B$BLACK}${PL_R}%{B-}%{F-}"
-        
+
         artist=" ${ICON_MUSIC}$($spt_now -i '%artist') "
         title=" $($spt_now -i '%title') "
 

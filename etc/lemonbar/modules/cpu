@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.cpu)
+
+$LOGGER "Initializing cpu module"
 
 while true; do
     msg=$(cat /proc/loadavg | awk '{print $1}')

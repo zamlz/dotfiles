@@ -4,6 +4,9 @@
 
 . $HOME/etc/lemonbar/config
 . $HOME/etc/lemonbar/modules/volume/update_function
+LOGGER=$(get_logger lemonbar.volume.event)
+
+$LOGGER "Initializing volume module [event driven]"
 
 while read -r volume_event; do
     (

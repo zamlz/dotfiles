@@ -2,8 +2,12 @@
 
 . $HOME/etc/lemonbar/config
 MODE="$1"
+LOGGER=$(get_logger "lemonbar.loop.$MODE")
+
+$LOGGER "Configuring the $MODE loop"
 
 # Define the monitors
+$LOGGER "Checking for multi monitor support"
 if [ -f $TRIPLE_MONITOR_TOGGLE ]; then
 
     MONITOR_1="%{S0}"
@@ -26,6 +30,7 @@ else
 
 fi
 
+$LOGGER "Initializing loop to construct lemonbar output"
 while read -r line; do
     # echo "Current line: $line" >&2
     case $line in

@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.backlight)
+
+$LOGGER "Initializing backlight module"
 
 while read -r backlight_event; do
     $backlight_event;

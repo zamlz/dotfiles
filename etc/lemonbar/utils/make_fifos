@@ -5,14 +5,15 @@
 # THEREFORE, this needs to be called before spawning lemonbar
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.make_fifos)
 
-# Remake old panel fifo files
+$LOGGER "Initializing panel fifo files"
 [ -e "$PANEL_TOP_FIFO" ] && rm $PANEL_TOP_FIFO
 [ -e "$PANEL_BOT_FIFO" ] && rm $PANEL_BOT_FIFO
 mkfifo $PANEL_TOP_FIFO
 mkfifo $PANEL_BOT_FIFO
 
-# Remake old event fifos
+$LOGGER "Initializing event fifos"
 [ -e "$EVENT_BKL_FIFO" ] && rm $EVENT_BKL_FIFO
 [ -e "$EVENT_VOL_FIFO" ] && rm $EVENT_VOL_FIFO
 [ -e "$EVENT_WSP_FIFO" ] && rm $EVENT_WSP_FIFO

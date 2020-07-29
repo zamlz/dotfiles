@@ -1,6 +1,11 @@
 #!/bin/sh
 
+# TODO: Figure out what to do with this module. Do I even need it?
+
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.windowinfo)
+
+$LOGGER "Initializing windowinfo module"
 
 while read -r window_event; do
     win_active=$(xdotool getactivewindow)

@@ -1,10 +1,10 @@
 #!/bin/sh
 
 # Import modules needed but anything that imports this config
+. $HOME/lib/shell/logger
 . $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/utils/wrappers
 . $HOME/etc/lemonbar/utils/multi_monitor_support
-. $HOME/etc/lemonbar/utils/logger
 
 # Source local system config in case there are system specific changes
 . $HOME/.config/lemonbar/config

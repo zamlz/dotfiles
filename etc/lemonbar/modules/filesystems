@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.filesystems)
+
+$LOGGER "Initializing filesystems module"
 
 while true; do
 

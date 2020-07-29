@@ -6,9 +6,12 @@
 # emit the hooks yet, so we delay it by a small fract of time
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger "lemonbar.herbsthooks")
+$LOGGER "Setting up lemonbar hooks for herbstluftwm"
 
 if [ $(pgrep -cx herbsthooks) -gt 1 ]; then
 printf "The herbstluftwm event hooks for lemonbar are already running.\n" >&2
+$LOGGER "The herbstluftwm event hooks for lemonbar are already running."
 exit 1
 fi
 
@@ -21,4 +24,5 @@ herbstclient --idle '(xbacklight|panel_init)' > $EVENT_BKL_FIFO &
 herbstclient --idle '(pulseaudio-ctl|panel_init)' > $EVENT_VOL_FIFO &
 (sleep 0.1 && herbstclient emit_hook panel_init) &
 
+$LOGGER "All hook have been started"
 wait

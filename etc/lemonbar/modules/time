@@ -1,6 +1,9 @@
 #!/bin/sh
 
 . $HOME/etc/lemonbar/config
+LOGGER=$(get_logger lemonbar.time)
+
+$LOGGER "Initializing time module"
 
 # Colors are actually set in date!!!!
 while true; do
