@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
 # these are rules for herbstluftwm
+. $HOME/lib/shell/logger
+LOGGER=$(get_logger herbstluftwm.rules)
+
+$LOGGER "Setting up herbstluftwm custom window rules"
 
 hc() {
     herbstclient "$@"

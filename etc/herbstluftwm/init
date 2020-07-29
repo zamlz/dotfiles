@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
+. $HOME/lib/shell/logger
+LOGGER=$(get_logger herbstluftwm)
+
 # this is a simple config for herbstluftwm
+$LOGGER "Initializing herbstluftwm window manager"
 
 hc() {
     herbstclient "$@"

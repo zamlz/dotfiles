@@ -1,6 +1,10 @@
 #!/usr/bin/env sh
 
 # theme settings for herbstluftwm
+. $HOME/lib/shell/logger
+LOGGER=$(get_logger herbstluftwm.theme)
+
+$LOGGER "Configuring herbstluftwm window theme"
 
 hc() {
     herbstclient "$@"

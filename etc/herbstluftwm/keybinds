@@ -4,6 +4,11 @@
 # NOTES:
 #   + xev is a useful tool to identify keys
 
+. $HOME/lib/shell/logger
+LOGGER=$(get_logger herbstluftwm.keybinds)
+
+$LOGGER "Initializing herbstluftwm key bindings"
+
 hc() {
     herbstclient "$@"
 }

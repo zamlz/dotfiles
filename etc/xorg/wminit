@@ -1,10 +1,15 @@
 #!/bin/sh
 
+. $HOME/lib/shell/logger
+LOGGER=$(get_logger xorg.wminit)
+$LOGGER "Initializing window manager common utilities"
+
 # We need to start the compositor as well
 # If we would like to kill our CPU so no.
 # But hey, it definetly looks crisp af tho.
 pkill -x compton
 if [ -f "$HOME/.config/xcompton" ]; then
+    $LOGGER "Starting Compton"
     compton --config $HOME/etc/compton/rc &
 fi
 
