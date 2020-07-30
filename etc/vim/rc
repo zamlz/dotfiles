@@ -148,6 +148,7 @@ colorscheme peachpuff
 " Color of the Columns
 highlight ColorColumn ctermbg=black
 highlight CursorColumn ctermbg=black
+highlight VertSplit ctermfg=black
 
 " Change the default coloring of line numbers
 highlight LineNr ctermfg=black

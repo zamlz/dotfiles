@@ -132,9 +132,9 @@ hc keybind $Super-p spawn ${PASSLIB}
 BOOKLIB="$HOME/lib/rofi/rofi-book"
 hc keybind $Super-b spawn ${BOOKLIB}
 
-# Use rofi to launch my markdown notes
-NOTELIB="$HOME/lib/rofi/rofi-note"
-hc keybind $Super-n spawn ${NOTELIB}
+# Use rofi to launch my vimwiki files 
+WIKILIB="$HOME/lib/rofi/rofi-wiki"
+hc keybind $Super-n spawn ${WIKILIB}
 
 # Use rofi to launch webbrowser session
 BROWSER="$HOME/lib/rofi/rofi-browser"
