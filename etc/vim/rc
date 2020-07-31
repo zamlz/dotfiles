@@ -20,6 +20,7 @@ Plug 'morhetz/gruvbox'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 
+Plug 'jamessan/vim-gnupg'
 Plug 'chrisbra/csv.vim'
 Plug 'godlygeek/tabular'
 Plug 'plasticboy/vim-markdown'
