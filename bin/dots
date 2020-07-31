@@ -40,8 +40,8 @@ ARGS=$(echo "$@" | cut -d' ' -f2-)
 
 case "$CMD" in
     "status")       run_git_over_all "status";;
-    "update")       run_git_over_all "fetch origin";;
+    "fetch")        run_git_over_all "fetch origin";;
     "pull")         run_git_over_all "pull";;
     "info")         print_repo_dirs;;
-    *)              help_prompt;
+    *)              run_git_over_all "status";;
 esac
