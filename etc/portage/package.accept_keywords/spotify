@@ -1,1 +1,3 @@
 media-sound/spotify ~amd64
+media-sound/spotify-tui ~amd64
+media-sound/spotifyd ~amd64
