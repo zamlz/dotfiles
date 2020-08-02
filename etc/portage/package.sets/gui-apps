@@ -4,7 +4,7 @@
 # to supplement it
 
 # Document tools
-app-text/pandoc
+app-text/pandoc-bin
 app-text/texlive
 app-text/zathura
 app-text/zathura-meta
