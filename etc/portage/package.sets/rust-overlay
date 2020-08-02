@@ -1,2 +1,7 @@
+# Ensure that these two packages are built first
+# Do so by commenting the packages below
+dev-lang/rust-bin
+
+# Spotify packages
 media-sound/spotifyd
 media-sound/spotify-tui
