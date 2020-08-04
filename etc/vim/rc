@@ -83,9 +83,10 @@ let personal_wiki = {}
 let personal_wiki.name = 'Tabula Rasa'
 let personal_wiki.path = '~/usr/wiki'
 let personal_wiki.path_html = '~/usr/wiki/.html'
-let personal_wiki.syntax = 'default'
-let personal_wiki.ext = '.wiki'
+let personal_wiki.syntax = 'markdown'
+let personal_wiki.ext = '.md'
 let g:vimwiki_list = [personal_wiki]
+let g:vimwiki_global_ext = 0
 "let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_listsyms = ' ○◐●✓'
 let g:vimwiki_folding = 'expr'
@@ -136,8 +137,6 @@ set foldmethod=indent    " fold based on ident level
 
 " Custom file search
 set path+=**
-
-au FileType vimwiki setlocal shiftwidth=2 tabstop=2
 
 "------------------------------------------------------------------------------
 " Vim colorschemes

@@ -3,13 +3,13 @@
 # Find the wiki I want
 VIMWIKI_DIR="$HOME/usr/wiki"
 
-wiki=$(find $VIMWIKI_DIR -name "*.wiki" | \
-    sed -e "s/.wiki$//g" \
+wiki=$(find $VIMWIKI_DIR -name "*.md" | \
+    sed -e "s/.md$//g" \
         -e "/^.*diary.*$/d" \
         -e 's|'$VIMWIKI_DIR'/||g' | \
     sort | tr '\n' ' ' | \
     rofi -dmenu -i -sep ' ' -p "Wiki" )
 
 if [ -n "$wiki" ]; then
-    urxvt -e sh -c "exec nvim -R ${VIMWIKI_DIR}/${wiki}.wiki" 2> /dev/null &
+    urxvt -e sh -c "exec nvim -R ${VIMWIKI_DIR}/${wiki}.md" 2> /dev/null &
 fi
