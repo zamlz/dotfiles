@@ -191,6 +191,11 @@ nnoremap <leader><space> :nohlsearch<CR>
 noremap <S-j> :bn<CR>
 noremap <S-k> :bp<CR>
 
+" Custom git mappings (is fugitive or gitgutter better to use instead?)
+noremap <F2> :Git <CR>
+noremap <F3> :Git diff<CR>
+noremap <F4> :Gclog<CR>
+
 " Key binds to toggle the Undo Tree
 noremap <F5> :UndotreeToggle<CR>
 
@@ -225,6 +230,6 @@ function! ToggleCalendar()
         let g:calendar_open = 1
     end
 endfunction
-:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()
+:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
 
 " vim:ft=vim
