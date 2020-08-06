@@ -1,0 +1,8 @@
+# required by games-misc/lolcat-100.0.1::gentoo[ruby_targets_ruby25]
+# required by @cli-apps (argument)
+=dev-ruby/paint-2.2.0 ~amd64
+# required by @cli-apps (argument)
+=games-misc/lolcat-100.0.1 ~amd64
+# required by games-misc/lolcat-100.0.1::gentoo[ruby_targets_ruby25]
+# required by @cli-apps (argument)
+=dev-ruby/optimist-3.0.1 ~amd64
