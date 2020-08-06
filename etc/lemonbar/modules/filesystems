@@ -10,9 +10,11 @@ while true; do
     msg=""
     for FS in $FILESYSTEMS; do
         fs_info=$(df | grep $FS)
-        fs_path=$(echo $fs_info | awk '{print $6}' | sed -e 's|/home/zamlz|~|g')
-        fs_used=$(echo $fs_info | awk '{print $5}')
-        msg="$msg $fs_path:$fs_used"
+        if [ -n "$fs_info" ]; then
+            fs_path=$(echo $fs_info | awk '{print $6}' | sed -e 's|/home/zamlz|~|g')
+            fs_used=$(echo $fs_info | awk '{print $5}')
+            msg="$msg $fs_path:$fs_used"
+        fi
     done
 
     msg="%{B$BLACK}%{F$WHITE} ${ICON_FILESYSTEMS}$msg %{F-}%{B-}"
