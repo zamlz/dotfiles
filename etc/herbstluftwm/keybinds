@@ -132,7 +132,7 @@ hc keybind $Super-p spawn ${PASSLIB}
 BOOKLIB="$HOME/lib/rofi/rofi-book"
 hc keybind $Super-b spawn ${BOOKLIB}
 
-# Use rofi to launch my vimwiki files 
+# Use rofi to launch my vimwiki files
 WIKILIB="$HOME/lib/rofi/rofi-wiki"
 hc keybind $Super-n spawn ${WIKILIB}
 
