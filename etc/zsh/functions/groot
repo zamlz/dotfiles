@@ -13,7 +13,7 @@ if [ $ROOTEXIST -eq 0 ]; then
     fi
 
     BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
-    figlet -t -f slant $@ "${NAME}.${BRANCH}" | lolcat
+    figlet -t -f slant $@ "${NAME} @.${BRANCH}" | lolcat
 
     git status
     PAGER=cat git diff
