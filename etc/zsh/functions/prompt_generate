@@ -26,8 +26,8 @@ function prompt_generate() {
             GIT_NAME="[?]"
         fi
 
-        GIT_BRANCH=$(git branch --list --no-color | cut -d " " -f 2 \
-            | tr -d '\n')
+        GIT_BRANCH=$(git branch --list --no-color | sed -e 's/^\* //g' \
+            | head -n1 | tr -d '\n')
 
         # (yes/no add ; no commited)
         #YA=$(git status --porcelain 2>/dev/null| egrep "^M" | wc -l)
