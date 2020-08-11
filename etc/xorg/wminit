@@ -30,6 +30,12 @@ else
     xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
 fi
 
+# Initialize universal keybindings
+SXHKD_SHELL=sh
+export SXHKD_TERMINAL=urxvt
+pkill -x sxhkd
+sxhkd -c "$HOME/etc/sxhkd/keybinds" &
+
 # Also have to set this here in case xorg isn't started via startx
 setxkbmap -option caps:escape
 
@@ -50,4 +56,3 @@ pkill -x dunst
 # Start lemonbar after all X related stuff is finished
 pkill -x lemonbar
 $HOME/etc/lemonbar/lemonbar &
-

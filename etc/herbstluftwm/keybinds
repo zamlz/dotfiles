@@ -13,26 +13,12 @@ hc() {
     herbstclient "$@"
 }
 
-# remove all existing keybindings
+# remove all existing keybinding; Use the super key as the main modifier
 hc keyunbind --all
-
-# if you have a super key you will be much happier with Super set to Mod4
-
-#Super=Mod1# Use alt as the main modifier
-Super=Mod4   # Use the super key as the main modifier
+Super=Mod4
 
 hc keybind $Super-Ctrl-Alt-r reload
 hc keybind $Super-q close
-
-TERMINAL="urxvt"
-
-# use your $TERMINAL with xterm as fallback
-hc keybind $Super-Return spawn $TERMINAL
-
-# Super Special Terminal Warp Spawn.
-# open a terminal in the same directory the currently focused window.
-TERMWARP="$HOME/etc/herbstluftwm/pwdcfw/${TERMINAL}"
-hc keybind $Super-Shift-Return spawn ${TERMWARP}
 
 # basic movement
 # focusing clients
@@ -120,36 +106,6 @@ hc keybind $Super-Shift-Tab   cycle_frame +1
 hc keybind $Super-c           cycle_all +1
 hc keybind $Super-i jumpto urgent
 
-# Create the program launcher
-LAUNCHER="rofi -show run"
-hc keybind $Super-e spawn ${LAUNCHER} # used to be grave
-
-# Use rofi to launch a dialog for password manager
-PASSLIB="$HOME/lib/rofi/rofi-pass"
-hc keybind $Super-p spawn ${PASSLIB}
-
-# Use rofi to launch a dialog for bookmark manager
-BOOKLIB="$HOME/lib/rofi/rofi-book"
-hc keybind $Super-b spawn ${BOOKLIB}
-
-# Use rofi to launch my vimwiki files
-WIKILIB="$HOME/lib/rofi/rofi-wiki"
-hc keybind $Super-n spawn ${WIKILIB}
-
-# Use rofi to launch webbrowser session
-BROWSER="$HOME/lib/rofi/rofi-browser"
-hc keybind $Super-w spawn ${BROWSER}
-
-# Use rofi to also control display/power profiles
-PROFILE_SELECTOR="$HOME/lib/rofi/rofi-profile"
-hc keybind $Super-d spawn ${PROFILE_SELECTOR}
-hc keybind XF86Display spawn ${PROFILE_SELECTOR}
-
-# Add system locker keybinding
-LOCKER="$HOME/lib/rofi/rofi-system"
-hc keybind $Super-Ctrl-Alt-Escape spawn ${LOCKER}
-hc keybind $Super-Escape spawn ${LOCKER} LOCK SCREEN
-
 # Other misc keybindings
 hc keybind XF86MonBrightnessUp emit_hook xbacklight -inc 1 -time 10
 hc keybind XF86MonBrightnessDown emit_hook xbacklight -dec 1 -time 10
@@ -157,4 +113,3 @@ hc keybind XF86AudioMute emit_hook pulseaudio-ctl mute
 hc keybind XF86AudioMicMute emit_hook pulseaudio-ctl mute-input
 hc keybind XF86AudioRaiseVolume emit_hook pulseaudio-ctl up 1
 hc keybind XF86AudioLowerVolume emit_hook pulseaudio-ctl down 1
-

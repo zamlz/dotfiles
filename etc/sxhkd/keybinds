@@ -1,0 +1,62 @@
+
+# Keybinds in this file are global and universally used regardless of
+# of the window manager
+#
+#   SXHKD is spawned by : $HOME/etc/xorg/wminit
+
+# Terminal Exec Commands
+# ---------------------------------------------------------------------------
+
+# Spawn a normal terminal
+super + Return
+    $SXHKD_TERMINAL
+
+# Spawn Terminal matching environment of focused terminal
+super + shift + Return
+    $HOME/etc/sxhkd/pwdcfw/$SXHKD_TERMINAL
+
+# Dmenu Launchers (ROFI)
+# ---------------------------------------------------------------------------
+
+# Standard $PATH program launcher
+super + e
+    rofi -show run
+
+# Dmenu for password store
+super + p
+    $HOME/lib/rofi/rofi-pass
+
+# Copy a specific bookmark to the clipboard
+super + b
+    $HOME/lib/rofi/rofi-book
+
+# Open up a wiki page in read-only mode (originally named notes)
+super + n
+    $HOME/lib/rofi/rofi-wiki
+
+# Restore a saved browser session
+super + w
+    $HOME/lib/rofi/rofi-browser
+
+# Toggle a display/power profile
+super + d
+    $HOME/lib/rofi/rofi-profile
+XF86Display
+    $HOME/lib/rofi/rofi-profile
+
+# Control system state (locked, reboot, poweroff, etc.)
+super + Escape
+    $HOME/lib/rofi/rofi-system LOCK SCREEN
+super + ctrl + alt + Escape
+    $HOME/lib/rofi/rofi-system
+
+# Print Screen Commands
+# ---------------------------------------------------------------------------
+
+# Interactively select a window or rectangle with the mouse
+Print
+    scrot -q 100 -s '.%Y-%m-%d_$wx$h.png' -e 'mv $f ~/tmp/'
+
+shift + Print
+    scrot -q 100 '.%Y-%m-%d_$wx$h.png' -e 'mv $f ~/tmp/'
+
