@@ -1,0 +1,21 @@
+#!/bin/sh
+
+. $HOME/lib/shell/logger
+
+LOGGER=$(get_logger "herbstluftwm.bar_events")
+$LOGGER "Setting up lemonbar hooks for herbstluftwm"
+
+if [ $(pgrep -cx bar_events) -gt 1 ]; then
+printf "The herbstluftwm event hooks for lemonbar are already running.\n" >&2
+$LOGGER "The herbstluftwm event hooks for lemonbar are already running."
+exit 1
+fi
+
+WSP_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos wsp"
+WIN_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos win"
+WARG="'(focus_changed|window_title|panel_init)'"
+
+(herbstclient --idle       | while read -r line; do $WSP_TRIGGER; done) &
+#(herbstclient --idle $WARG | while read -r line; do $WIN_TRIGGER; done) &
+
+$LOGGER "All hook have been started"

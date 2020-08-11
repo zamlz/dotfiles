@@ -60,3 +60,29 @@ Print
 shift + Print
     scrot -q 100 '.%Y-%m-%d_$wx$h.png' -e 'mv $f ~/tmp/'
 
+# Media Control
+# ---------------------------------------------------------------------------
+
+XF86MonBrightnessUp
+    xbacklight -inc 1 -time 10; \
+    $HOME/etc/lemonbar/utils/trigger_fifos bkl
+
+XF86MonBrightnessDown
+    xbacklight -dec 1 -time 10; \
+    $HOME/etc/lemonbar/utils/trigger_fifos bkl
+
+XF86AudioMute
+    pulseaudio-ctl mute; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioMicMute
+    pulseaudio-ctl mute-input; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioRaiseVolume
+    pulseaudio-ctl up 1; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioLowerVolume
+    pulseaudio-ctl down 1; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol

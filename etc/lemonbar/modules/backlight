@@ -6,7 +6,6 @@ LOGGER=$(get_logger lemonbar.backlight)
 $LOGGER "Initializing backlight module"
 
 while read -r backlight_event; do
-    $backlight_event;
     msg="$(xbacklight -get | sed -e 's/\.[0-9]*//g')"
     if [ -z "$msg" ]; then
         echo "$ANCHOR_BACKLIGHT%{F$BLACK}${PL_L}%{F-}"

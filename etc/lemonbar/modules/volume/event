@@ -10,7 +10,6 @@ $LOGGER "Initializing volume module [event driven]"
 
 while read -r volume_event; do
     (
-        $volume_event;
         volume_status_update;
     ) &
 done

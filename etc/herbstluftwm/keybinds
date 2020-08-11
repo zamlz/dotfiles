@@ -105,11 +105,3 @@ hc keybind $Super-Tab         cycle +1
 hc keybind $Super-Shift-Tab   cycle_frame +1
 hc keybind $Super-c           cycle_all +1
 hc keybind $Super-i jumpto urgent
-
-# Other misc keybindings
-hc keybind XF86MonBrightnessUp emit_hook xbacklight -inc 1 -time 10
-hc keybind XF86MonBrightnessDown emit_hook xbacklight -dec 1 -time 10
-hc keybind XF86AudioMute emit_hook pulseaudio-ctl mute
-hc keybind XF86AudioMicMute emit_hook pulseaudio-ctl mute-input
-hc keybind XF86AudioRaiseVolume emit_hook pulseaudio-ctl up 1
-hc keybind XF86AudioLowerVolume emit_hook pulseaudio-ctl down 1

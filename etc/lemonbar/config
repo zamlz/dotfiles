@@ -5,22 +5,13 @@
 . $HOME/lib/shell/xrdb_colors
 . $HOME/etc/lemonbar/utils/wrappers
 . $HOME/etc/lemonbar/utils/multi_monitor_support
+. $HOME/etc/lemonbar/utils/where_fifos
 
 # Source local system config in case there are system specific changes
 . $HOME/.config/lemonbar/config
 
 # Config variables used by all components of lemonbar
 # ---------------------------------------------------
-
-# Primary FIFOs
-PANEL_TOP_FIFO=/tmp/panel_top.fifo
-PANEL_BOT_FIFO=/tmp/panel_bot.fifo
-
-# Event FIFOs
-EVENT_BKL_FIFO=/tmp/backlight_event.fifo
-EVENT_VOL_FIFO=/tmp/volume_event.fifo
-EVENT_WSP_FIFO=/tmp/workspace_event.fifo
-EVENT_WIN_FIFO=/tmp/wininfo_event.fifo
 
 # Choose the output wrapper
 MSG_WRAPPER=icon_wrapper

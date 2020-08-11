@@ -10,7 +10,6 @@ hclm() {
 }
 
 while read -r workspace_event; do
-
     # For whatever happens here so we can speed up the updates even further
     # commented for now, but uncomment to make it faster
     (

@@ -4,7 +4,8 @@
 # start buffering without having to wait for lemonbar to finish starting.
 # THEREFORE, this needs to be called before spawning lemonbar
 
-. $HOME/etc/lemonbar/config
+. $HOME/lib/shell/logger
+. $HOME/etc/lemonbar/utils/where_fifos
 LOGGER=$(get_logger lemonbar.make_fifos)
 
 $LOGGER "Initializing panel fifo files"
@@ -22,3 +23,9 @@ mkfifo $EVENT_BKL_FIFO
 mkfifo $EVENT_VOL_FIFO
 mkfifo $EVENT_WSP_FIFO
 mkfifo $EVENT_WIN_FIFO
+
+$LOGGER "Starting init writers for event fifos"
+echo "backlight fifo init" > $EVENT_BKL_FIFO &
+echo "workspace fifo init" > $EVENT_WSP_FIFO &
+#echo "window fifo init"    > $EVENT_WIN_FIFO &
+echo "volume fifo init"    > $EVENT_VOL_FIFO &

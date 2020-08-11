@@ -23,3 +23,6 @@ $HOME/etc/herbstluftwm/rules &
 
 # Set the theme
 $HOME/etc/herbstluftwm/theme &
+
+# Start lemonbar event
+$HOME/etc/herbstluftwm/bar_events
