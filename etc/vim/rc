@@ -206,7 +206,7 @@ au FileType ledger vnoremap <silent> <Tab>
 au FileType ledger nnoremap <silent> <C-m>
             \ :silent<space>make<bar>redraw!<bar>cwindow<CR>
 au FileType ledger nnoremap <silent> <C-s>
-            \ :call ledger#transaction_state_toggle(line('.'), ' *?!')<CR>
+            \ :call ledger#transaction_state_toggle(line('.'), ' !*?')<CR>
 
 "------------------------------------------------------------------------------
 " Custom Vim Functions
