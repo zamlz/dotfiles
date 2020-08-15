@@ -1,0 +1,2 @@
+# Needed to properly build texlive
+app-text/xdvik ~amd64
