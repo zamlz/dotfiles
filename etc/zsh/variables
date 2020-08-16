@@ -8,7 +8,8 @@ export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$HOME/lib/private/bin:$PATH"
 
 # Random useful
-export DISTRO=$(grep --color=none ^ID= /etc/os-release | sed -e 's/^ID=//g')
+export DISTRO=$(grep --color=none ^ID= /etc/os-release | sed -e 's/^ID=//g' \
+    | tr -d '"')
 
 # Configure GnuPG Variables
 # MAKE SURE THAT SSH CONFIG IS ALSO CONFIGURED!
