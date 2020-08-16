@@ -6,7 +6,11 @@ LOGGER=$(get_logger lemonbar.whoami)
 $LOGGER "Initializing whoami module"
 
 wmsg="${ICON_WHOAMI}$(whoami)@$(hostname)"
-umsg="${ICON_LINUX}$(uname -r)"
+
+version=$(uname -r | sed -e 's/-.*//g')
+distro=$(grep ^ID= /etc/os-release | sed -e 's/^ID=//g' | tr -d '"')
+distro=$(echo $distro | sed 's/.*/\u&/')
+umsg="${ICON_LINUX}$distro $(uname -o) $version $(uname -m)"
 
 prm_color='#256568'
 alt_color=$BLACK
