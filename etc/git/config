@@ -15,3 +15,5 @@
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 [diff "gpg"]
     textconv = gpg --no-tty --decrypt
+[pull]
+	ff = only
