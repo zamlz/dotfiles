@@ -17,6 +17,54 @@ print_repo_dirs() {
     echo "VIMWIKI_DIR        = ${VIMWIKI_DIR}"
 }
 
+# Configure dotfiles in the current directory
+# (Used when installing new distros)
+configure_dots() {
+
+    d="${1:-$HOME}"
+
+    # ZSH SHELL SETUP
+    echo "Setting up zsh shell files"
+    ln -s $d/etc/zsh/rc $d/.zshrc
+
+    # Setting up git config files
+    echo "Setting up git config files"
+    ln -s $d/etc/git/config $d/.gitconfig
+
+    # Setting up gpg agent and ssh
+    echo "Setup gpg and ssh files"
+    mkdir -p $d/.ssh $d/.gnupg
+    ln -s $d/etc/ssh/config $d/.ssh/config
+
+    # Setting up VIM RC
+    echo "Setting up vim and neovim rc files"
+    mkdir -p $d/.config/nvim
+    ln -s $d/etc/vim/rc $d/.vimrc
+    ln -s $d/etc/vim/rc $d/.config/nvim/init.vim
+
+    # Setting up qutebrowser
+    echo "Setting up qutebrowser files"
+    mkdir -p $d/.config/qutebrowser
+    ln -s $d/etc/qutebrowser/config.py $d/.config/qutebrowser/config.py
+
+    # Setup custom color information
+    echo "Setting up color info for xorg apps"
+    mkdir -p $d/.config/xcolor
+    ln -s $d/lib/colorschemes/gruvbox-black $d/.config/xcolor/scheme
+    ln -s $d/lib/colorscripts/hex $d/.config/xcolor/test
+
+    # Setup lemonbar
+    echo "Setting up lemonbar"
+    mkdir -p $d/.config/lemonbar
+    touch $d/.config/lemonbar/config
+
+    # post setup messages
+    echo ""
+    echo ">     Make sure to setup the zprofile yourself"
+    echo ">     Colorscheme defaulted to gruvbox-black"
+    echo ">     Make sure to populate lemonbar config"
+}
+
 # Run a git command (${2-}) in a given repo (${1})
 run_git() {
     REPO_DIR=$1 && shift && GIT_ARGS=$@;
@@ -37,9 +85,10 @@ CMD=$1
 ARGS=$(echo "$@" | cut -d' ' -f2-)
 
 case "$CMD" in
-    "status")       run_git_over_all "status";;
-    "fetch")        run_git_over_all "fetch origin";;
-    "pull")         run_git_over_all "pull";;
-    "info")         print_repo_dirs;;
-    *)              run_git_over_all "status";;
+    "status")       run_git_over_all "status"       ;;
+    "fetch")        run_git_over_all "fetch origin" ;;
+    "pull")         run_git_over_all "pull"         ;;
+    "info")         print_repo_dirs                 ;;
+    "configure")    configure_dots $ARGS            ;;
+    *)              run_git_over_all "status"       ;;
 esac
