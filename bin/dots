@@ -58,6 +58,10 @@ configure_dots() {
     mkdir -p $d/.config/lemonbar
     touch $d/.config/lemonbar/config
 
+    # Setting up pubs configuration file
+    echo "Set up pubs configuration file"
+    ln -s $d/etc/pubs/rc $d/.pubsrc
+
     # post setup messages
     echo ""
     echo ">     Make sure to setup the zprofile yourself"
@@ -81,8 +85,7 @@ run_git_over_all() {
     run_git ${VIMWIKI_DIR} $GIT_ARGS;
 }
 
-CMD=$1
-ARGS=$(echo "$@" | cut -d' ' -f2-)
+CMD=$1 && shift && ARGS=$@
 
 case "$CMD" in
     "status")       run_git_over_all "status"       ;;
