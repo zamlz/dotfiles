@@ -62,6 +62,11 @@ configure_dots() {
     echo "Set up pubs configuration file"
     ln -s $d/etc/pubs/rc $d/.pubsrc
 
+    # Set up zathura
+    echo "Set up zathura config"
+    mkdir -p $d/.config/zathura
+    ln -s $d/etc/zathura/rc $d/.config/zathura/zathurarc
+
     # post setup messages
     echo ""
     echo ">     Make sure to setup the zprofile yourself"
