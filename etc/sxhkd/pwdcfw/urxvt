@@ -9,7 +9,7 @@
 
 # Assume its urxvt
 urxvt -e sh -c "
-    source /tmp/.wid_$(xdotool getwindowfocus);
+    . /tmp/.wid_$(xdotool getwindowfocus);
     cd \${WINDOW_PWD};
     if [ -z \${VIRTUAL_ENV} ]; then
         exec zsh;
