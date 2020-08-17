@@ -32,6 +32,9 @@ elif [ -f "${HOME}/.xinitrc" ]; then
 elif [ -f "${HOME}/.xsession" ]; then
 	ui="$(tail -n 1 "${HOME}/.xsession" | cut -d ' ' -f 2)"
 	uitype='WM'
+elif [ -n "$DISPLAY" ]; then
+	ui="$(xprop -root _NET_WM_NAME | awk '{print $3}' | tr -d "\"")"
+	uitype='WM'
 else
 	ui='unknown'
 	uitype='UI'
