@@ -90,7 +90,11 @@ run_git_over_all() {
     run_git ${VIMWIKI_DIR} $GIT_ARGS;
 }
 
-CMD=$1 && shift && ARGS=$@
+if [ -z "$@" ]; then
+    CMD="" && ARGS=""
+else
+    CMD=$1 && shift && ARGS=$@
+fi
 
 case "$CMD" in
     "status")       run_git_over_all "status"       ;;
