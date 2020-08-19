@@ -17,7 +17,7 @@ Xft.hintstyle:              hintslight
 !#####
 ! Font
 !#####
-*font: xft:Iosevka Term:size=12
+*font: xft:Iosevka Term:size=11
 
 ! Some other Special Programs
 #include "etc/xorg/urxvt"
