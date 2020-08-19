@@ -17,6 +17,7 @@ media-gfx/sxiv
 
 # Video Tools
 media-video/mpv
+net-misc/youtube-dl
 x11-apps/mesa-progs
 
 # Web Browsers
@@ -32,3 +33,4 @@ media-sound/spotify
 
 # Social Media stuff
 net-im/discord-bin
+net-im/zoom
