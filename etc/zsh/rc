@@ -23,6 +23,7 @@ autoload -U bashcompinit && bashcompinit
 autoload -U promptinit && promptinit
 
 # Source the important stuff
+source /etc/profile
 source $HOME/etc/zsh/variables
 source $HOME/etc/zsh/aliases
 
