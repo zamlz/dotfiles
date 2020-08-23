@@ -1,9 +1,0 @@
-#!/bin/sh
-
-# This is a simple wrapper script for vim to allow pubs to open my wiki files
-# located in my Vimwiki instead
-
-WIKI_FILE=$(basename $1)
-FULL_PATH=${VIMWIKI_DIR}/academia/ai/papers/${WIKI_FILE}
-
-vim $FULL_PATH

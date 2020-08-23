@@ -2,10 +2,10 @@
 [main]
 
 # Where the pubs repository files (bibtex, metadata, notes) are located
-pubsdir = /home/zamlz/usr/papers
+pubsdir = /home/zamlz/usr/wiki/academia/ai/papers
 
 # Where the documents files are located (default: $(pubsdir)/doc/)
-docsdir = /home/zamlz/usr/papers/doc
+docsdir = /home/zamlz/usr/wiki/academia/ai/papers/doc
 
 # Specify if a document should be copied or moved in the docdir, or only
 # linked when adding a publication.
@@ -20,10 +20,10 @@ open_cmd = zathura
 # "kate --block"
 # If set to an empty string (default) pubs uses the value of the environment
 # variable $EDITOR.
-edit_cmd = "__vimwiki_pubs_wrapper__"
+edit_cmd = ""
 
 # Which default extension to use when creating a note file.
-note_extension = wiki
+note_extension = md
 
 # If true debug mode is on which means exceptions are not catched and
 # the full python stack is printed.
@@ -88,6 +88,7 @@ mv = rename
 rm = remove
 
 [[git]]
+repo_init = False
 manual = False
 quiet = False
 

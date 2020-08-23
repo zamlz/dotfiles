@@ -12,7 +12,6 @@ print_repo_dirs() {
     echo "DOTFILES_DIR       = ${DOTFILES_DIR}"
     echo "BOOKMARKS_DIR      = ${BOOKMARKS_DIR}"
     echo "DOCUMENTS_DIR      = ${DOCUMENTS_DIR}"
-    echo "PAPERS_DIR         = ${PAPERS_DIR}"
     echo "PASSWORD_STORE_DIR = ${PASSWORD_STORE_DIR}"
     echo "VIMWIKI_DIR        = ${VIMWIKI_DIR}"
 }
