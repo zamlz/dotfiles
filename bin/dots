@@ -100,6 +100,7 @@ case "$CMD" in
     "status")       run_git_over_all "status"       ;;
     "fetch")        run_git_over_all "fetch origin" ;;
     "pull")         run_git_over_all "pull"         ;;
+    "push")         run_git_over_all "push"         ;;
     "info")         print_repo_dirs                 ;;
     "configure")    configure_dots $ARGS            ;;
     *)              run_git_over_all "status"       ;;
