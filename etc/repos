@@ -5,3 +5,6 @@ export BOOKMARKS_DIR="$HOME/usr/bookmarks"
 export DOCUMENTS_DIR="$HOME/usr/documents"
 export PASSWORD_STORE_DIR="$HOME/usr/passwords"
 export VIMWIKI_DIR="$HOME/usr/wiki"
+
+# Vimwiki sub dirs
+export PAPERS_DIR="$VIMWIKI_DIR/academia/ai/papers"

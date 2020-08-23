@@ -14,6 +14,7 @@ print_repo_dirs() {
     echo "DOCUMENTS_DIR      = ${DOCUMENTS_DIR}"
     echo "PASSWORD_STORE_DIR = ${PASSWORD_STORE_DIR}"
     echo "VIMWIKI_DIR        = ${VIMWIKI_DIR}"
+    echo " +-- PAPERS_DIR    = ${PAPERS_DIR}"
 }
 
 # Configure dotfiles in the current directory
@@ -38,7 +39,6 @@ configure_dots() {
     # Setting up VIM RC
     echo "Setting up vim and neovim rc files"
     mkdir -p $d/.config/nvim
-    ln -s $d/etc/vim/rc $d/.vimrc
     ln -s $d/etc/vim/rc $d/.config/nvim/init.vim
 
     # Setting up qutebrowser
@@ -87,6 +87,7 @@ run_git_over_all() {
     run_git ${DOCUMENTS_DIR} $GIT_ARGS;
     run_git ${PASSWORD_STORE_DIR} $GIT_ARGS;
     run_git ${VIMWIKI_DIR} $GIT_ARGS;
+    run_git ${PAPERS_DIR} $GIT_ARGS;
 }
 
 if [ -z "$@" ]; then

@@ -86,7 +86,7 @@ let personal_wiki.path_html = '~/usr/wiki/.html'
 let personal_wiki.syntax = 'markdown'
 let personal_wiki.ext = '.md'
 let g:vimwiki_list = [personal_wiki]
-let g:vimwiki_global_ext = 0
+let g:vimwiki_global_ext = 1
 "let g:vimwiki_listsyms = '✗○◐●✓'
 let g:vimwiki_listsyms = ' ○◐●✓'
 let g:vimwiki_folding = 'expr'
@@ -207,6 +207,9 @@ au FileType ledger nnoremap <silent> <C-m>
             \ :silent<space>make<bar>redraw!<bar>cwindow<CR>
 au FileType ledger nnoremap <silent> <C-s>
             \ :call ledger#transaction_state_toggle(line('.'), ' !*?')<CR>
+
+" Vimwiki doc pubs open
+autocmd FileType vimwiki nnoremap <Leader>p :silent !pubs doc open %:r<CR>
 
 "------------------------------------------------------------------------------
 " Custom Vim Functions
