@@ -3,12 +3,10 @@
 XCOLORSCHEME_DIR=$HOME/lib/colorschemes
 XCOLORSCHEME_TARGET=$HOME/.config/xcolor/scheme
 
-# A special function for changing the colorscheme
-function xcolorscheme() {
-    if [ -z "$1" ]; then
-        ls $XCOLORSCHEME_DIR
-    else
-        rm $XCOLORSCHEME_TARGET
-        ln -s $XCOLORSCHEME_DIR/$1 $XCOLORSCHEME_TARGET
-    fi
-}
+# Simple symlink setter for changing the colorscheme
+if [ -z "$1" ]; then
+    ls $XCOLORSCHEME_DIR
+else
+    rm $XCOLORSCHEME_TARGET
+    ln -s $XCOLORSCHEME_DIR/$1 $XCOLORSCHEME_TARGET
+fi

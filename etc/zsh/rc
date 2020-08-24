@@ -27,8 +27,10 @@ source /etc/profile
 source $HOME/etc/zsh/variables
 source $HOME/etc/zsh/aliases
 
-# Setup ZSH functions
+# Source ZSH functions
 fpath=("$HOME/etc/zsh/functions" $fpath)
+
+# Setup ZSH simple functions
 autoload groot
 autoload ledger
 autoload prompt_generate
@@ -36,7 +38,9 @@ autoload sh
 autoload sw
 autoload venv
 autoload wiki
-autoload xcolorscheme && xcolorscheme
+autoload xcolorscheme
+
+# Setup ZSH functions
 autoload gpg-utils && gpg-utils
 autoload window-utils && window-utils
 
