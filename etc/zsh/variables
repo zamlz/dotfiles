@@ -26,4 +26,4 @@ export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
 # Configuration files (or of the sort)
 export HTOPRC="$HOME/etc/htop/rc"
 export TASKRC="$HOME/etc/taskwarrior/rc"
-export LEDGER_FILE="$VIMWIKI_DIR/ledger/main.journal"
+export LEDGER_FILE="$LEDGER_DIR/main.journal"

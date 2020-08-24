@@ -30,6 +30,7 @@ source $HOME/etc/zsh/aliases
 # Setup ZSH functions
 fpath=("$HOME/etc/zsh/functions" $fpath)
 autoload groot
+autoload ledger
 autoload prompt_generate
 autoload sh
 autoload sw

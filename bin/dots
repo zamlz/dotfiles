@@ -12,9 +12,10 @@ print_repo_dirs() {
     echo "DOTFILES_DIR       = ${DOTFILES_DIR}"
     echo "BOOKMARKS_DIR      = ${BOOKMARKS_DIR}"
     echo "DOCUMENTS_DIR      = ${DOCUMENTS_DIR}"
+    echo "LEDGER_DIR         = ${LEDGER_DIR}"
+    echo "PAPERS_DIR         = ${PAPERS_DIR}"
     echo "PASSWORD_STORE_DIR = ${PASSWORD_STORE_DIR}"
     echo "VIMWIKI_DIR        = ${VIMWIKI_DIR}"
-    echo " +-- PAPERS_DIR    = ${PAPERS_DIR}"
 }
 
 # Configure dotfiles in the current directory
@@ -85,9 +86,10 @@ run_git_over_all() {
     run_git ${DOTFILES_DIR} $GIT_ARGS;
     run_git ${BOOKMARKS_DIR} $GIT_ARGS;
     run_git ${DOCUMENTS_DIR} $GIT_ARGS;
+    run_git ${LEDGER_DIR} $GIT_ARGS;
+    run_git ${PAPERS_DIR} $GIT_ARGS;
     run_git ${PASSWORD_STORE_DIR} $GIT_ARGS;
     run_git ${VIMWIKI_DIR} $GIT_ARGS;
-    run_git ${PAPERS_DIR} $GIT_ARGS;
 }
 
 if [ -z "$@" ]; then
