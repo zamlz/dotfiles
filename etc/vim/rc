@@ -85,11 +85,18 @@ let personal_wiki.path = '~/usr/wiki'
 let personal_wiki.path_html = '~/usr/wiki/.html'
 let personal_wiki.syntax = 'markdown'
 let personal_wiki.ext = '.md'
+let personal_wiki.maxhi = 1
+let personal_wiki.diary_rel_path = "journal/"
+let personal_wiki.diary_index = "toc"
+let personal_wiki.diary_header = "Personal Journal"
+let personal_wiki.diary_caption_level = 0
+let personal_wiki.auto_diary_index = 1
+
 let g:vimwiki_list = [personal_wiki]
 let g:vimwiki_global_ext = 1
-"let g:vimwiki_listsyms = '✗○◐●✓'
-let g:vimwiki_listsyms = ' ○◐●✓'
+let g:vimwiki_listsyms = ' ○◐●✓' " '✗○◐●✓'
 let g:vimwiki_folding = 'expr'
+let g:vimwiki_hl_cb_checked = 2
 
 "------------------------------------------------------------------------------
 " Other various useful settings
