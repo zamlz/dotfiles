@@ -15,6 +15,9 @@ elif [[ $1 == 'git' ]]; then
 elif [[ $1 == 'repl' ]]; then
     command ledger
 
+elif [[ $1 == 'networth' ]]; then
+    command ledger cleared ^assets ^liabilities
+
 else
     command ledger $@
 fi
