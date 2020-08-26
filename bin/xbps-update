@@ -12,18 +12,15 @@ grep -v '^\s*$\|^\s*\#' $PKG_FILE > $PKG_TEMP
 # running fast!
 while read -r pkg; do
     if [ -z "$(xpkg -m | grep $pkg)" ]; then
-        echo "XBPS-UPDATE: Missing $pkg"
+        #echo "XBPS-UPDATE: Missing $pkg"
         MISSING_PKGS="${MISSING_PKGS} $pkg"
     fi
 done < $PKG_TEMP
 
+echo "XBPS-UPDATE: Attempting a full system update"
+xbps-install -Su
+
 if [ -n "$MISSING_PKGS" ]; then
     echo "XBPS-UPDATE: Resolving missing packages..."
-    xbps-install -S $MISSING_PKGS
-    echo "XBPS-UPDATE: Attempting a full system update"
-    xbps-install -u
-else
-    echo "XBPS-UPDATE: Performing a full system update"
-    xbps-install -Su
+    xbps-install $MISSING_PKGS
 fi
-
