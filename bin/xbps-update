@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+# simple update script for xbps
+
+PKG_FILE="/etc/xbps.d/packages"
+PKG_TEMP="/tmp/.void_pkg_list"
+MISSING_PKGS=""
+
+grep -v '^\s*$\|^\s*\#' $PKG_FILE > $PKG_TEMP
+
+# There is probably a better way to do this but I wanted something up and
+# running fast!
+while read -r pkg; do
+    if [ -z "$(xpkg -m | grep $pkg)" ]; then
+        echo "XBPS-UPDATE: Missing $pkg"
+        MISSING_PKGS="${MISSING_PKGS} $pkg"
+    fi
+done < $PKG_TEMP
+
+if [ -n "$MISSING_PKGS" ]; then
+    echo "XBPS-UPDATE: Resolving missing packages..."
+    xbps-install -S $MISSING_PKGS
+    echo "XBPS-UPDATE: Attempting a full system update"
+    xbps-install -u
+else
+    echo "XBPS-UPDATE: Performing a full system update"
+    xbps-install -Su
+fi
+
