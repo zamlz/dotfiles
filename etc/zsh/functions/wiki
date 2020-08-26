@@ -12,7 +12,7 @@ elif [[ $1 == 'tree' ]]; then
     tree ${VIMWIKI_DIR} ${@:2}
 
 elif [[ $1 == 'today' ]]; then
-    vim "${VIMWIKI_DIR}/diary/$(date +%Y-%m-%d).md"
+    vim -c VimwikiMakeDiaryNote
 
 else
     echo "Usage: ${0} [git] [args ...]"
