@@ -81,6 +81,7 @@ rxvt-unicode
 xf86-input-synaptics
 xorg-minimal
 xrdb
+xst
 
 # Important to have but not necessary for a working system
 setxkbmap
