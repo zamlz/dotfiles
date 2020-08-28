@@ -2,11 +2,12 @@
 
 VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki}
 GIT_WIKI="git -C ${VIMWIKI_DIR}"
+EDITOR=nvim
 
 if [ -z "$@" ]; then
-    vim -c VimwikiIndex
+    $EDITOR -c VimwikiIndex
     ${GIT_WIKI} add .
-    files=$(${GIT_WIKI} diff --name-only --staged | tr -d '\n')
+    files=$(${GIT_WIKI} diff --name-only --staged | tr '\n' ' ')
     if [ -n "$files" ]; then
         ${GIT_WIKI} commit -m "Updated $files"
     else
@@ -20,9 +21,9 @@ elif [ $1 = 'tree' ]; then
     shift && tree ${VIMWIKI_DIR} ${@}
 
 elif [ $1 = 'today' ]; then
-    vim -c VimwikiMakeDiaryNote
+    $EDITOR -c VimwikiMakeDiaryNote
     ${GIT_WIKI} add journal/
-    files=$(${GIT_WIKI} diff --name-only --staged | tr -d '\n')
+    files=$(${GIT_WIKI} diff --name-only --staged | tr '\n' ' ')
     if [ -n "$files" ]; then
         ${GIT_WIKI} commit -m "Updated $files"
     else
