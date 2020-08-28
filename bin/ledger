@@ -7,18 +7,18 @@ LEDGER_DIR=${LEDGER_DIR:-$HOME/usr/ledger}
 LEDGER_FILE=${LEDGER_DIR}/main.journal
 
 if [ -z "$@" ]; then
-    vim $LEDGER_FILE
+    nvim $LEDGER_FILE
 
 elif [ $1 = "git" ]; then
     shift;
     git -C ${LEDGER_DIR} ${@}
 
 elif [ $1 = 'repl' ]; then
-    /bin/ledger
+    /usr/bin/ledger
 
 elif [ $1 = 'networth' ]; then
-    /bin/ledger cleared ^assets ^liabilities
+    /usr/bin/ledger cleared ^assets ^liabilities
 
 else
-    /bin/ledger $@
+    /usr/bin/ledger $@
 fi
