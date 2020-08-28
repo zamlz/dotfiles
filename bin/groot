@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 GITROOT=$(git rev-parse --show-toplevel 2> /dev/null);
 ROOTEXIST=$?

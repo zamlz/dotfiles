@@ -1,17 +1,17 @@
-#!/bin/zsh
+#!/bin/sh
 
 VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki}
 
-if [[ $# == 0 ]]; then
+if [ -z "$@" ]; then
     vim -c VimwikiIndex
 
-elif [[ $1 == 'git' ]]; then
-    git -C ${VIMWIKI_DIR} ${@:2}
+elif [ $1 = 'git' ]; then
+    shift && git -C ${VIMWIKI_DIR} ${@}
 
-elif [[ $1 == 'tree' ]]; then
-    tree ${VIMWIKI_DIR} ${@:2}
+elif [ $1 = 'tree' ]; then
+    shift && tree ${VIMWIKI_DIR} ${@}
 
-elif [[ $1 == 'today' ]]; then
+elif [ $1 = 'today' ]; then
     vim -c VimwikiMakeDiaryNote
 
 else

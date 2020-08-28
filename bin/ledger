@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 # A simple wrapper over ledger that changes default (no argument) behaviour to
 # open vim-ledger and also have a "git" subcommand
@@ -6,18 +6,19 @@
 LEDGER_DIR=${LEDGER_DIR:-$HOME/usr/ledger}
 LEDGER_FILE=${LEDGER_DIR}/main.journal
 
-if [[ $# == 0 ]]; then
+if [ -z "$@" ]; then
     vim $LEDGER_FILE
 
-elif [[ $1 == 'git' ]]; then
-    git -C ${LEDGER_DIR} ${@:2}
+elif [ $1 = "git" ]; then
+    shift;
+    git -C ${LEDGER_DIR} ${@}
 
-elif [[ $1 == 'repl' ]]; then
-    command ledger
+elif [ $1 = 'repl' ]; then
+    /bin/ledger
 
-elif [[ $1 == 'networth' ]]; then
-    command ledger cleared ^assets ^liabilities
+elif [ $1 = 'networth' ]; then
+    /bin/ledger cleared ^assets ^liabilities
 
 else
-    command ledger $@
+    /bin/ledger $@
 fi
