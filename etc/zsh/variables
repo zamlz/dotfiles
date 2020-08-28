@@ -1,6 +1,6 @@
 #!/bin/zsh
 
-source $HOME/etc/repos
+source $HOME/lib/repos
 
 # Update the path variable
 export PATH="$HOME/bin:$PATH"

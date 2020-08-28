@@ -12,12 +12,14 @@
 
 # TODO:
 #   * Fix bug that breaks if $BMLIB ends with '/'
-#   * Integrate git into this.
 #   * Maybe make the code more like a program than script,
 #       for now, this script should do, but it could be much better.
 
+# source the repos file to get bookmarks dir if it exists
+. $HOME/lib/repos
+
 # Don't put a '/' at the end or the code will fail.
-BMLIB=$HOME/usr/bookmarks
+BMLIB=${BOOKMARKS_DIR:-$HOME/usr/bookmarks}
 GITC="git -C $BMLIB"
 
 cmd_add() {

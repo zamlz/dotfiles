@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
 # A simple script that manages dotfiles repo and beyond
-. $HOME/etc/repos
+. $HOME/lib/repos
 
 help_prompt() {
     echo "Usage:"

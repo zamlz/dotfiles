@@ -3,6 +3,8 @@
 # A simple wrapper over ledger that changes default (no argument) behaviour to
 # open vim-ledger and also have a "git" subcommand
 
+. $HOME/lib/repos
+
 LEDGER_DIR=${LEDGER_DIR:-$HOME/usr/ledger}
 LEDGER_FILE=${LEDGER_DIR}/main.journal
 

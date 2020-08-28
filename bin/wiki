@@ -1,5 +1,7 @@
 #!/bin/sh
 
+. $HOME/lib/repos
+
 VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki}
 GIT_WIKI="git -C ${VIMWIKI_DIR}"
 EDITOR=nvim
