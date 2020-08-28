@@ -1,0 +1,42 @@
+#!/usr/bin/env sh
+
+# Simple lib script for managing symbolic links by defining a core set of
+# functions that can be used by other scripts
+
+# The following variables must be defined in order to use this functions...
+#   - SYM_SOURCE_DIR
+#   - SYM_TARGET_FILE
+
+# List available targets from the source directory
+list_targets() {
+    ls ${SYM_SOURCE_DIR}
+}
+
+set_target() {
+    target=$1
+    if [ ! -f $SYM_SOURCE_DIR/$target ]; then
+        echo "Invalid target selection: $target";
+        exit 1
+    fi
+    echo "Attempting to set target: $target"
+
+    sym_target_dir=$(dirname $SYM_TARGET_FILE)
+    [ ! -d $sym_target_dir ] && mkdir -p $sym_target_dir
+    [ -f $SYM_TARGET_FILE ] && rm $SYM_TARGET_FILE
+    ln -s "$SYM_SOURCE_DIR/$target" "$SYM_TARGET_FILE"
+}
+
+default_action() {
+    echo "Dummy function for default action"
+}
+
+# Main function that you need to call
+symlinkmgr() {
+    if [ -z "$@" ]; then
+        default_action
+    elif [ "$1" = "--list" ]; then
+        list_targets
+    elif [ "$1" = "--set" ]; then
+        shift && set_target $@
+    fi
+}

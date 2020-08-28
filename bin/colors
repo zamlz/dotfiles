@@ -1,64 +1,13 @@
 #!/bin/sh
 
-CLRDIR="$HOME/lib/colorscripts"
-CLRTAR="$HOME/.config/xcolor/test"
+SYM_SOURCE_DIR="$HOME/lib/colorscripts"
+SYM_TARGET_FILE="$HOME/.config/xcolor/test"
 
-EXEC=$(basename $0)
+. $HOME/lib/shell/symlinkmgr
 
-if [ -z "$1" ]; then
-    if [ ! -f $CLRTAR ]; then
-        echo "No TARGET has been set!";
-        echo "Use $EXEC --list to see valid targets, then";
-        echo "Use $EXEC --set to set the target color script.";
-    else
-        $CLRTAR;
-    fi
+# default action is to run the symlinked script
+default_action() {
+    $SYM_TARGET_FILE
+}
 
-elif [ "$1" = "-l" ] || [ "$1" = "--list" ]; then
-    ls $CLRDIR;
-
-elif [ "$1" = "-s" ] || [ "$1" = "--set" ]; then
-    if [ -z "$2" ]; then
-        echo "Missing second argument for $0 --set";
-    elif [ -z "$(ls $CLRDIR | grep "$2")" ]; then
-        echo "TARGET $2 is not found in the color list";
-        echo "Use $EXEC --list to see valid arguments";
-    else
-        target_dir=$(dirname $CLRTAR)
-        if [ ! -d "$target_dir" ]; then
-            mkdir -p $target_dir
-        fi
-        if [ -f $CLRTAR ]; then
-            rm $CLRTAR;
-        fi
-        ln -s $CLRDIR/$2 $CLRTAR;
-    fi
-
-elif [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
-    echo "Usage: $EXEC [OPTION]... [TARGET]";
-    echo "";
-    echo "If no TARGET or OPTION is provided,";
-    echo "the default target is run if it exists.";
-    echo "";
-    echo "If a TARGET is provided but OPTION is not,";
-    echo "then TARGET is attempted to run if it exists.";
-    echo "";
-    echo "-l, --list";
-    echo "          List all available color scripts";
-    echo "";
-    echo "-s, --set";
-    echo "          Set TARGET as the default color script";
-    echo "";
-    echo "-h, --help";
-    echo "          Bring up this dialogue";
-    echo "";
-
-else
-    if [ -z "$(ls $CLRDIR | grep "$1")" ]; then
-        echo "TARGET $1 is not found in the color list";
-        echo "Use $EXEC --list to see valid arguments";
-    else
-        $CLRDIR/$1;
-    fi
-fi
-
+symlinkmgr $@
