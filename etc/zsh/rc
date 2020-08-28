@@ -35,7 +35,6 @@ autoload groot
 autoload prompt_generate
 autoload sh
 autoload venv
-autoload xcolorscheme
 
 # Setup ZSH functions
 autoload gpg-utils && gpg-utils
