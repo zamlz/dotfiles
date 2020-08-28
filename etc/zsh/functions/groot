@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/zsh
 
 GITROOT=$(git rev-parse --show-toplevel 2> /dev/null);
 ROOTEXIST=$?
@@ -16,5 +16,4 @@ if [ $ROOTEXIST -eq 0 ]; then
     figlet -t -f slant $@ "${NAME} @.${BRANCH}" | lolcat
 
     git status
-    PAGER=cat git diff
 fi

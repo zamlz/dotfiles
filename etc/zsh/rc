@@ -31,6 +31,7 @@ source $HOME/etc/zsh/aliases
 fpath=("$HOME/etc/zsh/functions" $fpath)
 
 # Setup ZSH simple functions
+autoload groot
 autoload prompt_generate
 autoload sh
 autoload venv
