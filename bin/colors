@@ -24,6 +24,10 @@ elif [ "$1" = "-s" ] || [ "$1" = "--set" ]; then
         echo "TARGET $2 is not found in the color list";
         echo "Use $EXEC --list to see valid arguments";
     else
+        target_dir=$(dirname $CLRTAR)
+        if [ ! -d "$target_dir" ]; then
+            mkdir -p $target_dir
+        fi
         if [ -f $CLRTAR ]; then
             rm $CLRTAR;
         fi

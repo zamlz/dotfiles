@@ -7,6 +7,12 @@ XCOLORSCHEME_TARGET=$HOME/.config/xcolor/scheme
 if [ -z "$1" ]; then
     ls $XCOLORSCHEME_DIR
 else
-    rm $XCOLORSCHEME_TARGET
+    target_dir=$(dirname $XCOLORSCHEME_TARGET)
+    if [ ! -d "$target_dir" ]; then
+        mkdir -p $target_dir
+    fi
+    if [ -f "$XCOLORSCHEME_TARGET" ]; then
+        rm $XCOLORSCHEME_TARGET
+    fi
     ln -s $XCOLORSCHEME_DIR/$1 $XCOLORSCHEME_TARGET
 fi

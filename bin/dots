@@ -49,9 +49,8 @@ configure_dots() {
 
     # Setup custom color information
     echo "Setting up color info for xorg apps"
-    mkdir -p $d/.config/xcolor
-    ln -s $d/lib/colorschemes/gruvbox-black $d/.config/xcolor/scheme
-    ln -s $d/lib/colorscripts/hex $d/.config/xcolor/test
+    $HOME/bin/xcolorscheme gruvbox-black
+    $HOME/bin/colors --set hex
 
     # Setup lemonbar
     echo "Setting up lemonbar"
