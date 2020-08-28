@@ -1,18 +1,33 @@
 #!/bin/sh
 
 VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki}
+GIT_WIKI="git -C ${VIMWIKI_DIR}"
 
 if [ -z "$@" ]; then
     vim -c VimwikiIndex
+    ${GIT_WIKI} add .
+    files=$(${GIT_WIKI} diff --name-only --staged | tr -d '\n')
+    if [ -n "$files" ]; then
+        ${GIT_WIKI} commit -m "Updated $files"
+    else
+        echo "${0}: No changes were made"
+    fi
 
 elif [ $1 = 'git' ]; then
-    shift && git -C ${VIMWIKI_DIR} ${@}
+    shift && ${GIT_WIKI} ${@}
 
 elif [ $1 = 'tree' ]; then
     shift && tree ${VIMWIKI_DIR} ${@}
 
 elif [ $1 = 'today' ]; then
     vim -c VimwikiMakeDiaryNote
+    ${GIT_WIKI} add journal/
+    files=$(${GIT_WIKI} diff --name-only --staged | tr -d '\n')
+    if [ -n "$files" ]; then
+        ${GIT_WIKI} commit -m "Updated $files"
+    else
+        echo "${0}: No changes were made"
+    fi
 
 else
     echo "Usage: ${0} [git] [args ...]"
