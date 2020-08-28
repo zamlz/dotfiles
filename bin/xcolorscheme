@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/bin/sh
 
 XCOLORSCHEME_DIR=$HOME/lib/colorschemes
 XCOLORSCHEME_TARGET=$HOME/.config/xcolor/scheme
