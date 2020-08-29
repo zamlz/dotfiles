@@ -26,9 +26,13 @@ st.cursorblinkstyle:  0
 ! 0: cursor blinks with a constant interval; 1: blinking cycle resets on key input
 st.cursorblinkontype: 1
 
+! This is for later versions of xst (>= 0.8.4)
 st.disablebold:         0
 st.disableitalics:         0
 st.disableroman:         0
+
+! For prior versions:
+st.bold_font: 1
 
 ! Amount of lines scrolled
 st.scrollrate:  1
