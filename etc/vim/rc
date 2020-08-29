@@ -205,6 +205,11 @@ noremap <F4> :Gclog<CR>
 " Key binds to toggle the Undo Tree
 noremap <F5> :UndotreeToggle<CR>
 
+noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
+    \ '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" .
+    \ " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+
 " Ledger remap tab completion
 au FileType ledger inoremap <silent> <Tab>
             \ <C-r>=ledger#autocomplete_and_align()<CR>
