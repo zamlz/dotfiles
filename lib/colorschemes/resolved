@@ -1,41 +1,41 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!                        !!!!!!!!!!!!!!!!!!!!!! 
 !!!!! .Xresources / RESLOVED !!!!!!!!!!!!!!!!!!!!!! 
-!!!!!                        !!!!!!!!!!!!!!!!!!!!!! 
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-!!!!! URXVT !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 ! SPECIAL
-*foreground:   #ffffff
-*background:   #1b1d1e
-! BLACK
-*color0:       #465457
-*color8:       #1b1d1e
-! RED
-*color1:       #d7005f
-*color9:       #d7005f
-! GREEN
-*color2:       #87ff00
-*color10:      #87ff00
-! YELLOW
-*color3:       #ff8700
-*color11:      #ff8700
-! BLUE
-*color4:       #acac85
-*color12:      #acac85
-! MAGENTA
-*color5:       #af5fff
-*color13:      #af5fff
-! CYAN
-*color6:       #5fd7ff
-*color14:      #5fd7ff
-! WHITE
-*color7:       #f8f8f8
-*color15:      #ffffff
+#define xforeground   #ffffff
+#define xbackground   #1b1d1e
+#define xcursorColor  #ffffff
+#define xfade         0
 
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!! end !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+! BLACK
+#define xcolor0       #465457
+#define xcolor8       #1b1d1e
+
+! RED
+#define xcolor1       #d7005f
+#define xcolor9       #d7005f
+
+! GREEN
+#define xcolor2       #87ff00
+#define xcolor10      #87ff00
+
+! YELLOW
+#define xcolor3       #ff8700
+#define xcolor11      #ff8700
+
+! BLUE
+#define xcolor4       #acac85
+#define xcolor12      #acac85
+
+! MAGENTA
+#define xcolor5       #af5fff
+#define xcolor13      #af5fff
+
+! CYAN
+#define xcolor6       #5fd7ff
+#define xcolor14      #5fd7ff
+
+! WHITE
+#define xcolor7       #f8f8f8
+#define xcolor15      #ffffff

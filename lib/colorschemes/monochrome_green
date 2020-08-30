@@ -1,36 +1,37 @@
 ! special
-*.foreground:   #f2ecec
-*.background:   #1d2021
-*.cursorColor:  #f2ecec
+#define xforeground   #f2ecec
+#define xbackground   #1d2021
+#define xcursorColor  #f2ecec
+#define xfade         0
 
 ! black
-*.color0:       #222526
-*.color8:       #272a2b
+#define xcolor0       #222526
+#define xcolor8       #272a2b
 
 ! red
-*.color1:       #e8e2e2
-*.color9:       #fcfcfc
+#define xcolor1       #e8e2e2
+#define xcolor9       #fcfcfc
 
 ! green
-*.color2:       #aadb0f
-*.color10:      #baf010
+#define xcolor2       #aadb0f
+#define xcolor10      #baf010
 
 ! yellow
-*.color3:       #2e3233
-*.color11:      #404647
+#define xcolor3       #2e3233
+#define xcolor11      #404647
 
 ! blue
-*.color4:       #e2e2e2
-*.color12:      #f7f7f7
+#define xcolor4       #e2e2e2
+#define xcolor12      #f7f7f7
 
 ! magenta
-*.color5:       #91ba0d
-*.color13:      #a1cf0e
+#define xcolor5       #91ba0d
+#define xcolor13      #a1cf0e
 
 ! cyan
-*.color6:       #b2b2b2
-*.color14:      #c7c7c7
+#define xcolor6       #b2b2b2
+#define xcolor14      #c7c7c7
 
 ! white
-*.color7:       #d6d0d0
-*.color15:      #dbdbdb
+#define xcolor7       #d6d0d0
+#define xcolor15      #dbdbdb

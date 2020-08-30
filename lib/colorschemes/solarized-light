@@ -2,6 +2,7 @@
 #define xbackground    #fdf6e3
 #define xforeground    #586e75
 #define xcursorColor   #586e75
+#define xfade          0
 
 ! black
 #define xcolor0        #002b36

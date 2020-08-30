@@ -1,33 +1,30 @@
-!*font:             -*-proggyoptis-medium-*-*-*-*-*-*-*-*-*-iso8859-1
-!*boldFont:         -*-proggyoptis-medium-*-*-*-*-*-*-*-*-*-iso8859-1
+
+#define xbackground       #170F0D
+#define xforeground       #746C48
+#define xcursorColor      #6666CC
+#define xfade             0
 
 
-*background:       #170F0D
-*foreground:       #746C48
-*cursorColor:      #6666CC
-*colorBD:          #C8B984
+#define xcolor0           #392925
+#define xcolor8           #544B2E
 
+#define xcolor1           #98724C
+#define xcolor9           #AF652F
 
-*color0:           #392925
-*color8:           #544B2E
+#define xcolor2           #908F32
+#define xcolor10          #C3C13D
 
-*color1:           #98724C
-*color9:           #AF652F
+#define xcolor3           #AA964C
+#define xcolor11          #C8B55B
 
-*color2:           #908F32
-*color10:          #C3C13D
+#define xcolor4           #7B854E
+#define xcolor12          #70A16C
 
-*color3:           #AA964C
-*color11:          #C8B55B
+#define xcolor5           #6B5644
+#define xcolor13          #98724C
 
-*color4:           #7B854E
-*color12:          #70A16C
+#define xcolor6           #5C5142
+#define xcolor14          #778725
 
-*color5:           #6B5644
-*color13:          #98724C
-
-*color6:           #5C5142
-*color14:          #778725
-
-*color7:           #C8B55B
-*color15:          #E4DC8C
+#define xcolor7           #C8B55B
+#define xcolor15          #E4DC8C
