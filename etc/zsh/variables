@@ -5,7 +5,7 @@ source $HOME/lib/repos
 # Update the path variable
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
-export PATH="$HOME/lib/private/bin:$PATH"
+export PATH="$LEDGER_DIR/bin:$PATH"
 
 # Random useful
 export DISTRO=$(grep --color=none ^ID= /etc/os-release | sed -e 's/^ID=//g' \
