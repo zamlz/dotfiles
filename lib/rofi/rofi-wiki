@@ -3,7 +3,7 @@
 # Find the wiki I want
 VIMWIKI_DIR="$HOME/usr/wiki"
 
-wiki=$(find $VIMWIKI_DIR -name "*.md" | \
+wiki=$(find -L $VIMWIKI_DIR -name "*.md" | \
     sed -e "s/.md$//g" \
         -e "/^.*diary.*$/d" \
         -e 's|'$VIMWIKI_DIR'/||g' | \
