@@ -80,6 +80,13 @@ hc keybind $Super-grave use_previous
 hc keybind $Super-bracketright use_index +1 --skip-visible
 hc keybind $Super-bracketleft  use_index -1 --skip-visible
 
+# cycle through colorschemes
+hc keybind $Super-Ctrl-Alt-bracketright chain , \
+        spawn $HOME/bin/xcolorscheme --next , reload
+
+hc keybind $Super-Ctrl-Alt-bracketleft chain , \
+        spawn $HOME/bin/xcolorscheme --prev , reload
+
 # layouting
 hc keybind $Super-r remove
 hc keybind $Super-s floating toggle
@@ -88,7 +95,7 @@ hc keybind $Super-t pseudotile toggle
 # The following cycles through the available layouts within a frame, but skips
 # layouts, if the layout change wouldn't affect the actual window positions.
 # I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Super-space                                                         \
+hc keybind $Super-space                                                       \
             or , and . compare tags.focus.curframe_wcount = 2                 \
                      . cycle_layout +1 vertical horizontal max vertical grid  \
                , cycle_layout +1

@@ -31,7 +31,9 @@ pkill -USR1 xst
 if [ -f "$HOME/.fehbg" ]; then
     $HOME/.fehbg
 else
-    xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
+    #xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg '#232323' -bg '#0a0a0a'
+    . $HOME/lib/shell/xrdb_colors
+    xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg $XCOLOR0 -bg $XBACKGROUND
 fi
 
 # Initialize universal keybindings
