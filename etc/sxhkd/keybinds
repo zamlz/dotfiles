@@ -33,6 +33,8 @@ super + b
 # Open up a wiki page in read-only mode (originally named notes)
 super + n
     $HOME/lib/rofi/rofi-wiki
+super + shift + n
+    $HOME/lib/rofi/rofi-wiki pdf
 
 # Restore a saved browser session
 super + w
