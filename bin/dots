@@ -49,7 +49,7 @@ configure_dots() {
 
     # Setup custom color information
     echo "Setting up color info for xorg apps"
-    $HOME/bin/xcolorscheme gruvbox-black
+    $HOME/bin/xcolorscheme --set gruvbox-black
     $HOME/bin/colors --set hex
 
     # Setup lemonbar
