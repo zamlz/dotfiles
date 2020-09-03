@@ -66,6 +66,11 @@ configure_dots() {
     mkdir -p $d/.config/zathura
     ln -s $d/etc/zathura/rc $d/.config/zathura/zathurarc
 
+    # Provide Julia the startup file
+    echo "Providing Julia the startup file"
+    mkdir -p $d/.julia/config
+    ln -s $d/etc/julia/startup.jl $d/.julia/config/startup.jl
+
     # post setup messages
     echo ""
     echo ">     Make sure to setup the zprofile yourself"
