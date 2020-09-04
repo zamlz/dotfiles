@@ -186,6 +186,8 @@ highlight VimwikiHeader4 ctermbg=None ctermfg=yellow
 highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
 highlight VimwikiHeader6 ctermbg=None ctermfg=magenta
 
+highlight Conceal ctermbg=None ctermfg=darkblue
+
 "------------------------------------------------------------------------------
 " Custom Keybindings
 "------------------------------------------------------------------------------
