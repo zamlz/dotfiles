@@ -1,4 +1,0 @@
-
-# required by app-shells/fish-3.0.2::gentoo
-# required by fish (argument)
->=dev-libs/libpcre2-10.35 pcre32
