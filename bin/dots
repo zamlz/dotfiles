@@ -27,6 +27,7 @@ configure_dots() {
     # ZSH SHELL SETUP
     echo "Setting up zsh shell files"
     ln -s $d/etc/zsh/rc $d/.zshrc
+    mkdir -p $d/.local/share/zsh
 
     # Setting up git config files
     echo "Setting up git config files"
