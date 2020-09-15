@@ -81,7 +81,7 @@ let g:vim_markdown_conceal_code_blocks = 0
 " Vim Wiki
 let personal_wiki = {}
 let personal_wiki.name = 'Tabula Rasa'
-let personal_wiki.path = '~/usr/wiki'
+let personal_wiki.path = '~/usr/wiki/src'
 let personal_wiki.path_html = '~/usr/wiki/.html'
 let personal_wiki.syntax = 'markdown'
 let personal_wiki.ext = '.md'
