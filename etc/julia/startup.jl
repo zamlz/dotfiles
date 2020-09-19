@@ -1,7 +1,9 @@
 try
+    @eval using Revise
+
+    """
     using OhMyREPL
     using Crayons
-
     import OhMyREPL: Passes.SyntaxHighlighter
 
     scheme = SyntaxHighlighter.ColorScheme()
@@ -39,6 +41,7 @@ try
 
     SyntaxHighlighter.add!("zamlz", scheme)
     colorscheme!("zamlz")
+    """
 catch e
-    println("Some error happened during startup (possibly missing packages?)")
+    @warn(e.msg)
 end
