@@ -74,17 +74,17 @@ XF86MonBrightnessDown
     $HOME/etc/lemonbar/utils/trigger_fifos bkl
 
 XF86AudioMute
-    pulseaudio-ctl mute; \
+    pulsemixer --toggle-mute; \
     $HOME/etc/lemonbar/utils/trigger_fifos vol
 
 XF86AudioMicMute
-    pulseaudio-ctl mute-input; \
+    pulsemixer --toggle-mute; \
     $HOME/etc/lemonbar/utils/trigger_fifos vol
 
 XF86AudioRaiseVolume
-    pulseaudio-ctl up 1; \
+    pulsemixer --change-volume +1; \
     $HOME/etc/lemonbar/utils/trigger_fifos vol
 
 XF86AudioLowerVolume
-    pulseaudio-ctl down 1; \
+    pulsemixer --change-volume -1; \
     $HOME/etc/lemonbar/utils/trigger_fifos vol

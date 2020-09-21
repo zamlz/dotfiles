@@ -3,13 +3,9 @@
 # Lemonbar Volume Update function
 
 volume_status_update() {
-    stats=$(pulseaudio-ctl full-status)
-    vol=$(echo $stats | awk '{print $1}')
-    sink_state=$(echo $stats | awk '{print $2}')
-    # source_state=$(echo $stats | awk '{print $3}')
 
-    if [ "$sink_state" = "no" ]; then
-        msg="$vol%"
+    if [ $(pulsemixer --get-mute) -eq 0 ]; then
+        msg="$(pulsemixer --get-volume | awk '{print $1}')%"
         color=$CYAN
     else
         msg="MUTE"
