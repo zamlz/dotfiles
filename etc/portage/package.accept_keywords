@@ -1,0 +1,35 @@
+# ------------------------------------------------------------------------
+#  Personal Accept-Keyworks Changes
+# ------------------------------------------------------------------------
+
+dev-lang/julia ~amd64
+net-im/discord-bin ~amd64
+net-im/zoom ~amd64
+www-client/qutebrowser ~amd64
+
+# ------------------------------------------------------------------------
+#  Dependant Accept-Keywords Changes
+# ------------------------------------------------------------------------
+
+# required by dev-lang/julia-1.4.0-r2::gentoo
+=dev-libs/openspecfun-0.5.1 ~amd64
+
+# required by www-client/qutebrowser-1.13.1::gentoo
+# required by qutebrowser (argument)
+=dev-python/pypeg2-2.15.2-r1 ~amd64
+
+# required by @desktop-env (argument)
+=media-fonts/iosevka-1.14.1 ~amd64
+
+# required by dev-lang/julia-1.4.0-r2::gentoo
+=sci-libs/openlibm-0.7.0 ~amd64
+
+# required by dev-lang/julia-1.4.0-r2::gentoo
+=sci-visualization/gr-0.50.0-r1 ~amd64
+
+# required by @apps-web (argument)
+=www-plugins/pdfjs-2.4.456 ~amd64
+
+# required by @desktop-env (argument)
+=x11-misc/lemonbar-9999 **
+=x11-terms/xst-9999 **

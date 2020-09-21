@@ -1,0 +1,23 @@
+# Collections of programming environments I need
+# ----------------------------------------------------------------------------
+
+# Generic Packages
+dev-util/ctags
+
+# C/C++ Packages
+dev-util/valgrind
+sys-devel/gdb
+
+# Latex Environment
+app-text/texlive
+
+# Python Packages
+dev-python/pip
+
+# Julia packages
+dev-lang/julia
+
+# Misc programming tools
+app-misc/jq
+app-text/pandoc-bin
+sci-visualization/gnuplot

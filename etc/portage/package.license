@@ -1,0 +1,11 @@
+# required by @apps-social (argument)
+>=net-im/discord-bin-0.0.12 all-rights-reserved
+>=net-im/zoom-5.2.458699.0906 all-rights-reserved
+
+# required by sys-kernel/linux-firmware (argument)
+=sys-kernel/linux-firmware-20200817 linux-fw-redistributable no-source-code
+
+# required by x11-base/xorg-drivers-1.20-r2::gentoo[video_cards_nvidia]
+# required by x11-base/xorg-server-1.20.8-r1::gentoo[xorg]
+# required by x11-drivers/xf86-input-libinput-0.30.0::gentoo
+>=x11-drivers/nvidia-drivers-450.66 NVIDIA-r2

@@ -1,0 +1,94 @@
+# ------------------------------------------------------------------------
+#  Personal USE Flag Changes
+# ------------------------------------------------------------------------
+
+app-portage/pfl -network-cron
+app-text/texlive graphics music science xetex
+app-text/zathura-meta cb djvu pdf postscript
+media-sound/jack2 dbus
+sci-visualization/gnuplot examples latex libcaca
+x11-drivers/nvidia-drivers -abi_x86_32 -tools uvm
+x11-misc/rofi windowmode
+
+# ------------------------------------------------------------------------
+#  Dependant USE Flag Changes
+# ------------------------------------------------------------------------
+
+# required by net-im/discord-bin-0.0.12::gentoo
+# required by @apps-social (argument)
+=app-text/ghostscript-gpl-9.52-r1 cups
+
+# required by app-text/zathura-pdf-poppler-0.2.9::gentoo
+# required by app-text/zathura-meta-0::gentoo[pdf]
+# required by @document-apps (argument)
+=app-text/poppler-0.90.1 cairo
+
+# required by app-text/texlive-core-2020-r12::gentoo
+# required by app-text/texlive-2020-r9::gentoo[l10n_sk,l10n_cs]
+=app-text/texlive-core-2020-r12 cjk xetex
+
+# required by net-im/discord-bin-0.0.12::gentoo
+# required by @apps-social (argument)
+=app-text/xmlto-0.0.28-r3 text
+
+# required by sys-auth/elogind-243.7::gentoo[policykit]
+# required by @system
+# required by @world (argument)
+=dev-lang/python-2.7.18-r1:2.7 sqlite
+
+# required by www-client/qutebrowser-1.13.1::gentoo
+# required by qutebrowser (argument)
+=dev-libs/libxml2-2.9.10-r1 icu
+=dev-libs/libpcre2-10.35 pcre16
+
+# required by app-editors/neovim-0.4.3::gentoo
+# required by neovim (argument)
+=dev-lua/lpeg-1.0.1 luajit
+=dev-lua/luv-1.32.0.0 luajit
+=dev-lua/mpack-1.0.4 luajit
+
+# required by www-client/qutebrowser-1.13.1::gentoo
+# required by qutebrowser (argument)
+=dev-python/PyQt5-5.14.2-r1 printsupport network opengl sql widgets declarative multimedia gui webchannel
+
+# required by media-sound/cadence-0.9.1::gentoo[python_single_target_python3_7]
+# required by @apps-audio
+=dev-python/PyQt5-5.14.2-r1 svg dbus
+
+# required by www-client/qutebrowser-1.13.1::gentoo
+# required by qutebrowser (argument)
+=dev-qt/qtwebengine-5.14.2 widgets
+=dev-qt/qtwebchannel-5.14.2 qml
+=dev-qt/qtmultimedia-5.14.2-r1 widgets
+
+# required by app-text/texlive-core-2020-r12::gentoo
+# required by app-text/texlive-2020-r9::gentoo
+=media-libs/gd-2.3.0 png
+
+# required by media-gfx/gimp-2.10.18-r1::gentoo
+# required by @image-apps (argument)
+=media-libs/gegl-0.4.22 cairo
+
+# required by app-text/texlive-core-2020-r12::gentoo
+# required by app-text/texlive-2020-r9::gentoo
+=media-libs/harfbuzz-2.6.7 icu
+
+# required by www-client/qutebrowser-1.13.1::gentoo
+# required by qutebrowser (argument)
+=media-libs/libvpx-1.7.0-r1 svc
+
+# required by dev-lang/julia-1.4.0-r2::gentoo
+# required by @apps-devel
+=sci-libs/fftw-3.3.8-r1 threads
+
+# required by sys-boot/os-prober-1.77::gentoo
+# required by sys-boot/os-prober (argument)
+=sys-boot/grub-2.04-r1 mount
+
+# required by www-client/qutebrowser-1.13.1::gentoo
+# required by qutebrowser (argument)
+=sys-libs/zlib-1.2.11-r2 minizip
+
+# required by app-misc/neofetch-6.0.0::gentoo[X]
+# required by @cli-apps (argument)
+=www-client/w3m-0.5.3_p20180125 imlib
