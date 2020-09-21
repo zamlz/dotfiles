@@ -1,3 +1,0 @@
-# required by gnome-extra/nm-applet-1.8.22::gentoo
-# required by gnome-extra/nm-applet (argument)
->=dev-libs/glib-2.60.6 dbus

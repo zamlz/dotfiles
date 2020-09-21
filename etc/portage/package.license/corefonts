@@ -1,6 +1,0 @@
-# required by virtual/ttf-fonts-1-r1::gentoo
-# required by x11-libs/libXft-2.3.3::gentoo
-# required by x11-misc/rofi-1.5.2::gentoo
-# required by @selected
-# required by @world (argument)
->=media-fonts/corefonts-1-r7 MSttfEULA

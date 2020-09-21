@@ -1,5 +1,0 @@
-# required by sys-apps/bolt-0.8::gentoo
-# required by sys-apps/bolt (argument)
-=dev-util/umockdev-0.12.1 ~amd64
-# required by sys-apps/bolt (argument)
-sys-apps/bolt ~amd64

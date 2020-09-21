@@ -1,7 +1,0 @@
-# required by media-libs/mesa-20.0.8::gentoo[lm-sensors,gallium]
-# required by virtual/opengl-7.0-r2::gentoo
-# required by x11-misc/compton-0.1_beta2::gentoo
-# required by @desktop-env
-# required by @selected
-# required by @world (argument)
->=sys-apps/lm-sensors-3.6.0 abi_x86_32

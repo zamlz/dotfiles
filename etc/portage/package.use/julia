@@ -1,3 +1,0 @@
-# required by dev-lang/julia-1.4.0-r1::gentoo
-# required by dev-lang/julia (argument)
->=sci-libs/fftw-3.3.6_p2 threads

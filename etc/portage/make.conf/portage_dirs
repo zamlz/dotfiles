@@ -1,4 +1,0 @@
-# NOTE: This stage was built with the bindist Use flag enabled
-PORTDIR="/var/db/repos/gentoo"
-DISTDIR="/var/cache/distfiles"
-PKGDIR="/var/cache/binpkgs"

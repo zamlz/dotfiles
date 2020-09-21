@@ -1,5 +1,0 @@
-app-portage/pfl network-cron
-
-# required by app-portage/pfl-3.0.1-r3::gentoo[network-cron]
-# required by pfl (argument)
->=sys-apps/util-linux-2.33.2 caps

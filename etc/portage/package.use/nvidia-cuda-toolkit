@@ -1,4 +1,0 @@
-# required by dev-util/nvidia-cuda-toolkit-10.1.168::gentoo
-# required by =dev-util/nvidia-cuda-toolkit-10.1.168 (argument)
->=x11-drivers/nvidia-drivers-435.21 uvm
-

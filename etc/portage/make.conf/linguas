@@ -1,6 +1,0 @@
-# This sets the language of build output to English.
-# Please keep this setting intact when reporting bugs.
-LC_MESSAGES=C
-
-# Set support for global languages
-L10N="ach af am an ar as ast az be bg bn bn-BD bn-IN bo br brx bs ca ca-valencia cak ceb chr cnr co cs cy da de de-1901 de-CH de-DE dgo doi dsb dv dz el en en-AU en-CA en-GB en-NZ en-US en-ZA eo es es-419 es-AR es-CL es-ES es-MX es-PE et eu fa ff fi fil fo fr fr-CA fy ga gd gl gn gu gug he hi hr hsb ht hu hy ia id io is it iu ja jbo jv ka kab kk km kmr-Latn kn ko kok ks ku ky la lb lij lo lt lv mai mi mk ml mn mni mr ms mt my nan nb ne nl nn no nr nso oc om or pa pl ps pt pt-BR pt-PT qu rm ro ru rw sa sat sc sco sd si sid sk sl so son sq sr sr-Latn ss st su sv sw sw-TZ syc ta ta-LK te tg th ti tk tl tn to tr ts tt ug uk ur uz ve vi xh yi yo zh zh-CN zh-TW zu"

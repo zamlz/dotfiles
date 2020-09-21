@@ -1,6 +1,0 @@
-app-text/zathura-meta cb djvu pdf postscript
-
-# required by app-text/zathura-pdf-poppler-0.2.9::gentoo
-# required by app-text/zathura-meta-0::gentoo[pdf]
-# required by zathura-meta (argument)
->=app-text/poppler-0.79.0-r1 cairo

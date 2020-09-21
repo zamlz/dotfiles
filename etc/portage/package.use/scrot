@@ -1,4 +1,0 @@
-# required by media-gfx/scrot-0.8_p13-r1::gentoo
-# required by scrot (argument)
->=media-libs/imlib2-1.5.1-r1 gif
-

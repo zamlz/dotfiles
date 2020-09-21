@@ -1,3 +1,0 @@
-# required by app-text/aspell-0.60.7_rc1::gentoo[l10n_nl]
-# required by app-dicts/aspell-af-0.50.0::gentoo
->=app-dicts/aspell-nl-0.50.2 freedist

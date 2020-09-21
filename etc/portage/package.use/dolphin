@@ -1,5 +1,0 @@
-games-emulation/dolphin ffmpeg
-
-# required by games-emulation/dolphin-5.0::gentoo[wxwidgets]
-# required by games-emulation/dolphin (argument)
->=x11-libs/wxGTK-3.0.4-r2:3.0 opengl

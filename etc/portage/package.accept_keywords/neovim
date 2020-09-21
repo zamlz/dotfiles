@@ -1,8 +1,0 @@
-# required by app-editors/neovim-0.3.8::gentoo
-# required by neovim (argument)
-=dev-libs/msgpack-3.2.0 ~amd64
-# required by neovim (argument)
-=app-editors/neovim-0.3.8 ~amd64
-# required by app-editors/neovim-0.3.8::gentoo[tui]
-# required by neovim (argument)
-=dev-libs/unibilium-2.0.0 ~amd64

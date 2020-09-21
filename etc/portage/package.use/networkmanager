@@ -1,3 +1,0 @@
-# required by net-misc/networkmanager-1.18.2::gentoo[wifi]
-# required by net-misc/networkmanager (argument)
->=net-wireless/wpa_supplicant-2.8-r1 dbus
