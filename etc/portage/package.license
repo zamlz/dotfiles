@@ -3,7 +3,7 @@
 >=net-im/zoom-5.2.458699.0906 all-rights-reserved
 
 # required by sys-kernel/linux-firmware (argument)
-=sys-kernel/linux-firmware-20200817 linux-fw-redistributable no-source-code
+>=sys-kernel/linux-firmware-20200817 linux-fw-redistributable no-source-code
 
 # required by x11-base/xorg-drivers-1.20-r2::gentoo[video_cards_nvidia]
 # required by x11-base/xorg-server-1.20.8-r1::gentoo[xorg]
