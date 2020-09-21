@@ -15,9 +15,9 @@ ret=0
 
 if [ -n "${repository_name}" ]; then
         # Repository name was provided, so we're in a post-repository hook.
-        echo "* In post-repository hook for ${repository_name}"
-        echo "** synced from remote repository ${sync_uri}"
-        echo "** synced into ${repository_path}"
+        #echo "* In post-repository hook for ${repository_name}"
+        #echo "** synced from remote repository ${sync_uri}"
+        #echo "** synced into ${repository_path}"
 
         # Gentoo comes with pregenerated cache but the other repositories
         # usually don't. Generate them to improve performance.
