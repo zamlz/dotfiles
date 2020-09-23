@@ -35,6 +35,7 @@ x11-misc/rofi windowmode
 # required by @system
 # required by @world (argument)
 =dev-lang/python-2.7.18-r1:2.7 sqlite
+=dev-lang/python-2.7.18-r2:2.7 sqlite
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
