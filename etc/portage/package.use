@@ -39,7 +39,7 @@ x11-misc/rofi windowmode
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
-=dev-libs/libxml2-2.9.10-r1 icu
+=dev-libs/libxml2-2.9.10-r3 icu
 =dev-libs/libpcre2-10.35 pcre16
 
 # required by app-editors/neovim-0.4.3::gentoo
