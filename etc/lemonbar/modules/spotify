@@ -18,7 +18,7 @@ while true; do
         msg="%{B$BLACK}${PL_R}%{B-}%{F-}"
 
         # Gather info from the spotify cli script
-        title=$(echo $metadata | sed -e 's/song: \(.*\) artist:.*/ \1 /')
+        title=$(echo $metadata | sed -e 's/title: \(.*\) artist:.*/ \1 /')
         artist=$(echo $metadata | sed -e 's/.*artist: \(.*\) album:.*/\1/')
         paused=$(echo $metadata | sed -e 's/.*status: \(.*\)/\1/')
 
