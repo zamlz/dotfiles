@@ -88,3 +88,12 @@ XF86AudioRaiseVolume
 XF86AudioLowerVolume
     pulsemixer --change-volume -1; \
     $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioPlay
+    $HOME/src/spotify-cli/spotify-cli toggle
+
+XF86AudioNext
+    $HOME/src/spotify-cli/spotify-cli next
+
+XF86AudioPrev
+    $HOME/src/spotify-cli/spotify-cli prev
