@@ -5,23 +5,25 @@ LOGGER=$(get_logger lemonbar.spotify)
 
 $LOGGER "Initializing spotify module"
 
-# You'll need to clone this repo
-spt_now="$HOME/sys/spotify-now/spotify-now"
-
 # Colors are actually set in date!!!!
 while true; do
+    # This repo should be cloned or installed
+    metadata=$($HOME/src/spotify-cli/spotify-cli)
 
-    if [ -z "$($spt_now -e 'closed')" ]; then
+    if [ -z "$(echo $metadata | grep 'ERROR')"]; then
 
         # Notice how the first message doesn't have a foreground color open
         # statement but has a close statement. This is because we are capturing
         # the color change from the [volume] module.
         msg="%{B$BLACK}${PL_R}%{B-}%{F-}"
 
-        artist=" ${ICON_MUSIC}$($spt_now -i '%artist') "
-        title=" $($spt_now -i '%title') "
+        # Gather info from the spotify cli script
+        title=$(echo $metadata | sed -e 's/song: \(.*\) artist:.*/ \1 /')
+        artist=$(echo $metadata | sed -e 's/.*artist: \(.*\) album:.*/\1/')
+        paused=$(echo $metadata | sed -e 's/.*status: \(.*\)/\1/')
 
-        if [ -z "$($spt_now -p 'paused')" ]; then
+        artist=" ${ICON_MUSIC}${artist} "
+        if [ "$paused" != "Paused" ]; then
             status_color=$WHITE
         else
             status_color=$XBACKGROUND
