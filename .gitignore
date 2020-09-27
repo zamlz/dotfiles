@@ -1,12 +1,15 @@
 
-# In reality, ignore all dotfiles.
+# Ironic really because now we ignore all dotfiles.
 .*
 
 # Avoid these directories like the plague
 src/
-src
 sys/
 tmp/
 usr/
-usr
 var/
+
+# But what if they are not directories and are symlinks???
+src
+tmp
+usr
