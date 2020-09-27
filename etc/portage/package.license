@@ -1,3 +1,6 @@
+# required by @apps-audio
+>=media-sound/spotify-1.1.42 Spotify
+
 # required by @apps-social (argument)
 >=net-im/discord-bin-0.0.12 all-rights-reserved
 >=net-im/zoom-5.2.458699.0906 all-rights-reserved

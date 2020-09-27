@@ -4,6 +4,7 @@
 
 dev-lang/julia ~amd64
 media-sound/pulsemixer ~amd64
+media-sound/spotify ~amd64
 net-im/discord-bin ~amd64
 net-im/zoom ~amd64
 www-client/qutebrowser ~amd64
