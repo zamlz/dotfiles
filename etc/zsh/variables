@@ -13,6 +13,7 @@ export PATH="$VIMWIKI_DIR/bin:$PATH"
 # Random useful
 export DISTRO=$(grep --color=none ^ID= /etc/os-release | sed -e 's/^ID=//g' \
     | tr -d '"')
+export WSL=$(uname -r | grep "microsoft")
 
 # Configure GnuPG Variables
 # MAKE SURE THAT SSH CONFIG IS ALSO CONFIGURED!
@@ -20,8 +21,13 @@ export GPG_TTY=$(tty)
 export PINENTRY_USER_DATA='tty'
 export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
 
-# Other less ariables
+# Other less variables
+# (if on WSL, do this)
+if [ -z "$WSL" ]; then
 export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
+else
+export LESS='-R --no-init --quit-if-one-screen'
+fi
 
 # Other important directories
 export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
