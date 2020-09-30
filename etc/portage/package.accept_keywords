@@ -13,8 +13,14 @@ www-client/qutebrowser ~amd64
 #  Dependant Accept-Keywords Changes
 # ------------------------------------------------------------------------
 
+# required by @stack-cuda (argument)
+=dev-libs/cudnn-7.6.5.32-r2 ~amd64
+
 # required by dev-lang/julia-1.4.0-r2::gentoo
 =dev-libs/openspecfun-0.5.1 ~amd64
+
+# required by @stack-cuda (argument)
+=dev-util/nvidia-cuda-toolkit-10.2.89-r2 ~amd64
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)

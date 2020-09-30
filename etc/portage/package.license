@@ -1,3 +1,9 @@
+# required by @stack-cuda (argument)
+=dev-libs/cudnn-7.6.5.32-r2 NVIDIA-cuDNN
+
+# required by @stack-cuda (argument)
+=dev-util/nvidia-cuda-toolkit-10.2.89-r2 NVIDIA-CUDA
+
 # required by @apps-audio
 >=media-sound/spotify-1.1.42 Spotify
 
