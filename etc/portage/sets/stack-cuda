@@ -1,2 +1,3 @@
 =dev-libs/cudnn-7.6.5.32-r2
 =dev-util/nvidia-cuda-toolkit-10.2.89-r2
+=sys-devel/gcc-7.5.0-r1:7.5.0
