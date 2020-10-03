@@ -3,12 +3,21 @@
 # ------------------------------------------------------------------------
 
 app-portage/pfl -network-cron
+
 app-text/texlive graphics music science xetex
+
 app-text/zathura-meta cb djvu pdf postscript
+
 dev-lang/python sqlite
+
+dev-qt/qtwebengine jumbo-build
+
 media-sound/jack2 dbus
+
 sci-visualization/gnuplot examples latex libcaca
+
 x11-drivers/nvidia-drivers -abi_x86_32 -tools uvm
+
 x11-misc/rofi windowmode
 
 # ------------------------------------------------------------------------
@@ -74,10 +83,12 @@ x11-misc/rofi windowmode
 # required by app-text/texlive-core-2020-r12::gentoo
 # required by app-text/texlive-2020-r9::gentoo
 =media-libs/harfbuzz-2.6.7 icu
+=media-libs/harfbuzz-2.7.2 icu
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
 =media-libs/libvpx-1.7.0-r1 svc
+=media-libs/libvpx-1.9.0 svc
 
 # required by dev-lang/julia-1.4.0-r2::gentoo
 # required by @apps-devel
