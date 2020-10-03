@@ -5,6 +5,7 @@
 app-portage/pfl -network-cron
 app-text/texlive graphics music science xetex
 app-text/zathura-meta cb djvu pdf postscript
+dev-lang/python sqlite
 media-sound/jack2 dbus
 sci-visualization/gnuplot examples latex libcaca
 x11-drivers/nvidia-drivers -abi_x86_32 -tools uvm
