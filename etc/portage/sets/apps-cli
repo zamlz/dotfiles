@@ -1,5 +1,6 @@
 # Primary Common cli programs I use
 app-admin/pass
+app-arch/zip
 app-office/ledger
 sys-process/htop
 
