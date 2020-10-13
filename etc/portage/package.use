@@ -69,8 +69,11 @@ x11-misc/rofi windowmode
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
 =dev-qt/qtwebengine-5.14.2 widgets
+=dev-qt/qtwebengine-5.15.1 widgets
 =dev-qt/qtwebchannel-5.14.2 qml
+=dev-qt/qtwebchannel-5.15.1 qml
 =dev-qt/qtmultimedia-5.14.2-r1 widgets
+=dev-qt/qtmultimedia-5.15.1 widgets
 
 # required by app-text/texlive-core-2020-r12::gentoo
 # required by app-text/texlive-2020-r9::gentoo
