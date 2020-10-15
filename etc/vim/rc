@@ -63,7 +63,7 @@ let g:gitgutter_set_sign_backgrounds = 1
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 let g:indentLine_setColors = 1
 "let g:indentLine_bgcolor_term = 0
-let g:indentLine_color_term = 0
+let g:indentLine_color_term = 8
 let g:indentLine_conceallevel = 2
 let g:indentLine_concealcursor = "n"
 
