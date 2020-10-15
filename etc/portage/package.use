@@ -14,6 +14,8 @@ dev-qt/qtwebengine jumbo-build
 
 media-sound/jack2 dbus
 
+net-misc/networkmanager -ppp -modemmanager dhclient
+
 sci-visualization/gnuplot examples latex libcaca
 
 x11-drivers/nvidia-drivers -abi_x86_32 -tools uvm
@@ -92,6 +94,10 @@ x11-misc/rofi windowmode
 # required by qutebrowser (argument)
 =media-libs/libvpx-1.7.0-r1 svc
 =media-libs/libvpx-1.9.0 svc
+
+# required by net-misc/networkmanager-1.26.0-r1::gentoo[-iwd,wifi]
+# required by @world (argument)
+=net-wireless/wpa_supplicant-2.9-r2 dbus
 
 # required by dev-lang/julia-1.4.0-r2::gentoo
 # required by @apps-devel
