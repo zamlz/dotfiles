@@ -6,13 +6,18 @@
 
 # Note this is not the typical directory of vimwiki (lookingg only in the src)
 VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki/}/src
+if [ "$1" = "pdf" ]; then
+    PROMPT="Wiki [PDF]"
+else
+    PROMPT="Wiki"
+fi
 
 wiki=$(find -L $VIMWIKI_DIR -name "*.md" | \
     sed -e "s/.md$//g" \
         -e "/^.*diary.*$/d" \
         -e 's|'$VIMWIKI_DIR'/||g' | \
     sort | tr '\n' ' ' | \
-    rofi -dmenu -i -sep ' ' -p "Wiki" )
+    rofi -dmenu -i -sep ' ' -p "$PROMPT" )
 
 if [ -n "$wiki" ]; then
     if [ "$1" = "pdf" ]; then
