@@ -23,8 +23,9 @@ www-client/qutebrowser ~amd64
 # required by @stack-cuda (argument)
 =dev-util/nvidia-cuda-toolkit-10.2.89-r2 ~amd64
 
-# required by www-client/qutebrowser-1.13.1::gentoo
+# required by www-client/qutebrowser-1.14.1::gentoo
 # required by qutebrowser (argument)
+=dev-python/pygments-2.7.1 ~amd64
 =dev-python/pypeg2-2.15.2-r1 ~amd64
 
 # required by @desktop-env (argument)
