@@ -2,7 +2,7 @@
 
 # attempt to wait for connection
 for _ in $(seq 20); do
-    if [ -n "$(xrandr | grep 'DP-2 connected')" ]; then
+    if [ -n "$(xrandr | grep 'DP-0 connected')" ]; then
         break;
     fi
     sleep 0.5;
@@ -12,8 +12,8 @@ xrandr --output DP-1.1 --off \
     --output DP-1.2 --off \
     --output DP-1.3 --off \
     --output HDMI-0 --off \
-    --output DP-2 --mode 1920x1080 --pos 0x0 --rotate normal \
-    --output DP-1 --off --output DP-0 --off
+    --output DP-0 --mode 5120x1440 --pos 0x0 --rotate normal \
+    --output DP-1 --off --output DP-2 --off
 
 # Prevent from lemonbar from trying to draw to multiple displays
 . $HOME/etc/lemonbar/utils/multi_monitor_support
