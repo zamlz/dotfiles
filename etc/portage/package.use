@@ -20,6 +20,8 @@ sci-visualization/gnuplot examples latex libcaca
 
 x11-drivers/nvidia-drivers -abi_x86_32 -tools uvm
 
+x11-misc/compton dbus opengl
+
 x11-misc/rofi windowmode
 
 # ------------------------------------------------------------------------

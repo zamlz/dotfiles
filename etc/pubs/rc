@@ -12,7 +12,7 @@ docsdir = /home/zamlz/usr/papers/doc
 doc_add = copy
 
 # the command to use when opening document files
-open_cmd = zathura
+open_cmd = xdg-open
 
 # which editor to use when editing bibtex files.
 # if using a graphical editor, use the --wait or --block option, i.e.:
