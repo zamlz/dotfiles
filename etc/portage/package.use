@@ -14,6 +14,8 @@ dev-qt/qtwebengine jumbo-build
 
 media-sound/jack2 dbus
 
+media-video/mpv libcaca
+
 net-misc/networkmanager -ppp -modemmanager dhclient
 
 sci-visualization/gnuplot examples latex libcaca
