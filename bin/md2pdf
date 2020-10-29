@@ -12,6 +12,6 @@ if [ -n "$MDFILE" ]; then
     rm ${TMPFILE} > /dev/null 2>&1
 
     pandoc --pdf-engine=xelatex -s -o "${TMPFILE}" "${MDFILE}"
-    zathura ${TMPFILE}
+    xdg-open ${TMPFILE}
     rm ${TMPFILE}
 fi
