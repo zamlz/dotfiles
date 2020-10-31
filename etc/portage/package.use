@@ -88,6 +88,7 @@ x11-misc/rofi windowmode
 # required by media-gfx/gimp-2.10.18-r1::gentoo
 # required by @image-apps (argument)
 =media-libs/gegl-0.4.22 cairo
+=media-libs/gegl-0.4.24 cairo
 
 # required by app-text/texlive-core-2020-r12::gentoo
 # required by app-text/texlive-2020-r9::gentoo
