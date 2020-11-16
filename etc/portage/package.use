@@ -111,6 +111,7 @@ x11-misc/rofi windowmode
 # required by sys-boot/os-prober-1.77::gentoo
 # required by sys-boot/os-prober (argument)
 =sys-boot/grub-2.04-r1 mount
+=sys-boot/grub-2.04-r2 mount
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
