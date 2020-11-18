@@ -5,6 +5,7 @@ x11-misc/lemonbar
 x11-misc/i3lock
 x11-misc/rofi
 x11-misc/sxhkd
+x11-terms/rxvt-unicode
 x11-terms/xst
 x11-wm/herbstluftwm
 

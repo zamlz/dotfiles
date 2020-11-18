@@ -26,6 +26,8 @@ x11-misc/compton dbus opengl
 
 x11-misc/rofi windowmode
 
+x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
+
 # ------------------------------------------------------------------------
 #  Dependant USE Flag Changes
 # ------------------------------------------------------------------------

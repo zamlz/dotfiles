@@ -38,7 +38,7 @@ fi
 
 # Initialize universal keybindings
 SXHKD_SHELL=sh
-export SXHKD_TERMINAL=xst
+export SXHKD_TERMINAL=urxvt
 pkill -x sxhkd
 sxhkd -c "$HOME/etc/sxhkd/keybinds" &
 
