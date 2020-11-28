@@ -40,6 +40,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by app-text/zathura-meta-0::gentoo[pdf]
 # required by @document-apps (argument)
 =app-text/poppler-0.90.1 cairo
+=app-text/poppler-20.11.0 cairo
 
 # required by app-text/texlive-core-2020-r12::gentoo
 # required by app-text/texlive-2020-r9::gentoo[l10n_sk,l10n_cs]
