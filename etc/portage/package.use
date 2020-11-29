@@ -70,6 +70,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
 =dev-python/PyQt5-5.14.2-r1 printsupport network opengl sql widgets declarative multimedia gui webchannel
+=dev-python/PyQt5-5.15.1    opengl sql multimedia printsupport widgets gui network declarative webchannel
 
 # required by media-sound/cadence-0.9.1::gentoo[python_single_target_python3_7]
 # required by @apps-audio
