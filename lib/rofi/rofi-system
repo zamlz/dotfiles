@@ -17,8 +17,12 @@ if [ "$systask" = "LOCK SCREEN" ]; then
     gpg-connect-agent --no-autostart RELOADAGENT /bye > /dev/null
 
     # Start the locker (choose one of the configurations)
-    exec i3lock -nef --color=000000
-    #exec i3lock -nefi $HOME/etc/xorg/hubble_legacy_field.png
+    HUBBLE_LEGACY_FIELD="$HOME/usr/walls/hubble_legacy_field.png"
+    if [ -f $HUBBLE_LEGACY_FIELD ]; then
+        exec i3lock -nefi $HUBBLE_LEGACY_FIELD
+    else
+        exec i3lock -nef --color=000000
+    fi
     #xwobf -s 4 /tmp/lock_screen.png
     #exec i3lock -nefi /tmp/lock_screen.png
 
