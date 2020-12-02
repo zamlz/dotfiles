@@ -25,6 +25,8 @@ super + e
 # Dmenu for password store
 super + p
     $HOME/lib/rofi/rofi-pass
+super + shift + p
+    $HOME/lib/rofi/rofi-pass --qrcode
 
 # Copy a specific bookmark to the clipboard
 super + b
