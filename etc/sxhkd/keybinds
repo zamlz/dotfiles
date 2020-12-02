@@ -36,7 +36,7 @@ super + b
 super + n
     $HOME/lib/rofi/rofi-wiki
 super + shift + n
-    $HOME/lib/rofi/rofi-wiki pdf
+    $HOME/lib/rofi/rofi-wiki --pdf
 
 # Restore a saved browser session
 super + w

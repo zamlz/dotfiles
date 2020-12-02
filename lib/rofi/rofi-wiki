@@ -6,7 +6,7 @@
 
 # Note this is not the typical directory of vimwiki (lookingg only in the src)
 VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki/}/src
-if [ "$1" = "pdf" ]; then
+if [ "$1" = "--pdf" ]; then
     PROMPT="Wiki [PDF]"
 else
     PROMPT="Wiki"
