@@ -104,6 +104,10 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 =media-libs/libvpx-1.7.0-r1 svc
 =media-libs/libvpx-1.9.0 svc
 
+# required by media-video/peek-1.5.1::gentoo
+# required by @apps-video
+=media-video/ffmpeg-4.3.1 vpx
+
 # required by net-misc/networkmanager-1.26.0-r1::gentoo[-iwd,wifi]
 # required by @world (argument)
 =net-wireless/wpa_supplicant-2.9-r2 dbus
