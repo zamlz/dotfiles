@@ -9,6 +9,7 @@ media-sound/spotify ~amd64
 media-video/peek ~amd64
 net-im/discord-bin ~amd64
 net-im/zoom ~amd64
+net-misc/youtube-dl ~amd64
 www-client/qutebrowser ~amd64
 
 # ------------------------------------------------------------------------
