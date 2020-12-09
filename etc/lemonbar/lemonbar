@@ -51,13 +51,14 @@ $TAIL $EVENT_VOL_FIFO \
 
 # Define lemonbar opts
 #-f dina:size=12
+#-f xos4Terminus:style=Bold:size=12
 #-f IosevkaTerm:size=12
 #-f PowerlineSymbols:style=Medium:size=12
 #-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 OPTS="-g x20
 -F ${XBACKGROUND}
 -B ${XBACKGROUND}
--f xos4Terminus:style=Bold:size=12
+-f IosevkaTerm:size=12
 -f FontAwesome5Free:style=Regular:size=14
 -f FontAwesome5Free:style=Solid:size=14
 -f FontAwesome5Brands:style=Regular:size=14
