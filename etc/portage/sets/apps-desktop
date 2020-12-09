@@ -14,6 +14,7 @@ dev-python/argcomplete
 media-fonts/dina
 media-fonts/fontawesome
 media-fonts/iosevka
+media-fonts/terminus-font
 x11-apps/setxkbmap
 x11-apps/xbacklight
 x11-apps/xprop

@@ -12,6 +12,8 @@ dev-lang/python sqlite
 
 dev-qt/qtwebengine jumbo-build
 
+media-fonts/terminus-font distinct-l
+
 media-sound/jack2 dbus
 
 media-video/mpv libcaca
