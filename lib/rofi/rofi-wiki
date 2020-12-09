@@ -20,7 +20,7 @@ wiki=$(find -L $VIMWIKI_DIR -name "*.md" | \
     rofi -dmenu -i -sep ' ' -p "$PROMPT" )
 
 if [ -n "$wiki" ]; then
-    if [ "$1" = "pdf" ]; then
+    if [ "$1" = "--pdf" ]; then
         $HOME/bin/md2pdf ${VIMWIKI_DIR}/${wiki}.md 2> /dev/null &
     else
         ${SXHKD_TERMINAL} -e sh \
