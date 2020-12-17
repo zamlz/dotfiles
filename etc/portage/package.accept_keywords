@@ -4,6 +4,8 @@
 
 app-text/pandoc-bin ~amd64
 dev-lang/julia ~amd64
+dev-libs/cudnn ~amd64
+dev-util/nvidia-cuda-toolkit ~amd64
 media-sound/pulsemixer ~amd64
 media-sound/spotify ~amd64
 media-video/peek ~amd64
@@ -16,14 +18,8 @@ www-client/qutebrowser ~amd64
 #  Dependant Accept-Keywords Changes
 # ------------------------------------------------------------------------
 
-# required by @stack-cuda (argument)
-=dev-libs/cudnn-7.6.5.32-r2 ~amd64
-
 # required by dev-lang/julia-1.4.0-r2::gentoo
 =dev-libs/openspecfun-0.5.1 ~amd64
-
-# required by @stack-cuda (argument)
-=dev-util/nvidia-cuda-toolkit-10.2.89-r2 ~amd64
 
 # required by www-client/qutebrowser-1.14.1::gentoo
 # required by qutebrowser (argument)

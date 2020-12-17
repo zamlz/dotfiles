@@ -134,7 +134,6 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by @apps-devel
 =sys-libs/zlib-1.2.11-r2 static-libs
 
-
 # required by app-misc/neofetch-6.0.0::gentoo[X]
 # required by @cli-apps (argument)
 =www-client/w3m-0.5.3_p20180125 imlib
