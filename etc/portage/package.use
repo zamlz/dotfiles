@@ -39,6 +39,8 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by net-im/discord-bin-0.0.12::gentoo
 # required by @apps-social (argument)
 =app-text/ghostscript-gpl-9.52-r1 cups
+=app-text/ghostscript-gpl-9.53.3-r4 cups
+
 
 # required by app-text/zathura-pdf-poppler-0.2.9::gentoo
 # required by app-text/zathura-meta-0::gentoo[pdf]
@@ -89,6 +91,11 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 =dev-qt/qtwebchannel-5.15.1 qml
 =dev-qt/qtmultimedia-5.14.2-r1 widgets
 =dev-qt/qtmultimedia-5.15.1 widgets
+
+# required by x11-libs/cairo-1.16.0-r4::gentoo
+# required by app-text/zathura-djvu-0.2.9::gentoo
+# required by app-text/zathura-meta-0::gentoo[djvu]
+=media-libs/freetype-2.10.4 png
 
 # required by app-text/texlive-core-2020-r12::gentoo
 # required by app-text/texlive-2020-r9::gentoo
