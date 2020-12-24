@@ -26,8 +26,32 @@ www-client/qutebrowser ~amd64
 =dev-python/pygments-2.7.1 ~amd64
 =dev-python/pypeg2-2.15.2-r1 ~amd64
 
+# required by games-util/steam-meta-0-r20160817::steam-overlay
+# required by games-util/steam-meta (argument)
+=games-util/steam-launcher-1.0.0.67 ~amd64
+
+# required by games-util/steam-meta-0-r20160817::steam-overlay
+# required by games-util/steam-meta (argument)
+=games-util/steam-client-meta-0-r20201118 ~amd64
+
+# required by games-util/steam-meta (argument)
+=games-util/steam-meta-0-r20160817 ~amd64
+
+# required by games-util/steam-meta-0-r20160817::steam-overlay[steamruntime]
+# required by games-util/steam-meta (argument)
+=games-util/steam-games-meta-0-r20191109 ~amd64
+
+# required by games-util/steam-launcher-1.0.0.67::steam-overlay[udev,joystick]
+# required by games-util/steam-meta-0-r20160817::steam-overlay
+# required by games-util/steam-meta (argument)
+=games-util/game-device-udev-rules-20201209 ~amd64
+
 # required by @desktop-env (argument)
 =media-fonts/iosevka-1.14.1 ~amd64
+
+# required by games-util/steam-meta-0-r20160817::steam-overlay
+# required by games-util/steam-meta (argument)
+=media-fonts/steamfonts-1 ~amd64
 
 # required by dev-lang/julia-1.4.0-r2::gentoo
 =sci-libs/openlibm-0.7.0 ~amd64

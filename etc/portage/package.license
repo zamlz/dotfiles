@@ -4,6 +4,15 @@
 # required by @stack-cuda (argument)
 >=dev-util/nvidia-cuda-toolkit-10.2.89-r2 NVIDIA-CUDA
 
+# required by games-util/steam-meta-0-r20160817::steam-overlay
+# required by games-util/steam-meta (argument)
+>=games-util/steam-launcher-1.0.0.67 ValveSteamLicense
+
+# required by games-util/steam-client-meta-0-r20201118::steam-overlay[steamfonts]
+# required by games-util/steam-meta-0-r20160817::steam-overlay
+# required by games-util/steam-meta (argument)
+>=media-fonts/steamfonts-1 MSttfEULA
+
 # required by @apps-audio
 >=media-sound/spotify-1.1.42 Spotify
 
