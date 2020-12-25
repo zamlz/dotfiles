@@ -43,12 +43,15 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 =app-text/ghostscript-gpl-9.52-r1 cups
 =app-text/ghostscript-gpl-9.53.3-r4 cups
 
-
 # required by app-text/zathura-pdf-poppler-0.2.9::gentoo
 # required by app-text/zathura-meta-0::gentoo[pdf]
 # required by @document-apps (argument)
 =app-text/poppler-0.90.1 cairo
 =app-text/poppler-20.11.0 cairo
+
+# required by kde-apps/okular-20.08.3::gentoo[pdf]
+# required by kde-apps/okular (argument)
+>=app-text/poppler-20.11.0 qt5
 
 # required by app-text/texlive-core-2020-r12::gentoo
 # required by app-text/texlive-2020-r9::gentoo[l10n_sk,l10n_cs]
@@ -84,6 +87,14 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by media-sound/cadence-0.9.1::gentoo[python_single_target_python3_7]
 # required by @apps-audio
 =dev-python/PyQt5-5.14.2-r1 svg dbus
+
+# required by kde-apps/okular-20.08.3::gentoo
+# required by kde-apps/okular (argument)
+=dev-qt/qtcore-5.15.1-r1 icu
+
+# required by kde-apps/okular-20.08.3::gentoo[image-backend]
+# required by kde-apps/okular (argument)
+=dev-qt/qtgui-5.15.1-r1 jpeg
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
@@ -121,6 +132,10 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by media-video/peek-1.5.1::gentoo
 # required by @apps-video
 =media-video/ffmpeg-4.3.1 vpx
+
+# required by kde-apps/okular-20.08.3::gentoo
+# required by kde-apps/okular (argument)
+=media-video/vlc-3.0.11.1 dbus ogg vorbis
 
 # required by net-misc/networkmanager-1.26.0-r1::gentoo[-iwd,wifi]
 # required by @world (argument)
