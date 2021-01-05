@@ -74,4 +74,6 @@ URxvt.color13: xcolor13
 URxvt.color14: xcolor14
 URxvt.color15: xcolor15
 
+URxvt.font: system_font
+
 ! vim: set filetype=xmodmap:

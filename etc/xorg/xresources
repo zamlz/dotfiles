@@ -18,7 +18,8 @@ Xft.hintstyle:              hintslight
 ! Font
 !#####
 !*font: xft:Iosevka Term:size=11
-*font: xft:xos4 Terminus:size=12
+!*font: xft:xos4 Terminus:size=12
+#define system_font xft:xos4 Terminus:size=12
 
 ! Some other Special Programs
 #include "etc/xorg/urxvt"
