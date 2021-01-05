@@ -2,6 +2,8 @@
 #  Personal USE Flag Changes
 # ------------------------------------------------------------------------
 
+app-editors/emacs gui gif gpm imagemagick jpeg png sound svg threads xft
+
 app-portage/pfl -network-cron
 
 app-text/texlive graphics music science xetex
@@ -37,6 +39,10 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # ------------------------------------------------------------------------
 #  Dependant USE Flag Changes
 # ------------------------------------------------------------------------
+
+# required by app-editors/emacs-27.1-r2::gentoo
+# required by @world (argument)
+=app-emacs/emacs-common-gentoo-1.6-r4 gui
 
 # required by net-im/discord-bin-0.0.12::gentoo
 # required by @apps-social (argument)

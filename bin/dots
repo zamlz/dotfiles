@@ -43,6 +43,10 @@ configure_dots() {
     mkdir -p $d/.config/nvim
     ln -s $d/etc/vim/rc $d/.config/nvim/init.vim
 
+    # Setting up emacs config file
+    echo "Setting up emacs config file"
+    ln -s $d/etc/emacs/rc $d/.emacs
+
     # Setting up qutebrowser
     echo "Setting up qutebrowser files"
     mkdir -p $d/.config/qutebrowser
