@@ -2,7 +2,6 @@
 #  Personal Accept-Keyworks Changes
 # ------------------------------------------------------------------------
 
-app-misc/elasticsearch ~amd64
 app-text/pandoc-bin ~amd64
 dev-lang/julia ~amd64
 dev-libs/cudnn ~amd64

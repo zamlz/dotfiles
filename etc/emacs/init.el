@@ -20,6 +20,16 @@
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
+;; Setup line numbers
+(column-number-mode)
+(global-display-line-numbers-mode t)
+
+;; Disable line numbers in some modes
+(dolist (mode '(org-mode-hook
+		term-mode-hook
+		eshell-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+
 ;; Initialize package sources
 (require 'package)
 
@@ -45,3 +55,20 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+
+;; Install custom doom themes
+(use-package doom-themes
+  :config (setq doom-themes-enable-bold t
+                doom-themes-enable-italic t)
+          (load-theme 'doom-one t))
+
+;; rainbow delimiters for programming parenthesis
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+;; Useful package to show what keybindings are available
+;; under each prefix
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :config (setq which-key-idle-delay 0.3))
