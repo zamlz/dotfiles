@@ -10,7 +10,7 @@ app-text/texlive graphics music science xetex
 
 app-text/zathura-meta cb djvu pdf postscript
 
-dev-lang/python sqlite
+dev-lang/python sqlite tk
 
 dev-qt/qtwebengine jumbo-build
 
