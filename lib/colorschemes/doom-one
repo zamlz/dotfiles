@@ -1,0 +1,39 @@
+! Gruvbox (Black) Colorscheme
+
+! Special
+#define xbackground     #282c34
+#define xforeground     #bbc2cf
+#define xcursorColor    #bbc2cf
+#define xfade           0
+
+! Black + DarkGrey
+#define xcolor0         #1c1f24
+#define xcolor8         #5B6268
+
+! DarkRed + Red
+#define xcolor1         #ff6c6b
+#define xcolor9         #da8548
+
+! DarkGreen + Green
+#define xcolor2         #98be65
+#define xcolor10        #4db5bd
+
+! DarkYellow + Yellow
+#define xcolor3         #DA8548
+#define xcolor11        #ECBE7B
+
+! DarkBlue + Blue
+#define xcolor4         #51afef
+#define xcolor12        #2257A0
+
+! DarkMagenta + Magenta
+#define xcolor5         #c678dd
+#define xcolor13        #a9a1e1
+
+! DarkCyan + Cyan
+#define xcolor6         #5699AF
+#define xcolor14        #46D9FF
+
+! LightGrey + White
+#define xcolor7         #202328
+#define xcolor15        #DFDFDF
