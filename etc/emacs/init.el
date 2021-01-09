@@ -19,6 +19,9 @@
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
 
 ;; Setup line numbers
 (column-number-mode)
@@ -59,8 +62,9 @@
 ;; Install custom doom themes
 (use-package doom-themes
   :config (setq doom-themes-enable-bold t
-                doom-themes-enable-italic t)
-          (load-theme 'doom-one t))
+                doom-themes-enable-italic t
+		doom-gruvbox-dark-variant "hard")
+          (load-theme 'doom-gruvbox t))
 
 ;; rainbow delimiters for programming parenthesis
 (use-package rainbow-delimiters
