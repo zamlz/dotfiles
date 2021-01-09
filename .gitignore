@@ -8,6 +8,7 @@ sys/
 tmp/
 usr/
 var/
+org/
 
 # But what if they are not directories and are symlinks???
 src
