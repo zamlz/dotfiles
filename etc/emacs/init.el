@@ -72,3 +72,8 @@
   :init (which-key-mode)
   :diminish which-key-mode
   :config (setq which-key-idle-delay 0.3))
+
+;; Setup evil mode
+(use-package evil
+  :ensure t
+  :init (evil-mode 1))
