@@ -64,7 +64,8 @@
   :config (setq doom-themes-enable-bold t
                 doom-themes-enable-italic t
 		doom-gruvbox-dark-variant "hard")
-          (load-theme 'doom-one t))
+          (load-theme 'doom-gruvbox t))
+(set-background-color "black")
 
 ;; rainbow delimiters for programming parenthesis
 (use-package rainbow-delimiters
