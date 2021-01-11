@@ -19,9 +19,6 @@
 
 ;; Make ESC quit prompts
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
 
 ;; Setup line numbers
 (column-number-mode)
@@ -29,8 +26,8 @@
 
 ;; Disable line numbers in some modes
 (dolist (mode '(org-mode-hook
-		term-mode-hook
-		eshell-mode-hook))
+                term-mode-hook
+                eshell-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 ;; Initialize package sources
@@ -63,7 +60,7 @@
 (use-package doom-themes
   :config (setq doom-themes-enable-bold t
                 doom-themes-enable-italic t
-		doom-gruvbox-dark-variant "hard")
+                doom-gruvbox-dark-variant "hard")
           (load-theme 'doom-gruvbox t))
 (set-background-color "black")
 
@@ -82,3 +79,12 @@
 (use-package evil
   :ensure t
   :init (evil-mode 1))
+
+;; All org mode related settings
+
+(global-set-key (kbd "C-c l") 'org-store-link)
+(global-set-key (kbd "C-c a") 'org-agenda)
+(global-set-key (kbd "C-c c") 'org-capture)
+
+(setq org-log-done t)
+(setq org-agenda-files (list "~/org/todo.org"))
