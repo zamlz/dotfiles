@@ -12,6 +12,7 @@
 (setq visible-bell t)
 
 ;; Set custom font (type face)
+;;(set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
 (set-face-attribute 'default nil :font "Iosevka Term" :height 110)
 
 ;; Set a custom theme
@@ -87,4 +88,4 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-log-done t)
-(setq org-agenda-files (list "~/org/todo.org"))
+(setq org-agenda-files (list "~/org"))
