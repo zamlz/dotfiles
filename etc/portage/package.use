@@ -97,19 +97,24 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by kde-apps/okular-20.08.3::gentoo
 # required by kde-apps/okular (argument)
 =dev-qt/qtcore-5.15.1-r1 icu
+=dev-qt/qtcore-5.15.2-r2 icu
 
 # required by kde-apps/okular-20.08.3::gentoo[image-backend]
 # required by kde-apps/okular (argument)
 =dev-qt/qtgui-5.15.1-r1 jpeg
+=dev-qt/qtgui-5.15.2-r1 jpeg
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
 =dev-qt/qtwebengine-5.14.2 widgets
 =dev-qt/qtwebengine-5.15.1 widgets
+=dev-qt/qtwebengine-5.15.2 widgets
 =dev-qt/qtwebchannel-5.14.2 qml
 =dev-qt/qtwebchannel-5.15.1 qml
+=dev-qt/qtwebchannel-5.15.2 qml
 =dev-qt/qtmultimedia-5.14.2-r1 widgets
 =dev-qt/qtmultimedia-5.15.1 widgets
+=dev-qt/qtmultimedia-5.15.2 widgets
 
 # required by x11-libs/cairo-1.16.0-r4::gentoo
 # required by app-text/zathura-djvu-0.2.9::gentoo
