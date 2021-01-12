@@ -58,12 +58,14 @@
   :custom ((doom-modeline-height 15)))
 
 ;; Install custom doom themes
-(use-package doom-themes
-  :config (setq doom-themes-enable-bold t
-                doom-themes-enable-italic t
-                doom-gruvbox-dark-variant "hard")
-          (load-theme 'doom-gruvbox t))
-(set-background-color "black")
+;;(use-package doom-themes
+;;  :config (setq doom-themes-enable-bold t
+;;                doom-themes-enable-italic t
+;;                doom-gruvbox-dark-variant "hard")
+;;          (load-theme 'doom-gruvbox t))
+(use-package gruvbox-theme
+  :init (load-theme 'gruvbox t))
+;;(set-background-color "black")
 
 ;; rainbow delimiters for programming parenthesis
 (use-package rainbow-delimiters
