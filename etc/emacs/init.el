@@ -96,11 +96,19 @@
 ;; Setup evil mode
 (use-package evil
   :ensure t
-  :init (evil-mode 1))
+  :init (setq evil-want-keybinding nil)
+  :config (evil-mode 1))
+
+(use-package evil-collection
+  :after evil
+  :ensure t
+  :config (evil-collection-init))
 
 ;; ----------------------------------------------------------------------------
 ;; ORG MODE SETTINGS
 ;; ----------------------------------------------------------------------------
+
+(use-package org)
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
