@@ -89,6 +89,23 @@
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))
 
+;; configure aesthetically pleasing tabs
+(use-package centaur-tabs
+  :demand
+  :config
+  (centaur-tabs-mode t)
+  (centaur-tabs-headline-match)
+  (setq centaur-tabs-style "bar")
+  (setq centaur-tabs-set-icons t)
+  (setq centaur-tabs-gray-out-icons 'buffer)
+  (setq centaur-tabs-height 24)
+  (setq centaur-tabs-set-bar 'over)
+  (setq centaur-tabs-set-modified-marker t)
+  (setq centaur-tabs-modified-marker  "●")
+  :bind
+  ("C-<prior>" . centaur-tabs-backward)
+  ("C-<next>"  . centaur-tabs-forward))
+
 ;; ----------------------------------------------------------------------------
 ;; CUSTOM KEYBINDINGS
 ;; ----------------------------------------------------------------------------
