@@ -2,7 +2,7 @@
 #  Personal USE Flag Changes
 # ------------------------------------------------------------------------
 
-app-editors/emacs gui gif gpm imagemagick jpeg png sound svg threads xft
+app-editors/emacs cairo gui gif gpm imagemagick jpeg png sound svg threads xft
 
 app-portage/pfl -network-cron
 

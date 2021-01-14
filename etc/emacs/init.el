@@ -9,6 +9,9 @@
 ;; My Personal GNU Emacs Configuration
 ;; ----------------------------------------------------------------------------
 
+;; don't create backups in same directory as source file
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+
 ;; ----------------------------------------------------------------------------
 ;; PACKAGE MANAGEMENT
 ;; ----------------------------------------------------------------------------
@@ -35,8 +38,25 @@
 ;; APPEARANCE SETTINGS
 ;; ----------------------------------------------------------------------------
 
-;; no startup screen! (maybe I want a custom one though)
-(setq inhibit-startup-message t)
+;; no default startup screen!
+;; (setq inhibit-startup-message t)
+(use-package dashboard
+  :ensure t
+  :config
+  (setq dhasboard-startup-banner 'official)
+  (setq dashboard-center-content t)
+  (setq dashboard-set-heading-icons t)
+  (setq dashboard-set-file-icons t)
+  (setq dashboard-set-navigator t)
+  (setq dashboard-set-init-info t)
+  (setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
+  (setq dashboard-items '((recents   . 5)
+                          (bookmarks . 5)
+;;                          (projects  . 5)
+                          (agenda    . 5)
+                          (registers . 5)))
+  (dashboard-modify-heading-icons '((bookmarks . "book")))
+  (dashboard-setup-startup-hook))
 
 ;; Set up the visible bell
 (setq visible-bell t)
@@ -69,7 +89,7 @@
 ;;(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 110)
 
 ;; Set the variable pitch face
-;;(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 110 :weight 'regular)
+;;(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 110)
 
 ;; to install the fonts, you must also run this command
 ;;    M-x all-the-icons-install-fonts
@@ -83,7 +103,7 @@
 
 ;; Setup the gruvbox theme lol
 (use-package gruvbox-theme
-  :init (load-theme 'gruvbox t))
+  :init (load-theme 'gruvbox-dark-hard t))
 
 ;; rainbow delimiters for programming parenthesis
 (use-package rainbow-delimiters
@@ -130,6 +150,28 @@
   :after evil
   :ensure t
   :config (evil-collection-init))
+
+;; ----------------------------------------------------------------------------
+;; AUTOCOMPLETION ENGINE 
+;; ----------------------------------------------------------------------------
+
+(use-package ivy
+  :diminish
+  :bind (("C-s" . swiper)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)	
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
+  :config
+  (ivy-mode 1))
 
 ;; ----------------------------------------------------------------------------
 ;; GIT CONFIGURATION
@@ -192,3 +234,16 @@
 
 ;; ----------------------------------------------------------------------------
 ;; ----------------------------------------------------------------------------
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(ivy which-key visual-fill-column use-package spacemacs-theme rainbow-delimiters org-bullets moe-theme magit gruvbox-theme git-auto-commit-mode general evil-collection doom-themes doom-modeline dashboard command-log-mode centaur-tabs)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
