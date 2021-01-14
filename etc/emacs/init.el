@@ -9,9 +9,6 @@
 ;; My Personal GNU Emacs Configuration
 ;; ----------------------------------------------------------------------------
 
-;; don't create backups in same directory as source file
-(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
-
 ;; ----------------------------------------------------------------------------
 ;; PACKAGE MANAGEMENT
 ;; ----------------------------------------------------------------------------
@@ -233,17 +230,15 @@
 (global-set-key (kbd "C-c c") 'org-capture)
 
 ;; ----------------------------------------------------------------------------
+;; MISC SETTINGS
 ;; ----------------------------------------------------------------------------
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(ivy which-key visual-fill-column use-package spacemacs-theme rainbow-delimiters org-bullets moe-theme magit gruvbox-theme git-auto-commit-mode general evil-collection doom-themes doom-modeline dashboard command-log-mode centaur-tabs)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
+
+;; don't create backups in same directory as source file
+(setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
+
+;; Set a seperate directory for emacs customize options
+(setq custom-file "~/.emacs.d/custom.el")
+(load custom-file)
+
+;; ----------------------------------------------------------------------------
+;; ----------------------------------------------------------------------------
