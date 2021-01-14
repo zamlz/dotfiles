@@ -49,8 +49,8 @@
   (setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
   (setq dashboard-items '((recents   . 5)
                           (bookmarks . 5)
-;;                          (projects  . 5)
-                          (agenda    . 5)
+                          (projects  . 10)
+                          (agenda    . 10)
                           (registers . 5)))
   (dashboard-modify-heading-icons '((bookmarks . "book")))
   (dashboard-setup-startup-hook))
@@ -152,29 +152,21 @@
 ;; AUTOCOMPLETION ENGINE 
 ;; ----------------------------------------------------------------------------
 
-(use-package ivy
-  :diminish
-  :bind (("C-s" . swiper)
-         :map ivy-minibuffer-map
-         ("TAB" . ivy-alt-done)	
-         ("C-l" . ivy-alt-done)
-         ("C-j" . ivy-next-line)
-         ("C-k" . ivy-previous-line)
-         :map ivy-switch-buffer-map
-         ("C-k" . ivy-previous-line)
-         ("C-l" . ivy-done)
-         ("C-d" . ivy-switch-buffer-kill)
-         :map ivy-reverse-i-search-map
-         ("C-k" . ivy-previous-line)
-         ("C-d" . ivy-reverse-i-search-kill))
-  :config
-  (ivy-mode 1))
+;; ----------------------------------------------------------------------------
+;; GIT AND PROJECT CONFIGURATION
+;; ----------------------------------------------------------------------------
 
-;; ----------------------------------------------------------------------------
-;; GIT CONFIGURATION
-;; ----------------------------------------------------------------------------
+(use-package projectile
+  :diminish projectile-mode
+  :config (projectile-mode)
+  :bind (:map projectile-mode-map ("M-p"   . projectile-command-map))
+  :init (when (file-directory-p "~/src")
+	  (setq projectile-project-search-path '("~/src")))
+        (setq projectile-switch-project-action #'projectile-dired))
 
 (use-package magit)
+
+;; (use-package forge) Set this up!
 
 ;; ----------------------------------------------------------------------------
 ;; ORG MODE SETTINGS
@@ -206,7 +198,12 @@
   :config
   (setq org-ellipsis " ▾")
   (setq org-log-done t)
+  (setq org-log-into-drawer t)
+  (setq org-agenda-start-with-log-mode t)
   (setq org-agenda-files (list "~/org"))
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "WAITING(w)" "SOMEDAY(s)"
+                    "|" "DONE(d)" "CANCELLED(c)")))
   (zamlz/org-font-setup))
 
 ;; Change the bullet appearance of org-mode headings
