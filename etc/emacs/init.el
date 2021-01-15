@@ -47,7 +47,7 @@
   (setq dashboard-set-navigator t)
   (setq dashboard-set-init-info t)
   (setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
-  (setq dashboard-items '((recents   . 5)
+  (setq dashboard-items '((recents   . 10)
                           (bookmarks . 5)
                           (projects  . 10)
                           (agenda    . 10)
@@ -149,7 +149,7 @@
   :config (evil-collection-init))
 
 ;; ----------------------------------------------------------------------------
-;; AUTOCOMPLETION ENGINE 
+;; AUTOCOMPLETION ENGINE AND DOCUMENTATION REDUX
 ;; ----------------------------------------------------------------------------
 
 ;; ----------------------------------------------------------------------------
@@ -180,14 +180,15 @@
     (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   ;; Set faces for heading levels
-  (dolist (face '((org-level-1 . 1.5)
-    (org-level-2 . 1.25)
-    (org-level-3 . 1.10)
+  ;; for now, keep all at 1.0
+  (dolist (face '((org-level-1 . 1.0)
+    (org-level-2 . 1.0)
+    (org-level-3 . 1.0)
     (org-level-4 . 1.0)
-    (org-level-5 . 1.1)
-    (org-level-6 . 1.1)
-    (org-level-7 . 1.1)
-    (org-level-8 . 1.1)))
+    (org-level-5 . 1.0)
+    (org-level-6 . 1.0)
+    (org-level-7 . 1.0)
+    (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil
       :font "Iosevka Term"
       :weight 'regular
@@ -195,15 +196,20 @@
 
 ;; Setup org-mode
 (use-package org
+  :ensure org-plus-contrib
   :config
+  (setq org-directory "~/org")
   (setq org-ellipsis " ▾")
   (setq org-log-done t)
   (setq org-log-into-drawer t)
-  (setq org-agenda-start-with-log-mode t)
-  (setq org-agenda-files (list "~/org"))
+  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
+  (setq org-agenda-files
+    (list org-directory
+          (concat org-directory "/todo")
+          (concat org-directory "/notes")))
   (setq org-todo-keywords
-        '((sequence "TODO(t)" "WAITING(w)" "SOMEDAY(s)"
-                    "|" "DONE(d)" "CANCELLED(c)")))
+    '((sequence "TODO(t)" "WAITING(w)" "SOMEDAY(s)"
+                "|" "DONE(d)" "CANCELLED(c)")))
   (zamlz/org-font-setup))
 
 ;; Change the bullet appearance of org-mode headings
@@ -225,6 +231,39 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+
+;; Setup org capture mode
+(setq org-capture-templates
+      '(
+	("j" "Journal Entries")
+
+        ("jj" "Journal" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n  %?")
+        ("ji" "Journal with Context" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n  %?\n  %i\n  %a")
+
+	("t" "Tasks / Projects")
+
+        ("tt" "Todo" entry (file "todo/inbox.org")
+         "* TODO  %?")
+        ("ti" "Todo with Context" entry (file "todo/inbox.org")
+         "* TODO  %?\n  %i\n  %a")
+
+	("c" "Contacts" entry (file "contacts.org")
+	 "* %^{NAME}
+  :PROPERTIES:
+  :CELLPHONE: %^{CELLPHONE}
+  :HOMEPHONE: %^{HOMEPHONE}
+  :WORKPHONE: %^{WORKPHONE}
+  :EMAIL: %^{EMAIL}
+  :EMAIL_ALT: %^{EMAIL_ALT}
+  :WEBSITE: %^{WEBSITE}
+  :COMPANY: %^{COMPANY}
+  :ADDRESS: %^{ADDRESS}
+  :BIRTHDAY: %^{BIRHDAY}t
+  :TITLE: %^{TITLE}
+  :END")
+       ))
 
 ;; ----------------------------------------------------------------------------
 ;; MISC SETTINGS
