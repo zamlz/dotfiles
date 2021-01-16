@@ -123,6 +123,11 @@
   ("C-<prior>" . centaur-tabs-backward)
   ("C-<next>"  . centaur-tabs-forward))
 
+;; setup neotree (make sure all-the-icons is installed)
+(use-package neotree
+  :config (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
+  :bind ("<f8>" . neotree-toggle))
+
 ;; ----------------------------------------------------------------------------
 ;; CUSTOM KEYBINDINGS
 ;; ----------------------------------------------------------------------------
@@ -197,19 +202,79 @@
 ;; Setup org-mode
 (use-package org
   :ensure org-plus-contrib
-  :config
-  (setq org-directory "~/org")
-  (setq org-ellipsis " ▾")
-  (setq org-log-done t)
-  (setq org-log-into-drawer t)
-  (setq org-treat-S-cursor-todo-selection-as-state-change nil)
-  (setq org-agenda-files
-    (list org-directory
+  :custom
+
+  ;; Setup directories
+  (org-directory "~/org")
+  (org-agenda-files (list org-directory
           (concat org-directory "/todo")
           (concat org-directory "/notes")))
-  (setq org-todo-keywords
-    '((sequence "TODO(t)" "WAITING(w)" "SOMEDAY(s)"
-                "|" "DONE(d)" "CANCELLED(c)")))
+
+  ;; Add some nice visuals changes
+  (org-ellipsis " ▾")
+
+  ;; Some todo/logging changes
+  (org-log-done t)
+  (org-log-into-drawer t)
+  (org-treat-S-cursor-todo-selection-as-state-change nil)
+  (org-todo-keywords
+   '((sequence "TODO(t)" "WAITING(w)" "SOMEDAY(s)" "|"
+	       "DONE(d)" "CANCELLED(c)")))
+
+  ;; Setup org capture mode
+  (org-capture-templates
+   '(   ;; Capture Journal entries
+	("j" "Journal Entries")
+	;; -------------------
+        ("jj" "Journal" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n  %?")
+        ("ji" "Journal with Context" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n  %?\n  %i\n  %a")
+	;; Capture todo type tasks
+	("t" "Tasks / Projects")
+	;; -------------------
+        ("tt" "Todo" entry (file+olp "todo/inbox.org" "GTD Task Inbox")
+         "* TODO  %?")
+        ("ti" "Todo with Context" entry (file+olp "todo/inbox.org" "GTD Task Inbox")
+         "* TODO  %?\n  %i\n  %a")
+	;; Capture Contact Information of a person
+	("c" "Contacts" entry (file "contacts.org")
+	 (concat "* %^{NAME}\n"
+		 "  :PROPERTIES:\n"
+		 "  :CELLPHONE: %^{CELLPHONE}\n"
+		 "  :HOMEPHONE: %^{HOMEPHONE}\n"
+		 "  :WORKPHONE: %^{WORKPHONE}\n"
+		 "  :EMAIL: %^{EMAIL}\n"
+		 "  :EMAIL_ALT: %^{EMAIL_ALT}\n"
+		 "  :WEBSITE: %^{WEBSITE}\n"
+		 "  :COMPANY: %^{COMPANY}\n"
+		 "  :ADDRESS: %^{ADDRESS}\n"
+		 "  :BIRTHDAY: %^{BIRHDAY}t\n"
+		 "  :TITLE: %^{TITLE}\n"
+		 "  :END:"))))
+
+  ;; Setup refiling
+  (org-log-refile t)
+  (org-refile-use-outline-path 'file)
+  (org-outline-path-complete-in-steps nil)
+  (org-refile-allow-creating-parent-nodes 'confirm)
+  (org-refile-targets
+   `((,(concat org-directory "/todo/devel.org") :maxlevel . 1)
+     (,(concat org-directory "/todo/family.org") :maxlevel . 1)
+     (,(concat org-directory "/todo/finances.org") :maxlevel . 1)
+     (,(concat org-directory "/todo/friends.org") :maxlevel . 1)
+     (,(concat org-directory "/todo/home.org") :maxlevel . 1)
+     (,(concat org-directory "/todo/inbox.org") :maxlevel . 1)
+     (,(concat org-directory "/todo/legal.org") :maxlevel . 1)
+     (,(concat org-directory "/todo/personal.org") :maxlevel . 1)))
+
+  ;; Setup archive location
+  (org-archive-location (concat org-directory "/todo/archive.org::"))
+
+  ;; ensure that refiling saves buffers
+  (advice-add 'org-refile :after 'org-save-all-org-buffers)
+
+  ;; Finally a post setup func to setup fonts
   (zamlz/org-font-setup))
 
 ;; Change the bullet appearance of org-mode headings
@@ -231,39 +296,6 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
-
-;; Setup org capture mode
-(setq org-capture-templates
-      '(
-	("j" "Journal Entries")
-
-        ("jj" "Journal" entry (file+datetree "journal.org")
-         "\n* %U :JOURNAL:\n  %?")
-        ("ji" "Journal with Context" entry (file+datetree "journal.org")
-         "\n* %U :JOURNAL:\n  %?\n  %i\n  %a")
-
-	("t" "Tasks / Projects")
-
-        ("tt" "Todo" entry (file "todo/inbox.org")
-         "* TODO  %?")
-        ("ti" "Todo with Context" entry (file "todo/inbox.org")
-         "* TODO  %?\n  %i\n  %a")
-
-	("c" "Contacts" entry (file "contacts.org")
-	 "* %^{NAME}
-  :PROPERTIES:
-  :CELLPHONE: %^{CELLPHONE}
-  :HOMEPHONE: %^{HOMEPHONE}
-  :WORKPHONE: %^{WORKPHONE}
-  :EMAIL: %^{EMAIL}
-  :EMAIL_ALT: %^{EMAIL_ALT}
-  :WEBSITE: %^{WEBSITE}
-  :COMPANY: %^{COMPANY}
-  :ADDRESS: %^{ADDRESS}
-  :BIRTHDAY: %^{BIRHDAY}t
-  :TITLE: %^{TITLE}
-  :END:")
-       ))
 
 ;; ----------------------------------------------------------------------------
 ;; MISC SETTINGS
