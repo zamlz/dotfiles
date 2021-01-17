@@ -34,6 +34,7 @@ Plug 'mbbill/undotree'
 " Language Based Plugins
 Plug 'JuliaEditorSupport/julia-vim'
 Plug 'ledger/vim-ledger'
+Plug 'nathangrigg/vim-beancount'
 Plug 'vim-scripts/gnuplot.vim'
 
 call plug#end()
