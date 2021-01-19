@@ -301,6 +301,14 @@
 ;; MISC SETTINGS
 ;; ----------------------------------------------------------------------------
 
+; manuualy setup beancount mode
+(add-to-list 'load-path "~/.emacs.d/beancount-mode")
+(require 'beancount)
+(add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
+
+;;(setq beancount-outline-regexp "\\(\\*+\\)")
+(add-hook 'beancount-mode-hook #'outline-minor-mode)
+
 ;; don't create backups in same directory as source file
 (setq backup-directory-alist '(("" . "~/.emacs.d/backup")))
 
