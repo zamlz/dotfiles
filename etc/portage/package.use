@@ -148,6 +148,10 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by kde-apps/okular (argument)
 =media-video/vlc-3.0.11.1 dbus ogg vorbis
 
+# required by dev-python/ipython-7.19.0-r1::gentoo[smp]
+# required by @apps-devel
+=net-libs/zeromq-4.3.3 drafts
+
 # required by net-misc/networkmanager-1.26.0-r1::gentoo[-iwd,wifi]
 # required by @world (argument)
 =net-wireless/wpa_supplicant-2.9-r2 dbus

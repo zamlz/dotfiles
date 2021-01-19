@@ -2,6 +2,7 @@
 # ----------------------------------------------------------------------------
 
 # Generic Packages
+app-editors/emacs
 dev-util/ctags
 
 # C/C++ Packages
@@ -12,6 +13,7 @@ sys-devel/gdb
 app-text/texlive
 
 # Python Packages
+dev-python/ipython
 dev-python/pip
 
 # Julia packages
