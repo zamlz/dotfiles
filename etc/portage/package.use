@@ -89,6 +89,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by qutebrowser (argument)
 =dev-python/PyQt5-5.14.2-r1 printsupport network opengl sql widgets declarative multimedia gui webchannel
 =dev-python/PyQt5-5.15.1    opengl sql multimedia printsupport widgets gui network declarative webchannel
+=dev-python/PyQt5-5.15.2    multimedia sql opengl widgets gui network declarative printsupport webchannel
 
 # required by media-sound/cadence-0.9.1::gentoo[python_single_target_python3_7]
 # required by @apps-audio
@@ -147,6 +148,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by kde-apps/okular-20.08.3::gentoo
 # required by kde-apps/okular (argument)
 =media-video/vlc-3.0.11.1 dbus ogg vorbis
+=media-video/vlc-3.0.12.1 dbus ogg vorbis
 
 # required by dev-python/ipython-7.19.0-r1::gentoo[smp]
 # required by @apps-devel
