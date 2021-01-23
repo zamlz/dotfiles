@@ -19,7 +19,6 @@
 (setq package-archives '(("melpa" . "https://melpa.org/packages/")
                          ("org"   . "https://orgmode.org/elpa/")
                          ("elpa"  . "https://elpa.gnu.org/packages/")))
-
 (package-initialize)
 (unless package-archive-contents
   (package-refresh-contents))
@@ -71,6 +70,7 @@
 
 ;; Disable line numbers in some modes
 (dolist (mode '(term-mode-hook
+		shell-mode-hook
                 eshell-mode-hook
                 org-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
@@ -79,8 +79,8 @@
 
 ;; Set default face
 ;;(set-face-attribute 'default nil :font "Fira Code" :height 100)
-;;(set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-(set-face-attribute 'default nil :font "Iosevka Term" :height 100)
+(set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
+;;(set-face-attribute 'default nil :font "Iosevka Term" :height 100)
 
 ;; Set the fixed pitch face
 ;;(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 110)
@@ -99,11 +99,12 @@
   :custom ((doom-modeline-height 15)))
 
 ;; Setup the gruvbox theme lol
-(use-package gruvbox-theme
-  :init (load-theme 'gruvbox-dark-hard t))
-
-;; Also set the background to black
-(set-background-color "black")
+;;(use-package gruvbox-theme
+;;  :init (load-theme 'gruvbox-dark-hard t))
+;;(set-background-color "black")
+(use-package spacemacs-theme
+  :defer t
+  :init (load-theme 'spacemacs-dark t))
 
 ;; rainbow delimiters for programming parenthesis
 (use-package rainbow-delimiters
@@ -149,21 +150,66 @@
 (use-package evil
   :ensure t
   :init (setq evil-want-keybinding nil)
-  :config (evil-mode 1))
+  :config
+  (evil-mode 1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+  ;; C-h is help in normal mode, but becomes BACKSPACE in insert mode
+  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
+  ;; Use visual line motions even outside of visual-line-mode buffers
+  (evil-global-set-key 'motion "j" 'evil-next-visual-line)
+  (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
+
+  (evil-set-initial-state 'messages-buffer-mode 'normal)
+  (evil-set-initial-state 'dashboard-mode 'normal))
+
+;; Really nice collection of evil bindings for other modes
+;; very good defaults
 (use-package evil-collection
   :after evil
   :ensure t
   :config (evil-collection-init))
 
+;; Generalized keybinder
+(use-package general
+  :config
+  (general-create-definer zamlz/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC")
+  (zamlz/leader-keys
+   "t"  '(:ignore t :which-key "toggles")
+   "tt" '(counsel-load-theme :which-key "choose theme")))
+
+;; Conquer the hydra
+(use-package hydra)
+
+;; Add a custom hydra func to scale text size
+(defhydra hydra-text-scale (:timeout 4)
+  "scale text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("f" nil "finished" :exit t))
+
+;; Add hydra func to our personal keybindings
+(zamlz/leader-keys
+  "ts" '(hydra-text-scale/body :which-key "scale text"))
+
 ;; ----------------------------------------------------------------------------
 ;; AUTOCOMPLETION ENGINE AND DOCUMENTATION REDUX
 ;; ----------------------------------------------------------------------------
 
+;; Supposedly used by ivy
 (use-package counsel
   :after ivy
+  :bind (("M-x" . counsel-M-x)
+	 ("C-x b" . counsel-ibuffer)
+	 ("C-x C-f" . counsel-find-file)
+	 :map minibuffer-local-map
+	 ("C-r" . 'counsel-minibuffer-history))
   :config (counsel-mode))
 
+;; Add Ivy Completion
 (use-package ivy
   :defer 0.1
   :diminish
@@ -185,15 +231,29 @@
   (ivy-use-virtual-buffers t)
   :config (ivy-mode))
 
+;; Improve the Ivy completion UI
 (use-package ivy-rich
   :after ivy
   :config
   (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
   (ivy-rich-mode))
 
+;; TODO: Figure out what swiper is lol
 (use-package swiper
   :after ivy
   :bind (("C-s" . swiper)))
+
+;; Improve the help documentation commands by overriding them with helpful
+(use-package helpful
+  :ensure t
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ([remap describe-function] . counsel-describe-function)
+  ([remap describe-command] . helpful-command)
+  ([remap describe-variable] . counsel-describe-variable)
+  ([remap describe-key] . helpful-key))
 
 ;; ----------------------------------------------------------------------------
 ;; GIT AND PROJECT CONFIGURATION
