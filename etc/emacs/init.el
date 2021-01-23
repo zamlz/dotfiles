@@ -262,10 +262,17 @@
 (use-package projectile
   :diminish projectile-mode
   :config (projectile-mode)
-  :bind (:map projectile-mode-map ("M-p"   . projectile-command-map))
-  :init (when (file-directory-p "~/src")
-	  (setq projectile-project-search-path '("~/src")))
-        (setq projectile-switch-project-action #'projectile-dired))
+  :custom ((projectile-completion-system 'ivy))
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/src")
+    (setq projectile-project-search-path '("~/src")))
+  (setq projectile-switch-project-action #'projectile-dired))
+
+;; use C-o in the "C-c p p" to see other extra commands provided by counsel
+(use-package counsel-projectile
+  :config (counsel-projectile-mode))
 
 (use-package magit)
 
