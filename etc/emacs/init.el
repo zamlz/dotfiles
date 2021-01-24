@@ -402,6 +402,23 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
+;; Configure babel for org-mode
+;; https://orgmode.org/worg/org-contrib/babel/languages/index.html
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . t)
+   (python . t)
+   (gnuplot . t)
+   (latex . t)
+   ))
+
+(setq org-confirm-babel-evaluate nil
+      org-src-fontify-natively t
+      org-src-strip-leading-and-trailing-blank-lines t
+      org-src-preserve-indentation nil
+      org-src-tab-acts-natively t
+      org-edit-src-content-indentation 0)
+
 ;; ----------------------------------------------------------------------------
 ;; MISC SETTINGS
 ;; ----------------------------------------------------------------------------
