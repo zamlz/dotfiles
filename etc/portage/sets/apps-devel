@@ -21,5 +21,6 @@ dev-lang/julia
 
 # Misc programming tools
 app-misc/jq
+app-text/dvipng
 app-text/pandoc-bin
 sci-visualization/gnuplot

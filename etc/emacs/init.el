@@ -419,6 +419,9 @@
       org-src-tab-acts-natively t
       org-edit-src-content-indentation 0)
 
+;; Provide latex previews in org-mode
+(setq org-startup-with-latex-preview t)
+
 ;; ----------------------------------------------------------------------------
 ;; MISC SETTINGS
 ;; ----------------------------------------------------------------------------
