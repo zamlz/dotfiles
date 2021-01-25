@@ -422,7 +422,11 @@
 ;; MISC SETTINGS
 ;; ----------------------------------------------------------------------------
 
-; manuualy setup beancount mode
+;; Configure a better terminal
+(use-package vterm
+  :ensure t)
+
+;; manuualy setup beancount mode
 (add-to-list 'load-path "~/.emacs.d/beancount-mode")
 (require 'beancount)
 (add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
