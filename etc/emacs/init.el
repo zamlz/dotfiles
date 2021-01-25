@@ -310,9 +310,8 @@
   :custom
 
   ;; Setup directories
-  (org-directory "~/org")
+  (org-directory "~/usr/org")
   (org-agenda-files (list org-directory
-          (concat org-directory "/todo")
           (concat org-directory "/notes")))
 
   ;; Add some nice visuals changes
@@ -338,9 +337,9 @@
 	;; Capture todo type tasks
 	("t" "Tasks / Projects")
 	;; -------------------
-        ("tt" "Todo" entry (file+olp "todo/inbox.org" "GTD Task Inbox")
+        ("tt" "Todo" entry (file "inbox.org")
          "* TODO  %?")
-        ("ti" "Todo with Context" entry (file+olp "todo/inbox.org" "GTD Task Inbox")
+        ("ti" "Todo with Context" entry (file "inbox.org")
          "* TODO  %?\n  %i\n  %a")
 	;; Capture Contact Information of a person
 	("c" "Contacts" entry (file "contacts.org")
@@ -364,17 +363,11 @@
   (org-outline-path-complete-in-steps nil)
   (org-refile-allow-creating-parent-nodes 'confirm)
   (org-refile-targets
-   `((,(concat org-directory "/todo/devel.org") :maxlevel . 1)
-     (,(concat org-directory "/todo/family.org") :maxlevel . 1)
-     (,(concat org-directory "/todo/finances.org") :maxlevel . 1)
-     (,(concat org-directory "/todo/friends.org") :maxlevel . 1)
-     (,(concat org-directory "/todo/home.org") :maxlevel . 1)
-     (,(concat org-directory "/todo/inbox.org") :maxlevel . 1)
-     (,(concat org-directory "/todo/legal.org") :maxlevel . 1)
-     (,(concat org-directory "/todo/personal.org") :maxlevel . 1)))
+   `((,(concat org-directory "/gtd.org") :maxlevel . 1)
+     (,(concat org-directory "/routines.org") :maxlevel . 1)))
 
   ;; Setup archive location
-  (org-archive-location (concat org-directory "/todo/archive.org::"))
+  (org-archive-location (concat org-directory "/archive.org::"))
 
   ;; ensure that refiling saves buffers
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
@@ -421,6 +414,9 @@
 
 ;; Provide latex previews in org-mode
 (setq org-startup-with-latex-preview t)
+
+;; Add habit tracking into org-mode
+(add-to-list 'org-modules 'org-habit t)
 
 ;; ----------------------------------------------------------------------------
 ;; MISC SETTINGS
