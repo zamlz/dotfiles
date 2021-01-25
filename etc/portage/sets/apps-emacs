@@ -1,0 +1,10 @@
+# Packages needed to configure emacs
+# ----------------------------------------------------------------------------
+
+app-editors/emacs
+
+# Needed to displayh inline latex
+app-text/dvipng
+
+# Needed for org-roam
+dev-db/sqlite

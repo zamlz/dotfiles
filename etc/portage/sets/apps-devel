@@ -2,7 +2,6 @@
 # ----------------------------------------------------------------------------
 
 # Generic Packages
-app-editors/emacs
 dev-util/ctags
 
 # C/C++ Packages
@@ -21,6 +20,5 @@ dev-lang/julia
 
 # Misc programming tools
 app-misc/jq
-app-text/dvipng
 app-text/pandoc-bin
 sci-visualization/gnuplot
