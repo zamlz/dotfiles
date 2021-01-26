@@ -72,6 +72,7 @@
 (dolist (mode '(term-mode-hook
 		shell-mode-hook
                 eshell-mode-hook
+		vterm-mode-hook
                 org-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
@@ -111,21 +112,21 @@
   :hook (prog-mode . rainbow-delimiters-mode))
 
 ;; configure aesthetically pleasing tabs
-(use-package centaur-tabs
-  :demand
-  :config
-  (centaur-tabs-mode t)
-  (centaur-tabs-headline-match)
-  (setq centaur-tabs-style "bar")
-  (setq centaur-tabs-set-icons t)
-  (setq centaur-tabs-gray-out-icons 'buffer)
-  (setq centaur-tabs-height 24)
-  (setq centaur-tabs-set-bar 'over)
-  (setq centaur-tabs-set-modified-marker t)
-  (setq centaur-tabs-modified-marker  "●")
-  :bind
-  ("C-<prior>" . centaur-tabs-backward)
-  ("C-<next>"  . centaur-tabs-forward))
+;; (use-package centaur-tabs
+;;   :demand
+;;   :config
+;;   (centaur-tabs-mode t)
+;;   (centaur-tabs-headline-match)
+;;   (setq centaur-tabs-style "bar")
+;;   (setq centaur-tabs-set-icons t)
+;;   (setq centaur-tabs-gray-out-icons 'buffer)
+;;   (setq centaur-tabs-height 24)
+;;   (setq centaur-tabs-set-bar 'over)
+;;   (setq centaur-tabs-set-modified-marker t)
+;;   (setq centaur-tabs-modified-marker  "●")
+;;   :bind
+;;   ("C-<prior>" . centaur-tabs-backward)
+;;   ("C-<next>"  . centaur-tabs-forward))
 
 ;; setup neotree (make sure all-the-icons is installed)
 (use-package neotree
@@ -327,21 +328,24 @@
 
   ;; Setup org capture mode
   (org-capture-templates
-   '(   ;; Capture Journal entries
-	("j" "Journal Entries")
-	;; -------------------
-        ("jj" "Journal" entry (file+datetree "journal.org")
-         "\n* %U :JOURNAL:\n  %?")
-        ("ji" "Journal with Context" entry (file+datetree "journal.org")
-         "\n* %U :JOURNAL:\n  %?\n  %i\n  %a")
+   '(
 	;; Capture todo type tasks
-	("t" "Tasks / Projects")
 	;; -------------------
-        ("tt" "Todo" entry (file "inbox.org")
+        ("t" "Todo" entry (file "inbox.org")
          "* TODO  %?")
-        ("ti" "Todo with Context" entry (file "inbox.org")
+        ;; Capture Journal entries
+	;; -------------------
+        ("j" "Journal" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n  %?")
+	;; Capture with context
+	;; -------------------
+	("i" "Index Context")
+        ("it" "Todo with Context" entry (file "inbox.org")
          "* TODO  %?\n  %i\n  %a")
+        ("ij" "Journal with Context" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n  %?\n  %i\n  %a")
 	;; Capture Contact Information of a person
+	;; -------------------
 	("c" "Contacts" entry (file "contacts.org")
 	 (concat "* %^{NAME}\n"
 		 "  :PROPERTIES:\n"
