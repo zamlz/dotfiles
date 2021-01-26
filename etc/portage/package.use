@@ -172,10 +172,12 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
 =sys-libs/zlib-1.2.11-r2 minizip
+=sys-libs/zlib-1.2.11-r3 minizip
 
 # required by dev-lang/julia-1.5.2::gentoo
 # required by @apps-devel
 =sys-libs/zlib-1.2.11-r2 static-libs
+=sys-libs/zlib-1.2.11-r3 static-libs
 
 # required by app-misc/neofetch-6.0.0::gentoo[X]
 # required by @cli-apps (argument)
