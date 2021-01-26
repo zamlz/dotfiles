@@ -36,6 +36,8 @@
 
 ;; no default startup screen!
 ;; (setq inhibit-startup-message t)
+
+;; Enable custom dashboard
 (use-package dashboard
   :ensure t
   :config
@@ -416,6 +418,12 @@
       org-src-tab-acts-natively t
       org-edit-src-content-indentation 0)
 
+;; Setup structure templates for org-babel
+(require 'org-tempo)
+(add-to-list `org-structure-template-alist '("sh" . "src shell"))
+(add-to-list `org-structure-template-alist '("el" . "src emacs-lisp"))
+(add-to-list `org-structure-template-alist '("py" . "src python"))
+
 ;; Provide latex previews in org-mode
 (setq org-startup-with-latex-preview t)
 
@@ -430,7 +438,7 @@
 (use-package vterm
   :ensure t)
 
-;; manuualy setup beancount mode
+;; manualy setup beancount mode
 (add-to-list 'load-path "~/.emacs.d/beancount-mode")
 (require 'beancount)
 (add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
