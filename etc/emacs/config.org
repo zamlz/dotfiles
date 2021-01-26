@@ -19,6 +19,9 @@
 
 * Emacs Configuration
 
+  All configuration found under here use internal packages from withing emacs.
+  This is why they all have =:ensure nil= set.
+
 ** Minimal Emacs Config
 
    Lets get some basic settings out of the way here.
@@ -588,7 +591,9 @@
                                company-echo-metadata-frontend))
      (with-eval-after-load 'company
        (define-key company-active-map (kbd "C-n") 'company-select-next)
-       (define-key company-active-map (kbd "C-p") 'company-select-previous)))
+       (define-key company-active-map (kbd "C-p") 'company-select-previous)
+       (define-key company-active-map (kbd "RET") 'company-complete-selection)
+       (define-key company-active-map (kbd "TAB") 'company-complete-common)))
    #+end_src
 
 ** Flycheck Syntax Linter
@@ -638,6 +643,31 @@
 
    #+begin_src emacs-lisp
    ;; (use-package forge)
+   #+end_src
+
+** Markdown Mode
+
+   #+begin_src emacs-lisp
+   (use-package markdown-mode
+     :hook (markdown-mode . visual-line-mode))
+   #+end_src
+
+** Web Mode
+
+   Useful mode for editing web based files
+
+   #+begin_src emacs-lisp
+   (use-package web-mode
+     :mode (("\\.html?\\'" . web-mode)
+            ("\\.css\\'"   . web-mode)
+            ("\\.jsx?\\'"  . web-mode)
+            ("\\.tsx?\\'"  . web-mode)
+            ("\\.json\\'"  . web-mode))
+     :config
+     (setq web-mode-markup-indent-offset 2) ; HTML
+     (setq web-mode-css-indent-offset 2)    ; CSS
+     (setq web-mode-code-indent-offset 2)   ; JS/JSX/TS/TSX
+     (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
    #+end_src
 
 * Org Mode
