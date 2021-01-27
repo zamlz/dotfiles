@@ -760,30 +760,30 @@ I should probably split this bloody mess up.
     ;; Capture Journal entries
     ;; -------------------
     ("j" "Journal" entry (file+datetree "journal.org")
-     "\n* %U :JOURNAL:\n  %?")
+     "\n* %U :JOURNAL:\n%?")
     ;; Capture with context
     ;; -------------------
     ("i" "Index Context")
     ("it" "Todo with Context" entry (file "inbox.org")
-     "* TODO  %?\n  %i\n  %a")
+     "* TODO  %?\n%i\n%a")
     ("ij" "Journal with Context" entry (file+datetree "journal.org")
-     "\n* %U :JOURNAL:\n  %?\n  %i\n  %a")
+     "\n* %U :JOURNAL:\n%?\n%i\n%a")
     ;; Capture Contact Information of a person
     ;; -------------------
     ("c" "Contacts" entry (file "contacts.org")
      (concat "* %^{NAME}\n"
-         "  :PROPERTIES:\n"
-         "  :CELLPHONE: %^{CELLPHONE}\n"
-         "  :HOMEPHONE: %^{HOMEPHONE}\n"
-         "  :WORKPHONE: %^{WORKPHONE}\n"
-         "  :EMAIL: %^{EMAIL}\n"
-         "  :EMAIL_ALT: %^{EMAIL_ALT}\n"
-         "  :WEBSITE: %^{WEBSITE}\n"
-         "  :COMPANY: %^{COMPANY}\n"
-         "  :ADDRESS: %^{ADDRESS}\n"
-         "  :BIRTHDAY: %^{BIRHDAY}t\n"
-         "  :TITLE: %^{TITLE}\n"
-         "  :END:"))))
+         ":PROPERTIES:\n"
+         ":CELLPHONE: %^{CELLPHONE}\n"
+         ":HOMEPHONE: %^{HOMEPHONE}\n"
+         ":WORKPHONE: %^{WORKPHONE}\n"
+         ":EMAIL: %^{EMAIL}\n"
+         ":EMAIL_ALT: %^{EMAIL_ALT}\n"
+         ":WEBSITE: %^{WEBSITE}\n"
+         ":COMPANY: %^{COMPANY}\n"
+         ":ADDRESS: %^{ADDRESS}\n"
+         ":BIRTHDAY: %^{BIRHDAY}t\n"
+         ":TITLE: %^{TITLE}\n"
+         ":END:"))))
 
   ;; Setup refiling
   (org-log-refile t)
