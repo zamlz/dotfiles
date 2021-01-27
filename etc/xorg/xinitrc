@@ -29,6 +29,6 @@ EXEC_DBUS="exec dbus-launch --exit-with-session"
 
 case $session in
     herbstluftwm)   $EXEC_DBUS herbstluftwm -c $HOME/etc/herbstluftwm/init;;
+    exwm)           $EXEC_DBUS emacs -mm --debug-init;;
     *)              exec $1;;
 esac
-

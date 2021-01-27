@@ -1,4 +1,3 @@
-
 source $HOME/lib/shell/logger
 LOGGER=$(get_logger zsh.profile)
 
@@ -7,6 +6,12 @@ if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
     $LOGGER "Starting xinitrc parameterized on herbstluftwm"
     export WINDOW_MANAGER='herbstluftwm'
     exec startx $HOME/etc/xorg/xinitrc herbstluftwm
+
+# Regular StartX Boot for Emacs
+elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
+    $LOGGER "Starting xinitrc parameterized on emacs"
+    export WINDOW_MANAGER='exwm'
+    exec startx $HOME/etc/xorg/xinitrc exwm
 
 # Trying to Boot to Unity (For Ubuntu Only)
 # sudo systemctl disable lightdm.service
