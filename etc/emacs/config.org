@@ -1,5 +1,6 @@
 #+TITLE: Emacs Init.el Org Configuration File
 #+AUTHOR: Amlesh Sivanantham
+#+STARTUP: overview
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 #+begin_src emacs-lisp
