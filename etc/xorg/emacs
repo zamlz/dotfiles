@@ -1,0 +1,26 @@
+!###############
+! Emacs settings
+!###############
+
+
+Emacs.foreground: xforeground
+Emacs.background: xbackground
+
+Emacs.color0:  xcolor0
+Emacs.color1:  xcolor1
+Emacs.color2:  xcolor2
+Emacs.color3:  xcolor3
+Emacs.color4:  xcolor4
+Emacs.color5:  xcolor5
+Emacs.color6:  xcolor6
+Emacs.color7:  xcolor7
+Emacs.color8:  xcolor8
+Emacs.color9:  xcolor9
+Emacs.color10: xcolor10
+Emacs.color11: xcolor11
+Emacs.color12: xcolor12
+Emacs.color13: xcolor13
+Emacs.color14: xcolor14
+Emacs.color15: xcolor15
+
+! vim: set filetype=xmodmap:

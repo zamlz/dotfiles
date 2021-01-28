@@ -25,5 +25,6 @@ Xft.hintstyle:              hintslight
 #include "etc/xorg/urxvt"
 #include "etc/xorg/rofi"
 #include "etc/xorg/xst"
+#include "etc/xorg/emacs"
 
 ! vim: set filetype=xmodmap:
