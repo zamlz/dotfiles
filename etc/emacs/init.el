@@ -195,14 +195,14 @@
 
 ;; Set default face
 (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-;(set-face-attribute 'default nil :font "Fira Code" :height 100)
-;(set-face-attribute 'default nil :font "Iosevka Term" :height 100)
+;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
+;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
 
 ;; Set the fixed pitch face
-;(set-face-attribute 'fixed-pitch nil :font "Fira Code Retina" :height 110)
+(set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
 
 ;; Set the variable pitch face
-;(set-face-attribute 'variable-pitch nil :font "Cantarell" :height 110)
+(set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
 
 (use-package all-the-icons)
 
@@ -210,6 +210,9 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
+
+;; (use-package powerline
+;;   :init (powerline-default-theme))
 
 ;;(use-package gruvbox-theme
 ;;  :init (load-theme 'gruvbox-dark-hard t))
@@ -418,26 +421,38 @@
 
   ;; Set faces for heading levels
   ;; for now, keep all at 1.0
-  (dolist (face '((org-level-1 . 1.0)
-    (org-level-2 . 1.0)
-    (org-level-3 . 1.0)
-    (org-level-4 . 1.0)
+  (dolist (face '((org-level-1 . 3.0)
+    (org-level-2 . 2.5)
+    (org-level-3 . 2.0)
+    (org-level-4 . 1.5)
     (org-level-5 . 1.0)
     (org-level-6 . 1.0)
     (org-level-7 . 1.0)
     (org-level-8 . 1.0)))
     (set-face-attribute (car face) nil
-  :font "xos4 Terminus"
-  :weight 'regular
-  :height (cdr face))))
+                        :font "Fira Code"
+                        :weight 'regular
+                        :height (cdr face)))
+
+    ;; ensure that anything that should be fixed-width in org appears that way
+  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+
+(defun zamlz/org-mode-setup ()
+  (org-indent-mode)
+  (variable-pitch-mode 1)
+  (visual-line-mode +1)
+  (setq evil-auto-indent nil)
+  (setq fill-column 10000000))
 
 (use-package org
   :ensure org-plus-contrib
-  :hook ((org-mode . visual-line-mode)
-         ;; (org-mode . auto-fill-mode)
-         (org-mode . org-indent-mode)
-         (org-mode . (lambda () (setq-local evil-auto-indent nil)))
-         (org-mode . (lambda () (setq-local fill-column 10000000))))
+  :hook ((org-mode . zamlz/org-mode-setup))
   :custom
 
   ;; Setup directories
@@ -506,6 +521,9 @@
   ;; ensure that refiling saves buffers
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
+  ;; Make sure we display inline images by default
+  (org-startup-with-inline-images t)
+
   ;; Finally a post setup func to setup fonts
   (zamlz/org-font-setup))
 
@@ -558,6 +576,7 @@
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 
 (setq org-startup-with-latex-preview t)
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
 (add-to-list 'org-modules 'org-habit t)
 
