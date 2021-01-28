@@ -27,6 +27,8 @@ media-video/mpv libcaca
 
 net-misc/networkmanager -ppp -modemmanager dhclient
 
+sci-libs/tensorflow cuda mpi
+
 sci-visualization/gnuplot examples latex libcaca
 
 x11-drivers/nvidia-drivers -tools uvm
@@ -49,6 +51,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by @apps-social (argument)
 =app-text/ghostscript-gpl-9.52-r1 cups
 =app-text/ghostscript-gpl-9.53.3-r4 cups
+=app-text/ghostscript-gpl-9.53.3-r5 cups
 
 # required by app-text/zathura-pdf-poppler-0.2.9::gentoo
 # required by app-text/zathura-meta-0::gentoo[pdf]
@@ -85,6 +88,10 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 =dev-lua/lpeg-1.0.1 luajit
 =dev-lua/luv-1.32.0.0 luajit
 =dev-lua/mpack-1.0.4 luajit
+
+# required by dev-python/matplotlib-3.3.2::gentoo[-test]
+# required by @apps-devel (argument)
+=dev-python/pillow-8.1.0 jpeg
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)

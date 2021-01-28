@@ -14,6 +14,8 @@ app-text/texlive
 # Python Packages
 dev-python/ipython
 dev-python/pip
+dev-python/matplotlib
+dev-python/numpy
 
 # Julia packages
 dev-lang/julia
