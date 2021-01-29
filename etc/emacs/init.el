@@ -491,9 +491,6 @@
   (org-log-done t)
   (org-log-into-drawer t)
   (org-treat-S-cursor-todo-selection-as-state-change nil)
-  (org-todo-keywords
-   '((sequence "TODO(t)" "WAITING(w)" "SOMEDAY(s)" "|"
-       "DONE(d)" "CANCELLED(c)")))
 
   ;; Setup org capture mode
   (org-capture-templates
@@ -550,6 +547,23 @@
 
   ;; Finally a post setup func to setup fonts
   (zamlz/org-font-setup))
+
+(setq org-todo-keywords
+  (quote ((sequence "TODO(t)" "|" "DONE(d)")
+          (sequence "PROJECT(p)" "|" "DONE(d)" "CANCELLED(c)")
+          (sequence "WAITING(w)" "|")
+          (sequence "|" "CANCELLED(c)")
+          (sequence "SOMEDAY(s)" "|" "CANCELLED(c)")
+          (sequence "|" "MEETING"))))
+
+(setq org-todo-keyword-faces
+  '(("DONE"      . (:background "#98be65" :foreground "#ffffff" :weight bold))
+    ("TODO"      . (:background "#ff6c6b" :foreground "#ffffff" :weight bold))
+    ("PROJECT"   . (:background "#51afef" :foreground "#ffffff" :weight bold))
+    ("WAITING"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
+    ("CANCELLED" . (:background "#181818" :foreground "#ffffff" :weight bold))
+    ("SOMEDAY"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
+    ("MEETING"   . (:background "#a9a1e1" :foreground "#ffffff" :weight bold))))
 
 (use-package org-bullets
   :after org
