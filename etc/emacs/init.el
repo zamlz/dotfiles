@@ -488,6 +488,7 @@
   (org-ellipsis " ▾")
 
   ;; Some todo/logging changes
+  (org-enforce-todo-dependencies t)
   (org-log-done t)
   (org-log-into-drawer t)
   (org-treat-S-cursor-todo-selection-as-state-change nil)
