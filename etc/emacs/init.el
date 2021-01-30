@@ -618,6 +618,10 @@
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 
 (add-to-list 'org-modules 'org-habit t)
+(setq org-habit-preceding-days 31)
+(setq org-habit-following-days 3)
+(setq org-habit-show-habits-only-for-today t)
+(setq org-habit-show-all-today t)
 
 (use-package org-roam
   :ensure t
