@@ -556,7 +556,7 @@
               (sequence "WAITING(w)" "|")
               (sequence "|" "CANCELLED(c)")
               (sequence "SOMEDAY(s)" "|" "CANCELLED(c)")
-              (sequence "|" "MEETING"))))
+              (sequence "MEETING" "|"))))
 
 (setq org-todo-keyword-faces
   '(("DONE"      . (:background "#98be65" :foreground "#ffffff" :weight bold))

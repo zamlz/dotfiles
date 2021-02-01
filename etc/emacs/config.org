@@ -876,7 +876,7 @@ I should probably split this bloody mess up.
               (sequence "WAITING(w)" "|")
               (sequence "|" "CANCELLED(c)")
               (sequence "SOMEDAY(s)" "|" "CANCELLED(c)")
-              (sequence "|" "MEETING"))))
+              (sequence "MEETING" "|"))))
 #+end_src
 
 ** Task Colors
