@@ -178,7 +178,7 @@
 (use-package dashboard
   :ensure t
   :config
-  (setq dhasboard-startup-banner "~/.emacs.d/black-hole.png")
+  (setq dhasboard-startup-banner "~/etc/emacs/black-hole.png")
   (setq dashboard-center-content t)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
