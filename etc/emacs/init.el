@@ -160,7 +160,13 @@
 
 (use-package elec-pair
   :ensure nil
-  :hook (prog-mode . electric-pair-mode))
+  :hook
+  (prog-mode . electric-pair-mode)
+  ;; disable <> auto-pairing in org-mode buffers
+  (org-mode  . (lambda ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))))
 
 (use-package whitespace
   :ensure nil
@@ -635,13 +641,6 @@
          :map org-mode-map
          (("C-c n i" . org-roam-insert))
          (("C-c n I" . org-roam-insert-immediate))))
-
-(add-hook
- 'org-mode-hook
- (lambda ()
-   (setq-local electric-pair-inhibit-predicate
-               `(lambda (c)
-                  (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 
 (use-package vterm
   :ensure t)

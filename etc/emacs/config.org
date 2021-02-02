@@ -252,10 +252,18 @@ Sets the formatting style for C/C++/Java from GNU (default) to the popular stand
 
 ** Auto-pairing Quotes and Parentheses
 
+Super useful for auto-pairing certain characters. However we should make use of a hook to prevent it for left carrot bracket in org-mode buffers
+
 #+begin_src emacs-lisp
 (use-package elec-pair
   :ensure nil
-  :hook (prog-mode . electric-pair-mode))
+  :hook
+  (prog-mode . electric-pair-mode)
+  ;; disable <> auto-pairing in org-mode buffers
+  (org-mode  . (lambda ()
+    (setq-local electric-pair-inhibit-predicate
+                `(lambda (c)
+                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))))
 #+end_src
 
 ** Clean Whitespace on Buffer Save
@@ -1007,19 +1015,6 @@ Enables habit tracking in =org-mode= via =org-habit=.
          :map org-mode-map
          (("C-c n i" . org-roam-insert))
          (("C-c n I" . org-roam-insert-immediate))))
-#+end_src
-
-** Disable Electric Pairing of <>
-
-Basically when we being src blocks in =org-mode=, it appears that due the electric pair feature, we end up adding an extra =>= to the block which prevents us from immediately editing it. Extremely useful specially when we are using structure templates
-
-#+begin_src emacs-lisp
-(add-hook
- 'org-mode-hook
- (lambda ()
-   (setq-local electric-pair-inhibit-predicate
-               `(lambda (c)
-                  (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
 #+end_src
 
 * Misc Settings
