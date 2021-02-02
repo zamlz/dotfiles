@@ -1009,6 +1009,19 @@ Enables habit tracking in =org-mode= via =org-habit=.
          (("C-c n I" . org-roam-insert-immediate))))
 #+end_src
 
+** Disable Electric Pairing of <>
+
+Basically when we being src blocks in =org-mode=, it appears that due the electric pair feature, we end up adding an extra =>= to the block which prevents us from immediately editing it. Extremely useful specially when we are using structure templates
+
+#+begin_src emacs-lisp
+(add-hook
+ 'org-mode-hook
+ (lambda ()
+   (setq-local electric-pair-inhibit-predicate
+               `(lambda (c)
+                  (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c))))))
+#+end_src
+
 * Misc Settings
 
 ** Vterm
