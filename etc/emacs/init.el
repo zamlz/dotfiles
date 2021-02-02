@@ -136,18 +136,6 @@
   :config
   (setq eldoc-idle-delay 0.4))
 
-(use-package cc-vars
-  :ensure nil
-  :config
-  (setq-default c-basic-offset zamlz/indent-width)
-  (setq c-default-style '((java-mode . "java")
-                          (awk-mode . "awk")
-                          (other . "k&r"))))
-
-(use-package python
-  :ensure nil
-  :config (setq python-indent-offset zamlz/indent-width))
-
 (use-package mwheel
   :ensure nil
   :config (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))
@@ -388,6 +376,26 @@
   ([remap describe-command] . helpful-command)
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
+
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t))
+
+(use-package python
+  :ensure nil
+  :hook (python-mode . lsp-deferred)
+  :config (setq python-indent-offset zamlz/indent-width))
+
+(use-package cc-vars
+  :ensure nil
+  :config
+  (setq-default c-basic-offset zamlz/indent-width)
+  (setq c-default-style '((java-mode . "java")
+                          (awk-mode . "awk")
+                          (other . "k&r"))))
 
 (use-package company
   :diminish company-mode

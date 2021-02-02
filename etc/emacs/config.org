@@ -114,7 +114,7 @@ Original startup is hideous...
 
 ** Modernize Selection Behaviour
 
-Replaces avtive region just by typing text (is this true in visual mode as well?)
+Replaces active region just by typing text (is this true in visual mode as well?)
 
 #+begin_src emacs-lisp
 (use-package delsel
@@ -209,29 +209,6 @@ Slightly shorten the Eldoc display delay
 #+end_src
 
 ** Indentation Improvement
-
-*** C/C++/Java
-
-Sets the formatting style for C/C++/Java from GNU (default) to the popular standard K&R.
-
-#+begin_src emacs-lisp
-(use-package cc-vars
-  :ensure nil
-  :config
-  (setq-default c-basic-offset zamlz/indent-width)
-  (setq c-default-style '((java-mode . "java")
-                          (awk-mode . "awk")
-                          (other . "k&r"))))
-#+end_src
-
-*** Python
-
-#+begin_src emacs-lisp
-(use-package python
-  :ensure nil
-  :config (setq python-indent-offset zamlz/indent-width))
-#+end_src
-
 ** Mouse Wheel Scroll Speed
 
 #+begin_src emacs-lisp
@@ -648,7 +625,46 @@ Improves the documentation shown when running one of emacs's =describe-*= functi
 
 * Development and Project Management
 
-** Company Auto-Completion for Programming Languages
+Language specific and Project Management related configurations here...
+
+** Languages
+*** Language Server Protocol
+
+Powerful languages server protocols that were designed originally for visual studio code in order to created a unified protocol for getting functionality of the langauge from within the editor.
+
+#+begin_src emacs-lisp
+(use-package lsp-mode
+  :commands (lsp lsp-deferred)
+  :init
+  (setq lsp-keymap-prefix "C-c l")
+  :config
+  (lsp-enable-which-key-integration t))
+#+end_src
+
+*** Python
+
+#+begin_src emacs-lisp
+(use-package python
+  :ensure nil
+  :hook (python-mode . lsp-deferred)
+  :config (setq python-indent-offset zamlz/indent-width))
+#+end_src
+
+*** C/C++/Java
+
+Sets the formatting style for C/C++/Java from GNU (default) to the popular standard K&R.
+
+#+begin_src emacs-lisp
+(use-package cc-vars
+  :ensure nil
+  :config
+  (setq-default c-basic-offset zamlz/indent-width)
+  (setq c-default-style '((java-mode . "java")
+                          (awk-mode . "awk")
+                          (other . "k&r"))))
+#+end_src
+
+** company Auto-Completion for Programming Languages
 
 Use =C-n= and =C-p= to navigate tooltip
 
