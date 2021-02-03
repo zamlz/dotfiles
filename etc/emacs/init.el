@@ -98,8 +98,7 @@
 (dolist (mode '(term-mode-hook
                 shell-mode-hook
                 eshell-mode-hook
-                vterm-mode-hook
-                org-mode-hook))
+                vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (use-package "window"
