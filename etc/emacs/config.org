@@ -4,19 +4,23 @@
 #+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 #+begin_src emacs-lisp
-;; ------------------------------------------------------------------------------------------------
-;; ------------------------------------------------------------------------------------------------
-;;                       _______   ____  __   ______
-;;                      / ____/ | / / / / /  / ____/___ ___  ____ ___________
-;;                     / / __/  |/ / / / /  / __/ / __ `__ \/ __ `/ ___/ ___/
-;;                    / /_/ / /|  / /_/ /  / /___/ / / / / / /_/ / /__(__  )
-;;                    \____/_/ |_/\____/  /_____/_/ /_/ /_/\__,_/\___/____/
-;; ------------------------------------------------------------------------------------------------
-;;                              My Personal GNU Emacs Configuration
-;; ------------------------------------------------------------------------------------------------
-;; NOTE: This file contains the bulk of the config. If this is the init.el file then you are
-;;       looking at the auto-generated file. Please edit config.org instead.
-;; ------------------------------------------------------------------------------------------------
+;;; ------------------------------------------------------------------------------------------------
+;;; ------------------------------------------------------------------------------------------------
+;;;                       _______   ____  __   ______
+;;;                      / ____/ | / / / / /  / ____/___ ___  ____ ___________
+;;;                     / / __/  |/ / / / /  / __/ / __ `__ \/ __ `/ ___/ ___/
+;;;                    / /_/ / /|  / /_/ /  / /___/ / / / / / /_/ / /__(__  )
+;;;                    \____/_/ |_/\____/  /_____/_/ /_/ /_/\__,_/\___/____/
+;;; ------------------------------------------------------------------------------------------------
+;;;                              My Personal GNU Emacs Configuration
+;;; ------------------------------------------------------------------------------------------------
+;;; Commentary:
+;;;
+;;; ... Present day, present time ...
+;;;
+;;; ------------------------------------------------------------------------------------------------
+;;; Code:
+;;; ------------------------------------------------------------------------------------------------
 #+end_src
 
 * Emacs Configuration
@@ -664,7 +668,7 @@ Sets the formatting style for C/C++/Java from GNU (default) to the popular stand
                           (other . "k&r"))))
 #+end_src
 
-** company Auto-Completion for Programming Languages
+** Company Auto-Completion for Programming Languages
 
 Use =C-n= and =C-p= to navigate tooltip
 
@@ -677,7 +681,8 @@ Use =C-n= and =C-p= to navigate tooltip
         company-idle-delay 0.1
         company-selection-wrap-around t
         company-tooltip-align-annotations t
-        company-frontends '(company-pseudo-tooltip-frontend ; show tooltip even for single candidate
+        ; show tooltip even for single candidate
+        company-frontends '(company-pseudo-tooltip-frontend
                             company-echo-metadata-frontend))
   (with-eval-after-load 'company
     (define-key company-active-map (kbd "C-n") 'company-select-next)
