@@ -512,41 +512,7 @@
   (org-treat-S-cursor-todo-selection-as-state-change nil)
 
   ;; Setup org capture mode
-  (org-capture-templates
-   '(
-    ;; Capture todo type tasks
-    ;; -------------------
-    ("t" "Todo" entry (file "inbox.org")
-     "* TODO  %?")
-    ;; Capture Journal entries
-    ;; -------------------
-    ("j" "Journal" entry (file+datetree "journal.org")
-     "\n* %U :JOURNAL:\n%?")
-    ;; Capture with context
-    ;; -------------------
-    ("i" "Index Context")
-    ("it" "Todo with Context" entry (file "inbox.org")
-     "* TODO  %?\n%i\n%a")
-    ("ij" "Journal with Context" entry (file+datetree "journal.org")
-     "\n* %U :JOURNAL:\n%?\n%i\n%a")
-    ;; Capture Contact Information of a person
-    ;; -------------------
-    ("c" "Contacts" entry (file "contacts.org")
-     (concat "* %^{NAME}\n"
-         ":PROPERTIES:\n"
-         ":CELLPHONE: %^{CELLPHONE}\n"
-         ":HOMEPHONE: %^{HOMEPHONE}\n"
-         ":WORKPHONE: %^{WORKPHONE}\n"
-         ":EMAIL: %^{EMAIL}\n"
-         ":EMAIL_ALT: %^{EMAIL_ALT}\n"
-         ":WEBSITE: %^{WEBSITE}\n"
-         ":COMPANY: %^{COMPANY}\n"
-         ":ADDRESS: %^{ADDRESS}\n"
-         ":BIRTHDAY: %^{BIRHDAY}t\n"
-         ":TITLE: %^{TITLE}\n"
-         ":END:"))))
-
-  ;; Setup refiling
+    ;; Setup refiling
   (org-log-refile t)
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
@@ -602,6 +568,45 @@
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
+
+(use-package doct
+  :ensure t
+  ;;recommended: defer until calling doct
+  :commands (doct))
+
+(setq org-capture-templates
+      '(
+        ;; Capture todo type tasks
+        ;; -------------------
+        ("t" "Todo" entry (file "inbox.org")
+         "* TODO  %?")
+        ;; Capture Journal entries
+        ;; -------------------
+        ("j" "Journal" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n%?")
+        ;; Capture with context
+        ;; -------------------
+        ("i" "Index Context")
+        ("it" "Todo with Context" entry (file "inbox.org")
+         "* TODO  %?\n%i\n%a")
+        ("ij" "Journal with Context" entry (file+datetree "journal.org")
+         "\n* %U :JOURNAL:\n%?\n%i\n%a")
+        ;; Capture Contact Information of a person
+        ;; -------------------
+        ("c" "Contacts" entry (file "contacts.org")
+         (concat "* %^{NAME}\n"
+                 ":PROPERTIES:\n"
+                 ":CELLPHONE: %^{CELLPHONE}\n"
+                 ":HOMEPHONE: %^{HOMEPHONE}\n"
+                 ":WORKPHONE: %^{WORKPHONE}\n"
+                 ":EMAIL: %^{EMAIL}\n"
+                 ":EMAIL_ALT: %^{EMAIL_ALT}\n"
+                 ":WEBSITE: %^{WEBSITE}\n"
+                 ":COMPANY: %^{COMPANY}\n"
+                 ":ADDRESS: %^{ADDRESS}\n"
+                 ":BIRTHDAY: %^{BIRHDAY}t\n"
+                 ":TITLE: %^{TITLE}\n"
+                 ":END:"))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
