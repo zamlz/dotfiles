@@ -575,38 +575,64 @@
   :commands (doct))
 
 (setq org-capture-templates
-      '(
-        ;; Capture todo type tasks
-        ;; -------------------
-        ("t" "Todo" entry (file "inbox.org")
-         "* TODO  %?")
-        ;; Capture Journal entries
-        ;; -------------------
-        ("j" "Journal" entry (file+datetree "journal.org")
-         "\n* %U :JOURNAL:\n%?")
-        ;; Capture with context
-        ;; -------------------
-        ("i" "Index Context")
-        ("it" "Todo with Context" entry (file "inbox.org")
-         "* TODO  %?\n%i\n%a")
-        ("ij" "Journal with Context" entry (file+datetree "journal.org")
-         "\n* %U :JOURNAL:\n%?\n%i\n%a")
-        ;; Capture Contact Information of a person
-        ;; -------------------
-        ("c" "Contacts" entry (file "contacts.org")
-         (concat "* %^{NAME}\n"
-                 ":PROPERTIES:\n"
-                 ":CELLPHONE: %^{CELLPHONE}\n"
-                 ":HOMEPHONE: %^{HOMEPHONE}\n"
-                 ":WORKPHONE: %^{WORKPHONE}\n"
-                 ":EMAIL: %^{EMAIL}\n"
-                 ":EMAIL_ALT: %^{EMAIL_ALT}\n"
-                 ":WEBSITE: %^{WEBSITE}\n"
-                 ":COMPANY: %^{COMPANY}\n"
-                 ":ADDRESS: %^{ADDRESS}\n"
-                 ":BIRTHDAY: %^{BIRHDAY}t\n"
-                 ":TITLE: %^{TITLE}\n"
-                 ":END:"))))
+      (doct '(("Todo, Meetings, Projects and more!" :keys "t"
+               :file "inbox.org"
+               :prepend t
+               :template ("* %{todo-state} %^{Description}"
+                          ":PROPERTIES:"
+                          ":Created: %U"
+                          ":END:"
+                          "%?")
+               :children (("TODO" :keys "t"
+                           :todo-state "TODO")
+                          ("ROUTINE" :keys "r"
+                           :todo-state "ROUTINE")
+                          ("PROJECT" :keys "p"
+                           :todo-state "PROJECT")
+                          ("SOMEDAY" :keys "s"
+                           :todo-state "SOMEDAY")
+                          ("MEETING" :keys "m"
+                           :todo-state "MEETING")
+                          ("TODO (context)" :keys "i"
+                           :todo-state "TODO")))
+              ("Journal Entries and Data Capture" :keys "j"
+               :file "journal.org"
+               :template ()
+               :children ()))))
+
+;; (setq org-capture-templates
+;;       '(
+;;         ;; Capture todo type tasks
+;;         ;; -------------------
+;;         ("t" "Todo" entry (file "inbox.org")
+;;          "* TODO  %?")
+;;         ;; Capture Journal entries
+;;         ;; -------------------
+;;         ("j" "Journal" entry (file+datetree "journal.org")
+;;          "\n* %U :JOURNAL:\n%?")
+;;         ;; Capture with context
+;;         ;; -------------------
+;;         ("i" "Index Context")
+;;         ("it" "Todo with Context" entry (file "inbox.org")
+;;          "* TODO  %?\n%i\n%a")
+;;         ("ij" "Journal with Context" entry (file+datetree "journal.org")
+;;          "\n* %U :JOURNAL:\n%?\n%i\n%a")
+;;         ;; Capture Contact Information of a person
+;;         ;; -------------------
+;;         ("c" "Contacts" entry (file "contacts.org")
+;;          (concat "* %^{NAME}\n"
+;;                  ":PROPERTIES:\n"
+;;                  ":CELLPHONE: %^{CELLPHONE}\n"
+;;                  ":HOMEPHONE: %^{HOMEPHONE}\n"
+;;                  ":WORKPHONE: %^{WORKPHONE}\n"
+;;                  ":EMAIL: %^{EMAIL}\n"
+;;                  ":EMAIL_ALT: %^{EMAIL_ALT}\n"
+;;                  ":WEBSITE: %^{WEBSITE}\n"
+;;                  ":COMPANY: %^{COMPANY}\n"
+;;                  ":ADDRESS: %^{ADDRESS}\n"
+;;                  ":BIRTHDAY: %^{BIRHDAY}t\n"
+;;                  ":TITLE: %^{TITLE}\n"
+;;                  ":END:"))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages
