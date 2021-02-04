@@ -210,7 +210,6 @@ Slightly shorten the Eldoc display delay
   (setq eldoc-idle-delay 0.4))
 #+end_src
 
-** Indentation Improvement
 ** Mouse Wheel Scroll Speed
 
 #+begin_src emacs-lisp
