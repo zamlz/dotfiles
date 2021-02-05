@@ -303,14 +303,14 @@
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 0.3))
+  :config (setq which-key-idle-delay 0.1))
 
 (use-package general
   :config
   (general-create-definer zamlz/leader-keys
-:keymaps '(normal insert visual emacs)
-:prefix "SPC"
-:global-prefix "C-SPC"))
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC"))
 
 (use-package hydra)
 
@@ -569,6 +569,23 @@
 (global-set-key (kbd "C-c a") 'org-agenda)
 (global-set-key (kbd "C-c c") 'org-capture)
 
+(zamlz/leader-keys
+  "o"  '(:ignore t :which-key "Org Mode")
+  "oa" '(org-agenda-list :which-key "Org Agenda Weekly View")
+  "oo" '(org-capture :which-key "Org Capture Templates")
+  "oi" '((lambda () (interactive)
+           (find-file (concat org-directory "/inbox.org"))
+           (message "Opened:  %s" (buffer-name)))
+         :which-key "Inbox")
+  "og" '((lambda () (interactive)
+           (find-file (concat org-directory "/gtd.org"))
+           (message "Opened:  %s" (buffer-name)))
+         :which-key "GTD")
+  "oj" '((lambda () (interactive)
+           (find-file (concat org-directory "/journal.org"))
+           (message "Opened:  %s" (buffer-name)))
+         :which-key "Journal"))
+
 (use-package doct
   :ensure t
   ;;recommended: defer until calling doct
@@ -577,46 +594,50 @@
 (setq org-capture-templates
       (doct '(("Todo, Meetings, Projects and more!" :keys "t"
                :file "inbox.org"
+               :type entry
                :prepend t
                :template ("* %{todo-state} %^{Description}"
                           ":PROPERTIES:"
                           ":Created: %U"
                           ":END:"
                           "%?")
-               :children (("TODO" :keys "t"
+               :children (("Todo Task" :keys "t"
                            :todo-state "TODO")
-                          ("ROUTINE" :keys "r"
+                          ("Routine/Habit" :keys "r"
                            :todo-state "ROUTINE")
-                          ("PROJECT" :keys "p"
+                          ("Project Group" :keys "p"
                            :todo-state "PROJECT")
-                          ("SOMEDAY" :keys "s"
+                          ("Someday/Maybe" :keys "s"
                            :todo-state "SOMEDAY")
-                          ("MEETING" :keys "m"
+                          ("Meeting/Appointment" :keys "m"
                            :todo-state "MEETING")
-                          ("TODO (context)" :keys "i"
-                           :todo-state "TODO")))
+                          ("Todo Task (context)" :keys "i"
+                           :todo-state "TODO"
+                           :template ("* %{todo-state} %^{Description}"
+                                      ":PROPERTIES:"
+                                      ":Created: %U"
+                                      ":END:"
+                                      "%?"
+                                      "%i"
+                                      "%a"))))
               ("Journal Entries and Data Capture" :keys "j"
                :file "journal.org"
-               :template ()
-               :children ()))))
+               :type entry
+               :datetree t
+               :template ("* %U :JOURNAL:%{extra-tags}"
+                          "%?")
+               :children (("Journal (now)" :keys "j"
+                           :extra-tags "REALITY:")
+                          ("Journal (dream)" :keys "d"
+                           :extra-tags "DREAM:")
+                          ("Journal (context)" :keys "i"
+                           :template ("* %U :JOURNAL:CONTEXT:"
+                                      "%?"
+                                      "%i"
+                                      "%a")))))))
 
 ;; (setq org-capture-templates
 ;;       '(
-;;         ;; Capture todo type tasks
-;;         ;; -------------------
-;;         ("t" "Todo" entry (file "inbox.org")
-;;          "* TODO  %?")
-;;         ;; Capture Journal entries
-;;         ;; -------------------
-;;         ("j" "Journal" entry (file+datetree "journal.org")
-;;          "\n* %U :JOURNAL:\n%?")
-;;         ;; Capture with context
-;;         ;; -------------------
-;;         ("i" "Index Context")
-;;         ("it" "Todo with Context" entry (file "inbox.org")
-;;          "* TODO  %?\n%i\n%a")
-;;         ("ij" "Journal with Context" entry (file+datetree "journal.org")
-;;          "\n* %U :JOURNAL:\n%?\n%i\n%a")
 ;;         ;; Capture Contact Information of a person
 ;;         ;; -------------------
 ;;         ("c" "Contacts" entry (file "contacts.org")
