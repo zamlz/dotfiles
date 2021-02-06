@@ -262,7 +262,6 @@ Super useful for auto-pairing certain characters. However we should make use of 
 #+end_src
 
 * UI Customization
-
 ** Startup Dashboard
 
 The default landing page isn't quite nice. I originally had it configured to display the scratch page, but then I really wanted like a menu to quickly access my stuff.
@@ -398,8 +397,23 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . hes-mode))
 #+end_src
 
-** UI Redux
+** Distraction Free Edition
 
+Add sublime like distraction-free mode editing.
+Added mainly for auto-centering my buffers.
+
+#+begin_src emacs-lisp
+(require 'sublimity)
+(require 'sublimity-scroll)
+;; (require 'sublimity-map) ;; experimental
+(require 'sublimity-attractive)
+
+(setq sublimity-attractive-centering-width zamlz/default-screen-width)
+(setq sublimity-scroll-weight 1)
+(sublimity-mode 1)
+#+end_src
+
+** UI Redux
 *** Tabs                                                         :DISABLED:
 
 Currently have this disabled because I don't really like the way it looks right now. Maybe that might change in the future. It also seems like not something you'd want to use if I plan on having exwm as a window manager.
@@ -903,11 +917,12 @@ Center the org buffers and remove line numbers to reduce visual clutter.
 #+begin_src emacs-lisp
 (defun zamlz/org-mode-visual-fill ()
   (setq visual-fill-column-width zamlz/default-screen-width
-    visual-fill-column-center-text t)
+        ;; visual-fill-column-extra-text-width (0 . 1000)
+        visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
-(use-package visual-fill-column
-  :hook (org-mode . zamlz/org-mode-visual-fill))
+;; (use-package visual-fill-column
+;;   :hook (org-mode . zamlz/org-mode-visual-fill))
 #+end_src
 
 ** Org Keybindings

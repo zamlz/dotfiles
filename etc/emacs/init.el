@@ -252,6 +252,15 @@
 (use-package highlight-escape-sequences
   :hook (prog-mode . hes-mode))
 
+(require 'sublimity)
+(require 'sublimity-scroll)
+;; (require 'sublimity-map) ;; experimental
+(require 'sublimity-attractive)
+
+(setq sublimity-attractive-centering-width zamlz/default-screen-width)
+(setq sublimity-scroll-weight 1)
+(sublimity-mode 1)
+
 ;; (use-package centaur-tabs
 ;;   :demand
 ;;   :config
@@ -559,11 +568,12 @@
 
 (defun zamlz/org-mode-visual-fill ()
   (setq visual-fill-column-width zamlz/default-screen-width
-    visual-fill-column-center-text t)
+        ;; visual-fill-column-extra-text-width (0 . 1000)
+        visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
-(use-package visual-fill-column
-  :hook (org-mode . zamlz/org-mode-visual-fill))
+;; (use-package visual-fill-column
+;;   :hook (org-mode . zamlz/org-mode-visual-fill))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
