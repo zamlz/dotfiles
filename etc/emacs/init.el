@@ -182,11 +182,7 @@
   (setq dashboard-set-navigator t)
   (setq dashboard-set-init-info t)
   (setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
-  (setq dashboard-items '((recents   . 10)
-              (bookmarks . 5)
-              (projects  . 10)
-              (agenda    . 10)
-              (registers . 5)))
+  (setq dashboard-items '())
   (dashboard-modify-heading-icons '((bookmarks . "book")))
   (dashboard-setup-startup-hook))
 
@@ -723,3 +719,5 @@
 (require 'beancount)
 (add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
 (add-hook 'beancount-mode-hook #'outline-minor-mode)
+
+(use-package xkcd)

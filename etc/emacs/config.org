@@ -281,11 +281,7 @@ The default landing page isn't quite nice. I originally had it configured to dis
   (setq dashboard-set-navigator t)
   (setq dashboard-set-init-info t)
   (setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
-  (setq dashboard-items '((recents   . 10)
-              (bookmarks . 5)
-              (projects  . 10)
-              (agenda    . 10)
-              (registers . 5)))
+  (setq dashboard-items '())
   (dashboard-modify-heading-icons '((bookmarks . "book")))
   (dashboard-setup-startup-hook))
 #+end_src
@@ -1123,7 +1119,6 @@ Enables habit tracking in =org-mode= via =org-habit=.
 #+end_src
 
 * Misc Settings
-
 ** Vterm
 
 Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
@@ -1142,4 +1137,12 @@ Beancount is a plain text accounting ledger-like program that I've been experime
 (require 'beancount)
 (add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
 (add-hook 'beancount-mode-hook #'outline-minor-mode)
+#+end_src
+
+** xkcd
+
+A simple plugin for getting the today's xkcd comic.
+
+#+begin_src emacs-lisp
+(use-package xkcd)
 #+end_src
