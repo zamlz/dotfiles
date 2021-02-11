@@ -187,12 +187,12 @@
   (dashboard-setup-startup-hook))
 
 ;; Set default face
-(set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
+;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
+(set-face-attribute 'default nil :font "Fira Code" :height 100)
 ;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
 
 ;; Set the fixed pitch face
-(set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
+;; (set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
 
 ;; Set the variable pitch face
 ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
