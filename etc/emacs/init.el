@@ -195,7 +195,7 @@
 (set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
 
 ;; Set the variable pitch face
-(set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
+;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
 
 (use-package all-the-icons)
 
@@ -247,15 +247,6 @@
 
 (use-package highlight-escape-sequences
   :hook (prog-mode . hes-mode))
-
-(require 'sublimity)
-(require 'sublimity-scroll)
-;; (require 'sublimity-map) ;; experimental
-(require 'sublimity-attractive)
-
-(setq sublimity-attractive-centering-width zamlz/default-screen-width)
-(setq sublimity-scroll-weight 1)
-(sublimity-mode 1)
 
 ;; (use-package centaur-tabs
 ;;   :demand
@@ -464,35 +455,35 @@
   ;; Converts bullet lists to not use the - character but the • character
   (font-lock-add-keywords 'org-mode
     '(("^ *\\([-]\\) "
-    (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+    (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
 
-  ;; Set faces for heading levels
-  ;; for now, keep all at 1.0
-  (dolist (face '((org-level-1 . 3.0)
-    (org-level-2 . 2.5)
-    (org-level-3 . 2.0)
-    (org-level-4 . 1.5)
-    (org-level-5 . 1.0)
-    (org-level-6 . 1.0)
-    (org-level-7 . 1.0)
-    (org-level-8 . 1.0)))
-    (set-face-attribute (car face) nil
-                        :font "Fira Code"
-                        :weight 'regular
-                        :height (cdr face)))
+  ;; ;; Set faces for heading levels
+  ;; ;; for now, keep all at 1.0
+  ;; (dolist (face '((org-level-1 . 3.0)
+  ;;   (org-level-2 . 2.5)
+  ;;   (org-level-3 . 2.0)
+  ;;   (org-level-4 . 1.5)
+  ;;   (org-level-5 . 1.0)
+  ;;   (org-level-6 . 1.0)
+  ;;   (org-level-7 . 1.0)
+  ;;   (org-level-8 . 1.0)))
+  ;;   (set-face-attribute (car face) nil
+  ;;                       :font "Fira Code"
+  ;;                       :weight 'regular
+  ;;                       :height (cdr face)))
 
-    ;; ensure that anything that should be fixed-width in org appears that way
-  (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-  (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
-  (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-  (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+  ;;   ;; ensure that anything that should be fixed-width in org appears that way
+  ;; (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
+  ;; (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  ;; (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
+  ;; (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
+  ;; (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+  ;; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+  ;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
 
 (defun zamlz/org-mode-setup ()
   (org-indent-mode)
-  (variable-pitch-mode 1)
+  ;; (variable-pitch-mode 1)
   (visual-line-mode +1)
   (setq evil-auto-indent nil)
   (setq fill-column 10000000))
@@ -569,8 +560,8 @@
         visual-fill-column-center-text t)
   (visual-fill-column-mode 1))
 
-;; (use-package visual-fill-column
-;;   :hook (org-mode . zamlz/org-mode-visual-fill))
+ (use-package visual-fill-column
+   :hook (org-mode . zamlz/org-mode-visual-fill))
 
 (global-set-key (kbd "C-c l") 'org-store-link)
 (global-set-key (kbd "C-c a") 'org-agenda)
