@@ -540,17 +540,18 @@
 (setq org-todo-keywords
       (quote ((sequence "TODO(t)" "|" "DONE(d)")
               (sequence "ROUTINE(r)" "|" "DONE(d)")
-              (sequence "PROJECT(p)" "|" "DONE(d)" "CANCELLED(c)")
+              (sequence "PROJECT(p)" "|" "COMPLETED(d)" "CANCELLED(c)")
               (sequence "WAITING(w)" "|")
               (sequence "|" "CANCELLED(c)")
               (sequence "SOMEDAY(s)" "|" "CANCELLED(c)")
-              (sequence "MEETING" "|"))))
+              (sequence "MEETING(m)" "|"))))
 
 (setq org-todo-keyword-faces
   '(("DONE"      . (:background "#98be65" :foreground "#ffffff" :weight bold))
     ("TODO"      . (:background "#ff6c6b" :foreground "#ffffff" :weight bold))
     ("ROUTINE"   . (:background "#3f444a" :foreground "#51afef" :weight bold))
     ("PROJECT"   . (:background "#51afef" :foreground "#ffffff" :weight bold))
+    ("COMPLETED" . (:background "#98be65" :foreground "#ffffff" :weight bold))
     ("WAITING"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
     ("CANCELLED" . (:background "#181818" :foreground "#ffffff" :weight bold))
     ("SOMEDAY"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
