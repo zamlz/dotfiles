@@ -234,7 +234,7 @@
 
 ;;(use-package gruvbox-theme
 ;;  :init (load-theme 'gruvbox-dark-hard t))
-;;(set-background-color "black")
+(set-background-color "black")
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
@@ -490,7 +490,7 @@
   ;; Converts bullet lists to not use the - character but the • character
   (font-lock-add-keywords 'org-mode
     '(("^ *\\([-]\\) "
-    (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•")))))))
+       (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
 
   ;; ;; Set faces for heading levels
   ;; ;; for now, keep all at 1.0
@@ -509,12 +509,13 @@
 
   ;;   ;; ensure that anything that should be fixed-width in org appears that way
   ;; (set-face-attribute 'org-block nil :foreground nil :inherit 'fixed-pitch)
-  ;; (set-face-attribute 'org-code nil   :inherit '(shadow fixed-pitch))
+  ;; (set-face-attribute 'org-code nil :inherit '(shadow fixed-pitch)
   ;; (set-face-attribute 'org-table nil   :inherit '(shadow fixed-pitch))
   ;; (set-face-attribute 'org-verbatim nil :inherit '(shadow fixed-pitch))
   ;; (set-face-attribute 'org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
   ;; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
   ;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
+  )
 
 (defun zamlz/org-mode-setup ()
   (org-indent-mode)
