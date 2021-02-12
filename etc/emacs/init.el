@@ -331,6 +331,23 @@
 (zamlz/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
+;; Function to toggle transparency
+(defun zamlz/toggle-transparency ()
+   (interactive)
+   (let ((alpha (frame-parameter nil 'alpha)))
+     (set-frame-parameter
+      nil 'alpha
+      (if (eql (cond ((numberp alpha) alpha)
+                     ((numberp (cdr alpha)) (cdr alpha))
+                     ;; Also handle undocumented (<active> <inactive>) form.
+                     ((numberp (cadr alpha)) (cadr alpha)))
+               100)
+          '(85 . 50) '(100 . 100)))))
+
+;; Add this function to the leader keys
+(zamlz/leader-keys
+  "tx" '(zamlz/toggle-transparency :which-key "transparency"))
+
 (use-package ivy
   :defer 0.1
   :diminish
@@ -719,6 +736,8 @@
 
 (use-package vterm
   :ensure t)
+
+(use-package ledger-mode)
 
 (add-to-list 'load-path "~/.emacs.d/beancount-mode")
 (require 'beancount)

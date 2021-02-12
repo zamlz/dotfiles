@@ -537,6 +537,27 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
+*** Transparency Control
+
+#+begin_src emacs-lisp
+;; Function to toggle transparency
+(defun zamlz/toggle-transparency ()
+   (interactive)
+   (let ((alpha (frame-parameter nil 'alpha)))
+     (set-frame-parameter
+      nil 'alpha
+      (if (eql (cond ((numberp alpha) alpha)
+                     ((numberp (cdr alpha)) (cdr alpha))
+                     ;; Also handle undocumented (<active> <inactive>) form.
+                     ((numberp (cadr alpha)) (cadr alpha)))
+               100)
+          '(85 . 50) '(100 . 100)))))
+
+;; Add this function to the leader keys
+(zamlz/leader-keys
+  "tx" '(zamlz/toggle-transparency :which-key "transparency"))
+#+end_src
+
 ** Autocompletion Engine
 
 *** Ivy, Counsel, and Swiper
@@ -1126,7 +1147,7 @@ Enables habit tracking in =org-mode= via =org-habit=.
         org-roam-server-network-label-wrap-length 20))
 #+end_src
 
-* Misc Settings
+* Misc Packages
 ** Vterm
 
 Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
@@ -1134,6 +1155,11 @@ Installs a better virtual terminal to use within emacs. I'm just playing around 
 #+begin_src emacs-lisp
 (use-package vterm
   :ensure t)
+#+end_src
+** Ledger
+
+#+begin_src emacs-lisp
+(use-package ledger-mode)
 #+end_src
 
 ** Beancount
