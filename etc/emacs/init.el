@@ -502,8 +502,7 @@
 
   ;; Setup directories
   (org-directory "~/usr/org")
-  (org-agenda-files (list org-directory
-      (concat org-directory "/notes")))
+  (org-agenda-files (list org-directory))
 
   ;; Add some nice visuals changes
   (org-ellipsis " ▾")
