@@ -168,6 +168,16 @@
   :config
   (setq custom-file (concat user-emacs-directory "to-be-dumped.el")))
 
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :custom ((dired-listing-switches "-lahF --group-directories-first"))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-up-directory
+    "l" 'dired-find-file))
+
 ;; no default startup screen!
 ;; (setq inhibit-startup-message t)
 
@@ -203,13 +213,6 @@
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
-
-;; (use-package powerline
-;;   :init (powerline-default-theme))
-
-;; (use-package smart-mode-line
-;;    :config
-;;    (sml/setup))
 
 (add-to-list 'custom-theme-load-path "~/etc/emacs/themes/")
 
@@ -637,25 +640,6 @@
                                       "%?"
                                       "%i"
                                       "%a")))))))
-
-;; (setq org-capture-templates
-;;       '(
-;;         ;; Capture Contact Information of a person
-;;         ;; -------------------
-;;         ("c" "Contacts" entry (file "contacts.org")
-;;          (concat "* %^{NAME}\n"
-;;                  ":PROPERTIES:\n"
-;;                  ":CELLPHONE: %^{CELLPHONE}\n"
-;;                  ":HOMEPHONE: %^{HOMEPHONE}\n"
-;;                  ":WORKPHONE: %^{WORKPHONE}\n"
-;;                  ":EMAIL: %^{EMAIL}\n"
-;;                  ":EMAIL_ALT: %^{EMAIL_ALT}\n"
-;;                  ":WEBSITE: %^{WEBSITE}\n"
-;;                  ":COMPANY: %^{COMPANY}\n"
-;;                  ":ADDRESS: %^{ADDRESS}\n"
-;;                  ":BIRTHDAY: %^{BIRHDAY}t\n"
-;;                  ":TITLE: %^{TITLE}\n"
-;;                  ":END:"))))
 
 (org-babel-do-load-languages
  'org-babel-load-languages

@@ -261,6 +261,20 @@ Super useful for auto-pairing certain characters. However we should make use of 
   (setq custom-file (concat user-emacs-directory "to-be-dumped.el")))
 #+end_src
 
+** Dired Customization
+
+#+begin_src emacs-lisp
+(use-package dired
+  :ensure nil
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :custom ((dired-listing-switches "-lahF --group-directories-first"))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-up-directory
+    "l" 'dired-find-file))
+#+end_src
+
 * UI Customization
 ** Startup Dashboard
 
@@ -306,10 +320,6 @@ I have a lot of fonts commented out right now because I can't decide on which on
 ** Themes and Appearance
 *** Modeline
 
-Please make sure that only one of these are ever enabled at a time!
-
-**** Doom Modeline
-
 To use =Doom-Modeline=, we need to have some custom icons installed. However, they must be manually installed via the following command (=M-x all-the-icons-install-fonts=)
 
 #+begin_src emacs-lisp
@@ -319,25 +329,6 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
   :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
-#+end_src
-
-**** Powerline
-
-An alternative to =doom-modeline=
-
-#+begin_src emacs-lisp
-;; (use-package powerline
-;;   :init (powerline-default-theme))
-#+end_src
-
-**** Smart Modeline
-
-Another alternative, this one is the most customizable!
-
-#+begin_src emacs-lisp
-;; (use-package smart-mode-line
-;;    :config
-;;    (sml/setup))
 #+end_src
 
 *** Color Theme
@@ -1005,25 +996,6 @@ Org mode template definitions in the doct format
                                       "%?"
                                       "%i"
                                       "%a")))))))
-
-;; (setq org-capture-templates
-;;       '(
-;;         ;; Capture Contact Information of a person
-;;         ;; -------------------
-;;         ("c" "Contacts" entry (file "contacts.org")
-;;          (concat "* %^{NAME}\n"
-;;                  ":PROPERTIES:\n"
-;;                  ":CELLPHONE: %^{CELLPHONE}\n"
-;;                  ":HOMEPHONE: %^{HOMEPHONE}\n"
-;;                  ":WORKPHONE: %^{WORKPHONE}\n"
-;;                  ":EMAIL: %^{EMAIL}\n"
-;;                  ":EMAIL_ALT: %^{EMAIL_ALT}\n"
-;;                  ":WEBSITE: %^{WEBSITE}\n"
-;;                  ":COMPANY: %^{COMPANY}\n"
-;;                  ":ADDRESS: %^{ADDRESS}\n"
-;;                  ":BIRTHDAY: %^{BIRHDAY}t\n"
-;;                  ":TITLE: %^{TITLE}\n"
-;;                  ":END:"))))
 #+end_src
 
 ** Literate Programming with Babel
