@@ -271,8 +271,8 @@ Super useful for auto-pairing certain characters. However we should make use of 
   :custom ((dired-listing-switches "-lahF --group-directories-first"))
   :config
   (evil-collection-define-key 'normal 'dired-mode-map
-    "h" 'dired-up-directory
-    "l" 'dired-find-file))
+    "h" 'dired-single-up-directory
+    "l" 'dired-single-buffer))
 #+end_src
 
 * UI Customization
@@ -595,7 +595,6 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 #+end_src
 
 ** Documentation Redux
-
 *** Helpful Help Commands
 
 Improves the documentation shown when running one of emacs's =describe-*= functions.
@@ -611,6 +610,34 @@ Improves the documentation shown when running one of emacs's =describe-*= functi
   ([remap describe-command] . helpful-command)
   ([remap describe-variable] . counsel-describe-variable)
   ([remap describe-key] . helpful-key))
+#+end_src
+
+** Dired Improvements
+*** Single Dired Buffer
+
+This doesn't prevent dired from having multiple buffers open at once, rather, it forces dired to not create a new buffer whenever a new directory is open.
+
+#+begin_src emacs-lisp
+(use-package dired-single)
+#+end_src
+
+*** Icons for Dired
+
+#+begin_src emacs-lisp
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode))
+#+end_src
+
+*** Hide Dotfiles
+
+Hide hidden files from dired buffers (toggleable)
+
+#+begin_src emacs-lisp
+(use-package dired-hide-dotfiles
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "H" 'dired-hide-dotfiles-mode))
 #+end_src
 
 * Development and Project Management
