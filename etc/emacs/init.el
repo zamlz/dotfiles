@@ -198,8 +198,10 @@
 
 ;; Set default face
 ;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-(set-face-attribute 'default nil :font "Fira Code" :height 100)
+;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
+(set-face-attribute 'default nil :font "Dina" :height 100)
 ;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
+;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
 
 ;; Set the fixed pitch face
 ;; (set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
@@ -234,7 +236,8 @@
 
 ;;(use-package gruvbox-theme
 ;;  :init (load-theme 'gruvbox-dark-hard t))
-(set-background-color "black")
+
+;; (set-background-color "black")
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
@@ -587,7 +590,8 @@
   :after org
   :hook (org-mode . org-bullets-mode)
   :custom
-  (org-bullets-bullet-list '("◉" "●" "○" "●" "○" "●" "○")))
+  ;; (org-bullets-bullet-list '("◉" "●" "○" "●" "○" "●" "○")))
+  (org-bullets-bullet-list '("◇")))
 
 (defun zamlz/org-mode-visual-fill ()
   (setq visual-fill-column-width zamlz/default-screen-width
@@ -708,10 +712,11 @@
 (setq org-habit-show-habits-only-for-today t)
 (setq org-habit-show-all-today t)
 
+(setq org-roam-directory "~/usr/notes/")
+
 (use-package org-roam
   :ensure t
   :hook (after-init . org-roam-mode)
-  :custom (org-roam-directory "~/usr/notes/")
   :bind (:map org-roam-mode-map
          (("C-c n l" . org-roam)
          ("C-c n f" . org-roam-find-file)
@@ -720,20 +725,37 @@
          (("C-c n i" . org-roam-insert))
          (("C-c n I" . org-roam-insert-immediate))))
 
+(setq org-roam-dailies-directory "daily/")
+
+(setq org-roam-dailies-capture-templates
+      '(("d" "default" entry
+         #'org-roam-capture--get-point
+         "* %U\n%?"
+         :file-name "daily/%<%Y-%m-%d>"
+         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: JOURNAL\n\n"
+         :olp ("[[file:./20210212192038-daily_journal.org][Daily Journal Entry]]"))))
+
+(zamlz/leader-keys
+  "n"  '(:ignore t :which-key "Org Roam Notes")
+  "nt" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
+  "ny" '(org-roam-dailies-capture-yesterday :which-key "Roam Daily Capture Yesterday"))
+
 (use-package org-roam-server
   :ensure t
-  :config
-  (setq org-roam-server-host "127.0.0.1"
-        org-roam-server-port 8080
-        org-roam-server-authenticate nil
-        org-roam-server-export-inline-images t
-        org-roam-server-serve-files nil
-        org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
-        org-roam-server-network-poll t
-        org-roam-server-network-arrows nil
-        org-roam-server-network-label-truncate t
-        org-roam-server-network-label-truncate-length 60
-        org-roam-server-network-label-wrap-length 20))
+  :custom
+  (org-roam-server-host "127.0.0.1"
+   org-roam-server-port 8080
+   org-roam-server-authenticate nil
+   org-roam-server-export-inline-images t
+   org-roam-server-serve-files nil
+   org-roam-server-served-file-extensions '("pdf" "mp4" "ogv")
+   org-roam-server-network-poll t
+   org-roam-server-network-arrows t
+   org-roam-server-network-label-truncate t
+   org-roam-server-network-label-truncate-length 60
+   org-roam-server-network-label-wrap-length 20)
+  :init
+  (org-roam-server-mode))
 
 (use-package vterm
   :ensure t)
