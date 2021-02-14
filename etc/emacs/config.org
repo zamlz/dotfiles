@@ -307,8 +307,8 @@ I have a lot of fonts commented out right now because I can't decide on which on
 #+begin_src emacs-lisp
 ;; Set default face
 ;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
-(set-face-attribute 'default nil :font "Dina" :height 100)
+(set-face-attribute 'default nil :font "Fira Code" :height 100)
+;; (set-face-attribute 'default nil :font "Dina" :height 100)
 ;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
 ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
 
@@ -338,7 +338,11 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
 I have a couple themes here. Eventually I want to setup my own custom theme but for now this will have to do.
 
 #+begin_src emacs-lisp
+(use-package autothemer
+  :ensure t)
+
 (add-to-list 'custom-theme-load-path "~/etc/emacs/themes/")
+;; (load-theme 'gruvbox-black t)
 
 (use-package doom-themes
   :config
@@ -389,6 +393,13 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 
 (use-package highlight-escape-sequences
   :hook (prog-mode . hes-mode))
+#+end_src
+
+*** Rainbow Mode
+
+#+begin_src emacs-lisp
+(use-package rainbow-mode
+  :init (rainbow-mode))
 #+end_src
 
 ** UI Redux

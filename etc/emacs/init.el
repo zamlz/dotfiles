@@ -198,8 +198,8 @@
 
 ;; Set default face
 ;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
-(set-face-attribute 'default nil :font "Dina" :height 100)
+(set-face-attribute 'default nil :font "Fira Code" :height 100)
+;; (set-face-attribute 'default nil :font "Dina" :height 100)
 ;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
 ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
 
@@ -216,7 +216,11 @@
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
+(use-package autothemer
+  :ensure t)
+
 (add-to-list 'custom-theme-load-path "~/etc/emacs/themes/")
+;; (load-theme 'gruvbox-black t)
 
 (use-package doom-themes
   :config
@@ -257,6 +261,9 @@
 
 (use-package highlight-escape-sequences
   :hook (prog-mode . hes-mode))
+
+(use-package rainbow-mode
+  :init (rainbow-mode))
 
 ;; (use-package centaur-tabs
 ;;   :demand
