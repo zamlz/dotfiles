@@ -54,17 +54,21 @@
   (mode-line-inactive (:background "#090909"))
 
   ;; Org Mode
-  (org-document-title (:foreground gb-green))
-  (org-document-info (:foreground gb-green))
-  (org-level-1 (:foreground gb-blue))
-  (org-level-2 (:foreground gb-green))
-  (org-level-3 (:foreground gb-yellow))
+  (org-document-title (:foreground gb-red))
+  (org-document-info (:foreground gb-red))
+  (org-level-1 (:foreground gb-green))
+  (org-level-2 (:foreground gb-blue))
+  (org-level-3 (:foreground gb-magenta))
   (org-level-4 (:foreground gb-cyan))
-  (org-level-5 (:foreground gb-magenta))
+  (org-level-5 (:foreground gb-cyan))
+  (org-headline-done (:foreground gb-drk-grey))
+  (org-priority (:foreground gb-yellow))
   (org-ellipsis (:foreground gb-drk-grey :underline nil))
   (org-block-begin-line (:background gb-black))
   (org-block-end-line (:background gb-black))
   (org-block (:background "#090909"))
+  (org-table (:foreground gb-yellow))
+  (org-formula (:foreground gb-cyan))
 
   ))
 

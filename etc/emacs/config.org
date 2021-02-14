@@ -945,8 +945,8 @@ The default bullets are asteriks and thats just plain ugly. We change it to some
   :after org
   :hook (org-mode . org-bullets-mode)
   :custom
-  ;; (org-bullets-bullet-list '("◉" "●" "○" "●" "○" "●" "○")))
-  (org-bullets-bullet-list '("◇")))
+  (org-bullets-bullet-list '("◉" "●" "○" "●" "○" "●" "○")))
+  ;; (org-bullets-bullet-list '("◇")))
 #+end_src
 
 ** Center Org buffers
