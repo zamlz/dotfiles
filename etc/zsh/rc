@@ -45,9 +45,11 @@ eval "$(register-python-argcomplete pubs)"
 
 # Thanks to this wonderful command in ZSH prompt is always regenerated
 # after every command!
-precmd() {
-    export PROMPT=$(prompt_generate)
-}
+#precmd() {
+#    export PROMPT=$(prompt_generate)
+#}
+
+export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
 
 # Update our ls colors
 eval $(dircolors -b $HOME/lib/shell/lscolors)
