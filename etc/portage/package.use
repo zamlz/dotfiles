@@ -171,6 +171,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by dev-lang/julia-1.4.0-r2::gentoo
 # required by @apps-devel
 =sci-libs/fftw-3.3.8-r1 threads
+=sci-libs/fftw-3.3.9 threads
 
 # required by sys-boot/os-prober-1.77::gentoo
 # required by sys-boot/os-prober (argument)
