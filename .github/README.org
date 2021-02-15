@@ -1,0 +1,6 @@
+#+TITLE: My Personal Dotfiles
+#+AUTHOR: Amlesh Sivanantham
+
+[[./xkcd.png]]
+
+It's actually incredible how accurate this xckd commic is...
