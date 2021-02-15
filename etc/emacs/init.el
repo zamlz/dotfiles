@@ -122,7 +122,7 @@
   :ensure nil
   :config
   (setq create-lockfiles nil ; don't create .# files (crashes 'npm start')
-        backup-directory-alist '(("" . "~/.emacs.d/backup"))))
+        backup-directory-alist `(("." . "~/.emacs.d/backup"))))
 
 (use-package autorevert
   :ensure nil
@@ -185,7 +185,7 @@
 (use-package dashboard
   :ensure t
   :config
-  (setq dashboard-startup-banner "~/etc/emacs/black-hole.png")
+  (setq dashboard-startup-banner "~/etc/emacs/logo.txt")
   (setq dashboard-center-content t)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
@@ -208,82 +208,6 @@
 
 ;; Set the variable pitch face
 ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
-
-(use-package all-the-icons)
-
-(use-package doom-modeline
-  :ensure t
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))
-
-(use-package autothemer
-  :ensure t)
-
-(add-to-list 'custom-theme-load-path "~/etc/emacs/themes/")
-;; (load-theme 'gruvbox-black t)
-
-(use-package doom-themes
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-nord t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
-;;(use-package gruvbox-theme
-;;  :init (load-theme 'gruvbox-dark-hard t))
-
-;; (set-background-color "black")
-
-;; (use-package spacemacs-theme
-;;   :defer t
-;;   :init (load-theme 'spacemacs-dark t))
-
-;; (load-theme 'xresources t)
-
-;; (use-package seti-theme
-;;   :defer t
-;;   :init (load-theme 'seti t))
-
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
-
-(use-package highlight-numbers
-  :hook (prog-mode . highlight-numbers-mode))
-
-(use-package highlight-escape-sequences
-  :hook (prog-mode . hes-mode))
-
-(use-package rainbow-mode
-  :init (rainbow-mode))
-
-;; (use-package centaur-tabs
-;;   :demand
-;;   :config
-;;   (centaur-tabs-mode t)
-;;   (centaur-tabs-headline-match)
-;;   (setq centaur-tabs-style "bar")
-;;   (setq centaur-tabs-set-icons t)
-;;   (setq centaur-tabs-gray-out-icons 'buffer)
-;;   (setq centaur-tabs-height 24)
-;;   (setq centaur-tabs-set-bar 'over)
-;;   (setq centaur-tabs-set-modified-marker t)
-;;   (setq centaur-tabs-modified-marker  "●")
-;;   :bind
-;;   ("C-<prior>" . centaur-tabs-backward)
-;;   ("C-<next>"  . centaur-tabs-forward))
-
-(use-package neotree
-  :config (setq neo-theme (if (display-graphic-p) 'icons 'arrow))
-  :bind ("<f8>" . neotree-toggle))
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -341,23 +265,6 @@
 (zamlz/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
-;; Function to toggle transparency
-(defun zamlz/toggle-transparency ()
-   (interactive)
-   (let ((alpha (frame-parameter nil 'alpha)))
-     (set-frame-parameter
-      nil 'alpha
-      (if (eql (cond ((numberp alpha) alpha)
-                     ((numberp (cdr alpha)) (cdr alpha))
-                     ;; Also handle undocumented (<active> <inactive>) form.
-                     ((numberp (cadr alpha)) (cadr alpha)))
-               100)
-          '(85 . 50) '(100 . 100)))))
-
-;; Add this function to the leader keys
-(zamlz/leader-keys
-  "tx" '(zamlz/toggle-transparency :which-key "transparency"))
-
 (use-package ivy
   :defer 0.1
   :diminish
@@ -398,6 +305,75 @@
   :config
   ;;(setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
   (ivy-rich-mode))
+
+(use-package all-the-icons)
+
+(use-package doom-modeline
+  :ensure t
+  :init (doom-modeline-mode 1)
+  :custom ((doom-modeline-height 15)))
+
+(use-package autothemer
+  :ensure t)
+
+(add-to-list 'custom-theme-load-path "~/etc/emacs/themes/")
+(load-theme 'gruvbox-black t)
+
+;; (use-package doom-themes
+;;   :config
+;;   ;; Global settings (defaults)
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   (load-theme 'doom-nord t)
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
+
+;;(use-package gruvbox-theme
+;;  :init (load-theme 'gruvbox-dark-hard t))
+
+;; (set-background-color "black")
+
+;; (use-package spacemacs-theme
+;;   :defer t
+;;   :init (load-theme 'spacemacs-dark t))
+
+;; (load-theme 'xresources t)
+
+;; (use-package seti-theme
+;;   :defer t
+;;   :init (load-theme 'seti t))
+
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+
+(use-package highlight-numbers
+  :hook (prog-mode . highlight-numbers-mode))
+
+(use-package highlight-escape-sequences
+  :hook (prog-mode . hes-mode))
+
+(use-package rainbow-mode
+  :init (rainbow-mode))
+
+;; Set transparency of emacs
+(defun zamlz/set-transparency (value)
+  "Sets the transparency of the frame window. 0=transparent/100=opaque"
+  (interactive "nTransparency Value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
+
+;; Add the transparency function to my leader keys
+(zamlz/leader-keys
+  "tx" '(zamlz/set-transparency :which-key "Set transparency"))
+
+;; Set the default transparency
+(zamlz/set-transparency 80)
 
 (use-package helpful
   :ensure t
@@ -582,16 +558,27 @@
               (sequence "SOMEDAY(s)" "|" "CANCELLED(c)")
               (sequence "MEETING(m)" "|"))))
 
+;; (setq org-todo-keyword-faces
+;;   '(("DONE"      . (:background "#98be65" :foreground "#ffffff" :weight bold))
+;;     ("TODO"      . (:background "#ff6c6b" :foreground "#ffffff" :weight bold))
+;;     ("ROUTINE"   . (:background "#3f444a" :foreground "#51afef" :weight bold))
+;;     ("PROJECT"   . (:background "#51afef" :foreground "#ffffff" :weight bold))
+;;     ("COMPLETED" . (:background "#98be65" :foreground "#ffffff" :weight bold))
+;;     ("WAITING"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
+;;     ("CANCELLED" . (:background "#181818" :foreground "#ffffff" :weight bold))
+;;     ("SOMEDAY"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
+;;     ("MEETING"   . (:background "#a9a1e1" :foreground "#ffffff" :weight bold))))
+
 (setq org-todo-keyword-faces
-  '(("DONE"      . (:background "#98be65" :foreground "#ffffff" :weight bold))
-    ("TODO"      . (:background "#ff6c6b" :foreground "#ffffff" :weight bold))
-    ("ROUTINE"   . (:background "#3f444a" :foreground "#51afef" :weight bold))
-    ("PROJECT"   . (:background "#51afef" :foreground "#ffffff" :weight bold))
-    ("COMPLETED" . (:background "#98be65" :foreground "#ffffff" :weight bold))
-    ("WAITING"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
-    ("CANCELLED" . (:background "#181818" :foreground "#ffffff" :weight bold))
-    ("SOMEDAY"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
-    ("MEETING"   . (:background "#a9a1e1" :foreground "#ffffff" :weight bold))))
+  '(("DONE"      . (:background "#b8bb26" :foreground "#000000" :weight bold))
+    ("TODO"      . (:background "#fb4934" :foreground "#000000" :weight bold))
+    ("ROUTINE"   . (:background "#689d6a" :foreground "#000000" :weight bold))
+    ("PROJECT"   . (:background "#458588" :foreground "#000000" :weight bold))
+    ("COMPLETED" . (:background "#b8bb26" :foreground "#000000" :weight bold))
+    ("WAITING"   . (:background "#d79921" :foreground "#000000" :weight bold))
+    ("CANCELLED" . (:background "#181818" :foreground "#fb4934" :weight bold))
+    ("SOMEDAY"   . (:background "#3f444a" :foreground "#a89984" :weight bold))
+    ("MEETING"   . (:background "#b16286" :foreground "#000000" :weight bold))))
 
 (use-package org-bullets
   :after org

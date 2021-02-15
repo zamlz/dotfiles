@@ -70,6 +70,23 @@
   (org-table (:foreground gb-yellow))
   (org-formula (:foreground gb-cyan))
 
+  ;; Org Agenda
+  (org-agenda-structure (:foreground gb-magenta))
+  (org-agenda-done (:foreground gb-drk-grey))
+  (org-scheduled (:foreground gb-foreground))
+  (org-scheduled-today (:foreground gb-foreground))
+  (org-upcoming-deadline (:foreground gb-cyan))
+  (org-agenda-date-weekend (:foreground gb-lgt-blue))
+  (org-agenda-date (:foreground gb-blue))
+  (org-warning (:foreground gb-red))
+
+  ;; Org Habit
+  (org-habit-clear-future-face (:background gb-black))
+  (org-habit-alert-future-face (:background gb-blue))
+  (org-habit-overdue-future-face (:background gb-red))
+  (org-habit-overdue-face (:background gb-lgt-red))
+  (org-habit-ready-face (:background gb-green))
+
   ))
 
 (provide-theme 'gruvbox-black)
