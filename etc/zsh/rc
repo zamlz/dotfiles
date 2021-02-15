@@ -17,7 +17,6 @@ unsetopt BEEP # turn of audible beeps
 bindkey -v
 
 # Shell Completions
-fpath=($HOME/etc/zsh/completions $fpath)
 autoload -Uz compinit && compinit -d "$HOME/.local/share/zsh/compdump"
 autoload -U bashcompinit && bashcompinit
 autoload -U promptinit && promptinit
@@ -39,9 +38,6 @@ autoload venv
 # Setup ZSH functions
 autoload gpg-utils && gpg-utils
 autoload window-utils && window-utils
-
-# Add local python argparse complete
-eval "$(register-python-argcomplete pubs)"
 
 # Thanks to this wonderful command in ZSH prompt is always regenerated
 # after every command!

@@ -56,9 +56,6 @@ nmap <C-M-j> <Plug>GitGutterNextHunk
 nmap <C-M-k> <Plug>GitGutterPrevHunk
 let g:gitgutter_set_sign_backgrounds = 1
 
-" YouCompleteMe stuff
-" let g:ycm_global_ycm_extra_conf = '~/etc/vim/ycm_extra_conf.py'
-
 " Indent Lines
 "let g:indentLine_char = '.'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
