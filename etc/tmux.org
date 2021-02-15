@@ -1,15 +1,24 @@
-# TMUX RC
+#+TITLE: TMUX - Terminal Multiplexer Configuration
+#+AUTHOR: Amlesh Sivanantham
+#+PROPERTY: header-args:conf :tangle ~/.tmux.conf
 
+* Basic Config
+
+#+begin_src conf
 set -g default-terminal "screen-256color"   # Use 256 colors
 set -g history-limit 100000                 # Scrollback buffer number of lines
- 
+
 # Start window indexing at one instead of zero
 set -g base-index 1
+#+end_src
 
+* Keybindings
+
+#+begin_src conf
 # Set the prefix key and some key bindings to match GNU Screen
 set -g prefix C-b
 #bind-key C-a last-window
-   
+
 # Key bindings for horizontal and vertical panes
 unbind %
 unbind '"'
@@ -25,13 +34,21 @@ unbind-key h
 bind-key h select-pane -L
 unbind-key l
 bind-key l select-pane -R
+#+end_src
 
+* Window Settings
+
+#+begin_src conf
 # Enable window titles
 set -g set-titles on
-     
+
 # Window title string (uses statusbar variables)
 set -g set-titles-string '#T'
-      
+#+end_src
+
+* Status Bar
+
+#+begin_src conf
 # Status bar with load and time
 set -g status-bg '#4e4e4e'
 set -g status-fg '#ffffff'
@@ -41,10 +58,19 @@ set -g window-status-format '#I #W'
 set -g window-status-current-format ' #I #W '
 setw -g window-status-current-bg '#55ff55'
 setw -g window-status-current-fg '#000000'
+#+end_src
 
+* Pane
+
+#+begin_src conf
 # Pane border colors
 set -g pane-active-border-fg '#bbbbbb'
 set -g pane-border-fg '#555555'
+#+end_src
 
+* Reload Config
+
+#+begin_src conf
 # Bind to reload config
 bind r source-file ~/etc/tmuxrc
+#+end_src

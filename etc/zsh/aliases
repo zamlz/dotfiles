@@ -31,7 +31,6 @@ alias dog="pygmentize"
 
 # Config override
 alias neofetch="neofetch --config $HOME/etc/neofetch/rc"
-alias tmux="tmux -f $HOME/etc/tmux/rc"
 
 # Random Stuff
 alias fping="ping -c 3 www.google.com"
