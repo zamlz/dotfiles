@@ -29,10 +29,6 @@ configure_dots() {
     ln -s $d/etc/zsh/rc $d/.zshrc
     mkdir -p $d/.local/share/zsh
 
-    # Setting up git config files
-    echo "Setting up git config files"
-    ln -s $d/etc/git/config $d/.gitconfig
-
     # Setting up gpg agent and ssh
     echo "Setup gpg and ssh files"
     mkdir -p $d/.ssh $d/.gnupg
@@ -70,11 +66,6 @@ configure_dots() {
     echo "Set up zathura config"
     mkdir -p $d/.config/zathura
     ln -s $d/etc/zathura/rc $d/.config/zathura/zathurarc
-
-    # Provide Julia the startup file
-    echo "Providing Julia the startup file"
-    mkdir -p $d/.julia/config
-    ln -s $d/etc/julia/startup.jl $d/.julia/config/startup.jl
 
     # post setup messages
     echo ""
