@@ -1,7 +1,6 @@
 #+TITLE: Emacs Init.el Org Configuration File
 #+AUTHOR: Amlesh Sivanantham
 #+STARTUP: overview
-#+PROPERTY: header-args:emacs-lisp :tangle ./init.el
 
 #+begin_src emacs-lisp
 ;;; ------------------------------------------------------------------------------------------
@@ -26,53 +25,6 @@
 * Emacs Configuration
 
 All configuration found under here use internal packages from within emacs. This is why they all have =:ensure nil= set.
-
-** Garbage Collector Hooks
-
-Supposedly makes the startup a bit more effecient. We also revert the changes to the GC via a hook once the startup has completed.
-
-#+begin_src emacs-lisp
-(defvar file-name-handler-alist-original file-name-handler-alist)
-
-(setq gc-cons-threshold most-positive-fixnum
-      gc-cons-percentage 0.6
-      file-name-handler-alist nil
-      site-run-file nil)
-
-(defvar zamlz/gc-cons-threshold 100000000)
-
-(add-hook 'emacs-startup-hook ; hook run after loading init files
-          (lambda ()
-            (setq gc-cons-threshold zamlz/gc-cons-threshold
-                  gc-cons-percentage 0.1
-                  file-name-handler-alist file-name-handler-alist-original)))
-
-(add-hook 'minibuffer-setup-hook (lambda ()
-                                   (setq gc-cons-threshold (* zamlz/gc-cons-threshold 2))))
-(add-hook 'minibuffer-exit-hook (lambda ()
-                                  (garbage-collect)
-                                  (setq gc-cons-threshold zamlz/gc-cons-threshold)))
-#+end_src
-
-** Package Management
-
-Setup the package manager for use later on downstream.
-
-#+begin_src emacs-lisp
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org"   . "https://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-(setq package-enable-at-startup nil)
-(package-initialize)
-
-;; Setting up the package manager. Install if missing.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-and-compile
-  (setq use-package-always-ensure t))
-#+end_src
 
 ** Basic UI Changes
 
@@ -1072,14 +1024,13 @@ Babel is basically like jupyter notebooks for =org-mode= but its also way more p
 We make use of =org-babel= here to create our config file. This is currently also checking to my dotfiles in case of system rescue reasons.
 
 #+begin_src emacs-lisp
-(defun efs/org-babel-tangle-config ()
-  (when (string-equal (buffer-file-name)
-                      (expand-file-name "~/etc/emacs/config.org"))
-    ;; Dynamic scoping to the rescue
-    (let ((org-confirm-babel-evaluate nil))
-      (org-babel-tangle))))
-
-(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
+;; (defun efs/org-babel-tangle-config ()
+;;   (when (string-equal (buffer-file-name)
+;;                       (expand-file-name "~/etc/emacs.org"))
+;;     ;; Dynamic scoping to the rescue
+;;     (let ((org-confirm-babel-evaluate nil))
+;;       (org-babel-tangle))))
+;; (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 #+end_src
 
 ** LaTeX Inline Preview
