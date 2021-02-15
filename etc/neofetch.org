@@ -1,10 +1,10 @@
 #+TITLE: Neofetch Configuration
 #+AUTHOR: Amlesh Sivanantham
-#+PROPERTY: header-args:conf :tangle ~/.config/neofetch/config :mkdirp yes
+#+PROPERTY: header-args:shell :tangle ~/.config/neofetch/config :mkdirp yes
 
 * I should untangle this config
 
-#+begin_src conf
+#+begin_src shell
 #!/usr/bin/env bash
 #
 # Neofetch config file
