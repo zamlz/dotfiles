@@ -72,5 +72,5 @@ set -g pane-border-fg '#555555'
 
 #+begin_src conf
 # Bind to reload config
-bind r source-file ~/etc/tmuxrc
+bind r source-file ~/.tmux.conf
 #+end_src
