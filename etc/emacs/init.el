@@ -185,7 +185,7 @@
 (use-package dashboard
   :ensure t
   :config
-  (setq dashboard-startup-banner "~/etc/emacs/logo.txt")
+  (setq dashboard-startup-banner "~/lib/emacs-themes/logo.txt")
   (setq dashboard-center-content t)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
@@ -316,7 +316,7 @@
 (use-package autothemer
   :ensure t)
 
-(add-to-list 'custom-theme-load-path "~/etc/emacs/themes/")
+(add-to-list 'custom-theme-load-path "~/lib/emacs-themes/")
 (load-theme 'gruvbox-black t)
 
 ;; (use-package doom-themes

@@ -288,7 +288,7 @@ The default landing page isn't quite nice. I originally had it configured to dis
 (use-package dashboard
   :ensure t
   :config
-  (setq dashboard-startup-banner "~/etc/emacs/logo.txt")
+  (setq dashboard-startup-banner "~/lib/emacs-themes/logo.txt")
   (setq dashboard-center-content t)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
@@ -513,7 +513,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
 (use-package autothemer
   :ensure t)
 
-(add-to-list 'custom-theme-load-path "~/etc/emacs/themes/")
+(add-to-list 'custom-theme-load-path "~/lib/emacs-themes/")
 (load-theme 'gruvbox-black t)
 
 ;; (use-package doom-themes
