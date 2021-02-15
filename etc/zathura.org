@@ -1,0 +1,27 @@
+#+TITLE: Zathura PDF Viewer Configuration
+#+AUTHOR: Amlesh Sivanantham
+#+PROPERTY: header-args:conf :tangle ~/.config/zathura/zathurarc :mkdirp yes
+
+* Re-Color Pages
+** Toggle
+
+Uncomment this if you want to have the the pages recolored by default.
+
+#+begin_src conf
+#set recolor true
+#+end_src
+
+** Color Settings
+
+#+begin_src conf
+set recolor-darkcolor "#ebdbb2"
+set recolor-lightcolor "#000000"
+#+end_src
+
+* Highlighting
+
+#+begin_src conf
+set highlight-color "#b16286"
+set highlight-active-color "#458588"
+set highlight-transparency 0.75
+#+end_src
