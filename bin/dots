@@ -29,16 +29,6 @@ configure_dots() {
     ln -s $d/etc/zsh/rc $d/.zshrc
     mkdir -p $d/.local/share/zsh
 
-    # Setting up gpg agent and ssh
-    echo "Setup gpg and ssh files"
-    mkdir -p $d/.ssh $d/.gnupg
-    ln -s $d/etc/ssh/config $d/.ssh/config
-
-    # Setting up VIM RC
-    echo "Setting up vim and neovim rc files"
-    mkdir -p $d/.config/nvim
-    ln -s $d/etc/vim/rc $d/.config/nvim/init.vim
-
     # Setting up emacs config file
     echo "Setting up emacs config file"
     ln -s $d/etc/emacs/init.el $d/.emacs.d/init.el
@@ -61,11 +51,6 @@ configure_dots() {
     # Setting up pubs configuration file
     echo "Set up pubs configuration file"
     ln -s $d/etc/pubs/rc $d/.pubsrc
-
-    # Set up zathura
-    echo "Set up zathura config"
-    mkdir -p $d/.config/zathura
-    ln -s $d/etc/zathura/rc $d/.config/zathura/zathurarc
 
     # post setup messages
     echo ""
