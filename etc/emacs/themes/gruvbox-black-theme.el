@@ -87,6 +87,16 @@
   (org-habit-overdue-face (:background gb-lgt-red))
   (org-habit-ready-face (:background gb-green))
 
+  ;; VTerm
+  (vterm-color-black (:foreground gb-black))
+  (vterm-color-red (:foreground gb-red))
+  (vterm-color-green (:foreground gb-green))
+  (vterm-color-yellow (:foreground gb-yellow))
+  (vterm-color-blue (:foreground gb-blue))
+  (vterm-color-magenta (:foreground gb-magenta))
+  (vterm-color-cyan (:foreground gb-cyan))
+  (vterm-color-white (:foreground gb-white))
+
   ))
 
 (provide-theme 'gruvbox-black)

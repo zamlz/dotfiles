@@ -687,6 +687,7 @@
 (add-to-list `org-structure-template-alist '("sh" . "src shell"))
 (add-to-list `org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list `org-structure-template-alist '("py" . "src python"))
+(add-to-list `org-structure-template-alist '("rc" . "src conf"))
 
 (defun efs/org-babel-tangle-config ()
   (when (string-equal (buffer-file-name)
@@ -698,7 +699,7 @@
 (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 
 (setq org-startup-with-latex-preview t)
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
 
 (add-to-list 'org-modules 'org-habit t)
 (setq org-habit-preceding-days 31)
