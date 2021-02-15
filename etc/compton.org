@@ -1,6 +1,6 @@
 #+TITLE: Compton X11 Compositor Config
 #+AUTHOR: Amlesh Sivanantham
-#+PROPERTY: header-args:conf :tangle ~/.config/compton.conf
+#+PROPERTY: header-args:conf :tangle ~/.config/compton.conf :mkdirp yes
 
 [[http://9m.no/ꪯ鵞][Thank you code_nomad!]] Copied a lot of this person's config...
 
