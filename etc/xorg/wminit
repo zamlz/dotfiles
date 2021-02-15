@@ -8,9 +8,9 @@ $LOGGER "Initializing window manager common utilities"
 # If we would like to kill our CPU so no.
 # But hey, it definetly looks crisp af tho.
 pkill -x compton
-if [ -f "$HOME/.config/xcompton" ]; then
+if [ -f "$HOME/.config/compton.conf" ]; then
     $LOGGER "Starting Compton"
-    compton --config $HOME/etc/compton/rc &
+    compton &
 fi
 
 # Reload the xresource data

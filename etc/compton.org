@@ -1,21 +1,23 @@
-# Thank you code_nomad: http://9m.no/ꪯ鵞
+#+TITLE: Compton X11 Compositor Config
+#+AUTHOR: Amlesh Sivanantham
+#+PROPERTY: header-args:conf :tangle ~/.config/compton.conf
 
-#################################
-#
-# Backend
-#
-#################################
+[[http://9m.no/ꪯ鵞][Thank you code_nomad!]] Copied a lot of this person's config...
 
-# Backend to use: "xrender" or "glx".
-# GLX backend is typically much faster but depends on a sane driver.
+* Backend
+
+Backend to use: "xrender" or "glx".
+GLX backend is typically much faster but depends on a sane driver.
+
+#+begin_src conf
+# Provide the backend to use
 backend = "xrender";
+#+end_src
 
-#################################
-#
-# GLX backend
-#
-#################################
+* GLX backend
 
+#+begin_src conf
+# ??? Don't remember what this does...
 glx-no-stencil = true;
 
 # GLX backend: Copy unmodified regions from front buffer instead of redrawing them all.
@@ -30,7 +32,6 @@ glx-copy-from-front = false;
 # Recommended if it works.
 # glx-no-rebind-pixmap = true;
 
-
 # GLX backend: GLX buffer swap method we assume.
 # Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1).
 # undefined is the slowest and the safest, and the default value.
@@ -42,13 +43,11 @@ glx-copy-from-front = false;
 # Partially breaks --resize-damage.
 # Defaults to undefined.
 glx-swap-method = "undefined";
+#+end_src
 
-#################################
-#
-# Shadows
-#
-#################################
+* Shadows
 
+#+begin_src conf
 # Enabled client-side shadows on windows.
 shadow = true;
 # Don't draw shadows on DND windows.
@@ -96,13 +95,12 @@ shadow-exclude = [
 ];
 # Avoid drawing shadow on all shaped windows (see also: --detect-rounded-corners)
 shadow-ignore-shaped = false;
+#+end_src
 
-#################################
-#
-# Opacity
-#
-#################################
+* Opacity
 
+#+begin_src conf
+# Define opacity
 menu-opacity = 1;
 inactive-opacity = 1;
 active-opacity = 1;
@@ -124,13 +122,11 @@ blur-background-exclude = [
     "window_type = 'dock'",
     "window_type = 'desktop'"
 ];
+#+end_src
 
-#################################
-#
-# Fading
-#
-#################################
+* Fading
 
+#+begin_src conf
 # Fade windows during opacity changes.
 fading = true;
 # The time between steps in a fade in milliseconds. (default 10).
@@ -144,13 +140,11 @@ fade-out-step = 0.03;
 
 # Specify a list of conditions of windows that should not be faded.
 fade-exclude = [ ];
+#+end_src
 
-#################################
-#
-# Other
-#
-#################################
+* Other
 
+#+begin_src conf
 # Try to detect WM windows and mark them as active.
 mark-wmwin-focused = true;
 # Mark all non-WM but override-redirect windows active (e.g. menus).
@@ -204,13 +198,11 @@ detect-transient = true;
 # Use WM_CLIENT_LEADER to group windows, and consider windows in the same group focused at the same time.
 # WM_TRANSIENT_FOR has higher priority if --detect-transient is enabled, too.
 detect-client-leader = true;
+#+end_src
 
-#################################
-#
-# Window type settings
-#
-#################################
+* Window Type Settings
 
+#+begin_src conf
 wintypes:
 {
     tooltip =
@@ -225,3 +217,4 @@ wintypes:
         focus = true;
     };
 };
+#+end_src
