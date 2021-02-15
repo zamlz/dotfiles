@@ -218,6 +218,7 @@ Super useful for auto-pairing certain characters. However we should make use of 
 #+begin_src emacs-lisp
 (use-package dired
   :ensure nil
+  :after evil-collection
   :commands (dired dired-jump)
   :bind (("C-x C-j" . dired-jump))
   :custom ((dired-listing-switches "-lahF --group-directories-first"))
@@ -419,7 +420,7 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 (use-package counsel
   :after ivy
   :bind (("M-x" . counsel-M-x)
-     ("C-x b" . counsel-ibuffer)
+     ("C-x b" . counsel-switch-buffer)
      ("C-x C-f" . counsel-find-file)
      :map minibuffer-local-map
      ("C-r" . 'counsel-minibuffer-history))
@@ -436,11 +437,15 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 =Ivy-Rich= provides extra columns in the counsel commands to get more information about each item during autocompletion.
 
 #+begin_src emacs-lisp
+;; Adds nice icons to the ivy rich buffer
+(use-package all-the-icons-ivy-rich
+  :after counsel-projectile
+  :init (all-the-icons-ivy-rich-mode 1))
+
+;; Actually install ivy rich
 (use-package ivy-rich
-  :after ivy
-  :config
-  ;;(setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  (ivy-rich-mode))
+  :after (ivy all-the-icons-ivy-rich)
+  :init (ivy-rich-mode 1))
 #+end_src
 
 ** Themes and Appearance
