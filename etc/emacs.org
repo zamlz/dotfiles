@@ -1019,20 +1019,6 @@ Babel is basically like jupyter notebooks for =org-mode= but its also way more p
 (add-to-list `org-structure-template-alist '("rc" . "src conf"))
 #+end_src
 
-** Auto-Tangle Configuration File
-
-We make use of =org-babel= here to create our config file. This is currently also checking to my dotfiles in case of system rescue reasons.
-
-#+begin_src emacs-lisp
-;; (defun efs/org-babel-tangle-config ()
-;;   (when (string-equal (buffer-file-name)
-;;                       (expand-file-name "~/etc/emacs.org"))
-;;     ;; Dynamic scoping to the rescue
-;;     (let ((org-confirm-babel-evaluate nil))
-;;       (org-babel-tangle))))
-;; (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
-#+end_src
-
 ** LaTeX Inline Preview
 
 Pretty straightforward except that you need to have =latex= installed and also =dvi2png= as well. Need to figure out how to configure the size of the generated latex image.
