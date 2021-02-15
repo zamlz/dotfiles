@@ -1,14 +1,10 @@
+#+TITLE: VIM Editor Configuration
+#+AUTHOR: Amlesh Sivanantham
+#+PROPERTY: header-args:conf :tangle ~/.config/nvim/init.vim :mkdirp yes
 
-"        _
-" __   _(_)_ __ ___  _ __ ___
-" \ \ / / | '_ ` _ \| '__/ __|
-"  \ V /| | | | | | | | | (__
-"   \_/ |_|_| |_| |_|_|  \___|
+* Load Vim Plugins (VimPlug)
 
-"------------------------------------------------------------------------------
-" Load Vim Plugins (VimPlug)
-"------------------------------------------------------------------------------
-
+#+begin_src conf
 call plug#begin('~/.vim/plugged')
 
 " vim-airline:
@@ -38,11 +34,13 @@ Plug 'nathangrigg/vim-beancount'
 Plug 'vim-scripts/gnuplot.vim'
 
 call plug#end()
+#+end_src
 
-"------------------------------------------------------------------------------
-" Configure loaded plugins
-"------------------------------------------------------------------------------
+* Configure loaded plugins
 
+** Vim Airline
+
+#+begin_src conf
 " vim-airline
 let laststatus = 2
 let g:airline_powerline_fonts = 1
@@ -50,12 +48,20 @@ let g:airline#extensions#tabline#enabled = 1
 
 " vim-airline-themes
 let g:airline_theme = 'base16_gruvbox_dark_hard'
+#+end_src
 
+** Git Gutter
+
+#+begin_src conf
 " git-gutter
 nmap <C-M-j> <Plug>GitGutterNextHunk
 nmap <C-M-k> <Plug>GitGutterPrevHunk
 let g:gitgutter_set_sign_backgrounds = 1
+#+end_src
 
+** Indent Lines
+
+#+begin_src conf
 " Indent Lines
 "let g:indentLine_char = '.'
 let g:indentLine_char_list = ['|', '¦', '┆', '┊']
@@ -64,18 +70,30 @@ let g:indentLine_setColors = 1
 let g:indentLine_color_term = 8
 let g:indentLine_conceallevel = 2
 let g:indentLine_concealcursor = "n"
+#+end_src
 
+** Vim Ledger
+
+#+begin_src conf
 " Configure vim ledger
 let g:ledger_maxwidth = 80
 let g:ledger_bin = 'ledger'
 let g:ledger_extra_options = '--pedantic --explicit'
 let g:ledger_align_at = 77
 let g:ledger_date_format = '%Y-%m-%d'
+#+end_src
 
+** Markdown
+
+#+begin_src conf
 " Markdown conceal
 let g:vim_markdown_conceal = 0
 let g:vim_markdown_conceal_code_blocks = 0
+#+end_src
 
+** Vim Wiki
+
+#+begin_src conf
 " Vim Wiki
 let personal_wiki = {}
 let personal_wiki.name = 'Tabula Rasa'
@@ -95,11 +113,11 @@ let g:vimwiki_global_ext = 1
 let g:vimwiki_listsyms = ' ○◐●✓' " '✗○◐●✓'
 let g:vimwiki_folding = 'expr'
 let g:vimwiki_hl_cb_checked = 2
+#+end_src
 
-"------------------------------------------------------------------------------
-" Other various useful settings
-"------------------------------------------------------------------------------
+* Misc Settings
 
+#+begin_src conf
 set nocompatible
 set number          " Show Line numbers
 set ruler           " Show line and column number of the cursor
@@ -111,7 +129,7 @@ set nowrap
 
 " TAB = 4 SPACES
 set tabstop=4		" number of visual spaces per TAB
-set softtabstop=4 	" number of space in TAB while editing
+set softtabstop=4   " number of space in TAB while editing
 set expandtab		" TABs are now SPACEs
 set shiftwidth=4    " Allows helps to make it 4 spaces in neovim
 
@@ -142,11 +160,11 @@ set foldmethod=indent    " fold based on ident level
 
 " Custom file search
 set path+=**
+#+end_src
 
-"------------------------------------------------------------------------------
-" Vim colorschemes
-"------------------------------------------------------------------------------
+* Vim Colorschemes
 
+#+begin_src conf
 " Use peachpuff built-in colorscheme as the base
 colorscheme peachpuff
 
@@ -185,11 +203,11 @@ highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
 highlight VimwikiHeader6 ctermbg=None ctermfg=magenta
 
 highlight Conceal ctermbg=None ctermfg=darkblue
+#+end_src
 
-"------------------------------------------------------------------------------
-" Custom Keybindings
-"------------------------------------------------------------------------------
+* Custom Keybindings
 
+#+begin_src conf
 " Sets a keybind to turn off highlighted searches
 nnoremap <leader><space> :nohlsearch<CR>
 
@@ -222,11 +240,12 @@ au FileType ledger nnoremap <silent> <C-s>
 
 " Vimwiki doc pubs open
 autocmd FileType vimwiki nnoremap <Leader>p :silent !pubs doc open %:r<CR>
+#+end_src
 
-"------------------------------------------------------------------------------
-" Custom Vim Functions
-"------------------------------------------------------------------------------
+* Custom Vim Functions
 
+** Trim Whitespace
+#+begin_src conf
 " Trim the whitespace present in a file
 fun! TrimWhitespace()
     let l:save = winsaveview()
@@ -234,7 +253,11 @@ fun! TrimWhitespace()
     call winrestview(l:save)
 endfun
 command! TrimWhitespace call TrimWhitespace()
+#+end_src
 
+** Toggle Calendar
+
+#+begin_src conf
 " Toggle calendar view within view if in vim wiki
 function! ToggleCalendar()
     execute ":Calendar"
@@ -250,5 +273,10 @@ function! ToggleCalendar()
     end
 endfunction
 :autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
+#+end_src
 
+* Vim mod line
+
+#+begin_src conf
 " vim:ft=vim
+#+end_src
