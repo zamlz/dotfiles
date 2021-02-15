@@ -29,9 +29,6 @@ alias grep="grep --color=always"
 alias tree="tree -C"
 alias dog="pygmentize"
 
-# Config override
-alias neofetch="neofetch --config $HOME/etc/neofetch/rc"
-
 # Random Stuff
 alias fping="ping -c 3 www.google.com"
 alias weather="curl wttr.in"
