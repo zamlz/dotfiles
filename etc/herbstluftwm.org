@@ -1,0 +1,327 @@
+#+TITLE: Herbstluftwm Tiling Window Manager for X11
+#+AUTHOR: Amlesh Sivanantham
+#+PROPERTY: header-args:shell :tangle ~/.config/herbstluftwm/autostart :mkdirp yes :shebang #!/bin/sh
+
+* Initial Configuration
+
+Pretty straightforward stuff, setup logger, create a helper function,
+
+#+begin_src shell
+. $HOME/lib/shell/logger
+LOGGER=$(get_logger herbstluftwm)
+$LOGGER "Initializing herbstluftwm window manager"
+
+hc() {
+    herbstclient "$@"
+}
+
+hc emit_hook reload
+#+end_src
+
+* Custom Rules
+** Remove Prexisting Rules
+
+#+begin_src shell
+hc unrule --all
+#+end_src
+
+** Simple Rules
+
+#+begin_src shell
+hc rule focus=on # normally focus new clients
+#hc rule focus=off # normally do not focus new clients
+#hc rule class=XTerm tag=3 # move all xterms to tag 3
+#+end_src
+
+** Setup Rules for Temrinals, Discord and Panels
+
+Okay so probably the rules for the terminal are pointless here. Discord one actually doesn't work the way I want it to, but everything else here is pretty important. It makes sure that panels appear where they are suppose to and also ensures that popups are floating.
+
+#+begin_src shell
+# give focus to most common terminals
+hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+hc rule class~'(Discord|DiscordCanary)' focus=off
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+#+end_src
+
+* Source Xorg Settings
+
+We need to configure some X11 specific things that are universally needed regardless of window manager.
+
+#+begin_src shell
+# Reapply certain XORG settings (do not fork this)
+$HOME/etc/xorg/wminit
+#+end_src
+
+* Keybindings
+
+You can use =xev= to identify X11 keys very easily.
+
+** Setup
+
+#+begin_src shell
+# remove all existing keybinding; Use the super key as the main modifier
+hc keyunbind --all
+Super=Mod4
+#+end_src
+
+** Reload WM and Close Window
+
+#+begin_src shell
+hc keybind $Super-Ctrl-Alt-r reload
+hc keybind $Super-q close
+#+end_src
+
+** Window Focus
+
+#+begin_src shell
+# focusing clients
+hc keybind $Super-Left  focus left
+hc keybind $Super-Down  focus down
+hc keybind $Super-Up    focus up
+hc keybind $Super-Right focus right
+hc keybind $Super-h     focus left
+hc keybind $Super-j     focus down
+hc keybind $Super-k     focus up
+hc keybind $Super-l     focus right
+
+# Cycling focus
+hc keybind $Super-BackSpace   cycle_monitor
+hc keybind $Super-Tab         cycle +1
+hc keybind $Super-Shift-Tab   cycle_frame +1
+hc keybind $Super-c           cycle_all +1
+hc keybind $Super-i jumpto urgent
+#+end_src
+
+** Window Movement
+
+#+begin_src shell
+# moving clients
+hc keybind $Super-Shift-Left  shift left
+hc keybind $Super-Shift-Down  shift down
+hc keybind $Super-Shift-Up    shift up
+hc keybind $Super-Shift-Right shift right
+hc keybind $Super-Shift-h     shift left
+hc keybind $Super-Shift-j     shift down
+hc keybind $Super-Shift-k     shift up
+hc keybind $Super-Shift-l     shift right
+#+end_src
+
+** Splitting Frames
+
+#+begin_src shell
+# splitting frames
+# create an empty frame at the specified direction
+hc keybind $Super-u       split   bottom  0.5
+hc keybind $Super-o       split   right   0.5
+
+# let the current frame explode into subframes
+hc keybind $Super-Control-space split explode
+#+end_src
+
+** Resizing Frames
+
+#+begin_src shell
+# resizing frames
+resizestep=0.01
+
+hc keybind $Super-Control-h       resize left +$resizestep
+hc keybind $Super-Control-j       resize down +$resizestep
+hc keybind $Super-Control-k       resize up +$resizestep
+hc keybind $Super-Control-l       resize right +$resizestep
+hc keybind $Super-Control-Left    resize left +$resizestep
+hc keybind $Super-Control-Down    resize down +$resizestep
+hc keybind $Super-Control-Up      resize up +$resizestep
+hc keybind $Super-Control-Right   resize right +$resizestep
+#+end_src
+
+** Workspace Definitions (tags)
+
+#+begin_src shell
+# tags
+tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
+tag_keys=( {1..9} 0 )
+
+hc rename default "${tag_names[0]}" || true
+for i in ${!tag_names[@]} ; do
+    hc add "${tag_names[$i]}"
+    key="${tag_keys[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Super-$key" use_index "$i"
+        hc keybind "$Super-Shift-$key" move_index "$i"
+    fi
+done
+#+end_src
+
+** Workspace Movement
+
+#+begin_src shell
+# Jump to previous tag
+hc keybind $Super-grave use_previous
+
+# cycle through tags
+hc keybind $Super-bracketright use_index +1 --skip-visible
+hc keybind $Super-bracketleft  use_index -1 --skip-visible
+#+end_src
+
+** Layout Control
+
+#+begin_src shell
+# layouting
+hc keybind $Super-r remove
+hc keybind $Super-s floating toggle
+hc keybind $Super-f fullscreen toggle
+hc keybind $Super-t pseudotile toggle
+
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Super-space                                                       \
+            or , and . compare tags.focus.curframe_wcount = 2                 \
+                     . cycle_layout +1 vertical horizontal max vertical grid  \
+               , cycle_layout +1
+#+end_src
+
+** Mouse Control
+
+#+begin_src shell
+# mouse
+hc mouseunbind --all
+hc mousebind $Super-Button1 move
+hc mousebind $Super-Button2 zoom
+hc mousebind $Super-Button3 resize
+#+end_src
+
+** Colorscheme Cylcing
+
+#+begin_src shell
+# cycle through colorschemes
+hc keybind $Super-Ctrl-Alt-bracketright chain , \
+        spawn $HOME/bin/xcolorscheme --next , reload
+
+hc keybind $Super-Ctrl-Alt-bracketleft chain , \
+        spawn $HOME/bin/xcolorscheme --prev , reload
+#+end_src
+
+* Theme Configuration
+** Source Colorscheme
+
+#+begin_src shell
+. $HOME/lib/shell/xrdb_colors
+#+end_src
+
+** TODO What does this do again?
+
+#+begin_src shell
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
+#+end_src
+
+** Frame Appearance
+
+#+begin_src shell
+hc set frame_transparent_width 1
+hc set frame_border_width 1
+hc set frame_border_active_color $XBACKGROUND
+hc set frame_border_normal_color $XBACKGROUND
+
+hc set frame_bg_transparent 1
+hc set frame_bg_normal_color $XBACKGROUND
+hc set frame_bg_active_color $XCOLOR8
+
+hc set always_show_frame 0
+hc set frame_gap 8
+hc set frame_padding 0
+#+end_src
+
+** Window Appearance
+
+#+begin_src shell
+hc attr theme.active.outer_color $XBACKGROUND
+hc attr theme.active.inner_color $XBACKGROUND
+
+hc attr theme.normal.color $BLACK
+hc attr theme.active.color $WHITE
+hc attr theme.urgent.color orange
+
+hc attr theme.border_width 9
+hc attr theme.inner_width 3
+hc attr theme.outer_width 4
+
+hc attr theme.inner_color $XBACKGROUND
+hc attr theme.outer_color $XBACKGROUND
+
+hc attr theme.floating.border_width 9
+hc attr theme.floating.inner_width 3
+hc attr theme.floating.outer_width 4
+
+hc attr theme.floating.outer_color $XBACKGROUND
+hc attr theme.background_color '#141414'
+
+hc set window_gap 0
+hc set smart_window_surroundings 0
+hc set smart_frame_surroundings 1
+hc set mouse_recenter_gap 0
+#+end_src
+
+** Tree View
+
+#+begin_src shell
+hc set tree_style '╾│ ├└╼─┐'
+#+end_src
+
+** Montior Setup
+
+Well monitor setup doesn't belong here really, but we're doing it here because we need to make space for the panels.
+
+#+begin_src shell
+# unlock, just to be sure
+hc unlock
+hc detect_monitors
+#+end_src
+
+** Configure Panel Height
+
+#+begin_src shell
+PANEL_HEIGHT=20
+for monitor in $(seq 0 2); do
+    hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
+done
+#+end_src
+
+* Event Hooks
+
+This starts a couple FIFO hooks so that lemonbar can update the information on it's panel as effeciently as possible.
+
+** Verify that Event Hooks are not Started
+
+This /may/ not work because =bar_events= is not longer a standalone script...
+
+#+begin_src shell
+if [ $(pgrep -cx bar_events) -gt 1 ]; then
+    printf "The herbstluftwm event hooks for lemonbar are already running.\n" >&2
+    $LOGGER "The herbstluftwm event hooks for lemonbar are already running."
+    exit 1
+fi
+#+end_src
+
+** Define Triggers and Event Hooks to Capture
+
+#+begin_src shell
+WSP_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos wsp"
+WIN_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos win"
+WARG="'(focus_changed|window_title|panel_init)'"
+#+end_src
+
+** Start Event Hook
+
+I don't remember why I commented one of the hooks out, oh thats rights, its because I'm not using the lemonbar xwindow module I made anymore.
+
+#+begin_src shell
+(herbstclient --idle       | while read -r line; do $WSP_TRIGGER; done) &
+#(herbstclient --idle $WARG | while read -r line; do $WIN_TRIGGER; done) &
+
+$LOGGER "All hook have been started"
+#+end_src
