@@ -1116,8 +1116,8 @@ Enables habit tracking in =org-mode= via =org-habit=.
 Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
 
 #+begin_src emacs-lisp
-(use-package vterm
-  :ensure t)
+(use-package vterm)
+  ;; :custom (vterm-shell "/bin/fish"))
 #+end_src
 ** Ledger
 

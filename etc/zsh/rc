@@ -36,6 +36,7 @@ autoload sh
 autoload venv
 
 # Setup ZSH functions
+autoload vterm && vterm
 autoload gpg-utils && gpg-utils
 autoload window-utils && window-utils
 
@@ -57,3 +58,10 @@ source $HOME/sys/path.sh 2> /dev/null
 if [ -n "$VIRTUAL_ENV" ]; then
     source ${VIRTUAL_ENV}/bin/activate
 fi
+
+# This is for emacs vterm prompt tracking
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)";
+}
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
