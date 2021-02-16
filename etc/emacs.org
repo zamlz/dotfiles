@@ -866,7 +866,7 @@ The first version here works nice with the =doom-nord= theme. The second version
     ("COMPLETED" . (:background "#b8bb26" :foreground "#000000" :weight bold))
     ("WAITING"   . (:background "#d79921" :foreground "#000000" :weight bold))
     ("CANCELLED" . (:background "#181818" :foreground "#fb4934" :weight bold))
-    ("SOMEDAY"   . (:background "#3f444a" :foreground "#a89984" :weight bold))
+    ("SOMEDAY"   . (:background "#3f444a" :foreground "#000000" :weight bold))
     ("MEETING"   . (:background "#b16286" :foreground "#000000" :weight bold))))
 
 #+end_src

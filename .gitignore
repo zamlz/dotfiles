@@ -17,4 +17,3 @@ usr
 
 # Ignore any emacs generated files
 *#
-etc/emacs.el

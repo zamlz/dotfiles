@@ -43,9 +43,9 @@
 (eval-and-compile
   (setq use-package-always-ensure t))
 
-;; Load main config file "./emacs.org"
+;; Load main config file "./etc/emacs.org" -> "./config.org"
 (require 'org)
-(org-babel-load-file (expand-file-name "~/etc/emacs.org"))
+(org-babel-load-file (expand-file-name (concat user-emacs-directory "config.org")))
 
 (provide 'init)
 ;;; init.el ends here
