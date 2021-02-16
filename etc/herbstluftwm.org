@@ -300,7 +300,7 @@ This starts a couple FIFO hooks so that lemonbar can update the information on i
 This /may/ not work because =bar_events= is not longer a standalone script...
 
 #+begin_src shell
-if [ $(pgrep -cx bar_events) -gt 1 ]; then
+if [ $(pgrep -cx herbstclient) -gt 0 ]; then
     printf "The herbstluftwm event hooks for lemonbar are already running.\n" >&2
     $LOGGER "The herbstluftwm event hooks for lemonbar are already running."
     exit 1
