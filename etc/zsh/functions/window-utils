@@ -24,7 +24,7 @@ if [ -n "$DISPLAY" ]; then
 
     # Every terminal should generate its id file on spawn
     if [ -z "$WINDOWID" ]; then
-        echo "Terminal doesn't have a Window ID!!!"
+        # echo "Terminal doesn't have a Window ID!!!"
     else
         save_window_info
     fi
