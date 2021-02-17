@@ -258,18 +258,20 @@ The default landing page isn't quite nice. I originally had it configured to dis
 I have a lot of fonts commented out right now because I can't decide on which ones to keep lol.
 
 #+begin_src emacs-lisp
-;; Set default face
-;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-(set-face-attribute 'default nil :font "Fira Code" :height 100)
-;; (set-face-attribute 'default nil :font "Dina" :height 100)
-;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
-;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
+(defun zamlz/set-font-faces ()
+  ;; Set default face
+  ;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
+  (set-face-attribute 'default nil :font "Fira Code" :height 100)
+  ;; (set-face-attribute 'default nil :font "Dina" :height 100)
+  ;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
+  ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
 
-;; Set the fixed pitch face
-;; (set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
+  ;; Set the fixed pitch face
+  ;; (set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
 
-;; Set the variable pitch face
-;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
+  ;; Set the variable pitch face
+  ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
+  )
 #+end_src
 
 ** Keybinding Configuration
@@ -592,6 +594,19 @@ Hide hidden files from dired buffers (toggleable)
   :config
   (evil-collection-define-key 'normal 'dired-mode-map
     "H" 'dired-hide-dotfiles-mode))
+#+end_src
+
+** Daemon and Client Hooks
+
+#+begin_src emacs-lisp
+(if (daemonp)
+    (add-hook 'after-make-frame-functions
+              (lambda (frame)
+                (setq doom-modeline-icon t)
+                (with-selected-frame frame
+                  (zamlz/set-font-faces)
+                  (zamlz/set-transparency 80))))
+  (zamlz/set-font-faces))
 #+end_src
 
 * Development and Project Management

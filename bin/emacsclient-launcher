@@ -1,0 +1,3 @@
+#!/bin/sh
+
+emacsclient -c --socket=xorg-emacs-daemon -e &

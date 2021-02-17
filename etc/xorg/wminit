@@ -24,6 +24,10 @@ pkill -USR1 xst
 #    urxvtd -q -o -f
 #fi
 
+if [ -z "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon')"]; then
+    emacs --daemon=xorg-emacs-daemon
+fi
+
 # Once colors have been reloaded, generate env variables for them
 . $HOME/lib/shell/xrdb_colors
 
@@ -38,7 +42,7 @@ fi
 
 # Initialize universal keybindings
 SXHKD_SHELL=sh
-export SXHKD_TERMINAL=urxvt
+export SXHKD_TERMINAL=$HOME/bin/emacsclient-launcher
 pkill -x sxhkd
 sxhkd -c "$HOME/etc/sxhkd/keybinds" &
 
