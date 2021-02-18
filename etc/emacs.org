@@ -261,9 +261,9 @@ I have a lot of fonts commented out right now because I can't decide on which on
 (defun zamlz/set-font-faces ()
   ;; Set default face
   ;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-  (set-face-attribute 'default nil :font "Fira Code" :height 100)
+  ;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
   ;; (set-face-attribute 'default nil :font "Dina" :height 100)
-  ;; (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
+  (set-face-attribute 'default nil :font "Iosevka Term" :height 110)
   ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
 
   ;; Set the fixed pitch face
