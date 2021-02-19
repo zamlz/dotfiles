@@ -3,6 +3,7 @@
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: content
+# ... Present day, present time ...
 
 [[./xkcd.png]]
 
