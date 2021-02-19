@@ -1,6 +1,6 @@
 #+TITLE: Emacs Init.el Org Configuration File
 #+AUTHOR: Amlesh Sivanantham
-#+STARTUP: overview
+#+STARTUP: content
 
 #+begin_src emacs-lisp
 ;;; ------------------------------------------------------------------------------------------

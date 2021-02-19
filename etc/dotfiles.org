@@ -2,6 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
+#+STARTUP: content
 
 [[./xkcd.png]]
 
@@ -110,7 +111,7 @@ It's actually incredible how accurate this xckd comic is...
 :END:
 * Emacs Core
 * Operating System
-** Gentoo Linux
+** TODO Gentoo Linux
 * Desktop Environment
 ** Xorg
 :PROPERTIES:
