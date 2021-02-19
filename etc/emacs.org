@@ -24,11 +24,12 @@
 ;;; ------------------------------------------------------------------------------------------
 #+end_src
 
-* Emacs Configuration
+* CORE EMACS
+** Emacs Configuration
 
 All configuration found under here use internal packages from within emacs. This is why they all have =:ensure nil= set.
 
-** Garbage Collector Hooks
+*** Garbage Collector Hooks
 
 Supposedly makes the startup a bit more effecient. We also revert the changes to the GC via a hook once the startup has completed.
 
@@ -55,7 +56,7 @@ Supposedly makes the startup a bit more effecient. We also revert the changes to
                                   (setq gc-cons-threshold zamlz/gc-cons-threshold)))
 #+end_src
 
-** Package Management
+*** Package Management
 
 Setup the package manager for use later on downstream.
 
@@ -75,7 +76,7 @@ Setup the package manager for use later on downstream.
   (setq use-package-always-ensure t))
 #+end_src
 
-** Basic UI Changes
+*** Basic UI Changes
 
 Lets get some basic settings out of the way here.
 
@@ -106,7 +107,7 @@ Lets get some basic settings out of the way here.
                 fill-column zamlz/default-screen-width))
 #+end_src
 
-** Disable Default Startup
+*** Disable Default Startup
 
 Original startup is hideous...
 
@@ -116,7 +117,7 @@ Original startup is hideous...
   :config (setq inhibit-startup-screen t))
 #+end_src
 
-** Modernize Selection Behaviour
+*** Modernize Selection Behaviour
 
 Replaces active region just by typing text (is this true in visual mode as well?)
 
@@ -126,7 +127,7 @@ Replaces active region just by typing text (is this true in visual mode as well?
   :config (delete-selection-mode +1))
 #+end_src
 
-** Disable Scroll-Bar
+*** Disable Scroll-Bar
 
 #+begin_src emacs-lisp
 (use-package scroll-bar
@@ -134,7 +135,7 @@ Replaces active region just by typing text (is this true in visual mode as well?
   :config (scroll-bar-mode -1))
 #+end_src
 
-** Enable Column Numbers
+*** Enable Column Numbers
 
 #+begin_src emacs-lisp
 (use-package simple
@@ -151,7 +152,7 @@ Replaces active region just by typing text (is this true in visual mode as well?
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
-** Split and Follow Windows
+*** Split and Follow Windows
 
 #+begin_src emacs-lisp
 (use-package "window"
@@ -172,7 +173,7 @@ Replaces active region just by typing text (is this true in visual mode as well?
   (global-set-key (kbd "C-x 3") #'zamlz/split-and-follow-vertically))
 #+end_src
 
-** Backup and Autosave Files
+*** Backup and Autosave Files
 
 Emacs decides to save backup files and lockfiles within the same directory as the files we are editing. Thats just ugly when looking at the filesystem. This will fix that.
 
@@ -184,7 +185,7 @@ Emacs decides to save backup files and lockfiles within the same directory as th
            backup-directory-alist `(("." . "~/.emacs.d/backup"))))
    #+end_src
 
-** Auto-Refresh Changes from External Buffers
+*** Auto-Refresh Changes from External Buffers
 
 Auto refresh changes from outsides buffers. What more needs to be said.
 
@@ -199,7 +200,7 @@ Auto refresh changes from outsides buffers. What more needs to be said.
         auto-revert-verbose nil))
 #+end_src
 
-** Eldoc Documentation
+*** Eldoc Documentation
 
 Slightly shorten the Eldoc display delay
 
@@ -211,7 +212,7 @@ Slightly shorten the Eldoc display delay
   (setq eldoc-idle-delay 0.4))
 #+end_src
 
-** Mouse Wheel Scroll Speed
+*** Mouse Wheel Scroll Speed
 
 #+begin_src emacs-lisp
 (use-package mwheel
@@ -220,7 +221,7 @@ Slightly shorten the Eldoc display delay
                 mouse-wheel-progressive-speed nil))
 #+end_src
 
-** Highlight Matching Parentheses
+*** Highlight Matching Parentheses
 
 #+begin_src emacs-lisp
 (use-package paren
@@ -229,7 +230,7 @@ Slightly shorten the Eldoc display delay
   :config (show-paren-mode +1))
 #+end_src
 
-** Auto-pairing Quotes and Parentheses
+*** Auto-pairing Quotes and Parentheses
 
 Super useful for auto-pairing certain characters. However we should make use of a hook to prevent it for left carrot bracket in org-mode buffers
 
@@ -245,7 +246,7 @@ Super useful for auto-pairing certain characters. However we should make use of 
                    (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))))
 #+end_src
 
-** Clean Whitespace on Buffer Save
+*** Clean Whitespace on Buffer Save
 
 #+begin_src emacs-lisp
 (use-package whitespace
@@ -253,7 +254,7 @@ Super useful for auto-pairing certain characters. However we should make use of 
   :hook (before-save . whitespace-cleanup))
 #+end_src
 
-** Dump Custom-Set-Variables
+*** Dump Custom-Set-Variables
 
 #+begin_src emacs-lisp
 (use-package cus-edit
@@ -262,7 +263,7 @@ Super useful for auto-pairing certain characters. However we should make use of 
   (setq custom-file (concat user-emacs-directory "to-be-dumped.el")))
 #+end_src
 
-** Dired Customization
+*** Dired Customization
 
 #+begin_src emacs-lisp
 (use-package dired
@@ -277,8 +278,8 @@ Super useful for auto-pairing certain characters. However we should make use of 
     "l" 'dired-single-buffer))
 #+end_src
 
-* UI Customization
-** Startup Dashboard
+** UI Customization
+*** Startup Dashboard
 
 The default landing page isn't quite nice. I originally had it configured to display the scratch page, but then I really wanted like a menu to quickly access my stuff.
 
@@ -302,7 +303,7 @@ The default landing page isn't quite nice. I originally had it configured to dis
   (dashboard-setup-startup-hook))
 #+end_src
 
-** Font Configuration
+*** Font Configuration
 
 I have a lot of fonts commented out right now because I can't decide on which ones to keep lol.
 
@@ -323,17 +324,17 @@ I have a lot of fonts commented out right now because I can't decide on which on
   )
 #+end_src
 
-** Keybinding Configuration
+*** Keybinding Configuration
 
 Former vim user and the best thing about vim is the keybindings. It's a good thing that there are so many evil packages in emacs.
 
-*** ESC should save the day
+**** ESC should save the day
 
 #+begin_src emacs-lisp
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 #+end_src
 
-*** Evil Mode
+**** Evil Mode
 
 This is the core of =Evil-Mode=. This basicallly adds the modal functionality to emacs that we see in vim. But we also add a little bit of our own custom bindings not set by default that were present in vim for the sake of my sanity.
 
@@ -355,7 +356,7 @@ This is the core of =Evil-Mode=. This basicallly adds the modal functionality to
   (evil-set-initial-state 'dashboard-mode 'normal))
 #+end_src
 
-*** Extend Evil Mode with Evil Collection
+**** Extend Evil Mode with Evil Collection
 
 Unfortunately, =Evil-Mode= is only enabled in text buffers. This means that in special buffers spawned by packages like =Magit=, =Org=, etc., we would not be able to use vim-like bindings. The package below aims to provide even more functionality to these other non-trivial modes.
 
@@ -366,7 +367,7 @@ Unfortunately, =Evil-Mode= is only enabled in text buffers. This means that in s
   :config (evil-collection-init))
 #+end_src
 
-*** Evil Commentary
+**** Evil Commentary
 
 Adds keybindings for quick commenting. Use =gcc= to comment out a line, use =gcap= to comment out a paragraph, use =gc= in visual mode to comment out a selection.
 
@@ -377,7 +378,7 @@ Adds keybindings for quick commenting. Use =gcc= to comment out a line, use =gca
   :config (evil-commentary-mode +1))
 #+end_src
 
-*** Which Key
+**** Which Key
 
 Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
 
@@ -388,7 +389,7 @@ Spawns a simple UI panel that shows available keybindings based on what keys I'v
   :config (setq which-key-idle-delay 0.1))
 #+end_src
 
-*** General Keybinder
+**** General Keybinder
 
 This is an interesting package. It basically lets me define my own keybinding space and configure it to run various commands as I see fit.
 
@@ -401,7 +402,7 @@ This is an interesting package. It basically lets me define my own keybinding sp
     :global-prefix "C-SPC"))
 #+end_src
 
-*** Hydra
+**** Hydra
 
 Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
 
@@ -409,11 +410,11 @@ Hydra lets me also define functions that can very quickly let me do various task
 (use-package hydra)
 #+end_src
 
-** Leader Keybindings
+*** Leader Keybindings
 
 I chose not to put this in the previous section because I feel like this might grow alot and its also its own unique space. This where my custom functions that get bound to various keys will be assigned via =General=.
 
-*** Misc Shortcuts
+**** Misc Shortcuts
 
 These are just random shorts to emacs built-in commands that I'd like access to as a keybinding.
 
@@ -423,7 +424,7 @@ These are just random shorts to emacs built-in commands that I'd like access to 
  "tt" '(counsel-load-theme :which-key "choose theme"))
 #+end_src
 
-*** Text Size Scaling
+**** Text Size Scaling
 
 Adds a =Hydra= function to =General= to control the size of the font face.
 
@@ -439,8 +440,8 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
-** Autocompletion Engine
-*** Ivy, Counsel, and Swiper
+*** Autocompletion Engine
+**** Ivy, Counsel, and Swiper
 
 Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this thing called =Swiper=, but I have no idea what that is.
 
@@ -483,7 +484,7 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
   :bind (("C-s" . swiper)))
 #+end_src
 
-*** Ivy Rich
+**** Ivy Rich
 
 =Ivy-Rich= provides extra columns in the counsel commands to get more information about each item during autocompletion.
 
@@ -499,8 +500,8 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
   :init (ivy-rich-mode 1))
 #+end_src
 
-** Themes and Appearance
-*** Modeline
+*** Themes and Appearance
+**** Modeline
 
 To use =Doom-Modeline=, we need to have some custom icons installed. However, they must be manually installed via the following command (=M-x all-the-icons-install-fonts=)
 
@@ -513,7 +514,7 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
   :custom ((doom-modeline-height 15)))
 #+end_src
 
-*** Color Theme
+**** Color Theme
 
 I have a couple themes here. Eventually I want to setup my own custom theme but for now this will have to do.
 
@@ -556,7 +557,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
 ;;   :init (load-theme 'seti t))
 #+end_src
 
-*** Rainbow Delimiters
+**** Rainbow Delimiters
 
 Normally I don't like rainbow delimiters but its actually pretty good on emacs. And you actually can't survive without it IMO.
 
@@ -565,7 +566,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 
-*** Syntax Highlighting
+**** Syntax Highlighting
 
 #+begin_src emacs-lisp
 (use-package highlight-numbers
@@ -575,14 +576,14 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . hes-mode))
 #+end_src
 
-*** Rainbow Mode
+**** Rainbow Mode
 
 #+begin_src emacs-lisp
 (use-package rainbow-mode
   :init (rainbow-mode))
 #+end_src
 
-*** Transparency
+**** Transparency
 
 #+begin_src emacs-lisp
 ;; Set transparency of emacs
@@ -599,8 +600,8 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 (zamlz/set-transparency 80)
 #+end_src
 
-** Documentation Redux
-*** Helpful Help Commands
+*** Documentation Redux
+**** Helpful Help Commands
 
 Improves the documentation shown when running one of emacs's =describe-*= functions.
 
@@ -617,8 +618,8 @@ Improves the documentation shown when running one of emacs's =describe-*= functi
   ([remap describe-key] . helpful-key))
 #+end_src
 
-** Dired Improvements
-*** Single Dired Buffer
+*** Dired Improvements
+**** Single Dired Buffer
 
 This doesn't prevent dired from having multiple buffers open at once, rather, it forces dired to not create a new buffer whenever a new directory is open.
 
@@ -626,14 +627,14 @@ This doesn't prevent dired from having multiple buffers open at once, rather, it
 (use-package dired-single)
 #+end_src
 
-*** Icons for Dired
+**** Icons for Dired
 
 #+begin_src emacs-lisp
 (use-package all-the-icons-dired
   :hook (dired-mode . all-the-icons-dired-mode))
 #+end_src
 
-*** Hide Dotfiles
+**** Hide Dotfiles
 
 Hide hidden files from dired buffers (toggleable)
 
@@ -645,7 +646,7 @@ Hide hidden files from dired buffers (toggleable)
     "H" 'dired-hide-dotfiles-mode))
 #+end_src
 
-** Daemon and Client Hooks
+*** Daemon and Client Hooks
 
 #+begin_src emacs-lisp
 (if (daemonp)
@@ -658,12 +659,12 @@ Hide hidden files from dired buffers (toggleable)
   (zamlz/set-font-faces))
 #+end_src
 
-* Development and Project Management
+** Development and Project Management
 
 Language specific and Project Management related configurations here...
 
-** Languages
-*** Language Server Protocol
+*** Languages
+**** Language Server Protocol
 
 Powerful languages server protocols that were designed originally for visual studio code in order to created a unified protocol for getting functionality of the langauge from within the editor.
 
@@ -676,7 +677,7 @@ Powerful languages server protocols that were designed originally for visual stu
   (lsp-enable-which-key-integration t))
 #+end_src
 
-*** Python
+**** Python
 
 #+begin_src emacs-lisp
 (use-package python
@@ -685,7 +686,7 @@ Powerful languages server protocols that were designed originally for visual stu
   :config (setq python-indent-offset zamlz/indent-width))
 #+end_src
 
-*** C/C++/Java
+**** C/C++/Java
 
 Sets the formatting style for C/C++/Java from GNU (default) to the popular standard K&R.
 
@@ -699,7 +700,7 @@ Sets the formatting style for C/C++/Java from GNU (default) to the popular stand
                           (other . "k&r"))))
 #+end_src
 
-** Company Auto-Completion for Programming Languages
+*** Company Auto-Completion for Programming Languages
 
 Use =C-n= and =C-p= to navigate tooltip
 
@@ -722,14 +723,14 @@ Use =C-n= and =C-p= to navigate tooltip
     (define-key company-active-map (kbd "TAB") 'company-complete-common)))
 #+end_src
 
-** Flycheck Syntax Linter
+*** Flycheck Syntax Linter
 
 #+begin_src emacs-lisp
 (use-package flycheck
   :config (global-flycheck-mode +1))
 #+end_src
 
-** Projectile
+*** Projectile
 
 Provides useful integration to a variety of project formats. Able to automatically identify project directories and can be configured to build, run unit-tests, etc. Need to explore this more.
 
@@ -749,7 +750,7 @@ Provides useful integration to a variety of project formats. Able to automatical
   :config (counsel-projectile-mode))
 #+end_src
 
-** Magit Git Interface
+*** Magit Git Interface
 
 Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
 
@@ -759,7 +760,7 @@ Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
   :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
 #+end_src
 
-** Forge
+*** Forge
 
 Package provides integration to upstream GitHub, GitLab APIs and more. Setting this up would let me merge/review pull requests, create/address issues, etc. from within emacs.
 
@@ -767,14 +768,14 @@ Package provides integration to upstream GitHub, GitLab APIs and more. Setting t
 ;; (use-package forge)
 #+end_src
 
-** Markdown Mode
+*** Markdown Mode
 
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :hook (markdown-mode . visual-line-mode))
 #+end_src
 
-** Web Mode
+*** Web Mode
 
 Useful mode for editing web based files
 
@@ -792,11 +793,11 @@ Useful mode for editing web based files
   (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
 #+end_src
 
-* Org Mode
+** Org Mode
 
 This is what emacs is about! And setting this up is crucial. There are quite a bit of configurable parts.
 
-** Better Font Faces Hook
+*** Better Font Faces Hook
 
 We can configure =org-mode= font faces via a seperate function that we define. We need to add it as a hook afterwards however which is why this section appears before the basic configuration.
 
@@ -833,7 +834,7 @@ We can configure =org-mode= font faces via a seperate function that we define. W
   )
 #+end_src
 
-** Mode Startup Hooks
+*** Mode Startup Hooks
 
 These are some hooks that we would like to run when =org-mode= is started.
 
@@ -846,7 +847,7 @@ These are some hooks that we would like to run when =org-mode= is started.
   (setq fill-column 10000000))
 #+end_src
 
-** Basic Configuration
+*** Basic Configuration
 
 I should probably split this bloody mess up.
 
@@ -891,7 +892,7 @@ I should probably split this bloody mess up.
   (zamlz/org-font-setup))
 #+end_src
 
-** Task Categories
+*** Task Categories
 
 #+begin_src emacs-lisp
 (setq org-todo-keywords
@@ -904,7 +905,7 @@ I should probably split this bloody mess up.
               (sequence "MEETING(m)" "|"))))
 #+end_src
 
-** Task Colors
+*** Task Colors
 
 The first version here works nice with the =doom-nord= theme. The second version here works better with my custom gruvbox theme.
 
@@ -935,7 +936,7 @@ The first version here works nice with the =doom-nord= theme. The second version
 
 #+end_src
 
-** Better Heading Bullets
+*** Better Heading Bullets
 
 The default bullets are asteriks and thats just plain ugly. We change it to some nice unicode characters. I should also look into =org-superstar-mode= as well at some point.
 
@@ -948,7 +949,7 @@ The default bullets are asteriks and thats just plain ugly. We change it to some
   ;; (org-bullets-bullet-list '("◇")))
 #+end_src
 
-** Center Org buffers
+*** Center Org buffers
 
 Center the org buffers and remove line numbers to reduce visual clutter.
 
@@ -963,8 +964,8 @@ Center the org buffers and remove line numbers to reduce visual clutter.
    :hook (org-mode . zamlz/org-mode-visual-fill))
 #+end_src
 
-** Org Keybindings
-*** Default Keybindings
+*** Org Keybindings
+**** Default Keybindings
 
 Just some keybindings to access various =org-mode= commands.
 
@@ -974,7 +975,7 @@ Just some keybindings to access various =org-mode= commands.
 (global-set-key (kbd "C-c c") 'org-capture)
 #+end_src
 
-*** Org Mode Quick Access
+**** Org Mode Quick Access
 
 Just quick access to my most used org-mode functions via the leader key.
 
@@ -997,8 +998,8 @@ Just quick access to my most used org-mode functions via the leader key.
          :which-key "Journal"))
 #+end_src
 
-** Org Capture Templates
-*** DOCT: Declarative Org Capture Templates
+*** Org Capture Templates
+**** DOCT: Declarative Org Capture Templates
 
 DOCT is a cool package that lets me build =org-capture= templates with ease. It's really way more readable than the original syntax.
 
@@ -1009,7 +1010,7 @@ DOCT is a cool package that lets me build =org-capture= templates with ease. It'
   :commands (doct))
 #+end_src
 
-*** Template Definitions
+**** Template Definitions
 
 Org mode template definitions in the doct format
 
@@ -1060,7 +1061,7 @@ Org mode template definitions in the doct format
                                       "%a")))))))
 #+end_src
 
-** Org Make TOC
+*** Org Make TOC
 
 Dynamically make table of contents in org files
 
@@ -1068,7 +1069,7 @@ Dynamically make table of contents in org files
 (use-package org-make-toc)
 #+end_src
 
-** Literate Programming with Babel
+*** Literate Programming with Babel
 
 Babel is basically like jupyter notebooks for =org-mode= but its also way more powerful! Below we also configure quick access structure templates to write src blocks with ease. Babel is already a part of emacs so we must just configure it. To get a list of what languages you can configure for babel, take a look [[https://orgmode.org/worg/org-contrib/babel/languages/index.html][here]]!
 
@@ -1096,7 +1097,7 @@ Babel is basically like jupyter notebooks for =org-mode= but its also way more p
 (add-to-list `org-structure-template-alist '("rc" . "src conf"))
 #+end_src
 
-** Auto-Tangle Configuration File
+*** Auto-Tangle Configuration File
 
 We make use of =org-babel= here to create our config file. This is currently also checking to my dotfiles in case of system rescue reasons.
 
@@ -1111,7 +1112,7 @@ We make use of =org-babel= here to create our config file. This is currently als
 ;; (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
 #+end_src
 
-** LaTeX Inline Preview
+*** LaTeX Inline Preview
 
 Pretty straightforward except that you need to have =latex= installed and also =dvi2png= as well. Need to figure out how to configure the size of the generated latex image.
 
@@ -1120,7 +1121,7 @@ Pretty straightforward except that you need to have =latex= installed and also =
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
 #+end_src
 
-** Habit Tracking
+*** Habit Tracking
 
 Enables habit tracking in =org-mode= via =org-habit=.
 
@@ -1132,7 +1133,7 @@ Enables habit tracking in =org-mode= via =org-habit=.
 (setq org-habit-show-all-today t)
 #+end_src
 
-** Roam Notes
+*** Roam Notes
 
 =org-roam= is a useful package for taking notes.
 
@@ -1151,7 +1152,7 @@ Enables habit tracking in =org-mode= via =org-habit=.
          (("C-c n I" . org-roam-insert-immediate))))
 #+end_src
 
-** Roam Daily Notes
+*** Roam Daily Notes
 
 #+begin_src emacs-lisp
 (setq org-roam-dailies-directory "daily/")
@@ -1165,7 +1166,7 @@ Enables habit tracking in =org-mode= via =org-habit=.
          :olp ("[[file:./20210212192038-daily_journal.org][Daily Journal Entry]]"))))
 #+end_src
 
-** Roam Quick Access
+*** Roam Quick Access
 
 #+begin_src emacs-lisp
 (zamlz/leader-keys
@@ -1174,7 +1175,7 @@ Enables habit tracking in =org-mode= via =org-habit=.
   "ny" '(org-roam-dailies-capture-yesterday :which-key "Roam Daily Capture Yesterday"))
 #+end_src
 
-** Roam Server
+*** Roam Server
 
 =org-roam-server= provides a useful way to view my notes in a graph like view. I can also open them from this view as well.
 
@@ -1197,8 +1198,8 @@ Enables habit tracking in =org-mode= via =org-habit=.
   (org-roam-server-mode))
 #+end_src
 
-* Misc Packages
-** Vterm
+** Misc Packages
+*** Vterm
 
 Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
 
@@ -1206,13 +1207,14 @@ Installs a better virtual terminal to use within emacs. I'm just playing around 
 (use-package vterm)
   ;; :custom (vterm-shell "/bin/fish"))
 #+end_src
-** Ledger
+
+*** Ledger
 
 #+begin_src emacs-lisp
 (use-package ledger-mode)
 #+end_src
 
-** Beancount
+*** Beancount
 
 Beancount is a plain text accounting ledger-like program that I've been experimenting with. This simply just adds the mode via **on-disk** extension. If the extension is missing, emacs will complain. Make sure to pull it from the repo!
 
@@ -1223,7 +1225,7 @@ Beancount is a plain text accounting ledger-like program that I've been experime
 (add-hook 'beancount-mode-hook #'outline-minor-mode)
 #+end_src
 
-** xkcd
+*** xkcd
 
 A simple plugin for getting the today's xkcd comic.
 
