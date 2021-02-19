@@ -46,6 +46,7 @@
   (menu-bar-mode -1)          ; disable the menubar
   ;; (tooltip-mode -1)           ; Disable tooltips
   (set-fringe-mode 10)        ; Give some breathing room
+  (blink-cursor-mode 1)       ; Let the cursor be blinking
 
   ;; better scrolling experience
   (setq scroll-margin 0
@@ -752,8 +753,12 @@
   :init
   (org-roam-server-mode))
 
-(use-package vterm)
-  ;; :custom (vterm-shell "/bin/fish"))
+(use-package vterm
+  :custom
+  ;; (vterm-shell "/bin/fish")
+  (vterm-ignore-blink-cursor nil)
+  (vterm-buffer-name-string "vterm [%s]")
+  (vterm-always-compile-module t))
 
 (use-package ledger-mode)
 
