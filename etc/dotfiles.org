@@ -1,12 +1,13 @@
 #+TITLE: Dotfiles Configuration
 #+AUTHOR: Amlesh Sivanantham
+#+EXCLUDE_TAGS: TOC
+#+OPTIONS: broken-links:t
 
-* Table of Contents
+* Table of Contents                                                     :TOC:
 :PROPERTIES:
-:TOC:      :include all
+:TOC:      :include all :ignore this
 :END:
 :CONTENTS:
-- [[#table-of-contents][Table of Contents]]
 - [[#emacs-core][Emacs Core]]
 - [[#operating-system][Operating System]]
   - [[#gentoo-linux][Gentoo Linux]]
