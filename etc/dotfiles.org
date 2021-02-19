@@ -1,7 +1,11 @@
-#+TITLE: Dotfiles Configuration
+#+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
+
+[[./xkcd.png]]
+
+It's actually incredible how accurate this xckd comic is...
 
 * Table of Contents                                                     :TOC:
 :PROPERTIES:
