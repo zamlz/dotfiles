@@ -17,7 +17,7 @@ autoload -U bashcompinit && bashcompinit
 autoload -U promptinit && promptinit
 
 # Source the important stuff
-source $HOME/etc/zsh/aliases
+source $HOME/.zsh.d/aliases.zsh
 
 # Source ZSH functions
 fpath=("$HOME/etc/zsh/functions" $fpath)
