@@ -1,10 +1,5 @@
 #!/bin/zsh
 
-# History
-export HISTSIZE=2000
-export HISTFILE="$HOME/.local/share/zsh/history"
-export SAVEHIST=$HISTSIZE
-
 # Various Settings
 setopt EXTENDED_HISTORY
 setopt HIST_IGNORE_ALL_DUPS
@@ -22,8 +17,6 @@ autoload -U bashcompinit && bashcompinit
 autoload -U promptinit && promptinit
 
 # Source the important stuff
-source /etc/profile
-source $HOME/etc/zsh/variables
 source $HOME/etc/zsh/aliases
 
 # Source ZSH functions
@@ -49,9 +42,6 @@ export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
 
 # Update our ls colors
 eval $(dircolors -b $HOME/lib/shell/lscolors)
-
-# Source some special programs
-source $HOME/sys/path.sh 2> /dev/null
 
 # Finally, if we are ina virtual environment start it
 if [ -n "$VIRTUAL_ENV" ]; then

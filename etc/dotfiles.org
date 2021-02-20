@@ -208,6 +208,99 @@ It's actually incredible how accurate this xckd comic is...
 ** TODO Gentoo Linux
 * Shell Environment
 ** Zsh
+*** ~/.zshenv
+:PROPERTIES:
+:header-args:shell: :tangle ~/.zshenv
+:END:
+
+Source system profile
+
+#+begin_src shell
+source /etc/profile
+#+end_src
+
+Need to source this file which contains locations for all my repos
+
+#+begin_src shell
+source $HOME/lib/repos
+#+end_src
+
+Update path to use my custom scripts and other locally installed scripts.
+
+#+begin_src shell
+# Update the path variable
+export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$LEDGER_DIR/bin:$PATH"
+export PATH="$VIMWIKI_DIR/bin:$PATH"
+
+# Update any system specific path settings
+source $HOME/sys/path.sh 2> /dev/null
+#+end_src
+
+Collection system information
+
+#+begin_src shell
+# Get system info
+export WSL=$(uname -r | grep "microsoft")
+export DISTRO=$(grep --color=none ^ID= /etc/os-release \
+    | sed -e 's/^ID=//g' \
+    | tr -d '"')
+#+end_src
+
+Setup variables for SSH and GnuPG
+
+#+begin_src shell
+# Configure SSH & GnuPG Variables
+export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA='tty'
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
+#+end_src
+
+Configure =less= arguments if we are in a windows linux subsystem. It doesn't support some of the standard arguments you would see in a normal =less=.
+
+#+begin_src shell
+# Override default windows less arguments
+if [ -z "$WSL" ]; then
+    export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
+else
+    export LESS='-R --no-init --quit-if-one-screen'
+fi
+#+end_src
+
+Why am I settings my python venv directory here? This could be improved...
+
+#+begin_src shell
+# Set the python venv dir
+export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
+if [ -d "$PYTHON_VENVS_DIR" ]; then
+    mkdir -p "$PYTHON_VENVS_DIR"
+fi
+
+# Specify location of ledger file
+export LEDGER_FILE="$LEDGER_DIR/main.journal"
+#+end_src
+
+When using zsh inside emacs, we also need to update the editor. You definetely do not want to open up vim while inside the terminal with nearly no way to get out. Maybe I should move the alias into /not this file/.
+
+#+begin_src shell
+if [ -n "$INSIDE_EMACS" ]; then
+    export VISUAL="emacsclient --socket-name=xorg-emacs-daemon"
+    export EDITOR="$VISUAL"
+    alias vi="$EDITOR" # lmao
+fi
+#+end_src
+
+Configure Zsh command history
+
+#+begin_src shell
+HISTFILE=$HOME/.zhistory
+HISTSIZE=10000
+SAVEHIST=5000
+#+end_src
+
+*** ~/.zshrc
+*** ~/.zlogin
 ** Git
 :PROPERTIES:
 :header-args:conf: :tangle ~/.gitconfig
