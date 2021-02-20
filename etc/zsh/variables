@@ -33,8 +33,6 @@ fi
 export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
 
 # Configuration files (or of the sort)
-export HTOPRC="$HOME/etc/htop/rc"
-export TASKRC="$HOME/etc/taskwarrior/rc"
 export LEDGER_FILE="$LEDGER_DIR/main.journal"
 
 # Other random variables
