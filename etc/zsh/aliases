@@ -1,8 +1,5 @@
 #!/bin/zsh
 
-# Make the unix experience wholesome
-alias please="sudo"
-
 # The LS Family Aliases
 alias ls="LC_COLLATE=C ls -F --color=always"
 alias ll="ls -oh"
@@ -33,21 +30,13 @@ alias dog="pygmentize"
 alias fping="ping -c 3 www.google.com"
 alias weather="curl wttr.in"
 
-# Teleportation Jutsu
-alias ..="cd .."
-alias ...="cd ../../"
-alias ....="cd ../../../"
-alias .....="cd ../../../../"
-
-# Teleport to my school dirs
-alias ucsc='cd ~/src/ucsc; groot; '
-alias usc='cd ~/src/usc; groot; '
-
 # Information Functions
 alias info="clear;echo;neofetch;colors;"
 alias infos="info;scrot --delay 3 --count --quality 100 ~/tmp/myscrot.png"
 
-# You done fucked up kiddo
+# Sudo stuff
+alias please="sudo"
+
 if [ $UID -ne 0 ]; then
     alias fuck='eval "sudo $(fc -ln -1)"'
 fi
@@ -57,22 +46,7 @@ alias rm="rm -I --preserve-root"
 alias mv="mv -i"
 alias cp="cp -i"
 
-# Suffix Aliases
-alias -s png=sxiv
-alias -s jpg=sxiv
-alias -s gif=sxiv
-alias -s jpeg=sxiv
-alias -s pdf=zathura
-alias -s md=md2pdf
-
 # Specially select a certain vim
 if [ "nvim not found" != "$(which nvim)" ]; then
     alias vim="nvim";
 fi
-
-# Distro specific aliases
-
-# void linux
-alias xbps-kernel="xbps-query --regex -Rs '^linux[0-9.]+-[0-9._]+'"
-alias xbps-file="xlocate"
-alias wtf="netbsd-wtf"

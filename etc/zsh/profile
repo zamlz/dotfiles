@@ -3,27 +3,16 @@ LOGGER=$(get_logger zsh.profile)
 
 # Regular StartX Boot for Herbsluftwm
 if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
+
     $LOGGER "Starting xinitrc parameterized on herbstluftwm"
     export WINDOW_MANAGER='herbstluftwm'
     exec startx $HOME/etc/xorg/xinitrc herbstluftwm
 
 # Regular StartX Boot for Emacs
 elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
+
     $LOGGER "Starting xinitrc parameterized on emacs"
     export WINDOW_MANAGER='exwm'
     exec startx $HOME/etc/xorg/xinitrc exwm
-
-# Trying to Boot to Unity (For Ubuntu Only)
-# sudo systemctl disable lightdm.service
-# sudo systemctl set-default multi-user.target
-# edit /etc/default/grub, remove splash
-# sudo update-grub
-# To restore: sudo systemctl set-default graphical.target
- elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ] \
-                        && [ -n "$(uname -a | grep Ubuntu)" ]; then
-    $LOGGER "Bypassing Startx; Evoking Unity Desktop"
-    $LOGGER "You will need to restart to use any other Window Manager"
-    $LOGGER "Enter password to proceed, or fail three times to cancel"
-    sudo systemctl start lightdm.service
 
 fi
