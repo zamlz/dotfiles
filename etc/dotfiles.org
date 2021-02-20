@@ -248,15 +248,6 @@ export DISTRO=$(grep --color=none ^ID= /etc/os-release \
     | tr -d '"')
 #+end_src
 
-Setup variables for SSH and GnuPG
-
-#+begin_src shell
-# Configure SSH & GnuPG Variables
-export GPG_TTY=$(tty)
-export PINENTRY_USER_DATA='tty'
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
-#+end_src
-
 Configure =less= arguments if we are in a windows linux subsystem. It doesn't support some of the standard arguments you would see in a normal =less=.
 
 #+begin_src shell

@@ -19,6 +19,13 @@ autoload -U promptinit && promptinit
 # Source the important stuff
 source $HOME/.zsh.d/aliases.zsh
 
+# Configure SSH & GnuPG Variables
+# - I don't know what to make of this. It appears it has to be here
+#   and can't be in the .zshenv file. Need to investigate why
+export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA='tty'
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
+
 # Source ZSH functions
 fpath=("$HOME/etc/zsh/functions" $fpath)
 
