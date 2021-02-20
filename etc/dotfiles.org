@@ -295,6 +295,12 @@ HISTSIZE=10000
 SAVEHIST=5000
 #+end_src
 
+This is sort of a weird hack. Basically, we're setting the pinentry program here before we even get to the =~/.zshrc= file. The reason is that we want pinentry to default to /GUI/ based applications instead of the /tty/. But if we enter an interactive shell environment (where =~/.zshrc= would be invoked), then we set it back to /tty/.
+
+#+begin_src shell
+export PINENTRY_USER_DATA='rofi'
+#+end_src
+
 *** ~/.zshrc
 *** ~/.zlogin
 *** Shell Functions
