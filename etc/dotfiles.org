@@ -14,6 +14,99 @@ It's actually incredible how accurate this xckd comic is...
 :TOC:      :include all :ignore this
 :END:
 :CONTENTS:
+- [[#operating-system][Operating System]]
+  - [[#gentoo-linux][Gentoo Linux]]
+- [[#shell-environment][Shell Environment]]
+  - [[#zsh][Zsh]]
+  - [[#git][Git]]
+    - [[#user-profile][User Profile]]
+    - [[#gnupg][GnuPG]]
+    - [[#core][Core]]
+    - [[#commit-settings][Commit Settings]]
+    - [[#diff-settings][Diff Settings]]
+    - [[#pull-settings][Pull Settings]]
+    - [[#aliases][Aliases]]
+  - [[#openssh][OpenSSH]]
+    - [[#gnupg-connect-agent][GnuPG Connect Agent]]
+  - [[#neovim][Neovim]]
+    - [[#load-vim-plugins-vimplug][Load Vim Plugins (VimPlug)]]
+    - [[#configure-loaded-plugins][Configure loaded plugins]]
+      - [[#vim-airline][Vim Airline]]
+      - [[#git-gutter][Git Gutter]]
+      - [[#indent-lines][Indent Lines]]
+      - [[#vim-ledger][Vim Ledger]]
+      - [[#markdown][Markdown]]
+      - [[#vim-wiki][Vim Wiki]]
+    - [[#setup-sane-vim-defaults][Setup Sane Vim Defaults]]
+    - [[#vim-colorschemes][Vim Colorschemes]]
+    - [[#custom-keybindings][Custom Keybindings]]
+    - [[#custom-vim-functions][Custom Vim Functions]]
+      - [[#trim-whitespace][Trim Whitespace]]
+      - [[#toggle-calendar][Toggle Calendar]]
+    - [[#vim-mode-line][Vim mode line]]
+  - [[#tmux][Tmux]]
+    - [[#basic-config][Basic Config]]
+    - [[#keybindings][Keybindings]]
+    - [[#window-settings][Window Settings]]
+    - [[#status-bar][Status Bar]]
+    - [[#pane][Pane]]
+    - [[#reload-config][Reload Config]]
+- [[#desktop-environment][Desktop Environment]]
+  - [[#xorg][Xorg]]
+    - [[#source-colorscheme][Source Colorscheme]]
+    - [[#xft-font-settings][Xft Font Settings]]
+    - [[#default-font-face][Default Font Face]]
+    - [[#rxvt-unicode-terminal][Rxvt Unicode Terminal]]
+      - [[#general-settings][General Settings]]
+      - [[#transparency][Transparency]]
+      - [[#misc-ui-changes][Misc UI Changes]]
+      - [[#clipboard-keybindings][Clipboard Keybindings]]
+      - [[#colorscheme-and-font][Colorscheme and Font]]
+    - [[#rofi-dmenu][Rofi Dmenu]]
+      - [[#enabled-modes][Enabled Modes]]
+      - [[#window-geometry][Window Geometry]]
+      - [[#colorscheme-and-font][Colorscheme and Font]]
+      - [[#unused-rofi-settings][Unused Rofi Settings]]
+    - [[#emacs][Emacs]]
+  - [[#herbstluftwm][Herbstluftwm]]
+    - [[#initial-configuration][Initial Configuration]]
+    - [[#wm-custom-rules][WM Custom Rules]]
+    - [[#source-xorg-universal-settings][Source Xorg Universal Settings]]
+    - [[#keybindings][Keybindings]]
+      - [[#setup][Setup]]
+      - [[#reload-wm-and-close-window][Reload WM and Close Window]]
+      - [[#window-focus][Window Focus]]
+      - [[#window-movement][Window Movement]]
+      - [[#splitting-frames][Splitting Frames]]
+      - [[#resizing-frames][Resizing Frames]]
+      - [[#workspace-definitions-tags][Workspace Definitions (tags)]]
+      - [[#workspace-movement][Workspace Movement]]
+      - [[#layout-control][Layout Control]]
+      - [[#mouse-control][Mouse Control]]
+      - [[#colorscheme-cylcing][Colorscheme Cylcing]]
+    - [[#theme-configuration][Theme Configuration]]
+      - [[#source-colorscheme][Source Colorscheme]]
+      - [[#what-does-this-do-again][What does this do again?]]
+      - [[#frame-appearance][Frame Appearance]]
+      - [[#window-appearance][Window Appearance]]
+      - [[#tree-view][Tree View]]
+      - [[#montior-setup][Montior Setup]]
+      - [[#configure-panel-height][Configure Panel Height]]
+    - [[#event-hooks][Event Hooks]]
+      - [[#event-hooks-startup-verification][Event Hooks Startup Verification]]
+      - [[#event-hooks-trigger-definition][Event Hooks Trigger Definition]]
+      - [[#initialize-event-hooks][Initialize Event Hooks]]
+  - [[#compton][Compton]]
+    - [[#backend][Backend]]
+    - [[#glx-backend][GLX backend]]
+    - [[#shadows][Shadows]]
+    - [[#opacity][Opacity]]
+    - [[#fading][Fading]]
+    - [[#other][Other]]
+    - [[#window-type-settings][Window Type Settings]]
+  - [[#zathura][Zathura]]
+    - [[#re-color-pages][Re-Color Pages]]
+    - [[#highlighting][Highlighting]]
 - [[#gnuemacs-configuration][GNU/Emacs Configuration]]
   - [[#internal-configuration][Internal Configuration]]
     - [[#garbage-collector-hooks][Garbage Collector Hooks]]
@@ -104,101 +197,1413 @@ It's actually incredible how accurate this xckd comic is...
     - [[#ledger][Ledger]]
     - [[#beancount][Beancount]]
     - [[#xkcd][xkcd]]
-- [[#operating-system][Operating System]]
-  - [[#gentoo-linux][Gentoo Linux]]
-- [[#desktop-environment][Desktop Environment]]
-  - [[#xorg][Xorg]]
-    - [[#source-colorscheme][Source Colorscheme]]
-    - [[#xft-font-settings][Xft Font Settings]]
-    - [[#default-font-face][Default Font Face]]
-    - [[#rxvt-unicode-terminal][Rxvt Unicode Terminal]]
-      - [[#general-settings][General Settings]]
-      - [[#transparency][Transparency]]
-      - [[#misc-ui-changes][Misc UI Changes]]
-      - [[#clipboard-keybindings][Clipboard Keybindings]]
-      - [[#colorscheme-and-font][Colorscheme and Font]]
-    - [[#rofi-dmenu][Rofi Dmenu]]
-      - [[#enabled-modes][Enabled Modes]]
-      - [[#window-geometry][Window Geometry]]
-      - [[#colorscheme-and-font][Colorscheme and Font]]
-      - [[#unused-rofi-settings][Unused Rofi Settings]]
-    - [[#emacs][Emacs]]
-  - [[#herbstluftwm][Herbstluftwm]]
-    - [[#initial-configuration][Initial Configuration]]
-    - [[#wm-custom-rules][WM Custom Rules]]
-    - [[#source-xorg-universal-settings][Source Xorg Universal Settings]]
-    - [[#keybindings][Keybindings]]
-      - [[#setup][Setup]]
-      - [[#reload-wm-and-close-window][Reload WM and Close Window]]
-      - [[#window-focus][Window Focus]]
-      - [[#window-movement][Window Movement]]
-      - [[#splitting-frames][Splitting Frames]]
-      - [[#resizing-frames][Resizing Frames]]
-      - [[#workspace-definitions-tags][Workspace Definitions (tags)]]
-      - [[#workspace-movement][Workspace Movement]]
-      - [[#layout-control][Layout Control]]
-      - [[#mouse-control][Mouse Control]]
-      - [[#colorscheme-cylcing][Colorscheme Cylcing]]
-    - [[#theme-configuration][Theme Configuration]]
-      - [[#source-colorscheme][Source Colorscheme]]
-      - [[#what-does-this-do-again][What does this do again?]]
-      - [[#frame-appearance][Frame Appearance]]
-      - [[#window-appearance][Window Appearance]]
-      - [[#tree-view][Tree View]]
-      - [[#montior-setup][Montior Setup]]
-      - [[#configure-panel-height][Configure Panel Height]]
-    - [[#event-hooks][Event Hooks]]
-      - [[#event-hooks-startup-verification][Event Hooks Startup Verification]]
-      - [[#event-hooks-trigger-definition][Event Hooks Trigger Definition]]
-      - [[#initialize-event-hooks][Initialize Event Hooks]]
-  - [[#compton][Compton]]
-    - [[#backend][Backend]]
-    - [[#glx-backend][GLX backend]]
-    - [[#shadows][Shadows]]
-    - [[#opacity][Opacity]]
-    - [[#fading][Fading]]
-    - [[#other][Other]]
-    - [[#window-type-settings][Window Type Settings]]
-  - [[#zathura][Zathura]]
-    - [[#re-color-pages][Re-Color Pages]]
-    - [[#highlighting][Highlighting]]
-- [[#shell-environment][Shell Environment]]
-  - [[#zsh][Zsh]]
-  - [[#git][Git]]
-    - [[#user-profile][User Profile]]
-    - [[#gnupg][GnuPG]]
-    - [[#core][Core]]
-    - [[#commit-settings][Commit Settings]]
-    - [[#diff-settings][Diff Settings]]
-    - [[#pull-settings][Pull Settings]]
-    - [[#aliases][Aliases]]
-  - [[#openssh][OpenSSH]]
-    - [[#gnupg-connect-agent][GnuPG Connect Agent]]
-  - [[#neovim][Neovim]]
-    - [[#load-vim-plugins-vimplug][Load Vim Plugins (VimPlug)]]
-    - [[#configure-loaded-plugins][Configure loaded plugins]]
-      - [[#vim-airline][Vim Airline]]
-      - [[#git-gutter][Git Gutter]]
-      - [[#indent-lines][Indent Lines]]
-      - [[#vim-ledger][Vim Ledger]]
-      - [[#markdown][Markdown]]
-      - [[#vim-wiki][Vim Wiki]]
-    - [[#setup-sane-vim-defaults][Setup Sane Vim Defaults]]
-    - [[#vim-colorschemes][Vim Colorschemes]]
-    - [[#custom-keybindings][Custom Keybindings]]
-    - [[#custom-vim-functions][Custom Vim Functions]]
-      - [[#trim-whitespace][Trim Whitespace]]
-      - [[#toggle-calendar][Toggle Calendar]]
-    - [[#vim-mode-line][Vim mode line]]
-  - [[#tmux][Tmux]]
-    - [[#basic-config][Basic Config]]
-    - [[#keybindings][Keybindings]]
-    - [[#window-settings][Window Settings]]
-    - [[#status-bar][Status Bar]]
-    - [[#pane][Pane]]
-    - [[#reload-config][Reload Config]]
 - [[#bootstrap-script][Bootstrap Script]]
 :END:
+* Operating System
+** TODO Gentoo Linux
+* Shell Environment
+** Zsh
+** Git
+:PROPERTIES:
+:header-args:conf: :tangle ~/.gitconfig
+:END:
+*** User Profile
+
+#+begin_src conf
+[user]
+    signingkey = 0x882C395C3B28902C
+    name = Amlesh Sivanantham (zamlz)
+    email = zamlz@pm.me
+#+end_src
+
+*** GnuPG
+
+#+begin_src conf
+[gpg]
+    program = gpg
+#+end_src
+
+*** Core
+
+#+begin_src conf
+[core]
+    pager = less
+#+end_src
+
+*** Commit Settings
+
+#+begin_src conf
+[commit]
+    gpgsign = true
+#+end_src
+
+*** Diff Settings
+
+#+begin_src conf
+[diff "gpg"]
+    textconv = gpg --no-tty --decrypt
+#+end_src
+
+*** Pull Settings
+
+#+begin_src conf
+[pull]
+    ff = only
+#+end_src
+
+*** Aliases
+
+These are just useful aliases I've found online
+
+#+begin_src conf
+[alias]
+    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+    root = rev-parse --show-toplevel
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+#+end_src
+
+** OpenSSH
+:PROPERTIES:
+:header-args:conf: :tangle ~/.ssh/config :mkdirp yes
+:END:
+*** GnuPG Connect Agent
+
+Since we are using GPG agent as the SSH agent, when in a terminal, ssh agent doesn't know that it has to change terminals (a bug in openssh). So when it connects to gpg-agent, it uses the terminal it was last configured to use. The following command when run in a terminal updates gpg-agent to use the current terminal for openssh. However, now if we run some ssh related command in the prior terminal, it will use the new terminal instead creating the exact inverse of the problem. Therefore we attempt to fix this by running this command before every SSH command.
+
+[[https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9][https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9]]
+
+#+begin_src conf
+Match host * exec "gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye"
+#+end_src
+
+** Neovim
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/nvim/init.vim :mkdirp yes
+:END:
+*** Load Vim Plugins (VimPlug)
+
+#+begin_src conf
+call plug#begin('~/.vim/plugged')
+
+" vim-airline:
+" Lean & mean status/tabline for vim thats light as air
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'morhetz/gruvbox'
+
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+Plug 'jamessan/vim-gnupg'
+Plug 'chrisbra/csv.vim'
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
+Plug 'mattn/calendar-vim'
+
+" Plug 'valloric/youcompleteme'
+Plug 'yggdroot/indentline'
+Plug 'mbbill/undotree'
+
+" Language Based Plugins
+Plug 'JuliaEditorSupport/julia-vim'
+Plug 'ledger/vim-ledger'
+Plug 'nathangrigg/vim-beancount'
+Plug 'vim-scripts/gnuplot.vim'
+
+call plug#end()
+#+end_src
+
+*** Configure loaded plugins
+**** Vim Airline
+
+#+begin_src conf
+" vim-airline
+let laststatus = 2
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+
+" vim-airline-themes
+let g:airline_theme = 'base16_gruvbox_dark_hard'
+#+end_src
+
+**** Git Gutter
+
+#+begin_src conf
+" git-gutter
+nmap <C-M-j> <Plug>GitGutterNextHunk
+nmap <C-M-k> <Plug>GitGutterPrevHunk
+let g:gitgutter_set_sign_backgrounds = 1
+#+end_src
+
+**** Indent Lines
+
+#+begin_src conf
+" Indent Lines
+"let g:indentLine_char = '.'
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
+let g:indentLine_setColors = 1
+"let g:indentLine_bgcolor_term = 0
+let g:indentLine_color_term = 8
+let g:indentLine_conceallevel = 2
+let g:indentLine_concealcursor = "n"
+#+end_src
+
+**** Vim Ledger
+
+#+begin_src conf
+" Configure vim ledger
+let g:ledger_maxwidth = 80
+let g:ledger_bin = 'ledger'
+let g:ledger_extra_options = '--pedantic --explicit'
+let g:ledger_align_at = 77
+let g:ledger_date_format = '%Y-%m-%d'
+#+end_src
+
+**** Markdown
+
+#+begin_src conf
+" Markdown conceal
+let g:vim_markdown_conceal = 0
+let g:vim_markdown_conceal_code_blocks = 0
+#+end_src
+
+**** Vim Wiki
+
+#+begin_src conf
+" Vim Wiki
+let personal_wiki = {}
+let personal_wiki.name = 'Tabula Rasa'
+let personal_wiki.path = '~/usr/wiki/src'
+let personal_wiki.path_html = '~/usr/wiki/.html'
+let personal_wiki.syntax = 'markdown'
+let personal_wiki.ext = '.md'
+let personal_wiki.maxhi = 1
+let personal_wiki.diary_rel_path = "journal/"
+let personal_wiki.diary_index = "toc"
+let personal_wiki.diary_header = "Personal Journal"
+let personal_wiki.diary_caption_level = 0
+let personal_wiki.auto_diary_index = 1
+
+let g:vimwiki_list = [personal_wiki]
+let g:vimwiki_global_ext = 1
+let g:vimwiki_listsyms = ' ○◐●✓' " '✗○◐●✓'
+let g:vimwiki_folding = 'expr'
+let g:vimwiki_hl_cb_checked = 2
+#+end_src
+
+*** Setup Sane Vim Defaults
+
+#+begin_src conf
+set nocompatible
+set number          " Show Line numbers
+set ruler           " Show line and column number of the cursor
+set cursorline      " highlight current line
+set cursorcolumn    " Create a column for where the cursor is
+set colorcolumn=80  " Create a column to show where 80 chars are
+set modeline        " Allow source files to configure vim as well
+set nowrap
+
+" TAB = 4 SPACES
+set tabstop=4		" number of visual spaces per TAB
+set softtabstop=4   " number of space in TAB while editing
+set expandtab		" TABs are now SPACEs
+set shiftwidth=4    " Allows helps to make it 4 spaces in neovim
+
+filetype plugin on
+filetype indent on  " Load filetype-specific indent files
+syntax on
+
+set wildmenu        " visual autocomplete for command menu
+set lazyredraw      " redraw only when we need to
+
+set showmatch       " highlight matching brackets [{()}]
+set incsearch       " search as characters are entered
+set hlsearch        " highlight matches
+
+set noshowmode      " Stop showing the default mode
+
+set mouse=a         " Set mouse wheel to scroll
+
+" Code concealing
+set conceallevel=2
+set concealcursor-=n
+
+" Enable Code Folding
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent    " fold based on ident level
+
+" Custom file search
+set path+=**
+#+end_src
+
+*** Vim Colorschemes
+
+#+begin_src conf
+" Use peachpuff built-in colorscheme as the base
+colorscheme peachpuff
+
+" Color of the Columns
+highlight ColorColumn ctermbg=black
+highlight CursorColumn ctermbg=black
+highlight VertSplit ctermfg=black
+
+" Change the default coloring of line numbers
+highlight LineNr ctermfg=black
+
+" Change colorscheme of Pmenus
+highlight Pmenu ctermfg=darkgrey ctermbg=black
+
+" Set background color of folded blocks
+highlight Folded ctermbg=black
+
+" Some syntax highlighting changes (maybe move this to its own file)
+highlight Function ctermfg=darkblue
+highlight String ctermfg=darkgreen
+highlight Comment ctermfg=darkgrey
+highlight Exception ctermfg=darkred
+
+" Fix colors on gitgutter after colorscheme has been set
+highlight SignColumn ctermbg=None
+highlight GitGutterAdd ctermbg=None ctermfg=green
+highlight GitGutterChange ctermbg=None ctermfg=yellow
+highlight GitGutterDelete ctermbg=None ctermfg=red
+
+" Change colors to be more intuitive for vimwiki
+highlight VimwikiHeader1 ctermbg=None ctermfg=darkred
+highlight VimwikiHeader2 ctermbg=None ctermfg=darkblue
+highlight VimwikiHeader3 ctermbg=None ctermfg=darkgreen
+highlight VimwikiHeader4 ctermbg=None ctermfg=yellow
+highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
+highlight VimwikiHeader6 ctermbg=None ctermfg=magenta
+
+highlight Conceal ctermbg=None ctermfg=darkblue
+#+end_src
+
+*** Custom Keybindings
+
+#+begin_src conf
+" Sets a keybind to turn off highlighted searches
+nnoremap <leader><space> :nohlsearch<CR>
+
+" Keybinds to quickly switch buffers
+noremap <S-j> :bn<CR>
+noremap <S-k> :bp<CR>
+
+" Custom git mappings (is fugitive or gitgutter better to use instead?)
+noremap <F2> :Git <CR>
+noremap <F3> :Git diff<CR>
+noremap <F4> :Gclog<CR>
+
+" Key binds to toggle the Undo Tree
+noremap <F5> :UndotreeToggle<CR>
+
+noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
+    \ '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" .
+    \ " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
+
+" Ledger remap tab completion
+au FileType ledger inoremap <silent> <Tab>
+            \ <C-r>=ledger#autocomplete_and_align()<CR>
+au FileType ledger vnoremap <silent> <Tab>
+            \ :LedgerAlign<CR>
+au FileType ledger nnoremap <silent> <C-m>
+            \ :silent<space>make<bar>redraw!<bar>cwindow<CR>
+au FileType ledger nnoremap <silent> <C-s>
+            \ :call ledger#transaction_state_toggle(line('.'), ' !*?')<CR>
+
+" Vimwiki doc pubs open
+autocmd FileType vimwiki nnoremap <Leader>p :silent !pubs doc open %:r<CR>
+#+end_src
+
+*** Custom Vim Functions
+**** Trim Whitespace
+#+begin_src conf
+" Trim the whitespace present in a file
+fun! TrimWhitespace()
+    let l:save = winsaveview()
+    keeppatterns %s/\s\+$//e
+    call winrestview(l:save)
+endfun
+command! TrimWhitespace call TrimWhitespace()
+#+end_src
+
+**** Toggle Calendar
+
+#+begin_src conf
+" Toggle calendar view within view if in vim wiki
+function! ToggleCalendar()
+    execute ":Calendar"
+    if exists("g:calendar_open")
+        if g:calendar_open == 1
+            execute "q"
+            unlet g:calendar_open
+        else
+            g:calendar_open = 1
+        end
+    else
+        let g:calendar_open = 1
+    end
+endfunction
+:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
+#+end_src
+
+*** Vim mode line
+
+#+begin_src conf
+" vim:ft=vim
+#+end_src
+
+** Tmux
+:PROPERTIES:
+:header-args:conf: :tangle ~/.tmux.conf
+:END:
+*** Basic Config
+
+#+begin_src conf
+set -g default-terminal "screen-256color"   # Use 256 colors
+set -g history-limit 100000                 # Scrollback buffer number of lines
+
+# Start window indexing at one instead of zero
+set -g base-index 1
+#+end_src
+
+*** Keybindings
+
+#+begin_src conf
+# Set the prefix key and some key bindings to match GNU Screen
+set -g prefix C-b
+#bind-key C-a last-window
+
+# Key bindings for horizontal and vertical panes
+unbind %
+unbind '"'
+bind | split-window -h
+bind - split-window -v
+
+# Add vim-like bindings
+unbind-key j
+bind-key j select-pane -D
+unbind-key k
+bind-key k select-pane -U
+unbind-key h
+bind-key h select-pane -L
+unbind-key l
+bind-key l select-pane -R
+#+end_src
+
+*** Window Settings
+
+#+begin_src conf
+# Enable window titles
+set -g set-titles on
+
+# Window title string (uses statusbar variables)
+set -g set-titles-string '#T'
+#+end_src
+
+*** Status Bar
+
+#+begin_src conf
+# Status bar with load and time
+set -g status-bg '#4e4e4e'
+set -g status-fg '#ffffff'
+set -g status-left ' '
+set -g status-right '#[bg=#bbbbbb]#[fg=#000000]#(cut -d " " -f -3 /proc/loadavg) #[bg=#4e4e4e]#[fg=#ffffff]#(date +" %H:%M ")'
+set -g window-status-format '#I #W'
+set -g window-status-current-format ' #I #W '
+setw -g window-status-current-bg '#55ff55'
+setw -g window-status-current-fg '#000000'
+#+end_src
+
+*** Pane
+
+#+begin_src conf
+# Pane border colors
+set -g pane-active-border-fg '#bbbbbb'
+set -g pane-border-fg '#555555'
+#+end_src
+
+*** Reload Config
+
+#+begin_src conf
+# Bind to reload config
+bind r source-file ~/.tmux.conf
+#+end_src
+
+* Desktop Environment
+** Xorg
+:PROPERTIES:
+:header-args:C: :tangle ~/.Xresources
+:END:
+*** Source Colorscheme
+
+#+begin_src C
+#include ".config/xcolor/scheme"
+#+end_src
+
+*** Xft Font Settings
+
+#+begin_src C
+Xft.dpi:                    96
+Xft.antialias:              true
+Xft.rgba:                   rgb
+Xft.hinting:                true
+Xft.hintstyle:              hintslight
+#+end_src
+
+*** Default Font Face
+
+#+begin_src C
+!*font: xft:Iosevka Term:size=11
+!*font: xft:xos4 Terminus:size=12
+#define system_font xft:xos4 Terminus:size=12
+#+end_src
+
+*** Rxvt Unicode Terminal
+**** General Settings
+
+#+begin_src C
+URxvt.depth:                32
+URxvt.geometry:             96x33
+URxvt.loginShell:           false
+URxvt.internalBorder:       10
+URxvt.lineSpace:            0
+!URxvt.termName:             xterm-256color
+#+end_src
+
+**** Transparency
+
+I've disabled all transparency for the time being
+
+#+begin_src C
+! fake transparency - true or false (default)
+!URxvt*transparent: true
+
+! Real transparency (needs compositor like compton)
+! If using make sure to disable the background below.
+!URxvt*depth: 32
+!URxvt*background: [85]xbackground
+#+end_src
+
+**** Misc UI Changes
+
+#+begin_src C
+! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
+!   some nice listings are at:
+!     http://www.nisrv.com/drupal/?q=node/11
+!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
+!URxvt*tintColor: S_base03
+
+! shading - 0 to 99 darkens, 101 to 200 lightens.
+!   Dont use with tintColor; just use a darker or lighter color instead.
+URxvt*shading: 15
+
+URxvt*saveLines: 12000
+
+! scrollbar - true (default) or false
+URxvt*scrollBar: false
+
+! scrollbar position - left=false (default) or right=true
+URxvt*scrollBar_right: false
+
+! scrollbar style - rxvt (default), plain, next, or xterm
+URxvt*scrollstyle: plain
+#+end_src
+
+**** Clipboard Keybindings
+
+#+begin_src C
+! Remap the copy and paste functionaility
+URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+#+end_src
+
+**** Colorscheme and Font
+
+#+begin_src C
+URxvt.foreground: xforeground
+URxvt.background: xbackground
+URxvt.cursorColor: xcursorColor
+
+! This is for fading windows if not active
+URxvt.fading: xfade
+URxvt.fadeColor: xbackground
+
+URxvt.color0:  xcolor0
+URxvt.color1:  xcolor1
+URxvt.color2:  xcolor2
+URxvt.color3:  xcolor3
+URxvt.color4:  xcolor4
+URxvt.color5:  xcolor5
+URxvt.color6:  xcolor6
+URxvt.color7:  xcolor7
+URxvt.color8:  xcolor8
+URxvt.color9:  xcolor9
+URxvt.color10: xcolor10
+URxvt.color11: xcolor11
+URxvt.color12: xcolor12
+URxvt.color13: xcolor13
+URxvt.color14: xcolor14
+URxvt.color15: xcolor15
+
+URxvt.font: system_font
+#+end_src
+
+*** Rofi Dmenu
+**** Enabled Modes
+
+#+begin_src C
+! "Enabled modi" Set from: Default
+rofi.modi:                           window,run,ssh
+#+end_src
+
+**** Window Geometry
+
+#+begin_src C
+! "Window width" Set from: Default
+ rofi.width:                          30
+
+! "Number of lines" Set from: Default
+ rofi.lines:                          15
+
+! "Number of columns" Set from: Default
+! rofi.columns:                        1
+#+end_src
+
+**** Colorscheme and Font
+
+#+begin_src C
+! "Font to use" Set from: XResources
+rofi.font:                            Iosevka Term 12
+
+! Color Guidlines                       BG -  FG - BG_ALT - HL_BG - HL_FG
+! "Color scheme for normal row"
+ rofi.color-normal:                     xbackground, xforeground, xbackground, xcolor0, xforeground
+! "Color scheme for urgent row"
+ rofi.color-urgent:                     xbackground, xforeground, xbackground, xcolor0, xforeground
+! "Color scheme for active row"
+ rofi.color-active:                     xbackground, xforeground, xbackground, xcolor0, xforeground
+
+! Color Guidlines                       BG          BORDER      SEPEARATOR
+! "Color scheme window"
+ rofi.color-window:                     xbackground,    xcolor8,    xcolor8
+! "Border width" Set from: XResources
+rofi.bw:                             4
+#+end_src
+
+**** Unused Rofi Settings
+
+#+begin_src C
+! "Location on screen" Set from: Default
+! rofi.location:                       0
+! "Padding" Set from: Default
+! rofi.padding:                        5
+! "Y-offset relative to location" Set from: Default
+! rofi.yoffset:                        0
+! "X-offset relative to location" Set from: Default
+! rofi.xoffset:                        0
+! "Always show number of lines" Set from: Default
+! rofi.fixed-num-lines:                true
+
+! "Terminal to use" Set from: XResources
+rofi.terminal:                       urxvtc
+! "Ssh client to use" Set from: Default
+! rofi.ssh-client:                     ssh
+! "Ssh command to execute" Set from: Default
+! rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
+! "Run command to execute" Set from: Default
+! rofi.run-command:                    {cmd}
+! "Command to get extra run targets" Set from: Default
+! rofi.run-list-command:
+! "Run command to execute that runs in shell" Set from: Default
+! rofi.run-shell-command:              {terminal} -e {cmd}
+! "Command executed on accep-entry-custom for window modus" Set from: Default
+! rofi.window-command:                 xkill -id {window}
+
+! "Disable history in run/ssh" Set from: Default
+! rofi.disable-history:                false
+! "Use levenshtein sorting" Set from: Default
+! rofi.levenshtein-sort:               false
+! "Set case-sensitivity" Set from: Default
+! rofi.case-sensitive:                 false
+
+! "Cycle through the results list" Set from: Default
+! rofi.cycle:                          true
+! "Enable sidebar-mode" Set from: Default
+! rofi.sidebar-mode:                   false
+! "Row height (in chars)" Set from: Default
+! rofi.eh:                             1
+! "Enable auto select mode" Set from: Default
+! rofi.auto-select:                    false
+
+! "Parse hosts file for ssh mode" Set from: Default
+! rofi.parse-hosts:                    false
+! "Parse known_hosts file for ssh mode" Set from: Default
+! rofi.parse-known-hosts:              true
+
+! "Set the modi to combine in combi mode" Set from: Default
+! rofi.combi-modi:                     window,run
+! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
+! rofi.matching:                       normal
+! "Tokenize input string" Set from: Default
+! rofi.tokenize:                       true
+! "Monitor id to show on" Set from: Default
+! rofi.m:                              -5
+
+! "Margin between rows" Set from: Default
+! rofi.line-margin:                    2
+! "Padding within rows" Set from: Default
+! rofi.line-padding:                   1
+! "Pre-set filter" Set from: Default
+! rofi.filter:
+! "Separator style (none, dash, solid)" Set from: Default
+! rofi.separator-style:                dash
+! "Hide scroll-bar" Set from: Default
+! rofi.hide-scrollbar:                 false
+! "Fullscreen" Set from: Default
+! rofi.fullscreen:                     false
+! "Fake transparency" Set from: Default
+! rofi.fake-transparency:              false
+! "DPI" Set from: Default
+! rofi.dpi:                            -1
+
+! "Threads to use for string matching" Set from: Default
+! rofi.threads:                        0
+
+! "Scrollbar width" Set from: Default
+! rofi.scrollbar-width:                8
+! "Scrolling method. (0: Page, 1: Centered)" Set from: Default
+! rofi.scroll-method:                  0
+
+! "Background to use for fake transparency. (background or screenshot)" Set from: Default
+! rofi.fake-background:                screenshot
+! "Window Format. w (desktop name), t (title), n (name), r (role), c (class)" Set from: Default
+! rofi.window-format:                  {w}   {c}   {t}
+! "Click outside the window to exit" Set from: Default
+! rofi.click-to-exit:                  true
+
+! "Indicate how it match by underlining it." Set from: Default
+! rofi.show-match:                     true
+! "Pidfile location" Set from: Default
+! rofi.pid:                            /home/zamlz/.cache/rofi.pid
+
+! "Paste primary selection" Set from: Default
+! rofi.kb-primary-paste:               Control+V,Shift+Insert
+! "Paste clipboard" Set from: Default
+! rofi.kb-secondary-paste:             Control+v,Insert
+! "Clear input line" Set from: Default
+! rofi.kb-clear-line:                  Control+w
+! "Beginning of line" Set from: Default
+! rofi.kb-move-front:                  Control+a
+! "End of line" Set from: Default
+! rofi.kb-move-end:                    Control+e
+! "Move back one word" Set from: Default
+! rofi.kb-move-word-back:              Alt+b
+! "Move forward one word" Set from: Default
+! rofi.kb-move-word-forward:           Alt+f
+! "Move back one char" Set from: Default
+! rofi.kb-move-char-back:              Left,Control+b
+! "Move forward one char" Set from: Default
+! rofi.kb-move-char-forward:           Right,Control+f
+! "Delete previous word" Set from: Default
+! rofi.kb-remove-word-back:            Control+Alt+h,Control+BackSpace
+! "Delete next word" Set from: Default
+! rofi.kb-remove-word-forward:         Control+Alt+d
+! "Delete next char" Set from: Default
+! rofi.kb-remove-char-forward:         Delete,Control+d
+! "Delete previous char" Set from: Default
+! rofi.kb-remove-char-back:            BackSpace,Control+h
+! "Delete till the end of line" Set from: Default
+! rofi.kb-remove-to-eol:               Control+k
+! "Delete till the start of line" Set from: Default
+! rofi.kb-remove-to-sol:               Control+u
+! "Accept entry" Set from: Default
+! rofi.kb-accept-entry:                Control+j,Control+m,Return,KP_Enter
+! "Use entered text as command (in ssh/run modi)" Set from: Default
+! rofi.kb-accept-custom:               Control+Return
+! "Use alternate accept command." Set from: Default
+! rofi.kb-accept-alt:                  Shift+Return
+! "Delete entry from history" Set from: Default
+! rofi.kb-delete-entry:                Shift+Delete
+! "Switch to the next mode." Set from: Default
+! rofi.kb-mode-next:                   Shift+Right,Control+Tab
+! "Switch to the previous mode." Set from: Default
+! rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab
+! "Go to the previous column" Set from: Default
+! rofi.kb-row-left:                    Control+Page_Up
+! "Go to the next column" Set from: Default
+! rofi.kb-row-right:                   Control+Page_Down
+! "Select previous entry" Set from: Default
+! rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab
+! "Select next entry" Set from: Default
+! rofi.kb-row-down:                    Down,Control+n
+! "Go to next row, if one left, accept it, if no left next mode." Set from: Default
+! rofi.kb-row-tab:                     Tab
+! "Go to the previous page" Set from: Default
+! rofi.kb-page-prev:                   Page_Up
+! "Go to the next page" Set from: Default
+! rofi.kb-page-next:                   Page_Down
+! "Go to the first entry" Set from: Default
+! rofi.kb-row-first:                   Home,KP_Home
+! "Go to the last entry" Set from: Default
+! rofi.kb-row-last:                    End,KP_End
+! "Set selected item as input text" Set from: Default
+! rofi.kb-row-select:                  Control+space
+! "Take a screenshot of the rofi window" Set from: Default
+! rofi.kb-screenshot:                  Alt+S
+! "Toggle case sensitivity" Set from: Default
+! rofi.kb-toggle-case-sensitivity:     grave,dead_grave
+! "Toggle sort" Set from: Default
+! rofi.kb-toggle-sort:                 Alt+grave
+! "Quit rofi" Set from: Default
+! rofi.kb-cancel:                      Escape,Control+g,Control+bracketleft
+! "Custom keybinding 1" Set from: Default
+! rofi.kb-custom-1:                    Alt+1
+! "Custom keybinding 2" Set from: Default
+! rofi.kb-custom-2:                    Alt+2
+! "Custom keybinding 3" Set from: Default
+! rofi.kb-custom-3:                    Alt+3
+! "Custom keybinding 4" Set from: Default
+! rofi.kb-custom-4:                    Alt+4
+! "Custom Keybinding 5" Set from: Default
+! rofi.kb-custom-5:                    Alt+5
+! "Custom keybinding 6" Set from: Default
+! rofi.kb-custom-6:                    Alt+6
+! "Custom Keybinding 7" Set from: Default
+! rofi.kb-custom-7:                    Alt+7
+! "Custom keybinding 8" Set from: Default
+! rofi.kb-custom-8:                    Alt+8
+! "Custom keybinding 9" Set from: Default
+! rofi.kb-custom-9:                    Alt+9
+! "Custom keybinding 10" Set from: Default
+! rofi.kb-custom-10:                   Alt+0
+! "Custom keybinding 11" Set from: Default
+! rofi.kb-custom-11:                   Alt+exclam
+! "Custom keybinding 12" Set from: Default
+! rofi.kb-custom-12:                   Alt+at
+! "Csutom keybinding 13" Set from: Default
+! rofi.kb-custom-13:                   Alt+numbersign
+! "Custom keybinding 14" Set from: Default
+! rofi.kb-custom-14:                   Alt+dollar
+! "Custom keybinding 15" Set from: Default
+! rofi.kb-custom-15:                   Alt+percent
+! "Custom keybinding 16" Set from: Default
+! rofi.kb-custom-16:                   Alt+dead_circumflex
+! "Custom keybinding 17" Set from: Default
+! rofi.kb-custom-17:                   Alt+ampersand
+! "Custom keybinding 18" Set from: Default
+! rofi.kb-custom-18:                   Alt+asterisk
+! "Custom Keybinding 19" Set from: Default
+! rofi.kb-custom-19:                   Alt+parenleft
+
+! "The display name of this browser" Set from: Default
+! rofi.display-ssh:
+! "The display name of this browser" Set from: Default
+! rofi.display-run:
+! "The display name of this browser" Set from: Default
+! rofi.display-drun:
+! "The display name of this browser" Set from: Default
+! rofi.display-combi:
+#+end_src
+
+*** Emacs
+
+Really we set the default colorscheme here so that emacs doesn't blind our eyes we the default black background, but also set some other sane defaults from the default colorscheme so that if emacs does in fact crash, we are in a /dark theme/ environment.
+
+#+begin_src C
+Emacs.foreground: xforeground
+Emacs.background: xbackground
+
+Emacs.color0:  xcolor0
+Emacs.color1:  xcolor1
+Emacs.color2:  xcolor2
+Emacs.color3:  xcolor3
+Emacs.color4:  xcolor4
+Emacs.color5:  xcolor5
+Emacs.color6:  xcolor6
+Emacs.color7:  xcolor7
+Emacs.color8:  xcolor8
+Emacs.color9:  xcolor9
+Emacs.color10: xcolor10
+Emacs.color11: xcolor11
+Emacs.color12: xcolor12
+Emacs.color13: xcolor13
+Emacs.color14: xcolor14
+Emacs.color15: xcolor15
+#+end_src
+
+** Herbstluftwm
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/herbstluftwm/autostart :mkdirp yes :shebang #!/bin/sh
+:END:
+*** Initial Configuration
+
+Pretty straightforward stuff, setup logger, create a helper function,
+
+#+begin_src shell
+. $HOME/lib/shell/logger
+LOGGER=$(get_logger herbstluftwm)
+$LOGGER "Initializing herbstluftwm window manager"
+
+hc() {
+    herbstclient "$@"
+}
+
+hc emit_hook reload
+#+end_src
+
+*** WM Custom Rules
+
+Remove any prexisting rules
+
+#+begin_src shell
+hc unrule --all
+#+end_src
+
+Setup simple focus rules
+
+#+begin_src shell
+hc rule focus=on # normally focus new clients
+#hc rule focus=off # normally do not focus new clients
+#hc rule class=XTerm tag=3 # move all xterms to tag 3
+#+end_src
+
+Okay so probably the rules for the terminal are pointless here. Discord one actually doesn't work the way I want it to, but everything else here is pretty important. It makes sure that panels appear where they are suppose to and also ensures that popups are floating.
+
+#+begin_src shell
+# give focus to most common terminals
+hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
+hc rule class~'(Discord|DiscordCanary)' focus=off
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
+hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
+hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+#+end_src
+
+*** Source Xorg Universal Settings
+
+We need to configure some X11 specific things that are universally needed regardless of window manager.
+
+#+begin_src shell
+# Reapply certain XORG settings (do not fork this)
+$HOME/etc/xorg/wminit
+#+end_src
+
+*** Keybindings
+
+/You can use =xev= to identify X11 keys very easily./
+
+**** Setup
+
+#+begin_src shell
+# remove all existing keybinding; Use the super key as the main modifier
+hc keyunbind --all
+Super=Mod4
+#+end_src
+
+**** Reload WM and Close Window
+
+#+begin_src shell
+hc keybind $Super-Ctrl-Alt-r reload
+hc keybind $Super-q close
+#+end_src
+
+**** Window Focus
+
+#+begin_src shell
+# focusing clients
+hc keybind $Super-Left  focus left
+hc keybind $Super-Down  focus down
+hc keybind $Super-Up    focus up
+hc keybind $Super-Right focus right
+hc keybind $Super-h     focus left
+hc keybind $Super-j     focus down
+hc keybind $Super-k     focus up
+hc keybind $Super-l     focus right
+
+# Cycling focus
+hc keybind $Super-BackSpace   cycle_monitor
+hc keybind $Super-Tab         cycle +1
+hc keybind $Super-Shift-Tab   cycle_frame +1
+hc keybind $Super-c           cycle_all +1
+hc keybind $Super-i jumpto urgent
+#+end_src
+
+**** Window Movement
+
+#+begin_src shell
+# moving clients
+hc keybind $Super-Shift-Left  shift left
+hc keybind $Super-Shift-Down  shift down
+hc keybind $Super-Shift-Up    shift up
+hc keybind $Super-Shift-Right shift right
+hc keybind $Super-Shift-h     shift left
+hc keybind $Super-Shift-j     shift down
+hc keybind $Super-Shift-k     shift up
+hc keybind $Super-Shift-l     shift right
+#+end_src
+
+**** Splitting Frames
+
+#+begin_src shell
+# splitting frames
+# create an empty frame at the specified direction
+hc keybind $Super-u       split   bottom  0.5
+hc keybind $Super-o       split   right   0.5
+
+# let the current frame explode into subframes
+hc keybind $Super-Control-space split explode
+#+end_src
+
+**** Resizing Frames
+
+#+begin_src shell
+# resizing frames
+resizestep=0.01
+
+hc keybind $Super-Control-h       resize left +$resizestep
+hc keybind $Super-Control-j       resize down +$resizestep
+hc keybind $Super-Control-k       resize up +$resizestep
+hc keybind $Super-Control-l       resize right +$resizestep
+hc keybind $Super-Control-Left    resize left +$resizestep
+hc keybind $Super-Control-Down    resize down +$resizestep
+hc keybind $Super-Control-Up      resize up +$resizestep
+hc keybind $Super-Control-Right   resize right +$resizestep
+#+end_src
+
+**** Workspace Definitions (tags)
+
+#+begin_src shell
+# tags
+tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
+tag_keys=( {1..9} 0 )
+
+hc rename default "${tag_names[0]}" || true
+for i in ${!tag_names[@]} ; do
+    hc add "${tag_names[$i]}"
+    key="${tag_keys[$i]}"
+    if ! [ -z "$key" ] ; then
+        hc keybind "$Super-$key" use_index "$i"
+        hc keybind "$Super-Shift-$key" move_index "$i"
+    fi
+done
+#+end_src
+
+**** Workspace Movement
+
+#+begin_src shell
+# Jump to previous tag
+hc keybind $Super-grave use_previous
+
+# cycle through tags
+hc keybind $Super-bracketright use_index +1 --skip-visible
+hc keybind $Super-bracketleft  use_index -1 --skip-visible
+#+end_src
+
+**** Layout Control
+
+#+begin_src shell
+# layouting
+hc keybind $Super-r remove
+hc keybind $Super-s floating toggle
+hc keybind $Super-f fullscreen toggle
+hc keybind $Super-t pseudotile toggle
+
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# I.e. if there are two windows within a frame, the grid layout is skipped.
+hc keybind $Super-space                                                       \
+            or , and . compare tags.focus.curframe_wcount = 2                 \
+                     . cycle_layout +1 vertical horizontal max vertical grid  \
+               , cycle_layout +1
+#+end_src
+
+**** Mouse Control
+
+#+begin_src shell
+# mouse
+hc mouseunbind --all
+hc mousebind $Super-Button1 move
+hc mousebind $Super-Button2 zoom
+hc mousebind $Super-Button3 resize
+#+end_src
+
+**** Colorscheme Cylcing
+
+#+begin_src shell
+# cycle through colorschemes
+hc keybind $Super-Ctrl-Alt-bracketright chain , \
+        spawn $HOME/bin/xcolorscheme --next , reload
+
+hc keybind $Super-Ctrl-Alt-bracketleft chain , \
+        spawn $HOME/bin/xcolorscheme --prev , reload
+#+end_src
+
+*** Theme Configuration
+**** Source Colorscheme
+
+#+begin_src shell
+. $HOME/lib/shell/xrdb_colors
+#+end_src
+
+**** TODO What does this do again?
+
+#+begin_src shell
+hc attr theme.tiling.reset 1
+hc attr theme.floating.reset 1
+#+end_src
+
+**** Frame Appearance
+
+#+begin_src shell
+hc set frame_transparent_width 1
+hc set frame_border_width 1
+hc set frame_border_active_color $XBACKGROUND
+hc set frame_border_normal_color $XBACKGROUND
+
+hc set frame_bg_transparent 1
+hc set frame_bg_normal_color $XBACKGROUND
+hc set frame_bg_active_color $XCOLOR8
+
+hc set always_show_frame 0
+hc set frame_gap 8
+hc set frame_padding 0
+#+end_src
+
+**** Window Appearance
+
+#+begin_src shell
+hc attr theme.active.outer_color $XBACKGROUND
+hc attr theme.active.inner_color $XBACKGROUND
+
+hc attr theme.normal.color $BLACK
+hc attr theme.active.color $WHITE
+hc attr theme.urgent.color orange
+
+hc attr theme.border_width 9
+hc attr theme.inner_width 3
+hc attr theme.outer_width 4
+
+hc attr theme.inner_color $XBACKGROUND
+hc attr theme.outer_color $XBACKGROUND
+
+hc attr theme.floating.border_width 9
+hc attr theme.floating.inner_width 3
+hc attr theme.floating.outer_width 4
+
+hc attr theme.floating.outer_color $XBACKGROUND
+hc attr theme.background_color '#141414'
+
+hc set window_gap 0
+hc set smart_window_surroundings 0
+hc set smart_frame_surroundings 1
+hc set mouse_recenter_gap 0
+#+end_src
+
+**** Tree View
+
+#+begin_src shell
+hc set tree_style '╾│ ├└╼─┐'
+#+end_src
+
+**** Montior Setup
+
+Well monitor setup doesn't belong here really, but we're doing it here because we need to make space for the panels.
+
+#+begin_src shell
+# unlock, just to be sure
+hc unlock
+hc detect_monitors
+#+end_src
+
+**** Configure Panel Height
+
+#+begin_src shell
+PANEL_HEIGHT=20
+for monitor in $(seq 0 2); do
+    hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
+done
+#+end_src
+
+*** Event Hooks
+
+This starts a couple FIFO hooks so that lemonbar can update the information on it's panel as effeciently as possible.
+
+**** Event Hooks Startup Verification
+
+#+begin_src shell
+if [ $(pgrep -cx herbstclient) -gt 0 ]; then
+    printf "The herbstluftwm event hooks for lemonbar are already running.\n" >&2
+    $LOGGER "The herbstluftwm event hooks for lemonbar are already running."
+    exit 1
+fi
+#+end_src
+
+**** Event Hooks Trigger Definition
+
+#+begin_src shell
+WSP_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos wsp"
+WIN_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos win"
+WARG="'(focus_changed|window_title|panel_init)'"
+#+end_src
+
+**** Initialize Event Hooks
+
+I don't remember why I commented one of the hooks out, oh thats rights, its because I'm not using the lemonbar xwindow module I made anymore.
+
+#+begin_src shell
+(herbstclient --idle       | while read -r line; do $WSP_TRIGGER; done) &
+#(herbstclient --idle $WARG | while read -r line; do $WIN_TRIGGER; done) &
+
+$LOGGER "All hook have been started"
+#+end_src
+
+** Compton
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes
+:END:
+[[http://9m.no/ꪯ鵞][Thank you code_nomad!]] Copied a lot of this person's config...
+*** Backend
+
+Backend to use: "xrender" or "glx".
+GLX backend is typically much faster but depends on a sane driver.
+
+#+begin_src conf
+# Provide the backend to use
+backend = "xrender";
+#+end_src
+
+*** GLX backend
+
+#+begin_src conf
+# ??? Don't remember what this does...
+glx-no-stencil = true;
+
+# GLX backend: Copy unmodified regions from front buffer instead of redrawing them all.
+# My tests with nvidia-drivers show a 10% decrease in performance when the whole screen is modified,
+# but a 20% increase when only 1/4 is.
+# My tests on nouveau show terrible slowdown.
+# Useful with --glx-swap-method, as well.
+glx-copy-from-front = false;
+
+# GLX backend: Avoid rebinding pixmap on window damage.
+# Probably could improve performance on rapid window content changes, but is known to break things on some drivers (LLVMpipe).
+# Recommended if it works.
+# glx-no-rebind-pixmap = true;
+
+# GLX backend: GLX buffer swap method we assume.
+# Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1).
+# undefined is the slowest and the safest, and the default value.
+# copy is fastest, but may fail on some drivers,
+# 2-6 are gradually slower but safer (6 is still faster than 0).
+# Usually, double buffer means 2, triple buffer means 3.
+# buffer-age means auto-detect using GLX_EXT_buffer_age, supported by some drivers.
+# Useless with --glx-use-copysubbuffermesa.
+# Partially breaks --resize-damage.
+# Defaults to undefined.
+glx-swap-method = "undefined";
+#+end_src
+
+*** Shadows
+
+#+begin_src conf
+# Enabled client-side shadows on windows.
+shadow = true;
+# Don't draw shadows on DND windows.
+no-dnd-shadow = true;
+# Avoid drawing shadows on dock/panel windows.
+no-dock-shadow = true;
+# Zero the part of the shadow's mask behind the window. Fix some weirdness with ARGB windows.
+clear-shadow = true;
+# The blur radius for shadows. (default 12)
+shadow-radius = 5;
+# The left offset for shadows. (default -15)
+shadow-offset-x = -5;
+# The top offset for shadows. (default -15)
+shadow-offset-y = -5;
+# The translucency for shadows. (default .75)
+shadow-opacity = 0.5;
+
+# Set if you want different colour shadows
+# shadow-red = 0.0;
+# shadow-green = 0.0;
+# shadow-blue = 0.0;
+
+# The shadow exclude options are helpful if you have shadows enabled. Due to the way compton draws its shadows, certain applications will have visual glitches
+# (most applications are fine, only apps that do weird things with xshapes or argb are affected).
+# This list includes all the affected apps I found in my testing. The "! name~=''" part excludes shadows on any "Unknown" windows, this prevents a visual glitch with the XFWM alt tab switcher.
+shadow-exclude = [
+    "! name~=''",
+    "name = 'Notification'",
+    "name = 'Plank'",
+    "name = 'Docky'",
+    "name = 'Kupfer'",
+    "name = 'xfce4-notifyd'",
+    "name *= 'VLC'",
+    "name *= 'compton'",
+    "name *= 'Chromium'",
+    "name *= 'Chrome'",
+    "class_g = 'Conky'",
+    "class_g = 'Kupfer'",
+    "class_g = 'Synapse'",
+    "class_g ?= 'Notify-osd'",
+    "class_g ?= 'Cairo-dock'",
+    "class_g ?= 'Xfce4-notifyd'",
+    "class_g ?= 'Xfce4-power-manager'",
+    "_GTK_FRAME_EXTENTS@:c"
+];
+# Avoid drawing shadow on all shaped windows (see also: --detect-rounded-corners)
+shadow-ignore-shaped = false;
+#+end_src
+
+*** Opacity
+
+#+begin_src conf
+# Define opacity
+menu-opacity = 1;
+inactive-opacity = 1;
+active-opacity = 1;
+frame-opacity = 1;
+inactive-opacity-override = false;
+alpha-step = 0.06;
+
+# Dim inactive windows. (0.0 - 1.0)
+# inactive-dim = 0.2;
+# Do not let dimness adjust based on window opacity.
+# inactive-dim-fixed = true;
+# Blur background of transparent windows. Bad performance with X Render backend. GLX backend is preferred.
+# blur-background = true;
+# Blur background of opaque windows with transparent frames as well.
+# blur-background-frame = true;
+# Do not let blur radius adjust based on window opacity.
+blur-background-fixed = false;
+blur-background-exclude = [
+    "window_type = 'dock'",
+    "window_type = 'desktop'"
+];
+#+end_src
+
+*** Fading
+
+#+begin_src conf
+# Fade windows during opacity changes.
+fading = true;
+# The time between steps in a fade in milliseconds. (default 10).
+fade-delta = 4;
+# Opacity change between steps while fading in. (default 0.028).
+fade-in-step = 0.03;
+# Opacity change between steps while fading out. (default 0.03).
+fade-out-step = 0.03;
+# Fade windows in/out when opening/closing
+# no-fading-openclose = true;
+
+# Specify a list of conditions of windows that should not be faded.
+fade-exclude = [ ];
+#+end_src
+
+*** Other
+
+#+begin_src conf
+# Try to detect WM windows and mark them as active.
+mark-wmwin-focused = true;
+# Mark all non-WM but override-redirect windows active (e.g. menus).
+mark-ovredir-focused = true;
+# Use EWMH _NET_WM_ACTIVE_WINDOW to determine which window is focused instead of using FocusIn/Out events.
+# Usually more reliable but depends on a EWMH-compliant WM.
+use-ewmh-active-win = true;
+# Detect rounded corners and treat them as rectangular when --shadow-ignore-shaped is on.
+detect-rounded-corners = true;
+
+# Detect _NET_WM_OPACITY on client windows, useful for window managers not passing _NET_WM_OPACITY of client windows to frame windows.
+# This prevents opacity being ignored for some apps.
+# For example without this enabled my xfce4-notifyd is 100% opacity no matter what.
+detect-client-opacity = true;
+
+# Specify refresh rate of the screen.
+# If not specified or 0, compton will try detecting this with X RandR extension.
+refresh-rate = 0;
+
+# Set VSync method. VSync methods currently available:
+# none: No VSync
+# drm: VSync with DRM_IOCTL_WAIT_VBLANK. May only work on some drivers.
+# opengl: Try to VSync with SGI_video_sync OpenGL extension. Only work on some drivers.
+# opengl-oml: Try to VSync with OML_sync_control OpenGL extension. Only work on some drivers.
+# opengl-swc: Try to VSync with SGI_swap_control OpenGL extension. Only work on some drivers. Works only with GLX backend. Known to be most effective on many drivers. Does not actually control paint timing, only buffer swap is affected, so it doesn’t have the effect of --sw-opti unlike other methods. Experimental.
+# opengl-mswc: Try to VSync with MESA_swap_control OpenGL extension. Basically the same as opengl-swc above, except the extension we use.
+# (Note some VSync methods may not be enabled at compile time.)
+vsync = "opengl-swc";
+
+# Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing.
+# Reported to have no effect, though.
+dbe = false;
+# Painting on X Composite overlay window. Recommended.
+paint-on-overlay = true;
+
+# Limit compton to repaint at most once every 1 / refresh_rate second to boost performance.
+# This should not be used with --vsync drm/opengl/opengl-oml as they essentially does --sw-opti's job already,
+# unless you wish to specify a lower refresh rate than the actual value.
+sw-opti = true;
+
+# Unredirect all windows if a full-screen opaque window is detected, to maximize performance for full-screen windows, like games.
+# Known to cause flickering when redirecting/unredirecting windows.
+# paint-on-overlay may make the flickering less obvious.
+unredir-if-possible = true;
+
+# Specify a list of conditions of windows that should always be considered focused.
+focus-exclude = [ ];
+
+# Use WM_TRANSIENT_FOR to group windows, and consider windows in the same group focused at the same time.
+detect-transient = true;
+# Use WM_CLIENT_LEADER to group windows, and consider windows in the same group focused at the same time.
+# WM_TRANSIENT_FOR has higher priority if --detect-transient is enabled, too.
+detect-client-leader = true;
+#+end_src
+
+*** Window Type Settings
+
+#+begin_src conf
+wintypes:
+{
+    tooltip =
+    {
+        # fade: Fade the particular type of windows.
+        fade = true;
+        # shadow: Give those windows shadow
+        shadow = false;
+        # opacity: Default opacity for the type of windows.
+        opacity = 0.85;
+        # focus: Whether to always consider windows of this type focused.
+        focus = true;
+    };
+};
+#+end_src
+
+** Zathura
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/zathura/zathurarc :mkdirp yes
+:END:
+*** Re-Color Pages
+
+Uncomment the first line if you want to have the the pages recolored by default.
+
+#+begin_src conf
+#set recolor true
+set recolor-darkcolor "#ebdbb2"
+set recolor-lightcolor "#000000"
+#+end_src
+
+*** Highlighting
+
+#+begin_src conf
+set highlight-color "#b16286"
+set highlight-active-color "#458588"
+set highlight-transparency 0.75
+#+end_src
+
 * GNU/Emacs Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ./init.el
@@ -1414,1411 +2819,6 @@ A simple plugin for getting the today's xkcd comic.
 
 #+begin_src emacs-lisp
 (use-package xkcd)
-#+end_src
-
-* Operating System
-** TODO Gentoo Linux
-* Desktop Environment
-** Xorg
-:PROPERTIES:
-:header-args:C: :tangle ~/.Xresources
-:END:
-*** Source Colorscheme
-
-#+begin_src C
-#include ".config/xcolor/scheme"
-#+end_src
-
-*** Xft Font Settings
-
-#+begin_src C
-Xft.dpi:                    96
-Xft.antialias:              true
-Xft.rgba:                   rgb
-Xft.hinting:                true
-Xft.hintstyle:              hintslight
-#+end_src
-
-*** Default Font Face
-
-#+begin_src C
-!*font: xft:Iosevka Term:size=11
-!*font: xft:xos4 Terminus:size=12
-#define system_font xft:xos4 Terminus:size=12
-#+end_src
-
-*** Rxvt Unicode Terminal
-**** General Settings
-
-#+begin_src C
-URxvt.depth:                32
-URxvt.geometry:             96x33
-URxvt.loginShell:           false
-URxvt.internalBorder:       10
-URxvt.lineSpace:            0
-!URxvt.termName:             xterm-256color
-#+end_src
-
-**** Transparency
-
-I've disabled all transparency for the time being
-
-#+begin_src C
-! fake transparency - true or false (default)
-!URxvt*transparent: true
-
-! Real transparency (needs compositor like compton)
-! If using make sure to disable the background below.
-!URxvt*depth: 32
-!URxvt*background: [85]xbackground
-#+end_src
-
-**** Misc UI Changes
-
-#+begin_src C
-! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
-!   some nice listings are at:
-!     http://www.nisrv.com/drupal/?q=node/11
-!     http://www.htmlgoodies.com/tutorials/colors/article.php/3478921
-!URxvt*tintColor: S_base03
-
-! shading - 0 to 99 darkens, 101 to 200 lightens.
-!   Dont use with tintColor; just use a darker or lighter color instead.
-URxvt*shading: 15
-
-URxvt*saveLines: 12000
-
-! scrollbar - true (default) or false
-URxvt*scrollBar: false
-
-! scrollbar position - left=false (default) or right=true
-URxvt*scrollBar_right: false
-
-! scrollbar style - rxvt (default), plain, next, or xterm
-URxvt*scrollstyle: plain
-#+end_src
-
-**** Clipboard Keybindings
-
-#+begin_src C
-! Remap the copy and paste functionaility
-URxvt.keysym.Shift-Control-V: eval:paste_clipboard
-URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
-#+end_src
-
-**** Colorscheme and Font
-
-#+begin_src C
-URxvt.foreground: xforeground
-URxvt.background: xbackground
-URxvt.cursorColor: xcursorColor
-
-! This is for fading windows if not active
-URxvt.fading: xfade
-URxvt.fadeColor: xbackground
-
-URxvt.color0:  xcolor0
-URxvt.color1:  xcolor1
-URxvt.color2:  xcolor2
-URxvt.color3:  xcolor3
-URxvt.color4:  xcolor4
-URxvt.color5:  xcolor5
-URxvt.color6:  xcolor6
-URxvt.color7:  xcolor7
-URxvt.color8:  xcolor8
-URxvt.color9:  xcolor9
-URxvt.color10: xcolor10
-URxvt.color11: xcolor11
-URxvt.color12: xcolor12
-URxvt.color13: xcolor13
-URxvt.color14: xcolor14
-URxvt.color15: xcolor15
-
-URxvt.font: system_font
-#+end_src
-
-*** Rofi Dmenu
-**** Enabled Modes
-
-#+begin_src C
-! "Enabled modi" Set from: Default
-rofi.modi:                           window,run,ssh
-#+end_src
-
-**** Window Geometry
-
-#+begin_src C
-! "Window width" Set from: Default
- rofi.width:                          30
-
-! "Number of lines" Set from: Default
- rofi.lines:                          15
-
-! "Number of columns" Set from: Default
-! rofi.columns:                        1
-#+end_src
-
-**** Colorscheme and Font
-
-#+begin_src C
-! "Font to use" Set from: XResources
-rofi.font:                            Iosevka Term 12
-
-! Color Guidlines                       BG -  FG - BG_ALT - HL_BG - HL_FG
-! "Color scheme for normal row"
- rofi.color-normal:                     xbackground, xforeground, xbackground, xcolor0, xforeground
-! "Color scheme for urgent row"
- rofi.color-urgent:                     xbackground, xforeground, xbackground, xcolor0, xforeground
-! "Color scheme for active row"
- rofi.color-active:                     xbackground, xforeground, xbackground, xcolor0, xforeground
-
-! Color Guidlines                       BG          BORDER      SEPEARATOR
-! "Color scheme window"
- rofi.color-window:                     xbackground,    xcolor8,    xcolor8
-! "Border width" Set from: XResources
-rofi.bw:                             4
-#+end_src
-
-**** Unused Rofi Settings
-
-#+begin_src C
-! "Location on screen" Set from: Default
-! rofi.location:                       0
-! "Padding" Set from: Default
-! rofi.padding:                        5
-! "Y-offset relative to location" Set from: Default
-! rofi.yoffset:                        0
-! "X-offset relative to location" Set from: Default
-! rofi.xoffset:                        0
-! "Always show number of lines" Set from: Default
-! rofi.fixed-num-lines:                true
-
-! "Terminal to use" Set from: XResources
-rofi.terminal:                       urxvtc
-! "Ssh client to use" Set from: Default
-! rofi.ssh-client:                     ssh
-! "Ssh command to execute" Set from: Default
-! rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
-! "Run command to execute" Set from: Default
-! rofi.run-command:                    {cmd}
-! "Command to get extra run targets" Set from: Default
-! rofi.run-list-command:
-! "Run command to execute that runs in shell" Set from: Default
-! rofi.run-shell-command:              {terminal} -e {cmd}
-! "Command executed on accep-entry-custom for window modus" Set from: Default
-! rofi.window-command:                 xkill -id {window}
-
-! "Disable history in run/ssh" Set from: Default
-! rofi.disable-history:                false
-! "Use levenshtein sorting" Set from: Default
-! rofi.levenshtein-sort:               false
-! "Set case-sensitivity" Set from: Default
-! rofi.case-sensitive:                 false
-
-! "Cycle through the results list" Set from: Default
-! rofi.cycle:                          true
-! "Enable sidebar-mode" Set from: Default
-! rofi.sidebar-mode:                   false
-! "Row height (in chars)" Set from: Default
-! rofi.eh:                             1
-! "Enable auto select mode" Set from: Default
-! rofi.auto-select:                    false
-
-! "Parse hosts file for ssh mode" Set from: Default
-! rofi.parse-hosts:                    false
-! "Parse known_hosts file for ssh mode" Set from: Default
-! rofi.parse-known-hosts:              true
-
-! "Set the modi to combine in combi mode" Set from: Default
-! rofi.combi-modi:                     window,run
-! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
-! rofi.matching:                       normal
-! "Tokenize input string" Set from: Default
-! rofi.tokenize:                       true
-! "Monitor id to show on" Set from: Default
-! rofi.m:                              -5
-
-! "Margin between rows" Set from: Default
-! rofi.line-margin:                    2
-! "Padding within rows" Set from: Default
-! rofi.line-padding:                   1
-! "Pre-set filter" Set from: Default
-! rofi.filter:
-! "Separator style (none, dash, solid)" Set from: Default
-! rofi.separator-style:                dash
-! "Hide scroll-bar" Set from: Default
-! rofi.hide-scrollbar:                 false
-! "Fullscreen" Set from: Default
-! rofi.fullscreen:                     false
-! "Fake transparency" Set from: Default
-! rofi.fake-transparency:              false
-! "DPI" Set from: Default
-! rofi.dpi:                            -1
-
-! "Threads to use for string matching" Set from: Default
-! rofi.threads:                        0
-
-! "Scrollbar width" Set from: Default
-! rofi.scrollbar-width:                8
-! "Scrolling method. (0: Page, 1: Centered)" Set from: Default
-! rofi.scroll-method:                  0
-
-! "Background to use for fake transparency. (background or screenshot)" Set from: Default
-! rofi.fake-background:                screenshot
-! "Window Format. w (desktop name), t (title), n (name), r (role), c (class)" Set from: Default
-! rofi.window-format:                  {w}   {c}   {t}
-! "Click outside the window to exit" Set from: Default
-! rofi.click-to-exit:                  true
-
-! "Indicate how it match by underlining it." Set from: Default
-! rofi.show-match:                     true
-! "Pidfile location" Set from: Default
-! rofi.pid:                            /home/zamlz/.cache/rofi.pid
-
-! "Paste primary selection" Set from: Default
-! rofi.kb-primary-paste:               Control+V,Shift+Insert
-! "Paste clipboard" Set from: Default
-! rofi.kb-secondary-paste:             Control+v,Insert
-! "Clear input line" Set from: Default
-! rofi.kb-clear-line:                  Control+w
-! "Beginning of line" Set from: Default
-! rofi.kb-move-front:                  Control+a
-! "End of line" Set from: Default
-! rofi.kb-move-end:                    Control+e
-! "Move back one word" Set from: Default
-! rofi.kb-move-word-back:              Alt+b
-! "Move forward one word" Set from: Default
-! rofi.kb-move-word-forward:           Alt+f
-! "Move back one char" Set from: Default
-! rofi.kb-move-char-back:              Left,Control+b
-! "Move forward one char" Set from: Default
-! rofi.kb-move-char-forward:           Right,Control+f
-! "Delete previous word" Set from: Default
-! rofi.kb-remove-word-back:            Control+Alt+h,Control+BackSpace
-! "Delete next word" Set from: Default
-! rofi.kb-remove-word-forward:         Control+Alt+d
-! "Delete next char" Set from: Default
-! rofi.kb-remove-char-forward:         Delete,Control+d
-! "Delete previous char" Set from: Default
-! rofi.kb-remove-char-back:            BackSpace,Control+h
-! "Delete till the end of line" Set from: Default
-! rofi.kb-remove-to-eol:               Control+k
-! "Delete till the start of line" Set from: Default
-! rofi.kb-remove-to-sol:               Control+u
-! "Accept entry" Set from: Default
-! rofi.kb-accept-entry:                Control+j,Control+m,Return,KP_Enter
-! "Use entered text as command (in ssh/run modi)" Set from: Default
-! rofi.kb-accept-custom:               Control+Return
-! "Use alternate accept command." Set from: Default
-! rofi.kb-accept-alt:                  Shift+Return
-! "Delete entry from history" Set from: Default
-! rofi.kb-delete-entry:                Shift+Delete
-! "Switch to the next mode." Set from: Default
-! rofi.kb-mode-next:                   Shift+Right,Control+Tab
-! "Switch to the previous mode." Set from: Default
-! rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab
-! "Go to the previous column" Set from: Default
-! rofi.kb-row-left:                    Control+Page_Up
-! "Go to the next column" Set from: Default
-! rofi.kb-row-right:                   Control+Page_Down
-! "Select previous entry" Set from: Default
-! rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab
-! "Select next entry" Set from: Default
-! rofi.kb-row-down:                    Down,Control+n
-! "Go to next row, if one left, accept it, if no left next mode." Set from: Default
-! rofi.kb-row-tab:                     Tab
-! "Go to the previous page" Set from: Default
-! rofi.kb-page-prev:                   Page_Up
-! "Go to the next page" Set from: Default
-! rofi.kb-page-next:                   Page_Down
-! "Go to the first entry" Set from: Default
-! rofi.kb-row-first:                   Home,KP_Home
-! "Go to the last entry" Set from: Default
-! rofi.kb-row-last:                    End,KP_End
-! "Set selected item as input text" Set from: Default
-! rofi.kb-row-select:                  Control+space
-! "Take a screenshot of the rofi window" Set from: Default
-! rofi.kb-screenshot:                  Alt+S
-! "Toggle case sensitivity" Set from: Default
-! rofi.kb-toggle-case-sensitivity:     grave,dead_grave
-! "Toggle sort" Set from: Default
-! rofi.kb-toggle-sort:                 Alt+grave
-! "Quit rofi" Set from: Default
-! rofi.kb-cancel:                      Escape,Control+g,Control+bracketleft
-! "Custom keybinding 1" Set from: Default
-! rofi.kb-custom-1:                    Alt+1
-! "Custom keybinding 2" Set from: Default
-! rofi.kb-custom-2:                    Alt+2
-! "Custom keybinding 3" Set from: Default
-! rofi.kb-custom-3:                    Alt+3
-! "Custom keybinding 4" Set from: Default
-! rofi.kb-custom-4:                    Alt+4
-! "Custom Keybinding 5" Set from: Default
-! rofi.kb-custom-5:                    Alt+5
-! "Custom keybinding 6" Set from: Default
-! rofi.kb-custom-6:                    Alt+6
-! "Custom Keybinding 7" Set from: Default
-! rofi.kb-custom-7:                    Alt+7
-! "Custom keybinding 8" Set from: Default
-! rofi.kb-custom-8:                    Alt+8
-! "Custom keybinding 9" Set from: Default
-! rofi.kb-custom-9:                    Alt+9
-! "Custom keybinding 10" Set from: Default
-! rofi.kb-custom-10:                   Alt+0
-! "Custom keybinding 11" Set from: Default
-! rofi.kb-custom-11:                   Alt+exclam
-! "Custom keybinding 12" Set from: Default
-! rofi.kb-custom-12:                   Alt+at
-! "Csutom keybinding 13" Set from: Default
-! rofi.kb-custom-13:                   Alt+numbersign
-! "Custom keybinding 14" Set from: Default
-! rofi.kb-custom-14:                   Alt+dollar
-! "Custom keybinding 15" Set from: Default
-! rofi.kb-custom-15:                   Alt+percent
-! "Custom keybinding 16" Set from: Default
-! rofi.kb-custom-16:                   Alt+dead_circumflex
-! "Custom keybinding 17" Set from: Default
-! rofi.kb-custom-17:                   Alt+ampersand
-! "Custom keybinding 18" Set from: Default
-! rofi.kb-custom-18:                   Alt+asterisk
-! "Custom Keybinding 19" Set from: Default
-! rofi.kb-custom-19:                   Alt+parenleft
-
-! "The display name of this browser" Set from: Default
-! rofi.display-ssh:
-! "The display name of this browser" Set from: Default
-! rofi.display-run:
-! "The display name of this browser" Set from: Default
-! rofi.display-drun:
-! "The display name of this browser" Set from: Default
-! rofi.display-combi:
-#+end_src
-
-*** Emacs
-
-Really we set the default colorscheme here so that emacs doesn't blind our eyes we the default black background, but also set some other sane defaults from the default colorscheme so that if emacs does in fact crash, we are in a /dark theme/ environment.
-
-#+begin_src C
-Emacs.foreground: xforeground
-Emacs.background: xbackground
-
-Emacs.color0:  xcolor0
-Emacs.color1:  xcolor1
-Emacs.color2:  xcolor2
-Emacs.color3:  xcolor3
-Emacs.color4:  xcolor4
-Emacs.color5:  xcolor5
-Emacs.color6:  xcolor6
-Emacs.color7:  xcolor7
-Emacs.color8:  xcolor8
-Emacs.color9:  xcolor9
-Emacs.color10: xcolor10
-Emacs.color11: xcolor11
-Emacs.color12: xcolor12
-Emacs.color13: xcolor13
-Emacs.color14: xcolor14
-Emacs.color15: xcolor15
-#+end_src
-
-** Herbstluftwm
-:PROPERTIES:
-:header-args:shell: :tangle ~/.config/herbstluftwm/autostart :mkdirp yes :shebang #!/bin/sh
-:END:
-*** Initial Configuration
-
-Pretty straightforward stuff, setup logger, create a helper function,
-
-#+begin_src shell
-. $HOME/lib/shell/logger
-LOGGER=$(get_logger herbstluftwm)
-$LOGGER "Initializing herbstluftwm window manager"
-
-hc() {
-    herbstclient "$@"
-}
-
-hc emit_hook reload
-#+end_src
-
-*** WM Custom Rules
-
-Remove any prexisting rules
-
-#+begin_src shell
-hc unrule --all
-#+end_src
-
-Setup simple focus rules
-
-#+begin_src shell
-hc rule focus=on # normally focus new clients
-#hc rule focus=off # normally do not focus new clients
-#hc rule class=XTerm tag=3 # move all xterms to tag 3
-#+end_src
-
-Okay so probably the rules for the terminal are pointless here. Discord one actually doesn't work the way I want it to, but everything else here is pretty important. It makes sure that panels appear where they are suppose to and also ensures that popups are floating.
-
-#+begin_src shell
-# give focus to most common terminals
-hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
-hc rule class~'(Discord|DiscordCanary)' focus=off
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
-hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
-hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-#+end_src
-
-*** Source Xorg Universal Settings
-
-We need to configure some X11 specific things that are universally needed regardless of window manager.
-
-#+begin_src shell
-# Reapply certain XORG settings (do not fork this)
-$HOME/etc/xorg/wminit
-#+end_src
-
-*** Keybindings
-
-/You can use =xev= to identify X11 keys very easily./
-
-**** Setup
-
-#+begin_src shell
-# remove all existing keybinding; Use the super key as the main modifier
-hc keyunbind --all
-Super=Mod4
-#+end_src
-
-**** Reload WM and Close Window
-
-#+begin_src shell
-hc keybind $Super-Ctrl-Alt-r reload
-hc keybind $Super-q close
-#+end_src
-
-**** Window Focus
-
-#+begin_src shell
-# focusing clients
-hc keybind $Super-Left  focus left
-hc keybind $Super-Down  focus down
-hc keybind $Super-Up    focus up
-hc keybind $Super-Right focus right
-hc keybind $Super-h     focus left
-hc keybind $Super-j     focus down
-hc keybind $Super-k     focus up
-hc keybind $Super-l     focus right
-
-# Cycling focus
-hc keybind $Super-BackSpace   cycle_monitor
-hc keybind $Super-Tab         cycle +1
-hc keybind $Super-Shift-Tab   cycle_frame +1
-hc keybind $Super-c           cycle_all +1
-hc keybind $Super-i jumpto urgent
-#+end_src
-
-**** Window Movement
-
-#+begin_src shell
-# moving clients
-hc keybind $Super-Shift-Left  shift left
-hc keybind $Super-Shift-Down  shift down
-hc keybind $Super-Shift-Up    shift up
-hc keybind $Super-Shift-Right shift right
-hc keybind $Super-Shift-h     shift left
-hc keybind $Super-Shift-j     shift down
-hc keybind $Super-Shift-k     shift up
-hc keybind $Super-Shift-l     shift right
-#+end_src
-
-**** Splitting Frames
-
-#+begin_src shell
-# splitting frames
-# create an empty frame at the specified direction
-hc keybind $Super-u       split   bottom  0.5
-hc keybind $Super-o       split   right   0.5
-
-# let the current frame explode into subframes
-hc keybind $Super-Control-space split explode
-#+end_src
-
-**** Resizing Frames
-
-#+begin_src shell
-# resizing frames
-resizestep=0.01
-
-hc keybind $Super-Control-h       resize left +$resizestep
-hc keybind $Super-Control-j       resize down +$resizestep
-hc keybind $Super-Control-k       resize up +$resizestep
-hc keybind $Super-Control-l       resize right +$resizestep
-hc keybind $Super-Control-Left    resize left +$resizestep
-hc keybind $Super-Control-Down    resize down +$resizestep
-hc keybind $Super-Control-Up      resize up +$resizestep
-hc keybind $Super-Control-Right   resize right +$resizestep
-#+end_src
-
-**** Workspace Definitions (tags)
-
-#+begin_src shell
-# tags
-tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
-tag_keys=( {1..9} 0 )
-
-hc rename default "${tag_names[0]}" || true
-for i in ${!tag_names[@]} ; do
-    hc add "${tag_names[$i]}"
-    key="${tag_keys[$i]}"
-    if ! [ -z "$key" ] ; then
-        hc keybind "$Super-$key" use_index "$i"
-        hc keybind "$Super-Shift-$key" move_index "$i"
-    fi
-done
-#+end_src
-
-**** Workspace Movement
-
-#+begin_src shell
-# Jump to previous tag
-hc keybind $Super-grave use_previous
-
-# cycle through tags
-hc keybind $Super-bracketright use_index +1 --skip-visible
-hc keybind $Super-bracketleft  use_index -1 --skip-visible
-#+end_src
-
-**** Layout Control
-
-#+begin_src shell
-# layouting
-hc keybind $Super-r remove
-hc keybind $Super-s floating toggle
-hc keybind $Super-f fullscreen toggle
-hc keybind $Super-t pseudotile toggle
-
-# The following cycles through the available layouts within a frame, but skips
-# layouts, if the layout change wouldn't affect the actual window positions.
-# I.e. if there are two windows within a frame, the grid layout is skipped.
-hc keybind $Super-space                                                       \
-            or , and . compare tags.focus.curframe_wcount = 2                 \
-                     . cycle_layout +1 vertical horizontal max vertical grid  \
-               , cycle_layout +1
-#+end_src
-
-**** Mouse Control
-
-#+begin_src shell
-# mouse
-hc mouseunbind --all
-hc mousebind $Super-Button1 move
-hc mousebind $Super-Button2 zoom
-hc mousebind $Super-Button3 resize
-#+end_src
-
-**** Colorscheme Cylcing
-
-#+begin_src shell
-# cycle through colorschemes
-hc keybind $Super-Ctrl-Alt-bracketright chain , \
-        spawn $HOME/bin/xcolorscheme --next , reload
-
-hc keybind $Super-Ctrl-Alt-bracketleft chain , \
-        spawn $HOME/bin/xcolorscheme --prev , reload
-#+end_src
-
-*** Theme Configuration
-**** Source Colorscheme
-
-#+begin_src shell
-. $HOME/lib/shell/xrdb_colors
-#+end_src
-
-**** TODO What does this do again?
-
-#+begin_src shell
-hc attr theme.tiling.reset 1
-hc attr theme.floating.reset 1
-#+end_src
-
-**** Frame Appearance
-
-#+begin_src shell
-hc set frame_transparent_width 1
-hc set frame_border_width 1
-hc set frame_border_active_color $XBACKGROUND
-hc set frame_border_normal_color $XBACKGROUND
-
-hc set frame_bg_transparent 1
-hc set frame_bg_normal_color $XBACKGROUND
-hc set frame_bg_active_color $XCOLOR8
-
-hc set always_show_frame 0
-hc set frame_gap 8
-hc set frame_padding 0
-#+end_src
-
-**** Window Appearance
-
-#+begin_src shell
-hc attr theme.active.outer_color $XBACKGROUND
-hc attr theme.active.inner_color $XBACKGROUND
-
-hc attr theme.normal.color $BLACK
-hc attr theme.active.color $WHITE
-hc attr theme.urgent.color orange
-
-hc attr theme.border_width 9
-hc attr theme.inner_width 3
-hc attr theme.outer_width 4
-
-hc attr theme.inner_color $XBACKGROUND
-hc attr theme.outer_color $XBACKGROUND
-
-hc attr theme.floating.border_width 9
-hc attr theme.floating.inner_width 3
-hc attr theme.floating.outer_width 4
-
-hc attr theme.floating.outer_color $XBACKGROUND
-hc attr theme.background_color '#141414'
-
-hc set window_gap 0
-hc set smart_window_surroundings 0
-hc set smart_frame_surroundings 1
-hc set mouse_recenter_gap 0
-#+end_src
-
-**** Tree View
-
-#+begin_src shell
-hc set tree_style '╾│ ├└╼─┐'
-#+end_src
-
-**** Montior Setup
-
-Well monitor setup doesn't belong here really, but we're doing it here because we need to make space for the panels.
-
-#+begin_src shell
-# unlock, just to be sure
-hc unlock
-hc detect_monitors
-#+end_src
-
-**** Configure Panel Height
-
-#+begin_src shell
-PANEL_HEIGHT=20
-for monitor in $(seq 0 2); do
-    hc pad $monitor $PANEL_HEIGHT 0 $PANEL_HEIGHT 0
-done
-#+end_src
-
-*** Event Hooks
-
-This starts a couple FIFO hooks so that lemonbar can update the information on it's panel as effeciently as possible.
-
-**** Event Hooks Startup Verification
-
-#+begin_src shell
-if [ $(pgrep -cx herbstclient) -gt 0 ]; then
-    printf "The herbstluftwm event hooks for lemonbar are already running.\n" >&2
-    $LOGGER "The herbstluftwm event hooks for lemonbar are already running."
-    exit 1
-fi
-#+end_src
-
-**** Event Hooks Trigger Definition
-
-#+begin_src shell
-WSP_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos wsp"
-WIN_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos win"
-WARG="'(focus_changed|window_title|panel_init)'"
-#+end_src
-
-**** Initialize Event Hooks
-
-I don't remember why I commented one of the hooks out, oh thats rights, its because I'm not using the lemonbar xwindow module I made anymore.
-
-#+begin_src shell
-(herbstclient --idle       | while read -r line; do $WSP_TRIGGER; done) &
-#(herbstclient --idle $WARG | while read -r line; do $WIN_TRIGGER; done) &
-
-$LOGGER "All hook have been started"
-#+end_src
-
-** Compton
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes
-:END:
-[[http://9m.no/ꪯ鵞][Thank you code_nomad!]] Copied a lot of this person's config...
-*** Backend
-
-Backend to use: "xrender" or "glx".
-GLX backend is typically much faster but depends on a sane driver.
-
-#+begin_src conf
-# Provide the backend to use
-backend = "xrender";
-#+end_src
-
-*** GLX backend
-
-#+begin_src conf
-# ??? Don't remember what this does...
-glx-no-stencil = true;
-
-# GLX backend: Copy unmodified regions from front buffer instead of redrawing them all.
-# My tests with nvidia-drivers show a 10% decrease in performance when the whole screen is modified,
-# but a 20% increase when only 1/4 is.
-# My tests on nouveau show terrible slowdown.
-# Useful with --glx-swap-method, as well.
-glx-copy-from-front = false;
-
-# GLX backend: Avoid rebinding pixmap on window damage.
-# Probably could improve performance on rapid window content changes, but is known to break things on some drivers (LLVMpipe).
-# Recommended if it works.
-# glx-no-rebind-pixmap = true;
-
-# GLX backend: GLX buffer swap method we assume.
-# Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1).
-# undefined is the slowest and the safest, and the default value.
-# copy is fastest, but may fail on some drivers,
-# 2-6 are gradually slower but safer (6 is still faster than 0).
-# Usually, double buffer means 2, triple buffer means 3.
-# buffer-age means auto-detect using GLX_EXT_buffer_age, supported by some drivers.
-# Useless with --glx-use-copysubbuffermesa.
-# Partially breaks --resize-damage.
-# Defaults to undefined.
-glx-swap-method = "undefined";
-#+end_src
-
-*** Shadows
-
-#+begin_src conf
-# Enabled client-side shadows on windows.
-shadow = true;
-# Don't draw shadows on DND windows.
-no-dnd-shadow = true;
-# Avoid drawing shadows on dock/panel windows.
-no-dock-shadow = true;
-# Zero the part of the shadow's mask behind the window. Fix some weirdness with ARGB windows.
-clear-shadow = true;
-# The blur radius for shadows. (default 12)
-shadow-radius = 5;
-# The left offset for shadows. (default -15)
-shadow-offset-x = -5;
-# The top offset for shadows. (default -15)
-shadow-offset-y = -5;
-# The translucency for shadows. (default .75)
-shadow-opacity = 0.5;
-
-# Set if you want different colour shadows
-# shadow-red = 0.0;
-# shadow-green = 0.0;
-# shadow-blue = 0.0;
-
-# The shadow exclude options are helpful if you have shadows enabled. Due to the way compton draws its shadows, certain applications will have visual glitches
-# (most applications are fine, only apps that do weird things with xshapes or argb are affected).
-# This list includes all the affected apps I found in my testing. The "! name~=''" part excludes shadows on any "Unknown" windows, this prevents a visual glitch with the XFWM alt tab switcher.
-shadow-exclude = [
-    "! name~=''",
-    "name = 'Notification'",
-    "name = 'Plank'",
-    "name = 'Docky'",
-    "name = 'Kupfer'",
-    "name = 'xfce4-notifyd'",
-    "name *= 'VLC'",
-    "name *= 'compton'",
-    "name *= 'Chromium'",
-    "name *= 'Chrome'",
-    "class_g = 'Conky'",
-    "class_g = 'Kupfer'",
-    "class_g = 'Synapse'",
-    "class_g ?= 'Notify-osd'",
-    "class_g ?= 'Cairo-dock'",
-    "class_g ?= 'Xfce4-notifyd'",
-    "class_g ?= 'Xfce4-power-manager'",
-    "_GTK_FRAME_EXTENTS@:c"
-];
-# Avoid drawing shadow on all shaped windows (see also: --detect-rounded-corners)
-shadow-ignore-shaped = false;
-#+end_src
-
-*** Opacity
-
-#+begin_src conf
-# Define opacity
-menu-opacity = 1;
-inactive-opacity = 1;
-active-opacity = 1;
-frame-opacity = 1;
-inactive-opacity-override = false;
-alpha-step = 0.06;
-
-# Dim inactive windows. (0.0 - 1.0)
-# inactive-dim = 0.2;
-# Do not let dimness adjust based on window opacity.
-# inactive-dim-fixed = true;
-# Blur background of transparent windows. Bad performance with X Render backend. GLX backend is preferred.
-# blur-background = true;
-# Blur background of opaque windows with transparent frames as well.
-# blur-background-frame = true;
-# Do not let blur radius adjust based on window opacity.
-blur-background-fixed = false;
-blur-background-exclude = [
-    "window_type = 'dock'",
-    "window_type = 'desktop'"
-];
-#+end_src
-
-*** Fading
-
-#+begin_src conf
-# Fade windows during opacity changes.
-fading = true;
-# The time between steps in a fade in milliseconds. (default 10).
-fade-delta = 4;
-# Opacity change between steps while fading in. (default 0.028).
-fade-in-step = 0.03;
-# Opacity change between steps while fading out. (default 0.03).
-fade-out-step = 0.03;
-# Fade windows in/out when opening/closing
-# no-fading-openclose = true;
-
-# Specify a list of conditions of windows that should not be faded.
-fade-exclude = [ ];
-#+end_src
-
-*** Other
-
-#+begin_src conf
-# Try to detect WM windows and mark them as active.
-mark-wmwin-focused = true;
-# Mark all non-WM but override-redirect windows active (e.g. menus).
-mark-ovredir-focused = true;
-# Use EWMH _NET_WM_ACTIVE_WINDOW to determine which window is focused instead of using FocusIn/Out events.
-# Usually more reliable but depends on a EWMH-compliant WM.
-use-ewmh-active-win = true;
-# Detect rounded corners and treat them as rectangular when --shadow-ignore-shaped is on.
-detect-rounded-corners = true;
-
-# Detect _NET_WM_OPACITY on client windows, useful for window managers not passing _NET_WM_OPACITY of client windows to frame windows.
-# This prevents opacity being ignored for some apps.
-# For example without this enabled my xfce4-notifyd is 100% opacity no matter what.
-detect-client-opacity = true;
-
-# Specify refresh rate of the screen.
-# If not specified or 0, compton will try detecting this with X RandR extension.
-refresh-rate = 0;
-
-# Set VSync method. VSync methods currently available:
-# none: No VSync
-# drm: VSync with DRM_IOCTL_WAIT_VBLANK. May only work on some drivers.
-# opengl: Try to VSync with SGI_video_sync OpenGL extension. Only work on some drivers.
-# opengl-oml: Try to VSync with OML_sync_control OpenGL extension. Only work on some drivers.
-# opengl-swc: Try to VSync with SGI_swap_control OpenGL extension. Only work on some drivers. Works only with GLX backend. Known to be most effective on many drivers. Does not actually control paint timing, only buffer swap is affected, so it doesn’t have the effect of --sw-opti unlike other methods. Experimental.
-# opengl-mswc: Try to VSync with MESA_swap_control OpenGL extension. Basically the same as opengl-swc above, except the extension we use.
-# (Note some VSync methods may not be enabled at compile time.)
-vsync = "opengl-swc";
-
-# Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing.
-# Reported to have no effect, though.
-dbe = false;
-# Painting on X Composite overlay window. Recommended.
-paint-on-overlay = true;
-
-# Limit compton to repaint at most once every 1 / refresh_rate second to boost performance.
-# This should not be used with --vsync drm/opengl/opengl-oml as they essentially does --sw-opti's job already,
-# unless you wish to specify a lower refresh rate than the actual value.
-sw-opti = true;
-
-# Unredirect all windows if a full-screen opaque window is detected, to maximize performance for full-screen windows, like games.
-# Known to cause flickering when redirecting/unredirecting windows.
-# paint-on-overlay may make the flickering less obvious.
-unredir-if-possible = true;
-
-# Specify a list of conditions of windows that should always be considered focused.
-focus-exclude = [ ];
-
-# Use WM_TRANSIENT_FOR to group windows, and consider windows in the same group focused at the same time.
-detect-transient = true;
-# Use WM_CLIENT_LEADER to group windows, and consider windows in the same group focused at the same time.
-# WM_TRANSIENT_FOR has higher priority if --detect-transient is enabled, too.
-detect-client-leader = true;
-#+end_src
-
-*** Window Type Settings
-
-#+begin_src conf
-wintypes:
-{
-    tooltip =
-    {
-        # fade: Fade the particular type of windows.
-        fade = true;
-        # shadow: Give those windows shadow
-        shadow = false;
-        # opacity: Default opacity for the type of windows.
-        opacity = 0.85;
-        # focus: Whether to always consider windows of this type focused.
-        focus = true;
-    };
-};
-#+end_src
-
-** Zathura
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/zathura/zathurarc :mkdirp yes
-:END:
-*** Re-Color Pages
-
-Uncomment the first line if you want to have the the pages recolored by default.
-
-#+begin_src conf
-#set recolor true
-set recolor-darkcolor "#ebdbb2"
-set recolor-lightcolor "#000000"
-#+end_src
-
-*** Highlighting
-
-#+begin_src conf
-set highlight-color "#b16286"
-set highlight-active-color "#458588"
-set highlight-transparency 0.75
-#+end_src
-
-* Shell Environment
-** Zsh
-** Git
-:PROPERTIES:
-:header-args:conf: :tangle ~/.gitconfig
-:END:
-*** User Profile
-
-#+begin_src conf
-[user]
-    signingkey = 0x882C395C3B28902C
-    name = Amlesh Sivanantham (zamlz)
-    email = zamlz@pm.me
-#+end_src
-
-*** GnuPG
-
-#+begin_src conf
-[gpg]
-    program = gpg
-#+end_src
-
-*** Core
-
-#+begin_src conf
-[core]
-    pager = less
-#+end_src
-
-*** Commit Settings
-
-#+begin_src conf
-[commit]
-    gpgsign = true
-#+end_src
-
-*** Diff Settings
-
-#+begin_src conf
-[diff "gpg"]
-    textconv = gpg --no-tty --decrypt
-#+end_src
-
-*** Pull Settings
-
-#+begin_src conf
-[pull]
-    ff = only
-#+end_src
-
-*** Aliases
-
-These are just useful aliases I've found online
-
-#+begin_src conf
-[alias]
-    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
-    root = rev-parse --show-toplevel
-    lol = log --graph --decorate --pretty=oneline --abbrev-commit
-    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
-#+end_src
-
-** OpenSSH
-:PROPERTIES:
-:header-args:conf: :tangle ~/.ssh/config :mkdirp yes
-:END:
-*** GnuPG Connect Agent
-
-Since we are using GPG agent as the SSH agent, when in a terminal, ssh agent doesn't know that it has to change terminals (a bug in openssh). So when it connects to gpg-agent, it uses the terminal it was last configured to use. The following command when run in a terminal updates gpg-agent to use the current terminal for openssh. However, now if we run some ssh related command in the prior terminal, it will use the new terminal instead creating the exact inverse of the problem. Therefore we attempt to fix this by running this command before every SSH command.
-
-[[https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9][https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9]]
-
-#+begin_src conf
-Match host * exec "gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye"
-#+end_src
-
-** Neovim
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/nvim/init.vim :mkdirp yes
-:END:
-*** Load Vim Plugins (VimPlug)
-
-#+begin_src conf
-call plug#begin('~/.vim/plugged')
-
-" vim-airline:
-" Lean & mean status/tabline for vim thats light as air
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
-
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-
-Plug 'jamessan/vim-gnupg'
-Plug 'chrisbra/csv.vim'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-Plug 'mattn/calendar-vim'
-
-" Plug 'valloric/youcompleteme'
-Plug 'yggdroot/indentline'
-Plug 'mbbill/undotree'
-
-" Language Based Plugins
-Plug 'JuliaEditorSupport/julia-vim'
-Plug 'ledger/vim-ledger'
-Plug 'nathangrigg/vim-beancount'
-Plug 'vim-scripts/gnuplot.vim'
-
-call plug#end()
-#+end_src
-
-*** Configure loaded plugins
-**** Vim Airline
-
-#+begin_src conf
-" vim-airline
-let laststatus = 2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-
-" vim-airline-themes
-let g:airline_theme = 'base16_gruvbox_dark_hard'
-#+end_src
-
-**** Git Gutter
-
-#+begin_src conf
-" git-gutter
-nmap <C-M-j> <Plug>GitGutterNextHunk
-nmap <C-M-k> <Plug>GitGutterPrevHunk
-let g:gitgutter_set_sign_backgrounds = 1
-#+end_src
-
-**** Indent Lines
-
-#+begin_src conf
-" Indent Lines
-"let g:indentLine_char = '.'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_setColors = 1
-"let g:indentLine_bgcolor_term = 0
-let g:indentLine_color_term = 8
-let g:indentLine_conceallevel = 2
-let g:indentLine_concealcursor = "n"
-#+end_src
-
-**** Vim Ledger
-
-#+begin_src conf
-" Configure vim ledger
-let g:ledger_maxwidth = 80
-let g:ledger_bin = 'ledger'
-let g:ledger_extra_options = '--pedantic --explicit'
-let g:ledger_align_at = 77
-let g:ledger_date_format = '%Y-%m-%d'
-#+end_src
-
-**** Markdown
-
-#+begin_src conf
-" Markdown conceal
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-#+end_src
-
-**** Vim Wiki
-
-#+begin_src conf
-" Vim Wiki
-let personal_wiki = {}
-let personal_wiki.name = 'Tabula Rasa'
-let personal_wiki.path = '~/usr/wiki/src'
-let personal_wiki.path_html = '~/usr/wiki/.html'
-let personal_wiki.syntax = 'markdown'
-let personal_wiki.ext = '.md'
-let personal_wiki.maxhi = 1
-let personal_wiki.diary_rel_path = "journal/"
-let personal_wiki.diary_index = "toc"
-let personal_wiki.diary_header = "Personal Journal"
-let personal_wiki.diary_caption_level = 0
-let personal_wiki.auto_diary_index = 1
-
-let g:vimwiki_list = [personal_wiki]
-let g:vimwiki_global_ext = 1
-let g:vimwiki_listsyms = ' ○◐●✓' " '✗○◐●✓'
-let g:vimwiki_folding = 'expr'
-let g:vimwiki_hl_cb_checked = 2
-#+end_src
-
-*** Setup Sane Vim Defaults
-
-#+begin_src conf
-set nocompatible
-set number          " Show Line numbers
-set ruler           " Show line and column number of the cursor
-set cursorline      " highlight current line
-set cursorcolumn    " Create a column for where the cursor is
-set colorcolumn=80  " Create a column to show where 80 chars are
-set modeline        " Allow source files to configure vim as well
-set nowrap
-
-" TAB = 4 SPACES
-set tabstop=4		" number of visual spaces per TAB
-set softtabstop=4   " number of space in TAB while editing
-set expandtab		" TABs are now SPACEs
-set shiftwidth=4    " Allows helps to make it 4 spaces in neovim
-
-filetype plugin on
-filetype indent on  " Load filetype-specific indent files
-syntax on
-
-set wildmenu        " visual autocomplete for command menu
-set lazyredraw      " redraw only when we need to
-
-set showmatch       " highlight matching brackets [{()}]
-set incsearch       " search as characters are entered
-set hlsearch        " highlight matches
-
-set noshowmode      " Stop showing the default mode
-
-set mouse=a         " Set mouse wheel to scroll
-
-" Code concealing
-set conceallevel=2
-set concealcursor-=n
-
-" Enable Code Folding
-set foldenable
-set foldlevelstart=10
-set foldnestmax=10
-set foldmethod=indent    " fold based on ident level
-
-" Custom file search
-set path+=**
-#+end_src
-
-*** Vim Colorschemes
-
-#+begin_src conf
-" Use peachpuff built-in colorscheme as the base
-colorscheme peachpuff
-
-" Color of the Columns
-highlight ColorColumn ctermbg=black
-highlight CursorColumn ctermbg=black
-highlight VertSplit ctermfg=black
-
-" Change the default coloring of line numbers
-highlight LineNr ctermfg=black
-
-" Change colorscheme of Pmenus
-highlight Pmenu ctermfg=darkgrey ctermbg=black
-
-" Set background color of folded blocks
-highlight Folded ctermbg=black
-
-" Some syntax highlighting changes (maybe move this to its own file)
-highlight Function ctermfg=darkblue
-highlight String ctermfg=darkgreen
-highlight Comment ctermfg=darkgrey
-highlight Exception ctermfg=darkred
-
-" Fix colors on gitgutter after colorscheme has been set
-highlight SignColumn ctermbg=None
-highlight GitGutterAdd ctermbg=None ctermfg=green
-highlight GitGutterChange ctermbg=None ctermfg=yellow
-highlight GitGutterDelete ctermbg=None ctermfg=red
-
-" Change colors to be more intuitive for vimwiki
-highlight VimwikiHeader1 ctermbg=None ctermfg=darkred
-highlight VimwikiHeader2 ctermbg=None ctermfg=darkblue
-highlight VimwikiHeader3 ctermbg=None ctermfg=darkgreen
-highlight VimwikiHeader4 ctermbg=None ctermfg=yellow
-highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
-highlight VimwikiHeader6 ctermbg=None ctermfg=magenta
-
-highlight Conceal ctermbg=None ctermfg=darkblue
-#+end_src
-
-*** Custom Keybindings
-
-#+begin_src conf
-" Sets a keybind to turn off highlighted searches
-nnoremap <leader><space> :nohlsearch<CR>
-
-" Keybinds to quickly switch buffers
-noremap <S-j> :bn<CR>
-noremap <S-k> :bp<CR>
-
-" Custom git mappings (is fugitive or gitgutter better to use instead?)
-noremap <F2> :Git <CR>
-noremap <F3> :Git diff<CR>
-noremap <F4> :Gclog<CR>
-
-" Key binds to toggle the Undo Tree
-noremap <F5> :UndotreeToggle<CR>
-
-noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
-    \ '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-    \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" .
-    \ " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
-
-" Ledger remap tab completion
-au FileType ledger inoremap <silent> <Tab>
-            \ <C-r>=ledger#autocomplete_and_align()<CR>
-au FileType ledger vnoremap <silent> <Tab>
-            \ :LedgerAlign<CR>
-au FileType ledger nnoremap <silent> <C-m>
-            \ :silent<space>make<bar>redraw!<bar>cwindow<CR>
-au FileType ledger nnoremap <silent> <C-s>
-            \ :call ledger#transaction_state_toggle(line('.'), ' !*?')<CR>
-
-" Vimwiki doc pubs open
-autocmd FileType vimwiki nnoremap <Leader>p :silent !pubs doc open %:r<CR>
-#+end_src
-
-*** Custom Vim Functions
-**** Trim Whitespace
-#+begin_src conf
-" Trim the whitespace present in a file
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-command! TrimWhitespace call TrimWhitespace()
-#+end_src
-
-**** Toggle Calendar
-
-#+begin_src conf
-" Toggle calendar view within view if in vim wiki
-function! ToggleCalendar()
-    execute ":Calendar"
-    if exists("g:calendar_open")
-        if g:calendar_open == 1
-            execute "q"
-            unlet g:calendar_open
-        else
-            g:calendar_open = 1
-        end
-    else
-        let g:calendar_open = 1
-    end
-endfunction
-:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
-#+end_src
-
-*** Vim mode line
-
-#+begin_src conf
-" vim:ft=vim
-#+end_src
-
-** Tmux
-:PROPERTIES:
-:header-args:conf: :tangle ~/.tmux.conf
-:END:
-*** Basic Config
-
-#+begin_src conf
-set -g default-terminal "screen-256color"   # Use 256 colors
-set -g history-limit 100000                 # Scrollback buffer number of lines
-
-# Start window indexing at one instead of zero
-set -g base-index 1
-#+end_src
-
-*** Keybindings
-
-#+begin_src conf
-# Set the prefix key and some key bindings to match GNU Screen
-set -g prefix C-b
-#bind-key C-a last-window
-
-# Key bindings for horizontal and vertical panes
-unbind %
-unbind '"'
-bind | split-window -h
-bind - split-window -v
-
-# Add vim-like bindings
-unbind-key j
-bind-key j select-pane -D
-unbind-key k
-bind-key k select-pane -U
-unbind-key h
-bind-key h select-pane -L
-unbind-key l
-bind-key l select-pane -R
-#+end_src
-
-*** Window Settings
-
-#+begin_src conf
-# Enable window titles
-set -g set-titles on
-
-# Window title string (uses statusbar variables)
-set -g set-titles-string '#T'
-#+end_src
-
-*** Status Bar
-
-#+begin_src conf
-# Status bar with load and time
-set -g status-bg '#4e4e4e'
-set -g status-fg '#ffffff'
-set -g status-left ' '
-set -g status-right '#[bg=#bbbbbb]#[fg=#000000]#(cut -d " " -f -3 /proc/loadavg) #[bg=#4e4e4e]#[fg=#ffffff]#(date +" %H:%M ")'
-set -g window-status-format '#I #W'
-set -g window-status-current-format ' #I #W '
-setw -g window-status-current-bg '#55ff55'
-setw -g window-status-current-fg '#000000'
-#+end_src
-
-*** Pane
-
-#+begin_src conf
-# Pane border colors
-set -g pane-active-border-fg '#bbbbbb'
-set -g pane-border-fg '#555555'
-#+end_src
-
-*** Reload Config
-
-#+begin_src conf
-# Bind to reload config
-bind r source-file ~/.tmux.conf
 #+end_src
 
 * TODO Bootstrap Script
