@@ -52,7 +52,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#pane][Pane]]
     - [[#reload-config][Reload Config]]
 - [[#desktop-environment][Desktop Environment]]
-  - [[#xorg][Xorg]]
+  - [[#xorg-x11-window-system][Xorg X11 Window System]]
     - [[#source-colorscheme][Source Colorscheme]]
     - [[#xft-font-settings][Xft Font Settings]]
     - [[#default-font-face][Default Font Face]]
@@ -68,7 +68,12 @@ It's actually incredible how accurate this xckd comic is...
       - [[#colorscheme-and-font][Colorscheme and Font]]
       - [[#unused-rofi-settings][Unused Rofi Settings]]
     - [[#emacs][Emacs]]
-  - [[#herbstluftwm][Herbstluftwm]]
+  - [[#sxhkd---simple-x-hotkey-daemon][Sxhkd - Simple X Hotkey Daemon]]
+    - [[#terminal-exec-keybindings][Terminal Exec Keybindings]]
+    - [[#rofi-dmenu-launcher-keybindings][Rofi Dmenu Launcher Keybindings]]
+    - [[#scrot-keybindings][Scrot Keybindings]]
+    - [[#media-control-keybindings][Media Control Keybindings]]
+  - [[#herbstluftwm-manual-tiling-window-manager][Herbstluftwm Manual Tiling Window Manager]]
     - [[#initial-configuration][Initial Configuration]]
     - [[#wm-custom-rules][WM Custom Rules]]
     - [[#source-xorg-universal-settings][Source Xorg Universal Settings]]
@@ -96,7 +101,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#event-hooks-startup-verification][Event Hooks Startup Verification]]
       - [[#event-hooks-trigger-definition][Event Hooks Trigger Definition]]
       - [[#initialize-event-hooks][Initialize Event Hooks]]
-  - [[#compton][Compton]]
+  - [[#compton-x11-compositor][Compton X11 Compositor]]
     - [[#backend][Backend]]
     - [[#glx-backend][GLX backend]]
     - [[#shadows][Shadows]]
@@ -104,7 +109,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#fading][Fading]]
     - [[#other][Other]]
     - [[#window-type-settings][Window Type Settings]]
-  - [[#zathura][Zathura]]
+  - [[#zathura-pdf-reader][Zathura PDF Reader]]
     - [[#re-color-pages][Re-Color Pages]]
     - [[#highlighting][Highlighting]]
 - [[#gnuemacs-configuration][GNU/Emacs Configuration]]
@@ -636,7 +641,7 @@ bind r source-file ~/.tmux.conf
 #+end_src
 
 * Desktop Environment
-** Xorg
+** Xorg X11 Window System
 :PROPERTIES:
 :header-args:C: :tangle ~/.Xresources
 :END:
@@ -1037,7 +1042,130 @@ Emacs.color14: xcolor14
 Emacs.color15: xcolor15
 #+end_src
 
-** Herbstluftwm
+** Sxhkd - Simple X Hotkey Daemon
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/sxhkd/sxhkdrc :mkdirp yes
+:END:
+*** Terminal Exec Keybindings
+
+This value is specified in =$HOME/etc/xorg/wminit=
+
+#+begin_src shell
+# Spawn a normal terminal
+super + Return
+    $SXHKD_TERMINAL
+
+#+end_src
+
+This actually only works in normal terminals and and not in the emacs vterm. Need to think of another solution to handle that.
+
+#+begin_src shell
+# Spawn Terminal matching environment of focused terminal
+super + shift + Return
+    $HOME/etc/sxhkd/pwdcfw/$SXHKD_TERMINAL
+#+end_src
+
+*** Rofi Dmenu Launcher Keybindings
+
+#+begin_src shell
+# Standard $PATH program launcher
+super + e
+    rofi -show run
+#+end_src
+
+#+begin_src shell
+# Dmenu for password store
+super + p
+    $HOME/lib/rofi/rofi-pass
+super + shift + p
+    $HOME/lib/rofi/rofi-pass --qrcode
+#+end_src
+
+#+begin_src shell
+# Copy a specific bookmark to the clipboard
+super + b
+    $HOME/lib/rofi/rofi-book
+#+end_src
+
+#+begin_src shell
+# Open up a wiki page in read-only mode (originally named notes)
+super + n
+    $HOME/lib/rofi/rofi-wiki
+super + shift + n
+    $HOME/lib/rofi/rofi-wiki --pdf
+#+end_src
+
+#+begin_src shell
+# Restore a saved browser session
+super + w
+    $HOME/lib/rofi/rofi-browser
+#+end_src
+
+#+begin_src shell
+# Toggle a display/power profile
+super + d
+    $HOME/lib/rofi/rofi-profile
+XF86Display
+    $HOME/lib/rofi/rofi-profile
+#+end_src
+
+#+begin_src shell
+# Control system state (locked, reboot, poweroff, etc.)
+super + Escape
+    $HOME/lib/rofi/rofi-system LOCK SCREEN
+super + ctrl + alt + Escape
+    $HOME/lib/rofi/rofi-system
+#+end_src
+
+*** Scrot Keybindings
+
+#+begin_src shell
+# Interactively select a window or rectangle with the mouse
+Print
+    scrot -q 100 -s '.%Y-%m-%d_$wx$h.png' -e 'mv $f ~/tmp/'
+
+shift + Print
+    scrot -q 100 '.%Y-%m-%d_$wx$h.png' -e 'mv $f ~/tmp/'
+#+end_src
+
+*** Media Control Keybindings
+
+#+begin_src shell
+XF86MonBrightnessUp
+    xbacklight -inc 1 -time 10; \
+    $HOME/etc/lemonbar/utils/trigger_fifos bkl
+
+XF86MonBrightnessDown
+    xbacklight -dec 1 -time 10; \
+    $HOME/etc/lemonbar/utils/trigger_fifos bkl
+
+XF86AudioMute
+    pulsemixer --toggle-mute; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioMicMute
+    pulsemixer --toggle-mute; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioRaiseVolume
+    pulsemixer --change-volume +1; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioLowerVolume
+    pulsemixer --change-volume -1; \
+    $HOME/etc/lemonbar/utils/trigger_fifos vol
+
+XF86AudioPlay
+    $HOME/src/spotify-cli/spotify-cli toggle
+
+XF86AudioNext
+    $HOME/src/spotify-cli/spotify-cli next
+
+XF86AudioPrev
+    $HOME/src/spotify-cli/spotify-cli prev
+#+end_src
+
+** Herbstluftwm Manual Tiling Window Manager
 :PROPERTIES:
 :header-args:shell: :tangle ~/.config/herbstluftwm/autostart :mkdirp yes :shebang #!/bin/sh
 :END:
@@ -1362,7 +1490,7 @@ I don't remember why I commented one of the hooks out, oh thats rights, its beca
 $LOGGER "All hook have been started"
 #+end_src
 
-** Compton
+** Compton X11 Compositor
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes
 :END:
@@ -1582,7 +1710,7 @@ wintypes:
 };
 #+end_src
 
-** Zathura
+** Zathura PDF Reader
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/zathura/zathurarc :mkdirp yes
 :END:

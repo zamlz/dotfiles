@@ -44,7 +44,7 @@ fi
 SXHKD_SHELL=sh
 export SXHKD_TERMINAL=$HOME/bin/emacsclient-launcher
 pkill -x sxhkd
-sxhkd -c "$HOME/etc/sxhkd/keybinds" &
+sxhkd &
 
 # Also have to set this here in case xorg isn't started via startx
 setxkbmap -option caps:escape
