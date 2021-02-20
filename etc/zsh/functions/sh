@@ -1,7 +1,0 @@
-#!/bin/zsh
-
-# Because of this function for building ps1, the sh shell will not work
-# anymore. we'll need to override the value of a certain identifier.
-# I need to think of a beter way to make sure that my PS1 is dynamically
-# set instead of setting a value to precmd
-/bin/sh -c "export precmd=''; exec /bin/sh"
