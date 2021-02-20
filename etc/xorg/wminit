@@ -14,7 +14,7 @@ if [ -f "$HOME/.config/compton.conf" ]; then
 fi
 
 # Reload the xresource data
-xrdb -I$HOME $HOME/etc/xorg/xresources
+xrdb -I$HOME $HOME/.Xresources
 
 # Refresh the terminal
 # TODO: Make sure a colorscheme has been set and that it is valid!
