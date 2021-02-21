@@ -399,7 +399,12 @@ function groot() {
 
 **** One of my many prompts
 
-I really like this prompt. I should probably set this up such that it's only used when I'm using the =tty=.
+I really like this prompt. I should probably set this up such that it's only used when I'm using the =tty=. Here is what is normally looks like:
+
+#+begin_src
+.-|ssh|-(amlesh@xanadu)-[debian::~/src/website]-<website.master>
+`-->
+#+end_src
 
 #+begin_src shell
 function prompt_generate() {
