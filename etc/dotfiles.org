@@ -18,11 +18,24 @@ It's actually incredible how accurate this xckd comic is...
   - [[#gentoo-linux][Gentoo Linux]]
 - [[#shell-environment][Shell Environment]]
   - [[#zsh][Zsh]]
-    - [[#zshenv][~/.zshenv]]
-    - [[#zshrc][~/.zshrc]]
-    - [[#zlogin][~/.zlogin]]
-    - [[#shell-functions][Shell Functions]]
-    - [[#shell-aliases][Shell Aliases]]
+    - [[#environment-configuration][Environment Configuration]]
+    - [[#interactive-session][Interactive Session]]
+      - [[#zsh-configuration][Zsh Configuration]]
+      - [[#load-autocompletion-engine][Load Autocompletion Engine]]
+      - [[#source-aliases-and-functions][Source Aliases and Functions]]
+      - [[#configure-ssh--gnupg-variables][Configure SSH & GnuPG Variables]]
+      - [[#setup-ps1][Setup $PS1]]
+      - [[#override-ls-colors][Override LS Colors]]
+      - [[#enter-a-python-virtual-environment][Enter a Python Virtual Environment]]
+      - [[#emacs-vterm-shell-side-integration][Emacs Vterm Shell-side Integration]]
+    - [[#login-script][Login Script]]
+    - [[#functions][Functions]]
+      - [[#gnupg-utilities][GnuPG Utilities]]
+      - [[#groot][Groot]]
+      - [[#one-of-my-many-prompts][One of my many prompts]]
+      - [[#python-venv-wrapper][Python Venv Wrapper]]
+      - [[#x-window-terminal-info][X Window Terminal Info]]
+    - [[#aliases][Aliases]]
   - [[#git][Git]]
     - [[#user-profile][User Profile]]
     - [[#gnupg][GnuPG]]
@@ -213,7 +226,7 @@ It's actually incredible how accurate this xckd comic is...
 ** TODO Gentoo Linux
 * Shell Environment
 ** Zsh
-*** ~/.zshenv
+*** Environment Configuration
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zshenv
 :END:
@@ -301,8 +314,130 @@ This is sort of a weird hack. Basically, we're setting the pinentry program here
 export PINENTRY_USER_DATA='rofi'
 #+end_src
 
-*** ~/.zshrc
-*** ~/.zlogin
+*** Interactive Session
+:PROPERTIES:
+:header-args:shell: :tangle ~/.zshrc
+:END:
+**** Zsh Configuration
+
+Configure how zsh remembers history.
+
+#+begin_src shell
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+#+end_src
+
+Other useful defaults like auto-cd and turning off terminal beeps!
+
+#+begin_src shell
+setopt AUTO_CD
+unsetopt BEEP # turn of audible beeps
+#+end_src
+
+Setup Vim Bindings in Zsh.
+
+#+begin_src shell
+bindkey -v
+#+end_src
+
+**** Load Autocompletion Engine
+
+The directory we store the completion file will already exist due to the tangling of other zsh files.
+
+#+begin_src shell
+autoload -Uz compinit && compinit -d "$HOME/.zsh.d/compdump"
+autoload -U bashcompinit && bashcompinit
+#+end_src
+
+**** Source Aliases and Functions
+
+#+begin_src shell
+source $HOME/.zsh.d/aliases.zsh
+source $HOME/.zsh.d/functions.zsh
+#+end_src
+
+**** Configure SSH & GnuPG Variables
+
+I don't know what to make of this. I thought I could have this code block in the =~/.zshenv= file but I was unable to do so as it causing many issues. Seems like it needs to be set during an interactive session. Very strange indeed.
+
+#+begin_src shell
+export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA='tty'
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
+#+end_src
+
+**** Setup $PS1
+
+There are basically two ways to set prompts. My old prompt was dynamic and required a function to run everytime it generated so we used the precmd cood to generate it. However it introduces some problems with =sh= if you want to run it from =zsh=. Luckily, if you wish to run =sh= from =zsh= for whatever reason, one can simply override the hook before the command is run.
+
+I however, am currently not using this setup, but I should configure it such that if I am in a pure terminal environment that I do in fact use my more /verbose/ prompt. In my gui environment however, that level of information is overkill.
+
+#+begin_src shell
+### NOTE: Look at the function definition for prompt_generate()
+# precmd() {
+#     export PROMPT=$(prompt_generate)
+# }
+
+export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
+#+end_src
+
+**** Override LS Colors
+
+The =ls= command is sometimes not colored properly (and I may have some custom colors that it doesn't like using for certain files by default) so lets override that here. Maybe I should have this in the =~/.zshenv= file?
+
+#+begin_src shell
+eval $(dircolors -b $HOME/lib/shell/lscolors)
+#+end_src
+
+**** Enter a Python Virtual Environment
+
+If certain =$VIRTUAL_ENV= exist during session startup, then immediately jump into that python virtual environment.
+
+#+begin_src shell
+if [ -n "$VIRTUAL_ENV" ]; then
+    source ${VIRTUAL_ENV}/bin/activate
+fi
+#+end_src
+
+**** Emacs Vterm Shell-side Integration
+
+Woah what is a function doing here!?
+
+Well, Vterm (emacs) requires some shell-side configuration in order to make use of its full functionality. It's quite powerful when as you can jump between prompts and other things. Basically although its a function, I'm keeping it here so that all shell-side code is in one place.
+
+#+begin_src shell
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+#+end_src
+
+This is used to pass information about =user=, =hostname=, and =pwd= back to vterm.
+
+#+begin_src shell
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)";
+}
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
+#+end_src
+
+Adding another zsh hook to capture changes in directory I believe. This ultimately is used to set the buffer name for vterm in emacs buffer list.
+
+#+begin_src shell
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
+#+end_src
+
+*** Login Script
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zlogin
 :END:
@@ -336,7 +471,7 @@ elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
 fi
 #+end_src
 
-*** Shell Functions
+*** Functions
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zsh.d/functions.zsh :mkdirp yes
 :END:
@@ -545,25 +680,7 @@ if [ -n "$DISPLAY" ]; then
 fi
 #+end_src
 
-**** Emacs Vterm Shell-side Integration
-
-Vterm (emacs) requires some shell-side configuration in order to make use of its full functionality. It's quite powerful when as you can jump between prompts and other things.
-
-#+begin_src shell
-vterm_printf() {
-    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
-        # Tell tmux to pass the escape sequences through
-        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
-    elif [ "${TERM%%-*}" = "screen" ]; then
-        # GNU screen (screen, screen-256color, screen-256color-bce)
-        printf "\eP\e]%s\007\e\\" "$1"
-    else
-        printf "\e]%s\e\\" "$1"
-    fi
-}
-#+end_src
-
-*** Shell Aliases
+*** Aliases
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zsh.d/aliases.zsh :mkdirp yes
 :END:
