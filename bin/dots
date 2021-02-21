@@ -27,12 +27,10 @@ configure_dots() {
     # ZSH SHELL SETUP
     echo "Setting up zsh shell files"
     ln -s $d/etc/zsh/rc $d/.zshrc
-    mkdir -p $d/.local/share/zsh
 
     # Setting up emacs config file
     echo "Setting up emacs config file"
     ln -s $d/etc/init.el $d/.emacs.d/init.el
-    ln -s $d/etc/emacs.org $d/.emacs.d/config.org
 
     # Setting up qutebrowser
     echo "Setting up qutebrowser files"
@@ -49,13 +47,9 @@ configure_dots() {
     mkdir -p $d/.config/lemonbar
     touch $d/.config/lemonbar/config
 
-    # Setting up pubs configuration file
-    echo "Set up pubs configuration file"
-    ln -s $d/etc/pubs/rc $d/.pubsrc
-
     # post setup messages
     echo ""
-    echo ">     Make sure to setup the zprofile yourself"
+    echo ">     Make sure to tangle the dotfiles from emacs"
     echo ">     Colorscheme defaulted to gruvbox-black"
     echo ">     Make sure to populate lemonbar config"
 }

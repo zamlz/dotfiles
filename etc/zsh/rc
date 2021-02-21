@@ -12,7 +12,8 @@ unsetopt BEEP # turn of audible beeps
 bindkey -v
 
 # Shell Completions
-autoload -Uz compinit && compinit -d "$HOME/.local/share/zsh/compdump"
+# (directory should exist if emacs tangled!)
+autoload -Uz compinit && compinit -d "$HOME/.zsh.d/compdump"
 autoload -U bashcompinit && bashcompinit
 autoload -U promptinit && promptinit
 
