@@ -303,6 +303,39 @@ export PINENTRY_USER_DATA='rofi'
 
 *** ~/.zshrc
 *** ~/.zlogin
+:PROPERTIES:
+:header-args:shell: :tangle ~/.zlogin
+:END:
+
+Need a logger just to keep track of things
+
+#+begin_src shell
+source $HOME/lib/shell/logger
+LOGGER=$(get_logger zsh.profile)
+#+end_src
+
+Setup herbstluftwm window manager during login
+
+#+begin_src shell
+# Regular StartX Boot for Herbsluftwm
+if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
+    $LOGGER "Starting xinitrc parameterized on herbstluftwm"
+    export WINDOW_MANAGER='herbstluftwm'
+    exec startx $HOME/etc/xorg/xinitrc herbstluftwm
+fi
+#+end_src
+
+The remaining =tty= are for testing or recovery purposes. I primarily use =tty2= for testing new window managers. In the case below, I'm trying out emacs as a window manager.
+
+#+begin_src shell
+# Regular StartX Boot for Emacs
+elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
+    $LOGGER "Starting xinitrc parameterized on emacs"
+    export WINDOW_MANAGER='exwm'
+    exec startx $HOME/etc/xorg/xinitrc exwm
+fi
+#+end_src
+
 *** Shell Functions
 *** Shell Aliases
 :PROPERTIES:
