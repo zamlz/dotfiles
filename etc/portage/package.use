@@ -4,7 +4,7 @@
 
 app-editors/emacs cairo dbus dynamic-loading gui gif gpm harfbuzz imagemagick
 app-editors/emacs jpeg png sound svg threads xft tiff athena Xaw3d -gtk -motif
-app-editors/emacs xwidgets
+app-editors/emacs xwidgets libxml2
 
 app-portage/pfl -network-cron
 
