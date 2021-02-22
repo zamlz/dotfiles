@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
-#+STARTUP: content
+#+STARTUP: overview
 # ... Present day, present time ...
 
 [[./xkcd.png]]
@@ -211,6 +211,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#auto-tangle-configuration-file][Auto-Tangle Configuration File]]
     - [[#latex-inline-preview][LaTeX Inline Preview]]
     - [[#habit-tracking][Habit Tracking]]
+    - [[#org-download][Org Download]]
     - [[#roam-notes][Roam Notes]]
     - [[#roam-daily-notes][Roam Daily Notes]]
     - [[#roam-quick-access][Roam Quick Access]]
@@ -1667,11 +1668,11 @@ super + ctrl + alt + Escape
 
 #+begin_src shell
 # Interactively select a window or rectangle with the mouse
-Print
-    scrot -q 100 -s '.%Y-%m-%d_$wx$h.png' -e 'mv $f ~/tmp/'
+@Print
+    scrot -q 100 -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
-shift + Print
-    scrot -q 100 '.%Y-%m-%d_$wx$h.png' -e 'mv $f ~/tmp/'
+@shift + Print
+    scrot -q 100 '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 #+end_src
 
 *** Media Control Keybindings
@@ -3389,6 +3390,15 @@ Enables habit tracking in =org-mode= via =org-habit=.
 (setq org-habit-following-days 3)
 (setq org-habit-show-habits-only-for-today t)
 (setq org-habit-show-all-today t)
+#+end_src
+
+*** Org Download
+
+This package should let me quickly download images from web browsers and have images in my clipboard and paste them into my org files.
+
+#+begin_src emacs-lisp
+(use-package org-download
+  :custom (org-download-heading-lvl nil))
 #+end_src
 
 *** Roam Notes

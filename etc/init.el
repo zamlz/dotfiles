@@ -708,6 +708,9 @@
 (setq org-habit-show-habits-only-for-today t)
 (setq org-habit-show-all-today t)
 
+(use-package org-download
+  :custom (org-download-heading-lvl nil))
+
 (setq org-roam-directory "~/usr/notes/")
 
 (use-package org-roam
