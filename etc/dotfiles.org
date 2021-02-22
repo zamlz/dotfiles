@@ -3441,7 +3441,7 @@ This package should let me quickly download images from web browsers and have im
 #+begin_src emacs-lisp
 (zamlz/leader-keys
   "n"  '(:ignore t :which-key "Org Roam Notes")
-  "nt" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
+  "nj" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
   "ny" '(org-roam-dailies-capture-yesterday :which-key "Roam Daily Capture Yesterday"))
 #+end_src
 
@@ -3480,6 +3480,10 @@ Installs a better virtual terminal to use within emacs. I'm just playing around 
   (vterm-ignore-blink-cursor nil)
   (vterm-buffer-name-string "vterm [%s]")
   (vterm-always-compile-module t))
+
+(zamlz/leader-keys
+  "e" '(:ignore t :which-key "Exec Commands")
+  "ee" '(vterm :which-key "Spawn vterm instance"))
 #+end_src
 
 *** Ledger
