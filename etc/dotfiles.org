@@ -1666,6 +1666,8 @@ super + ctrl + alt + Escape
 
 *** Scrot Keybindings
 
+It's important that these keybindings are prefaces with the =@= token as it implies that the command should be executed on key release as opposed to key press. Scrot and xclip here will not work properly unless they are on key release.
+
 #+begin_src shell
 # Interactively select a window or rectangle with the mouse
 @Print
