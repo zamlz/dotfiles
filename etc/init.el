@@ -736,7 +736,7 @@
 
 (zamlz/leader-keys
   "n"  '(:ignore t :which-key "Org Roam Notes")
-  "nt" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
+  "nj" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
   "ny" '(org-roam-dailies-capture-yesterday :which-key "Roam Daily Capture Yesterday"))
 
 (use-package org-roam-server
@@ -762,6 +762,10 @@
   (vterm-ignore-blink-cursor nil)
   (vterm-buffer-name-string "vterm [%s]")
   (vterm-always-compile-module t))
+
+(zamlz/leader-keys
+  "e" '(:ignore t :which-key "Exec Commands")
+  "ee" '(vterm :which-key "Spawn vterm instance"))
 
 (use-package ledger-mode)
 
