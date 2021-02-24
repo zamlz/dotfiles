@@ -701,6 +701,7 @@
 
 (setq org-startup-with-latex-preview t)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
+(setq org-preview-latex-image-directory  ".ltximg")
 
 (add-to-list 'org-modules 'org-habit t)
 (setq org-habit-preceding-days 31)
