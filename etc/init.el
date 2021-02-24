@@ -724,15 +724,27 @@
          (("C-c n i" . org-roam-insert))
          (("C-c n I" . org-roam-insert-immediate))))
 
-(setq org-roam-dailies-directory "daily/")
+(setq org-roam-capture-templates
+      '(("d" "default" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n"
+         :unnarrowed t)
+        ("i" "infrastructure" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "infrastructure/%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n#+ROAM_TAGS: INFRASTRUCTURE\n"
+         :unnarrowed t)
+        ))
+
+(setq org-roam-dailies-directory "journal/")
 
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          #'org-roam-capture--get-point
          "* %U\n%?"
-         :file-name "daily/%<%Y-%m-%d>"
-         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: JOURNAL\n\n"
-         :olp ("[[file:./20210212192038-daily_journal.org][Daily Journal Entry]]"))))
+         :file-name "journal/%<%Y-%m-%d>"
+         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: JOURNAL\n\n")))
 
 (zamlz/leader-keys
   "n"  '(:ignore t :which-key "Org Roam Notes")

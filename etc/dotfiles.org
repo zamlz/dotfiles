@@ -3422,18 +3422,34 @@ This package should let me quickly download images from web browsers and have im
          (("C-c n I" . org-roam-insert-immediate))))
 #+end_src
 
+*** Roam Capture Templates
+
+#+begin_src emacs-lisp
+(setq org-roam-capture-templates
+      '(("d" "default" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n"
+         :unnarrowed t)
+        ("i" "infrastructure" plain (function org-roam--capture-get-point)
+         "%?"
+         :file-name "infrastructure/%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n#+ROAM_TAGS: INFRASTRUCTURE\n"
+         :unnarrowed t)
+        ))
+#+end_src
+
 *** Roam Daily Notes
 
 #+begin_src emacs-lisp
-(setq org-roam-dailies-directory "daily/")
+(setq org-roam-dailies-directory "journal/")
 
 (setq org-roam-dailies-capture-templates
       '(("d" "default" entry
          #'org-roam-capture--get-point
          "* %U\n%?"
-         :file-name "daily/%<%Y-%m-%d>"
-         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: JOURNAL\n\n"
-         :olp ("[[file:./20210212192038-daily_journal.org][Daily Journal Entry]]"))))
+         :file-name "journal/%<%Y-%m-%d>"
+         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: JOURNAL\n\n")))
 #+end_src
 
 *** Roam Quick Access
