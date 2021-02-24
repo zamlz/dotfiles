@@ -169,7 +169,7 @@
 (use-package dashboard
   :ensure t
   :config
-  (setq dashboard-startup-banner "~/lib/emacs-themes/logo.txt")
+  (setq dashboard-startup-banner "~/lib/emacs-themes/navi.png")
   (setq dashboard-center-content t)
   (setq dashboard-set-heading-icons t)
   (setq dashboard-set-file-icons t)
