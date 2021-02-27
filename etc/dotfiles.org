@@ -3380,7 +3380,7 @@ Pretty straightforward except that you need to have =latex= installed and also =
 #+begin_src emacs-lisp
 (setq org-startup-with-latex-preview t)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
-(setq org-preview-latex-image-directory  ".ltximg")
+(setq org-preview-latex-image-directory  ".ltximg/")
 #+end_src
 
 *** Habit Tracking
