@@ -727,14 +727,24 @@
 
 (setq org-roam-capture-templates
       '(("d" "default" plain (function org-roam--capture-get-point)
-         "%?"
+         "\n%?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
          :head "#+TITLE: ${title}\n"
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
-         "%?"
+         "\n%?"
          :file-name "infrastructure/%<%Y%m%d%H%M%S>-${slug}"
          :head "#+TITLE: ${title}\n#+ROAM_TAGS: INFRASTRUCTURE\n"
+         :unnarrowed t)
+        ("c" "contacts" plain (function org-roam--capture-get-point)
+         "\n%?"
+         :file-name "contacts/%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n#+ROAM_TAGS: CONTACTS\n"
+         :unnarrowed t)
+        ("w" "webpage" plain (function org-roam--capture-get-point)
+         "\n%?"
+         :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
+         :head "#+TITLE: ${title}\n#+ROAM_TAGS: WEBPAGE\n"
          :unnarrowed t)
         ))
 
