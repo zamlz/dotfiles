@@ -154,6 +154,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by media-video/peek-1.5.1::gentoo
 # required by @apps-video
 =media-video/ffmpeg-4.3.1 vpx
+=media-video/ffmpeg-4.3.2 vpx
 
 # required by kde-apps/okular-20.08.3::gentoo
 # required by kde-apps/okular (argument)
@@ -164,6 +165,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by dev-python/ipython-7.19.0-r1::gentoo[smp]
 # required by @apps-devel
 =net-libs/zeromq-4.3.3 drafts
+=net-libs/zeromq-4.3.3-r1 drafts
 
 # required by net-misc/networkmanager-1.26.0-r1::gentoo[-iwd,wifi]
 # required by @world (argument)
