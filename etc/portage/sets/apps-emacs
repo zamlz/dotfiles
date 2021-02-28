@@ -8,3 +8,6 @@ app-text/dvipng
 
 # Needed for org-roam
 dev-db/sqlite
+
+# Used for generating graph svg files.
+media-gfx/graphviz

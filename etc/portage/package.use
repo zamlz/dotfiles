@@ -133,7 +133,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 
 # required by app-text/texlive-core-2020-r12::gentoo
 # required by app-text/texlive-2020-r9::gentoo
-=media-libs/gd-2.3.0 png jpeg
+=media-libs/gd-2.3.0 png jpeg fontconfig truetype
 
 # required by media-gfx/gimp-2.10.18-r1::gentoo
 # required by @image-apps (argument)
