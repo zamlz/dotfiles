@@ -298,8 +298,12 @@
 
 (use-package helm
   :bind (("M-x" . helm-M-x))
+  :custom
+  (helm-autoresize-max-height 40)
+  (helm-autoresize-min-height 0)
   :config
   (require 'helm-config)
+  (helm-autoresize-mode 1)
   (helm-mode 1))
 
 (use-package all-the-icons)
