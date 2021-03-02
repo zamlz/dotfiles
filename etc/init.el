@@ -749,7 +749,7 @@
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "%<%Y%m%d%H%M%S>-${slug}"
          :head "#+TITLE: ${title}\n#+ROAM_TAGS: WEBPAGE\n"
          :unnarrowed t)
         ))
