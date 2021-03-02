@@ -2709,40 +2709,40 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 =Ivy= is basically a completion framework. Its minimal but provides a simple but powerful menu that appears when switching files, opening buffers, etc. =Counsel= on the other hand, provides replaces commands that replace the typical emacs commands.
 
 #+begin_src emacs-lisp
-;; (use-package ivy
-;;   :defer 0.1
-;;   :diminish
-;;   :bind (("C-x B" . ivy-switch-buffer-other-window)
-;;      :map ivy-minibuffer-map
-;;      ("TAB" . ivy-alt-done)
-;;      ("C-l" . ivy-alt-done)
-;;      ("C-j" . ivy-next-line)
-;;      ("C-k" . ivy-previous-line)
-;;      :map ivy-switch-buffer-map
-;;      ("C-k" . ivy-previous-line)
-;;      ("C-l" . ivy-done)
-;;      ("C-d" . ivy-switch-buffer-kill)
-;;      :map ivy-reverse-i-search-map
-;;      ("C-k" . ivy-previous-line)
-;;      ("C-d" . ivy-reverse-i-search-kill))
-;;   :custom
-;;   (ivy-count-format "(%d/%d) ")
-;;   (ivy-use-virtual-buffers t)
-;;   :config (ivy-mode))
+(use-package ivy
+  :defer 0.1
+  :diminish
+  :bind (("C-x B" . ivy-switch-buffer-other-window)
+     :map ivy-minibuffer-map
+     ("TAB" . ivy-alt-done)
+     ("C-l" . ivy-alt-done)
+     ("C-j" . ivy-next-line)
+     ("C-k" . ivy-previous-line)
+     :map ivy-switch-buffer-map
+     ("C-k" . ivy-previous-line)
+     ("C-l" . ivy-done)
+     ("C-d" . ivy-switch-buffer-kill)
+     :map ivy-reverse-i-search-map
+     ("C-k" . ivy-previous-line)
+     ("C-d" . ivy-reverse-i-search-kill))
+  :custom
+  (ivy-count-format "(%d/%d) ")
+  (ivy-use-virtual-buffers t)
+  :config (ivy-mode))
 
-;; (use-package counsel
-;;   :after ivy
-;;   :bind (("M-x" . counsel-M-x)
-;;      ("C-x b" . counsel-switch-buffer)
-;;      ("C-x C-f" . counsel-find-file)
-;;      :map minibuffer-local-map
-;;      ("C-r" . 'counsel-minibuffer-history))
-;;   :config (counsel-mode))
+(use-package counsel
+  :after ivy
+  :bind (("M-x" . counsel-M-x)
+     ("C-x b" . counsel-switch-buffer)
+     ("C-x C-f" . counsel-find-file)
+     :map minibuffer-local-map
+     ("C-r" . 'counsel-minibuffer-history))
+  :config (counsel-mode))
 
-;; ;; TODO: Figure out what swiper is lol
-;; (use-package swiper
-;;   :after ivy
-;;   :bind (("C-s" . swiper)))
+;; TODO: Figure out what swiper is lol
+(use-package swiper
+  :after ivy
+  :bind (("C-s" . swiper)))
 #+end_src
 
 **** Ivy Rich
@@ -2750,15 +2750,15 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 =Ivy-Rich= provides extra columns in the counsel commands to get more information about each item during autocompletion.
 
 #+begin_src emacs-lisp
-;; ;; Adds nice icons to the ivy rich buffer
-;; (use-package all-the-icons-ivy-rich
-;;   :after counsel-projectile
-;;   :init (all-the-icons-ivy-rich-mode 1))
+;; Adds nice icons to the ivy rich buffer
+(use-package all-the-icons-ivy-rich
+  :after counsel-projectile
+  :init (all-the-icons-ivy-rich-mode 1))
 
-;; ;; Actually install ivy rich
-;; (use-package ivy-rich
-;;   :after (ivy all-the-icons-ivy-rich)
-;;   :init (ivy-rich-mode 1))
+;; Actually install ivy rich
+(use-package ivy-rich
+  :after (ivy all-the-icons-ivy-rich)
+  :init (ivy-rich-mode 1))
 #+end_src
 
 **** Helm
@@ -2766,15 +2766,15 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 Trying out helm.
 
 #+begin_src emacs-lisp
-(use-package helm
-  :bind (("M-x" . helm-M-x))
-  :custom
-  (helm-autoresize-max-height 40)
-  (helm-autoresize-min-height 0)
-  :config
-  (require 'helm-config)
-  (helm-autoresize-mode 1)
-  (helm-mode 1))
+;; (use-package helm
+;;   :bind (("M-x" . helm-M-x))
+;;   :custom
+;;   (helm-autoresize-max-height 40)
+;;   (helm-autoresize-min-height 0)
+;;   :config
+;;   (require 'helm-config)
+;;   (helm-autoresize-mode 1)
+;;   (helm-mode 1))
 #+end_src
 
 *** Themes and Appearance
