@@ -525,7 +525,7 @@
   :custom
 
   ;; Setup directories
-  (org-directory "~/usr/org")
+  (org-directory "~/usr/notes/gtd/")
   (org-agenda-files (list org-directory))
 
   ;; Add some nice visuals changes
@@ -698,7 +698,7 @@
 (add-to-list `org-structure-template-alist '("sh" . "src shell"))
 (add-to-list `org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list `org-structure-template-alist '("py" . "src python"))
-(add-to-list `org-structure-template-alist '("rc" . "src conf"))
+(add-to-list `org-structure-template-alist '("cf" . "src conf"))
 
 ;; (defun efs/org-babel-tangle-config ()
 ;;   (when (string-equal (buffer-file-name)
