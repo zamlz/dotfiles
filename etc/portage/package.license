@@ -27,3 +27,6 @@
 # required by x11-base/xorg-server-1.20.8-r1::gentoo[xorg]
 # required by x11-drivers/xf86-input-libinput-0.30.0::gentoo
 >=x11-drivers/nvidia-drivers-450.66 NVIDIA-r2
+
+# required by google-chrome (argument)
+>=www-client/google-chrome-89.0.4389.72 google-chrome
