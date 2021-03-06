@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFED:
+#+LAST_MODIFIED: [2021-03-05 Fri 18:24:32]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -215,6 +215,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#latex-inline-preview][LaTeX Inline Preview]]
     - [[#habit-tracking][Habit Tracking]]
     - [[#org-download][Org Download]]
+    - [[#org-last-modified-timestamp][Org Last Modified Timestamp]]
     - [[#roam-notes][Roam Notes]]
     - [[#roam-capture-templates][Roam Capture Templates]]
     - [[#roam-daily-notes][Roam Daily Notes]]
@@ -3422,6 +3423,34 @@ This package should let me quickly download images from web browsers and have im
 #+begin_src emacs-lisp
 (use-package org-download
   :custom (org-download-heading-lvl nil))
+#+end_src
+
+*** Org Last Modified Timestamp
+
+The following allows any =#+LAST_MODIFIED= headers to be updated on file-save.
+
+#+begin_src emacs-lisp
+(defun zamlz/update-org-modified-property ()
+  "If a file contains a '#+LAST_MODIFIED' property update it to contain
+  the current date/time"
+  (interactive)
+  (save-excursion
+    (widen)
+    (goto-char (point-min))
+    (when (re-search-forward "^#\\+LAST_MODIFIED:" (point-max) t)
+      (progn
+        (kill-line)
+        (insert (format-time-string " [%Y-%m-%d %a %H:%M:%S]") )))))
+#+end_src
+
+It is made available like so.
+
+#+begin_src emacs-lisp
+(defun zamlz/org-mode-before-save-hook ()
+  (when (eq major-mode 'org-mode)
+    (zamlz/update-org-modified-property)))
+
+(add-hook 'before-save-hook #'zamlz/org-mode-before-save-hook)
 #+end_src
 
 *** Roam Notes

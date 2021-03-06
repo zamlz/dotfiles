@@ -722,6 +722,24 @@
 (use-package org-download
   :custom (org-download-heading-lvl nil))
 
+(defun zamlz/update-org-modified-property ()
+  "If a file contains a '#+LAST_MODIFIED' property update it to contain
+  the current date/time"
+  (interactive)
+  (save-excursion
+    (widen)
+    (goto-char (point-min))
+    (when (re-search-forward "^#\\+LAST_MODIFIED:" (point-max) t)
+      (progn
+        (kill-line)
+        (insert (format-time-string " [%Y-%m-%d %a %H:%M:%S]") )))))
+
+(defun zamlz/org-mode-before-save-hook ()
+  (when (eq major-mode 'org-mode)
+    (zamlz/update-org-modified-property)))
+
+(add-hook 'before-save-hook #'zamlz/org-mode-before-save-hook)
+
 (setq org-roam-directory "~/org/")
 
 (use-package org-roam
