@@ -754,25 +754,36 @@
          (("C-c n I" . org-roam-insert-immediate))))
 
 (setq org-roam-capture-templates
-      '(("d" "default" plain (function org-roam--capture-get-point)
+      `(("d" "default" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+TITLE: ${title}\n"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED:\n")
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "infrastructure/%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+TITLE: ${title}\n#+ROAM_TAGS: INFRASTRUCTURE\n"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+ROAM_TAGS: INFRASTRUCTURE\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED:\n")
          :unnarrowed t)
         ("c" "contacts" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "contacts/%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+TITLE: ${title}\n#+ROAM_TAGS: CONTACTS\n"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+ROAM_TAGS: CONTACTS\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED:\n")
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
-         :head "#+TITLE: ${title}\n#+ROAM_TAGS: WEBPAGE\n"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+ROAM_TAGS: WEBPAGE\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED:\n")
          :unnarrowed t)
         ))
 
