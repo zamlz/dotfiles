@@ -1,5 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham
+#+CREATED: [2021-02-18 Thu 15:09]
+#+LAST_MODIFED:
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -166,6 +168,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#autocompletion-engine][Autocompletion Engine]]
       - [[#ivy-counsel-and-swiper][Ivy, Counsel, and Swiper]]
       - [[#ivy-rich][Ivy Rich]]
+      - [[#helm][Helm]]
     - [[#themes-and-appearance][Themes and Appearance]]
       - [[#modeline][Modeline]]
       - [[#color-theme][Color Theme]]
@@ -213,6 +216,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#habit-tracking][Habit Tracking]]
     - [[#org-download][Org Download]]
     - [[#roam-notes][Roam Notes]]
+    - [[#roam-capture-templates][Roam Capture Templates]]
     - [[#roam-daily-notes][Roam Daily Notes]]
     - [[#roam-quick-access][Roam Quick Access]]
     - [[#roam-server][Roam Server]]
@@ -3135,7 +3139,7 @@ I should probably split this bloody mess up.
   :custom
 
   ;; Setup directories
-  (org-directory "~/usr/notes/gtd/")
+  (org-directory "~/org/gtd/")
   (org-agenda-files (list org-directory))
 
   ;; Add some nice visuals changes
@@ -3425,7 +3429,7 @@ This package should let me quickly download images from web browsers and have im
 =org-roam= is a useful package for taking notes.
 
 #+begin_src emacs-lisp
-(setq org-roam-directory "~/usr/notes/")
+(setq org-roam-directory "~/org/")
 
 (use-package org-roam
   :ensure t
@@ -3460,7 +3464,7 @@ This package should let me quickly download images from web browsers and have im
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
          :head "#+TITLE: ${title}\n#+ROAM_TAGS: WEBPAGE\n"
          :unnarrowed t)
         ))

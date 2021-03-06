@@ -525,7 +525,7 @@
   :custom
 
   ;; Setup directories
-  (org-directory "~/usr/notes/gtd/")
+  (org-directory "~/org/gtd/")
   (org-agenda-files (list org-directory))
 
   ;; Add some nice visuals changes
@@ -722,7 +722,7 @@
 (use-package org-download
   :custom (org-download-heading-lvl nil))
 
-(setq org-roam-directory "~/usr/notes/")
+(setq org-roam-directory "~/org/")
 
 (use-package org-roam
   :ensure t
@@ -753,7 +753,7 @@
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
          :head "#+TITLE: ${title}\n#+ROAM_TAGS: WEBPAGE\n"
          :unnarrowed t)
         ))
