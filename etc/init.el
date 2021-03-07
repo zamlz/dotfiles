@@ -59,6 +59,9 @@
                 tab-width zamlz/indent-width
                 fill-column zamlz/default-screen-width))
 
+(setq user-full-name "Amlesh Sivanantham")
+(setq user-login-name "zamlz")
+
 (use-package "startup"
   :ensure nil
   :config (setq inhibit-startup-screen t))
@@ -720,7 +723,10 @@
 (setq org-habit-show-all-today t)
 
 (use-package org-download
-  :custom (org-download-heading-lvl nil))
+  :custom
+  (org-download-image-dir "./data")
+  (org-download-heading-lvl nil)
+  (org-download-method 'directory))
 
 (defun zamlz/update-org-modified-property ()
   "If a file contains a '#+LAST_MODIFIED' property update it to contain
@@ -758,43 +764,56 @@
          "\n%?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
+                        "#+ROAM_TAGS:\n"
+                        "#+ROAM_ALIAS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "infrastructure/%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: INFRASTRUCTURE\n"
+                        "#+ROAM_ALIAS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("c" "contacts" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "contacts/%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: CONTACTS\n"
+                        "#+ROAM_ALIAS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: WEBPAGE\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+ROAM_ALIAS:\n"
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+ROAM_KEY: %x\n")
          :unnarrowed t)
         ))
 
 (setq org-roam-dailies-directory "journal/")
 
 (setq org-roam-dailies-capture-templates
-      '(("d" "default" entry
+      `(("d" "default" entry
          #'org-roam-capture--get-point
          "* %U\n%?"
-         :file-name "journal/%<%Y-%m-%d>"
-         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: JOURNAL\n\n")))
+         :file-name "journal/%<%Y-%m-%d-%H-%M-%S>"
+         :head ,(concat "#+TITLE: %<%Y-%m-%d %H:%M:%S (%a)>\n"
+                        "#+ROAM_TAGS: JOURNAL\n"
+                        "\n\n"))
+        ))
 
 (zamlz/leader-keys
   "n"  '(:ignore t :which-key "Org Roam Notes")

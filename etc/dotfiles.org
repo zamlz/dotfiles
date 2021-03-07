@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
-#+AUTHOR: Amlesh Sivanantham
+#+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-05 Fri 19:25:38]
+#+LAST_MODIFIED: [2021-03-06 Sat 16:00:13]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -137,6 +137,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#garbage-collector-hooks][Garbage Collector Hooks]]
     - [[#package-management][Package Management]]
     - [[#basic-ui-changes][Basic UI Changes]]
+    - [[#setup-personal-inf][Setup Personal Inf]]
     - [[#disable-default-startup][Disable Default Startup]]
     - [[#modernize-selection-behaviour][Modernize Selection Behaviour]]
     - [[#disable-scroll-bar][Disable Scroll-Bar]]
@@ -226,7 +227,6 @@ It's actually incredible how accurate this xckd comic is...
     - [[#ledger][Ledger]]
     - [[#beancount][Beancount]]
     - [[#xkcd][xkcd]]
-- [[#bootstrap-script][Bootstrap Script]]
 :END:
 * Operating System
 ** TODO Gentoo Linux
@@ -2373,6 +2373,13 @@ Lets get some basic settings out of the way here.
                 fill-column zamlz/default-screen-width))
 #+end_src
 
+*** Setup Personal Inf
+
+#+begin_src emacs-lisp
+(setq user-full-name "Amlesh Sivanantham")
+(setq user-login-name "zamlz")
+#+end_src
+
 *** Disable Default Startup
 
 Original startup is hideous...
@@ -3422,7 +3429,10 @@ This package should let me quickly download images from web browsers and have im
 
 #+begin_src emacs-lisp
 (use-package org-download
-  :custom (org-download-heading-lvl nil))
+  :custom
+  (org-download-image-dir "./data")
+  (org-download-heading-lvl nil)
+  (org-download-method 'directory))
 #+end_src
 
 *** Org Last Modified Timestamp
@@ -3480,32 +3490,42 @@ It is made available like so.
          "\n%?"
          :file-name "%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
+                        "#+ROAM_TAGS:\n"
+                        "#+ROAM_ALIAS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "infrastructure/%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: INFRASTRUCTURE\n"
+                        "#+ROAM_ALIAS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("c" "contacts" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "contacts/%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: CONTACTS\n"
+                        "#+ROAM_ALIAS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: WEBPAGE\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED:\n")
+                        "#+ROAM_ALIAS:\n"
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+ROAM_KEY: %x\n")
          :unnarrowed t)
         ))
 #+end_src
@@ -3516,11 +3536,14 @@ It is made available like so.
 (setq org-roam-dailies-directory "journal/")
 
 (setq org-roam-dailies-capture-templates
-      '(("d" "default" entry
+      `(("d" "default" entry
          #'org-roam-capture--get-point
          "* %U\n%?"
-         :file-name "journal/%<%Y-%m-%d>"
-         :head "#+TITLE: %<%Y-%m-%d>\n#+ROAM_TAGS: JOURNAL\n\n")))
+         :file-name "journal/%<%Y-%m-%d-%H-%M-%S>"
+         :head ,(concat "#+TITLE: %<%Y-%m-%d %H:%M:%S (%a)>\n"
+                        "#+ROAM_TAGS: JOURNAL\n"
+                        "\n\n"))
+        ))
 #+end_src
 
 *** Roam Quick Access
@@ -3597,5 +3620,3 @@ A simple plugin for getting the today's xkcd comic.
 #+begin_src emacs-lisp
 (use-package xkcd)
 #+end_src
-
-* TODO Bootstrap Script
