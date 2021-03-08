@@ -2,7 +2,7 @@
 
 # TODO: Figure out what to do with this module. Do I even need it?
 
-. $HOME/etc/lemonbar/config
+. $HOME/.config/lemonbar/config.default
 LOGGER=$(get_logger lemonbar.windowinfo)
 
 $LOGGER "Initializing windowinfo module"

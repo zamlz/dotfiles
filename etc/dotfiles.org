@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-06 Sat 16:00:13]
+#+LAST_MODIFIED: [2021-03-07 Sun 17:21:24]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -121,6 +121,9 @@ It's actually incredible how accurate this xckd comic is...
       - [[#event-hooks-startup-verification][Event Hooks Startup Verification]]
       - [[#event-hooks-trigger-definition][Event Hooks Trigger Definition]]
       - [[#initialize-event-hooks][Initialize Event Hooks]]
+  - [[#lemonbar-panel][Lemonbar Panel]]
+    - [[#panel-launcher][Panel Launcher]]
+    - [[#default-configuration][Default Configuration]]
   - [[#compton-x11-compositor][Compton X11 Compositor]]
     - [[#backend][Backend]]
     - [[#glx-backend][GLX backend]]
@@ -2042,6 +2045,227 @@ I don't remember why I commented one of the hooks out, oh thats rights, its beca
 #(herbstclient --idle $WARG | while read -r line; do $WIN_TRIGGER; done) &
 
 $LOGGER "All hook have been started"
+#+end_src
+
+** Lemonbar Panel
+*** Panel Launcher
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/lemonbar :mkdirp yes :shebang #!/bin/sh
+:END:
+
+Load config and logger.
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar)
+#+end_src
+
+Prevent multiple panels from starting up (really bad).
+
+#+begin_src shell
+if [ $(pgrep -cx lemonbar) -gt 1 ]; then
+    $LOGGER -s "The panel is already running"
+    exit 1
+fi
+$LOGGER "Starting lemonbar init script"
+#+end_src
+
+Using =trap=, we can change the behaviour of our shell script.
+
+#+begin_src shell
+trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
+#+end_src
+
+Now it's time to make each of the panel FIFOs and start the modules.
+
+#+begin_src shell
+# Prepare the FIFOS
+$HOME/etc/lemonbar/utils/make_fifos
+
+# Tail command to ensure that fifos never close
+TAIL="tail --lines=+1 --follow"
+
+# Add modules to the top fifo
+$LOGGER "Setting up top fifo modules"
+$HOME/etc/lemonbar/modules/date         > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/network      > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/time         > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/whoami       > $PANEL_TOP_FIFO &
+$HOME/etc/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
+$TAIL $EVENT_BKL_FIFO \
+    | $HOME/etc/lemonbar/modules/backlight > $PANEL_TOP_FIFO &
+
+# Add modules to the bot fifo
+$LOGGER "Setting up bot fifo modules"
+$HOME/etc/lemonbar/modules/cpu          > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/filesystems  > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/memory       > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/spotify      > $PANEL_BOT_FIFO &
+$HOME/etc/lemonbar/modules/volume/const > $PANEL_BOT_FIFO &
+# $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_BOT_FIFO &
+$TAIL $EVENT_WSP_FIFO \
+    | $HOME/etc/lemonbar/modules/workspaces   > $PANEL_BOT_FIFO &
+$TAIL $EVENT_VOL_FIFO \
+    | $HOME/etc/lemonbar/modules/volume/event > $PANEL_BOT_FIFO &
+#+end_src
+
+Setup the argument string to pass send to lemonbar. Uncomment fonts as needed.
+
+#+begin_src shell
+# Define lemonbar opts
+#-f dina:size=12
+#-f xos4Terminus:style=Bold:size=12
+#-f IosevkaTerm:size=12
+#-f PowerlineSymbols:style=Medium:size=12
+#-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+OPTS="-g x20
+-F ${XBACKGROUND}
+-B ${XBACKGROUND}
+-f IosevkaTerm:size=12
+-f FontAwesome5Free:style=Regular:size=14
+-f FontAwesome5Free:style=Solid:size=14
+-f FontAwesome5Brands:style=Regular:size=14
+-u 3"
+
+$LOGGER "Lemonbar defined with the following opts : $OPTS"
+#+end_src
+
+Actually launch our panel loops (while reading from the fifos) and pipe them into lemonbar. We should also pipe the output from lemonbar to a shell process in-case there are modules that want to run specific commands.
+
+#+begin_src shell
+# Start the top panel
+$LOGGER "Initializing lemonbar using top fifo"
+$HOME/etc/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
+
+# Start the bottom panel
+$LOGGER "Initializing lemonbar using bot fifo"
+$HOME/etc/lemonbar/utils/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
+
+$LOGGER "Lemonbar finished."
+wait
+#+end_src
+
+*** Default Configuration
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/config.default :mkdirp yes
+:END:
+
+The default configuration is our source for all variables and functions that lemonbar and its modules will need to use. So we also source our utils files and other lib files here.
+
+#+begin_src shell
+# Import modules needed but anything that imports this config
+. $HOME/lib/shell/logger
+. $HOME/lib/shell/xrdb_colors
+. $HOME/etc/lemonbar/utils/wrappers
+. $HOME/etc/lemonbar/utils/multi_monitor_support
+. $HOME/etc/lemonbar/utils/where_fifos
+
+# Source local system config in case there are system specific changes
+. $HOME/.config/lemonbar/config
+#+end_src
+
+Choose the icon wrapper.
+
+#+begin_src shell
+# Choose the output wrapper
+MSG_WRAPPER=icon_wrapper
+#+end_src
+
+Anchors are an important concept with regards to FIFOs. They inform the main loop which module wrote which string.
+
+#+begin_src shell
+# Specify the Anchor Character for each module
+ANCHOR_BACKLIGHT='L'
+ANCHOR_BATTERY='B'
+ANCHOR_CPU='C'
+ANCHOR_DATE='D'
+ANCHOR_FILESYSTEMS='F'
+ANCHOR_MEMORY='M'
+ANCHOR_NETWORK='N'
+ANCHOR_SWAP='S'
+ANCHOR_SPOTIFY='J'
+ANCHOR_TIME='T'
+ANCHOR_WHOAMI='U'
+ANCHOR_WININFO='X'
+ANCHOR_WORKSPACES='W'
+ANCHOR_VOLUME='V'
+#+end_src
+
+Setup various refresh timings for various modules
+
+#+begin_src shell
+REFRESH_BATTERY=2
+REFRESH_CPU=3
+REFRESH_DATE=86400
+REFRESH_FILESYSTEMS=10
+REFRESH_MEMORY=3
+REFRESH_NETWORK=2
+REFRESH_SWAP=3
+REFRESH_TIME=1
+REFRESH_VOLUME=2
+#+end_src
+
+I played around with fonts in lemonbar, but honestly I'm not really a fan. If I want to enable it at any point, just need to set =LEMONBAR_ENABLE_ICONS= in the local config to be a non-empty string. But this aren't actually used *EVER* in the modules anymore as I'm using powerline icons now. I /should/ probably delete this and remove this segment of code.
+
+#+begin_src shell
+# Font Awesome icons for various modules
+# https://fontawesome.com/icons?d=gallery&m=free
+if [ -n "$LEMONBAR_ENABLE_ICONS" ]; then
+    ICON_BACKLIGHT=$(env printf "\uf042 ")
+    ICON_BATTERY_AC=$(env printf "\uf1e6 ")
+    ICON_BATTERY_EMPTY=$(env printf "\uf244 ")
+    ICON_BATTERY_NEAR_EMPTY=$(env printf "\uf243 ")
+    ICON_BATTERY_HALF=$(env printf "\uf242 ")
+    ICON_BATTERY_NEAR_FULL=$(env printf "\uf241 ")
+    ICON_BATTERY_FULL=$(env printf "\uf240 ")
+    ICON_BATTYER_CHARGING=$ICON_BATTERY_AC
+    ICON_CPU=$(env printf "\uf24d ")
+    ICON_DATE=$(env printf "\uf073 ")
+    ICON_FILESYSTEMS=$(env printf "\uf0a0 ")
+    ICON_MEMORY=$(env printf "\uf538 ")
+    ICON_MUSIC=$(env printf "\uf001 ")
+    ICON_NETWORK_ETHERNET=$(env printf "\uf796 ")
+    ICON_NETWORK_OFFLINE=$(env printf "\uef6ff ")
+    ICON_NETWORK_WIFI=$(env printf "\uf1eb ")
+    ICON_SWAP=$(env printf "\uf1c0 ")
+    ICON_TIME=$(env printf "\uf017 ")
+    ICON_WHOAMI=$(env printf "\uf007 ")
+    ICON_LINUX=$(env printf "\uf120 ")
+    ICON_WORKSPACES=$(env printf "\uf108 ")
+    ICON_VOLUME=$(env printf "\uf025 ")
+else
+    # Some icons are better left as blank so not all are defined
+    ICON_BACKLIGHT="bL: "
+    ICON_BATTERY_EMPTY="bat: "
+    ICON_BATTERY_NEAR_EMPTY=$ICON_BATTERY_EMPTY
+    ICON_BATTERY_HALF=$ICON_BATTERY_EMPTY
+    ICON_BATTERY_NEAR_FULL=$ICON_BATTERY_EMPTY
+    ICON_BATTERY_FULL=$ICON_BATTERY_EMPTY
+    ICON_BATTERY_CHARGING="a/c: "
+    ICON_CPU="cpu: "
+    ICON_MEMORY="mem: "
+    ICON_SWAP="swap: "
+    ICON_VOLUME="vol: "
+fi
+#+end_src
+
+There define the powerline icons (to use these, the module strings have to specially confiugred to use them).
+
+#+begin_src shell
+# Powerline Icons
+PL_R=$(env printf "\ue0b0")
+PL_Rb=$(env printf "\ue0b1")
+PL_L=$(env printf "\ue0b2")
+PL_Lb=$(env printf "\ue0b3")
+#+end_src
+
+Setup network interfaces and filesystem paths. These are dummy values and should be overriden with the locally generated config.
+
+#+begin_src shell
+# Hardware Specification (override this values in local config)
+WIFI_INTERFACE=${WIFI_INTERFACE:-"wlan0"}
+ETHERNET_INTERFACE=${ETHERNET_INTERFACE:-"eth0"}
+FILESYSTEMS=${FILESYSTEMS:-"/dev/sda4"}
 #+end_src
 
 ** Compton X11 Compositor

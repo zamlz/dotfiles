@@ -1,6 +1,6 @@
 #!/bin/sh
 
-. $HOME/etc/lemonbar/config
+. $HOME/.config/lemonbar/config.default
 LOGGER=$(get_logger lemonbar.memory)
 
 $LOGGER "Initializing memory module"

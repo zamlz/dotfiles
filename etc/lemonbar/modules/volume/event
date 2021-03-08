@@ -2,7 +2,7 @@
 
 # Event drive volume module
 
-. $HOME/etc/lemonbar/config
+. $HOME/.config/lemonbar/config.default
 . $HOME/etc/lemonbar/modules/volume/update_function
 LOGGER=$(get_logger lemonbar.volume.event)
 
