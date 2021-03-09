@@ -1,9 +1,6 @@
-
 # A simple shell import that contains the locations of my repos
 export DOTFILES_DIR="$HOME"
-export BOOKMARKS_DIR="$HOME/usr/bookmarks"
 export DOCUMENTS_DIR="$HOME/usr/documents"
 export LEDGER_DIR="$HOME/usr/ledger"
-export PAPERS_DIR="$HOME/usr/papers"
 export PASSWORD_STORE_DIR="$HOME/usr/passwords"
-export VIMWIKI_DIR="$HOME/usr/wiki"
+export ORGMODE_DIR="$HOME/org"
