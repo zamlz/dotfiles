@@ -11,3 +11,6 @@ dev-db/sqlite
 
 # Used for generating graph svg files.
 media-gfx/graphviz
+
+# Test out fish shell
+app-shells/fish

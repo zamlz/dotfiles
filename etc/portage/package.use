@@ -59,6 +59,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by @document-apps (argument)
 =app-text/poppler-0.90.1 cairo
 =app-text/poppler-20.11.0 cairo
+=app-text/poppler-21.02.0 cairo
 
 # required by kde-apps/okular-20.08.3::gentoo[pdf]
 # required by kde-apps/okular (argument)
@@ -82,7 +83,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by qutebrowser (argument)
 =dev-libs/libxml2-2.9.10-r3 icu
 =dev-libs/libxml2-2.9.10-r4 icu
-=dev-libs/libpcre2-10.35 pcre16
+=dev-libs/libpcre2-10.35 pcre16 pcre32
 
 # required by app-editors/neovim-0.4.3::gentoo
 # required by neovim (argument)
@@ -94,6 +95,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by @apps-devel (argument)
 =dev-python/pillow-8.1.0 jpeg
 =dev-python/pillow-8.1.1 jpeg
+=dev-python/pillow-8.1.2 jpeg
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
@@ -147,6 +149,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by app-text/texlive-2020-r9::gentoo
 =media-libs/harfbuzz-2.6.7 icu
 =media-libs/harfbuzz-2.7.2 icu
+=media-libs/harfbuzz-2.7.4 icu
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
