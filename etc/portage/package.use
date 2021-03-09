@@ -122,6 +122,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 =dev-qt/qtwebengine-5.14.2 widgets
 =dev-qt/qtwebengine-5.15.1 widgets
 =dev-qt/qtwebengine-5.15.2 widgets
+=dev-qt/qtwebengine-5.15.2_p20210224 widgets
 =dev-qt/qtwebchannel-5.14.2 qml
 =dev-qt/qtwebchannel-5.15.1 qml
 =dev-qt/qtwebchannel-5.15.2 qml
