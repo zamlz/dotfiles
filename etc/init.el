@@ -254,60 +254,94 @@
 (zamlz/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
-(use-package ivy
-  :defer 0.1
-  :diminish
-  :bind (("C-x B" . ivy-switch-buffer-other-window)
-     :map ivy-minibuffer-map
-     ("TAB" . ivy-alt-done)
-     ("C-l" . ivy-alt-done)
-     ("C-j" . ivy-next-line)
-     ("C-k" . ivy-previous-line)
-     :map ivy-switch-buffer-map
-     ("C-k" . ivy-previous-line)
-     ("C-l" . ivy-done)
-     ("C-d" . ivy-switch-buffer-kill)
-     :map ivy-reverse-i-search-map
-     ("C-k" . ivy-previous-line)
-     ("C-d" . ivy-reverse-i-search-kill))
-  :custom
-  (ivy-count-format "(%d/%d) ")
-  (ivy-use-virtual-buffers t)
-  :config (ivy-mode))
-
-(use-package counsel
-  :after ivy
-  :bind (("M-x" . counsel-M-x)
-     ("C-x b" . counsel-switch-buffer)
-     ("C-x C-f" . counsel-find-file)
-     :map minibuffer-local-map
-     ("C-r" . 'counsel-minibuffer-history))
-  :config (counsel-mode))
-
-;; TODO: Figure out what swiper is lol
-(use-package swiper
-  :after ivy
-  :bind (("C-s" . swiper)))
-
-;; Adds nice icons to the ivy rich buffer
-(use-package all-the-icons-ivy-rich
-  :after counsel-projectile
-  :init (all-the-icons-ivy-rich-mode 1))
-
-;; Actually install ivy rich
-(use-package ivy-rich
-  :after (ivy all-the-icons-ivy-rich)
-  :init (ivy-rich-mode 1))
-
-;; (use-package helm
-;;   :bind (("M-x" . helm-M-x))
+;; (use-package ivy
+;;   :defer 0.1
+;;   :diminish
+;;   :bind (("C-x B" . ivy-switch-buffer-other-window)
+;;      :map ivy-minibuffer-map
+;;      ("TAB" . ivy-alt-done)
+;;      ("C-l" . ivy-alt-done)
+;;      ("C-j" . ivy-next-line)
+;;      ("C-k" . ivy-previous-line)
+;;      :map ivy-switch-buffer-map
+;;      ("C-k" . ivy-previous-line)
+;;      ("C-l" . ivy-done)
+;;      ("C-d" . ivy-switch-buffer-kill)
+;;      :map ivy-reverse-i-search-map
+;;      ("C-k" . ivy-previous-line)
+;;      ("C-d" . ivy-reverse-i-search-kill))
 ;;   :custom
-;;   (helm-autoresize-max-height 40)
-;;   (helm-autoresize-min-height 0)
-;;   :config
-;;   (require 'helm-config)
-;;   (helm-autoresize-mode 1)
-;;   (helm-mode 1))
+;;   (ivy-count-format "(%d/%d) ")
+;;   (ivy-use-virtual-buffers t)
+;;   :config (ivy-mode))
+
+;; (use-package counsel
+;;   :after ivy
+;;   :bind (("M-x" . counsel-M-x)
+;;      ("C-x b" . counsel-switch-buffer)
+;;      ("C-x C-f" . counsel-find-file)
+;;      :map minibuffer-local-map
+;;      ("C-r" . 'counsel-minibuffer-history))
+;;   :config (counsel-mode))
+
+;; ;; TODO: Figure out what swiper is lol
+;; (use-package swiper
+;;   :after ivy
+;;   :bind (("C-s" . swiper)))
+
+;; ;; Adds nice icons to the ivy rich buffer
+;; (use-package all-the-icons-ivy-rich
+;;   :after counsel-projectile
+;;   :init (all-the-icons-ivy-rich-mode 1))
+
+;; ;; Actually install ivy rich
+;; (use-package ivy-rich
+;;   :after (ivy all-the-icons-ivy-rich)
+;;   :init (ivy-rich-mode 1))
+
+(use-package helm
+  :bind (
+         ("M-x"     . helm-M-x)
+         ("C-s"     . helm-occur)
+         ("C-x b"   . helm-buffers-list)
+         ("C-x C-f" . helm-find-files)
+         ("C-x r b" . helm-bookmarks)
+         ;;("M-y" . helm-show-kill-ring)
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+         ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
+         ("C-z"   . helm-select-action) ; list actions using C-z
+         )
+  :custom
+  ; max height for the helm buffer
+  (helm-autoresize-max-height 40)
+  ; min height for the helm buffer
+  (helm-autoresize-min-height 0)
+  ; open helm buffer inside current window, not occupy whole other window
+  (helm-split-window-in-side-p t)
+  ; move to end or beginning of source when reaching top or bottom of source.
+  (helm-move-to-line-cycle-in-source t)
+  ; search for library in `require' and `declare-function' sexp.
+  (helm-ff-search-library-in-sexp t)
+  ; scroll 8 lines other window using M-<next>/M-<prior>
+  (helm-scroll-amount 8)
+  ;; use recentf-list for recent files
+  (helm-ff-file-name-history-use-recentf t)
+  ;; show current input in header line
+  (helm-echo-input-in-header-line t)
+  :config
+  (require 'helm-config)
+  ;; Use curl when found
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
+  (helm-autoresize-mode 1)
+  (helm-mode 1))
+
+;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
 
 (use-package all-the-icons)
 
@@ -517,6 +551,7 @@
 
 (defun zamlz/org-mode-setup ()
   (org-indent-mode)
+  (org-make-toc-mode)
   ;; (variable-pitch-mode 1)
   (visual-line-mode +1)
   (setq evil-auto-indent nil)
