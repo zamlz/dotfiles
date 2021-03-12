@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-11 Thu 16:04:26]
+#+LAST_MODIFIED: [2021-03-11 Thu 16:57:36]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -176,6 +176,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#ivy-rich][Ivy Rich]]
     - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
     - [[#helm-describe-bindings][Helm Describe Bindings]]
+    - [[#helpful-help-commands][Helpful Help Commands]]
     - [[#themes-and-appearance][Themes and Appearance]]
       - [[#modeline][Modeline]]
       - [[#color-theme][Color Theme]]
@@ -183,8 +184,6 @@ It's actually incredible how accurate this xckd comic is...
       - [[#syntax-highlighting][Syntax Highlighting]]
       - [[#rainbow-mode][Rainbow Mode]]
       - [[#transparency][Transparency]]
-    - [[#documentation-redux][Documentation Redux]]
-      - [[#helpful-help-commands][Helpful Help Commands]]
     - [[#dired-improvements][Dired Improvements]]
       - [[#single-dired-buffer][Single Dired Buffer]]
       - [[#icons-for-dired][Icons for Dired]]
@@ -3067,6 +3066,30 @@ A useful package for figuring out what bindings there is in a particular major/m
   :bind (("C-h b" . helm-descbinds)))
 #+end_src
 
+*** Helpful Help Commands
+
+Improves the documentation shown when running one of emacs's =describe-*= functions.
+
+#+begin_src emacs-lisp
+(use-package helpful
+  :ensure t
+  ; This is only needed if I'm still using counsel
+  ;; :custom
+  ;; (counsel-describe-function-function #'helpful-callable)
+  ;; (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ;; Note that the built-in `describe-function' includes both functions
+  ;; and macros. `helpful-function' is functions only, so we provide
+  ;; `helpful-callable' as a drop-in replacement.
+  ([remap describe-function] . helpful-callable)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-key]      . helpful-key)
+  ([remap describe-command]  . helpful-command)
+  ("C-c C-d"                 . helpful-at-point)
+  ("C-h F"                   . helpful-function)
+  )
+#+end_src
+
 *** Themes and Appearance
 **** Modeline
 
@@ -3165,24 +3188,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 
 ;; Set the default transparency
 (zamlz/set-transparency 80)
-#+end_src
-
-*** Documentation Redux
-**** Helpful Help Commands
-
-Improves the documentation shown when running one of emacs's =describe-*= functions.
-
-#+begin_src emacs-lisp
-(use-package helpful
-  :ensure t
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
 #+end_src
 
 *** Dired Improvements

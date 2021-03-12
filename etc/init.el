@@ -346,6 +346,24 @@
 (use-package helm-descbinds
   :bind (("C-h b" . helm-descbinds)))
 
+(use-package helpful
+  :ensure t
+  ; This is only needed if I'm still using counsel
+  ;; :custom
+  ;; (counsel-describe-function-function #'helpful-callable)
+  ;; (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ;; Note that the built-in `describe-function' includes both functions
+  ;; and macros. `helpful-function' is functions only, so we provide
+  ;; `helpful-callable' as a drop-in replacement.
+  ([remap describe-function] . helpful-callable)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-key]      . helpful-key)
+  ([remap describe-command]  . helpful-command)
+  ("C-c C-d"                 . helpful-at-point)
+  ("C-h F"                   . helpful-function)
+  )
+
 (use-package all-the-icons)
 
 (use-package doom-modeline
@@ -414,17 +432,6 @@
 
 ;; Set the default transparency
 (zamlz/set-transparency 80)
-
-(use-package helpful
-  :ensure t
-  :custom
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ([remap describe-function] . counsel-describe-function)
-  ([remap describe-command] . helpful-command)
-  ([remap describe-variable] . counsel-describe-variable)
-  ([remap describe-key] . helpful-key))
 
 (use-package dired-single)
 
