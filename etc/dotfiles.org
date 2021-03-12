@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-11 Thu 16:57:36]
+#+LAST_MODIFIED: [2021-03-11 Thu 17:06:50]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3068,7 +3068,7 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 *** Helpful Help Commands
 
-Improves the documentation shown when running one of emacs's =describe-*= functions.
+[[https://github.com/Wilfred/helpful][Wilfred/helpful]] improves the documentation shown when running one of emacs's =describe-*= functions.
 
 #+begin_src emacs-lisp
 (use-package helpful
