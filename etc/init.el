@@ -47,6 +47,7 @@
   ;; (tooltip-mode -1)           ; Disable tooltips
   (set-fringe-mode 10)        ; Give some breathing room
   (blink-cursor-mode 1)       ; Let the cursor be blinking
+  (semantic-mode 1)
 
   ;; better scrolling experience
   (setq scroll-margin 0
@@ -307,6 +308,8 @@
          ("C-x C-f" . helm-find-files)
          ("C-x r b" . helm-bookmarks)
          ("M-y"     . helm-show-kill-ring)
+         ("C-c h"   . helm-command-prefix)
+         ("C-c h i" . helm-semantic-or-imenu)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
@@ -329,6 +332,12 @@
   (helm-ff-file-name-history-use-recentf t)
   ;; show current input in header line
   (helm-echo-input-in-header-line t)
+  ;; enable fuzzy searching in semantic-or-imenu
+  (helm-semantic-fuzzy-match t)
+  (helm-imenu-fuzzy-match t)
+  ;; enable fuzzy matching in buffer list
+  (helm-buffers-fuzzy-matching t)
+  (helm-recentf-fuzzy-match t)
   :config
   (require 'helm-config)
   ;; Use curl when found
@@ -340,7 +349,7 @@
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
 ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-(global-set-key (kbd "C-c h") 'helm-command-prefix)
+;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
 
 (use-package helm-descbinds
