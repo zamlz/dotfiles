@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-11 Thu 00:07:10]
+#+LAST_MODIFIED: [2021-03-11 Thu 16:04:26]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -169,10 +169,13 @@ It's actually incredible how accurate this xckd comic is...
     - [[#leader-keybindings][Leader Keybindings]]
       - [[#misc-shortcuts][Misc Shortcuts]]
       - [[#text-size-scaling][Text Size Scaling]]
-    - [[#autocompletion-engine][Autocompletion Engine]]
-      - [[#ivy-counsel-and-swiper][Ivy, Counsel, and Swiper]]
+    - [[#ivy-counsel-and-swiper][Ivy, Counsel and Swiper]]
+      - [[#ivy][Ivy]]
+      - [[#counsel][Counsel]]
+      - [[#swiper][Swiper]]
       - [[#ivy-rich][Ivy Rich]]
-      - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
+    - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
+    - [[#helm-describe-bindings][Helm Describe Bindings]]
     - [[#themes-and-appearance][Themes and Appearance]]
       - [[#modeline][Modeline]]
       - [[#color-theme][Color Theme]]
@@ -2937,12 +2940,10 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
-*** Autocompletion Engine
-**** Ivy, Counsel, and Swiper
+*** Ivy, Counsel and Swiper
+**** Ivy
 
-Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this thing called =Swiper=, but I have no idea what that is.
-
-=Ivy= is basically a completion framework. Its minimal but provides a simple but powerful menu that appears when switching files, opening buffers, etc. =Counsel= on the other hand, provides replaces commands that replace the typical emacs commands.
+=Ivy= is basically a completion framework. Its minimal but provides a simple but powerful menu that appears when switching files, opening buffers, etc.
 
 #+begin_src emacs-lisp
 ;; (use-package ivy
@@ -2965,7 +2966,13 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 ;;   (ivy-count-format "(%d/%d) ")
 ;;   (ivy-use-virtual-buffers t)
 ;;   :config (ivy-mode))
+#+end_src
 
+**** Counsel
+
+=Counsel= on the other hand, provides replaces commands that replace the typical emacs commands.
+
+#+begin_src emacs-lisp
 ;; (use-package counsel
 ;;   :after ivy
 ;;   :bind (("M-x" . counsel-M-x)
@@ -2974,7 +2981,11 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 ;;      :map minibuffer-local-map
 ;;      ("C-r" . 'counsel-minibuffer-history))
 ;;   :config (counsel-mode))
+#+end_src
 
+**** Swiper
+
+#+begin_src emacs-lisp
 ;; ;; TODO: Figure out what swiper is lol
 ;; (use-package swiper
 ;;   :after ivy
@@ -2997,7 +3008,7 @@ Not much to say here, just setting up =Ivy= and =Counsel=. It also sets up this 
 ;;   :init (ivy-rich-mode 1))
 #+end_src
 
-**** Helm Incremental Completion Framework
+*** Helm Incremental Completion Framework
 
 Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.github.io/helm-intro.html][this guide]].
 
@@ -3009,7 +3020,7 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
          ("C-x b"   . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("C-x r b" . helm-bookmarks)
-         ;;("M-y" . helm-show-kill-ring)
+         ("M-y"     . helm-show-kill-ring)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
@@ -3017,13 +3028,13 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
          )
   :custom
   ; max height for the helm buffer
-  (helm-autoresize-max-height 40)
+  (helm-autoresize-max-height 30)
   ; min height for the helm buffer
   (helm-autoresize-min-height 0)
   ; open helm buffer inside current window, not occupy whole other window
   (helm-split-window-in-side-p t)
   ; move to end or beginning of source when reaching top or bottom of source.
-  (helm-move-to-line-cycle-in-source t)
+  ;; (helm-move-to-line-cycle-in-source t)
   ; search for library in `require' and `declare-function' sexp.
   (helm-ff-search-library-in-sexp t)
   ; scroll 8 lines other window using M-<next>/M-<prior>
@@ -3045,6 +3056,15 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
+#+end_src
+
+*** Helm Describe Bindings
+
+A useful package for figuring out what bindings there is in a particular major/minor mode.
+
+#+begin_src emacs-lisp
+(use-package helm-descbinds
+  :bind (("C-h b" . helm-descbinds)))
 #+end_src
 
 *** Themes and Appearance
@@ -3679,7 +3699,7 @@ Enables habit tracking in =org-mode= via =org-habit=.
 (setq org-habit-preceding-days 31)
 (setq org-habit-following-days 3)
 (setq org-habit-show-habits-only-for-today t)
-(setq org-habit-show-all-today t)
+;;(setq org-habit-show-all-today t)
 #+end_src
 
 *** Org Download

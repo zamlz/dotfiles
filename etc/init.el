@@ -303,10 +303,10 @@
   :bind (
          ("M-x"     . helm-M-x)
          ("C-s"     . helm-occur)
-         ("C-x b"   . helm-buffers-list)
+         ("C-x b"   . helm-mini)
          ("C-x C-f" . helm-find-files)
          ("C-x r b" . helm-bookmarks)
-         ;;("M-y" . helm-show-kill-ring)
+         ("M-y"     . helm-show-kill-ring)
          :map helm-map
          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
          ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
@@ -314,13 +314,13 @@
          )
   :custom
   ; max height for the helm buffer
-  (helm-autoresize-max-height 40)
+  (helm-autoresize-max-height 30)
   ; min height for the helm buffer
   (helm-autoresize-min-height 0)
   ; open helm buffer inside current window, not occupy whole other window
   (helm-split-window-in-side-p t)
   ; move to end or beginning of source when reaching top or bottom of source.
-  (helm-move-to-line-cycle-in-source t)
+  ;; (helm-move-to-line-cycle-in-source t)
   ; search for library in `require' and `declare-function' sexp.
   (helm-ff-search-library-in-sexp t)
   ; scroll 8 lines other window using M-<next>/M-<prior>
@@ -342,6 +342,9 @@
 ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
+
+(use-package helm-descbinds
+  :bind (("C-h b" . helm-descbinds)))
 
 (use-package all-the-icons)
 
@@ -755,7 +758,7 @@
 (setq org-habit-preceding-days 31)
 (setq org-habit-following-days 3)
 (setq org-habit-show-habits-only-for-today t)
-(setq org-habit-show-all-today t)
+;;(setq org-habit-show-all-today t)
 
 (use-package org-download
   :custom
