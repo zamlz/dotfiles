@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-13 Sat 12:47:44]
+#+LAST_MODIFIED: [2021-03-13 Sat 15:07:28]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -158,6 +158,7 @@ It's actually incredible how accurate this xckd comic is...
   - [[#ui-customization][UI Customization]]
     - [[#startup-dashboard][Startup Dashboard]]
     - [[#font-configuration][Font Configuration]]
+    - [[#emojify][Emojify]]
     - [[#keybinding-configuration][Keybinding Configuration]]
       - [[#esc-should-save-the-day][ESC should save the day]]
       - [[#evil-mode][Evil Mode]]
@@ -2823,6 +2824,15 @@ I have a lot of fonts commented out right now because I can't decide on which on
   ;; Set the variable pitch face
   ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
   )
+#+end_src
+
+*** Emojify
+
+Display emojis within emacs thanks to [[https://github.com/iqbalansari/emacs-emojify][github:iqbalansari/emacs-emojify]].
+
+#+begin_src emacs-lisp
+(use-package emojify
+  :hook (after-init . global-emojify-mode))
 #+end_src
 
 *** Keybinding Configuration

@@ -199,6 +199,9 @@
   ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
   )
 
+(use-package emojify
+  :hook (after-init . global-emojify-mode))
+
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (use-package evil
