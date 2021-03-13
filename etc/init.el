@@ -210,6 +210,13 @@
   ;; C-h is help in normal mode, but becomes BACKSPACE in insert mode
   (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
 
+  ;; We want to override the RET key for other useful things but
+  ;; Evil takes control of it because its evil. The same is true
+  ;; for SPC and TAB but I'm not sure if I want those yet.
+  (define-key evil-motion-state-map (kbd "RET") nil)
+  ;(define-key evil-motion-state-map (kbd "SPC") nil)
+  ;(define-key evil-motion-state-map (kbd "TAB") nil)
+
   ;; Use visual line motions even outside of visual-line-mode buffers
   (evil-global-set-key 'motion "j" 'evil-next-visual-line)
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
@@ -278,16 +285,16 @@
 
 (use-package counsel
   :after ivy
-  :bind (("M-x"     . counsel-M-x)
-         ("M-y"     . counsel-yank-pop)
-         ("C-x b"   . counsel-switch-buffer)
-         ("C-x C-f" . counsel-find-file)
+  :bind (("M-x"       . counsel-M-x)
+         ("M-y"       . counsel-yank-pop)
+         ("C-x b"     . counsel-switch-buffer)
+         ("C-x C-f"   . counsel-find-file)
          ("C-x C-M-f" . counsel-find-file-extern)
-         ("C-x C-l" . counsel-locate)
+         ("C-x C-l"   . counsel-locate)
          ("C-x C-M-l" . counsel-locate-action-extern)
-         ("C-x C-i" . counsel-semantic-or-imenu)
+         ("C-x TAB"   . counsel-semantic-or-imenu)
          :map minibuffer-local-map
-         ("C-r"     . 'counsel-minibuffer-history))
+         ("C-r"       . 'counsel-minibuffer-history))
   :config (counsel-mode))
 
 ;; TODO: Figure out what swiper is lol
@@ -304,6 +311,19 @@
 (use-package ivy-rich
   :after (ivy all-the-icons-ivy-rich)
   :init (ivy-rich-mode 1))
+
+(use-package ivy-posframe
+  :after counsel
+  :custom
+  ;; Specify the the display posframe
+  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+  :init
+  (ivy-posframe-mode 1))
 
 ;; (use-package helm
 ;;   :bind (
@@ -584,6 +604,9 @@
 (use-package org
   :ensure org-plus-contrib
   :hook ((org-mode . zamlz/org-mode-setup))
+  :bind (:map org-mode-map
+              ("C-M-h" . org-previous-link)
+              ("C-M-l" . org-next-link))
   :custom
 
   ;; Setup directories
@@ -592,6 +615,12 @@
 
   ;; Add some nice visuals changes
   (org-ellipsis " ▾")
+
+  ;; This is so that the imenu displays all levels in ivy
+  (org-imenu-depth 10)
+
+  ;; dont use C-c C-o for opening links REEEEEEEEEEEE
+  (org-return-follows-link t)
 
   ;; Some todo/logging changes
   (org-enforce-todo-dependencies t)
@@ -614,8 +643,9 @@
   ;; ensure that refiling saves buffers
   (advice-add 'org-refile :after 'org-save-all-org-buffers)
 
-  ;; Make sure we display inline images by default
+  ;; Inline Image improvements
   (org-startup-with-inline-images t)
+  (org-image-actual-width 500)
 
   ;; Finally a post setup func to setup fonts
   (zamlz/org-font-setup))
@@ -805,18 +835,32 @@
 
 (add-hook 'before-save-hook #'zamlz/org-mode-before-save-hook)
 
-(setq org-roam-directory "~/org/")
-
 (use-package org-roam
   :ensure t
+  :after org
   :hook (after-init . org-roam-mode)
   :bind (:map org-roam-mode-map
-         (("C-c n l" . org-roam)
-         ("C-c n f" . org-roam-find-file)
-         ("C-c n g" . org-roam-graph))
+         ;; Standard Roam Stuff
+         ("C-c n l" . org-roam)
+         ("C-c n /" . org-roam-find-file)
+         ;; Graph Functions
+         ("C-c n g" . org-roam-graph)
+         ("C-c n b" . org-roam-db-build-cache)
+         ;; Quick access to Dired buffers
+         ("C-c n f" . org-roam-find-directory)
+         ("C-c n F" . org-roam-dailies-find-directory)
+         ;; Daily Journal
+         ("C-c n j" . org-roam-dailies-capture-today)
+         ("C-c n y" . org-roam-dailies-capture-yesterday)
+         ("C-c n d" . org-roam-dailies-capture-date)
          :map org-mode-map
-         (("C-c n i" . org-roam-insert))
-         (("C-c n I" . org-roam-insert-immediate))))
+         ;; Insert notes...
+         ("C-c n i" . org-roam-insert)
+         ("C-c n I" . org-roam-insert-immediate))
+  :custom
+  (org-roam-directory "~/org/")
+  (org-roam-dailies-directory "journal/")
+  (org-roam-db-udpate-method 'immediate))
 
 (setq org-roam-capture-templates
       `(("d" "default" plain (function org-roam--capture-get-point)
@@ -862,8 +906,6 @@
          :unnarrowed t)
         ))
 
-(setq org-roam-dailies-directory "journal/")
-
 (setq org-roam-dailies-capture-templates
       `(("d" "default" entry
          #'org-roam-capture--get-point
@@ -877,10 +919,10 @@
                         "\n"))
         ))
 
-(zamlz/leader-keys
-  "n"  '(:ignore t :which-key "Org Roam Notes")
-  "nj" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
-  "ny" '(org-roam-dailies-capture-yesterday :which-key "Roam Daily Capture Yesterday"))
+;; (zamlz/leader-keys
+;;   "n"  '(:ignore t :which-key "Org Roam Notes")
+;;   "nj" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
+;;   "ny" '(org-roam-dailies-capture-yesterday :which-key "Roam Daily Capture Yesterday"))
 
 (use-package org-roam-server
   :ensure t
