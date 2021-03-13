@@ -312,18 +312,18 @@
   :after (ivy all-the-icons-ivy-rich)
   :init (ivy-rich-mode 1))
 
-(use-package ivy-posframe
-  :after counsel
-  :custom
-  ;; Specify the the display posframe
-  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
-  :init
-  (ivy-posframe-mode 1))
+;; (use-package ivy-posframe
+;;   :after counsel
+;;   :custom
+;;   ;; Specify the the display posframe
+;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+;;   :init
+;;   (ivy-posframe-mode 1))
 
 ;; (use-package helm
 ;;   :bind (
