@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-13 Sat 15:07:28]
+#+LAST_MODIFIED: [2021-03-13 Sat 15:29:46]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -200,6 +200,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#flycheck-syntax-linter][Flycheck Syntax Linter]]
     - [[#projectile][Projectile]]
     - [[#magit-git-interface][Magit Git Interface]]
+    - [[#diff-hl-mode][Diff HL Mode]]
     - [[#forge][Forge]]
     - [[#markdown-mode][Markdown Mode]]
     - [[#web-mode][Web Mode]]
@@ -3036,18 +3037,18 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 [[https://github.com/tumashu/ivy-posframe][tumashu/ivy-postframe]] is ivy extension, which let ivy use the postframe to show its candidate menu.
 
 #+begin_src emacs-lisp
-;; (use-package ivy-posframe
-;;   :after counsel
-;;   :custom
-;;   ;; Specify the the display posframe
-;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
-;;   :init
-;;   (ivy-posframe-mode 1))
+(use-package ivy-posframe
+  :after counsel
+  :custom
+  ;; Specify the the display posframe
+  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+  :init
+  (ivy-posframe-mode 1))
 #+end_src
 
 *** Helm Incremental Completion Framework
@@ -3381,6 +3382,15 @@ Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
 (use-package magit
   :bind ("C-x g" . magit-status)
   :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
+#+end_src
+
+*** Diff HL Mode
+
+[[https://github.com/dgutov/diff-hl][github:dgutov/diff-hl]] highlights uncommited changes on the left side of text buffers.
+
+#+begin_src emacs-lisp
+(use-package diff-hl
+  :init (global-diff-hl-mode 1))
 #+end_src
 
 *** Forge
