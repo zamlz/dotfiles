@@ -255,112 +255,117 @@
 (zamlz/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
-;; (use-package ivy
-;;   :defer 0.1
-;;   :diminish
-;;   :bind (("C-x B" . ivy-switch-buffer-other-window)
-;;      :map ivy-minibuffer-map
-;;      ("TAB" . ivy-alt-done)
-;;      ("C-l" . ivy-alt-done)
-;;      ("C-j" . ivy-next-line)
-;;      ("C-k" . ivy-previous-line)
-;;      :map ivy-switch-buffer-map
-;;      ("C-k" . ivy-previous-line)
-;;      ("C-l" . ivy-done)
-;;      ("C-d" . ivy-switch-buffer-kill)
-;;      :map ivy-reverse-i-search-map
-;;      ("C-k" . ivy-previous-line)
-;;      ("C-d" . ivy-reverse-i-search-kill))
-;;   :custom
-;;   (ivy-count-format "(%d/%d) ")
-;;   (ivy-use-virtual-buffers t)
-;;   :config (ivy-mode))
-
-;; (use-package counsel
-;;   :after ivy
-;;   :bind (("M-x" . counsel-M-x)
-;;      ("C-x b" . counsel-switch-buffer)
-;;      ("C-x C-f" . counsel-find-file)
-;;      :map minibuffer-local-map
-;;      ("C-r" . 'counsel-minibuffer-history))
-;;   :config (counsel-mode))
-
-;; ;; TODO: Figure out what swiper is lol
-;; (use-package swiper
-;;   :after ivy
-;;   :bind (("C-s" . swiper)))
-
-;; ;; Adds nice icons to the ivy rich buffer
-;; (use-package all-the-icons-ivy-rich
-;;   :after counsel-projectile
-;;   :init (all-the-icons-ivy-rich-mode 1))
-
-;; ;; Actually install ivy rich
-;; (use-package ivy-rich
-;;   :after (ivy all-the-icons-ivy-rich)
-;;   :init (ivy-rich-mode 1))
-
-(use-package helm
-  :bind (
-         ("M-x"     . helm-M-x)
-         ("C-s"     . helm-occur)
-         ("C-x b"   . helm-mini)
-         ("C-x C-f" . helm-find-files)
-         ("C-x r b" . helm-bookmarks)
-         ("M-y"     . helm-show-kill-ring)
-         ("C-c h"   . helm-command-prefix)
-         ("C-c h i" . helm-semantic-or-imenu)
-         :map helm-map
-         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
-         ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
-         ("C-z"   . helm-select-action) ; list actions using C-z
-         )
+(use-package ivy
+  :defer 0.1
+  :diminish
+  :bind (("C-x B" . ivy-switch-buffer-other-window)
+         :map ivy-minibuffer-map
+         ("TAB" . ivy-alt-done)
+         ("C-l" . ivy-alt-done)
+         ("C-j" . ivy-next-line)
+         ("C-k" . ivy-previous-line)
+         :map ivy-switch-buffer-map
+         ("C-k" . ivy-previous-line)
+         ("C-l" . ivy-done)
+         ("C-d" . ivy-switch-buffer-kill)
+         :map ivy-reverse-i-search-map
+         ("C-k" . ivy-previous-line)
+         ("C-d" . ivy-reverse-i-search-kill))
   :custom
-  ; max height for the helm buffer
-  (helm-autoresize-max-height 30)
-  ; min height for the helm buffer
-  (helm-autoresize-min-height 0)
-  ; open helm buffer inside current window, not occupy whole other window
-  (helm-split-window-in-side-p t)
-  ; move to end or beginning of source when reaching top or bottom of source.
-  ;; (helm-move-to-line-cycle-in-source t)
-  ; search for library in `require' and `declare-function' sexp.
-  (helm-ff-search-library-in-sexp t)
-  ; scroll 8 lines other window using M-<next>/M-<prior>
-  (helm-scroll-amount 8)
-  ;; use recentf-list for recent files
-  (helm-ff-file-name-history-use-recentf t)
-  ;; show current input in header line
-  (helm-echo-input-in-header-line t)
-  ;; enable fuzzy searching in semantic-or-imenu
-  (helm-semantic-fuzzy-match t)
-  (helm-imenu-fuzzy-match t)
-  ;; enable fuzzy matching in buffer list
-  (helm-buffers-fuzzy-matching t)
-  (helm-recentf-fuzzy-match t)
-  :config
-  (require 'helm-config)
-  ;; Use curl when found
-  (when (executable-find "curl")
-    (setq helm-google-suggest-use-curl-p t))
-  (helm-autoresize-mode 1)
-  (helm-mode 1))
+  (ivy-count-format "(%d/%d) ")
+  (ivy-use-virtual-buffers t)
+  :config (ivy-mode))
 
-;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
-(global-unset-key (kbd "C-x c"))
+(use-package counsel
+  :after ivy
+  :bind (("M-x"     . counsel-M-x)
+         ("M-y"     . counsel-yank-pop)
+         ("C-x b"   . counsel-switch-buffer)
+         ("C-x C-f" . counsel-find-file)
+         ("C-x C-M-f" . counsel-find-file-extern)
+         ("C-x C-l" . counsel-locate)
+         ("C-x C-M-l" . counsel-locate-action-extern)
+         ("C-x C-i" . counsel-semantic-or-imenu)
+         :map minibuffer-local-map
+         ("C-r"     . 'counsel-minibuffer-history))
+  :config (counsel-mode))
 
-(use-package helm-descbinds
-  :bind (("C-h b" . helm-descbinds)))
+;; TODO: Figure out what swiper is lol
+(use-package swiper
+  :after counsel
+  :bind (("C-s" . swiper)))
+
+;; Adds nice icons to the ivy rich buffer
+(use-package all-the-icons-ivy-rich
+  :after counsel-projectile
+  :init (all-the-icons-ivy-rich-mode 1))
+
+;; Actually install ivy rich
+(use-package ivy-rich
+  :after (ivy all-the-icons-ivy-rich)
+  :init (ivy-rich-mode 1))
+
+;; (use-package helm
+;;   :bind (
+;;          ("M-x"     . helm-M-x)
+;;          ("C-s"     . helm-occur)
+;;          ("C-x b"   . helm-mini)
+;;          ("C-x C-f" . helm-find-files)
+;;          ("C-x r b" . helm-bookmarks)
+;;          ("M-y"     . helm-show-kill-ring)
+;;          ("C-c h"   . helm-command-prefix)
+;;          ("C-c h i" . helm-semantic-or-imenu)
+;;          :map helm-map
+;;          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+;;          ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
+;;          ("C-z"   . helm-select-action) ; list actions using C-z
+;;          )
+;;   :custom
+;;   ; max height for the helm buffer
+;;   (helm-autoresize-max-height 30)
+;;   ; min height for the helm buffer
+;;   (helm-autoresize-min-height 0)
+;;   ; open helm buffer inside current window, not occupy whole other window
+;;   (helm-split-window-in-side-p t)
+;;   ; move to end or beginning of source when reaching top or bottom of source.
+;;   ;; (helm-move-to-line-cycle-in-source t)
+;;   ; search for library in `require' and `declare-function' sexp.
+;;   (helm-ff-search-library-in-sexp t)
+;;   ; scroll 8 lines other window using M-<next>/M-<prior>
+;;   (helm-scroll-amount 8)
+;;   ;; use recentf-list for recent files
+;;   (helm-ff-file-name-history-use-recentf t)
+;;   ;; show current input in header line
+;;   (helm-echo-input-in-header-line t)
+;;   ;; enable fuzzy searching in semantic-or-imenu
+;;   (helm-semantic-fuzzy-match t)
+;;   (helm-imenu-fuzzy-match t)
+;;   ;; enable fuzzy matching in buffer list
+;;   (helm-buffers-fuzzy-matching t)
+;;   (helm-recentf-fuzzy-match t)
+;;   :config
+;;   (require 'helm-config)
+;;   ;; Use curl when found
+;;   (when (executable-find "curl")
+;;     (setq helm-google-suggest-use-curl-p t))
+;;   (helm-autoresize-mode 1)
+;;   (helm-mode 1))
+
+;; ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+;; ;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
+;; (global-unset-key (kbd "C-x c"))
+
+;; (use-package helm-descbinds
+;;   :bind (("C-h b" . helm-descbinds)))
 
 (use-package helpful
   :ensure t
   ; This is only needed if I'm still using counsel
-  ;; :custom
-  ;; (counsel-describe-function-function #'helpful-callable)
-  ;; (counsel-describe-variable-function #'helpful-variable)
+  :custom
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
   :bind
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
@@ -850,8 +855,8 @@
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: WEBPAGE\n"
-                        "#+CREATED: %U\n"
                         "#+ROAM_ALIAS:\n"
+                        "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n"
                         "#+ROAM_KEY: %x\n")
          :unnarrowed t)
@@ -863,10 +868,13 @@
       `(("d" "default" entry
          #'org-roam-capture--get-point
          "* %U\n%?"
-         :file-name "journal/%<%Y-%m-%d-%H-%M-%S>"
-         :head ,(concat "#+TITLE: %<%Y-%m-%d %H:%M:%S (%a)>\n"
+         :file-name "journal/%<%Y-%m-%d>"
+         :head ,(concat "#+TITLE: %<[%Y-%m-%d] %B %e, %Y (%A)>\n"
                         "#+ROAM_TAGS: JOURNAL\n"
-                        "\n\n"))
+                        "#+ROAM_ALIAS: %<%Y-%m-%d>\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED: %U\n"
+                        "\n"))
         ))
 
 (zamlz/leader-keys
