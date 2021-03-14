@@ -1,4 +1,3 @@
-
 # Ironic really because now we ignore all dotfiles.
 .*
 
@@ -9,6 +8,7 @@ tmp/
 usr/
 var/
 org/
+mnt/
 
 # But what if they are not directories and are symlinks???
 src

@@ -249,7 +249,8 @@
     :prefix "SPC"
     :global-prefix "C-SPC"))
 
-(use-package hydra)
+(use-package hydra
+  :before ivy)
 
 (zamlz/leader-keys
  "t"  '(:ignore t :which-key "toggles")
@@ -268,8 +269,7 @@
 (use-package ivy
   :defer 0.1
   :diminish
-  :bind (("C-x B" . ivy-switch-buffer-other-window)
-         :map ivy-minibuffer-map
+  :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
          ("C-j" . ivy-next-line)
@@ -283,8 +283,14 @@
          ("C-d" . ivy-reverse-i-search-kill))
   :custom
   (ivy-count-format "(%d/%d) ")
+  ;; Show recentf files in buffer switch
   (ivy-use-virtual-buffers t)
+  ;; Change completion method (not working as expected)
   (ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
+  ;; Avoid displaying things like "./" and "../" in the list
+  (ivy-extra-directories nil)
+  ;; Set the height of the ivy minibuffer
+  (ivy-height 20)
   :config (ivy-mode))
 
 (use-package counsel
@@ -292,11 +298,13 @@
   :bind (("M-x"       . counsel-M-x)
          ("M-y"       . counsel-yank-pop)
          ("C-x b"     . counsel-switch-buffer)
+         ("C-x B"     . counsel-switch-buffer-other-window)
          ("C-x C-f"   . counsel-find-file)
          ("C-x C-M-f" . counsel-find-file-extern)
          ("C-x C-l"   . counsel-locate)
          ("C-x C-M-l" . counsel-locate-action-extern)
          ("C-x TAB"   . counsel-semantic-or-imenu)
+         ("C-x C-v"   . counsel-set-variable)
          :map minibuffer-local-map
          ("C-r"       . 'counsel-minibuffer-history))
   :config (counsel-mode))
@@ -319,6 +327,7 @@
 (use-package ivy-posframe
   :after counsel
   :custom
+
   ;; Specify the the display posframe
   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
@@ -326,8 +335,16 @@
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+
+  ;; Customize size and width of the posframe
+  (ivy-posframe-height 30)
+  (ivy-posframe-min-width 120)
+  (ivy-posframe-min-height 2)
   :init
   (ivy-posframe-mode 1))
+
+(use-package ivy-hydra
+  :after ivy)
 
 ;; (use-package helm
 ;;   :bind (
