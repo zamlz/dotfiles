@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-13 Sat 15:29:46]
+#+LAST_MODIFIED: [2021-03-13 Sat 16:13:50]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -170,14 +170,15 @@ It's actually incredible how accurate this xckd comic is...
     - [[#leader-keybindings][Leader Keybindings]]
       - [[#misc-shortcuts][Misc Shortcuts]]
       - [[#text-size-scaling][Text Size Scaling]]
-    - [[#ivy-counsel-and-swiper][Ivy, Counsel and Swiper]]
+    - [[#ivy-incremental-completion-framework][Ivy Incremental Completion Framework]]
       - [[#ivy][Ivy]]
       - [[#counsel][Counsel]]
       - [[#swiper][Swiper]]
       - [[#ivy-rich][Ivy Rich]]
       - [[#ivy-posframe][Ivy Posframe]]
     - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
-    - [[#helm-describe-bindings][Helm Describe Bindings]]
+      - [[#helm][Helm]]
+      - [[#helm-describe-bindings][Helm Describe Bindings]]
     - [[#helpful-help-commands][Helpful Help Commands]]
     - [[#themes-and-appearance][Themes and Appearance]]
       - [[#modeline][Modeline]]
@@ -2959,7 +2960,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
-*** Ivy, Counsel and Swiper
+*** Ivy Incremental Completion Framework
 **** Ivy
 
 =Ivy= is basically a completion framework. Its minimal but provides a simple but powerful menu that appears when switching files, opening buffers, etc.
@@ -2984,6 +2985,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   :custom
   (ivy-count-format "(%d/%d) ")
   (ivy-use-virtual-buffers t)
+  (ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
   :config (ivy-mode))
 #+end_src
 
@@ -3052,6 +3054,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 #+end_src
 
 *** Helm Incremental Completion Framework
+**** Helm
 
 Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.github.io/helm-intro.html][this guide]].
 
@@ -3109,7 +3112,7 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
 ;; (global-unset-key (kbd "C-x c"))
 #+end_src
 
-*** Helm Describe Bindings
+**** Helm Describe Bindings
 
 A useful package for figuring out what bindings there is in a particular major/minor mode.
 

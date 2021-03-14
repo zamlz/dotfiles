@@ -284,6 +284,7 @@
   :custom
   (ivy-count-format "(%d/%d) ")
   (ivy-use-virtual-buffers t)
+  (ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
   :config (ivy-mode))
 
 (use-package counsel
@@ -547,6 +548,9 @@
 (use-package magit
   :bind ("C-x g" . magit-status)
   :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
+
+(use-package diff-hl
+  :init (global-diff-hl-mode 1))
 
 ;; (use-package forge)
 
