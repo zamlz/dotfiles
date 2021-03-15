@@ -295,19 +295,21 @@
 
 (use-package counsel
   :after ivy
-  :bind (("M-x"       . counsel-M-x)
-         ("M-y"       . counsel-yank-pop)
-         ("C-x b"     . counsel-switch-buffer)
-         ("C-x B"     . counsel-switch-buffer-other-window)
-         ("C-x C-f"   . counsel-find-file)
-         ("C-x C-M-f" . counsel-find-file-extern)
-         ("C-x C-l"   . counsel-locate)
-         ("C-x C-M-l" . counsel-locate-action-extern)
-         ("C-x TAB"   . counsel-semantic-or-imenu)
-         ("C-x C-v"   . counsel-set-variable)
-         :map minibuffer-local-map
-         ("C-r"       . 'counsel-minibuffer-history))
-  :config (counsel-mode))
+  ;; :bind (
+  ;;        ("M-x"       . counsel-M-x)
+  ;;        ("M-y"       . counsel-yank-pop)
+  ;;        ("C-x b"     . counsel-switch-buffer)
+  ;;        ("C-x B"     . counsel-switch-buffer-other-window)
+  ;;        ("C-x C-f"   . counsel-find-file)
+  ;;        ("C-x C-M-f" . counsel-find-file-extern)
+  ;;        ("C-x C-l"   . counsel-locate)
+  ;;        ("C-x C-M-l" . counsel-locate-action-extern)
+  ;;        ("C-x TAB"   . counsel-semantic-or-imenu)
+  ;;        ("C-x C-v"   . counsel-set-variable)
+  ;;        :map minibuffer-local-map
+  ;;        ("C-r"       . 'counsel-minibuffer-history))
+  ;; :config (counsel-mode)
+  )
 
 ;; TODO: Figure out what swiper is lol
 (use-package swiper
@@ -324,109 +326,128 @@
   :after (ivy all-the-icons-ivy-rich)
   :init (ivy-rich-mode 1))
 
-(use-package ivy-posframe
-  :after counsel
-  :custom
-
-  ;; Specify the the display posframe
-  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
-  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
-
-  ;; Customize size and width of the posframe
-  (ivy-posframe-height 30)
-  (ivy-posframe-min-width 120)
-  (ivy-posframe-min-height 2)
-  :init
-  (ivy-posframe-mode 1))
+;; (use-package ivy-posframe
+;;   :after counsel
+;;   :custom
+;;   ;; Specify the the display posframe
+;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
+;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+;;   ;; Customize size and width of the posframe
+;;   (ivy-posframe-height 30)
+;;   (ivy-posframe-min-width 120)
+;;   (ivy-posframe-min-height 2)
+;;   :init
+;;   (ivy-posframe-mode 1))
 
 (use-package ivy-hydra
   :after ivy)
 
-(use-package ivy-bibtex
-  :bind (("C-c n p"   . ivy-bibtex)
-         ("C-c n C-p" . ivy-bibtex-with-notes))
-  :after ivy
-  :custom
+;; (use-package ivy-bibtex
+;;   :bind (("C-c n p"   . ivy-bibtex)
+;;          ("C-c n C-p" . ivy-bibtex-with-notes))
+;;   :after ivy
+;;   :custom
+;;   ;; Currently this points to my old pubs paper archive
+;;   (bibtex-completion-bibliography `((,(directory-files-recursively "~/usr/papers_old/bib/" ""))))
+;;   (bibtex-completion-library-path '("~/usr/papers_old/doc/"))
+;;   ;; Store my paper notes alongside my roam notes stuff
+;;   (bibtex-completion-notes-path "~/org/papers/")
+;;   ;; ;; Change th display function based on the type
+;;   ;; (bibtex-completion-display-formats
+;;   ;;   '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${journal:40}")
+;;   ;;     (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} Chapter ${chapter:32}")
+;;   ;;     (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
+;;   ;;     (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
+;;   ;;     (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*}")))
+;;   ;; TODO Use bibtex-completion-additional-search-fields
+;;   ;; Style the output indicators
+;;   (bibtex-completion-pdf-symbol "⌘")
+;;   (bibtex-completion-notes-symbol "✎"))
 
+(use-package helm
+  :bind (
+         ("M-x"     . helm-M-x)
+         ("M-y"     . helm-show-kill-ring)
+         ("C-x b"   . helm-mini)
+         ("C-x C-b" . helm-buffers-list)
+         ("C-x C-f" . helm-find-files)
+         ("C-x C-l" . helm-locate)
+         ("C-x r b" . helm-bookmarks)
+         ;; ("C-c h"   . helm-command-prefix)
+         ("C-x TAB" . helm-semantic-or-imenu)
+         ("C-s"     . helm-occur)
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+         ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
+         ("C-z"   . helm-select-action) ; list actions using C-z
+         )
+  :custom
+  ; max height for the helm buffer
+  (helm-autoresize-max-height 30)
+  ; min height for the helm buffer
+  (helm-autoresize-min-height 0)
+  ; open helm buffer inside current window, not occupy whole other window
+  (helm-split-window-in-side-p t)
+  ; move to end or beginning of source when reaching top or bottom of source.
+  ;; (helm-move-to-line-cycle-in-source t)
+  ; search for library in `require' and `declare-function' sexp.
+  (helm-ff-search-library-in-sexp t)
+  ; scroll 8 lines other window using M-<next>/M-<prior>
+  (helm-scroll-amount 8)
+  ;; use recentf-list for recent files
+  (helm-ff-file-name-history-use-recentf t)
+  ;; show current input in header line
+  (helm-echo-input-in-header-line t)
+  ;; enable fuzzy searching in semantic-or-imenu
+  (helm-semantic-fuzzy-match t)
+  (helm-imenu-fuzzy-match t)
+  ;; enable fuzzy matching in buffer list
+  (helm-buffers-fuzzy-matching t)
+  (helm-recentf-fuzzy-match t)
+  :config
+  (require 'helm-config)
+  ;; Use curl when found
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
+  (helm-autoresize-mode 1)
+  (helm-mode 1)
+  )
+
+;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+
+(use-package helm-descbinds
+  :bind (("C-h b" . helm-descbinds)))
+
+(use-package helm-bibtex
+  :after helm
+  :custom
+  ;; Helm specific UI changes
+  (helm-bibtex-full-frame nil)
   ;; Currently this points to my old pubs paper archive
   (bibtex-completion-bibliography `((,(directory-files-recursively "~/usr/papers_old/bib/" ""))))
   (bibtex-completion-library-path '("~/usr/papers_old/doc/"))
-
   ;; Store my paper notes alongside my roam notes stuff
   (bibtex-completion-notes-path "~/org/papers/")
-
-  ;; ;; Change th display function based on the type
-  ;; (bibtex-completion-display-formats
-  ;;   '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${journal:40}")
-  ;;     (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} Chapter ${chapter:32}")
-  ;;     (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
-  ;;     (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
-  ;;     (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*}")))
-
-  ;; TODO Use bibtex-completion-additional-search-fields
-
+  ;; Change th display function based on the type
+  (bibtex-completion-display-formats
+    '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${journal:40}")
+      (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} Chapter ${chapter:32}")
+      (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
+      (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
+      (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*}")))
   ;; Style the output indicators
   (bibtex-completion-pdf-symbol "⌘")
-  (bibtex-completion-notes-symbol "✎"))
-
-;; (use-package helm
-;;   :bind (
-;;          ("M-x"     . helm-M-x)
-;;          ("C-s"     . helm-occur)
-;;          ("C-x b"   . helm-mini)
-;;          ("C-x C-f" . helm-find-files)
-;;          ("C-x r b" . helm-bookmarks)
-;;          ("M-y"     . helm-show-kill-ring)
-;;          ("C-c h"   . helm-command-prefix)
-;;          ("C-c h i" . helm-semantic-or-imenu)
-;;          :map helm-map
-;;          ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
-;;          ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
-;;          ("C-z"   . helm-select-action) ; list actions using C-z
-;;          )
-;;   :custom
-;;   ; max height for the helm buffer
-;;   (helm-autoresize-max-height 30)
-;;   ; min height for the helm buffer
-;;   (helm-autoresize-min-height 0)
-;;   ; open helm buffer inside current window, not occupy whole other window
-;;   (helm-split-window-in-side-p t)
-;;   ; move to end or beginning of source when reaching top or bottom of source.
-;;   ;; (helm-move-to-line-cycle-in-source t)
-;;   ; search for library in `require' and `declare-function' sexp.
-;;   (helm-ff-search-library-in-sexp t)
-;;   ; scroll 8 lines other window using M-<next>/M-<prior>
-;;   (helm-scroll-amount 8)
-;;   ;; use recentf-list for recent files
-;;   (helm-ff-file-name-history-use-recentf t)
-;;   ;; show current input in header line
-;;   (helm-echo-input-in-header-line t)
-;;   ;; enable fuzzy searching in semantic-or-imenu
-;;   (helm-semantic-fuzzy-match t)
-;;   (helm-imenu-fuzzy-match t)
-;;   ;; enable fuzzy matching in buffer list
-;;   (helm-buffers-fuzzy-matching t)
-;;   (helm-recentf-fuzzy-match t)
-;;   :config
-;;   (require 'helm-config)
-;;   ;; Use curl when found
-;;   (when (executable-find "curl")
-;;     (setq helm-google-suggest-use-curl-p t))
-;;   (helm-autoresize-mode 1)
-;;   (helm-mode 1))
-
-;; ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
-;; ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
-;; ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
-;; ;;(global-set-key (kbd "C-c h") 'helm-command-prefix)
-;; (global-unset-key (kbd "C-x c"))
-
-;; (use-package helm-descbinds
-;;   :bind (("C-h b" . helm-descbinds)))
+  (bibtex-completion-notes-symbol "✎")
+  ;; TODO Use bibtex-completion-additional-search-fields
+  )
 
 (use-package helpful
   :ensure t
@@ -457,23 +478,23 @@
   :ensure t)
 
 (add-to-list 'custom-theme-load-path "~/lib/emacs-themes/")
-(load-theme 'gruvbox-black t)
+;; (load-theme 'gruvbox-black t)
 
-;; (use-package doom-themes
-;;   :config
-;;   ;; Global settings (defaults)
-;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;;   (load-theme 'doom-nord t)
-;;   ;; Enable flashing mode-line on errors
-;;   (doom-themes-visual-bell-config)
-;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
-;;   (doom-themes-neotree-config)
-;;   ;; or for treemacs users
-;;   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-;;   (doom-themes-treemacs-config)
-;;   ;; Corrects (and improves) org-mode's native fontification.
-;;   (doom-themes-org-config))
+(use-package doom-themes
+  :config
+  ;; Global settings (defaults)
+  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+        doom-themes-enable-italic t) ; if nil, italics is universally disabled
+  (load-theme 'doom-homage-black t)
+  ;; Enable flashing mode-line on errors
+  (doom-themes-visual-bell-config)
+  ;; Enable custom neotree theme (all-the-icons must be installed!)
+  (doom-themes-neotree-config)
+  ;; or for treemacs users
+  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+  (doom-themes-treemacs-config)
+  ;; Corrects (and improves) org-mode's native fontification.
+  (doom-themes-org-config))
 
 ;;(use-package gruvbox-theme
 ;;  :init (load-theme 'gruvbox-dark-hard t))
