@@ -314,17 +314,18 @@
 ;; TODO: Figure out what swiper is lol
 (use-package swiper
   :after counsel
-  :bind (("C-s" . swiper)))
+  ;; :bind (("C-s" . swiper))
+  )
 
-;; Adds nice icons to the ivy rich buffer
-(use-package all-the-icons-ivy-rich
-  :after counsel-projectile
-  :init (all-the-icons-ivy-rich-mode 1))
+;; ;; Adds nice icons to the ivy rich buffer
+;; (use-package all-the-icons-ivy-rich
+;;   :after counsel-projectile
+;;   :init (all-the-icons-ivy-rich-mode 1))
 
-;; Actually install ivy rich
-(use-package ivy-rich
-  :after (ivy all-the-icons-ivy-rich)
-  :init (ivy-rich-mode 1))
+;; ;; Actually install ivy rich
+;; (use-package ivy-rich
+;;   :after (ivy all-the-icons-ivy-rich)
+;;   :init (ivy-rich-mode 1))
 
 ;; (use-package ivy-posframe
 ;;   :after counsel
@@ -343,8 +344,8 @@
 ;;   :init
 ;;   (ivy-posframe-mode 1))
 
-(use-package ivy-hydra
-  :after ivy)
+;; (use-package ivy-hydra
+;;   :after ivy)
 
 ;; (use-package ivy-bibtex
 ;;   :bind (("C-c n p"   . ivy-bibtex)
