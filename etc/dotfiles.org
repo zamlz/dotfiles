@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-14 Sun 13:16:49]
+#+LAST_MODIFIED: [2021-03-14 Sun 20:20:19]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -177,6 +177,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#ivy-rich][Ivy Rich]]
       - [[#ivy-posframe][Ivy Posframe]]
       - [[#ivy-hydra][Ivy Hydra]]
+      - [[#ivy-bibtex][Ivy Bibtex]]
     - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
       - [[#helm][Helm]]
       - [[#helm-describe-bindings][Helm Describe Bindings]]
@@ -3075,6 +3076,37 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
 #+begin_src emacs-lisp
 (use-package ivy-hydra
   :after ivy)
+#+end_src
+
+**** Ivy Bibtex
+
+#+begin_src emacs-lisp
+(use-package ivy-bibtex
+  :bind (("C-c n p"   . ivy-bibtex)
+         ("C-c n C-p" . ivy-bibtex-with-notes))
+  :after ivy
+  :custom
+
+  ;; Currently this points to my old pubs paper archive
+  (bibtex-completion-bibliography `((,(directory-files-recursively "~/usr/papers_old/bib/" ""))))
+  (bibtex-completion-library-path '("~/usr/papers_old/doc/"))
+
+  ;; Store my paper notes alongside my roam notes stuff
+  (bibtex-completion-notes-path "~/org/papers/")
+
+  ;; ;; Change th display function based on the type
+  ;; (bibtex-completion-display-formats
+  ;;   '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${journal:40}")
+  ;;     (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} Chapter ${chapter:32}")
+  ;;     (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
+  ;;     (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
+  ;;     (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*}")))
+
+  ;; TODO Use bibtex-completion-additional-search-fields
+
+  ;; Style the output indicators
+  (bibtex-completion-pdf-symbol "⌘")
+  (bibtex-completion-notes-symbol "✎"))
 #+end_src
 
 *** Helm Incremental Completion Framework
