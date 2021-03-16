@@ -254,7 +254,7 @@
 
 (zamlz/leader-keys
  "t"  '(:ignore t :which-key "toggles")
- "tt" '(counsel-load-theme :which-key "choose theme"))
+ "tt" '(helm-themes :which-key "choose theme"))
 
 (defhydra hydra-text-scale (:timeout 4)
   "scale text"
@@ -425,7 +425,11 @@
 (global-unset-key (kbd "C-x c"))
 
 (use-package helm-descbinds
-  :bind (("C-h b" . helm-descbinds)))
+  :bind ([remape describe-bindings] . helm-descbinds))
+
+(use-package helm-describe-modes
+  ;; This is just bound to "C-h m"
+  :bind ([remap describe-mode] . helm-describe-modes))
 
 (use-package helm-bibtex
   :after helm
@@ -449,6 +453,13 @@
   (bibtex-completion-notes-symbol "✎")
   ;; TODO Use bibtex-completion-additional-search-fields
   )
+
+(use-package helm-dictionary
+  :bind ("C-c h d" . helm-dictionary))
+
+(use-package helm-org-rifle)
+
+(use-package helm-themes)
 
 (use-package helpful
   :ensure t

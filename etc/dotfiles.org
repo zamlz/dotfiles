@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-15 Mon 01:18:25]
+#+LAST_MODIFIED: [2021-03-15 Mon 15:53:06]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -181,8 +181,12 @@ It's actually incredible how accurate this xckd comic is...
     - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
       - [[#helm][Helm]]
       - [[#helm-describe-bindings][Helm Describe Bindings]]
+      - [[#helm-describe-mode][Helm Describe Mode]]
       - [[#helm-bibtex][Helm Bibtex]]
       - [[#helm-dictioary][Helm Dictioary]]
+      - [[#helm-org-rifle][Helm Org Rifle]]
+      - [[#helm-themes][Helm Themes]]
+      - [[#helm-spotify-plus][Helm Spotify Plus]]
     - [[#helpful-help-commands][Helpful Help Commands]]
     - [[#themes-and-appearance][Themes and Appearance]]
       - [[#modeline][Modeline]]
@@ -2946,7 +2950,7 @@ These are just random shorts to emacs built-in commands that I'd like access to 
 #+begin_src emacs-lisp
 (zamlz/leader-keys
  "t"  '(:ignore t :which-key "toggles")
- "tt" '(counsel-load-theme :which-key "choose theme"))
+ "tt" '(helm-themes :which-key "choose theme"))
 #+end_src
 
 **** Text Size Scaling
@@ -3175,7 +3179,17 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helm-descbinds
-  :bind (("C-h b" . helm-descbinds)))
+  :bind ([remape describe-bindings] . helm-descbinds))
+#+end_src
+
+**** Helm Describe Mode
+
+[[https://github.com/emacs-helm/helm-describe-modes/tree/11fb36af119b784539d31c6160002de1957408aa][github:emacs-helm/helm-describe-modes]]
+
+#+begin_src emacs-lisp
+(use-package helm-describe-modes
+  ;; This is just bound to "C-h m"
+  :bind ([remap describe-mode] . helm-describe-modes))
 #+end_src
 
 **** Helm Bibtex
@@ -3214,6 +3228,32 @@ A useful package for figuring out what bindings there is in a particular major/m
 #+begin_src emacs-lisp
 (use-package helm-dictionary
   :bind ("C-c h d" . helm-dictionary))
+#+end_src
+
+**** Helm Org Rifle
+
+[[https://github.com/alphapapa/org-rifle][github:alphapapa/org-rifle]]. We shall see if I truly find this useful or not.
+
+#+begin_src emacs-lisp
+(use-package helm-org-rifle)
+#+end_src
+
+**** Helm Themes
+
+[[https://github.com/emacsorphanage/helm-themes][github:emacsorphanage/helm-themes]]
+
+#+begin_src emacs-lisp
+(use-package helm-themes
+  :bind (("C-c h C-t" . helm-themes)))
+#+end_src
+
+**** Helm Spotify Plus
+
+[[https://github.com/wandersoncferreira/helm-spotify-plus][github:wandersoncferreira/helm-spotify-plus]]
+
+#+begin_src emacs-lisp
+(use-package helm-spotify-plus
+  :bind ("C-c h C-s" . helm-spotify-plus))
 #+end_src
 
 *** Helpful Help Commands

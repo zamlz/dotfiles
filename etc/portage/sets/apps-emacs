@@ -14,3 +14,6 @@ media-gfx/graphviz
 
 # Test out fish shell
 app-shells/fish
+
+# Use to pull in multiple search results
+www-client/surfraw
