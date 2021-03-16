@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-16 Tue 15:09:12]
+#+LAST_MODIFIED: [2021-03-16 Tue 16:18:54]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3187,7 +3187,8 @@ Display emojis within emacs thanks to [[https://github.com/iqbalansari/emacs-emo
 
 #+begin_src emacs-lisp
 (use-package emojify
-  :hook (after-init . global-emojify-mode))
+  ;; :hook (after-init . global-emojify-mode)
+  )
 #+end_src
 
 *** Keybinding Configuration
@@ -3211,8 +3212,11 @@ This is the core of =Evil-Mode=. This basicallly adds the modal functionality to
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  ;; C-h is help in normal mode, but becomes BACKSPACE in insert mode
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+  ;; The defaults for Shift-j/k are not inuitive. I even remapped them
+  ;; back when I was using vim as well..
+  (define-key evil-normal-state-map (kbd "J") nil)
+  (define-key evil-normal-state-map (kbd "K") nil)
 
   ;; We want to override the RET key for other useful things but
   ;; Evil takes control of it because its evil. The same is true
@@ -3345,7 +3349,8 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
   (ivy-height 20)
-  :config (ivy-mode))
+  ;; :config (ivy-mode)
+  )
 #+end_src
 
 **** Counsel

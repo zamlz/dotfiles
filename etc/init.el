@@ -200,7 +200,8 @@
   )
 
 (use-package emojify
-  :hook (after-init . global-emojify-mode))
+  ;; :hook (after-init . global-emojify-mode)
+  )
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
@@ -210,8 +211,11 @@
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  ;; C-h is help in normal mode, but becomes BACKSPACE in insert mode
-  (define-key evil-insert-state-map (kbd "C-h") 'evil-delete-backward-char-and-join)
+
+  ;; The defaults for Shift-j/k are not inuitive. I even remapped them
+  ;; back when I was using vim as well..
+  (define-key evil-normal-state-map (kbd "J") nil)
+  (define-key evil-normal-state-map (kbd "K") nil)
 
   ;; We want to override the RET key for other useful things but
   ;; Evil takes control of it because its evil. The same is true
@@ -291,7 +295,8 @@
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
   (ivy-height 20)
-  :config (ivy-mode))
+  ;; :config (ivy-mode)
+  )
 
 (use-package counsel
   :after ivy
