@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-15 Mon 15:53:06]
+#+LAST_MODIFIED: [2021-03-15 Mon 22:21:04]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -124,6 +124,13 @@ It's actually incredible how accurate this xckd comic is...
   - [[#lemonbar-panel][Lemonbar Panel]]
     - [[#panel-launcher][Panel Launcher]]
     - [[#default-configuration][Default Configuration]]
+    - [[#utilities][Utilities]]
+      - [[#main-loop][Main Loop]]
+      - [[#make-fifos][Make FIFOs]]
+      - [[#trigger-fifos][Trigger FIFOs]]
+      - [[#where-fifos][Where FIFOs]]
+      - [[#output-wrappers][Output Wrappers]]
+      - [[#multi-monitor-support][Multi-Monitor Support]]
   - [[#compton-x11-compositor][Compton X11 Compositor]]
     - [[#backend][Backend]]
     - [[#glx-backend][GLX backend]]
@@ -1704,27 +1711,27 @@ It's important that these keybindings are prefaces with the =@= token as it impl
 #+begin_src shell
 XF86MonBrightnessUp
     xbacklight -inc 1 -time 10; \
-    $HOME/etc/lemonbar/utils/trigger_fifos bkl
+    $HOME/.config/lemonbar/utils/trigger_fifos bkl
 
 XF86MonBrightnessDown
     xbacklight -dec 1 -time 10; \
-    $HOME/etc/lemonbar/utils/trigger_fifos bkl
+    $HOME/.config/lemonbar/utils/trigger_fifos bkl
 
 XF86AudioMute
     pulsemixer --toggle-mute; \
-    $HOME/etc/lemonbar/utils/trigger_fifos vol
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
 
 XF86AudioMicMute
     pulsemixer --toggle-mute; \
-    $HOME/etc/lemonbar/utils/trigger_fifos vol
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
 
 XF86AudioRaiseVolume
     pulsemixer --change-volume +1; \
-    $HOME/etc/lemonbar/utils/trigger_fifos vol
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
 
 XF86AudioLowerVolume
     pulsemixer --change-volume -1; \
-    $HOME/etc/lemonbar/utils/trigger_fifos vol
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
 
 XF86AudioPlay
     $HOME/src/spotify-cli/spotify-cli toggle
@@ -2045,8 +2052,8 @@ fi
 **** Event Hooks Trigger Definition
 
 #+begin_src shell
-WSP_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos wsp"
-WIN_TRIGGER="$HOME/etc/lemonbar/utils/trigger_fifos win"
+WSP_TRIGGER="$HOME/.config/lemonbar/utils/trigger_fifos wsp"
+WIN_TRIGGER="$HOME/.config/lemonbar/utils/trigger_fifos win"
 WARG="'(focus_changed|window_title|panel_init)'"
 #+end_src
 
@@ -2094,7 +2101,7 @@ Now it's time to make each of the panel FIFOs and start the modules.
 
 #+begin_src shell
 # Prepare the FIFOS
-$HOME/etc/lemonbar/utils/make_fifos
+$HOME/.config/lemonbar/utils/make_fifos
 
 # Tail command to ensure that fifos never close
 TAIL="tail --lines=+1 --follow"
@@ -2127,11 +2134,11 @@ Setup the argument string to pass send to lemonbar. Uncomment fonts as needed.
 
 #+begin_src shell
 # Define lemonbar opts
-#-f dina:size=12
-#-f xos4Terminus:style=Bold:size=12
-#-f IosevkaTerm:size=12
-#-f PowerlineSymbols:style=Medium:size=12
-#-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
+# -f dina:size=12
+# -f xos4Terminus:style=Bold:size=12
+# -f IosevkaTerm:size=12
+# -f PowerlineSymbols:style=Medium:size=12
+# -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 OPTS="-g x20
 -F ${XBACKGROUND}
 -B ${XBACKGROUND}
@@ -2149,11 +2156,11 @@ Actually launch our panel loops (while reading from the fifos) and pipe them int
 #+begin_src shell
 # Start the top panel
 $LOGGER "Initializing lemonbar using top fifo"
-$HOME/etc/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
+$HOME/.config/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
 
 # Start the bottom panel
 $LOGGER "Initializing lemonbar using bot fifo"
-$HOME/etc/lemonbar/utils/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
+$HOME/.config/lemonbar/utils/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
 
 $LOGGER "Lemonbar finished."
 wait
@@ -2170,9 +2177,9 @@ The default configuration is our source for all variables and functions that lem
 # Import modules needed but anything that imports this config
 . $HOME/lib/shell/logger
 . $HOME/lib/shell/xrdb_colors
-. $HOME/etc/lemonbar/utils/wrappers
-. $HOME/etc/lemonbar/utils/multi_monitor_support
-. $HOME/etc/lemonbar/utils/where_fifos
+. $HOME/.config/lemonbar/utils/wrappers
+. $HOME/.config/lemonbar/utils/multi_monitor_support
+. $HOME/.config/lemonbar/utils/where_fifos
 
 # Source local system config in case there are system specific changes
 . $HOME/.config/lemonbar/config
@@ -2282,6 +2289,236 @@ ETHERNET_INTERFACE=${ETHERNET_INTERFACE:-"eth0"}
 FILESYSTEMS=${FILESYSTEMS:-"/dev/sda4"}
 #+end_src
 
+*** Utilities
+**** Main Loop
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/utils/loop :mkdirp yes :shebang #!/bin/sh
+:END:
+
+Source the main config, setup the loggers and figure out which mode this loop belows to (=TOP= or =BOTTOM=).
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+MODE="$1"
+LOGGER=$(get_logger "lemonbar.loop.$MODE")
+
+$LOGGER "Configuring the $MODE loop"
+#+end_src
+
+This setup below is pretty confusing but it was done because I have two different monitor setups. A triple monitor setup and standalone laptop mode. Depending on the mode we were in, the panel output should be split over three monitors or all should appear on the same one. The variables below simply help in using the same looping function instead of rewriting a different one for each monitor setup. Refer to the lemonbar documentation to understand how monitor specification works.
+
+#+begin_src shell
+# Define the monitors
+$LOGGER "Checking for multi monitor support"
+if [ -f $TRIPLE_MONITOR_TOGGLE ]; then
+
+    MONITOR_1="%{S0}"
+    MONITOR_2="%{S1}"
+    MONITOR_3="%{S2}"
+
+    M1L="%{l}" M1C="%{c}" M1R="%{r}"
+    M2L="%{l}" M2C="%{c}" M2R="%{r}"
+    M3L="%{l}" M3C="%{c}" M3R="%{r}"
+
+else
+
+    MONITOR_1="%{S0}%{l}"
+    MONITOR_2="%{S0}%{c}"
+    MONITOR_3="%{S0}%{r}"
+
+    M1L="" M1C="" M1R=""
+    M2L="" M2C="" M2R=""
+    M3L="" M3C="" M3R=""
+
+fi
+#+end_src
+
+Below is the main loop for lemonbar. It uses the anchors we defined in the config to capture each modules output into module specific variables. We can then print it out to the top and bottom FIFOs.
+
+#+begin_src shell
+$LOGGER "Initializing loop to construct lemonbar output"
+while read -r line; do
+    # echo "Current line: $line" >&2
+    case $line in
+        $ANCHOR_BACKLIGHT*)     bkl="${line#?}" ;;
+        $ANCHOR_BATTERY*)       bat="${line#?}" ;;
+        $ANCHOR_CPU*)           cpu="${line#?}" ;;
+        $ANCHOR_DATE*)          cal="${line#?}" ;;
+        $ANCHOR_FILESYSTEMS*)   fsf="${line#?}" ;;
+        $ANCHOR_MEMORY*)        mem="${line#?}" ;;
+        $ANCHOR_NETWORK*)       net="${line#?}" ;;
+        $ANCHOR_SPOTIFY*)       mus="${line#?}" ;;
+        $ANCHOR_TIME*)          clk="${line#?}" ;;
+        $ANCHOR_WHOAMI*)        usr="${line#?}" ;;
+        $ANCHOR_WININFO*)       win="${line#?}" ;;
+        $ANCHOR_WORKSPACES*)    wsp="${line#?}" ;;
+        $ANCHOR_VOLUME*)        vol="${line#?}" ;;
+    esac
+
+    # Print the contents of our modules based on the mode
+    if [ "$MODE" = "TOP" ]; then
+        m1="${MONITOR_1}${M1L}${M1C}$usr${M1R}"
+        m2="${MONITOR_2}${M2L}${M2C}$cal$clk${M2R}"
+        m3="${MONITOR_3}${M3L}$bkl${M3C}$net${M3R}$bat"
+        printf "%s\n" "$m1$m2$m3"
+
+    elif [ "$MODE" = "BOT" ]; then
+        m1="${MONITOR_1}${M1L}$vol$mus${M1C}${M1R}"
+        m2="${MONITOR_2}${M2L}${M2C}$win$wsp${M2R}"
+        m3="${MONITOR_3}${M3L}$fsf$mem${M3C}${M3R}$cpu"
+        printf "%s\n" "$m1$m2$m3"
+
+    else
+        printf "Panel loop given incorrect mode!\n" >&2
+    fi
+done
+#+end_src
+
+**** Make FIFOs
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/utils/make_fifos :mkdirp yes :shebang #!/bin/sh
+:END:
+
+We use a seperate script to make the FIFOs so that other processes can start buffering without having to wait for lemonbar to finish starting. *Therefore*, this needs to be called before spawning lemonbar.
+
+Like with all other lemonbar components, setup the logger and get the necessary variables
+
+#+begin_src shell
+. $HOME/lib/shell/logger
+. $HOME/.config/lemonbar/utils/where_fifos
+LOGGER=$(get_logger lemonbar.make_fifos)
+#+end_src
+
+Initialize the actualy panel FIFOs. This is what lemonbar will actually end up reading after all the module output is formatted properly.
+
+#+begin_src shell
+$LOGGER "Initializing panel fifo files"
+[ -e "$PANEL_TOP_FIFO" ] && rm $PANEL_TOP_FIFO
+[ -e "$PANEL_BOT_FIFO" ] && rm $PANEL_BOT_FIFO
+mkfifo $PANEL_TOP_FIFO
+mkfifo $PANEL_BOT_FIFO
+#+end_src
+
+In order to make lemonbar as computationally effecient as possible, we also make use of FIFOs that are used in conjunction with event hooks from external sources. This enables us to update specific modules without the use of the =sleep= command. /Also note to self, there isn't a need to make the =$EVENT_WIN_FIFO= as the module that will use is disabled.../
+
+#+begin_src shell
+$LOGGER "Initializing event fifos"
+[ -e "$EVENT_BKL_FIFO" ] && rm $EVENT_BKL_FIFO
+[ -e "$EVENT_VOL_FIFO" ] && rm $EVENT_VOL_FIFO
+[ -e "$EVENT_WSP_FIFO" ] && rm $EVENT_WSP_FIFO
+[ -e "$EVENT_WIN_FIFO" ] && rm $EVENT_WIN_FIFO
+mkfifo $EVENT_BKL_FIFO
+mkfifo $EVENT_VOL_FIFO
+mkfifo $EVENT_WSP_FIFO
+mkfifo $EVENT_WIN_FIFO
+#+end_src
+
+Finally, we need to initialize these FIFOs. I'm pretty confident this has to happen because I was dealing with some issues where the FIFOs would close and lemonbar wasn't able to read their output anymore.
+
+#+begin_src shell
+$LOGGER "Starting init writers for event fifos"
+echo "backlight fifo init" > $EVENT_BKL_FIFO &
+echo "workspace fifo init" > $EVENT_WSP_FIFO &
+# echo "window fifo init"    > $EVENT_WIN_FIFO &
+echo "volume fifo init"    > $EVENT_VOL_FIFO &
+#+end_src
+
+**** Trigger FIFOs
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/utils/trigger_fifos :mkdirp yes :shebang #!/bin/sh
+:END:
+
+We use a sepeate script to send signals to the fifos that an event has occured since we don't want oother processes to really know the locations of these fifos in case they change. It also just serves to create a simpler interface lol.
+
+We don't need the config here but we do need to source the locations.
+
+#+begin_src shell
+. $HOME/.config/lemonbar/utils/where_fifos
+#+end_src
+
+Basically, depending the argument, we send a signal to a specific FIFO. Here are the accepted signals (=bkl=, =wsp=, =win=, =vol=).
+
+#+begin_src shell
+TRIGGER_FIFO=$1
+
+if [ $TRIGGER_FIFO = "bkl" ]; then
+    echo "." > $EVENT_BKL_FIFO
+elif [ $TRIGGER_FIFO = "wsp" ]; then
+    echo "." > $EVENT_WSP_FIFO
+elif [ $TRIGGER_FIFO = "win" ]; then
+    echo "." > $EVENT_WSP_FIFO
+elif [ $TRIGGER_FIFO = "vol" ]; then
+    echo "." > $EVENT_VOL_FIFO
+fi
+#+end_src
+
+**** Where FIFOs
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/utils/where_fifos :mkdirp yes
+:END:
+
+Not much to be said here. This is just a seperate config file that keeps track of where we make the FIFOs in case I decide to change them.
+
+#+begin_src shell
+# Primary FIFOs
+PANEL_TOP_FIFO=/tmp/.lemonbar.panel_top.fifo
+PANEL_BOT_FIFO=/tmp/.lemonbar.panel_bot.fifo
+
+# Event FIFOs
+EVENT_BKL_FIFO=/tmp/.lemonbar.backlight_event.fifo
+EVENT_VOL_FIFO=/tmp/.lemonbar.volume_event.fifo
+EVENT_WSP_FIFO=/tmp/.lemonbar.workspace_event.fifo
+EVENT_WIN_FIFO=/tmp/.lemonbar.wininfo_event.fifo
+#+end_src
+
+**** Output Wrappers
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/utils/wrappers :mkdirp yes
+:END:
+
+Wrappers are basically used by the modules so that we don't have to rewrite output code code for each module. *Ironically* I ended up doing that anyway since I decide to setup a powerline look for them. In any case, there are still here in case I want to use them in the future. And maybe, it might be possible to setup a more complicated wrapper that supports powerline icons.
+
+The minimal wrapper just displays text in square brackets for each module and its also colored as well.
+
+#+begin_src shell
+# Minimal wrapper
+legacy_wrapper() {
+    icon=$1 && shift && color=$1 && shift && msg=$@
+    printf "[$icon %{F$color}$msg%{F-}]"
+}
+#+end_src
+
+The icon wrapper on the other hand is meant for displaying the module with a font icon (this is configured through the global config file) and the default icons are the SIJI icon pack.
+
+#+begin_src shell
+# Use siji fonts or some other unicode fonts
+icon_wrapper() {
+    icon=$1 && shift && color=$1 && shift && msg=$@
+    printf " $icon %%{F$color}$msg%%{F-} "
+}
+#+end_src
+
+The debug wrapper is primarily used when debugging a module since all the formatting can sometimes make it hard to tell what the panel is really outputting.
+
+#+begin_src shell
+# debug wrapper for testing
+debug_wrapper() {
+    icon=$1 && shift && color=$1 && shift && msg=$@
+    echo -ne "[DEBUG $icon $color $msg]"
+}
+#+end_src
+
+**** Multi-Monitor Support
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/utils/multi_monitor_support :mkdirp yes
+:END:
+
+This might be pointless to keep as a seperate script but as (not anymore) was another script that needed the location of where to trigger the monitor toggle (whether I am in a multi monitor environment or not), this was necessary. Keep it setup for backwards compatibility.
+
+#+begin_src shell
+# Triple Monitor Toggle File
+TRIPLE_MONITOR_TOGGLE=$HOME/.config/lemonbar/enable_triple_monitor
+#+end_src
 ** Compton X11 Compositor
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes
