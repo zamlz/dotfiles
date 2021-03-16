@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-15 Mon 22:21:04]
+#+LAST_MODIFIED: [2021-03-15 Mon 22:27:39]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -2519,6 +2519,7 @@ This might be pointless to keep as a seperate script but as (not anymore) was an
 # Triple Monitor Toggle File
 TRIPLE_MONITOR_TOGGLE=$HOME/.config/lemonbar/enable_triple_monitor
 #+end_src
+
 ** Compton X11 Compositor
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes
