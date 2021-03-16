@@ -374,7 +374,6 @@
          ("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
          ("C-x b"   . helm-mini)
-         ("C-x C-b" . helm-buffers-list)
          ("C-x C-f" . helm-find-files)
          ("C-x C-l" . helm-locate)
          ("C-x r b" . helm-bookmarks)
@@ -494,38 +493,27 @@
   :ensure t)
 
 (add-to-list 'custom-theme-load-path "~/lib/emacs-themes/")
-;; (load-theme 'gruvbox-black t)
+(load-theme 'gruvbox-black t)
 
-(use-package doom-themes
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-homage-black t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
-;;(use-package gruvbox-theme
-;;  :init (load-theme 'gruvbox-dark-hard t))
-
-;; (set-background-color "black")
+;; (use-package doom-themes
+;;   :config
+;;   ;; Global settings (defaults)
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   (load-theme 'doom-homage-black t)
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
 ;;   :init (load-theme 'spacemacs-dark t))
-
-;; (load-theme 'xresources t)
-
-;; (use-package seti-theme
-;;   :defer t
-;;   :init (load-theme 'seti t))
 
 (use-package rainbow-delimiters
   :hook (prog-mode . rainbow-delimiters-mode))

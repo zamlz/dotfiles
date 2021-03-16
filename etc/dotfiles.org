@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-15 Mon 23:04:07]
+#+LAST_MODIFIED: [2021-03-16 Tue 15:09:12]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3467,7 +3467,6 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
          ("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
          ("C-x b"   . helm-mini)
-         ("C-x C-b" . helm-buffers-list)
          ("C-x C-f" . helm-find-files)
          ("C-x C-l" . helm-locate)
          ("C-x r b" . helm-bookmarks)
@@ -3648,38 +3647,27 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
   :ensure t)
 
 (add-to-list 'custom-theme-load-path "~/lib/emacs-themes/")
-;; (load-theme 'gruvbox-black t)
+(load-theme 'gruvbox-black t)
 
-(use-package doom-themes
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-homage-black t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
-
-;;(use-package gruvbox-theme
-;;  :init (load-theme 'gruvbox-dark-hard t))
-
-;; (set-background-color "black")
+;; (use-package doom-themes
+;;   :config
+;;   ;; Global settings (defaults)
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   (load-theme 'doom-homage-black t)
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
 ;;   :init (load-theme 'spacemacs-dark t))
-
-;; (load-theme 'xresources t)
-
-;; (use-package seti-theme
-;;   :defer t
-;;   :init (load-theme 'seti t))
 #+end_src
 
 **** Rainbow Delimiters
@@ -4060,7 +4048,6 @@ The first version here works nice with the =doom-nord= theme. The second version
     ("CANCELLED" . (:background "#181818" :foreground "#fb4934" :weight bold))
     ("SOMEDAY"   . (:background "#3f444a" :foreground "#000000" :weight bold))
     ("MEETING"   . (:background "#b16286" :foreground "#000000" :weight bold))))
-
 #+end_src
 
 *** Better Heading Bullets
