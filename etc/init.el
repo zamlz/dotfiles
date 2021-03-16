@@ -459,7 +459,11 @@
 
 (use-package helm-org-rifle)
 
-(use-package helm-themes)
+(use-package helm-themes
+  :bind (("C-c h C-t" . helm-themes)))
+
+(use-package helm-spotify-plus
+  :bind ("C-c h C-s" . helm-spotify-plus))
 
 (use-package helpful
   :ensure t
