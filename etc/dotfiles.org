@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-16 Tue 16:41:28]
+#+LAST_MODIFIED: [2021-03-17 Wed 10:24:26]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3293,8 +3293,7 @@ This is an interesting package. It basically lets me define my own keybinding sp
 Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
 
 #+begin_src emacs-lisp
-(use-package hydra
-  :before ivy)
+(use-package hydra)
 #+end_src
 
 *** Leader Keybindings
@@ -3336,6 +3335,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 (use-package ivy
   :defer 0.1
   :diminish
+  :after hydra
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -3585,6 +3585,7 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helm-dictionary
+  :after helm
   :bind ("C-c h d" . helm-dictionary))
 #+end_src
 
@@ -3593,7 +3594,8 @@ A useful package for figuring out what bindings there is in a particular major/m
 [[https://github.com/alphapapa/org-rifle][github:alphapapa/org-rifle]]. We shall see if I truly find this useful or not.
 
 #+begin_src emacs-lisp
-(use-package helm-org-rifle)
+(use-package helm-org-rifle
+  :after helm)
 #+end_src
 
 **** Helm Themes
@@ -3602,6 +3604,7 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helm-themes
+  :after helm
   :bind (("C-c h C-t" . helm-themes)))
 #+end_src
 
@@ -3611,6 +3614,7 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helm-spotify-plus
+  :after helm
   :bind ("C-c h C-s" . helm-spotify-plus))
 #+end_src
 

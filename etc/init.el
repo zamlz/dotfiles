@@ -253,8 +253,7 @@
     :prefix "SPC"
     :global-prefix "C-SPC"))
 
-(use-package hydra
-  :before ivy)
+(use-package hydra)
 
 (zamlz/leader-keys
  "t"  '(:ignore t :which-key "toggles")
@@ -273,6 +272,7 @@
 (use-package ivy
   :defer 0.1
   :diminish
+  :after hydra
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -459,14 +459,18 @@
   )
 
 (use-package helm-dictionary
+  :after helm
   :bind ("C-c h d" . helm-dictionary))
 
-(use-package helm-org-rifle)
+(use-package helm-org-rifle
+  :after helm)
 
 (use-package helm-themes
+  :after helm
   :bind (("C-c h C-t" . helm-themes)))
 
 (use-package helm-spotify-plus
+  :after helm
   :bind ("C-c h C-s" . helm-spotify-plus))
 
 (use-package helpful
