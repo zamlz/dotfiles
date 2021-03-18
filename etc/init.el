@@ -64,7 +64,12 @@
 (setq user-mail-address "zamlz@pm.me")
 (setq user-login-name "zamlz")
 
+;; Makes sure that any connections to gpg-agent uses rofi as the pinentry program
 (setenv "PINENTRY_USER_DATA" "rofi")
+
+;; Inside emacs, we want the editor to open within the running emacs itself
+(setenv "VISUAL" "emacsclient --socket-name=xorg-emacs-daemon" )
+(setenv "EDITOR" (getenv "VISUAL"))
 
 (use-package "startup"
   :ensure nil

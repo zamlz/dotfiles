@@ -2983,7 +2983,14 @@ Lets get some basic settings out of the way here.
 Some environment variables should be overriden here. This is extremely important as I want certain program to behave differently if its being run from the emacs.
 
 #+begin_src emacs-lisp
+;; Makes sure that any connections to gpg-agent uses rofi as the pinentry program
 (setenv "PINENTRY_USER_DATA" "rofi")
+#+end_src
+
+#+begin_src emacs-lisp
+;; Inside emacs, we want the editor to open within the running emacs itself
+(setenv "VISUAL" "emacsclient --socket-name=xorg-emacs-daemon" )
+(setenv "EDITOR" (getenv "VISUAL"))
 #+end_src
 
 *** Disable Default Startup
@@ -3662,7 +3669,6 @@ A useful package for figuring out what bindings there is in a particular major/m
 (use-package helm-pass
   :bind ("C-x C-p" . helm-pass))
 #+end_src
-
 
 *** Helpful Help Commands
 
