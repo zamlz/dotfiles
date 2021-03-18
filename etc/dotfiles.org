@@ -1799,8 +1799,8 @@ XF86Display
 
 #+begin_src shell
 # Control system state (locked, reboot, poweroff, etc.)
-super + Escape
-    $HOME/lib/rofi/rofi-system LOCK SCREEN
+#super + Escape
+#    $HOME/lib/rofi/rofi-system LOCK SCREEN
 super + ctrl + alt + Escape
     $HOME/lib/rofi/rofi-system
 #+end_src
