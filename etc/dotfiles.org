@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-17 Wed 23:52:10]
+#+LAST_MODIFIED: [2021-03-18 Thu 00:03:02]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3444,15 +3444,15 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 =Ivy-Rich= provides extra columns in the counsel commands to get more information about each item during autocompletion.
 
 #+begin_src emacs-lisp
-;; ;; Adds nice icons to the ivy rich buffer
-;; (use-package all-the-icons-ivy-rich
-;;   :after counsel-projectile
-;;   :init (all-the-icons-ivy-rich-mode 1))
+;; Adds nice icons to the ivy rich buffer
+(use-package all-the-icons-ivy-rich
+  :after counsel-projectile
+  :init (all-the-icons-ivy-rich-mode 1))
 
-;; ;; Actually install ivy rich
-;; (use-package ivy-rich
-;;   :after (ivy all-the-icons-ivy-rich)
-;;   :init (ivy-rich-mode 1))
+;; Actually install ivy rich
+(use-package ivy-rich
+  :after (ivy all-the-icons-ivy-rich)
+  :init (ivy-rich-mode 1))
 #+end_src
 
 **** Ivy Posframe
