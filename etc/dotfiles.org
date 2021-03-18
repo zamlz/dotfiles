@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-17 Wed 10:24:26]
+#+LAST_MODIFIED: [2021-03-17 Wed 18:19:08]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -148,7 +148,8 @@ It's actually incredible how accurate this xckd comic is...
     - [[#garbage-collector-hooks][Garbage Collector Hooks]]
     - [[#package-management][Package Management]]
     - [[#basic-ui-changes][Basic UI Changes]]
-    - [[#setup-personal-inf][Setup Personal Inf]]
+    - [[#setup-personal-info][Setup Personal Info]]
+    - [[#environment-variable-override][Environment Variable Override]]
     - [[#disable-default-startup][Disable Default Startup]]
     - [[#modernize-selection-behaviour][Modernize Selection Behaviour]]
     - [[#disable-scroll-bar][Disable Scroll-Bar]]
@@ -163,6 +164,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#clean-whitespace-on-buffer-save][Clean Whitespace on Buffer Save]]
     - [[#dump-custom-set-variables][Dump Custom-Set-Variables]]
     - [[#dired-customization][Dired Customization]]
+    - [[#easy-pgp-assistant-epa][Easy PGP Assistant (EPA)]]
   - [[#ui-customization][UI Customization]]
     - [[#startup-dashboard][Startup Dashboard]]
     - [[#font-configuration][Font Configuration]]
@@ -170,8 +172,9 @@ It's actually incredible how accurate this xckd comic is...
     - [[#keybinding-configuration][Keybinding Configuration]]
       - [[#esc-should-save-the-day][ESC should save the day]]
       - [[#evil-mode][Evil Mode]]
-      - [[#extend-evil-mode-with-evil-collection][Extend Evil Mode with Evil Collection]]
+      - [[#evil-collection][Evil Collection]]
       - [[#evil-commentary][Evil Commentary]]
+      - [[#evil-org][Evil Org]]
       - [[#which-key][Which Key]]
       - [[#general-keybinder][General Keybinder]]
       - [[#hydra][Hydra]]
@@ -195,6 +198,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#helm-org-rifle][Helm Org Rifle]]
       - [[#helm-themes][Helm Themes]]
       - [[#helm-spotify-plus][Helm Spotify Plus]]
+      - [[#helm-pass][Helm Pass]]
     - [[#helpful-help-commands][Helpful Help Commands]]
     - [[#themes-and-appearance][Themes and Appearance]]
       - [[#modeline][Modeline]]
@@ -342,7 +346,7 @@ SAVEHIST=5000
 This is sort of a weird hack. Basically, we're setting the pinentry program here before we even get to the =~/.zshrc= file. The reason is that we want pinentry to default to /GUI/ based applications instead of the /tty/. But if we enter an interactive shell environment (where =~/.zshrc= would be invoked), then we set it back to /tty/.
 
 #+begin_src shell
-export PINENTRY_USER_DATA='rofi'
+#export PINENTRY_USER_DATA='rofi'
 #+end_src
 
 *** Interactive Session
@@ -2966,11 +2970,20 @@ Lets get some basic settings out of the way here.
                 fill-column zamlz/default-screen-width))
 #+end_src
 
-*** Setup Personal Inf
+*** Setup Personal Info
 
 #+begin_src emacs-lisp
 (setq user-full-name "Amlesh Sivanantham")
+(setq user-mail-address "zamlz@pm.me")
 (setq user-login-name "zamlz")
+#+end_src
+
+*** Environment Variable Override
+
+Some environment variables should be overriden here. This is extremely important as I want certain program to behave differently if its being run from the emacs.
+
+#+begin_src emacs-lisp
+(setenv "PINENTRY_USER_DATA" "rofi")
 #+end_src
 
 *** Disable Default Startup
@@ -3142,6 +3155,18 @@ Super useful for auto-pairing certain characters. However we should make use of 
   (evil-collection-define-key 'normal 'dired-mode-map
     "h" 'dired-single-up-directory
     "l" 'dired-single-buffer))
+#+end_src
+
+*** Easy PGP Assistant (EPA)
+
+EPA is a built-in emacs package for interfacing with GnuPG.
+
+#+begin_src emacs-lisp
+(use-package epa-file
+  :ensure nil
+  :custom
+  (epa-file-select-keys nil)
+  (epa-file-encrypt-to user-mail-address))
 #+end_src
 
 ** UI Customization
@@ -3628,6 +3653,16 @@ A useful package for figuring out what bindings there is in a particular major/m
   :after helm
   :bind ("C-c h C-s" . helm-spotify-plus))
 #+end_src
+
+**** Helm Pass
+
+[[https://github.com/emacs-helm/helm-pass/][github:emacs-helm/helm-pass]]
+
+#+begin_src emacs-lisp
+(use-package helm-pass
+  :bind ("C-x C-p" . helm-pass))
+#+end_src
+
 
 *** Helpful Help Commands
 

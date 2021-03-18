@@ -61,7 +61,10 @@
                 fill-column zamlz/default-screen-width))
 
 (setq user-full-name "Amlesh Sivanantham")
+(setq user-mail-address "zamlz@pm.me")
 (setq user-login-name "zamlz")
+
+(setenv "PINENTRY_USER_DATA" "rofi")
 
 (use-package "startup"
   :ensure nil
@@ -165,6 +168,12 @@
   (evil-collection-define-key 'normal 'dired-mode-map
     "h" 'dired-single-up-directory
     "l" 'dired-single-buffer))
+
+(use-package epa-file
+  :ensure nil
+  :custom
+  (epa-file-select-keys nil)
+  (epa-file-encrypt-to user-mail-address))
 
 ;; no default startup screen!
 ;; (setq inhibit-startup-message t)
@@ -479,6 +488,9 @@
 (use-package helm-spotify-plus
   :after helm
   :bind ("C-c h C-s" . helm-spotify-plus))
+
+(use-package helm-pass
+  :bind ("C-x C-p" . helm-pass))
 
 (use-package helpful
   :ensure t
