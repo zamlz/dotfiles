@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-17 Wed 18:19:08]
+#+LAST_MODIFIED: [2021-03-17 Wed 23:52:10]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3434,8 +3434,8 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 #+begin_src emacs-lisp
 ;; TODO: Figure out what swiper is lol
 (use-package swiper
-  :after counsel
-  ;; :bind (("C-s" . swiper))
+  :after (counsel helm)
+  :bind (("C-s" . swiper))
   )
 #+end_src
 

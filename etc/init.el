@@ -339,8 +339,8 @@
 
 ;; TODO: Figure out what swiper is lol
 (use-package swiper
-  :after counsel
-  ;; :bind (("C-s" . swiper))
+  :after (counsel helm)
+  :bind (("C-s" . swiper))
   )
 
 ;; ;; Adds nice icons to the ivy rich buffer
