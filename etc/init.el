@@ -241,10 +241,17 @@
   :diminish
   :config (evil-commentary-mode +1))
 
+(use-package evil-org
+  :after (evil org)
+  :hook (org-mode . (lambda() evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 0.1))
+  :config (setq which-key-idle-delay 1.0))
 
 (use-package general
   :config
@@ -429,7 +436,7 @@
 (global-unset-key (kbd "C-x c"))
 
 (use-package helm-descbinds
-  :bind ([remape describe-bindings] . helm-descbinds))
+  :bind ([remap describe-bindings] . helm-descbinds))
 
 (use-package helm-describe-modes
   ;; This is just bound to "C-h m"

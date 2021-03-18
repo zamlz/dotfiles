@@ -3242,7 +3242,7 @@ This is the core of =Evil-Mode=. This basicallly adds the modal functionality to
   (evil-set-initial-state 'dashboard-mode 'normal))
 #+end_src
 
-**** Extend Evil Mode with Evil Collection
+**** Evil Collection
 
 Unfortunately, =Evil-Mode= is only enabled in text buffers. This means that in special buffers spawned by packages like =Magit=, =Org=, etc., we would not be able to use vim-like bindings. The package below aims to provide even more functionality to these other non-trivial modes.
 
@@ -3264,6 +3264,17 @@ Adds keybindings for quick commenting. Use =gcc= to comment out a line, use =gca
   :config (evil-commentary-mode +1))
 #+end_src
 
+**** Evil Org
+
+#+begin_src emacs-lisp
+(use-package evil-org
+  :after (evil org)
+  :hook (org-mode . (lambda() evil-org-mode))
+  :config
+  (require 'evil-org-agenda)
+  (evil-org-agenda-set-keys))
+#+end_src
+
 **** Which Key
 
 Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
@@ -3272,7 +3283,7 @@ Spawns a simple UI panel that shows available keybindings based on what keys I'v
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 0.1))
+  :config (setq which-key-idle-delay 1.0))
 #+end_src
 
 **** General Keybinder
@@ -3537,7 +3548,7 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helm-descbinds
-  :bind ([remape describe-bindings] . helm-descbinds))
+  :bind ([remap describe-bindings] . helm-descbinds))
 #+end_src
 
 **** Helm Describe Mode
