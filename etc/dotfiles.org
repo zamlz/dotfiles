@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-18 Thu 00:03:02]
+#+LAST_MODIFIED: [2021-03-18 Thu 17:38:21]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -165,6 +165,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#dump-custom-set-variables][Dump Custom-Set-Variables]]
     - [[#dired-customization][Dired Customization]]
     - [[#easy-pgp-assistant-epa][Easy PGP Assistant (EPA)]]
+    - [[#auth-source-pass][Auth Source Pass]]
   - [[#ui-customization][UI Customization]]
     - [[#startup-dashboard][Startup Dashboard]]
     - [[#font-configuration][Font Configuration]]
@@ -256,6 +257,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#ledger][Ledger]]
     - [[#beancount][Beancount]]
     - [[#xkcd][xkcd]]
+    - [[#wttrin][Wttr.in]]
 :END:
 * Operating System
 ** TODO Gentoo Linux
@@ -3176,6 +3178,16 @@ EPA is a built-in emacs package for interfacing with GnuPG.
   (epa-file-encrypt-to user-mail-address))
 #+end_src
 
+*** Auth Source Pass
+
+The auth-source-pass package, formerly known as auth-password-store, integrates Emacs' auth-source library with password-store. The auth-source library is a way for Emacs to answer the old burning question “What are my user name and password?”. Password-store (or just pass) is a standard unix password manager following the Unix philosophy. More details can be found at [[https://github.com/DamienCassou/auth-source-pass][github:DamienCassou/auth-source-pass]].
+
+#+begin_src emacs-lisp
+(use-package auth-source-pass
+  :ensure nil
+  :init (auth-source-pass-enable))
+#+end_src
+
 ** UI Customization
 *** Startup Dashboard
 
@@ -4529,4 +4541,14 @@ A simple plugin for getting the today's xkcd comic.
 
 #+begin_src emacs-lisp
 (use-package xkcd)
+#+end_src
+
+*** Wttr.in
+
+A frontend for [[http://wttr.in/][wttr.in]].
+
+#+begin_src emacs-lisp
+(use-package wttri
+  :custom
+  (wttrin-default-cities '("Union City, CA")))
 #+end_src

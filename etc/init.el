@@ -180,6 +180,10 @@
   (epa-file-select-keys nil)
   (epa-file-encrypt-to user-mail-address))
 
+(use-package auth-source-pass
+  :ensure nil
+  :init (auth-source-pass-enable))
+
 ;; no default startup screen!
 ;; (setq inhibit-startup-message t)
 
@@ -1069,3 +1073,7 @@
 (add-hook 'beancount-mode-hook #'outline-minor-mode)
 
 (use-package xkcd)
+
+(use-package wttri
+  :custom
+  (wttrin-default-cities '("Union City, CA")))
