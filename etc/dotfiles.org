@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-20 Sat 11:52:31]
+#+LAST_MODIFIED: [2021-03-20 Sat 11:57:41]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -1770,7 +1770,7 @@ This actually only works in normal terminals and and not in the emacs vterm. Nee
 #+begin_src shell
 # Spawn Terminal matching environment of focused terminal
 super + shift + Return
-    $HOME/etc/sxhkd/pwdcfw/$SXHKD_TERMINAL
+    $HOME/lib/pwdcfw/$SXHKD_TERMINAL
 #+end_src
 
 *** Rofi Dmenu Launcher Keybindings
