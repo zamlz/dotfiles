@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-18 Thu 17:38:21]
+#+LAST_MODIFIED: [2021-03-20 Sat 11:52:31]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -132,6 +132,20 @@ It's actually incredible how accurate this xckd comic is...
       - [[#where-fifos][Where FIFOs]]
       - [[#output-wrappers][Output Wrappers]]
       - [[#multi-monitor-support][Multi-Monitor Support]]
+    - [[#modules][Modules]]
+      - [[#backlight][Backlight]]
+      - [[#battery][Battery]]
+      - [[#cpu][CPU]]
+      - [[#date][Date]]
+      - [[#filesystems][Filesystems]]
+      - [[#memory][Memory]]
+      - [[#network][Network]]
+      - [[#spotify][Spotify]]
+      - [[#time][Time]]
+      - [[#who-am-i][Who am I]]
+      - [[#volume][Volume]]
+      - [[#window-info][Window Info]]
+      - [[#workspaces][Workspaces]]
   - [[#compton-x11-compositor][Compton X11 Compositor]]
     - [[#backend][Backend]]
     - [[#glx-backend][GLX backend]]
@@ -2230,26 +2244,26 @@ TAIL="tail --lines=+1 --follow"
 
 # Add modules to the top fifo
 $LOGGER "Setting up top fifo modules"
-$HOME/etc/lemonbar/modules/date         > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/network      > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/time         > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/whoami       > $PANEL_TOP_FIFO &
-$HOME/etc/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
+$HOME/.config/lemonbar/modules/date         > $PANEL_TOP_FIFO &
+$HOME/.config/lemonbar/modules/network      > $PANEL_TOP_FIFO &
+$HOME/.config/lemonbar/modules/time         > $PANEL_TOP_FIFO &
+$HOME/.config/lemonbar/modules/whoami       > $PANEL_TOP_FIFO &
+$HOME/.config/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
 $TAIL $EVENT_BKL_FIFO \
-    | $HOME/etc/lemonbar/modules/backlight > $PANEL_TOP_FIFO &
+    | $HOME/.config/lemonbar/modules/backlight > $PANEL_TOP_FIFO &
 
 # Add modules to the bot fifo
 $LOGGER "Setting up bot fifo modules"
-$HOME/etc/lemonbar/modules/cpu          > $PANEL_BOT_FIFO &
-$HOME/etc/lemonbar/modules/filesystems  > $PANEL_BOT_FIFO &
-$HOME/etc/lemonbar/modules/memory       > $PANEL_BOT_FIFO &
-$HOME/etc/lemonbar/modules/spotify      > $PANEL_BOT_FIFO &
-$HOME/etc/lemonbar/modules/volume/const > $PANEL_BOT_FIFO &
+$HOME/.config/lemonbar/modules/cpu          > $PANEL_BOT_FIFO &
+$HOME/.config/lemonbar/modules/filesystems  > $PANEL_BOT_FIFO &
+$HOME/.config/lemonbar/modules/memory       > $PANEL_BOT_FIFO &
+$HOME/.config/lemonbar/modules/spotify      > $PANEL_BOT_FIFO &
+$HOME/.config/lemonbar/modules/volume_const > $PANEL_BOT_FIFO &
 # $HOME/etc/lemonbar/modules/windowinfo   < $EVENT_WIN_FIFO > $PANEL_BOT_FIFO &
 $TAIL $EVENT_WSP_FIFO \
-    | $HOME/etc/lemonbar/modules/workspaces   > $PANEL_BOT_FIFO &
+    | $HOME/.config/lemonbar/modules/workspaces   > $PANEL_BOT_FIFO &
 $TAIL $EVENT_VOL_FIFO \
-    | $HOME/etc/lemonbar/modules/volume/event > $PANEL_BOT_FIFO &
+    | $HOME/.config/lemonbar/modules/volume_event > $PANEL_BOT_FIFO &
 #+end_src
 
 Setup the argument string to pass send to lemonbar. Uncomment fonts as needed.
@@ -2640,6 +2654,550 @@ This might be pointless to keep as a seperate script but as (not anymore) was an
 #+begin_src shell
 # Triple Monitor Toggle File
 TRIPLE_MONITOR_TOGGLE=$HOME/.config/lemonbar/enable_triple_monitor
+#+end_src
+
+*** Modules
+**** Backlight
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/backlight :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.backlight)
+
+$LOGGER "Initializing backlight module"
+
+while read -r backlight_event; do
+    msg="$(xbacklight -get | sed -e 's/\.[0-9]*//g')"
+    if [ -z "$msg" ]; then
+        echo "$ANCHOR_BACKLIGHT%{F$BLACK}${PL_L}%{F-}"
+    else
+        msg="$msg%"
+        msg="%{B$BLACK}%{F$WHITE} ${ICON_BACKLIGHT}$msg %{F-}%{B-}"
+        msg="%{F$BLACK}${PL_L}%{F-}$msg"
+        msg="$msg%{B$BLACK}%{F$GREEN}${PL_Lb}%{F-}%{B-}"
+        echo "$ANCHOR_BACKLIGHT$msg"
+    fi
+done
+#+end_src
+
+**** Battery
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/battery :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.battery)
+
+$LOGGER "Initializing battery module"
+
+# TODO: Dynamically set this based on status
+bg_color=$GREEN
+fg_color=$XBACKGROUND
+oscillator=0
+refresh_rate=$REFRESH_BATTERY
+
+while true; do
+    batloc="/sys/class/power_supply/"
+    batlist=$(ls $batloc | grep "BAT")
+    out=""
+    icon=""
+
+    if [ -n "${batlist}" ]; then
+        for bat in $batlist; do
+            cap="$(cat ${batloc}${bat}/capacity)"
+            stat="$(cat ${batloc}${bat}/status)"
+            batid=$(echo $bat | tr -d 'BAT')
+
+            # Uncomment this if I use a laptop with more than 1 battery again
+            #out="${out} ${batid}:${cap}%"
+            out="${out}${cap}%"
+
+            if [ $cap -lt 15 ] && [ $stat = "Discharging" ]; then
+                refresh_rate="0.2"
+                icon=$ICON_BATTERY_EMPTY
+                if [ $oscillator -eq 0 ]; then
+                    bg_color=$RED
+                    fg_color=$XBACKGROUND
+                    oscillator=1
+                else
+                    fg_color=$RED
+                    bg_color=$XBACKGROUND
+                    oscillator=0
+                fi
+            else
+                bg_color=$GREEN
+                fg_color=$XBACKGROUND
+                oscillator=0
+                refresh_rate=$REFRESH_BATTERY
+                icon=$ICON_BATTERY_FULL
+            fi
+
+        done
+    else
+        icon=$ICON_BATTERY_AC
+        out="${out}A/C"
+    fi
+
+    msg="%{B$bg_color}%{F$fg_color} ${icon}$out %{F-}%{B-}"
+    msg="%{F$bg_color}%{B$BLACK}${PL_L}%{B-}%{F-}$msg"
+
+    echo "$ANCHOR_BATTERY$msg"
+    sleep $refresh_rate
+done
+#+end_src
+
+**** CPU
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/cpu :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.cpu)
+
+$LOGGER "Initializing cpu module"
+
+while true; do
+    msg=$(cat /proc/loadavg | awk '{print $1}')
+
+    # TODO: Dynamically set this based on cpu load
+    color=$MAGENTA
+
+    msg="%{B$color} ${ICON_CPU}$msg %{B-}"
+    msg="%{F$color}%{B$BLACK}${PL_L}%{B-}%{F-}$msg"
+
+    echo "$ANCHOR_CPU$msg"
+    sleep $REFRESH_CPU
+done
+#+end_src
+
+**** Date
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/date :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.date)
+
+$LOGGER "Initializing date module"
+
+# Set the refresh time to how many seconds till midnight
+REFRESH_DATE=$(($(date -d 23:59:59 +%s) - $(date +%s) + 1))
+
+while true; do
+    #msg="%{F$GREEN}$(date +'%A, %d %B %Y')%{F-}"
+    msg="%{B$BLACK}%{F$CYAN} ${ICON_DATE}$(date +'%a %Y/%m/%d')"
+    msg="%{F$BLACK}${PL_L}%{F-}$msg "
+    echo "$ANCHOR_DATE$msg"
+    sleep $REFRESH_DATE
+    REFRESH_DATE=86400 # Update the seconds to total seconds in a day
+done
+#+end_src
+
+**** Filesystems
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/filesystems :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.filesystems)
+
+$LOGGER "Initializing filesystems module"
+
+while true; do
+
+    msg=""
+    for FS in $FILESYSTEMS; do
+        fs_info=$(df | grep $FS)
+        if [ -n "$fs_info" ]; then
+            fs_path=$(echo $fs_info | awk '{print $6}' | sed -e 's|/home/zamlz|~|g')
+            fs_used=$(echo $fs_info | awk '{print $5}')
+            msg="$msg $fs_path:$fs_used"
+        fi
+    done
+
+    msg="%{B$BLACK}%{F$WHITE} ${ICON_FILESYSTEMS}$msg %{F-}%{B-}"
+    msg="%{F$BLACK}${PL_L}%{F-}$msg"
+
+    echo "$ANCHOR_FILESYSTEMS$msg"
+    sleep $REFRESH_FILESYSTEMS
+done
+#+end_src
+
+**** Memory
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/memory :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.memory)
+
+$LOGGER "Initializing memory module"
+
+while true; do
+    memory=$(free -h | grep 'Mem:')
+    memory_total=$(echo $memory | awk {'print $2'} | tr -d ' ')
+    memory_used=$(echo $memory | awk {'print $3'} | tr -d ' ')
+    mem_msg="$memory_used/$memory_total"
+
+    # TODO: Set this dynamically based on used mem
+    mem_color=$MAGENTA
+
+    swap=$(free -h | grep 'Swap:')
+    swap_total=$(echo $swap | awk {'print $2'} | tr -d ' ')
+    swap_used=$(echo $swap | awk {'print $3'} | tr -d ' ')
+    swap_msg="$swap_used/$swap_total"
+
+    # TODO: Set this dynamically based on used mem
+    swap_color=$MAGENTA
+
+    msg="%{B$BLACK}%{F$MAGENTA}${PL_Lb}%{F-}"
+    msg="$msg%{F$mem_color} ${ICON_MEMORY}$mem_msg %{F-}"
+    msg="$msg%{F$MAGENTA}${PL_Lb}%{F-}"
+    msg="$msg%{F$swap_color} ${ICON_SWAP}$swap_msg %{F-}%{B-}"
+
+    echo "$ANCHOR_MEMORY$msg"
+    sleep $REFRESH_MEMORY
+done
+#+end_src
+
+**** Network
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/network :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.network)
+
+$LOGGER "Initializing network module"
+
+# State file for identifying if lemonbar displays ip address or not
+ip_toggle="/tmp/.ip_toggle"
+
+while true; do
+
+    wifi_status=$(ip -br addr | grep $WIFI_INTERFACE)
+    ethernet_status=$(ip -br addr | grep $ETHERNET_INTERFACE)
+
+    interface=""
+    primary_msg=""
+    icon=""
+
+    # Check if wifi is online
+    if [ "$(echo $wifi_status | awk '{print $2}')" = "UP" ]; then
+
+        ssid=$(iw $WIFI_INTERFACE link \
+            | grep 'SSID:' \
+            | sed -E "s/.*SSID:(.*)/\\1/")
+
+        signal=$(iw $WIFI_INTERFACE link \
+            | grep 'signal' \
+            | awk '{print $2}')
+
+        interface=$WIFI_INTERFACE
+        primary_msg="$ssid ($signal dBm)"
+        ip_addr=$(echo $wifi_status | awk '{print $3}')
+        icon=$ICON_NETWORK_WIFI
+
+    # Check if ethernet is online
+    elif [ "$(echo $ethernet_status | awk '{print $2}')" = "UP" ]; then
+        interface=$ETHERNET_INTERFACE
+        primary_msg="Ethernet"
+        ip_addr=$(echo $ethernet_status | awk '{print $3}')
+        icon=$ICON_NETWORK_ETHERNET
+
+    # State we are offline
+    else
+        interface="localhost"
+        primary_msg="OFFLINE"
+        ip_addr="127.0.0.1/8"
+        icon=$ICON_NETWORK_OFFLINE
+    fi
+
+    # If the ip toggle file exists, print the ip address
+    if [ -f "$ip_toggle" ]; then
+        msg="%{A:rm $ip_toggle:}${icon}$interface: $ip_addr%{A}"
+    else
+        msg="%{A:touch $ip_toggle:}${icon}$interface: $primary_msg%{A}"
+    fi
+
+    msg="%{B$BLACK}%{F$GREEN} $msg %{F-}%{B-}"
+    echo "$ANCHOR_NETWORK$msg"
+    sleep $REFRESH_NETWORK
+done
+#+end_src
+
+**** Spotify
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/spotify :mkdirp yes :shebang #!/bin/sh
+:END:
+
+This makes use of =spotify-cli=, a simple script I wrote that interfaces with spotify's dbus.
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.spotify)
+
+$LOGGER "Initializing spotify module"
+
+# Colors are actually set in date!!!!
+while true; do
+    # This repo should be cloned or installed
+    metadata=$($HOME/src/spotify-cli/spotify-cli)
+
+    if [ -z "$(echo $metadata | grep 'ERROR')"]; then
+
+        # Notice how the first message doesn't have a foreground color open
+        # statement but has a close statement. This is because we are capturing
+        # the color change from the [volume] module.
+        msg="%{B$BLACK}${PL_R}%{B-}%{F-}"
+
+        # Gather info from the spotify cli script
+        title=$(echo $metadata | sed -e 's/title: \(.*\) artist:.*/ \1 /')
+        artist=$(echo $metadata | sed -e 's/.*artist: \(.*\) album:.*/\1/')
+        paused=$(echo $metadata | sed -e 's/.*status: \(.*\)/\1/')
+
+        artist=" ${ICON_MUSIC}${artist} "
+        if [ "$paused" != "Paused" ]; then
+            status_color=$WHITE
+        else
+            status_color=$XBACKGROUND
+        fi
+
+        msg="$msg%{B$BLACK}%{F$CYAN}$artist"
+        msg="$msg${PL_Rb}%{F-}%{F$status_color}"
+        msg="$msg$title%{B-}%{F$BLACK}${PL_R}%{F-}"
+    else
+
+        # IMPORTANT: look at comment above
+        msg="%{B$XBACKGROUND}${PL_R}%{B-}%{F-}"
+    fi
+
+    echo "$ANCHOR_SPOTIFY$msg"
+    sleep $REFRESH_TIME
+done
+#+end_src
+
+**** Time
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/time :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.time)
+
+$LOGGER "Initializing time module"
+
+# Colors are actually set in date!!!!
+while true; do
+    msg="$(date +'%l:%M:%S %p') %{F-}%{B-}"
+    msg="  %{F$CYAN}${ICON_TIME}$msg%{F$BLACK}${PL_R}%{F-}"
+    echo "$ANCHOR_TIME$msg"
+    sleep $REFRESH_TIME
+done
+#+end_src
+
+**** Who am I
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/whoami :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.whoami)
+
+$LOGGER "Initializing whoami module"
+
+wmsg="${ICON_WHOAMI}$(whoami)@$(hostname)"
+
+version=$(uname -r | sed -e 's/-.*//g')
+distro=$(grep ^ID= /etc/os-release | sed -e 's/^ID=//g' | tr -d '"')
+distro=$(echo $distro | sed 's/.*/\u&/')
+umsg="${ICON_LINUX}$distro $(uname -o) $version $(uname -m)"
+
+prm_color='#256568'
+alt_color=$BLACK
+
+msg="%{B$prm_color} $wmsg %{B-}"
+msg="$msg%{F$prm_color}%{B$alt_color}${PL_R}%{F-}"
+msg="$msg %{F$prm_color}$umsg%{F-} %{B-}"
+msg="$msg%{F$alt_color}${PL_R}%{F-}"
+
+echo "$ANCHOR_WHOAMI$msg"
+#+end_src
+
+**** Volume
+:PROPERTIES:
+:header-args:shell: :mkdirp yes :shebang #!/bin/sh
+:END:
+
+The volume module is a bit different from the other modules so far. We need to update it whenever we trigger a volume change (this is done by capturing the volume events via the media keys. Herbstluftwm will then pass a message to the volume event FIFO). However this is not enough as the volume can be changed by the software as well. So ontop of this, we also have a periodic update as well.
+
+/Here is the primary update logic:/
+
+#+NAME: LEMONBAR_VOLUME_UPDATE_OP
+#+begin_src shell
+# LEMONBAR_VOLUME_UPDATE_OP
+if [ $(pulsemixer --get-mute) -eq 0 ]; then
+    msg="$(pulsemixer --get-volume | awk '{print $1}')%"
+    color=$CYAN
+else
+    msg="MUTE"
+    color=$RED
+fi
+msg="%{B$color} ${ICON_VOLUME}$msg %{B-}%{F$color}"
+echo "$ANCHOR_VOLUME$msg"
+#+end_src
+
+/Where is the periodic version of the volume module:/
+
+#+begin_src shell :noweb yes :tangle ~/.config/lemonbar/modules/volume_const
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.volume.const)
+
+$LOGGER "Initializing volume module [constant]"
+
+while true; do
+    <<LEMONBAR_VOLUME_UPDATE_OP>>
+    sleep $REFRESH_VOLUME
+done
+#+end_src
+
+/Here is the event triggered version of the volume module:/
+
+#+begin_src shell :noweb yes :tangle ~/.config/lemonbar/modules/volume_event
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.volume.event)
+
+$LOGGER "Initializing volume module [event driven]"
+
+while read -r volume_event; do
+    (
+        <<LEMONBAR_VOLUME_UPDATE_OP>>
+    ) &
+done
+#+end_src
+
+**** Window Info
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/windowinfo :mkdirp yes :shebang #!/bin/sh
+:END:
+
+I don't actually use this module anymore, but its here in case I ever do again.
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.windowinfo)
+
+$LOGGER "Initializing windowinfo module"
+
+while read -r window_event; do
+    win_active=$(xdotool getactivewindow)
+    win_class=$(xprop -id $win_active \
+        | grep WM_CLASS \
+        | awk '{print $NF}' \
+        | tr -d '"' )
+
+    if [ -z "$win_class" ]; then
+        msg="<$(xprop -root _NET_WM_NAME \
+            | cut -d " " -f3- \
+            | tr -d '"')>"
+    else
+        msg="$win_class ($win_active)"
+    fi
+    msg=$($MSG_WRAPPER $ICON_WININFO $BLUE $msg)
+    echo "$ANCHOR_WININFO$msg"
+    sleep $REFRESH_WININFO
+done
+#+end_src
+
+**** Workspaces
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/lemonbar/modules/workspaces :mkdirp yes :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/.config/lemonbar/config.default
+LOGGER=$(get_logger lemonbar.workspaces)
+
+$LOGGER "Initializing workspaces module [herbstluftwm]"
+
+hclm() {
+    herbstclient list_monitors
+}
+
+while read -r workspace_event; do
+    # For whatever happens here so we can speed up the updates even further
+    # commented for now, but uncomment to make it faster
+    (
+
+    # convert the current space id to index-1 format
+    current_space_id=$(xprop -root _NET_CURRENT_DESKTOP \
+        | awk '{print $3}')
+    total_spaces=$(xprop -root _NET_NUMBER_OF_DESKTOPS \
+        | awk '{print $3}')
+    all_space_names=$(xprop -root _NET_DESKTOP_NAMES \
+        | cut -d " " -f3- \
+        | tr -d ',"')
+    active_windows=$(xprop -root _NET_CLIENT_LIST \
+        | cut -d " " -f5- \
+        | tr -d ',')
+    active_spaces=$(for window in $active_windows; do \
+        xprop -id $window _NET_WM_DESKTOP \
+        | cut -d " " -f3- ; done)
+    msg=""
+
+    # Is there to get this info without relying on herbs?
+    mon_1=$(hclm | grep '0:' | awk '{print $5}' | tr -d '"')
+    mon_2=$(hclm | grep '1:' | awk '{print $5}' | tr -d '"')
+    mon_3=$(hclm | grep '2:' | awk '{print $5}' | tr -d '"')
+
+    for space_id in $(seq $total_spaces); do
+
+        # Get the actual name of the workspace
+        ws=$(echo $all_space_names | awk -v N=$space_id '{print $N}')
+        # Fix the index of the space_id to be zero index
+        # (note, awk needs to be in index 1 format)
+        space_id=$((space_id - 1))
+
+        # check if the workspace is empty
+        if [ "$ws" = "$mon_1" ]; then
+            ws="%{F$RED}$ws%{F-}"
+        elif [ "$ws" = "$mon_2" ]; then
+            ws="%{F$GREEN}$ws%{F-}"
+        elif [ "$ws" = "$mon_3" ]; then
+            ws="%{F$BLUE}$ws%{F-}"
+        elif [ -z "$(echo $active_spaces | grep $space_id)" ]; then
+            ws="%{F$XBACKGROUND}$ws%{F-}"
+        else
+            ws="%{F#585858}$ws%{F-}"
+        fi
+
+        # mark output if currently focused
+        if [ $space_id -eq $current_space_id ]; then
+            msg="$msg %{+u}$ws%{-u}"
+        else
+            msg="$msg $ws"
+        fi
+    done;
+
+    l_msg="%{F$BLACK}${PL_L}%{F-}%{B$BLACK}"
+    r_msg="%{B-}%{F$BLACK}${PL_R}%{F-}"
+
+    msg="$l_msg %{F$WHITE}${ICON_WORKSPACES}%{F-}$msg  $r_msg"
+
+    echo "$ANCHOR_WORKSPACES$msg"
+
+    ) &
+done
 #+end_src
 
 ** Compton X11 Compositor
