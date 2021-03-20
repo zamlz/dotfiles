@@ -465,17 +465,10 @@
   ;; Helm specific UI changes
   (helm-bibtex-full-frame nil)
   ;; Currently this points to my old pubs paper archive
-  (bibtex-completion-bibliography `((,(directory-files-recursively "~/usr/papers_old/bib/" ""))))
-  (bibtex-completion-library-path '("~/usr/papers_old/doc/"))
+  (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
+  (bibtex-completion-library-path '("~/org/papers/pdfs/"))
   ;; Store my paper notes alongside my roam notes stuff
   (bibtex-completion-notes-path "~/org/papers/")
-  ;; Change th display function based on the type
-  (bibtex-completion-display-formats
-    '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${journal:40}")
-      (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} Chapter ${chapter:32}")
-      (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
-      (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
-      (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*}")))
   ;; Style the output indicators
   (bibtex-completion-pdf-symbol "⌘")
   (bibtex-completion-notes-symbol "✎")
