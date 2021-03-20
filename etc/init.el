@@ -341,7 +341,6 @@
   ;; :config (counsel-mode)
   )
 
-;; TODO: Figure out what swiper is lol
 (use-package swiper
   :after (counsel helm)
   :bind (("C-s" . swiper))
@@ -654,6 +653,10 @@
 (use-package magit
   :bind ("C-x g" . magit-status)
   :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
+
+(use-package magit-todos
+  :after magit
+  :init (magit-todos-mode))
 
 (use-package diff-hl
   :init (global-diff-hl-mode 1))

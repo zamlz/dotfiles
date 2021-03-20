@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-20 Sat 12:18:38]
+#+LAST_MODIFIED: [2021-03-20 Sat 13:21:02]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -241,6 +241,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#flycheck-syntax-linter][Flycheck Syntax Linter]]
     - [[#projectile][Projectile]]
     - [[#magit-git-interface][Magit Git Interface]]
+    - [[#magit-todos][Magit TODOs]]
     - [[#diff-hl-mode][Diff HL Mode]]
     - [[#forge][Forge]]
     - [[#markdown-mode][Markdown Mode]]
@@ -4106,7 +4107,6 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 **** Swiper
 
 #+begin_src emacs-lisp
-;; TODO: Figure out what swiper is lol
 (use-package swiper
   :after (counsel helm)
   :bind (("C-s" . swiper))
@@ -4597,6 +4597,14 @@ Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
 (use-package magit
   :bind ("C-x g" . magit-status)
   :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
+#+end_src
+
+*** Magit TODOs
+
+#+begin_src emacs-lisp
+(use-package magit-todos
+  :after magit
+  :init (magit-todos-mode))
 #+end_src
 
 *** Diff HL Mode

@@ -1,10 +1,8 @@
 #!/bin/sh
 
-# TODO:
-#   * Fix message generation part of this script, its a fuckin mess
-#       (use printf probably)
-#   * Also make sure colors are being pulled from user loaded colorscheme
-#   * Figure out how to properly set the display variable
+# TODO: Fix message generation part of this script, its a fuckin mess (use printf probably)
+# TODO: Also make sure colors are being pulled from user loaded colorscheme
+# TODO: Figure out how to properly set the display variable
 
 # Source this file to use my colorscheme
 . $HOME/lib/shell/xrdb_colors

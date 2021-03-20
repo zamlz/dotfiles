@@ -10,9 +10,8 @@
 # from the command line. Its crudely written
 # use it with rofi-bookmarks
 
-# TODO:
-#   * Fix bug that breaks if $BMLIB ends with '/'
-#   * Maybe make the code more like a program than script,
+# TODO: Fix bug that breaks if $BMLIB ends with '/'
+# TODO: Maybe make the code more like a program than script
 #       for now, this script should do, but it could be much better.
 
 # source the repos file to get bookmarks dir if it exists

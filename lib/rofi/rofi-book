@@ -17,8 +17,7 @@
 # there is a new bookmark being added. This can
 # also work with adding new bookmarks as well.
 
-# TODO:
-#   * Generate rofi dialogues for libra events.
+# TODO: Generate rofi dialogues for libra events.
 
 # Source this file to use my colorscheme
 . $HOME/lib/shell/xrdb_colors
