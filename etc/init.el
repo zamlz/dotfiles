@@ -31,45 +31,42 @@
   (package-refresh-contents)
   (package-install 'use-package))
 (eval-and-compile
-  (setq use-package-always-ensure t))
+  (setq use-package-always-ensure t)
+  (setq use-package-verbose t))
 
 (use-package emacs
   :preface
+  ;; Setup personal preferances
   (defvar zamlz/indent-width 4)   ; tab size
   (defvar zamlz/default-screen-width 100)
   :config
+  ;; Configure personal information
+  (setq user-full-name "Amlesh Sivanantham"
+        user-mail-address "zamlz@pm.me"
+        user-login-name "zamlz")
+
+  ;; Other basic settings
   (setq ring-bell-function 'ignore       ; minimise distraction
         frame-resize-pixelwise t
         default-directory "~/")
 
+  ;; Set Environment Variables
+  (setenv "PINENTRY_USER_DATA" "rofi")
+  (setenv "VISUAL" "emacsclient --socket-name=xorg-emacs-daemon" )
+  (setenv "EDITOR" (getenv "VISUAL"))
+
+  ;; Configure Specific UI changes
   (tool-bar-mode -1)          ; Disable the toolbar
   (menu-bar-mode -1)          ; disable the menubar
-  ;; (tooltip-mode -1)           ; Disable tooltips
   (set-fringe-mode 10)        ; Give some breathing room
   (blink-cursor-mode 1)       ; Let the cursor be blinking
   (semantic-mode 1)
-
-  ;; better scrolling experience
-  (setq scroll-margin 0
-        scroll-conservatively 101 ; > 100
-        scroll-preserve-screen-position t
-        auto-window-vscroll nil)
+  ;; (tooltip-mode -1)           ; Disable tooltips
 
   ;; Always use spaces for indentation
   (setq-default indent-tabs-mode nil
                 tab-width zamlz/indent-width
                 fill-column zamlz/default-screen-width))
-
-(setq user-full-name "Amlesh Sivanantham")
-(setq user-mail-address "zamlz@pm.me")
-(setq user-login-name "zamlz")
-
-;; Makes sure that any connections to gpg-agent uses rofi as the pinentry program
-(setenv "PINENTRY_USER_DATA" "rofi")
-
-;; Inside emacs, we want the editor to open within the running emacs itself
-(setenv "VISUAL" "emacsclient --socket-name=xorg-emacs-daemon" )
-(setenv "EDITOR" (getenv "VISUAL"))
 
 (use-package "startup"
   :ensure nil
@@ -81,7 +78,14 @@
 
 (use-package scroll-bar
   :ensure nil
-  :config (scroll-bar-mode -1))
+  :config
+  ;; better scrolling experience
+  (setq scroll-margin 0
+        scroll-conservatively 101 ; > 100
+        scroll-preserve-screen-position t
+        auto-window-vscroll nil)
+  ;; Don't display the scroll bar in buffers
+  (scroll-bar-mode -1))
 
 (use-package simple
   :ensure nil
@@ -89,11 +93,11 @@
   (column-number-mode +1)
   (global-display-line-numbers-mode t))
 
-;; DONT display line numbers in certain modes
-(dolist (mode '(term-mode-hook
-                shell-mode-hook
-                eshell-mode-hook
-                vterm-mode-hook))
+  ;; DONT display line numbers in certain modes
+  (dolist (mode '(term-mode-hook
+                  shell-mode-hook
+                  eshell-mode-hook
+                  vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 
 (use-package "window"
@@ -190,15 +194,16 @@
 ;; Enable custom dashboard
 (use-package dashboard
   :ensure t
+  :custom
+  (dashboard-startup-banner "~/lib/emacs-themes/navi.png")
+  (dashboard-center-content t)
+  (dashboard-set-heading-icons t)
+  (dashboard-set-file-icons t)
+  (dashboard-set-navigator t)
+  (dashboard-set-init-info t)
+  (initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
+  (dashboard-items '())
   :config
-  (setq dashboard-startup-banner "~/lib/emacs-themes/navi.png")
-  (setq dashboard-center-content t)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-navigator t)
-  (setq dashboard-set-init-info t)
-  (setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
-  (setq dashboard-items '())
   (dashboard-modify-heading-icons '((bookmarks . "book")))
   (dashboard-setup-startup-hook))
 
@@ -217,14 +222,12 @@
   ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
   )
 
-(use-package emojify
-  ;; :hook (after-init . global-emojify-mode)
-  )
+(use-package emojify)
+  ;; :hook (after-init . global-emojify-mode))
 
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
 
 (use-package evil
-  :ensure t
   :init (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
@@ -251,7 +254,6 @@
 
 (use-package evil-collection
   :after evil
-  :ensure t
   :config (evil-collection-init))
 
 (use-package evil-commentary
@@ -269,7 +271,7 @@
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 1.0))
+  :custom (which-key-idle-delay 1.0))
 
 (use-package general
   :config
@@ -297,6 +299,7 @@
 (use-package ivy
   :defer 0.1
   :diminish
+  :after hydra
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -315,7 +318,7 @@
   ;; Don't start searches with ^
   (ivy-initial-inputs-alist nil)
   ;; Show recentf files in buffer switch
-  (ivy-use-virtual-buffers nil)
+  (ivy-use-virtual-buffers t)
   ;; Show the full virtual file paths
   (ivy-virtual-abbreviate 'full)
   ;; Change completion method (not working as expected)
@@ -324,8 +327,7 @@
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
   (ivy-height 20)
-  :config (ivy-mode)
-  :after hydra)
+  :config (ivy-mode))
 
 (use-package counsel
   :after ivy
@@ -348,11 +350,9 @@
   )
 
 (use-package swiper
-  :bind (
-         ("C-s"   . swiper)
-         ("C-M-s" . swiper-all)
-         )
-  :after (counsel))
+  :after counsel
+  :bind (("C-s"   . swiper)
+         ("C-M-s" . swiper-all)))
 
 ;; Adds nice icons to the ivy rich buffer
 (use-package all-the-icons-ivy-rich
@@ -393,9 +393,9 @@
   :after ivy)
 
 (use-package ivy-bibtex
+  :after ivy
   :bind (("C-c n p"   . ivy-bibtex)
          ("C-c n C-p" . ivy-bibtex-with-notes))
-  :after ivy
   :custom
   (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
   (bibtex-completion-library-path '("~/org/papers/pdfs/"))
@@ -407,8 +407,12 @@
   )
 
 (use-package ivy-pass
-  :bind ("C-x C-p" . ivy-pass)
-  :after ivy)
+  :after ivy
+  :bind ("C-x C-p" . ivy-pass))
+
+(use-package counsel-projectile
+  :after counsel
+  :init (counsel-projectile-mode))
 
 (use-package helm
   :bind (
@@ -503,13 +507,13 @@
 ;;   :bind ("C-c h C-s" . helm-spotify-plus))
 
 (use-package helm-pass
-  ;; :bind ("C-x C-p" . helm-pass)
   :after helm)
+  ;; :bind ("C-x C-p" . helm-pass))
 
 (use-package helpful
-  :ensure t
-  ; This is only needed if I'm still using counsel
+  :after counsel
   :custom
+  ; This is only needed if I'm still using counsel
   (counsel-describe-function-function #'helpful-callable)
   (counsel-describe-variable-function #'helpful-variable)
   :bind
@@ -527,7 +531,6 @@
 (use-package all-the-icons)
 
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 
@@ -622,6 +625,21 @@
                           (awk-mode . "awk")
                           (other . "k&r"))))
 
+(use-package web-mode
+  :mode (("\\.html?\\'" . web-mode)
+         ("\\.css\\'"   . web-mode)
+         ("\\.jsx?\\'"  . web-mode)
+         ("\\.tsx?\\'"  . web-mode)
+         ("\\.json\\'"  . web-mode))
+  :custom
+  (web-mode-markup-indent-offset 2) ; HTML
+  (web-mode-css-indent-offset 2)    ; CSS
+  (web-mode-code-indent-offset 2)   ; JS/JSX/TS/TSX
+  (web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
+
+(use-package markdown-mode
+  :hook (markdown-mode . visual-line-mode))
+
 (use-package company
   :diminish company-mode
   :hook (prog-mode . company-mode)
@@ -644,21 +662,18 @@
 
 (use-package projectile
   :diminish projectile-mode
-  :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
   (when (file-directory-p "~/src")
-(setq projectile-project-search-path '("~/src")))
-  (setq projectile-switch-project-action #'projectile-dired))
-
-(use-package counsel-projectile
-  :config (counsel-projectile-mode))
+    (setq projectile-project-search-path '("~/src")))
+  (setq projectile-switch-project-action #'projectile-dired)
+  :custom (projectile-completion-system 'ivy)
+  :config (projectile-mode))
 
 (use-package magit
   :bind ("C-x g" . magit-status)
-  :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
+  :hook (with-editor-mode evil-insert-state))
 
 (use-package magit-todos
   :after magit
@@ -668,21 +683,6 @@
   :init (global-diff-hl-mode 1))
 
 ;; (use-package forge)
-
-(use-package markdown-mode
-  :hook (markdown-mode . visual-line-mode))
-
-(use-package web-mode
-  :mode (("\\.html?\\'" . web-mode)
-         ("\\.css\\'"   . web-mode)
-         ("\\.jsx?\\'"  . web-mode)
-         ("\\.tsx?\\'"  . web-mode)
-         ("\\.json\\'"  . web-mode))
-  :config
-  (setq web-mode-markup-indent-offset 2) ; HTML
-  (setq web-mode-css-indent-offset 2)    ; CSS
-  (setq web-mode-code-indent-offset 2)   ; JS/JSX/TS/TSX
-  (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
 
 (defun zamlz/org-font-setup ()
   ;; Converts bullet lists to not use the - character but the • character

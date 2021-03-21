@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-20 Sat 20:39:47]
+#+LAST_MODIFIED: [2021-03-21 Sun 12:43:27]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -165,10 +165,8 @@ It's actually incredible how accurate this xckd comic is...
 - [[#gnuemacs-configuration][GNU/Emacs Configuration]]
   - [[#internal-configuration][Internal Configuration]]
     - [[#garbage-collector-hooks][Garbage Collector Hooks]]
-    - [[#package-management][Package Management]]
-    - [[#basic-ui-changes][Basic UI Changes]]
-    - [[#setup-personal-info][Setup Personal Info]]
-    - [[#environment-variable-override][Environment Variable Override]]
+    - [[#package-manager][Package Manager]]
+    - [[#basic-emacs-setup][Basic Emacs Setup]]
     - [[#disable-default-startup][Disable Default Startup]]
     - [[#modernize-selection-behaviour][Modernize Selection Behaviour]]
     - [[#disable-scroll-bar][Disable Scroll-Bar]]
@@ -185,7 +183,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#dired-customization][Dired Customization]]
     - [[#easy-pgp-assistant-epa][Easy PGP Assistant (EPA)]]
     - [[#auth-source-pass][Auth Source Pass]]
-  - [[#ui-customization][UI Customization]]
+  - [[#package-configuration][Package Configuration]]
     - [[#startup-dashboard][Startup Dashboard]]
     - [[#font-configuration][Font Configuration]]
     - [[#emojify][Emojify]]
@@ -210,6 +208,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#ivy-hydra][Ivy Hydra]]
       - [[#ivy-bibtex][Ivy Bibtex]]
       - [[#ivy-pass][Ivy Pass]]
+      - [[#counsel-projectile][Counsel Projectile]]
     - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
       - [[#helm][Helm]]
       - [[#helm-describe-bindings][Helm Describe Bindings]]
@@ -238,6 +237,8 @@ It's actually incredible how accurate this xckd comic is...
       - [[#language-server-protocol][Language Server Protocol]]
       - [[#python][Python]]
       - [[#ccjava][C/C++/Java]]
+      - [[#web-languages][Web Languages]]
+      - [[#markdown][Markdown]]
     - [[#company-auto-completion-for-programming-languages][Company Auto-Completion for Programming Languages]]
     - [[#flycheck-syntax-linter][Flycheck Syntax Linter]]
     - [[#projectile][Projectile]]
@@ -245,8 +246,6 @@ It's actually incredible how accurate this xckd comic is...
     - [[#magit-todos][Magit TODOs]]
     - [[#diff-hl-mode][Diff HL Mode]]
     - [[#forge][Forge]]
-    - [[#markdown-mode][Markdown Mode]]
-    - [[#web-mode][Web Mode]]
   - [[#org-mode][Org Mode]]
     - [[#better-font-faces-hook][Better Font Faces Hook]]
     - [[#mode-startup-hooks][Mode Startup Hooks]]
@@ -3554,9 +3553,6 @@ set highlight-transparency 0.75
 :header-args:emacs-lisp: :tangle ./init.el
 :END:
 ** Internal Configuration
-
-All configuration found under here use internal packages from within emacs. This is why they all have =:ensure nil= set.
-
 *** Garbage Collector Hooks
 
 Supposedly makes the startup a bit more effecient. We also revert the changes to the GC via a hook once the startup has completed.
@@ -3584,7 +3580,7 @@ Supposedly makes the startup a bit more effecient. We also revert the changes to
                                   (setq gc-cons-threshold zamlz/gc-cons-threshold)))
 #+end_src
 
-*** Package Management
+*** Package Manager
 
 Setup the package manager for use later on downstream.
 
@@ -3601,63 +3597,48 @@ Setup the package manager for use later on downstream.
   (package-refresh-contents)
   (package-install 'use-package))
 (eval-and-compile
-  (setq use-package-always-ensure t))
+  (setq use-package-always-ensure t)
+  (setq use-package-verbose t))
 #+end_src
 
-*** Basic UI Changes
+*** Basic Emacs Setup
 
 Lets get some basic settings out of the way here.
 
 #+begin_src emacs-lisp
 (use-package emacs
   :preface
+  ;; Setup personal preferances
   (defvar zamlz/indent-width 4)   ; tab size
   (defvar zamlz/default-screen-width 100)
   :config
+  ;; Configure personal information
+  (setq user-full-name "Amlesh Sivanantham"
+        user-mail-address "zamlz@pm.me"
+        user-login-name "zamlz")
+
+  ;; Other basic settings
   (setq ring-bell-function 'ignore       ; minimise distraction
         frame-resize-pixelwise t
         default-directory "~/")
 
+  ;; Set Environment Variables
+  (setenv "PINENTRY_USER_DATA" "rofi")
+  (setenv "VISUAL" "emacsclient --socket-name=xorg-emacs-daemon" )
+  (setenv "EDITOR" (getenv "VISUAL"))
+
+  ;; Configure Specific UI changes
   (tool-bar-mode -1)          ; Disable the toolbar
   (menu-bar-mode -1)          ; disable the menubar
-  ;; (tooltip-mode -1)           ; Disable tooltips
   (set-fringe-mode 10)        ; Give some breathing room
   (blink-cursor-mode 1)       ; Let the cursor be blinking
   (semantic-mode 1)
-
-  ;; better scrolling experience
-  (setq scroll-margin 0
-        scroll-conservatively 101 ; > 100
-        scroll-preserve-screen-position t
-        auto-window-vscroll nil)
+  ;; (tooltip-mode -1)           ; Disable tooltips
 
   ;; Always use spaces for indentation
   (setq-default indent-tabs-mode nil
                 tab-width zamlz/indent-width
                 fill-column zamlz/default-screen-width))
-#+end_src
-
-*** Setup Personal Info
-
-#+begin_src emacs-lisp
-(setq user-full-name "Amlesh Sivanantham")
-(setq user-mail-address "zamlz@pm.me")
-(setq user-login-name "zamlz")
-#+end_src
-
-*** Environment Variable Override
-
-Some environment variables should be overriden here. This is extremely important as I want certain program to behave differently if its being run from the emacs.
-
-#+begin_src emacs-lisp
-;; Makes sure that any connections to gpg-agent uses rofi as the pinentry program
-(setenv "PINENTRY_USER_DATA" "rofi")
-#+end_src
-
-#+begin_src emacs-lisp
-;; Inside emacs, we want the editor to open within the running emacs itself
-(setenv "VISUAL" "emacsclient --socket-name=xorg-emacs-daemon" )
-(setenv "EDITOR" (getenv "VISUAL"))
 #+end_src
 
 *** Disable Default Startup
@@ -3685,7 +3666,14 @@ Replaces active region just by typing text (is this true in visual mode as well?
 #+begin_src emacs-lisp
 (use-package scroll-bar
   :ensure nil
-  :config (scroll-bar-mode -1))
+  :config
+  ;; better scrolling experience
+  (setq scroll-margin 0
+        scroll-conservatively 101 ; > 100
+        scroll-preserve-screen-position t
+        auto-window-vscroll nil)
+  ;; Don't display the scroll bar in buffers
+  (scroll-bar-mode -1))
 #+end_src
 
 *** Enable Column Numbers
@@ -3697,11 +3685,11 @@ Replaces active region just by typing text (is this true in visual mode as well?
   (column-number-mode +1)
   (global-display-line-numbers-mode t))
 
-;; DONT display line numbers in certain modes
-(dolist (mode '(term-mode-hook
-                shell-mode-hook
-                eshell-mode-hook
-                vterm-mode-hook))
+  ;; DONT display line numbers in certain modes
+  (dolist (mode '(term-mode-hook
+                  shell-mode-hook
+                  eshell-mode-hook
+                  vterm-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
@@ -3853,7 +3841,7 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
   :init (auth-source-pass-enable))
 #+end_src
 
-** UI Customization
+** Package Configuration
 *** Startup Dashboard
 
 The default landing page isn't quite nice. I originally had it configured to display the scratch page, but then I really wanted like a menu to quickly access my stuff.
@@ -3865,15 +3853,16 @@ The default landing page isn't quite nice. I originally had it configured to dis
 ;; Enable custom dashboard
 (use-package dashboard
   :ensure t
+  :custom
+  (dashboard-startup-banner "~/lib/emacs-themes/navi.png")
+  (dashboard-center-content t)
+  (dashboard-set-heading-icons t)
+  (dashboard-set-file-icons t)
+  (dashboard-set-navigator t)
+  (dashboard-set-init-info t)
+  (initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
+  (dashboard-items '())
   :config
-  (setq dashboard-startup-banner "~/lib/emacs-themes/navi.png")
-  (setq dashboard-center-content t)
-  (setq dashboard-set-heading-icons t)
-  (setq dashboard-set-file-icons t)
-  (setq dashboard-set-navigator t)
-  (setq dashboard-set-init-info t)
-  (setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
-  (setq dashboard-items '())
   (dashboard-modify-heading-icons '((bookmarks . "book")))
   (dashboard-setup-startup-hook))
 #+end_src
@@ -3904,9 +3893,8 @@ I have a lot of fonts commented out right now because I can't decide on which on
 Display emojis within emacs thanks to [[https://github.com/iqbalansari/emacs-emojify][github:iqbalansari/emacs-emojify]].
 
 #+begin_src emacs-lisp
-(use-package emojify
-  ;; :hook (after-init . global-emojify-mode)
-  )
+(use-package emojify)
+  ;; :hook (after-init . global-emojify-mode))
 #+end_src
 
 *** Keybinding Configuration
@@ -3914,6 +3902,8 @@ Display emojis within emacs thanks to [[https://github.com/iqbalansari/emacs-emo
 Former vim user and the best thing about vim is the keybindings. It's a good thing that there are so many evil packages in emacs.
 
 **** ESC should save the day
+
+This really doesn't do what I think it does...
 
 #+begin_src emacs-lisp
 (global-set-key (kbd "<escape>") 'keyboard-escape-quit)
@@ -3925,7 +3915,6 @@ This is the core of =Evil-Mode=. This basicallly adds the modal functionality to
 
 #+begin_src emacs-lisp
 (use-package evil
-  :ensure t
   :init (setq evil-want-keybinding nil)
   :config
   (evil-mode 1)
@@ -3958,7 +3947,6 @@ Unfortunately, =Evil-Mode= is only enabled in text buffers. This means that in s
 #+begin_src emacs-lisp
 (use-package evil-collection
   :after evil
-  :ensure t
   :config (evil-collection-init))
 #+end_src
 
@@ -3992,7 +3980,7 @@ Spawns a simple UI panel that shows available keybindings based on what keys I'v
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
-  :config (setq which-key-idle-delay 1.0))
+  :custom (which-key-idle-delay 1.0))
 #+end_src
 
 **** General Keybinder
@@ -4055,6 +4043,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 (use-package ivy
   :defer 0.1
   :diminish
+  :after hydra
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -4073,7 +4062,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   ;; Don't start searches with ^
   (ivy-initial-inputs-alist nil)
   ;; Show recentf files in buffer switch
-  (ivy-use-virtual-buffers nil)
+  (ivy-use-virtual-buffers t)
   ;; Show the full virtual file paths
   (ivy-virtual-abbreviate 'full)
   ;; Change completion method (not working as expected)
@@ -4082,8 +4071,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
   (ivy-height 20)
-  :config (ivy-mode)
-  :after hydra)
+  :config (ivy-mode))
 #+end_src
 
 **** Counsel
@@ -4116,11 +4104,9 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 
 #+begin_src emacs-lisp
 (use-package swiper
-  :bind (
-         ("C-s"   . swiper)
-         ("C-M-s" . swiper-all)
-         )
-  :after (counsel))
+  :after counsel
+  :bind (("C-s"   . swiper)
+         ("C-M-s" . swiper-all)))
 #+end_src
 
 **** Ivy Rich
@@ -4183,9 +4169,9 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
 
 #+begin_src emacs-lisp
 (use-package ivy-bibtex
+  :after ivy
   :bind (("C-c n p"   . ivy-bibtex)
          ("C-c n C-p" . ivy-bibtex-with-notes))
-  :after ivy
   :custom
   (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
   (bibtex-completion-library-path '("~/org/papers/pdfs/"))
@@ -4201,8 +4187,18 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
 
 #+begin_src emacs-lisp
 (use-package ivy-pass
-  :bind ("C-x C-p" . ivy-pass)
-  :after ivy)
+  :after ivy
+  :bind ("C-x C-p" . ivy-pass))
+#+end_src
+
+**** Counsel Projectile
+
+Provides counsel interface for projectile.
+
+#+begin_src emacs-lisp
+(use-package counsel-projectile
+  :after counsel
+  :init (counsel-projectile-mode))
 #+end_src
 
 *** Helm Incremental Completion Framework
@@ -4352,8 +4348,8 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helm-pass
-  ;; :bind ("C-x C-p" . helm-pass)
   :after helm)
+  ;; :bind ("C-x C-p" . helm-pass))
 #+end_src
 
 *** Helpful Help Commands
@@ -4362,9 +4358,9 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helpful
-  :ensure t
-  ; This is only needed if I'm still using counsel
+  :after counsel
   :custom
+  ; This is only needed if I'm still using counsel
   (counsel-describe-function-function #'helpful-callable)
   (counsel-describe-variable-function #'helpful-variable)
   :bind
@@ -4389,7 +4385,6 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
 (use-package all-the-icons)
 
 (use-package doom-modeline
-  :ensure t
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
 #+end_src
@@ -4551,6 +4546,31 @@ Sets the formatting style for C/C++/Java from GNU (default) to the popular stand
                           (other . "k&r"))))
 #+end_src
 
+**** Web Languages
+
+Useful mode for editing web based files
+
+#+begin_src emacs-lisp
+(use-package web-mode
+  :mode (("\\.html?\\'" . web-mode)
+         ("\\.css\\'"   . web-mode)
+         ("\\.jsx?\\'"  . web-mode)
+         ("\\.tsx?\\'"  . web-mode)
+         ("\\.json\\'"  . web-mode))
+  :custom
+  (web-mode-markup-indent-offset 2) ; HTML
+  (web-mode-css-indent-offset 2)    ; CSS
+  (web-mode-code-indent-offset 2)   ; JS/JSX/TS/TSX
+  (web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
+#+end_src
+
+**** Markdown
+
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :hook (markdown-mode . visual-line-mode))
+#+end_src
+
 *** Company Auto-Completion for Programming Languages
 
 Use =C-n= and =C-p= to navigate tooltip
@@ -4588,17 +4608,14 @@ Provides useful integration to a variety of project formats. Able to automatical
 #+begin_src emacs-lisp
 (use-package projectile
   :diminish projectile-mode
-  :config (projectile-mode)
-  :custom ((projectile-completion-system 'ivy))
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
   (when (file-directory-p "~/src")
-(setq projectile-project-search-path '("~/src")))
-  (setq projectile-switch-project-action #'projectile-dired))
-
-(use-package counsel-projectile
-  :config (counsel-projectile-mode))
+    (setq projectile-project-search-path '("~/src")))
+  (setq projectile-switch-project-action #'projectile-dired)
+  :custom (projectile-completion-system 'ivy)
+  :config (projectile-mode))
 #+end_src
 
 *** Magit Git Interface
@@ -4608,7 +4625,7 @@ Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
 #+begin_src emacs-lisp
 (use-package magit
   :bind ("C-x g" . magit-status)
-  :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
+  :hook (with-editor-mode evil-insert-state))
 #+end_src
 
 *** Magit TODOs
@@ -4634,31 +4651,6 @@ Package provides integration to upstream GitHub, GitLab APIs and more. Setting t
 
 #+begin_src emacs-lisp
 ;; (use-package forge)
-#+end_src
-
-*** Markdown Mode
-
-#+begin_src emacs-lisp
-(use-package markdown-mode
-  :hook (markdown-mode . visual-line-mode))
-#+end_src
-
-*** Web Mode
-
-Useful mode for editing web based files
-
-#+begin_src emacs-lisp
-(use-package web-mode
-  :mode (("\\.html?\\'" . web-mode)
-         ("\\.css\\'"   . web-mode)
-         ("\\.jsx?\\'"  . web-mode)
-         ("\\.tsx?\\'"  . web-mode)
-         ("\\.json\\'"  . web-mode))
-  :config
-  (setq web-mode-markup-indent-offset 2) ; HTML
-  (setq web-mode-css-indent-offset 2)    ; CSS
-  (setq web-mode-code-indent-offset 2)   ; JS/JSX/TS/TSX
-  (setq web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
 #+end_src
 
 ** Org Mode
