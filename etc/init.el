@@ -313,47 +313,58 @@
   :custom
   (ivy-count-format "(%d/%d) ")
   ;; Show recentf files in buffer switch
-  (ivy-use-virtual-buffers t)
+  (ivy-use-virtual-buffers nil)
+  ;; Show the full virtual file paths
+  (ivy-virtual-abbreviate 'full)
   ;; Change completion method (not working as expected)
   (ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
   ;; Avoid displaying things like "./" and "../" in the list
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
   (ivy-height 20)
-  ;; :config (ivy-mode)
+  :config
+  ;; Add some extra useful actions to ivy menus
+  (ivy-add-actions t
+                   '(("W" kill-new "save to kill ring")
+                     ("I" insert "insert in buffer")))
+  (ivy-mode)
   )
 
 (use-package counsel
   :after ivy
-  ;; :bind (
-  ;;        ("M-x"       . counsel-M-x)
-  ;;        ("M-y"       . counsel-yank-pop)
-  ;;        ("C-x b"     . counsel-switch-buffer)
-  ;;        ("C-x B"     . counsel-switch-buffer-other-window)
-  ;;        ("C-x C-f"   . counsel-find-file)
-  ;;        ("C-x C-M-f" . counsel-find-file-extern)
-  ;;        ("C-x C-l"   . counsel-locate)
-  ;;        ("C-x C-M-l" . counsel-locate-action-extern)
-  ;;        ("C-x TAB"   . counsel-semantic-or-imenu)
-  ;;        ("C-x C-v"   . counsel-set-variable)
-  ;;        :map minibuffer-local-map
-  ;;        ("C-r"       . 'counsel-minibuffer-history))
-  ;; :config (counsel-mode)
+  :bind (
+         ("M-x"       . counsel-M-x)
+         ("C-M-y"     . counsel-yank-pop)
+         ("C-x b"     . counsel-switch-buffer)
+         ("C-x B"     . counsel-switch-buffer-other-window)
+         ("M-o"       . counsel-recentf)
+         ("C-x C-f"   . counsel-find-file)
+         ("C-x C-M-f" . counsel-find-file-extern)
+         ("C-x C-l"   . counsel-locate)
+         ("C-x C-M-l" . counsel-locate-action-extern)
+         ("C-x TAB"   . counsel-semantic-or-imenu)
+         ("C-x C-v"   . counsel-set-variable)
+         ("C-c u"     . counsel-unicode-char)
+         :map minibuffer-local-map
+         ("C-r"       . 'counsel-minibuffer-history))
+  :config (counsel-mode)
   )
 
 (use-package swiper
-  :after (counsel helm)
-  :bind (("C-s" . swiper))
-  )
+  :bind (
+         ("C-s"   . swiper)
+         ("C-M-s" . swiper-all)
+         )
+  :after (counsel))
 
 ;; Adds nice icons to the ivy rich buffer
 (use-package all-the-icons-ivy-rich
-  :after counsel-projectile
+  :after (counsel counsel-projectile)
   :init (all-the-icons-ivy-rich-mode 1))
 
 ;; Actually install ivy rich
 (use-package ivy-rich
-  :after (ivy all-the-icons-ivy-rich)
+  :after (counsel all-the-icons-ivy-rich)
   :init (ivy-rich-mode 1))
 
 ;; (use-package ivy-posframe
@@ -373,46 +384,42 @@
 ;;   :init
 ;;   (ivy-posframe-mode 1))
 
-;; (use-package ivy-hydra
-;;   :after ivy)
+(use-package ivy-hydra
+  :after ivy)
 
-;; (use-package ivy-bibtex
-;;   :bind (("C-c n p"   . ivy-bibtex)
-;;          ("C-c n C-p" . ivy-bibtex-with-notes))
-;;   :after ivy
-;;   :custom
-;;   ;; Currently this points to my old pubs paper archive
-;;   (bibtex-completion-bibliography `((,(directory-files-recursively "~/usr/papers_old/bib/" ""))))
-;;   (bibtex-completion-library-path '("~/usr/papers_old/doc/"))
-;;   ;; Store my paper notes alongside my roam notes stuff
-;;   (bibtex-completion-notes-path "~/org/papers/")
-;;   ;; ;; Change th display function based on the type
-;;   ;; (bibtex-completion-display-formats
-;;   ;;   '((article       . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${journal:40}")
-;;   ;;     (inbook        . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} Chapter ${chapter:32}")
-;;   ;;     (incollection  . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
-;;   ;;     (inproceedings . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*} ${booktitle:40}")
-;;   ;;     (t             . "${=has-pdf=:1}${=has-note=:1} ${=type=:6} ${year:4} ${author:26} ${title:*}")))
-;;   ;; TODO Use bibtex-completion-additional-search-fields
-;;   ;; Style the output indicators
-;;   (bibtex-completion-pdf-symbol "⌘")
-;;   (bibtex-completion-notes-symbol "✎"))
+(use-package ivy-bibtex
+  :bind (("C-c n p"   . ivy-bibtex)
+         ("C-c n C-p" . ivy-bibtex-with-notes))
+  :after ivy
+  :custom
+  (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
+  (bibtex-completion-library-path '("~/org/papers/pdfs/"))
+  (bibtex-completion-notes-path "~/org/papers/")
+  ;; Style the output indicators
+  (bibtex-completion-pdf-symbol "⌘")
+  (bibtex-completion-notes-symbol "✎")
+  ;; TODO Use bibtex-completion-additional-search-fields
+  )
+
+(use-package ivy-pass
+  :bind ("C-x C-p" . ivy-pass)
+  :after ivy)
 
 (use-package helm
   :bind (
-         ("M-x"     . helm-M-x)
+  ;;        ("M-x"     . helm-M-x)
          ("M-y"     . helm-show-kill-ring)
-         ("C-x b"   . helm-mini)
-         ("C-x C-f" . helm-find-files)
-         ("C-x C-l" . helm-locate)
-         ("C-x r b" . helm-bookmarks)
-         ;; ("C-c h"   . helm-command-prefix)
-         ("C-x TAB" . helm-semantic-or-imenu)
-         ("C-s"     . helm-occur)
-         :map helm-map
-         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
-         ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
-         ("C-z"   . helm-select-action) ; list actions using C-z
+  ;;        ("C-x b"   . helm-mini)
+  ;;        ("C-x C-f" . helm-find-files)
+  ;;        ("C-x C-l" . helm-locate)
+  ;;        ("C-x r b" . helm-bookmarks)
+  ;;        ;; ("C-c h"   . helm-command-prefix)
+  ;;        ("C-x TAB" . helm-semantic-or-imenu)
+  ;;        ("C-s"     . helm-occur)
+  ;;        :map helm-map
+  ;;        ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+  ;;        ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
+  ;;        ("C-z"   . helm-select-action) ; list actions using C-z
          )
   :custom
   ; max height for the helm buffer
@@ -443,7 +450,7 @@
   (when (executable-find "curl")
     (setq helm-google-suggest-use-curl-p t))
   (helm-autoresize-mode 1)
-  (helm-mode 1)
+  ;; (helm-mode 1)
   )
 
 ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
@@ -452,28 +459,28 @@
 (global-set-key (kbd "C-c h") 'helm-command-prefix)
 (global-unset-key (kbd "C-x c"))
 
-(use-package helm-descbinds
-  :bind ([remap describe-bindings] . helm-descbinds))
+;; (use-package helm-descbinds
+;;   :bind ([remap describe-bindings] . helm-descbinds))
 
-(use-package helm-describe-modes
-  ;; This is just bound to "C-h m"
-  :bind ([remap describe-mode] . helm-describe-modes))
+;; (use-package helm-describe-modes
+;;   ;; This is just bound to "C-h m"
+;;   :bind ([remap describe-mode] . helm-describe-modes))
 
-(use-package helm-bibtex
-  :after helm
-  :custom
-  ;; Helm specific UI changes
-  (helm-bibtex-full-frame nil)
-  ;; Currently this points to my old pubs paper archive
-  (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
-  (bibtex-completion-library-path '("~/org/papers/pdfs/"))
-  ;; Store my paper notes alongside my roam notes stuff
-  (bibtex-completion-notes-path "~/org/papers/")
-  ;; Style the output indicators
-  (bibtex-completion-pdf-symbol "⌘")
-  (bibtex-completion-notes-symbol "✎")
-  ;; TODO Use bibtex-completion-additional-search-fields
-  )
+;; (use-package helm-bibtex
+;;   :after helm
+;;   :custom
+;;   ;; Helm specific UI changes
+;;   (helm-bibtex-full-frame nil)
+;;   ;; Currently this points to my old pubs paper archive
+;;   (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
+;;   (bibtex-completion-library-path '("~/org/papers/pdfs/"))
+;;   ;; Store my paper notes alongside my roam notes stuff
+;;   (bibtex-completion-notes-path "~/org/papers/")
+;;   ;; Style the output indicators
+;;   (bibtex-completion-pdf-symbol "⌘")
+;;   (bibtex-completion-notes-symbol "✎")
+;;   ;; TODO Use bibtex-completion-additional-search-fields
+;;   )
 
 (use-package helm-dictionary
   :after helm
@@ -486,12 +493,13 @@
   :after helm
   :bind (("C-c h C-t" . helm-themes)))
 
-(use-package helm-spotify-plus
-  :after helm
-  :bind ("C-c h C-s" . helm-spotify-plus))
+;; (use-package helm-spotify-plus
+;;   :after helm
+;;   :bind ("C-c h C-s" . helm-spotify-plus))
 
 (use-package helm-pass
-  :bind ("C-x C-p" . helm-pass))
+  ;; :bind ("C-x C-p" . helm-pass)
+  :after helm)
 
 (use-package helpful
   :ensure t
