@@ -992,7 +992,7 @@
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "infrastructure/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "infra/%<%Y%m%d%H%M%S>-${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: INFRASTRUCTURE\n"
@@ -1009,6 +1009,17 @@
                         "#+ROAM_ALIAS:\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
+         :unnarrowed t)
+        ("t" "talks/lectures" plain (function org-roam--capture-get-point)
+         "\n%?"
+         :file-name "talks/%<%Y%m%d%H%M%S>-${slug}"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
+                        "#+ROAM_TAGS: TALK\n"
+                        "#+ROAM_ALIAS:\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+ROAM_KEY: %x\n")
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
