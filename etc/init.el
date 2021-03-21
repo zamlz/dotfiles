@@ -297,7 +297,6 @@
 (use-package ivy
   :defer 0.1
   :diminish
-  :after hydra
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -311,7 +310,10 @@
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
   :custom
-  (ivy-count-format "(%d/%d) ")
+  ;; Default count format
+  (ivy-count-format "[%d/%d] ")
+  ;; Don't start searches with ^
+  (ivy-initial-inputs-alist nil)
   ;; Show recentf files in buffer switch
   (ivy-use-virtual-buffers nil)
   ;; Show the full virtual file paths
@@ -322,13 +324,8 @@
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
   (ivy-height 20)
-  :config
-  ;; Add some extra useful actions to ivy menus
-  (ivy-add-actions t
-                   '(("W" kill-new "save to kill ring")
-                     ("I" insert "insert in buffer")))
-  (ivy-mode)
-  )
+  :config (ivy-mode)
+  :after hydra)
 
 (use-package counsel
   :after ivy
@@ -365,6 +362,14 @@
 ;; Actually install ivy rich
 (use-package ivy-rich
   :after (counsel all-the-icons-ivy-rich)
+  :custom
+  (ivy-virtual-abbreviate 'full
+                          ivy-rich-switch-buffer-align-virtual-buffer t
+                          ivy-rich-path-style 'abbrev)
+  :config
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+  (ivy-set-display-transformer 'ivy-switch-buffer
+                               'ivy-rich-switch-buffer-transformer)
   :init (ivy-rich-mode 1))
 
 ;; (use-package ivy-posframe
