@@ -39,22 +39,20 @@
   ;; Setup personal preferances
   (defvar zamlz/indent-width 4)   ; tab size
   (defvar zamlz/default-screen-width 100)
-  :config
+  :custom
   ;; Configure personal information
-  (setq user-full-name "Amlesh Sivanantham"
-        user-mail-address "zamlz@pm.me"
-        user-login-name "zamlz")
-
+  (user-full-name "Amlesh Sivanantham")
+  (user-mail-address "zamlz@pm.me")
+  (user-login-name "zamlz")
   ;; Other basic settings
-  (setq ring-bell-function 'ignore       ; minimise distraction
-        frame-resize-pixelwise t
-        default-directory "~/")
-
+  (ring-bell-function 'ignore) ; minimise distractio
+  (frame-resize-pixelwise t)
+  (default-directory "~/")
+  :config
   ;; Set Environment Variables
   (setenv "PINENTRY_USER_DATA" "rofi")
   (setenv "VISUAL" "emacsclient --socket-name=xorg-emacs-daemon" )
   (setenv "EDITOR" (getenv "VISUAL"))
-
   ;; Configure Specific UI changes
   (tool-bar-mode -1)          ; Disable the toolbar
   (menu-bar-mode -1)          ; disable the menubar
@@ -62,7 +60,6 @@
   (blink-cursor-mode 1)       ; Let the cursor be blinking
   (semantic-mode 1)
   ;; (tooltip-mode -1)           ; Disable tooltips
-
   ;; Always use spaces for indentation
   (setq-default indent-tabs-mode nil
                 tab-width zamlz/indent-width
@@ -70,7 +67,7 @@
 
 (use-package "startup"
   :ensure nil
-  :config (setq inhibit-startup-screen t))
+  :custom (inhibit-startup-screen t))
 
 (use-package delsel
   :ensure nil
@@ -78,12 +75,13 @@
 
 (use-package scroll-bar
   :ensure nil
-  :config
+  :custom
   ;; better scrolling experience
-  (setq scroll-margin 0
-        scroll-conservatively 101 ; > 100
-        scroll-preserve-screen-position t
-        auto-window-vscroll nil)
+  (scroll-margin 0)
+  (scroll-conservatively 101) ; > 100
+  (scroll-preserve-screen-position t)
+  (auto-window-vscroll nil)
+  :config
   ;; Don't display the scroll bar in buffers
   (scroll-bar-mode -1))
 
@@ -119,33 +117,35 @@
 
 (use-package files
   :ensure nil
-  :config
-  (setq create-lockfiles nil ; don't create .# files (crashes 'npm start')
-        backup-directory-alist `(("." . "~/.emacs.d/backup"))))
+  :custom
+  (create-lockfiles nil) ; don't create .# files (crashes 'npm start')
+  (backup-directory-alist `(("." . "~/.emacs.d/backup"))))
 
 (use-package autorevert
   :ensure nil
   :config
-  (global-auto-revert-mode +1)
-  (setq auto-revert-interval 2
-        auto-revert-check-vc-info t
-        global-auto-revert-non-file-buffers t
-        auto-revert-verbose nil))
+  (auto-revert-interval 2)
+  (auto-revert-check-vc-info t)
+  (global-auto-revert-non-file-buffers t)
+  (auto-revert-verbose nil)
+  :config
+  (global-auto-revert-mode +1))
 
 (use-package eldoc
   :ensure nil
   :diminish eldoc-mode
-  :config
-  (setq eldoc-idle-delay 0.4))
+  :custom
+  (eldoc-idle-delay 0.4))
 
 (use-package mwheel
   :ensure nil
-  :config (setq mouse-wheel-scroll-amount '(2 ((shift) . 1))
-                mouse-wheel-progressive-speed nil))
+  :custom
+  (mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+  (mouse-wheel-progressive-speed nil))
 
 (use-package paren
   :ensure nil
-  :init (setq show-paren-delay 0)
+  :custom (show-paren-delay 0)
   :config (show-paren-mode +1))
 
 (use-package elec-pair
@@ -164,8 +164,7 @@
 
 (use-package cus-edit
   :ensure nil
-  :config
-  (setq custom-file (concat user-emacs-directory "to-be-dumped.el")))
+  :custom (custom-file (concat user-emacs-directory "to-be-dumped.el")))
 
 (use-package dired
   :ensure nil
@@ -187,9 +186,6 @@
 (use-package auth-source-pass
   :ensure nil
   :init (auth-source-pass-enable))
-
-;; no default startup screen!
-;; (setq inhibit-startup-message t)
 
 ;; Enable custom dashboard
 (use-package dashboard
@@ -318,7 +314,7 @@
   ;; Don't start searches with ^
   (ivy-initial-inputs-alist nil)
   ;; Show recentf files in buffer switch
-  (ivy-use-virtual-buffers t)
+  (ivy-use-virtual-buffers nil)
   ;; Show the full virtual file paths
   (ivy-virtual-abbreviate 'full)
   ;; Change completion method (not working as expected)
