@@ -668,7 +668,7 @@
 
 (use-package magit
   :bind ("C-x g" . magit-status)
-  :hook (with-editor-mode evil-insert-state))
+  :config (add-hook 'with-editor-mode-hook #'evil-insert-state))
 
 (use-package magit-todos
   :after magit
