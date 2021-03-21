@@ -1058,6 +1058,12 @@
   :init
   (org-roam-server-mode))
 
+(use-package pdf-tools
+  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
+  :custom
+  (pdf-view-midnight-colors '("#ebdbb2" . "#000000"))
+  :init (pdf-tools-install))
+
 (use-package vterm
   :custom
   ;; (vterm-shell "/bin/fish")

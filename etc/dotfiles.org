@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-20 Sat 17:43:28]
+#+LAST_MODIFIED: [2021-03-20 Sat 20:39:47]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -274,6 +274,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#roam-quick-access][Roam Quick Access]]
     - [[#roam-server][Roam Server]]
   - [[#misc-packages][Misc Packages]]
+    - [[#pdf-tools][PDF Tools]]
     - [[#vterm][Vterm]]
     - [[#ledger][Ledger]]
     - [[#beancount][Beancount]]
@@ -5171,6 +5172,18 @@ It is made available like so.
 #+end_src
 
 ** Misc Packages
+*** PDF Tools
+
+A nice standalone replacement for DocView.
+
+#+begin_src emacs-lisp
+(use-package pdf-tools
+  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
+  :custom
+  (pdf-view-midnight-colors '("#ebdbb2" . "#000000"))
+  :init (pdf-tools-install))
+#+end_src
+
 *** Vterm
 
 Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
