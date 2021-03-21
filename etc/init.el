@@ -1084,6 +1084,6 @@
 
 (use-package xkcd)
 
-(use-package wttri
+(use-package wttrin
   :custom
   (wttrin-default-cities '("Union City, CA")))

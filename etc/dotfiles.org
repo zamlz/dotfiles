@@ -5231,7 +5231,7 @@ A simple plugin for getting the today's xkcd comic.
 A frontend for [[http://wttr.in/][wttr.in]].
 
 #+begin_src emacs-lisp
-(use-package wttri
+(use-package wttrin
   :custom
   (wttrin-default-cities '("Union City, CA")))
 #+end_src
