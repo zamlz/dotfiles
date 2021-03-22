@@ -295,9 +295,8 @@
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 (use-package ivy
-  :defer 0.1
-  :diminish
   :after hydra
+  :init (ivy-mode)
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -324,8 +323,7 @@
   ;; Avoid displaying things like "./" and "../" in the list
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
-  (ivy-height 20)
-  :config (ivy-mode))
+  (ivy-height 20))
 
 (use-package counsel
   :after ivy

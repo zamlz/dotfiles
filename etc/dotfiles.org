@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-21 Sun 18:12:24]
+#+LAST_MODIFIED: [2021-03-21 Sun 22:16:53]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -4039,9 +4039,8 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 
 #+begin_src emacs-lisp
 (use-package ivy
-  :defer 0.1
-  :diminish
   :after hydra
+  :init (ivy-mode)
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -4068,8 +4067,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   ;; Avoid displaying things like "./" and "../" in the list
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
-  (ivy-height 20)
-  :config (ivy-mode))
+  (ivy-height 20))
 #+end_src
 
 **** Counsel
