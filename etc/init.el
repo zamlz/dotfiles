@@ -331,15 +331,16 @@
   :after ivy
   :bind (
          ("M-x"       . counsel-M-x)
-         ("C-M-y"     . counsel-yank-pop)
-         ("C-x b"     . counsel-switch-buffer)
-         ("C-x B"     . counsel-switch-buffer-other-window)
+         ("M-TAB"     . counsel-semantic-or-imenu)
+         ("M-b"       . counsel-switch-buffer)
+         ("M-y"       . counsel-yank-pop)
          ("M-o"       . counsel-recentf)
+         ("M-m"       . counsel-evil-marks)
+         ("C-x b"     . counsel-switch-buffer-other-window)
          ("C-x C-f"   . counsel-find-file)
          ("C-x C-M-f" . counsel-find-file-extern)
          ("C-x C-l"   . counsel-locate)
          ("C-x C-M-l" . counsel-locate-action-extern)
-         ("C-x TAB"   . counsel-semantic-or-imenu)
          ("C-x C-v"   . counsel-set-variable)
          ("C-c u"     . counsel-unicode-char)
          :map minibuffer-local-map
@@ -410,12 +411,13 @@
 
 (use-package counsel-projectile
   :after counsel
+  :bind ("M-p" . counsel-projectile-switch-project)
   :init (counsel-projectile-mode))
 
 (use-package helm
   :bind (
   ;;        ("M-x"     . helm-M-x)
-         ("M-y"     . helm-show-kill-ring)
+  ;;        ("M-y"     . helm-show-kill-ring)
   ;;        ("C-x b"   . helm-mini)
   ;;        ("C-x C-f" . helm-find-files)
   ;;        ("C-x C-l" . helm-locate)
