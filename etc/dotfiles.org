@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-21 Sun 22:16:53]
+#+LAST_MODIFIED: [2021-03-21 Sun 23:03:34]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -193,6 +193,9 @@ It's actually incredible how accurate this xckd comic is...
       - [[#evil-collection][Evil Collection]]
       - [[#evil-commentary][Evil Commentary]]
       - [[#evil-org][Evil Org]]
+      - [[#evil-visual-marks][Evil Visual Marks]]
+      - [[#evil-fringe-marks][Evil Fringe Marks]]
+      - [[#evil-goggles][Evil Goggles]]
       - [[#which-key][Which Key]]
       - [[#general-keybinder][General Keybinder]]
       - [[#hydra][Hydra]]
@@ -208,6 +211,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#ivy-hydra][Ivy Hydra]]
       - [[#ivy-bibtex][Ivy Bibtex]]
       - [[#ivy-pass][Ivy Pass]]
+      - [[#ivy-prescient][Ivy Prescient]]
       - [[#counsel-projectile][Counsel Projectile]]
     - [[#helm-incremental-completion-framework][Helm Incremental Completion Framework]]
       - [[#helm][Helm]]
@@ -219,6 +223,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#helm-themes][Helm Themes]]
       - [[#helm-spotify-plus][Helm Spotify Plus]]
       - [[#helm-pass][Helm Pass]]
+    - [[#prescient][Prescient]]
     - [[#helpful-help-commands][Helpful Help Commands]]
     - [[#themes-and-appearance][Themes and Appearance]]
       - [[#modeline][Modeline]]
@@ -3970,6 +3975,38 @@ Adds keybindings for quick commenting. Use =gcc= to comment out a line, use =gca
   (evil-org-agenda-set-keys))
 #+end_src
 
+**** Evil Visual Marks
+
+#+begin_src emacs-lisp
+(use-package evil-visual-mark-mode
+  :after evil)
+  ;; :init (evil-visual-mark-mode))
+#+end_src
+
+**** Evil Fringe Marks
+
+#+begin_src emacs-lisp
+(use-package evil-fringe-mark
+  :after evil
+  :custom
+  ;; (right-fringe-width 16)
+  (evil-fringe-mark-side 'right-fringe)
+  (evil-fringe-mark-show-special t)
+  :config
+  (global-evil-fringe-mark-mode))
+#+end_src
+
+**** Evil Goggles
+
+All evil operations now have visual hints.
+
+#+begin_src emacs-lisp
+(use-package evil-goggles
+  :after evil
+  :init (evil-goggles-mode)
+  :config (evil-goggles-use-diff-faces))
+#+end_src
+
 **** Which Key
 
 Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
@@ -4188,6 +4225,13 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
   :bind ("C-x C-p" . ivy-pass))
 #+end_src
 
+**** Ivy Prescient
+
+#+begin_src emacs-lisp
+(use-package ivy-prescient
+  :after (ivy prescient))
+#+end_src
+
 **** Counsel Projectile
 
 Provides counsel interface for projectile.
@@ -4347,6 +4391,14 @@ A useful package for figuring out what bindings there is in a particular major/m
 (use-package helm-pass
   :after helm)
   ;; :bind ("C-x C-p" . helm-pass))
+#+end_src
+
+*** Prescient
+
+Simple but effective sorting and filtering for emacs completion buffers.
+
+#+begin_src emacs-lisp
+(use-package prescient)
 #+end_src
 
 *** Helpful Help Commands

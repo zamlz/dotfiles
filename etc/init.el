@@ -266,6 +266,24 @@
   (require 'evil-org-agenda)
   (evil-org-agenda-set-keys))
 
+(use-package evil-visual-mark-mode
+  :after evil)
+  ;; :init (evil-visual-mark-mode))
+
+(use-package evil-fringe-mark
+  :after evil
+  :custom
+  ;; (right-fringe-width 16)
+  (evil-fringe-mark-side 'right-fringe)
+  (evil-fringe-mark-show-special t)
+  :config
+  (global-evil-fringe-mark-mode))
+
+(use-package evil-goggles
+  :after evil
+  :init (evil-goggles-mode)
+  :config (evil-goggles-use-diff-faces))
+
 (use-package which-key
   :init (which-key-mode)
   :diminish which-key-mode
@@ -407,6 +425,9 @@
   :after ivy
   :bind ("C-x C-p" . ivy-pass))
 
+(use-package ivy-prescient
+  :after (ivy prescient))
+
 (use-package counsel-projectile
   :after counsel
   :bind ("C-x p" . counsel-projectile-switch-project)
@@ -506,6 +527,8 @@
 (use-package helm-pass
   :after helm)
   ;; :bind ("C-x C-p" . helm-pass))
+
+(use-package prescient)
 
 (use-package helpful
   :after counsel
