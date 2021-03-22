@@ -329,12 +329,12 @@
   :after ivy
   :bind (
          ("M-x"       . counsel-M-x)
-         ("M-TAB"     . counsel-semantic-or-imenu)
-         ("M-b"       . counsel-switch-buffer)
+         ("C-x TAB"   . counsel-semantic-or-imenu)
+         ("C-x b"     . counsel-switch-buffer)
          ("M-y"       . counsel-yank-pop)
          ("M-o"       . counsel-recentf)
          ("M-m"       . counsel-evil-marks)
-         ("C-x b"     . counsel-switch-buffer-other-window)
+         ("C-x B"     . counsel-switch-buffer-other-window)
          ("C-x C-f"   . counsel-find-file)
          ("C-x C-M-f" . counsel-find-file-extern)
          ("C-x C-l"   . counsel-locate)
@@ -409,7 +409,7 @@
 
 (use-package counsel-projectile
   :after counsel
-  :bind ("M-p" . counsel-projectile-switch-project)
+  :bind ("C-x p" . counsel-projectile-switch-project)
   :init (counsel-projectile-mode))
 
 (use-package helm
