@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-24 Wed 11:20:24]
+#+LAST_MODIFIED: [2021-03-24 Wed 12:14:41]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -4078,8 +4078,12 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 
 #+begin_src emacs-lisp
 (use-package ivy
-  :after hydra
-  :init (ivy-mode)
+  :defer 0.1
+  :init
+  ;; Change completion method (not working as expected)
+  ;; This needs to be in the init it seems othrewise, it doesn't get loaded...
+  (setq ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
+  (ivy-mode)
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -4101,8 +4105,6 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   (ivy-use-virtual-buffers nil)
   ;; Show the full virtual file paths
   (ivy-virtual-abbreviate 'full)
-  ;; Change completion method (not working as expected)
-  (ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
   ;; Avoid displaying things like "./" and "../" in the list
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
@@ -4198,7 +4200,7 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
 
 #+begin_src emacs-lisp
 (use-package ivy-hydra
-  :after ivy)
+  :after (ivy hydra))
 #+end_src
 
 **** Ivy Bibtex

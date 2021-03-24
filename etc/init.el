@@ -314,8 +314,12 @@
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 
 (use-package ivy
-  :after hydra
-  :init (ivy-mode)
+  :defer 0.1
+  :init
+  ;; Change completion method (not working as expected)
+  ;; This needs to be in the init it seems othrewise, it doesn't get loaded...
+  (setq ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
+  (ivy-mode)
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -337,8 +341,6 @@
   (ivy-use-virtual-buffers nil)
   ;; Show the full virtual file paths
   (ivy-virtual-abbreviate 'full)
-  ;; Change completion method (not working as expected)
-  (ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
   ;; Avoid displaying things like "./" and "../" in the list
   (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
@@ -406,7 +408,7 @@
 ;;   (ivy-posframe-mode 1))
 
 (use-package ivy-hydra
-  :after ivy)
+  :after (ivy hydra))
 
 (use-package ivy-bibtex
   :after ivy
@@ -1125,5 +1127,3 @@
   (wttrin-default-cities '("Union City, CA")))
 
 (use-package key-quiz)
-
-(use-package minesweeper)
