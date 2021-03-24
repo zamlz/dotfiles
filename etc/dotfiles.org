@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-24 Wed 09:06:56]
+#+LAST_MODIFIED: [2021-03-24 Wed 11:20:24]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -238,12 +238,15 @@ It's actually incredible how accurate this xckd comic is...
       - [[#hide-dotfiles][Hide Dotfiles]]
     - [[#daemon-and-client-hooks][Daemon and Client Hooks]]
   - [[#development-and-project-management][Development and Project Management]]
+    - [[#vterm][Vterm]]
     - [[#languages][Languages]]
       - [[#language-server-protocol][Language Server Protocol]]
       - [[#python][Python]]
       - [[#ccjava][C/C++/Java]]
       - [[#web-languages][Web Languages]]
       - [[#markdown][Markdown]]
+      - [[#ledger][Ledger]]
+      - [[#beancount][Beancount]]
     - [[#company-auto-completion-for-programming-languages][Company Auto-Completion for Programming Languages]]
     - [[#flycheck-syntax-linter][Flycheck Syntax Linter]]
     - [[#projectile][Projectile]]
@@ -279,9 +282,6 @@ It's actually incredible how accurate this xckd comic is...
     - [[#roam-server][Roam Server]]
   - [[#misc-packages][Misc Packages]]
     - [[#pdf-tools][PDF Tools]]
-    - [[#vterm][Vterm]]
-    - [[#ledger][Ledger]]
-    - [[#beancount][Beancount]]
     - [[#xkcd][xkcd]]
     - [[#wttrin][Wttr.in]]
 :END:
@@ -4559,6 +4559,23 @@ Hide hidden files from dired buffers (toggleable)
 
 Language specific and Project Management related configurations here...
 
+*** Vterm
+
+Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
+
+#+begin_src emacs-lisp
+(use-package vterm
+  :custom
+  ;; (vterm-shell "/bin/fish")
+  (vterm-ignore-blink-cursor nil)
+  (vterm-buffer-name-string "vterm [%s]")
+  (vterm-always-compile-module t))
+
+(zamlz/leader-keys
+  "e" '(:ignore t :which-key "Exec Commands")
+  "ee" '(vterm :which-key "Spawn vterm instance"))
+#+end_src
+
 *** Languages
 **** Language Server Protocol
 
@@ -4619,6 +4636,23 @@ Useful mode for editing web based files
 #+begin_src emacs-lisp
 (use-package markdown-mode
   :hook (markdown-mode . visual-line-mode))
+#+end_src
+
+**** Ledger
+
+#+begin_src emacs-lisp
+(use-package ledger-mode)
+#+end_src
+
+**** Beancount
+
+Beancount is a plain text accounting ledger-like program that I've been experimenting with. This simply just adds the mode via **on-disk** extension. If the extension is missing, emacs will complain. Make sure to pull it from the repo!
+
+#+begin_src emacs-lisp
+(add-to-list 'load-path "~/.emacs.d/beancount-mode")
+(require 'beancount)
+(add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
+(add-hook 'beancount-mode-hook #'outline-minor-mode)
 #+end_src
 
 *** Company Auto-Completion for Programming Languages
@@ -5246,40 +5280,6 @@ A nice standalone replacement for DocView.
   :custom
   (pdf-view-midnight-colors '("#ebdbb2" . "#000000"))
   :init (pdf-tools-install))
-#+end_src
-
-*** Vterm
-
-Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
-
-#+begin_src emacs-lisp
-(use-package vterm
-  :custom
-  ;; (vterm-shell "/bin/fish")
-  (vterm-ignore-blink-cursor nil)
-  (vterm-buffer-name-string "vterm [%s]")
-  (vterm-always-compile-module t))
-
-(zamlz/leader-keys
-  "e" '(:ignore t :which-key "Exec Commands")
-  "ee" '(vterm :which-key "Spawn vterm instance"))
-#+end_src
-
-*** Ledger
-
-#+begin_src emacs-lisp
-(use-package ledger-mode)
-#+end_src
-
-*** Beancount
-
-Beancount is a plain text accounting ledger-like program that I've been experimenting with. This simply just adds the mode via **on-disk** extension. If the extension is missing, emacs will complain. Make sure to pull it from the repo!
-
-#+begin_src emacs-lisp
-(add-to-list 'load-path "~/.emacs.d/beancount-mode")
-(require 'beancount)
-(add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
-(add-hook 'beancount-mode-hook #'outline-minor-mode)
 #+end_src
 
 *** xkcd

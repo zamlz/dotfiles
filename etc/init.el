@@ -626,6 +626,17 @@
                   (zamlz/set-transparency 80))))
   (zamlz/set-font-faces))
 
+(use-package vterm
+  :custom
+  ;; (vterm-shell "/bin/fish")
+  (vterm-ignore-blink-cursor nil)
+  (vterm-buffer-name-string "vterm [%s]")
+  (vterm-always-compile-module t))
+
+(zamlz/leader-keys
+  "e" '(:ignore t :which-key "Exec Commands")
+  "ee" '(vterm :which-key "Spawn vterm instance"))
+
 (use-package lsp-mode
   :commands (lsp lsp-deferred)
   :init
@@ -660,6 +671,13 @@
 
 (use-package markdown-mode
   :hook (markdown-mode . visual-line-mode))
+
+(use-package ledger-mode)
+
+(add-to-list 'load-path "~/.emacs.d/beancount-mode")
+(require 'beancount)
+(add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
+(add-hook 'beancount-mode-hook #'outline-minor-mode)
 
 (use-package company
   :diminish company-mode
@@ -1100,24 +1118,6 @@
   :custom
   (pdf-view-midnight-colors '("#ebdbb2" . "#000000"))
   :init (pdf-tools-install))
-
-(use-package vterm
-  :custom
-  ;; (vterm-shell "/bin/fish")
-  (vterm-ignore-blink-cursor nil)
-  (vterm-buffer-name-string "vterm [%s]")
-  (vterm-always-compile-module t))
-
-(zamlz/leader-keys
-  "e" '(:ignore t :which-key "Exec Commands")
-  "ee" '(vterm :which-key "Spawn vterm instance"))
-
-(use-package ledger-mode)
-
-(add-to-list 'load-path "~/.emacs.d/beancount-mode")
-(require 'beancount)
-(add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
-(add-hook 'beancount-mode-hook #'outline-minor-mode)
 
 (use-package xkcd)
 
