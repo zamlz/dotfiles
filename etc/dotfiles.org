@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-24 Wed 12:14:41]
+#+LAST_MODIFIED: [2021-03-24 Wed 14:38:29]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3940,7 +3940,6 @@ This is the core of =Evil-Mode=. This basicallly adds the modal functionality to
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
   ;; configure initial states in specific modes
-  ;; (evil-set-initial-state 'with-editor-mode 'insert)
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
 #+end_src
@@ -4711,7 +4710,7 @@ Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
 
 #+begin_src emacs-lisp
 (use-package magit
-  :config (add-hook 'with-editor-mode-hook #'evil-insert-state)
+  :hook (with-editor-mode . evil-insert-state)
   :bind ("C-x g" . magit-status))
 #+end_src
 

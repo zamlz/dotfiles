@@ -247,7 +247,6 @@
   (evil-global-set-key 'motion "k" 'evil-previous-visual-line)
 
   ;; configure initial states in specific modes
-  ;; (evil-set-initial-state 'with-editor-mode 'insert)
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
 
@@ -713,7 +712,7 @@
   :config (projectile-mode))
 
 (use-package magit
-  :config (add-hook 'with-editor-mode-hook #'evil-insert-state)
+  :hook (with-editor-mode . evil-insert-state)
   :bind ("C-x g" . magit-status))
 
 (use-package magit-todos
