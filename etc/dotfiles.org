@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-21 Sun 23:03:34]
+#+LAST_MODIFIED: [2021-03-23 Tue 09:11:07]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3855,7 +3855,8 @@ The default landing page isn't quite nice. I originally had it configured to dis
 (use-package dashboard
   :ensure t
   :custom
-  (dashboard-startup-banner "~/lib/emacs-themes/navi.png")
+  ;; (dashboard-startup-banner "~/lib/emacs-themes/navi.png")
+  (dashboard-startup-banner "~/lib/emacs-themes/black-hole.png")
   (dashboard-center-content t)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
