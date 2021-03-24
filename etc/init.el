@@ -1123,3 +1123,7 @@
 (use-package wttrin
   :custom
   (wttrin-default-cities '("Union City, CA")))
+
+(use-package key-quiz)
+
+(use-package minesweeper)

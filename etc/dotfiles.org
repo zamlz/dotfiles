@@ -284,6 +284,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#pdf-tools][PDF Tools]]
     - [[#xkcd][xkcd]]
     - [[#wttrin][Wttr.in]]
+    - [[#key-quiz][Key Quiz]]
 :END:
 * Operating System
 ** TODO Gentoo Linux
@@ -5297,4 +5298,12 @@ A frontend for [[http://wttr.in/][wttr.in]].
 (use-package wttrin
   :custom
   (wttrin-default-cities '("Union City, CA")))
+#+end_src
+
+*** Key Quiz
+
+A fun litte package for memorizing and learning keybindings. To play, simply use =M-x key-quiz= which will open up the game. It will default to *Fundamental-Mode* but this can be changed by setting the variable =key-quiz-use-mode=.
+
+#+begin_src emacs-lisp
+(use-package key-quiz)
 #+end_src
