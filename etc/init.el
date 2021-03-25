@@ -1027,7 +1027,7 @@
 (setq org-roam-capture-templates
       `(("d" "default" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS:\n"
@@ -1037,7 +1037,7 @@
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "infra/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "infra/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: INFRASTRUCTURE\n"
@@ -1047,7 +1047,7 @@
          :unnarrowed t)
         ("c" "contacts" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "contacts/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "contacts/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: CONTACTS\n"
@@ -1057,7 +1057,7 @@
          :unnarrowed t)
         ("t" "talks/lectures" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "talks/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "talks/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: TALK\n"
@@ -1068,7 +1068,7 @@
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "webpages/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: WEBPAGE\n"

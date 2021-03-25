@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-24 Wed 14:38:29]
+#+LAST_MODIFIED: [2021-03-25 Thu 11:22:57]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -5169,7 +5169,7 @@ It is made available like so.
 (setq org-roam-capture-templates
       `(("d" "default" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS:\n"
@@ -5179,7 +5179,7 @@ It is made available like so.
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "infra/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "infra/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: INFRASTRUCTURE\n"
@@ -5189,7 +5189,7 @@ It is made available like so.
          :unnarrowed t)
         ("c" "contacts" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "contacts/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "contacts/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: CONTACTS\n"
@@ -5199,7 +5199,7 @@ It is made available like so.
          :unnarrowed t)
         ("t" "talks/lectures" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "talks/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "talks/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: TALK\n"
@@ -5210,7 +5210,7 @@ It is made available like so.
          :unnarrowed t)
         ("w" "webpage" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "webpages/%<%Y%m%d%H%M%S>-${slug}"
+         :file-name "webpages/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_TAGS: WEBPAGE\n"
