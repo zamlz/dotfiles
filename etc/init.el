@@ -1152,3 +1152,6 @@
       (:maildir "/[Gmail]/Trash"     :key ?t)
       (:maildir "/[Gmail]/Drafts"    :key ?d)
       (:maildir "/[Gmail]/All Mail"  :key ?a))))
+
+(use-package paradox
+  :config (paradox-enable))

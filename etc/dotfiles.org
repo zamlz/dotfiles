@@ -287,6 +287,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#wttrin][Wttr.in]]
     - [[#key-quiz][Key Quiz]]
     - [[#mu4e][Mu4e]]
+    - [[#paradox][Paradox]]
 :END:
 * Operating System
 ** TODO Gentoo Linux
@@ -5371,4 +5372,11 @@ A fun litte package for memorizing and learning keybindings. To play, simply use
       (:maildir "/[Gmail]/Trash"     :key ?t)
       (:maildir "/[Gmail]/Drafts"    :key ?d)
       (:maildir "/[Gmail]/All Mail"  :key ?a))))
+#+end_src
+
+*** Paradox
+
+#+begin_src emacs-lisp
+(use-package paradox
+  :config (paradox-enable))
 #+end_src
