@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-25 Thu 23:18:25]
+#+LAST_MODIFIED: [2021-03-26 Fri 15:30:34]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -51,6 +51,7 @@ It's actually incredible how accurate this xckd comic is...
     - [[#gpg-agent][GPG Agent]]
   - [[#openssh][OpenSSH]]
     - [[#gnupg-connect-agent][GnuPG Connect Agent]]
+  - [[#isync--mbsync][Isync & Mbsync]]
   - [[#neovim][Neovim]]
     - [[#load-vim-plugins-vimplug][Load Vim Plugins (VimPlug)]]
     - [[#configure-loaded-plugins][Configure loaded plugins]]
@@ -941,6 +942,38 @@ Since we are using GPG agent as the SSH agent, when in a terminal, ssh agent doe
 
 #+begin_src conf
 Match host * exec "gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye"
+#+end_src
+
+** Isync & Mbsync
+:PROPERTIES:
+:header-args:conf: :tangle ~/.mbsyncrc
+:END:
+
+A tool used to sync and create local IMAP stores.
+
+#+begin_src conf
+IMAPAccount gmail
+Host imap.gmail.com
+User samlesh@gmail.com
+PassCmd "pass email/samlesh@gmail.com-app-isync"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+# The trailing "/" is important!
+Path ~/.mail/samlesh@gmail.com/
+Inbox ~/.mail/samlesh@gmail.com/Inbox
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns *
+Create Both
+SyncState *
 #+end_src
 
 ** Neovim
@@ -5325,15 +5358,15 @@ A fun litte package for memorizing and learning keybindings. To play, simply use
   ;; Refresh mail using isync every 10 minutes
   (setq mu4e-update-interval (* 10 60))
   (setq mu4e-get-mail-command "mbsync -a")
-  (setq mu4e-maildir "~/.mail")
+  (setq mu4e-maildir "~/.mail/samlesh@gmail.com/")
 
-  (setq mu4e-drafts-folder "/[Gmail]/Drafts")
   (setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
-  (setq mu4e-refile-folder "/[Gmail]/All Mail")
   (setq mu4e-trash-folder  "/[Gmail]/Trash")
+  (setq mu4e-drafts-folder "/[Gmail]/Drafts")
+  (setq mu4e-refile-folder "/[Gmail]/All Mail")
 
   (setq mu4e-maildir-shortcuts
-    '((:maildir "/Inbox"    :key ?i)
+    '((:maildir "/inbox"    :key ?i)
       (:maildir "/[Gmail]/Sent Mail" :key ?s)
       (:maildir "/[Gmail]/Trash"     :key ?t)
       (:maildir "/[Gmail]/Drafts"    :key ?d)

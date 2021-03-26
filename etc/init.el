@@ -1139,15 +1139,15 @@
   ;; Refresh mail using isync every 10 minutes
   (setq mu4e-update-interval (* 10 60))
   (setq mu4e-get-mail-command "mbsync -a")
-  (setq mu4e-maildir "~/.mail")
+  (setq mu4e-maildir "~/.mail/samlesh@gmail.com/")
 
-  (setq mu4e-drafts-folder "/[Gmail]/Drafts")
   (setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
-  (setq mu4e-refile-folder "/[Gmail]/All Mail")
   (setq mu4e-trash-folder  "/[Gmail]/Trash")
+  (setq mu4e-drafts-folder "/[Gmail]/Drafts")
+  (setq mu4e-refile-folder "/[Gmail]/All Mail")
 
   (setq mu4e-maildir-shortcuts
-    '((:maildir "/Inbox"    :key ?i)
+    '((:maildir "/inbox"    :key ?i)
       (:maildir "/[Gmail]/Sent Mail" :key ?s)
       (:maildir "/[Gmail]/Trash"     :key ?t)
       (:maildir "/[Gmail]/Drafts"    :key ?d)
