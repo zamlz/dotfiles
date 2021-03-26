@@ -12,6 +12,10 @@ dev-db/sqlite
 # Used for generating graph svg files.
 media-gfx/graphviz
 
+# Tools needed for mu4e
+net-mail/isync
+net-mail/mu
+
 # Test out fish shell
 app-shells/fish
 
