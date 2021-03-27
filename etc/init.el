@@ -1027,31 +1027,34 @@
 (setq org-roam-capture-templates
       `(("d" "default" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "notes/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS:\n"
                         "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS:\n"
+                        "#+ROAM_KEY: \n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "infra/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "personal/infra/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS: INFRASTRUCTURE\n"
                         "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS: INFRASTRUCTURE\n"
+                        "#+ROAM_KEY: \n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ("c" "contacts" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "contacts/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "personal/contacts/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS: CONTACTS\n"
                         "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS: CONTACTS\n"
+                        "#+ROAM_KEY: \n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
@@ -1060,22 +1063,22 @@
          :file-name "talks/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS: TALK\n"
                         "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS: TALK\n"
+                        "#+ROAM_KEY: %x\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "#+ROAM_KEY: %x\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
-        ("w" "webpage" plain (function org-roam--capture-get-point)
+        ("b" "bookmarks" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "webpages/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "bookmarks/${slug}-%<%Y%m%d%H%M%S>"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS: WEBPAGE\n"
                         "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS: BOOKMARK\n"
+                        "#+ROAM_KEY: %x\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "#+ROAM_KEY: %x\n")
+                        "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
         ))
 
@@ -1083,7 +1086,7 @@
       `(("d" "default" entry
          #'org-roam-capture--get-point
          "* %U\n%?"
-         :file-name "journal/%<%Y-%m-%d>"
+         :file-name "personal/journal/%<%Y-%m-%d>"
          :head ,(concat "#+TITLE: %<[%Y-%m-%d] %B %e, %Y (%A)>\n"
                         "#+ROAM_TAGS: JOURNAL\n"
                         "#+ROAM_ALIAS: %<%Y-%m-%d>\n"
