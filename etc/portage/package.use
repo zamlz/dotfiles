@@ -85,6 +85,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by qutebrowser (argument)
 =dev-libs/libxml2-2.9.10-r3 icu
 =dev-libs/libxml2-2.9.10-r4 icu
+=dev-libs/libxml2-2.9.10-r5 icu
 =dev-libs/libpcre2-10.35 pcre16 pcre32
 
 # required by app-editors/neovim-0.4.3::gentoo
