@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-26 Fri 15:30:34]
+#+LAST_MODIFIED: [2021-03-27 Sat 10:48:55]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -3770,15 +3770,15 @@ Emacs decides to save backup files and lockfiles within the same directory as th
 Auto refresh changes from outsides buffers. What more needs to be said.
 
 #+begin_src emacs-lisp
-(use-package autorevert
-  :ensure nil
-  :config
-  (auto-revert-interval 2)
-  (auto-revert-check-vc-info t)
-  (global-auto-revert-non-file-buffers t)
-  (auto-revert-verbose nil)
-  :config
-  (global-auto-revert-mode +1))
+;; (use-package autorevert
+;;   :ensure nil
+;;   :config
+;;   (auto-revert-interval 2)
+;;   (auto-revert-check-vc-info t)
+;;   (global-auto-revert-non-file-buffers t)
+;;   (auto-revert-verbose nil)
+;;   :config
+;;   (global-auto-revert-mode +1))
 #+end_src
 
 *** Eldoc Documentation
@@ -5110,7 +5110,7 @@ Pretty straightforward except that you need to have =latex= installed and also =
 #+begin_src emacs-lisp
 (setq org-startup-with-latex-preview t)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
-(setq org-preview-latex-image-directory  ".ltximg/")
+(setq org-preview-latex-image-directory  "/tmp/ltximg/")
 #+end_src
 
 *** Habit Tracking

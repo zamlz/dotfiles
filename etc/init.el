@@ -121,15 +121,15 @@
   (create-lockfiles nil) ; don't create .# files (crashes 'npm start')
   (backup-directory-alist `(("." . "~/.emacs.d/backup"))))
 
-(use-package autorevert
-  :ensure nil
-  :config
-  (auto-revert-interval 2)
-  (auto-revert-check-vc-info t)
-  (global-auto-revert-non-file-buffers t)
-  (auto-revert-verbose nil)
-  :config
-  (global-auto-revert-mode +1))
+;; (use-package autorevert
+;;   :ensure nil
+;;   :config
+;;   (auto-revert-interval 2)
+;;   (auto-revert-check-vc-info t)
+;;   (global-auto-revert-non-file-buffers t)
+;;   (auto-revert-verbose nil)
+;;   :config
+;;   (global-auto-revert-mode +1))
 
 (use-package eldoc
   :ensure nil
@@ -965,7 +965,7 @@
 
 (setq org-startup-with-latex-preview t)
 (setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
-(setq org-preview-latex-image-directory  ".ltximg/")
+(setq org-preview-latex-image-directory  "/tmp/ltximg/")
 
 (add-to-list 'org-modules 'org-habit t)
 (setq org-habit-preceding-days 31)
