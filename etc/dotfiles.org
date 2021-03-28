@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-27 Sat 22:12:34]
+#+LAST_MODIFIED: [2021-03-28 Sun 12:28:44]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -4037,10 +4037,10 @@ Adds keybindings for quick commenting. Use =gcc= to comment out a line, use =gca
 All evil operations now have visual hints.
 
 #+begin_src emacs-lisp
-(use-package evil-goggles
-  :after evil
-  :init (evil-goggles-mode)
-  :config (evil-goggles-use-diff-faces))
+;; (use-package evil-goggles
+;;   :after evil
+;;   :init (evil-goggles-mode)
+;;   :config (evil-goggles-use-diff-faces))
 #+end_src
 
 **** Which Key

@@ -279,10 +279,10 @@
   :config
   (global-evil-fringe-mark-mode))
 
-(use-package evil-goggles
-  :after evil
-  :init (evil-goggles-mode)
-  :config (evil-goggles-use-diff-faces))
+;; (use-package evil-goggles
+;;   :after evil
+;;   :init (evil-goggles-mode)
+;;   :config (evil-goggles-use-diff-faces))
 
 (use-package which-key
   :init (which-key-mode)
@@ -421,6 +421,14 @@
   (bibtex-completion-pdf-symbol "⌘")
   (bibtex-completion-notes-symbol "✎")
   ;; TODO Use bibtex-completion-additional-search-fields
+  (bibtex-completion-notes-template-multiple-files
+   (concat "#+TITLE: Notes on \"${title}\" by ${author-or-editor} (${year})\n"
+           "#+AUTHOR: %n (%(user-login-name))\n"
+           "#+ROAM_ALIAS:\n"
+           "#+ROAM_TAGS:\n"
+           "#+ROAM_KEY: cite:${=key=}\n"
+           "#+CREATED: %U\n"
+           "#+LAST_MODIFIED: %U\n"))
   )
 
 (use-package ivy-pass
