@@ -1107,8 +1107,9 @@
          "* %U\n%?"
          :file-name "personal/journal/%<%Y-%m-%d>"
          :head ,(concat "#+TITLE: %<[%Y-%m-%d] %B %e, %Y (%A)>\n"
-                        "#+ROAM_TAGS: JOURNAL\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS: %<%Y-%m-%d>\n"
+                        "#+ROAM_TAGS: JOURNAL\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n"
                         "\n"))
