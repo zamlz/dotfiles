@@ -414,9 +414,9 @@
   :bind (("C-c n p"   . ivy-bibtex)
          ("C-c n C-p" . ivy-bibtex-with-notes))
   :custom
-  (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
-  (bibtex-completion-library-path '("~/org/papers/pdfs/"))
-  (bibtex-completion-notes-path "~/org/papers/")
+  (bibtex-completion-bibliography `((,(directory-files-recursively "~/org/papers/bib/" ""))))
+  (bibtex-completion-library-path '("~/org/papers/doc/"))
+  (bibtex-completion-notes-path "~/org/papers/notes/")
   ;; Style the output indicators
   (bibtex-completion-pdf-symbol "⌘")
   (bibtex-completion-notes-symbol "✎")

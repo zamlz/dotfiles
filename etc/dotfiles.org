@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-27 Sat 10:48:55]
+#+LAST_MODIFIED: [2021-03-27 Sat 22:12:34]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -4245,13 +4245,21 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
   :bind (("C-c n p"   . ivy-bibtex)
          ("C-c n C-p" . ivy-bibtex-with-notes))
   :custom
-  (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
-  (bibtex-completion-library-path '("~/org/papers/pdfs/"))
-  (bibtex-completion-notes-path "~/org/papers/")
+  (bibtex-completion-bibliography `((,(directory-files-recursively "~/org/papers/bib/" ""))))
+  (bibtex-completion-library-path '("~/org/papers/doc/"))
+  (bibtex-completion-notes-path "~/org/papers/notes/")
   ;; Style the output indicators
   (bibtex-completion-pdf-symbol "⌘")
   (bibtex-completion-notes-symbol "✎")
   ;; TODO Use bibtex-completion-additional-search-fields
+  (bibtex-completion-notes-template-multiple-files
+   (concat "#+TITLE: Notes on \"${title}\" by ${author-or-editor} (${year})\n"
+           "#+AUTHOR: %n (%(user-login-name))\n"
+           "#+ROAM_ALIAS:\n"
+           "#+ROAM_TAGS:\n"
+           "#+ROAM_KEY: cite:${=key=}\n"
+           "#+CREATED: %U\n"
+           "#+LAST_MODIFIED: %U\n"))
   )
 #+end_src
 
