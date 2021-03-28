@@ -14,6 +14,7 @@ print_repo_dirs() {
     echo "LEDGER_DIR         = ${LEDGER_DIR}"
     echo "PASSWORD_STORE_DIR = ${PASSWORD_STORE_DIR}"
     echo "ORGMODE_DIR        = ${ORGMODE_DIR}"
+    echo "PAPERS_DIR         = ${PAPERS_DIR}"
 }
 
 # Configure dotfiles in the current directory
@@ -66,6 +67,7 @@ run_git_over_all() {
     run_git ${LEDGER_DIR} $GIT_ARGS;
     run_git ${PASSWORD_STORE_DIR} $GIT_ARGS;
     run_git ${ORGMODE_DIR} $GIT_ARGS;
+    run_git ${PAPERS_DIR} $GIT_ARGS;
 }
 
 if [ -z "$@" ]; then
