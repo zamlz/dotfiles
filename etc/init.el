@@ -1027,7 +1027,7 @@
 (setq org-roam-capture-templates
       `(("d" "default" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "notes/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "notes/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
@@ -1038,7 +1038,7 @@
          :unnarrowed t)
         ("i" "infrastructure" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "personal/infra/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "personal/infra/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
@@ -1047,9 +1047,20 @@
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
-        ("c" "contacts" plain (function org-roam--capture-get-point)
+        ("c" "config" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "personal/contacts/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "config/${slug}"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
+                        "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS: CONFIG SOFTWARE\n"
+                        "#+ROAM_KEY: \n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED: %U\n")
+         :unnarrowed t)
+        ("C" "contacts" plain (function org-roam--capture-get-point)
+         "\n%?"
+         :file-name "personal/contacts/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
@@ -1060,7 +1071,7 @@
          :unnarrowed t)
         ("t" "talks/lectures" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "talks/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "talks/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
@@ -1071,7 +1082,7 @@
          :unnarrowed t)
         ("b" "bookmarks" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "bookmarks/${slug}-%<%Y%m%d%H%M%S>"
+         :file-name "bookmarks/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
