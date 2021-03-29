@@ -394,22 +394,24 @@
                                'ivy-rich-switch-buffer-transformer)
   :init (ivy-rich-mode 1))
 
-;; (use-package ivy-posframe
-;;   :after counsel
-;;   :custom
-;;   ;; Specify the the display posframe
-;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
-;;   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
-;;   ;; Customize size and width of the posframe
-;;   (ivy-posframe-height 30)
-;;   (ivy-posframe-min-width 120)
-;;   (ivy-posframe-min-height 2)
-;;   :init
-;;   (ivy-posframe-mode 1))
+(use-package ivy-posframe
+  :after counsel
+  :custom
+  ;; Specify the the display posframe
+  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-center)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-center)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-left)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
+  ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
+  ;; Customize size and width of the posframe
+  (ivy-posframe-height 40)
+  (ivy-posframe-min-height 5)
+  (ivy-posframe-width 120)
+  (ivy-posframe-min-width 120)
+  (ivy-posframe-border-width 20)
+  :init
+  (ivy-posframe-mode 1))
 
 (use-package ivy-hydra
   :after (ivy hydra))
