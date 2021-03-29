@@ -1,0 +1,15 @@
+#+TITLE: Org-mode
+#+ROAM_KEY: https://orgmode.org/
+#+ROAM_TAGS: SOFTWARE CONFIG
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+CREATED: [2021-03-27 Sat 00:18]
+#+LAST_MODIFIED: [2021-03-27 Sat 12:15:57]
+
+#+DOWNLOADED: screenshot @ 2021-03-27 09:49:25
+[[file:data/2021-03-27_09-49-25_screenshot.png]]
+
+Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emacs]].
+
+* Useful Resources
+- [[https://orgmode.org/manual/index.html][The Official Org Manual]]
+- [[https://blog.jethro.dev/posts/org_mode_workflow_preview/][Jethro Kuan's Org-mode Workflow]]
