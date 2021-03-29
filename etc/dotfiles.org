@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-29 Mon 08:55:22]
+#+LAST_MODIFIED: [2021-03-29 Mon 09:51:12]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -4330,7 +4330,6 @@ Provides counsel interface for projectile.
 #+begin_src emacs-lisp
 (use-package counsel-projectile
   :after counsel
-  :bind ("C-x p" . counsel-projectile-switch-project)
   :init (counsel-projectile-mode))
 #+end_src
 

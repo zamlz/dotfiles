@@ -447,7 +447,6 @@
 
 (use-package counsel-projectile
   :after counsel
-  :bind ("C-x p" . counsel-projectile-switch-project)
   :init (counsel-projectile-mode))
 
 (use-package helm
