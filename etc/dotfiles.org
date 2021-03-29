@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-29 Mon 00:16:44]
+#+LAST_MODIFIED: [2021-03-29 Mon 07:21:54]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -965,7 +965,8 @@ pinentry-program /usr/bin/pinentry-switcher
 # This means clients like Emacs can get the password in their own way
 # and push to gpg. For this to work with emacs, set `epa-pinentry-mode`
 # to `'loopback` in Emacs
-allow-loopback-entry
+allow-emacs-pinentry
+allow-loopback-pinentry
 #+end_src
 
 ** OpenSSH
