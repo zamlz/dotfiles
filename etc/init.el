@@ -305,7 +305,7 @@
 
 (zamlz/leader-keys
  "t"  '(:ignore t :which-key "toggles")
- "tt" '(helm-themes :which-key "choose theme"))
+ "tt" '(counsel-load-theme :which-key "choose theme"))
 
 (defhydra hydra-text-scale (:timeout 4)
   "scale text"
