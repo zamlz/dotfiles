@@ -1030,10 +1030,13 @@
          ("C-c n j" . org-roam-dailies-capture-today)
          ("C-c n y" . org-roam-dailies-capture-yesterday)
          ("C-c n d" . org-roam-dailies-capture-date)
+         ;; Org Roam File Mods
+         ("C-c n t" . org-roam-tag-add)
+         ("C-c n a" . org-roam-alias-add)
          :map org-mode-map
          ;; Insert notes...
-         ("C-c n i" . org-roam-insert)
-         ("C-c n I" . org-roam-insert-immediate))
+         ("M-i" . org-roam-insert)
+         ("M-I" . org-roam-insert-immediate))
   :custom
   (org-roam-directory "~/org/")
   (org-roam-dailies-directory "journal/")
