@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-28 Sun 12:28:44]
+#+LAST_MODIFIED: [2021-03-28 Sun 12:55:57]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -37,6 +37,7 @@ It's actually incredible how accurate this xckd comic is...
       - [[#one-of-my-many-prompts][One of my many prompts]]
       - [[#python-venv-wrapper][Python Venv Wrapper]]
       - [[#x-window-terminal-info][X Window Terminal Info]]
+      - [[#universal-extract-script][Universal Extract Script]]
     - [[#aliases][Aliases]]
   - [[#git][Git]]
     - [[#user-profile][User Profile]]
@@ -745,6 +746,37 @@ if [ -n "$DISPLAY" ]; then
         save_window_info
     fi
 fi
+#+end_src
+
+**** Universal Extract Script
+
+#+begin_src shell
+function ext() {
+    # Make sure some argument is given
+    if [ ! -f "$1" ] ; then
+        echo "'$1' does not exist."
+        return 1
+    fi
+    # based on filetype, extract the file
+    case "$1" in
+        ,*.tar.bz2)   tar xvjf "$1"   ;;
+        ,*.tar.xz)    tar xvJf "$1"   ;;
+        ,*.tar.gz)    tar xvzf "$1"   ;;
+        ,*.bz2)       bunzip2 "$1"    ;;
+        ,*.rar)       rar x "$1"      ;;
+        ,*.gz)        gunzip "$1"     ;;
+        ,*.tar)       tar xvf "$1"    ;;
+        ,*.tbz2)      tar xvjf "$1"   ;;
+        ,*.tgz)       tar xvzf "$1"   ;;
+        ,*.zip)       unzip "$1"      ;;
+        ,*.Z)         uncompress "$1" ;;
+        ,*.xz)        xz -d "$1"      ;;
+        ,*.7z)        7z x "$1"       ;;
+        ,*.a)         ar x "$1"       ;;
+        ,*)           echo "Unable to extract '$1'." ;;
+    esac
+
+}
 #+end_src
 
 *** Aliases
