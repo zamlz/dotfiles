@@ -180,8 +180,13 @@
 (use-package epa-file
   :ensure nil
   :custom
+  ;; Don't ask by default which key to use
   (epa-file-select-keys nil)
-  (epa-file-encrypt-to user-mail-address))
+  ;; default to user mail address
+  (epa-file-encrypt-to user-mail-address)
+  ;; Set the pinentry mode to be loopback to gpg gets the password
+  ;; through emacs instead of using pinentry.
+  (epa-pinentry-mode 'loopback))
 
 (use-package auth-source-pass
   :ensure nil

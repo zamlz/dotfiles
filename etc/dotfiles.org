@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-28 Sun 12:55:57]
+#+LAST_MODIFIED: [2021-03-28 Sun 23:37:24]
 #+EXCLUDE_TAGS: TOC
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
@@ -961,6 +961,11 @@ default-cache-ttl 600
 max-cache-ttl 7200
 enable-ssh-support
 pinentry-program /usr/bin/pinentry-switcher
+
+# This means clients like Emacs can get the password in their own way
+# and push to gpg. For this to work with emacs, set `epa-pinentry-mode`
+# to `'loopback` in Emacs
+allow-loopback-entry
 #+end_src
 
 ** OpenSSH
@@ -3899,8 +3904,13 @@ EPA is a built-in emacs package for interfacing with GnuPG.
 (use-package epa-file
   :ensure nil
   :custom
+  ;; Don't ask by default which key to use
   (epa-file-select-keys nil)
-  (epa-file-encrypt-to user-mail-address))
+  ;; default to user mail address
+  (epa-file-encrypt-to user-mail-address)
+  ;; Set the pinentry mode to be loopback to gpg gets the password
+  ;; through emacs instead of using pinentry.
+  (epa-pinentry-mode 'loopback))
 #+end_src
 
 *** Auth Source Pass
