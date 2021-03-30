@@ -15,7 +15,7 @@ case $PINENTRY_USER_DATA in
         exec /usr/bin/pinentry-tty "$@"
         ;;
     rofi)
-        exec $HOME/lib/rofi/pinentry-rofi "$@"
+        exec $HOME/org/config/lib/rofi/pinentry-rofi "$@"
         ;;
     none)
         echo "Multi-pinentry Error"
@@ -25,4 +25,3 @@ case $PINENTRY_USER_DATA in
         exec /usr/bin/pinentry "$@"
         ;;
 esac
-
