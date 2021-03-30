@@ -1,82 +1,12 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-29 Mon 18:54:59]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:06:15]
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
 # ... Present day, present time ...
 
 * Shell Environment
-** GnuPG
-*** GPG
-:PROPERTIES:
-:header-args:conf: :tangle ~/.gnupg/gpg.conf :mkdirp yes
-:END:
-
-#+begin_src conf
-# When outputting certificates, view user IDs distinctly from keys
-fixed-list-mode
-
-# Long keyids are more collision-resistant than short keyids
-# (Its trivial to make a key with any desired short keyid)
-keyid-format 0xlong
-with-fingerprint
-
-# when multiple digests are supported by all recipients, choose the strongest one:
-personal-digest-preferences SHA512 SHA384 SHA256 SHA224
-
-# preferences chosen for new keys should prioritize stronger algorithms:
-default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 BZIP2 ZLIB ZIP Uncompressed
-
-# If you use a graphical environment (and even if you don't) you should be
-# using an agent: (similar arguments as
-# https://www.debian-administration.org/users/dkg/weblog/64)
-use-agent
-
-# You should always know at a glance which User IDs gpg thinks are
-# legitimately bound to the keys in your keyring:
-verify-options show-uid-validity
-list-options show-uid-validity
-
-# when making an OpenPGP certification, use a stronger digest than the default SHA1:
-cert-digest-algo SHA256
-
-# prevent version string from appearing in your signatures/public keys
-no-emit-version
-#+end_src
-
-*** GPG Agent
-:PROPERTIES:
-:header-args:conf: :tangle ~/.gnupg/gpg-agent.conf :mkdirp yes
-:END:
-
-#+begin_src conf
-default-cache-ttl 600
-max-cache-ttl 7200
-enable-ssh-support
-pinentry-program /usr/bin/pinentry-switcher
-
-# This means clients like Emacs can get the password in their own way
-# and push to gpg. For this to work with emacs, set `epa-pinentry-mode`
-# to `'loopback` in Emacs
-allow-emacs-pinentry
-allow-loopback-pinentry
-#+end_src
-
-** OpenSSH
-:PROPERTIES:
-:header-args:conf: :tangle ~/.ssh/config :mkdirp yes
-:END:
-*** GnuPG Connect Agent
-
-Since we are using GPG agent as the SSH agent, when in a terminal, ssh agent doesn't know that it has to change terminals (a bug in openssh). So when it connects to gpg-agent, it uses the terminal it was last configured to use. The following command when run in a terminal updates gpg-agent to use the current terminal for openssh. However, now if we run some ssh related command in the prior terminal, it will use the new terminal instead creating the exact inverse of the problem. Therefore we attempt to fix this by running this command before every SSH command.
-
-[[https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9][https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9]]
-
-#+begin_src conf
-Match host * exec "gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye"
-#+end_src
-
 ** Isync & Mbsync
 :PROPERTIES:
 :header-args:conf: :tangle ~/.mbsyncrc

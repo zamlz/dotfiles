@@ -1,0 +1,25 @@
+#+TITLE: OpenSSH
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_KEY: https://www.openssh.com/
+#+CREATED: [2021-03-29 Mon 18:59]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:07:12]
+
+#+DOWNLOADED: screenshot @ 2021-03-29 19:02:35
+[[file:data/2021-03-29_19-02-35_screenshot.png]]
+
+OpenSSH is a tool provided by the OpenBSD Project that allows for remote login via the SSH protocol.
+
+* Configuration
+:PROPERTIES:
+:header-args:conf: :tangle ~/.ssh/config :mkdirp yes
+:END:
+
+Since we are using [[file:gnupg.org][GnuPG]]'s GPG Agent as the SSH agent, when in a terminal, ssh agent doesn't know that it has to change terminals (a bug in openssh). So when it connects to gpg-agent, it uses the terminal it was last configured to use. The following command when run in a terminal updates gpg-agent to use the current terminal for openssh. However, now if we run some ssh related command in the prior terminal, it will use the new terminal instead creating the exact inverse of the problem. Therefore we attempt to fix this by running this command before every SSH command.
+
+[[https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9][https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9]]
+
+#+begin_src conf
+Match host * exec "gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye"
+#+end_src
