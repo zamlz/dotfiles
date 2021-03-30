@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:51:11]
+#+LAST_MODIFIED: [2021-03-30 Tue 10:14:40]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/2021-03-27_00-26-48_screenshot.png]]
@@ -14,6 +14,7 @@
 Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[file:org_mode.org][Org-mode]]. The project aims to implement [[file:../notes/zettelkasten_method-20210226160505.org][Zettelkasten Method]] through software.
 
 * Useful Resources
+- [[https://www.orgroam.com/manual.html][Org-roam Official User Manual]]
 - [[https://hugocisneros.com/notes/][Hugo Cisneros's Personal Notes (PhD Student studying Robotics)]]
 - [[https://rgoswami.me/posts/org-note-workflow/][An Orgmode Roam Workflow]]
 - [[https://www.youtube.com/watch?v=RvWic15iXjk][Nat Eliason: How to Use Roam to Outline a New Article in Under 20 Minutes]]

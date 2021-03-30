@@ -4,7 +4,8 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-03-30 Tue 09:59:27]
+#+LAST_MODIFIED: [2021-03-30 Tue 10:24:30]
+#+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
 [[file:data/2021-03-27_10-32-33_screenshot.png]]
@@ -1638,6 +1639,7 @@ It is made available like so.
   :custom
   (org-roam-directory "~/org/")
   (org-roam-dailies-directory "journal/")
+  (org-roam-file-exclude-regexp "README.org")
   (org-roam-db-udpate-method 'immediate))
 #+end_src
 
