@@ -1,9 +1,9 @@
 #!/bin/sh
 
-SYM_SOURCE_DIR=$HOME/lib/colorschemes
+SYM_SOURCE_DIR=$HOME/org/config/lib/colorschemes
 SYM_TARGET_FILE=$HOME/.config/xcolor/scheme
 
-. $HOME/lib/shell/symlinkmgr
+. $HOME/org/config/lib/shell/symlinkmgr
 
 # Just make the default action list targets
 default_action() {
