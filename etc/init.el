@@ -196,8 +196,8 @@
 (use-package dashboard
   :ensure t
   :custom
-  ;; (dashboard-startup-banner "~/lib/emacs-themes/navi.png")
-  (dashboard-startup-banner "~/lib/emacs-themes/black-hole.png")
+  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
+  (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
   (dashboard-center-content t)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
@@ -573,7 +573,7 @@
 (use-package autothemer
   :ensure t)
 
-(add-to-list 'custom-theme-load-path "~/lib/emacs-themes/")
+(add-to-list 'custom-theme-load-path "~/org/config/lib/emacs-themes/")
 ;; (load-theme 'gruvbox-black t)
 
 (use-package doom-themes

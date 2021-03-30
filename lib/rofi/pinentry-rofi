@@ -5,7 +5,7 @@
 # TODO: Figure out how to properly set the display variable
 
 # Source this file to use my colorscheme
-. $HOME/lib/shell/xrdb_colors
+. $HOME/org/config/lib/shell/xrdb_colors
 
 # Base command and misc variables
 ROFI="/usr/bin/rofi -dmenu -input /dev/null -password -lines 0"

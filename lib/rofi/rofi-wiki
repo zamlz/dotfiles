@@ -2,7 +2,7 @@
 
 # Find the wiki I want and display a read only version of it
 
-. $HOME/lib/repos
+. $HOME/org/config/lib/repos
 
 # Note this is not the typical directory of vimwiki (lookingg only in the src)
 VIMWIKI_DIR=${VIMWIKI_DIR:-$HOME/usr/wiki/}/src

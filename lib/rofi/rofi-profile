@@ -2,7 +2,7 @@
 
 # Find the password I want
 
-PROFILE_DIR="$HOME/lib/profiles"
+PROFILE_DIR="$HOME/org/config/lib/profiles"
 
 # There must be a cleaner way to get this choice
 profile=$( find  $PROFILE_DIR -not -path '*/.*' -type f | \

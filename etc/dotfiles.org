@@ -1,7 +1,7 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-29 Mon 15:22:41]
+#+LAST_MODIFIED: [2021-03-29 Mon 16:13:41]
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
 # ... Present day, present time ...
@@ -28,14 +28,14 @@ source /etc/profile
 Need to source this file which contains locations for all my repos
 
 #+begin_src shell
-source $HOME/lib/repos
+source $HOME/org/config/lib/repos
 #+end_src
 
 Update path to use my custom scripts and other locally installed scripts.
 
 #+begin_src shell
 # Update the path variable
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/org/config/bin:$PATH"
 export PATH="$HOME/.local/bin/:$PATH"
 export PATH="$LEDGER_DIR/bin:$PATH"
 export PATH="$VIMWIKI_DIR/bin:$PATH"
@@ -175,7 +175,7 @@ export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
 The =ls= command is sometimes not colored properly (and I may have some custom colors that it doesn't like using for certain files by default) so lets override that here. Maybe I should have this in the =~/.zshenv= file?
 
 #+begin_src shell
-eval $(dircolors -b $HOME/lib/shell/lscolors)
+eval $(dircolors -b $HOME/org/config/lib/shell/lscolors)
 #+end_src
 
 **** Enter a Python Virtual Environment
@@ -233,7 +233,7 @@ add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
 Need a logger just to keep track of things
 
 #+begin_src shell
-source $HOME/lib/shell/logger
+source $HOME/org/config/lib/shell/logger
 LOGGER=$(get_logger zsh.profile)
 #+end_src
 
@@ -1048,7 +1048,7 @@ Like with all other components in my system, setup a logger for debugging purpos
 #+begin_src shell
 # We may already have a logger ready to use...
 if [ -z "$LOGGER" ]; then
-    . $HOME/lib/shell/logger
+    . $HOME/org/config/lib/shell/logger
     LOGGER=$(get_logger xorg.wminit)
 fi
 $LOGGER "Initializing window manager common utilities"
@@ -1101,8 +1101,8 @@ Set the background for the desktop environment. If =~/.fehbg= doesn't exist, set
 if [ -f "$HOME/.fehbg" ]; then
     $HOME/.fehbg
 else
-    . $HOME/lib/shell/xrdb_colors
-    xsetroot -bitmap ~/lib/bitmaps/tile.xbm -fg $XCOLOR0 -bg $XBACKGROUND
+    . $HOME/org/config/lib/shell/xrdb_colors
+    xsetroot -bitmap ~/org/config/lib/bitmaps/tile.xbm -fg $XCOLOR0 -bg $XBACKGROUND
 fi
 #+end_src
 
@@ -1111,7 +1111,7 @@ I use =sxhkd= for keybindings that should exist in all my environments regardles
 #+begin_src shell
 # Initialize universal keybindings
 SXHKD_SHELL=sh
-export SXHKD_TERMINAL=$HOME/bin/emacsclient-launcher
+export SXHKD_TERMINAL=$HOME/org/config/bin/emacsclient-launcher
 pkill -x sxhkd
 sxhkd &
 #+end_src
@@ -1152,7 +1152,7 @@ $HOME/.config/lemonbar/lemonbar &
 :END:
 
 #+begin_src shell
-. $HOME/lib/shell/logger
+. $HOME/org/config/lib/shell/logger
 LOGGER=$(get_logger xinitrc)
 #+end_src
 
@@ -1615,7 +1615,7 @@ This actually only works in normal terminals and and not in the emacs vterm. Nee
 #+begin_src shell
 # Spawn Terminal matching environment of focused terminal
 super + shift + Return
-    $HOME/lib/pwdcfw/$SXHKD_TERMINAL
+    $HOME/org/config/lib/pwdcfw/$SXHKD_TERMINAL
 #+end_src
 
 *** Rofi Dmenu Launcher Keybindings
@@ -1629,45 +1629,45 @@ super + e
 #+begin_src shell
 # Dmenu for password store
 super + p
-    $HOME/lib/rofi/rofi-pass
+    $HOME/org/config/lib/rofi/rofi-pass
 super + shift + p
-    $HOME/lib/rofi/rofi-pass --qrcode
+    $HOME/org/config/lib/rofi/rofi-pass --qrcode
 #+end_src
 
 #+begin_src shell
 # Copy a specific bookmark to the clipboard
 super + b
-    $HOME/lib/rofi/rofi-book
+    $HOME/org/config/lib/rofi/rofi-book
 #+end_src
 
 #+begin_src shell
 # Open up a wiki page in read-only mode (originally named notes)
 super + n
-    $HOME/lib/rofi/rofi-wiki
+    $HOME/org/config/lib/rofi/rofi-wiki
 super + shift + n
-    $HOME/lib/rofi/rofi-wiki --pdf
+    $HOME/org/config/lib/rofi/rofi-wiki --pdf
 #+end_src
 
 #+begin_src shell
 # Restore a saved browser session
 super + w
-    $HOME/lib/rofi/rofi-browser
+    $HOME/org/config/lib/rofi/rofi-browser
 #+end_src
 
 #+begin_src shell
 # Toggle a display/power profile
 super + d
-    $HOME/lib/rofi/rofi-profile
+    $HOME/org/config/lib/rofi/rofi-profile
 XF86Display
-    $HOME/lib/rofi/rofi-profile
+    $HOME/org/config/lib/rofi/rofi-profile
 #+end_src
 
 #+begin_src shell
 # Control system state (locked, reboot, poweroff, etc.)
 #super + Escape
-#    $HOME/lib/rofi/rofi-system LOCK SCREEN
+#    $HOME/org/config/lib/rofi/rofi-system LOCK SCREEN
 super + ctrl + alt + Escape
-    $HOME/lib/rofi/rofi-system
+    $HOME/org/config/lib/rofi/rofi-system
 #+end_src
 
 *** Scrot Keybindings
@@ -1729,7 +1729,7 @@ XF86AudioPrev
 Pretty straightforward stuff, setup logger, create a helper function,
 
 #+begin_src shell
-. $HOME/lib/shell/logger
+. $HOME/org/config/lib/shell/logger
 LOGGER=$(get_logger herbstluftwm)
 $LOGGER "Initializing herbstluftwm window manager"
 
@@ -1924,17 +1924,17 @@ hc mousebind $Super-Button3 resize
 #+begin_src shell
 # cycle through colorschemes
 hc keybind $Super-Ctrl-Alt-bracketright chain , \
-        spawn $HOME/bin/xcolorscheme --next , reload
+        spawn $HOME/org/config/bin/xcolorscheme --next , reload
 
 hc keybind $Super-Ctrl-Alt-bracketleft chain , \
-        spawn $HOME/bin/xcolorscheme --prev , reload
+        spawn $HOME/org/config/bin/xcolorscheme --prev , reload
 #+end_src
 
 *** Theme Configuration
 **** Source Colorscheme
 
 #+begin_src shell
-. $HOME/lib/shell/xrdb_colors
+. $HOME/org/config/lib/shell/xrdb_colors
 #+end_src
 
 **** Reset Tiling and Floating states
@@ -2156,8 +2156,8 @@ The default configuration is our source for all variables and functions that lem
 
 #+begin_src shell
 # Import modules needed but anything that imports this config
-. $HOME/lib/shell/logger
-. $HOME/lib/shell/xrdb_colors
+. $HOME/org/config/lib/shell/logger
+. $HOME/org/config/lib/shell/xrdb_colors
 . $HOME/.config/lemonbar/utils/wrappers
 . $HOME/.config/lemonbar/utils/multi_monitor_support
 . $HOME/.config/lemonbar/utils/where_fifos
@@ -2365,7 +2365,7 @@ We use a seperate script to make the FIFOs so that other processes can start buf
 Like with all other lemonbar components, setup the logger and get the necessary variables
 
 #+begin_src shell
-. $HOME/lib/shell/logger
+. $HOME/org/config/lib/shell/logger
 . $HOME/.config/lemonbar/utils/where_fifos
 LOGGER=$(get_logger lemonbar.make_fifos)
 #+end_src
@@ -3594,8 +3594,8 @@ The default landing page isn't quite nice. I originally had it configured to dis
 (use-package dashboard
   :ensure t
   :custom
-  ;; (dashboard-startup-banner "~/lib/emacs-themes/navi.png")
-  (dashboard-startup-banner "~/lib/emacs-themes/black-hole.png")
+  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
+  (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
   (dashboard-center-content t)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
@@ -4196,7 +4196,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
 (use-package autothemer
   :ensure t)
 
-(add-to-list 'custom-theme-load-path "~/lib/emacs-themes/")
+(add-to-list 'custom-theme-load-path "~/org/config/lib/emacs-themes/")
 ;; (load-theme 'gruvbox-black t)
 
 (use-package doom-themes

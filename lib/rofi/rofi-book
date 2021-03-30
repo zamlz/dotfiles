@@ -20,7 +20,7 @@
 # TODO: Generate rofi dialogues for libra events.
 
 # Source this file to use my colorscheme
-. $HOME/lib/shell/xrdb_colors
+. $HOME/org/config/lib/shell/xrdb_colors
 
 BMEXE=$HOME/bin/book
 BMLIB=$HOME/usr/bookmarks

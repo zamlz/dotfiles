@@ -26,17 +26,17 @@ configure_dots() {
 
     # Setting up emacs config file
     echo "Setting up emacs config file"
-    ln -s $d/etc/init.el $d/.emacs.d/init.el
+    ln -s $d/org/config/etc/init.el $d/.emacs.d/init.el
 
     # Setting up qutebrowser
     echo "Setting up qutebrowser files"
     mkdir -p $d/.config/qutebrowser
-    ln -s $d/etc/qutebrowser/config.py $d/.config/qutebrowser/config.py
+    ln -s $d/org/config/etc/qutebrowser/config.py $d/.config/qutebrowser/config.py
 
     # Setup custom color information
     echo "Setting up color info for xorg apps"
-    $HOME/bin/xcolorscheme --set gruvbox-black
-    $HOME/bin/colors --set hex
+    $HOME/org/config/bin/xcolorscheme --set gruvbox-black
+    $HOME/org/config/bin/colors --set hex
 
     # post setup messages
     echo ""
