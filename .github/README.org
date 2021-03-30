@@ -1,2 +1,8 @@
-#+TITLE: My Personal Dotfiles
+#+TITLE: My Dotfile Configurations
 #+AUTHOR: Amlesh Sivanantham
+#+CREATED: [2021-02-18 Thu 15:09]
+#+LAST_MODIFIED: [2021-03-29 Mon 18:05:39]
+
+[[./xkcd.png]]
+
+It's actually incredible how accurate this xckd comic is...

@@ -1,14 +1,10 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-29 Mon 17:57:06]
+#+LAST_MODIFIED: [2021-03-29 Mon 18:07:08]
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
 # ... Present day, present time ...
-
-[[./xkcd.png]]
-
-It's actually incredible how accurate this xckd comic is...
 
 * Operating System
 ** TODO Gentoo Linux
