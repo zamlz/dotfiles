@@ -1,0 +1,29 @@
+#+TITLE: Zathura Document Viewer
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_KEY: https://pwmt.org/projects/zathura/
+#+CREATED: [2021-03-29 Mon 18:15]
+#+LAST_MODIFIED: [2021-03-29 Mon 18:17:46]
+
+* Configuration
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/zathura/zathurarc :mkdirp yes
+:END:
+** Re-Color Pages
+
+Uncomment the first line if you want to have the the pages recolored by default.
+
+#+begin_src conf
+#set recolor true
+set recolor-darkcolor "#ebdbb2"
+set recolor-lightcolor "#000000"
+#+end_src
+
+** Highlighting
+
+#+begin_src conf
+set highlight-color "#b16286"
+set highlight-active-color "#458588"
+set highlight-transparency 0.75
+#+end_src

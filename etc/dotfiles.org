@@ -1,13 +1,11 @@
 #+TITLE: My Personal Dotfiles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-29 Mon 18:07:08]
+#+LAST_MODIFIED: [2021-03-29 Mon 18:22:43]
 #+OPTIONS: broken-links:t
 #+STARTUP: overview
 # ... Present day, present time ...
 
-* Operating System
-** TODO Gentoo Linux
 * Shell Environment
 ** Zsh
 *** Environment Configuration
@@ -3259,26 +3257,4 @@ wintypes:
         focus = true;
     };
 };
-#+end_src
-
-** Zathura PDF Reader
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/zathura/zathurarc :mkdirp yes
-:END:
-*** Re-Color Pages
-
-Uncomment the first line if you want to have the the pages recolored by default.
-
-#+begin_src conf
-#set recolor true
-set recolor-darkcolor "#ebdbb2"
-set recolor-lightcolor "#000000"
-#+end_src
-
-*** Highlighting
-
-#+begin_src conf
-set highlight-color "#b16286"
-set highlight-active-color "#458588"
-set highlight-transparency 0.75
 #+end_src
