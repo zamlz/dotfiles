@@ -405,7 +405,7 @@
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
   ;; Customize size and width of the posframe
-  (ivy-posframe-height 40)
+  (ivy-posframe-height 20)
   (ivy-posframe-min-height 5)
   (ivy-posframe-width 120)
   (ivy-posframe-min-width 120)
@@ -1039,6 +1039,7 @@
   :custom
   (org-roam-directory "~/org/")
   (org-roam-dailies-directory "journal/")
+  (org-roam-file-exclude-regexp "README.org")
   (org-roam-db-udpate-method 'immediate))
 
 (setq org-roam-capture-templates

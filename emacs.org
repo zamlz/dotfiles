@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-03-30 Tue 10:24:30]
+#+LAST_MODIFIED: [2021-03-30 Tue 12:48:26]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -653,7 +653,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-window-bottom-left)))
   ;; (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-top-center)))
   ;; Customize size and width of the posframe
-  (ivy-posframe-height 40)
+  (ivy-posframe-height 20)
   (ivy-posframe-min-height 5)
   (ivy-posframe-width 120)
   (ivy-posframe-min-width 120)
