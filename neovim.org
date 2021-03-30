@@ -4,12 +4,18 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://neovim.io/
 #+CREATED: [2021-03-29 Mon 19:11]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:14:38]
+#+LAST_MODIFIED: [2021-03-30 Tue 09:29:14]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:12:44
 [[file:data/2021-03-29_19-12-44_screenshot.png]]
 
-Neovim is a fork of vim that aims to modernize vim.
+Neovim is a fork of vim that aims to modernize vim. This config below is primarily targeted at Neovim, but with a few minor modifications (if any, I recalling getting the same config to work at some point), it can work with the vim.
+
+* Tips and Tricks
+I'll add useful help messages here at some point...
+
+* Trivia
+- According to [[hillelwayne.com/post/always-more-history/][this blog post]], vi uses =hjkl= as the arrow bindings not but its own design. But because the software was developed on the ADM-3A. This keyboard didn't have dedicated arrow keys, but made use of control characters (the first 32 characters of the 1967 ASCII Table). As a result, =ctrl-{h,j,k,l}= became the designated keys for moving the cursor around. When Bill Joy developed vi, he used =hjkl= for the arrow keys as it was only naturally having used the ADM-32.
 
 * Configuration
 :PROPERTIES:
