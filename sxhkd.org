@@ -1,0 +1,134 @@
+#+TITLE: Sxhkd
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_KEY: https://github.com/baskerville/sxhkd
+#+CREATED: [2021-03-29 Mon 19:28]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:30:51]
+
+Sxhkd is an X hotkey daemon.
+
+* Configuration
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/sxhkd/sxhkdrc :mkdirp yes
+:END:
+** Terminal Exec Keybindings
+
+This value is specified in =wminit=
+
+#+begin_src shell
+# Spawn a normal terminal
+super + Return
+    $SXHKD_TERMINAL
+
+#+end_src
+
+This actually only works in normal terminals and and not in the emacs vterm. Need to think of another solution to handle that.
+
+#+begin_src shell
+# Spawn Terminal matching environment of focused terminal
+super + shift + Return
+    $HOME/org/config/lib/pwdcfw/$SXHKD_TERMINAL
+#+end_src
+
+** Rofi Dmenu Launcher Keybindings
+
+#+begin_src shell
+# Standard $PATH program launcher
+super + e
+    rofi -show run
+#+end_src
+
+#+begin_src shell
+# Dmenu for password store
+super + p
+    $HOME/org/config/lib/rofi/rofi-pass
+super + shift + p
+    $HOME/org/config/lib/rofi/rofi-pass --qrcode
+#+end_src
+
+#+begin_src shell
+# Copy a specific bookmark to the clipboard
+super + b
+    $HOME/org/config/lib/rofi/rofi-book
+#+end_src
+
+#+begin_src shell
+# Open up a wiki page in read-only mode (originally named notes)
+super + n
+    $HOME/org/config/lib/rofi/rofi-wiki
+super + shift + n
+    $HOME/org/config/lib/rofi/rofi-wiki --pdf
+#+end_src
+
+#+begin_src shell
+# Restore a saved browser session
+super + w
+    $HOME/org/config/lib/rofi/rofi-browser
+#+end_src
+
+#+begin_src shell
+# Toggle a display/power profile
+super + d
+    $HOME/org/config/lib/rofi/rofi-profile
+XF86Display
+    $HOME/org/config/lib/rofi/rofi-profile
+#+end_src
+
+#+begin_src shell
+# Control system state (locked, reboot, poweroff, etc.)
+#super + Escape
+#    $HOME/org/config/lib/rofi/rofi-system LOCK SCREEN
+super + ctrl + alt + Escape
+    $HOME/org/config/lib/rofi/rofi-system
+#+end_src
+
+** Scrot Keybindings
+
+It's important that these keybindings are prefaces with the =@= token as it implies that the command should be executed on key release as opposed to key press. Scrot and xclip here will not work properly unless they are on key release.
+
+#+begin_src shell
+# Interactively select a window or rectangle with the mouse
+@Print
+    scrot -q 100 -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
+@shift + Print
+    scrot -q 100 '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+#+end_src
+
+** Media Control Keybindings
+
+#+begin_src shell
+XF86MonBrightnessUp
+    xbacklight -inc 1 -time 10; \
+    $HOME/.config/lemonbar/utils/trigger_fifos bkl
+
+XF86MonBrightnessDown
+    xbacklight -dec 1 -time 10; \
+    $HOME/.config/lemonbar/utils/trigger_fifos bkl
+
+XF86AudioMute
+    pulsemixer --toggle-mute; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioMicMute
+    pulsemixer --toggle-mute; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioRaiseVolume
+    pulsemixer --change-volume +1; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioLowerVolume
+    pulsemixer --change-volume -1; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioPlay
+    $HOME/src/spotify-cli/spotify-cli toggle
+
+XF86AudioNext
+    $HOME/src/spotify-cli/spotify-cli next
+
+XF86AudioPrev
+    $HOME/src/spotify-cli/spotify-cli prev
+#+end_src
