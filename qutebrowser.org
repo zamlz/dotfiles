@@ -1,25 +1,46 @@
-# My custom config.py
+#+TITLE: Qutebrowser
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_KEY: https://qutebrowser.org/
+#+CREATED: [2021-03-29 Mon 20:08]
+#+LAST_MODIFIED: [2021-03-29 Mon 20:21:24]
 
-# NOTE: config.py is intended for advanced users who are comfortable
-# with manually migrating the config file on qutebrowser upgrades. If
-# you prefer, you can also configure qutebrowser using the
-# :set/:bind/:config-* commands without having to write a config.py
-# file.
-#
-# Documentation:
-#   qute://help/configuring.html
-#   qute://help/settings.html
+#+DOWNLOADED: screenshot @ 2021-03-29 20:10:43
+[[file:data/2021-03-29_20-10-43_screenshot.png]]
 
+Qutebrowser is a minimal browser with vim-like keybindings.
+
+* Configuration
+:PROPERTIES:
+:header-args:python: :tangle ~/.config/qutebrowser/config.py :mkdirp yes
+:END:
+
+*NOTE:* config.py is intended for advanced users who are comfortable with manually migrating the config file on qutebrowser upgrades. If you prefer, you can also configure qutebrowser using the =:set/:bind/:config-*= commands without having to write a config.py file.
+
+*Documentation:*
+- [[qute://help/configuring.html][qute://help/configuring.html]]
+- [[qute://help/settings.html][qute://help/settings.html]]
+
+#+begin_src python
 # Change the argument to True to still load settings configured via autoconfig.yml
 config.load_autoconfig(False)
+#+end_src
 
+** Get the system color configuration
+
+#+begin_src python
 # Obtain the current colors I use
 def read_colorscheme(path):
     with open(path, 'r') as f:
         return dict(l[8:].split() for l in f.readlines() if l[:7] == '#define')
 
 cs = read_colorscheme('/home/zamlz/.config/xcolor/scheme')
+#+end_src
 
+** Settings
+
+#+begin_src python
 ## Always restore open sites when qutebrowser is reopened.
 ## Type: Bool
 c.auto_save.session = True
@@ -196,7 +217,11 @@ c.colors.webpage.darkmode.threshold.text = 156
 ##   - top
 ##   - bottom
 c.downloads.position = 'bottom'
+#+end_src
 
+** Keybindings
+
+#+begin_src python
 ## Bindings for normal mode
 config.bind("'", 'mode-enter jump_mark')
 config.bind('+', 'zoom-in')
@@ -504,3 +529,4 @@ config.bind('y', 'prompt-accept yes', mode='yesno')
 
 ## User defined bindings
 config.bind(',m', 'spawn mpv {url}')
+#+end_src
