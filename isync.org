@@ -1,0 +1,41 @@
+#+TITLE: Isync (mbsync)
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_KEY: https://isync.sourceforge.io/
+#+CREATED: [2021-03-29 Mon 19:19]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:20:31]
+
+Isync is a tool for IMAP and MailDir Synchronization
+
+* Configuration
+:PROPERTIES:
+:header-args:conf: :tangle ~/.mbsyncrc
+:END:
+
+A tool used to sync and create local IMAP stores.
+
+#+begin_src conf
+IMAPAccount gmail
+Host imap.gmail.com
+User samlesh@gmail.com
+PassCmd "pass email/samlesh@gmail.com-app-isync"
+SSLType IMAPS
+CertificateFile /etc/ssl/certs/ca-certificates.crt
+
+IMAPStore gmail-remote
+Account gmail
+
+MaildirStore gmail-local
+Subfolders Verbatim
+# The trailing "/" is important!
+Path ~/.mail/samlesh@gmail.com/
+Inbox ~/.mail/samlesh@gmail.com/Inbox
+
+Channel gmail
+Master :gmail-remote:
+Slave :gmail-local:
+Patterns *
+Create Both
+SyncState *
+#+end_src
