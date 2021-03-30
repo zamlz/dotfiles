@@ -1,9 +1,9 @@
 #+TITLE: Org-mode
 #+ROAM_KEY: https://orgmode.org/
-#+ROAM_TAGS: EMACS SOFTWARE CONFIG
+#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-03-29 Mon 18:03:23]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:37:14]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:49:25
 [[file:data/2021-03-27_09-49-25_screenshot.png]]

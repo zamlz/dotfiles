@@ -1,10 +1,10 @@
-#+TITLE: Sxhkd
+#+TITLE: Sxhkd Hotkey Daemon
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/baskerville/sxhkd
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:30:51]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:50:26]
 
 Sxhkd is an X hotkey daemon.
 

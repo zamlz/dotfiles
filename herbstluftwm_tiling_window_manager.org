@@ -1,10 +1,10 @@
-#+TITLE: Herbstluftwm
+#+TITLE: Herbstluftwm Tiling Window Manager
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://herbstluftwm.org/
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-03-29 Mon 18:45:09]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:50:48]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
 [[file:data/2021-03-29_18-45-00_screenshot.png]]

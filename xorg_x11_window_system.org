@@ -1,12 +1,65 @@
-#+TITLE: My Personal Dotfiles
+#+TITLE: Xorg X11 Window System
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:31:25]
-#+OPTIONS: broken-links:t
-#+STARTUP: overview
-# ... Present day, present time ...
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_KEY: https://www.x.org/wiki/
+#+CREATED: [2021-03-29 Mon 19:39]
+#+LAST_MODIFIED: [2021-03-29 Mon 19:50:37]
 
-* Desktop Environment
+#+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
+[[file:data/2021-03-29_19-46-34_screenshot.png]]
+
+Xorg is an open source implementation of the X window system.
+
+* Configuration
+** Xinitrc
+:PROPERTIES:
+:header-args:shell: :tangle ~/.xinitrc :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+. $HOME/org/config/lib/shell/logger
+LOGGER=$(get_logger xinitrc)
+#+end_src
+
+Some linux distros have predefined scripts in these locations that need to be sourced in order for proper Xorg operation. Source the global defaults and then the local files if any exist.
+
+#+begin_src shell
+# We need to source some things if it exists
+$LOGGER "Sourcing xinitrc.d files if they exist"
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+    for f in /etc/X11/xinit/xinitrc.d/*.sh ; do
+        [ -x "$f" ] && . "$f"
+    done
+    unset f
+fi
+
+# Repeat for any local scripts if they exist
+# Store xrandr monitor setup scripts here!!!
+if [ -d $HOME/.config/xinitrc.d ] ; then
+    find "$HOME/.config/xinitrc.d" -name "*.sh" | while read -r f; do
+        [ -x "$f" ] && . "$f"
+    done
+    unset f
+fi
+#+end_src
+
+This part of the script decides which window manager to start. This is ultimately passed as an argument to startx. Take a look at =~/.zlogin= to see how it is triggered.
+
+#+begin_src shell
+# Start Window Manager
+session=${1:-herbstluftwm}
+$LOGGER "Starting session: $session"
+
+EXEC_DBUS="exec dbus-launch --exit-with-session"
+
+case $session in
+    herbstluftwm)   $EXEC_DBUS herbstluftwm;;
+    exwm)           $EXEC_DBUS emacs -mm --debug-init;;
+    *)              exec $1;;
+esac
+#+end_src
+
 ** Window Manager Utilties Startup Script
 :PROPERTIES:
 :header-args:shell: :tangle ~/.config/wm_init.sh :mkdirp yes :shebang #!/bin/sh
@@ -118,66 +171,17 @@ pkill -x lemonbar
 $HOME/.config/lemonbar/lemonbar &
 #+end_src
 
-** Xorg X11 Window System
-*** Xinitrc
-:PROPERTIES:
-:header-args:shell: :tangle ~/.xinitrc :shebang #!/bin/sh
-:END:
-
-#+begin_src shell
-. $HOME/org/config/lib/shell/logger
-LOGGER=$(get_logger xinitrc)
-#+end_src
-
-Some linux distros have predefined scripts in these locations that need to be sourced in order for proper Xorg operation. Source the global defaults and then the local files if any exist.
-
-#+begin_src shell
-# We need to source some things if it exists
-$LOGGER "Sourcing xinitrc.d files if they exist"
-if [ -d /etc/X11/xinit/xinitrc.d ] ; then
-    for f in /etc/X11/xinit/xinitrc.d/*.sh ; do
-        [ -x "$f" ] && . "$f"
-    done
-    unset f
-fi
-
-# Repeat for any local scripts if they exist
-# Store xrandr monitor setup scripts here!!!
-if [ -d $HOME/.config/xinitrc.d ] ; then
-    find "$HOME/.config/xinitrc.d" -name "*.sh" | while read -r f; do
-        [ -x "$f" ] && . "$f"
-    done
-    unset f
-fi
-#+end_src
-
-This part of the script decides which window manager to start. This is ultimately passed as an argument to startx. Take a look at =~/.zlogin= to see how it is triggered.
-
-#+begin_src shell
-# Start Window Manager
-session=${1:-herbstluftwm}
-$LOGGER "Starting session: $session"
-
-EXEC_DBUS="exec dbus-launch --exit-with-session"
-
-case $session in
-    herbstluftwm)   $EXEC_DBUS herbstluftwm;;
-    exwm)           $EXEC_DBUS emacs -mm --debug-init;;
-    *)              exec $1;;
-esac
-#+end_src
-
-*** Xresources
+** Xresources
 :PROPERTIES:
 :header-args:C: :tangle ~/.Xresources
 :END:
-**** Source Colorscheme
+*** Source Colorscheme
 
 #+begin_src C
 #include ".config/xcolor/scheme"
 #+end_src
 
-**** Xft Font Settings
+*** Xft Font Settings
 
 #+begin_src C
 Xft.dpi:                    96
@@ -187,7 +191,7 @@ Xft.hinting:                true
 Xft.hintstyle:              hintslight
 #+end_src
 
-**** Default Font Face
+*** Default Font Face
 
 #+begin_src C
 !*font: xft:Iosevka Term:size=11
@@ -195,8 +199,8 @@ Xft.hintstyle:              hintslight
 #define system_font xft:xos4 Terminus:size=12
 #+end_src
 
-**** Rxvt Unicode Terminal
-***** General Settings
+*** Rxvt Unicode Terminal
+**** General Settings
 
 #+begin_src C
 URxvt.depth:                32
@@ -207,7 +211,7 @@ URxvt.lineSpace:            0
 !URxvt.termName:             xterm-256color
 #+end_src
 
-***** Transparency
+**** Transparency
 
 I've disabled all transparency for the time being
 
@@ -221,7 +225,7 @@ I've disabled all transparency for the time being
 !URxvt*background: [85]xbackground
 #+end_src
 
-***** Misc UI Changes
+**** Misc UI Changes
 
 #+begin_src C
 ! tint with any color; i.e., blue, red, tomato4, olivedrab2, etc.
@@ -246,7 +250,7 @@ URxvt*scrollBar_right: false
 URxvt*scrollstyle: plain
 #+end_src
 
-***** Clipboard Keybindings
+**** Clipboard Keybindings
 
 #+begin_src C
 ! Remap the copy and paste functionaility
@@ -254,7 +258,7 @@ URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
 #+end_src
 
-***** Colorscheme and Font
+**** Colorscheme and Font
 
 #+begin_src C
 URxvt.foreground: xforeground
@@ -285,15 +289,15 @@ URxvt.color15: xcolor15
 URxvt.font: system_font
 #+end_src
 
-**** Rofi Dmenu
-***** Enabled Modes
+*** Rofi Dmenu
+**** Enabled Modes
 
 #+begin_src C
 ! "Enabled modi" Set from: Default
 rofi.modi:                           window,run,ssh
 #+end_src
 
-***** Window Geometry
+**** Window Geometry
 
 #+begin_src C
 ! "Window width" Set from: Default
@@ -306,7 +310,7 @@ rofi.modi:                           window,run,ssh
 ! rofi.columns:                        1
 #+end_src
 
-***** Colorscheme and Font
+**** Colorscheme and Font
 
 #+begin_src C
 ! "Font to use" Set from: XResources
@@ -327,7 +331,7 @@ rofi.font:                            Iosevka Term 12
 rofi.bw:                             4
 #+end_src
 
-***** Unused Rofi Settings
+**** Unused Rofi Settings
 
 #+begin_src C
 ! "Location on screen" Set from: Default
@@ -542,7 +546,7 @@ rofi.terminal:                       urxvtc
 ! rofi.display-combi:
 #+end_src
 
-**** Emacs
+*** Emacs
 
 Really we set the default colorscheme here so that emacs doesn't blind our eyes we the default black background, but also set some other sane defaults from the default colorscheme so that if emacs does in fact crash, we are in a /dark theme/ environment.
 
