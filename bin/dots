@@ -26,7 +26,7 @@ configure_dots() {
 
     # Setting up emacs config file
     echo "Setting up emacs config file"
-    ln -s $d/org/config/etc/init.el $d/.emacs.d/init.el
+    ln -s $d/org/config/init.el $d/.emacs.d/init.el
 
     # Setting up qutebrowser
     echo "Setting up qutebrowser files"
