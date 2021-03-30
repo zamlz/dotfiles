@@ -1,0 +1,15 @@
+#+TITLE: Magit
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE EMACS
+#+ROAM_KEY: https://magit.vc/
+#+CREATED: [2021-03-30 Tue 11:36]
+#+LAST_MODIFIED: [2021-03-30 Tue 11:39:42]
+
+#+DOWNLOADED: screenshot @ 2021-03-30 11:38:53
+[[file:data/2021-03-30_11-38-53_screenshot.png]]
+
+Magit is a [[file:git.org][Git]] porcelain inside [[file:emacs.org][GNU/Emacs]].
+
+* Useful Resources
+- [[https://youtu.be/j-k-lkilbEs][John Wiegley's Magit Demonstration]]
