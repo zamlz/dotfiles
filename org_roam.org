@@ -1,10 +1,10 @@
 #+TITLE: Org-roam
 #+ROAM_ALIAS:
 #+ROAM_KEY: https://www.orgroam.com/
-#+ROAM_TAGS: NOTE_TAKING SOFTWARE CONFIG
+#+ROAM_TAGS: EMACS NOTE_TAKING SOFTWARE CONFIG
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-03-29 Mon 15:17:46]
+#+LAST_MODIFIED: [2021-03-29 Mon 18:03:11]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/2021-03-27_00-26-48_screenshot.png]]
