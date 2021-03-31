@@ -1,13 +1,11 @@
 #+TITLE: My Dotfile Configurations
 #+AUTHOR: Amlesh Sivanantham
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-31 Wed 10:44:16]
+#+LAST_MODIFIED: [2021-03-31 Wed 10:47:53]
 
 [[./xkcd.png]]
 
 It's actually incredible how accurate this xckd comic is...
-
-This is a test | C -x |
 
 * Shell Environment
 - [[file:../zsh.org][Zsh]]
