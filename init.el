@@ -196,8 +196,8 @@
 (use-package dashboard
   :ensure t
   :custom
-  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
-  (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
+  (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
+  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
   (dashboard-center-content t)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)

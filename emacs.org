@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-03-31 Wed 00:29:16]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:12:30]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -323,8 +323,8 @@ The default landing page isn't quite nice. I originally had it configured to dis
 (use-package dashboard
   :ensure t
   :custom
-  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
-  (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
+  (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
+  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
   (dashboard-center-content t)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
