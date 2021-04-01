@@ -469,7 +469,7 @@
   ; min height for the helm buffer
   (helm-autoresize-min-height 0)
   ; open helm buffer inside current window, not occupy whole other window
-  (helm-split-window-in-side-p t)
+  (helm-split-window-inside-p t)
   ; move to end or beginning of source when reaching top or bottom of source.
   ;; (helm-move-to-line-cycle-in-source t)
   ; search for library in `require' and `declare-function' sexp.
@@ -542,11 +542,11 @@
 (use-package prescient)
 
 (use-package helpful
-  :after counsel
-  :custom
+  :after (counsel helm)
+  ;; :custom
   ; This is only needed if I'm still using counsel
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
+  ;; (counsel-describe-function-function #'helpful-callable)
+  ;; (counsel-describe-variable-function #'helpful-variable)
   :bind
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
