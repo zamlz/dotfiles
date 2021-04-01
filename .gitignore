@@ -1,19 +1,2 @@
-# Ironic really because now we ignore all dotfiles.
-.*
-
-# Avoid these directories like the plague
-src/
-sys/
-tmp/
-usr/
-var/
-org/
-mnt/
-
-# But what if they are not directories and are symlinks???
-src
-tmp
-usr
-
 # Ignore any emacs generated files
 *#

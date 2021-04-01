@@ -1,11 +1,15 @@
 #+TITLE: My Dotfile Configurations
 #+AUTHOR: Amlesh Sivanantham
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-04-01 Thu 09:27:14]
+#+LAST_MODIFIED: [2021-04-01 Thu 11:16:04]
 
 [[./xkcd.png]]
 
 It's actually incredible how accurate this xckd comic is...
+
+[[./roam.png]]
+
+/I'll figure out a way to automate this graph preview at some point/
 
 * Shell Environment
 - [[file:../zsh.org][Zsh]]
