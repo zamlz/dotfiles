@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-03-31 Wed 19:07:03]
+#+LAST_MODIFIED: [2021-03-31 Wed 23:58:50]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -549,7 +549,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   ;; Change completion method (not working as expected)
   ;; This needs to be in the init it seems othrewise, it doesn't get loaded...
   (setq ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
-  (ivy-mode)
+  ;; (ivy-mode)
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -585,22 +585,22 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 (use-package counsel
   :after ivy
   :bind (
-         ("M-x"       . counsel-M-x)
-         ("C-x TAB"   . counsel-semantic-or-imenu)
-         ("C-x b"     . counsel-switch-buffer)
-         ("M-y"       . counsel-yank-pop)
-         ("M-o"       . counsel-recentf)
+         ;; ("M-x"       . counsel-M-x)
+         ;; ("C-x TAB"   . counsel-semantic-or-imenu)
+         ;; ("C-x b"     . counsel-switch-buffer)
+         ;; ("M-y"       . counsel-yank-pop)
+         ;; ("M-o"       . counsel-recentf)
          ("M-m"       . counsel-evil-marks)
-         ("C-x B"     . counsel-switch-buffer-other-window)
-         ("C-x C-f"   . counsel-find-file)
-         ("C-x C-M-f" . counsel-find-file-extern)
-         ("C-x C-l"   . counsel-locate)
-         ("C-x C-M-l" . counsel-locate-action-extern)
+         ;; ("C-x C-f"   . counsel-find-file)
+         ;; ("C-x C-M-f" . counsel-find-file-extern)
+         ;; ("C-x C-l"   . counsel-locate)
+         ;; ("C-x C-M-l" . counsel-locate-action-extern)
          ("C-x C-v"   . counsel-set-variable)
          ("C-c u"     . counsel-unicode-char)
-         :map minibuffer-local-map
-         ("C-r"       . 'counsel-minibuffer-history))
-  :config (counsel-mode)
+         ;; :map minibuffer-local-map
+         ;; ("C-r"       . 'counsel-minibuffer-history)
+         )
+  ;; :config (counsel-mode)
   )
 #+end_src
 
@@ -608,9 +608,9 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 
 #+begin_src emacs-lisp
 (use-package swiper
-  :after counsel
-  :bind (("C-s"   . swiper)
-         ("C-M-s" . swiper-all)))
+  ;; :bind (("C-s"   . swiper)
+         ;; ("C-M-s" . swiper-all))
+  :after counsel)
 #+end_src
 
 **** Ivy Rich
@@ -696,8 +696,8 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
 
 #+begin_src emacs-lisp
 (use-package ivy-pass
-  :after ivy
-  :bind ("C-x C-p" . ivy-pass))
+  ;; :bind ("C-x C-p" . ivy-pass)
+  :after ivy)
 #+end_src
 
 **** Ivy Prescient
@@ -725,19 +725,22 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
 #+begin_src emacs-lisp
 (use-package helm
   :bind (
-  ;;        ("M-x"     . helm-M-x)
-  ;;        ("M-y"     . helm-show-kill-ring)
-  ;;        ("C-x b"   . helm-mini)
-  ;;        ("C-x C-f" . helm-find-files)
-  ;;        ("C-x C-l" . helm-locate)
-  ;;        ("C-x r b" . helm-bookmarks)
-  ;;        ;; ("C-c h"   . helm-command-prefix)
-  ;;        ("C-x TAB" . helm-semantic-or-imenu)
-  ;;        ("C-s"     . helm-occur)
-  ;;        :map helm-map
-  ;;        ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
-  ;;        ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
-  ;;        ("C-z"   . helm-select-action) ; list actions using C-z
+         ("M-x"     . helm-M-x)
+         ("C-x TAB" . helm-semantic-or-imenu)
+         ("C-x b"   . helm-mini)
+         ("M-y"     . helm-show-kill-ring)
+         ("M-o"     . helm-recentf)
+         ;; No replacement for evil-marks
+         ("C-x C-f" . helm-find-files)
+         ("C-x C-l" . helm-locate)
+         ("C-x r b" . helm-bookmarks)
+         ("C-s"     . helm-occur)
+         ;; no replacement for set variable
+         ;; no replacement for unicode char
+         :map helm-map
+         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+         ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
+         ("M-o"   . helm-select-action) ; list actions using M-o (similar to ivy)
          )
   :custom
   ; max height for the helm buffer
@@ -773,7 +776,7 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
   ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
-  ;; (helm-mode 1)
+  (helm-mode 1)
   )
 #+end_src
 
@@ -782,8 +785,9 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
 A useful package for figuring out what bindings there is in a particular major/minor mode.
 
 #+begin_src emacs-lisp
-;; (use-package helm-descbinds
-;;   :bind ([remap describe-bindings] . helm-descbinds))
+(use-package helm-descbinds
+  ;; This is bound to C-h b
+  :bind ([remap describe-bindings] . helm-descbinds))
 #+end_src
 
 **** Helm Describe Mode
@@ -791,9 +795,9 @@ A useful package for figuring out what bindings there is in a particular major/m
 [[https://github.com/emacs-helm/helm-describe-modes/tree/11fb36af119b784539d31c6160002de1957408aa][github:emacs-helm/helm-describe-modes]]
 
 #+begin_src emacs-lisp
-;; (use-package helm-describe-modes
-;;   ;; This is just bound to "C-h m"
-;;   :bind ([remap describe-mode] . helm-describe-modes))
+(use-package helm-describe-modes
+  ;; This is just bound to "C-h m"
+  :bind ([remap describe-mode] . helm-describe-modes))
 #+end_src
 
 **** Helm Bibtex
@@ -816,16 +820,6 @@ A useful package for figuring out what bindings there is in a particular major/m
 ;;   (bibtex-completion-notes-symbol "✎")
 ;;   ;; TODO Use bibtex-completion-additional-search-fields
 ;;   )
-#+end_src
-
-**** Helm Dictioary
-
-[[https://github.com/emacs-helm/helm-dictionary][github:emacs-helm/helm-dictionary]]
-
-#+begin_src emacs-lisp
-(use-package helm-dictionary
-  :after helm
-  :bind ("C-c h d" . helm-dictionary))
 #+end_src
 
 **** Helm Org Rifle
@@ -852,9 +846,9 @@ A useful package for figuring out what bindings there is in a particular major/m
 [[https://github.com/wandersoncferreira/helm-spotify-plus][github:wandersoncferreira/helm-spotify-plus]]
 
 #+begin_src emacs-lisp
-;; (use-package helm-spotify-plus
-;;   :after helm
-;;   :bind ("C-c h C-s" . helm-spotify-plus))
+(use-package helm-spotify-plus
+  :after helm
+  :bind ("C-c h C-s" . helm-spotify-plus))
 #+end_src
 
 **** Helm Pass
@@ -863,8 +857,8 @@ A useful package for figuring out what bindings there is in a particular major/m
 
 #+begin_src emacs-lisp
 (use-package helm-pass
-  :after helm)
-  ;; :bind ("C-x C-p" . helm-pass))
+  :after helm
+  :bind ("C-x C-p" . helm-pass))
 #+end_src
 
 *** Prescient
