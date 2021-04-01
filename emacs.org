@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-01 Thu 10:44:54]
+#+LAST_MODIFIED: [2021-04-01 Thu 11:11:15]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -1795,6 +1795,8 @@ A fun litte package for memorizing and learning keybindings. To play, simply use
 #+end_src
 
 *** Mu4e
+
+We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the IMAP to use with mu4e.
 
 #+begin_src emacs-lisp
 (use-package mu4e
