@@ -1,12 +1,12 @@
 #+TITLE: Sxhkd Hotkey Daemon
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: sxhkd
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/baskerville/sxhkd
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:50:26]
+#+LAST_MODIFIED: [2021-04-01 Thu 09:30:28]
 
-Sxhkd is an X hotkey daemon.
+Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:

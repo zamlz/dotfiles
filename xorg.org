@@ -1,10 +1,10 @@
 #+TITLE: Xorg X11 Window System
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: X11
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:52:18]
+#+LAST_MODIFIED: [2021-04-01 Thu 09:30:49]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]

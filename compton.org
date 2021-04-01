@@ -1,12 +1,12 @@
-#+TITLE: Compton X11 Compositor
+#+TITLE: Compton Compositor
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: compton
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/chjj/compton
 #+CREATED: [2021-03-29 Mon 19:22]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:23:25]
+#+LAST_MODIFIED: [2021-04-01 Thu 09:29:14]
 
-Compton is a compositor for X11.
+Compton is a compositor for the [[file:xorg.org][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:

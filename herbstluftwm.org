@@ -1,15 +1,15 @@
 #+TITLE: Herbstluftwm Tiling Window Manager
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: herbstluftwm
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://herbstluftwm.org/
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:50:34]
+#+LAST_MODIFIED: [2021-04-01 Thu 09:29:29]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
 [[file:data/herbstluftwm_logo.png]]
 
-Herbstlufwm is a manual tiling window manager for X11. Every workspace has a collection of frames and each of these frames contain a collection of windows. The frames can be manually tiled wheras the windows in the frames follow one of many tiling algorithms.
+Herbstlufwm is a manual tiling window manager for the [[file:xorg.org][Xorg X11 Window System]]. Every workspace has a collection of frames and each of these frames contain a collection of windows. The frames can be manually tiled wheras the windows in the frames follow one of many tiling algorithms.
 
 * Configuration
 :PROPERTIES:
@@ -305,7 +305,7 @@ done
 
 ** Event Hooks
 
-This starts a couple FIFO hooks so that lemonbar can update the information on it's panel as effeciently as possible.
+This starts a couple FIFO hooks so that [[file:lemonbar.org][Lemonbar]] can update the information on it's panel as effeciently as possible.
 
 *** Event Hooks Startup Verification
 

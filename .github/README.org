@@ -1,7 +1,7 @@
 #+TITLE: My Dotfile Configurations
 #+AUTHOR: Amlesh Sivanantham
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-03-31 Wed 10:47:53]
+#+LAST_MODIFIED: [2021-04-01 Thu 09:27:14]
 
 [[./xkcd.png]]
 
@@ -21,7 +21,7 @@ It's actually incredible how accurate this xckd comic is...
 - [[file:../sxhkd.org][Sxhkd Hotkey Daemon]]
 - [[file:../herbstluftwm.org][Herbstluftwm Tiling Window Manager]]
 - [[file:../lemonbar.org][Lemonbar]]
-- [[file:../compton.org][Compton X11 Compositor]]
+- [[file:../compton.org][Compton Compositor]]
 - [[file:../zathura.org][Zathura Document Viewer]]
 
 * Emacs Configuration

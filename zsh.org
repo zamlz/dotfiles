@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-03-29 Mon 18:54:16]
+#+LAST_MODIFIED: [2021-04-01 Thu 09:46:22]
 
 A powerful shell that has more features that bash.
 
@@ -73,7 +73,7 @@ fi
 export LEDGER_FILE="$LEDGER_DIR/main.journal"
 #+end_src
 
-When using zsh inside emacs, we also need to update the editor. You definetely do not want to open up vim while inside the terminal with nearly no way to get out. Maybe I should move the alias into /not this file/.
+When using zsh inside [[file:emacs.org][GNU/Emacs]], we also need to update the editor. The default system editor will be [[file:neovim.org][vim]] as its a good fallback, but we definetly do not want it opening inside [[file:emacs.org][GNU/Emacs]].
 
 #+begin_src shell
 if [ -n "$INSIDE_EMACS" ]; then
@@ -142,7 +142,7 @@ source $HOME/.zsh.d/functions.zsh
 
 *** Configure SSH & GnuPG Variables
 
-I don't know what to make of this. I thought I could have this code block in the =~/.zshenv= file but I was unable to do so as it causing many issues. Seems like it needs to be set during an interactive session. Very strange indeed.
+I don't know what to make of this. I thought I could have this code block in the =~/.zshenv= file but I was unable to do so as it causing many issues. Seems like it needs to be set during an interactive session. Very strange indeed. Essentially this configured what pinentry program should be used for [[file:gnupg.org][GnuPG]] and [[file:ssh.org][OpenSSH]]. Furthermore, it also tells [[file:ssh.org][OpenSSH]] that it should look into [[file:gnupg.org][GnuPG]] to get the ssh authentication key.
 
 #+begin_src shell
 export GPG_TTY=$(tty)
@@ -232,7 +232,7 @@ source $HOME/org/config/lib/shell/logger
 LOGGER=$(get_logger zsh.profile)
 #+end_src
 
-Setup herbstluftwm window manager during login
+Setup the [[file:herbstluftwm.org][Herbstluftwm Tiling Window Manager]] during login
 
 #+begin_src shell
 # Regular StartX Boot for Herbsluftwm
@@ -243,7 +243,7 @@ if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
 fi
 #+end_src
 
-The remaining =tty= are for testing or recovery purposes. I primarily use =tty2= for testing new window managers. In the case below, I'm trying out emacs as a window manager.
+The remaining =tty= are for testing or recovery purposes. I primarily use =tty2= for testing new window managers. In the case below, I'm trying out [[file:emacs.org][GNU/Emacs]] as a window manager.
 
 #+begin_src shell
 # Regular StartX Boot for Emacs
@@ -260,7 +260,7 @@ fi
 :END:
 *** GnuPG Utilities
 
-Simple helper function to encrypt files  with gpg
+The following code blocks contains code to encrypt/decrypt files with [[file:gnupg.org][GnuPG]] very easily.
 
 #+begin_src shell
 function gpg-lock() {
@@ -274,8 +274,6 @@ function gpg-lock() {
     fi
 }
 #+end_src
-
-Simple helper function to decrypt files with gpg
 
 #+begin_src shell
 function gpg-unlock() {
@@ -291,7 +289,7 @@ function gpg-unlock() {
 
 *** Groot
 
-I wrote a simple script to get me details of a git repo. Absolutely pointless lol.
+I wrote a simple script to get me pretty details of a [[file:git.org][Git]] repo.
 
 #+begin_src shell
 function groot() {
@@ -430,7 +428,7 @@ function venv() {
 
 *** X Window Terminal Info
 
-Basically this lets me open up new windows withing the same directory that another existing terminal is in (so I don't have to =cd= into it). This works by a couple of hacks. Save window information for each x-window terminal session when we spawn it. Override the default =cd= so that we also save every directory change. We also save python venv information as well. We also want to make sure we only do this when an X11 display exists.
+The following code helps save [[file:xorg.org][X11]] window information for every terminal. This can be used later to start new terminal sessions in those directories (Meant to be used with [[file:urxvt.org][URxvt]]). In a nuteshell, the built-in =cd= is overridden to now save this window info.
 
 #+begin_src shell
 function window_info() {
@@ -507,7 +505,7 @@ alias ll="ls -oh"
 alias la="ls -lah"
 #+end_src
 
-Shortcuts for =git=
+Shell aliases to make using [[file:git.org][Git]] easier.
 
 #+begin_src shell
 alias gs="git status"
