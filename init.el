@@ -323,7 +323,7 @@
   ;; Change completion method (not working as expected)
   ;; This needs to be in the init it seems othrewise, it doesn't get loaded...
   (setq ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
-  ;; (ivy-mode)
+  (ivy-mode)
   :bind (:map ivy-minibuffer-map
          ("TAB" . ivy-alt-done)
          ("C-l" . ivy-alt-done)
@@ -353,28 +353,28 @@
 (use-package counsel
   :after ivy
   :bind (
-         ;; ("M-x"       . counsel-M-x)
-         ;; ("C-x TAB"   . counsel-semantic-or-imenu)
-         ;; ("C-x b"     . counsel-switch-buffer)
-         ;; ("M-y"       . counsel-yank-pop)
-         ;; ("M-o"       . counsel-recentf)
+         ("M-x"       . counsel-M-x)
+         ("C-x TAB"   . counsel-semantic-or-imenu)
+         ("C-x b"     . counsel-switch-buffer)
+         ("M-y"       . counsel-yank-pop)
+         ("M-o"       . counsel-recentf)
          ("M-m"       . counsel-evil-marks)
-         ;; ("C-x C-f"   . counsel-find-file)
-         ;; ("C-x C-M-f" . counsel-find-file-extern)
-         ;; ("C-x C-l"   . counsel-locate)
-         ;; ("C-x C-M-l" . counsel-locate-action-extern)
+         ("C-x B"     . counsel-switch-buffer-other-window)
+         ("C-x C-f"   . counsel-find-file)
+         ("C-x C-M-f" . counsel-find-file-extern)
+         ("C-x C-l"   . counsel-locate)
+         ("C-x C-M-l" . counsel-locate-action-extern)
          ("C-x C-v"   . counsel-set-variable)
          ("C-c u"     . counsel-unicode-char)
-         ;; :map minibuffer-local-map
-         ;; ("C-r"       . 'counsel-minibuffer-history)
-         )
-  ;; :config (counsel-mode)
+         :map minibuffer-local-map
+         ("C-r"       . 'counsel-minibuffer-history))
+  :config (counsel-mode)
   )
 
 (use-package swiper
-  ;; :bind (("C-s"   . swiper)
-         ;; ("C-M-s" . swiper-all))
-  :after counsel)
+  :after counsel
+  :bind (("C-s"   . swiper)
+         ("C-M-s" . swiper-all)))
 
 ;; Adds nice icons to the ivy rich buffer
 (use-package all-the-icons-ivy-rich
@@ -434,8 +434,8 @@
   )
 
 (use-package ivy-pass
-  ;; :bind ("C-x C-p" . ivy-pass)
-  :after ivy)
+  :after ivy
+  :bind ("C-x C-p" . ivy-pass))
 
 (use-package ivy-prescient
   :after (ivy prescient))
@@ -446,22 +446,19 @@
 
 (use-package helm
   :bind (
-         ("M-x"     . helm-M-x)
-         ("C-x TAB" . helm-semantic-or-imenu)
-         ("C-x b"   . helm-mini)
-         ("M-y"     . helm-show-kill-ring)
-         ("M-o"     . helm-recentf)
-         ;; No replacement for evil-marks
-         ("C-x C-f" . helm-find-files)
-         ("C-x C-l" . helm-locate)
-         ("C-x r b" . helm-bookmarks)
-         ("C-s"     . helm-occur)
-         ;; no replacement for set variable
-         ;; no replacement for unicode char
-         :map helm-map
-         ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
-         ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
-         ("M-o"   . helm-select-action) ; list actions using M-o (similar to ivy)
+  ;;        ("M-x"     . helm-M-x)
+  ;;        ("M-y"     . helm-show-kill-ring)
+  ;;        ("C-x b"   . helm-mini)
+  ;;        ("C-x C-f" . helm-find-files)
+  ;;        ("C-x C-l" . helm-locate)
+  ;;        ("C-x r b" . helm-bookmarks)
+  ;;        ;; ("C-c h"   . helm-command-prefix)
+  ;;        ("C-x TAB" . helm-semantic-or-imenu)
+  ;;        ("C-s"     . helm-occur)
+  ;;        :map helm-map
+  ;;        ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+  ;;        ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
+  ;;        ("C-z"   . helm-select-action) ; list actions using C-z
          )
   :custom
   ; max height for the helm buffer
@@ -497,16 +494,15 @@
   ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
   (global-set-key (kbd "C-c h") 'helm-command-prefix)
   (global-unset-key (kbd "C-x c"))
-  (helm-mode 1)
+  ;; (helm-mode 1)
   )
 
-(use-package helm-descbinds
-  ;; This is bound to C-h b
-  :bind ([remap describe-bindings] . helm-descbinds))
+;; (use-package helm-descbinds
+;;   :bind ([remap describe-bindings] . helm-descbinds))
 
-(use-package helm-describe-modes
-  ;; This is just bound to "C-h m"
-  :bind ([remap describe-mode] . helm-describe-modes))
+;; (use-package helm-describe-modes
+;;   ;; This is just bound to "C-h m"
+;;   :bind ([remap describe-mode] . helm-describe-modes))
 
 ;; (use-package helm-bibtex
 ;;   :after helm
@@ -524,6 +520,10 @@
 ;;   ;; TODO Use bibtex-completion-additional-search-fields
 ;;   )
 
+(use-package helm-dictionary
+  :after helm
+  :bind ("C-c h d" . helm-dictionary))
+
 (use-package helm-org-rifle
   :after helm)
 
@@ -531,13 +531,13 @@
   :after helm
   :bind (("C-c h C-t" . helm-themes)))
 
-(use-package helm-spotify-plus
-  :after helm
-  :bind ("C-c h C-s" . helm-spotify-plus))
+;; (use-package helm-spotify-plus
+;;   :after helm
+;;   :bind ("C-c h C-s" . helm-spotify-plus))
 
 (use-package helm-pass
-  :after helm
-  :bind ("C-x C-p" . helm-pass))
+  :after helm)
+  ;; :bind ("C-x C-p" . helm-pass))
 
 (use-package prescient)
 
