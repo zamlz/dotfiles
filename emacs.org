@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:46:52]
+#+LAST_MODIFIED: [2021-03-31 Wed 19:07:03]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -1682,7 +1682,7 @@ It is made available like so.
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
-        ("b" "bookmarks" plain (function org-roam--capture-get-point)
+        ("w" "webpages/bookmarks" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "bookmarks/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
@@ -1690,6 +1690,16 @@ It is made available like so.
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: BOOKMARK\n"
                         "#+ROAM_KEY: %x\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED: %U\n")
+         :unnarrowed t)
+        ("b" "blogpost" plain (function org-roam--capture-get-point)
+         "\n%?"
+         :file-name "blog/${slug}"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
+                        "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS: BLOGPOST\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)

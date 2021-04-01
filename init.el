@@ -1078,7 +1078,7 @@
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
-        ("b" "bookmarks" plain (function org-roam--capture-get-point)
+        ("w" "webpages/bookmarks" plain (function org-roam--capture-get-point)
          "\n%?"
          :file-name "bookmarks/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
@@ -1086,6 +1086,16 @@
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: BOOKMARK\n"
                         "#+ROAM_KEY: %x\n"
+                        "#+CREATED: %U\n"
+                        "#+LAST_MODIFIED: %U\n")
+         :unnarrowed t)
+        ("b" "blogpost" plain (function org-roam--capture-get-point)
+         "\n%?"
+         :file-name "blog/${slug}"
+         :head ,(concat "#+TITLE: ${title}\n"
+                        "#+AUTHOR: %n (%(user-login-name))\n"
+                        "#+ROAM_ALIAS:\n"
+                        "#+ROAM_TAGS: BLOGPOST\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
