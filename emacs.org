@@ -642,19 +642,19 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 [[https://github.com/tumashu/ivy-posframe][tumashu/ivy-postframe]] is ivy extension, which let ivy use the postframe to show its candidate menu.
 
 #+begin_src emacs-lisp
-(use-package ivy-posframe
-  :after counsel
-  :custom
-  ;; Specify the the display posframe
-  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-  ;; Customize height and width of the posframe
-  (ivy-posframe-height 20)
-  (ivy-posframe-min-height 5)
-  (ivy-posframe-width 120)
-  (ivy-posframe-min-width 120)
-  (ivy-posframe-border-width 20)
-  :init
-  (ivy-posframe-mode 1))
+;; (use-package ivy-posframe
+;;   :after counsel
+;;   :custom
+;;   ;; Specify the the display posframe
+;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
+;;   ;; Customize height and width of the posframe
+;;   (ivy-posframe-height 20)
+;;   (ivy-posframe-min-height 5)
+;;   (ivy-posframe-width 120)
+;;   (ivy-posframe-min-width 120)
+;;   (ivy-posframe-border-width 20)
+;;   :init
+;;   (ivy-posframe-mode 1))
 #+end_src
 
 **** Ivy Hydra
