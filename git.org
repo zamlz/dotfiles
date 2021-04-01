@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE CONFIG
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:48:29]
+#+LAST_MODIFIED: [2021-04-01 Thu 13:50:40]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:38:29
 [[file:data/git_logo.png]]
@@ -17,7 +17,7 @@ Nothing yet, but as I remember them, I'll add them here.
 
 * Git Configuration
 :PROPERTIES:
-:header-args:conf: :tangle ~/.gitconfig
+:header-args:conf: :tangle ~/.gitconfig :comments both
 :END:
 ** User Profile
 

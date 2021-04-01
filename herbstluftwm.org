@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://herbstluftwm.org/
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-04-01 Thu 09:29:29]
+#+LAST_MODIFIED: [2021-04-01 Thu 14:48:43]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
 [[file:data/herbstluftwm_logo.png]]
@@ -13,7 +13,7 @@ Herbstlufwm is a manual tiling window manager for the [[file:xorg.org][Xorg X11 
 
 * Configuration
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/herbstluftwm/autostart :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/herbstluftwm/autostart :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 ** Initial Configuration
 
@@ -40,17 +40,17 @@ hc unrule --all
 #+end_src
 
 Setup simple focus rules
+- Focus *new* windows as they appear
+- +Move all Xterm Windows to Tag 3+ /(I added this here simply for example's sake)/
 
 #+begin_src shell
-hc rule focus=on # normally focus new clients
-#hc rule focus=off # normally do not focus new clients
+hc rule focus=on
 #hc rule class=XTerm tag=3 # move all xterms to tag 3
 #+end_src
 
 Okay so probably the rules for the terminal are pointless here. Discord one actually doesn't work the way I want it to, but everything else here is pretty important. It makes sure that panels appear where they are suppose to and also ensures that popups are floating.
 
 #+begin_src shell
-# give focus to most common terminals
 hc rule class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on
 hc rule class~'(Discord|DiscordCanary)' focus=off
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
@@ -63,7 +63,6 @@ hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 We need to configure some X11 specific things that are universally needed regardless of window manager.
 
 #+begin_src shell :noweb yes
-# Reapply certain XORG settings by using the wm util startup code block
 $HOME/.config/wm_init.sh
 #+end_src
 
@@ -73,13 +72,16 @@ $HOME/.config/wm_init.sh
 
 *** Setup
 
+Remove all existing keybinding; Use the super key as the main modifier.
+
 #+begin_src shell
-# remove all existing keybinding; Use the super key as the main modifier
 hc keyunbind --all
 Super=Mod4
 #+end_src
 
 *** Reload WM and Close Window
+
+Define the reload and close window keybindings.
 
 #+begin_src shell
 hc keybind $Super-Ctrl-Alt-r reload
@@ -88,8 +90,9 @@ hc keybind $Super-q close
 
 *** Window Focus
 
+Keybindings for changing the focused client
+
 #+begin_src shell
-# focusing clients
 hc keybind $Super-Left  focus left
 hc keybind $Super-Down  focus down
 hc keybind $Super-Up    focus up
@@ -98,8 +101,11 @@ hc keybind $Super-h     focus left
 hc keybind $Super-j     focus down
 hc keybind $Super-k     focus up
 hc keybind $Super-l     focus right
+#+end_src
 
-# Cycling focus
+Keybindings for cycling the focused client
+
+#+begin_src shell
 hc keybind $Super-BackSpace   cycle_monitor
 hc keybind $Super-Tab         cycle +1
 hc keybind $Super-Shift-Tab   cycle_frame +1
@@ -109,8 +115,9 @@ hc keybind $Super-i jumpto urgent
 
 *** Window Movement
 
+Keybindings for moving windows around.
+
 #+begin_src shell
-# moving clients
 hc keybind $Super-Shift-Left  shift left
 hc keybind $Super-Shift-Down  shift down
 hc keybind $Super-Shift-Up    shift up
@@ -123,22 +130,25 @@ hc keybind $Super-Shift-l     shift right
 
 *** Splitting Frames
 
+Split the current frame by creating an empty frame in the specified direction.
+
 #+begin_src shell
-# splitting frames
-# create an empty frame at the specified direction
 hc keybind $Super-u       split   bottom  0.5
 hc keybind $Super-o       split   right   0.5
+#+end_src
 
-# let the current frame explode into subframes
+Split the current frame by exploding the current frame into multiple frames.
+
+#+begin_src shell
 hc keybind $Super-Control-space split explode
 #+end_src
 
 *** Resizing Frames
 
-#+begin_src shell
-# resizing frames
-resizestep=0.01
+Define the step size and the keybindings for resizing frames.
 
+#+begin_src shell
+resizestep=0.01
 hc keybind $Super-Control-h       resize left +$resizestep
 hc keybind $Super-Control-j       resize down +$resizestep
 hc keybind $Super-Control-k       resize up +$resizestep
@@ -152,7 +162,6 @@ hc keybind $Super-Control-Right   resize right +$resizestep
 *** Workspace Definitions (tags)
 
 #+begin_src shell
-# tags
 tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
 tag_keys=( {1..9} 0 )
 
@@ -169,11 +178,15 @@ done
 
 *** Workspace Movement
 
-#+begin_src shell
-# Jump to previous tag
-hc keybind $Super-grave use_previous
+Jump to the previous workspace (tag).
 
-# cycle through tags
+#+begin_src shell
+hc keybind $Super-grave use_previous
+#+end_src
+
+Move the next/previous workspace (tag).
+
+#+begin_src shell
 hc keybind $Super-bracketright use_index +1 --skip-visible
 hc keybind $Super-bracketleft  use_index -1 --skip-visible
 #+end_src
@@ -181,15 +194,15 @@ hc keybind $Super-bracketleft  use_index -1 --skip-visible
 *** Layout Control
 
 #+begin_src shell
-# layouting
 hc keybind $Super-r remove
 hc keybind $Super-s floating toggle
 hc keybind $Super-f fullscreen toggle
 hc keybind $Super-t pseudotile toggle
+#+end_src
 
-# The following cycles through the available layouts within a frame, but skips
-# layouts, if the layout change wouldn't affect the actual window positions.
-# I.e. if there are two windows within a frame, the grid layout is skipped.
+The following cycles through the available layouts within a frame, but skips layouts, if the layout change wouldn't affect the actual window positions. (I.e. if there are two windows within a frame, the grid layout is skipped.)
+
+#+begin_src shell
 hc keybind $Super-space                                                       \
             or , and . compare tags.focus.curframe_wcount = 2                 \
                      . cycle_layout +1 vertical horizontal max vertical grid  \
@@ -199,7 +212,6 @@ hc keybind $Super-space                                                       \
 *** Mouse Control
 
 #+begin_src shell
-# mouse
 hc mouseunbind --all
 hc mousebind $Super-Button1 move
 hc mousebind $Super-Button2 zoom
@@ -208,8 +220,9 @@ hc mousebind $Super-Button3 resize
 
 *** Colorscheme Cylcing
 
+Just some nice keybindings to cycle through existing colorschemes.
+
 #+begin_src shell
-# cycle through colorschemes
 hc keybind $Super-Ctrl-Alt-bracketright chain , \
         spawn $HOME/org/config/bin/xcolorscheme --next , reload
 
@@ -286,10 +299,9 @@ hc set tree_style '╾│ ├└╼─┐'
 
 *** Montior Setup
 
-Well monitor setup doesn't belong here really, but we're doing it here because we need to make space for the panels.
+Well monitor setup doesn't belong here really, but we're doing it here because we need to make space for the panels. /(Run the unlock command, just to be sure)/
 
 #+begin_src shell
-# unlock, just to be sure
 hc unlock
 hc detect_monitors
 #+end_src

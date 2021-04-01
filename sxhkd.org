@@ -4,62 +4,67 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/baskerville/sxhkd
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-04-01 Thu 11:09:48]
+#+LAST_MODIFIED: [2021-04-01 Thu 14:29:57]
 
 Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/sxhkd/sxhkdrc :mkdirp yes
+:header-args:shell: :tangle ~/.config/sxhkd/sxhkdrc :mkdirp yes :comments both
 :END:
 ** Terminal Exec Keybindings
 
-This value is specified in =wminit=
+Keybinding to spawn a terminal. This variable is defined in the [[file:xorg.org][X11]] window manager utilities init file.
 
 #+begin_src shell
-# Spawn a normal terminal
 super + Return
     $SXHKD_TERMINAL
-
 #+end_src
 
-This actually only works in normal terminals and and not in the emacs vterm. Need to think of another solution to handle that.
+Spawn Terminal matching environment of focused terminal. This is incredibly useful if I want to create another terminal instance in the same directory as the one I'm currently in. /This actually only works in normal terminals and and not in the emacs vterm. Need to think of another solution to handle that but probably don't need to./
 
 #+begin_src shell
-# Spawn Terminal matching environment of focused terminal
 super + shift + Return
     $HOME/org/config/lib/pwdcfw/$SXHKD_TERMINAL
 #+end_src
 
 ** Rofi Dmenu Launcher Keybindings
 
-Here we make use of [[file:rofi.org][Rofi Dmenu]] to create various dmenus to do various tasks. Half of these are probably deprecated now that I'm using emacs.
+Here we make use of [[file:rofi.org][Rofi Dmenu]] to create various dmenus to do various tasks. Half of these are probably deprecated now that I'm using emacs, but nonetheless, here they are.
+
+Dmenu for launching a program from =$PATH=.
 
 #+begin_src shell
-# Standard $PATH program launcher
 super + e
     rofi -show run
-# Display all open windows
+#+end_src
+
+Dmenu for listing all open windows and changing focus.
+
+#+begin_src shell
 super + w
     rofi -show window
 #+end_src
 
+Dmenu for interacting with password store and also getting QR Code view.
+
 #+begin_src shell
-# Dmenu for password store
 super + p
     $HOME/org/config/lib/rofi/rofi-pass
 super + shift + p
     $HOME/org/config/lib/rofi/rofi-pass --qrcode
 #+end_src
 
+Dmenu for retrieving and saving personal bookmarks /(Deprecated in favor of Org-roam)/
+
 #+begin_src shell
-# Copy a specific bookmark to the clipboard
 super + b
     $HOME/org/config/lib/rofi/rofi-book
 #+end_src
 
+Dmenu for looking up my vimwiki files in read-only mode. Also generate PDF views as well. /(Deprecated in favor of Org-roam)/
+
 #+begin_src shell
-# Open up a wiki page in read-only mode (originally named notes)
 super + n
     $HOME/org/config/lib/rofi/rofi-wiki
 super + shift + n
@@ -69,21 +74,22 @@ super + shift + n
 Choose which [[file:qutebrowser.org][Qutebrowser]] session to load. Unforunately its pretty buggy and is not working the way I expect.
 
 #+begin_src shell
-# Restore a saved browser session
 super + shift + w
     $HOME/org/config/lib/rofi/rofi-browser
 #+end_src
 
+Toggle between different display/power profile (multi-monitor, single monitor, etc.)
+
 #+begin_src shell
-# Toggle a display/power profile
 super + d
     $HOME/org/config/lib/rofi/rofi-profile
 XF86Display
     $HOME/org/config/lib/rofi/rofi-profile
 #+end_src
 
+Dmenu to control system state (locked, reboot, poweroff, etc.)
+
 #+begin_src shell
-# Control system state (locked, reboot, poweroff, etc.)
 #super + Escape
 #    $HOME/org/config/lib/rofi/rofi-system LOCK SCREEN
 super + ctrl + alt + Escape
@@ -92,10 +98,9 @@ super + ctrl + alt + Escape
 
 ** Scrot Keybindings
 
-It's important that these keybindings are prefaces with the =@= token as it implies that the command should be executed on key release as opposed to key press. Scrot and xclip here will not work properly unless they are on key release.
+Interactively select a window or rectangle with the mouse to take a screen shot of it. /It's important that these keybindings are prefaces with the =@= token as it implies that the command should be executed on key release as opposed to key press. Scrot and xclip here will not work properly unless they are on key release./
 
 #+begin_src shell
-# Interactively select a window or rectangle with the mouse
 @Print
     scrot -q 100 -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
 
@@ -104,6 +109,8 @@ It's important that these keybindings are prefaces with the =@= token as it impl
 #+end_src
 
 ** Media Control Keybindings
+
+Various media keybindings that both actually do the what the media key describes and also /(usually)/ sends a signal to the [[file:lemonbar.org][Lemonbar]] FIFOs.
 
 #+begin_src shell
 XF86MonBrightnessUp

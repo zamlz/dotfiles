@@ -4,39 +4,56 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/tmux/tmux
 #+CREATED: [2021-03-29 Mon 19:15]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:51:59]
+#+LAST_MODIFIED: [2021-04-01 Thu 14:10:51]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:16:27
 [[file:data/tmux_logo.png]]
 
 * Configuration
 :PROPERTIES:
-:header-args:conf: :tangle ~/.tmux.conf
+:header-args:conf: :tangle ~/.tmux.conf :comments both
 :END:
 ** Basic Config
 
-#+begin_src conf
-set -g default-terminal "screen-256color"   # Use 256 colors
-set -g history-limit 100000                 # Scrollback buffer number of lines
+Some sane defaults to use 256 color mode and setting the line buffer size.
 
-# Start window indexing at one instead of zero
+#+begin_src conf
+set -g default-terminal "screen-256color"
+set -g history-limit 100000
+#+end_src
+
+Start window indexing at one instead of zero.
+
+#+begin_src conf
 set -g base-index 1
 #+end_src
 
 ** Keybindings
 
-#+begin_src conf
-# Set the prefix key and some key bindings to match GNU Screen
-set -g prefix C-b
-#bind-key C-a last-window
+Set the prefix key and some key bindings to match GNU Screen.
 
-# Key bindings for horizontal and vertical panes
+#+begin_src conf
+set -g prefix C-b
+#+end_src
+
+Shortcut to jump back to the previously focused window.
+
+#+begin_src conf
+#bind-key C-a last-window
+#+end_src
+
+Key bindings for creating horizontal and vertical panes.
+
+#+begin_src conf
 unbind %
 unbind '"'
 bind | split-window -h
 bind - split-window -v
+#+end_src
 
-# Add vim-like bindings
+Add vim-like bindings for focus movement
+
+#+begin_src conf
 unbind-key j
 bind-key j select-pane -D
 unbind-key k
@@ -49,18 +66,18 @@ bind-key l select-pane -R
 
 ** Window Settings
 
-#+begin_src conf
-# Enable window titles
-set -g set-titles on
+Display window titles and set the format string as well.
 
-# Window title string (uses statusbar variables)
+#+begin_src conf
+set -g set-titles on
 set -g set-titles-string '#T'
 #+end_src
 
 ** Status Bar
 
+Improvement the status bar aesthetic and also add cpu load and datetime info as well.
+
 #+begin_src conf
-# Status bar with load and time
 set -g status-bg '#4e4e4e'
 set -g status-fg '#ffffff'
 set -g status-left ' '
@@ -73,15 +90,17 @@ setw -g window-status-current-fg '#000000'
 
 ** Pane
 
+Customize colors of the panes.
+
 #+begin_src conf
-# Pane border colors
 set -g pane-active-border-fg '#bbbbbb'
 set -g pane-border-fg '#555555'
 #+end_src
 
 ** Reload Config
 
+Keybinding to quickly reload config.
+
 #+begin_src conf
-# Bind to reload config
 bind r source-file ~/.tmux.conf
 #+end_src

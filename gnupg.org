@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://gnupg.org/
 #+CREATED: [2021-03-29 Mon 18:57]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:51:18]
+#+LAST_MODIFIED: [2021-04-01 Thu 14:49:26]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:05:47
 [[file:data/gnupg_logo.png]]
@@ -13,55 +13,86 @@ GnuPG is GNU's implementation of the OpenPGP standard.
 
 * GPG Configuration
 :PROPERTIES:
-:header-args:conf: :tangle ~/.gnupg/gpg.conf :mkdirp yes
+:header-args:conf: :tangle ~/.gnupg/gpg.conf :mkdirp yes :comments both
 :END:
 
-#+begin_src conf
-# When outputting certificates, view user IDs distinctly from keys
-fixed-list-mode
+When outputting certificates, view user IDs distinctly from keys
 
-# Long keyids are more collision-resistant than short keyids
-# (Its trivial to make a key with any desired short keyid)
+#+begin_src conf
+fixed-list-mode
+#+end_src
+
+Long keyids are more collision-resistant than short keyids. (Its trivial to make a key with any desired short keyid).
+
+#+begin_src conf
 keyid-format 0xlong
 with-fingerprint
+#+end_src
 
-# when multiple digests are supported by all recipients, choose the strongest one:
+when multiple digests are supported by all recipients, choose the strongest one.
+
+#+begin_src conf
 personal-digest-preferences SHA512 SHA384 SHA256 SHA224
+#+end_src
 
-# preferences chosen for new keys should prioritize stronger algorithms:
+Preferences chosen for new keys should prioritize stronger algorithms.
+
+#+begin_src conf
 default-preference-list SHA512 SHA384 SHA256 SHA224 AES256 AES192 AES CAST5 BZIP2 ZLIB ZIP Uncompressed
+#+end_src
 
-# If you use a graphical environment (and even if you don't) you should be
-# using an agent: (similar arguments as
-# https://www.debian-administration.org/users/dkg/weblog/64)
+If you use a graphical environment (and even if you don't) you should be using an agent (similar arguments as [[https://www.debian-administration.org/users/dkg/weblog/64][https://www.debian-administration.org/users/dkg/weblog/64]])
+
+#+begin_src conf
 use-agent
+#+end_src
 
-# You should always know at a glance which User IDs gpg thinks are
-# legitimately bound to the keys in your keyring:
+You should always know at a glance which User IDs gpg thinks are legitimately bound to the keys in your keyring
+
+#+begin_src conf
 verify-options show-uid-validity
 list-options show-uid-validity
+#+end_src
 
-# when making an OpenPGP certification, use a stronger digest than the default SHA1:
+when making an OpenPGP certification, use a stronger digest than the default SHA1.
+
+#+begin_src conf
 cert-digest-algo SHA256
+#+end_src
 
-# prevent version string from appearing in your signatures/public keys
+Prevent version string from appearing in your signatures/public keys
+
+#+begin_src conf
 no-emit-version
 #+end_src
 
 * GPG Agent Configuration
 :PROPERTIES:
-:header-args:conf: :tangle ~/.gnupg/gpg-agent.conf :mkdirp yes
+:header-args:conf: :tangle ~/.gnupg/gpg-agent.conf :mkdirp yes :comments both
 :END:
+
+Some sane defaults here
 
 #+begin_src conf
 default-cache-ttl 600
 max-cache-ttl 7200
-enable-ssh-support
-pinentry-program /usr/bin/pinentry-switcher
+#+end_src
 
-# This means clients like Emacs can get the password in their own way
-# and push to gpg. For this to work with emacs, set `epa-pinentry-mode`
-# to `'loopback` in Emacs
+This tells gpg to act as our [[file:ssh.org][OpenSSH]] agent as well.
+
+#+begin_src conf
+enable-ssh-support
+#+end_src
+
+We also want to make use of my pinentry switcher. It switches which pinentry program to use based on context (environment variables).
+
+#+begin_src conf
+pinentry-program /usr/bin/pinentry-switcher
+#+end_src
+
+This means clients like Emacs can get the password in their own way and push to gpg. For this to work with emacs, set =epa-pinentry-mode= to ='loopback= in Emacs.
+
+#+begin_src conf
 allow-emacs-pinentry
 allow-loopback-pinentry
 #+end_src

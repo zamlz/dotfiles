@@ -4,14 +4,14 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-04-01 Thu 09:46:22]
+#+LAST_MODIFIED: [2021-04-01 Thu 13:27:55]
 
 A powerful shell that has more features that bash.
 
 * Configuration
 ** Environment
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zshenv
+:header-args:shell: :tangle ~/.zshenv :comments both
 :END:
 
 Source system profile
@@ -99,7 +99,7 @@ This is sort of a weird hack. Basically, we're setting the pinentry program here
 
 ** Interactive Session
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zshrc
+:header-args:shell: :tangle ~/.zshrc :comments both
 :END:
 *** Zsh Configuration
 
@@ -222,7 +222,7 @@ add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
 
 ** Login Script
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zlogin
+:header-args:shell: :tangle ~/.zlogin :comments both
 :END:
 
 Need a logger just to keep track of things
@@ -247,7 +247,7 @@ The remaining =tty= are for testing or recovery purposes. I primarily use =tty2=
 
 #+begin_src shell
 # Regular StartX Boot for Emacs
-elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
+if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
     $LOGGER "Starting xinitrc parameterized on emacs"
     export WINDOW_MANAGER='exwm'
     exec startx $HOME/.xinitrc exwm
@@ -256,7 +256,7 @@ fi
 
 ** Functions
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zsh.d/functions.zsh :mkdirp yes
+:header-args:shell: :tangle ~/.zsh.d/functions.zsh :mkdirp yes :comments both
 :END:
 *** GnuPG Utilities
 
@@ -494,7 +494,7 @@ function ext() {
 
 ** Aliases
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zsh.d/aliases.zsh :mkdirp yes
+:header-args:shell: :tangle ~/.zsh.d/aliases.zsh :mkdirp yes :comments both
 :END:
 
 Shortcuts for =ls=

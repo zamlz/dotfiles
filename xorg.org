@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-04-01 Thu 10:41:24]
+#+LAST_MODIFIED: [2021-04-01 Thu 14:17:10]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]
@@ -14,7 +14,7 @@ Xorg is an open source implementation of the X window system.
 * Configuration
 ** Xinitrc
 :PROPERTIES:
-:header-args:shell: :tangle ~/.xinitrc :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.xinitrc :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -25,7 +25,6 @@ LOGGER=$(get_logger xinitrc)
 Some linux distros have predefined scripts in these locations that need to be sourced in order for proper Xorg operation. Source the global defaults and then the local files if any exist.
 
 #+begin_src shell
-# We need to source some things if it exists
 $LOGGER "Sourcing xinitrc.d files if they exist"
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     for f in /etc/X11/xinit/xinitrc.d/*.sh ; do
@@ -33,9 +32,11 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     done
     unset f
 fi
+#+end_src
 
-# Repeat for any local scripts if they exist
-# Store xrandr monitor setup scripts here!!!
+Repeat for any local scripts if they exist. /Store xrandr monitor setup scripts here!!!/
+
+#+begin_src shell
 if [ -d $HOME/.config/xinitrc.d ] ; then
     find "$HOME/.config/xinitrc.d" -name "*.sh" | while read -r f; do
         [ -x "$f" ] && . "$f"
@@ -44,10 +45,9 @@ if [ -d $HOME/.config/xinitrc.d ] ; then
 fi
 #+end_src
 
-This part of the script decides which window manager to start. This is ultimately passed as an argument to startx. Take a look at =~/.zlogin= to see how it is triggered.
+This part of the script decides which window manager to start. This is ultimately passed as an argument to startx. Take a look at =~/.zlogin= to see how it is done.
 
 #+begin_src shell
-# Start Window Manager
 session=${1:-herbstluftwm}
 $LOGGER "Starting session: $session"
 
@@ -62,25 +62,18 @@ esac
 
 ** Window Manager Utilties Startup Script
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/wm_init.sh :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/wm_init.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
-This is the main script outside of the actual window mangaer which is triggered by xorg. The purpose of this is to put other programs that need to be started alongside the window manager to create a fully fledged desktop environment. Typically, I've seen these components be in the =~/.xinitrc= file but we don't really want to restart xorg if we want to run some of the initialization code. The other option is to put it in the init file for the window manager, but that would also mean that we have to copy the same code to other init files. Instead its better for it to just have a unified source.
-
-Secondaly, these codeblocks aren't actually tangled anywhere directly. We use =org-babel='s no-web feature which lets us insert code blocks into other code blocks. For example, we insert it into the *herbstluftwm* autostart config.
-
-Like with all other components in my system, setup a logger for debugging purposes.
+This is the main script outside of the actual window mangaer which is triggered by xorg. The purpose of this is to put other programs that need to be started alongside the window manager to create a fully fledged desktop environment. Typically, I've seen these components be in the =~/.xinitrc= file but we don't really want to restart xorg if we want to run some of the initialization code. The other option is to put it in the init file for the window manager, but that would also mean that we have to copy the same code to other init files. Instead its better for it to just have a unified file for these things that all my window managers can source.
 
 #+begin_src shell
-# We may already have a logger ready to use...
-if [ -z "$LOGGER" ]; then
-    . $HOME/org/config/lib/shell/logger
-    LOGGER=$(get_logger xorg.wminit)
-fi
+. $HOME/org/config/lib/shell/logger
+LOGGER=$(get_logger xorg.wminit)
 $LOGGER "Initializing window manager common utilities"
 #+end_src
 
-Start compton if a config file exists. Looks crisp as hell!
+Start compton if a config file exists. /Looks crisp as hell!/
 
 #+begin_src shell
 pkill -x compton
@@ -93,14 +86,12 @@ fi
 Make sure xrdb loads up the xresouces file
 
 #+begin_src shell
-# Reload the xresource data
 xrdb -I$HOME $HOME/.Xresources
 #+end_src
 
 I had =xst= terminal installed as it was a lightweight alternative to urxvt. If I ever do continue using it, make sure it gets the config reset switch. *NOTE:* this wil fail if the colorscheme isn't properly set!
 
 #+begin_src shell
-# Refresh the terminal
 pkill -USR1 xst
 #+end_src
 
@@ -123,7 +114,6 @@ fi
 Set the background for the desktop environment. If =~/.fehbg= doesn't exist, setup the bitmap wallpaper.
 
 #+begin_src shell
-# Set the background
 if [ -f "$HOME/.fehbg" ]; then
     $HOME/.fehbg
 else
@@ -135,7 +125,6 @@ fi
 I use =sxhkd= for keybindings that should exist in all my environments regardless of what window manager I'm using.
 
 #+begin_src shell
-# Initialize universal keybindings
 SXHKD_SHELL=sh
 export SXHKD_TERMINAL=$HOME/org/config/bin/emacsclient-launcher
 pkill -x sxhkd
@@ -150,15 +139,21 @@ setxkbmap -option caps:escape
 
 We need to configure various xorg settings here. This might not be the best place as this definetly feels like something that should belong in the =~/.xinitrc=, however, in case they are set to something other than the defaults, it makes sense to be able to reset them here.
 
+Turn off the screen saver.
+
 #+begin_src shell
-# Use Display Power Management Settings to configure various things.
-# + Disable screen blanking (screensaver) (I don't think this works)
 xset s off
+#+end_src
 
-# + Increases the speed of the keyboard repeat rate
+Increases the typing speed of the keyboard by increasing the repeat rate.
+
+#+begin_src shell
 xset r rate 400 50
+#+end_src
 
-# Rehash local fonts
+Rehash locally installed fonts
+
+#+begin_src shell
 xset +fp $HOME/.local/share/fonts
 xset fp rehash
 #+end_src
@@ -166,7 +161,6 @@ xset fp rehash
 Finally start lemonbar once everything else is setup.
 
 #+begin_src shell
-# Start lemonbar after all X related stuff is finished
 pkill -x lemonbar
 $HOME/.config/lemonbar/lemonbar &
 #+end_src
