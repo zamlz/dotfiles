@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-01 Thu 00:04:05]
+#+LAST_MODIFIED: [2021-03-31 Wed 23:58:50]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -748,7 +748,7 @@ Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.gi
   ; min height for the helm buffer
   (helm-autoresize-min-height 0)
   ; open helm buffer inside current window, not occupy whole other window
-  (helm-split-window-inside-p t)
+  (helm-split-window-in-side-p t)
   ; move to end or beginning of source when reaching top or bottom of source.
   ;; (helm-move-to-line-cycle-in-source t)
   ; search for library in `require' and `declare-function' sexp.
@@ -875,11 +875,11 @@ Simple but effective sorting and filtering for emacs completion buffers.
 
 #+begin_src emacs-lisp
 (use-package helpful
-  :after (counsel helm)
-  ;; :custom
+  :after counsel
+  :custom
   ; This is only needed if I'm still using counsel
-  ;; (counsel-describe-function-function #'helpful-callable)
-  ;; (counsel-describe-variable-function #'helpful-variable)
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
   :bind
   ;; Note that the built-in `describe-function' includes both functions
   ;; and macros. `helpful-function' is functions only, so we provide
