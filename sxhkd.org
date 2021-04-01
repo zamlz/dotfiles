@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/baskerville/sxhkd
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-04-01 Thu 09:30:28]
+#+LAST_MODIFIED: [2021-04-01 Thu 11:00:56]
 
 Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
 
@@ -37,6 +37,9 @@ super + shift + Return
 # Standard $PATH program launcher
 super + e
     rofi -show run
+# Display all open windows
+super + w
+    rofi -show window
 #+end_src
 
 #+begin_src shell
@@ -63,7 +66,7 @@ super + shift + n
 
 #+begin_src shell
 # Restore a saved browser session
-super + w
+super + shift + w
     $HOME/org/config/lib/rofi/rofi-browser
 #+end_src
 
