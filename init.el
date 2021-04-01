@@ -1033,7 +1033,7 @@
          ("M-I" . org-roam-insert-immediate))
   :custom
   (org-roam-directory "~/org/")
-  (org-roam-dailies-directory "journal/")
+  (org-roam-dailies-directory "private/journal/")
   (org-roam-file-exclude-regexp "README.org")
   (org-roam-db-udpate-method 'immediate))
 
@@ -1045,18 +1045,16 @@
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS:\n"
-                        "#+ROAM_KEY: \n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
-        ("i" "infrastructure" plain (function org-roam--capture-get-point)
+        ("p" "private" plain (function org-roam--capture-get-point)
          "\n%?"
-         :file-name "personal/infra/${slug}"
+         :file-name "private/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
-                        "#+ROAM_TAGS: INFRASTRUCTURE\n"
-                        "#+ROAM_KEY: \n"
+                        "#+ROAM_TAGS:\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
@@ -1067,18 +1065,6 @@
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: CONFIG SOFTWARE\n"
-                        "#+ROAM_KEY: \n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n")
-         :unnarrowed t)
-        ("C" "contacts" plain (function org-roam--capture-get-point)
-         "\n%?"
-         :file-name "personal/contacts/${slug}"
-         :head ,(concat "#+TITLE: ${title}\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS:\n"
-                        "#+ROAM_TAGS: CONTACTS\n"
-                        "#+ROAM_KEY: \n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
@@ -1088,8 +1074,7 @@
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
-                        "#+ROAM_TAGS: TALK\n"
-                        "#+ROAM_KEY: %x\n"
+                        "#+ROAM_TAGS: \n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)
@@ -1110,7 +1095,7 @@
       `(("d" "default" entry
          #'org-roam-capture--get-point
          "* %U\n%?"
-         :file-name "personal/journal/%<%Y-%m-%d>"
+         :file-name "private/journal/%<%Y-%m-%d>"
          :head ,(concat "#+TITLE: %<[%Y-%m-%d] %B %e, %Y (%A)>\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS: %<%Y-%m-%d>\n"
