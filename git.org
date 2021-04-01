@@ -4,10 +4,10 @@
 #+ROAM_TAGS: SOFTWARE CONFIG
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-03-29 Mon 15:21:52]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:48:29]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:38:29
-[[file:data/2021-03-27_09-38-29_screenshot.png]]
+[[file:data/git_logo.png]]
 
 * Useful Resources
 - [[https://git-scm.com/doc][Official Git Documentation]]

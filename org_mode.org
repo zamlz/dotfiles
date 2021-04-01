@@ -3,10 +3,10 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-03-31 Wed 09:10:51]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:49:56]
 
-#+DOWNLOADED: screenshot @ 2021-03-27 09:49:25
-[[file:data/2021-03-27_09-49-25_screenshot.png]]
+#+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
+[[file:data/org_mode_logo.png]]
 
 Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emacs]].
 

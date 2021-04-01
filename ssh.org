@@ -4,10 +4,10 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.openssh.com/
 #+CREATED: [2021-03-29 Mon 18:59]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:07:12]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:50:57]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:02:35
-[[file:data/2021-03-29_19-02-35_screenshot.png]]
+[[file:data/openssh_logo.png]]
 
 OpenSSH is a tool provided by the OpenBSD Project that allows for remote login via the SSH protocol.
 

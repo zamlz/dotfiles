@@ -4,10 +4,10 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://gnupg.org/
 #+CREATED: [2021-03-29 Mon 18:57]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:06:00]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:51:18]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:05:47
-[[file:data/2021-03-29_19-05-47_screenshot.png]]
+[[file:data/gnupg_logo.png]]
 
 GnuPG is GNU's implementation of the OpenPGP standard.
 

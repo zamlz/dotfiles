@@ -4,10 +4,10 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://neovim.io/
 #+CREATED: [2021-03-29 Mon 19:11]
-#+LAST_MODIFIED: [2021-03-30 Tue 09:29:14]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:51:44]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:12:44
-[[file:data/2021-03-29_19-12-44_screenshot.png]]
+[[file:data/neovim_logo.png]]
 
 Neovim is a fork of vim that aims to modernize vim. This config below is primarily targeted at Neovim, but with a few minor modifications (if any, I recalling getting the same config to work at some point), it can work with the vim.
 

@@ -4,10 +4,10 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:50:37]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:52:18]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
-[[file:data/2021-03-29_19-46-34_screenshot.png]]
+[[file:data/xorg_logo.png]]
 
 Xorg is an open source implementation of the X window system.
 

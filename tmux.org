@@ -4,10 +4,10 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/tmux/tmux
 #+CREATED: [2021-03-29 Mon 19:15]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:16:43]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:51:59]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:16:27
-[[file:data/2021-03-29_19-16-27_screenshot.png]]
+[[file:data/tmux_logo.png]]
 
 * Configuration
 :PROPERTIES:

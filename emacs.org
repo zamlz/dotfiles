@@ -4,11 +4,11 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:12:30]
+#+LAST_MODIFIED: [2021-03-31 Wed 18:46:52]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
-[[file:data/2021-03-27_10-32-33_screenshot.png]]
+[[file:data/emacs_logo.png]]
 
 * Useful Resources
 - [[https://pages.sachachua.com/.emacs.d/][Sasha Chau's Emacs Configuration]]
