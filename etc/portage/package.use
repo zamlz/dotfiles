@@ -189,6 +189,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by sys-boot/os-prober (argument)
 =sys-boot/grub-2.04-r1 mount
 =sys-boot/grub-2.04-r2 mount
+=sys-boot/grub-2.06_rc1 mount
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
