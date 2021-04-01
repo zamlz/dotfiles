@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/baskerville/sxhkd
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-04-01 Thu 11:00:56]
+#+LAST_MODIFIED: [2021-04-01 Thu 11:09:48]
 
 Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
 
@@ -32,6 +32,8 @@ super + shift + Return
 #+end_src
 
 ** Rofi Dmenu Launcher Keybindings
+
+Here we make use of [[file:rofi.org][Rofi Dmenu]] to create various dmenus to do various tasks. Half of these are probably deprecated now that I'm using emacs.
 
 #+begin_src shell
 # Standard $PATH program launcher
@@ -63,6 +65,8 @@ super + n
 super + shift + n
     $HOME/org/config/lib/rofi/rofi-wiki --pdf
 #+end_src
+
+Choose which [[file:qutebrowser.org][Qutebrowser]] session to load. Unforunately its pretty buggy and is not working the way I expect.
 
 #+begin_src shell
 # Restore a saved browser session
