@@ -2,6 +2,7 @@
 
 # A simple script that manages dotfiles repo and beyond
 . $HOME/org/config/lib/repos
+. $HOME/org/config/lib/shell/colorenv
 
 help_prompt() {
     echo "Usage:"
@@ -10,12 +11,16 @@ help_prompt() {
 # Print the locations of the repos
 print_repo_dirs() {
     echo "DOTFILES_DIR       = ${DOTFILES_DIR}"
-    echo "DOCUMENTS_DIR      = ${DOCUMENTS_DIR}"
+    echo "ORGMODE_DIR        = ${ORGMODE_DIR}"
+
+    echo "GTD_DIR            = ${GTD_DIR}"
+    echo "NOTES_PUBLIC_DIR   = ${NOTES_PUBLIC_DIR}"
+    echo "NOTES_PRIVATE_DIR  = ${NOTES_PRIVATE_DIR}"
+
+    echo "PAPERS_DIR         = ${PAPERS_DIR}"
+    echo "BLOG_DIR           = ${BLOG_DIR}"
     echo "LEDGER_DIR         = ${LEDGER_DIR}"
     echo "PASSWORD_STORE_DIR = ${PASSWORD_STORE_DIR}"
-    echo "ORGMODE_DIR        = ${ORGMODE_DIR}"
-    echo "GTD_DIR            = ${GTD_DIR}"
-    echo "PAPERS_DIR         = ${PAPERS_DIR}"
 }
 
 # Configure dotfiles in the current directory
@@ -43,6 +48,7 @@ configure_dots() {
 # Run a git command (${2-}) in a given repo (${1})
 run_git() {
     REPO_DIR=$1 && shift && GIT_ARGS=$@;
+    echo -e "[${Bold}REPOSITORY: ${Purple}${REPO_DIR}${Rst}]"
     echo "git -C $REPO_DIR $GIT_ARGS"
     git -C $REPO_DIR $GIT_ARGS
 }
@@ -50,12 +56,16 @@ run_git() {
 run_git_over_all() {
     GIT_ARGS=$@;
     run_git ${DOTFILES_DIR} $GIT_ARGS;
-    run_git ${DOCUMENTS_DIR} $GIT_ARGS;
+    run_git ${ORGMODE_DIR} $GIT_ARGS;
+
+    run_git ${GTD_DIR} $GIT_ARGS;
+    run_git ${NOTES_PUBLIC_DIR} $GIT_ARGS;
+    run_git ${NOTES_PRIVATE_DIR} $GIT_ARGS;
+
+    run_git ${PAPERS_DIR} $GIT_ARGS;
+    run_git ${BLOG_DIR} $GIT_ARGS;
     run_git ${LEDGER_DIR} $GIT_ARGS;
     run_git ${PASSWORD_STORE_DIR} $GIT_ARGS;
-    run_git ${ORGMODE_DIR} $GIT_ARGS;
-    run_git ${GTD_DIR} $GIT_ARGS;
-    run_git ${PAPERS_DIR} $GIT_ARGS;
 }
 
 if [ -z "$@" ]; then
