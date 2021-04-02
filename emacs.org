@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-02 Fri 08:36:47]
+#+LAST_MODIFIED: [2021-04-02 Fri 11:03:18]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -1247,6 +1247,7 @@ Package provides integration to upstream GitHub, GitLab APIs and more. Setting t
 
 #+begin_src emacs-lisp
 (require 'init-org)
+(require 'init-org-babel)
 (require 'init-org-roam)
 #+end_src
 

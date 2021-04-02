@@ -1288,6 +1288,7 @@
 
 ;; [[file:emacs.org::*External Package Import][External Package Import:1]]
 (require 'init-org)
+(require 'init-org-babel)
 (require 'init-org-roam)
 ;; External Package Import:1 ends here
 

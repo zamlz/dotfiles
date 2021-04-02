@@ -3,7 +3,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-02 Fri 10:25:55]
+#+LAST_MODIFIED: [2021-04-02 Fri 10:47:43]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -19,9 +19,6 @@ Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emac
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-org.el :comments both
 :END:
-
-This is what emacs is about! And setting this up is crucial. There are quite a bit of configurable parts.
-
 ** Better Font Faces Hook
 
 We can configure =org-mode= font faces via a seperate function that we define. We need to add it as a hook afterwards however which is why this section appears before the basic configuration.
@@ -307,49 +304,6 @@ Dynamically make table of contents in org files
 (use-package org-make-toc)
 #+end_src
 
-** Literate Programming with Babel
-
-Babel is basically like jupyter notebooks for =org-mode= but its also way more powerful! Below we also configure quick access structure templates to write src blocks with ease. Babel is already a part of emacs so we must just configure it. To get a list of what languages you can configure for babel, take a look [[https://orgmode.org/worg/org-contrib/babel/languages/index.html][here]]!
-
-#+begin_src emacs-lisp
-(org-babel-do-load-languages
- 'org-babel-load-languages
- '((emacs-lisp . t)
-   (python . t)
-   (gnuplot . t)
-   (latex . t)
-   ))
-
-(setq org-confirm-babel-evaluate nil
-  org-src-fontify-natively t
-  org-src-strip-leading-and-trailing-blank-lines t
-  org-src-preserve-indentation nil
-  org-src-tab-acts-natively t
-  org-edit-src-content-indentation 0)
-
-;; Setup structure templates for org-babel
-(require 'org-tempo)
-(add-to-list `org-structure-template-alist '("sh" . "src shell"))
-(add-to-list `org-structure-template-alist '("el" . "src emacs-lisp"))
-(add-to-list `org-structure-template-alist '("py" . "src python"))
-(add-to-list `org-structure-template-alist '("cf" . "src conf"))
-#+end_src
-
-** Auto-Tangle Configuration File
-
-We make use of =org-babel= here to create our config file. This is currently also checking to my dotfiles in case of system rescue reasons.
-
-#+begin_src emacs-lisp
-;; (defun efs/org-babel-tangle-config ()
-;;   (when (string-equal (buffer-file-name)
-;;                       (expand-file-name "~/etc/emacs/config.org"))
-;;     ;; Dynamic scoping to the rescue
-;;     (let ((org-confirm-babel-evaluate nil))
-;;       (org-babel-tangle))))
-
-;; (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'efs/org-babel-tangle-config)))
-#+end_src
-
 ** LaTeX Inline Preview
 
 Pretty straightforward except that you need to have =latex= installed and also =dvi2png= as well. Need to figure out how to configure the size of the generated latex image.
@@ -435,7 +389,7 @@ It is made available like so.
 (add-hook 'before-save-hook #'zamlz/org-mode-before-save-hook)
 #+end_src
 
-** Package Provides
+** Package Provider
 
 #+begin_src emacs-lisp
 (provide 'init-org)
