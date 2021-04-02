@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-04-02 Fri 10:47:23]
+#+LAST_MODIFIED: [2021-04-02 Fri 11:44:01]
 
 #+DOWNLOADED: screenshot @ 2021-04-02 10:23:00
 [[file:data/tower_of_babel.png]]
@@ -12,7 +12,7 @@
 /The Tower of Babel by Pieter Brueghel the Elder/
 #+end_quote
 
-*Babel* is a powerful extension to [[file:org_mode.org][Org-mode]] which adds multi-language [[file:../notes/literate_programming.org][Literate Programming]] to Org files within emacs. My whole configuration basically exists because of the power of this package.
+*Babel* is a powerful extension to [[file:org_mode.org][Org-mode]] which adds multi-language [[file:../notes/literate_programming.org][Literate Programming]] to Org files within emacs. My whole configuration basically exists because of the power of this package...
 
 * Useful Resources
 - [[https://org-babel.readthedocs.io/en/latest/][Org Babel Reference Card]]
@@ -63,14 +63,13 @@ I use this only for org-babel at the moment, but maybe there is more to this pac
 Hook to configure auto-tangling of config files. This needs to be updated to look for my roam tag =CONFIG= instead.
 
 #+begin_src emacs-lisp
-;; (defun zamlz/org-babel-tangle-config ()
-;;   (when (string-equal (buffer-file-name)
-;;                       (expand-file-name "~/etc/emacs/config.org"))
-;;     ;; Dynamic scoping to the rescue
-;;     (let ((org-confirm-babel-evaluate nil))
-;;       (org-babel-tangle))))
+(defun zamlz/org-babel-tangle-config ()
+  (when (member "CONFIG" (org-roam--extract-tags))
+    ;; Dynamic scoping to the rescue
+    (let ((org-confirm-babel-evaluate nil))
+      (org-babel-tangle))))
 
-;; (add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'zamlz/org-babel-tangle-config)))
+(add-hook 'org-mode-hook (lambda () (add-hook 'after-save-hook #'zamlz/org-babel-tangle-config)))
 #+end_src
 
 ** Package Provider
