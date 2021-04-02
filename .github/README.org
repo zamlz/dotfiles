@@ -1,7 +1,7 @@
 #+TITLE: My Dotfile Configurations
 #+AUTHOR: Amlesh Sivanantham
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-04-01 Thu 11:19:18]
+#+LAST_MODIFIED: [2021-04-02 Fri 07:46:46]
 
 #+DOWNLOADED: screenshot @ 2021-04-01 11:19:07
 [[file:data/2021-04-01_11-19-07_screenshot.png]]
@@ -24,6 +24,8 @@
 
 * Desktop Environment
 - [[file:../xorg.org][Xorg X11 Window System]]
+- [[file:../urxvt.org][URxvt Terminal Emulator]]
+- [[file:../rofi.org][Rofi Dmenu]]
 - [[file:../sxhkd.org][Sxhkd Hotkey Daemon]]
 - [[file:../herbstluftwm.org][Herbstluftwm Tiling Window Manager]]
 - [[file:../lemonbar.org][Lemonbar]]
