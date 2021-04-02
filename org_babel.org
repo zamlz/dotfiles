@@ -1,0 +1,15 @@
+#+TITLE: Org-babel
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-02 Fri 10:18]
+#+LAST_MODIFIED: [2021-04-02 Fri 10:26:09]
+
+#+DOWNLOADED: screenshot @ 2021-04-02 10:23:00
+[[file:data/tower_of_babel.png]]
+
+*Babel* is a powerful extension to [[file:org_mode.org][Org-mode]] which adds multi-language [[file:../notes/literate_programming.org][Literate Programming]] to Org files within emacs. My whole configuration basically exists because of the power of this package.
+
+* Useful Resources
+- [[https://org-babel.readthedocs.io/en/latest/][Org Babel Reference Card]]
