@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-02 Fri 11:12:08]
+#+LAST_MODIFIED: [2021-04-02 Fri 11:16:55]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -22,7 +22,7 @@ There are some cool configurations from other people that I've taken influence f
 * Tips and Tricks
 As I find things to write here, I'll put it in.
 
-* GNU/Emacs Configuration
+* Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ./init.el :comments both
 :END:
@@ -1333,7 +1333,7 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
   :config (paradox-enable))
 #+end_src
 
-* Xresources Configuration
+* Xresources
 :PROPERTIES:
 :header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes
 :END:
