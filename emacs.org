@@ -13,6 +13,7 @@
 * Useful Resources
 - [[https://pages.sachachua.com/.emacs.d/][Sasha Chau's Emacs Configuration]]
 - [[https://tecosaur.github.io/emacs-config/config.html][Tecosaur's Doom Emacs Configuration]]
+- [[https://config.phundrak.com/emacs][Phundrak's Emacs Configuration]]
 
 * Tips and Tricks
 As I find things to write here, I'll put it in.
