@@ -309,6 +309,17 @@
   :init (auth-source-pass-enable))
 ;; Auth Source Pass:1 ends here
 
+;; Calc
+
+
+;; [[file:emacs.org::*Calc][Calc:1]]
+(use-package calc
+  :ensure nil
+  :custom
+  (calc-angle-mode 'rad)
+  (calc-symbolic-mode t))
+;; Calc:1 ends here
+
 ;; Startup Dashboard
 
 ;; The default landing page isn't quite nice. I originally had it configured to display the scratch page, but then I really wanted like a menu to quickly access my stuff.
@@ -649,19 +660,19 @@
 
 
 ;; [[file:emacs.org::*Ivy Posframe][Ivy Posframe:1]]
-(use-package ivy-posframe
-  :after counsel
-  :custom
-  ;; Specify the the display posframe
-  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-window-center)))
-  ;; Customize height and width of the posframe
-  (ivy-posframe-height 20)
-  (ivy-posframe-min-height 5)
-  (ivy-posframe-width 120)
-  (ivy-posframe-min-width 120)
-  (ivy-posframe-border-width 20)
-  :init
-  (ivy-posframe-mode 1)
+;; (use-package ivy-posframe
+;;   :after counsel
+;;   :custom
+;;   ;; Specify the the display posframe
+;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-window-center)))
+;;   ;; Customize height and width of the posframe
+;;   (ivy-posframe-height 20)
+;;   (ivy-posframe-min-height 5)
+;;   (ivy-posframe-width 120)
+;;   (ivy-posframe-min-width 120)
+;;   (ivy-posframe-border-width 20)
+;;   :init
+;;   (ivy-posframe-mode 1)
 ;; Ivy Posframe:1 ends here
 
 ;; Ivy Hydra
@@ -1324,6 +1335,9 @@
   ;; Add some nice visuals changes
   (org-ellipsis " ▾")
 
+  ;; These will be unhidden by the org-appear package
+  (org-hide-emphasis-markers t)
+
   ;; This is so that the imenu displays all levels in ivy
   (org-imenu-depth 10)
 
@@ -1623,6 +1637,31 @@
   (org-download-heading-lvl nil)
   (org-download-method 'directory))
 ;; Org Download:1 ends here
+
+;; Org Appear
+
+;; Added [[https://github.com/awth13/org-appear][github:awth13/org-appear]]
+
+
+;; [[file:emacs.org::*Org Appear][Org Appear:1]]
+(use-package org-appear
+  :hook (org-mode . org-appear-mode)
+  :custom
+  (org-appear-autoentities nil)
+  (org-appear-autolinks t)
+  (org-appear-autoemphasis t)
+  (org-appear-autosubmarkers nil))
+;; Org Appear:1 ends here
+
+;; Org FragTog
+
+;; [[https://github.com/io12/org-fragtog][github:io12/org-fragtog]] basically toggles  latex fragements when you hover over them.
+
+
+;; [[file:emacs.org::*Org FragTog][Org FragTog:1]]
+(use-package org-fragtog
+  :hook (org-mode . org-fragtog-mode))
+;; Org FragTog:1 ends here
 
 ;; Org Last Modified Timestamp
 

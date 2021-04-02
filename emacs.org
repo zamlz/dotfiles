@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-01 Thu 22:54:29]
+#+LAST_MODIFIED: [2021-04-01 Thu 23:40:54]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -12,6 +12,7 @@
 
 * Useful Resources
 - [[https://pages.sachachua.com/.emacs.d/][Sasha Chau's Emacs Configuration]]
+- [[https://tecosaur.github.io/emacs-config/config.html][Tecosaur's Doom Emacs Configuration]]
 
 * Tips and Tricks
 As I find things to write here, I'll put it in.
@@ -311,6 +312,16 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 (use-package auth-source-pass
   :ensure nil
   :init (auth-source-pass-enable))
+#+end_src
+
+*** Calc
+
+#+begin_src emacs-lisp
+(use-package calc
+  :ensure nil
+  :custom
+  (calc-angle-mode 'rad)
+  (calc-symbolic-mode t))
 #+end_src
 
 ** Package Configuration
@@ -642,19 +653,19 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 [[https://github.com/tumashu/ivy-posframe][tumashu/ivy-postframe]] is ivy extension, which let ivy use the postframe to show its candidate menu.
 
 #+begin_src emacs-lisp
-(use-package ivy-posframe
-  :after counsel
-  :custom
-  ;; Specify the the display posframe
-  (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-window-center)))
-  ;; Customize height and width of the posframe
-  (ivy-posframe-height 20)
-  (ivy-posframe-min-height 5)
-  (ivy-posframe-width 120)
-  (ivy-posframe-min-width 120)
-  (ivy-posframe-border-width 20)
-  :init
-  (ivy-posframe-mode 1)
+;; (use-package ivy-posframe
+;;   :after counsel
+;;   :custom
+;;   ;; Specify the the display posframe
+;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-window-center)))
+;;   ;; Customize height and width of the posframe
+;;   (ivy-posframe-height 20)
+;;   (ivy-posframe-min-height 5)
+;;   (ivy-posframe-width 120)
+;;   (ivy-posframe-min-width 120)
+;;   (ivy-posframe-border-width 20)
+;;   :init
+;;   (ivy-posframe-mode 1)
 #+end_src
 
 **** Ivy Hydra
@@ -1028,6 +1039,7 @@ Hide hidden files from dired buffers (toggleable)
   (zamlz/set-font-faces))
 #+end_src
 
+
 ** Development and Project Management
 
 Language specific and Project Management related configurations here...
@@ -1284,6 +1296,9 @@ I should probably split this bloody mess up.
 
   ;; Add some nice visuals changes
   (org-ellipsis " ▾")
+
+  ;; These will be unhidden by the org-appear package
+  (org-hide-emphasis-markers t)
 
   ;; This is so that the imenu displays all levels in ivy
   (org-imenu-depth 10)
@@ -1571,6 +1586,29 @@ This package should let me quickly download images from web browsers and have im
   (org-download-image-dir "./data")
   (org-download-heading-lvl nil)
   (org-download-method 'directory))
+#+end_src
+
+*** Org Appear
+
+Added [[https://github.com/awth13/org-appear][github:awth13/org-appear]]
+
+#+begin_src emacs-lisp
+(use-package org-appear
+  :hook (org-mode . org-appear-mode)
+  :custom
+  (org-appear-autoentities nil)
+  (org-appear-autolinks t)
+  (org-appear-autoemphasis t)
+  (org-appear-autosubmarkers nil))
+#+end_src
+
+*** Org FragTog
+
+[[https://github.com/io12/org-fragtog][github:io12/org-fragtog]] basically toggles  latex fragements when you hover over them.
+
+#+begin_src emacs-lisp
+(use-package org-fragtog
+  :hook (org-mode . org-fragtog-mode))
 #+end_src
 
 *** Org Last Modified Timestamp
