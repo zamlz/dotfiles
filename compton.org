@@ -4,13 +4,13 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/chjj/compton
 #+CREATED: [2021-03-29 Mon 19:22]
-#+LAST_MODIFIED: [2021-04-01 Thu 09:29:14]
+#+LAST_MODIFIED: [2021-04-01 Thu 22:14:58]
 
 Compton is a compositor for the [[file:xorg.org][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:
-:header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes
+:header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes :comments both
 :END:
 [[http://9m.no/ꪯ鵞][Thank you code_nomad!]] Copied a lot of this person's config...
 ** Backend
@@ -19,69 +19,86 @@ Backend to use: "xrender" or "glx".
 GLX backend is typically much faster but depends on a sane driver.
 
 #+begin_src conf
-# Provide the backend to use
 backend = "xrender";
 #+end_src
 
 ** GLX backend
 
+??? Don't remember what this does...
+
 #+begin_src conf
-# ??? Don't remember what this does...
 glx-no-stencil = true;
+#+end_src
 
-# GLX backend: Copy unmodified regions from front buffer instead of redrawing them all.
-# My tests with nvidia-drivers show a 10% decrease in performance when the whole screen is modified,
-# but a 20% increase when only 1/4 is.
-# My tests on nouveau show terrible slowdown.
-# Useful with --glx-swap-method, as well.
+GLX backend: Copy unmodified regions from front buffer instead of redrawing them all. My tests with nvidia-drivers show a 10% decrease in performance when the whole screen is modified, but a 20% increase when only 1/4 is. My tests on nouveau show terrible slowdown. Useful with --glx-swap-method, as well.
+
+#+begin_src conf
 glx-copy-from-front = false;
+#+end_src
 
-# GLX backend: Avoid rebinding pixmap on window damage.
-# Probably could improve performance on rapid window content changes, but is known to break things on some drivers (LLVMpipe).
-# Recommended if it works.
+GLX backend: Avoid rebinding pixmap on window damage. Probably could improve performance on rapid window content changes, but is known to break things on some drivers (LLVMpipe). Recommended if it works. /(Its turned off here)/
+
+#+begin_src conf
 # glx-no-rebind-pixmap = true;
+#+end_src
 
-# GLX backend: GLX buffer swap method we assume.
-# Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1).
-# undefined is the slowest and the safest, and the default value.
-# copy is fastest, but may fail on some drivers,
-# 2-6 are gradually slower but safer (6 is still faster than 0).
-# Usually, double buffer means 2, triple buffer means 3.
-# buffer-age means auto-detect using GLX_EXT_buffer_age, supported by some drivers.
-# Useless with --glx-use-copysubbuffermesa.
-# Partially breaks --resize-damage.
-# Defaults to undefined.
+GLX backend: GLX buffer swap method we assume. Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1). undefined is the slowest and the safest, and the default value. copy is fastest, but may fail on some drivers, 2-6 are gradually slower but safer (6 is still faster than 0). Usually, double buffer means 2, triple buffer means 3. buffer-age means auto-detect using GLX_EXT_buffer_age, supported by some drivers. Useless with --glx-use-copysubbuffermesa. Partially breaks --resize-damage. Defaults to undefined.
+
+#+begin_src conf
 glx-swap-method = "undefined";
 #+end_src
 
 ** Shadows
 
-#+begin_src conf
-# Enabled client-side shadows on windows.
-shadow = true;
-# Don't draw shadows on DND windows.
-no-dnd-shadow = true;
-# Avoid drawing shadows on dock/panel windows.
-no-dock-shadow = true;
-# Zero the part of the shadow's mask behind the window. Fix some weirdness with ARGB windows.
-clear-shadow = true;
-# The blur radius for shadows. (default 12)
-shadow-radius = 5;
-# The left offset for shadows. (default -15)
-shadow-offset-x = -5;
-# The top offset for shadows. (default -15)
-shadow-offset-y = -5;
-# The translucency for shadows. (default .75)
-shadow-opacity = 0.5;
+Enabled client-side shadows on windows.
 
-# Set if you want different colour shadows
+#+begin_src conf
+shadow = true;
+#+end_src
+
+Don't draw shadows on DND windows.
+
+#+begin_src conf
+no-dnd-shadow = true;
+#+end_src
+
+Avoid drawing shadows on dock/panel windows.
+
+#+begin_src conf
+no-dock-shadow = true;
+#+end_src
+
+Zero the part of the shadow's mask behind the window. Fix some weirdness with ARGB windows.
+
+#+begin_src conf
+clear-shadow = true;
+#+end_src
+
+The blur radius for shadows. (default 12) The x offset for shadows. (default -15) The y offset for shadows. (default -15)
+
+#+begin_src conf
+shadow-radius = 5;
+shadow-offset-x = -5;
+shadow-offset-y = -5;
+#+end_src
+
+The translucency for shadows. (default .75)
+
+#+begin_src conf
+shadow-opacity = 0.5;
+#+end_src
+
+Set if you want different colour shadows
+
+#+begin_src conf
 # shadow-red = 0.0;
 # shadow-green = 0.0;
 # shadow-blue = 0.0;
+#+end_src
 
-# The shadow exclude options are helpful if you have shadows enabled. Due to the way compton draws its shadows, certain applications will have visual glitches
-# (most applications are fine, only apps that do weird things with xshapes or argb are affected).
-# This list includes all the affected apps I found in my testing. The "! name~=''" part excludes shadows on any "Unknown" windows, this prevents a visual glitch with the XFWM alt tab switcher.
+The shadow exclude options are helpful if you have shadows enabled. Due to the way compton draws its shadows, certain applications will have visual glitches (most applications are fine, only apps that do weird things with xshapes or argb are affected). This list includes all the affected apps I found in my testing. The "! name~=''" part excludes shadows on any "Unknown" windows, this prevents a visual glitch with the XFWM alt tab switcher.
+
+#+begin_src conf
 shadow-exclude = [
     "! name~=''",
     "name = 'Notification'",
@@ -102,31 +119,58 @@ shadow-exclude = [
     "class_g ?= 'Xfce4-power-manager'",
     "_GTK_FRAME_EXTENTS@:c"
 ];
-# Avoid drawing shadow on all shaped windows (see also: --detect-rounded-corners)
+#+end_src
+
+Avoid drawing shadow on all shaped windows (see also: --detect-rounded-corners)
+
+#+begin_src conf
 shadow-ignore-shaped = false;
 #+end_src
 
 ** Opacity
 
+Define opacity
+
 #+begin_src conf
-# Define opacity
 menu-opacity = 1;
 inactive-opacity = 1;
 active-opacity = 1;
 frame-opacity = 1;
 inactive-opacity-override = false;
 alpha-step = 0.06;
+#+end_src
 
-# Dim inactive windows. (0.0 - 1.0)
+Dim inactive windows. (0.0 - 1.0)
+
+#+begin_src conf
 # inactive-dim = 0.2;
-# Do not let dimness adjust based on window opacity.
+#+end_src
+
+Do not let dimness adjust based on window opacity.
+
+#+begin_src conf
 # inactive-dim-fixed = true;
-# Blur background of transparent windows. Bad performance with X Render backend. GLX backend is preferred.
+#+end_src
+
+Blur background of transparent windows. Bad performance with X Render backend. GLX backend is preferred.
+
+#+begin_src conf
 # blur-background = true;
-# Blur background of opaque windows with transparent frames as well.
+#+end_src
+
+Blur background of opaque windows with transparent frames as well.
+
+#+begin_src conf
 # blur-background-frame = true;
-# Do not let blur radius adjust based on window opacity.
+#+end_src
+
+Do not let blur radius adjust based on window opacity.
+
+#+begin_src conf
 blur-background-fixed = false;
+#+end_src
+
+#+begin_src conf
 blur-background-exclude = [
     "window_type = 'dock'",
     "window_type = 'desktop'"
@@ -135,77 +179,134 @@ blur-background-exclude = [
 
 ** Fading
 
-#+begin_src conf
-# Fade windows during opacity changes.
-fading = true;
-# The time between steps in a fade in milliseconds. (default 10).
-fade-delta = 4;
-# Opacity change between steps while fading in. (default 0.028).
-fade-in-step = 0.03;
-# Opacity change between steps while fading out. (default 0.03).
-fade-out-step = 0.03;
-# Fade windows in/out when opening/closing
-# no-fading-openclose = true;
+Fade windows during opacity changes.
 
-# Specify a list of conditions of windows that should not be faded.
+#+begin_src conf
+fading = true;
+#+end_src
+
+The time between steps in a fade in milliseconds. (default 10).
+
+#+begin_src conf
+fade-delta = 4;
+#+end_src
+
+Opacity change between steps while fading in. (default 0.028).
+
+#+begin_src conf
+fade-in-step = 0.03;
+#+end_src
+
+Opacity change between steps while fading out. (default 0.03).
+
+#+begin_src conf
+fade-out-step = 0.03;
+#+end_src
+
+Fade windows in/out when opening/closing
+
+#+begin_src conf
+# no-fading-openclose = true;
+#+end_src
+
+Specify a list of conditions of windows that should not be faded.
+
+#+begin_src conf
 fade-exclude = [ ];
 #+end_src
 
 ** Other
 
+Try to detect WM windows and mark them as active.
+
 #+begin_src conf
-# Try to detect WM windows and mark them as active.
 mark-wmwin-focused = true;
-# Mark all non-WM but override-redirect windows active (e.g. menus).
+#+end_src
+
+Mark all non-WM but override-redirect windows active (e.g. menus).
+
+#+begin_src conf
 mark-ovredir-focused = true;
-# Use EWMH _NET_WM_ACTIVE_WINDOW to determine which window is focused instead of using FocusIn/Out events.
-# Usually more reliable but depends on a EWMH-compliant WM.
+#+end_src
+
+Use EWMH =_NET_WM_ACTIVE_WINDOW= to determine which window is focused instead of using FocusIn/Out events. Usually more reliable but depends on a EWMH-compliant WM.
+
+#+begin_src conf
 use-ewmh-active-win = true;
-# Detect rounded corners and treat them as rectangular when --shadow-ignore-shaped is on.
+#+end_src
+
+Detect rounded corners and treat them as rectangular when --shadow-ignore-shaped is on.
+
+#+begin_src conf
 detect-rounded-corners = true;
+#+end_src
 
-# Detect _NET_WM_OPACITY on client windows, useful for window managers not passing _NET_WM_OPACITY of client windows to frame windows.
-# This prevents opacity being ignored for some apps.
-# For example without this enabled my xfce4-notifyd is 100% opacity no matter what.
+Detect =_NET_WM_OPACITY= on client windows, useful for window managers not passing =_NET_WM_OPACITY= of client windows to frame windows. This prevents opacity being ignored for some apps. For example without this enabled my xfce4-notifyd is 100% opacity no matter what.
+
+#+begin_src conf
 detect-client-opacity = true;
+#+end_src
 
-# Specify refresh rate of the screen.
-# If not specified or 0, compton will try detecting this with X RandR extension.
+Specify refresh rate of the screen. If not specified or 0, compton will try detecting this with X RandR extension.
+
+#+begin_src conf
 refresh-rate = 0;
+#+end_src
 
-# Set VSync method. VSync methods currently available:
-# none: No VSync
-# drm: VSync with DRM_IOCTL_WAIT_VBLANK. May only work on some drivers.
-# opengl: Try to VSync with SGI_video_sync OpenGL extension. Only work on some drivers.
-# opengl-oml: Try to VSync with OML_sync_control OpenGL extension. Only work on some drivers.
-# opengl-swc: Try to VSync with SGI_swap_control OpenGL extension. Only work on some drivers. Works only with GLX backend. Known to be most effective on many drivers. Does not actually control paint timing, only buffer swap is affected, so it doesn’t have the effect of --sw-opti unlike other methods. Experimental.
-# opengl-mswc: Try to VSync with MESA_swap_control OpenGL extension. Basically the same as opengl-swc above, except the extension we use.
-# (Note some VSync methods may not be enabled at compile time.)
+Set VSync method. VSync methods currently available:
+- none: No VSync
+- drm: VSync with DRM_IOCTL_WAIT_VBLANK. May only work on some drivers.
+- opengl: Try to VSync with SGI_video_sync OpenGL extension. Only work on some drivers.
+- opengl-oml: Try to VSync with OML_sync_control OpenGL extension. Only work on some drivers.
+- opengl-swc: Try to VSync with SGI_swap_control OpenGL extension. Only work on some drivers. Works only with GLX backend. Known to be most effective on many drivers. Does not actually control paint timing, only buffer swap is affected, so it doesn’t have the effect of --sw-opti unlike other methods. Experimental.
+- opengl-mswc: Try to VSync with MESA_swap_control OpenGL extension. Basically the same as opengl-swc above, except the extension we use.
+
+/(Note some VSync methods may not be enabled at compile time.)/
+
+#+begin_src conf
 vsync = "opengl-swc";
+#+end_src
 
-# Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing.
-# Reported to have no effect, though.
+Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing. Reported to have no effect, though.
+
+#+begin_src conf
+
 dbe = false;
-# Painting on X Composite overlay window. Recommended.
+#+end_src
+
+Painting on X Composite overlay window. Recommended.
+
+#+begin_src conf
 paint-on-overlay = true;
+#+end_src
 
-# Limit compton to repaint at most once every 1 / refresh_rate second to boost performance.
-# This should not be used with --vsync drm/opengl/opengl-oml as they essentially does --sw-opti's job already,
-# unless you wish to specify a lower refresh rate than the actual value.
+Limit compton to repaint at most once every 1 / refresh_rate second to boost performance. This should not be used with =--vsync drm/opengl/opengl-oml= as they essentially does =--sw-opti's= job already, unless you wish to specify a lower refresh rate than the actual value.
+
+#+begin_src conf
 sw-opti = true;
+#+end_src
 
-# Unredirect all windows if a full-screen opaque window is detected, to maximize performance for full-screen windows, like games.
-# Known to cause flickering when redirecting/unredirecting windows.
-# paint-on-overlay may make the flickering less obvious.
+Unredirect all windows if a full-screen opaque window is detected, to maximize performance for full-screen windows, like games. Known to cause flickering when redirecting/unredirecting windows. paint-on-overlay may make the flickering less obvious.
+
+#+begin_src conf
 unredir-if-possible = true;
+#+end_src
 
-# Specify a list of conditions of windows that should always be considered focused.
+Specify a list of conditions of windows that should always be considered focused.
+
+#+begin_src conf
 focus-exclude = [ ];
+#+end_src
 
-# Use WM_TRANSIENT_FOR to group windows, and consider windows in the same group focused at the same time.
+Use =WM_TRANSIENT_FOR= to group windows, and consider windows in the same group focused at the same time.
+
+#+begin_src conf
 detect-transient = true;
-# Use WM_CLIENT_LEADER to group windows, and consider windows in the same group focused at the same time.
-# WM_TRANSIENT_FOR has higher priority if --detect-transient is enabled, too.
+#+end_src
+
+Use =WM_CLIENT_LEADER= to group windows, and consider windows in the same group focused at the same time. =WM_TRANSIENT_FOR= has higher priority if --detect-transient is enabled, too.
+
+#+begin_src conf
 detect-client-leader = true;
 #+end_src
 

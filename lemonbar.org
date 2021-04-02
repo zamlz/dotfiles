@@ -4,14 +4,14 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/krypt-n/bar
 #+CREATED: [2021-03-29 Mon 19:25]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:28:11]
+#+LAST_MODIFIED: [2021-04-01 Thu 21:55:47]
 
 Lemonbar (XFT Fork) is a lightweight bar based on XCB. Its pretty neat tool that you just pipe output into to display the bar of your design. Unfortunately, it seems like the repo is archived so it is unmaintained. It will likely break at some point so I should look for alternatives.
 
 * Configuration
 ** Panel Launcher
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/lemonbar :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/lemonbar :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 Load config and logger.
@@ -40,13 +40,18 @@ trap 'trap - TERM; kill 0' INT TERM QUIT EXIT
 Now it's time to make each of the panel FIFOs and start the modules.
 
 #+begin_src shell
-# Prepare the FIFOS
 $HOME/.config/lemonbar/utils/make_fifos
+#+end_src
 
-# Tail command to ensure that fifos never close
+Tail command to ensure that fifos never close.
+
+#+begin_src shell
 TAIL="tail --lines=+1 --follow"
+#+end_src
 
-# Add modules to the top fifo
+Init modules for the top fifo.
+
+#+begin_src shell
 $LOGGER "Setting up top fifo modules"
 $HOME/.config/lemonbar/modules/date         > $PANEL_TOP_FIFO &
 $HOME/.config/lemonbar/modules/network      > $PANEL_TOP_FIFO &
@@ -55,8 +60,11 @@ $HOME/.config/lemonbar/modules/whoami       > $PANEL_TOP_FIFO &
 $HOME/.config/lemonbar/modules/battery      > $PANEL_TOP_FIFO &
 $TAIL $EVENT_BKL_FIFO \
     | $HOME/.config/lemonbar/modules/backlight > $PANEL_TOP_FIFO &
+#+end_src
 
-# Add modules to the bot fifo
+Init modules to the bot fifo. I've disabled the xwin module as I don't really use it.
+
+#+begin_src shell
 $LOGGER "Setting up bot fifo modules"
 $HOME/.config/lemonbar/modules/cpu          > $PANEL_BOT_FIFO &
 $HOME/.config/lemonbar/modules/filesystems  > $PANEL_BOT_FIFO &
@@ -72,13 +80,14 @@ $TAIL $EVENT_VOL_FIFO \
 
 Setup the argument string to pass send to lemonbar. Uncomment fonts as needed.
 
+Other fonts:
+- =-f dina:size=12=
+- =-f xos4Terminus:style=Bold:size=12=
+- =-f IosevkaTerm:size=12=
+- =-f PowerlineSymbols:style=Medium:size=12=
+- =-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1=
+
 #+begin_src shell
-# Define lemonbar opts
-# -f dina:size=12
-# -f xos4Terminus:style=Bold:size=12
-# -f IosevkaTerm:size=12
-# -f PowerlineSymbols:style=Medium:size=12
-# -f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1
 OPTS="-g x20
 -F ${XBACKGROUND}
 -B ${XBACKGROUND}
@@ -94,11 +103,9 @@ $LOGGER "Lemonbar defined with the following opts : $OPTS"
 Actually launch our panel loops (while reading from the fifos) and pipe them into lemonbar. We should also pipe the output from lemonbar to a shell process in-case there are modules that want to run specific commands.
 
 #+begin_src shell
-# Start the top panel
 $LOGGER "Initializing lemonbar using top fifo"
 $HOME/.config/lemonbar/utils/loop TOP < $PANEL_TOP_FIFO | lemonbar $OPTS | sh &
 
-# Start the bottom panel
 $LOGGER "Initializing lemonbar using bot fifo"
 $HOME/.config/lemonbar/utils/loop BOT < $PANEL_BOT_FIFO | lemonbar $OPTS -b | sh &
 
@@ -108,34 +115,34 @@ wait
 
 ** Default Configuration
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/config.default :mkdirp yes
+:header-args:shell: :tangle ~/.config/lemonbar/config.default :mkdirp yes :comments both
 :END:
 
 The default configuration is our source for all variables and functions that lemonbar and its modules will need to use. So we also source our utils files and other lib files here.
 
 #+begin_src shell
-# Import modules needed but anything that imports this config
 . $HOME/org/config/lib/shell/logger
 . $HOME/org/config/lib/shell/xrdb_colors
 . $HOME/.config/lemonbar/utils/wrappers
 . $HOME/.config/lemonbar/utils/multi_monitor_support
 . $HOME/.config/lemonbar/utils/where_fifos
+#+end_src
 
-# Source local system config in case there are system specific changes
+Source local system config in case there are system specific settings.
+
+#+begin_src shell
 . $HOME/.config/lemonbar/config
 #+end_src
 
-Choose the icon wrapper.
+Choose the output wrapper.
 
 #+begin_src shell
-# Choose the output wrapper
 MSG_WRAPPER=icon_wrapper
 #+end_src
 
 Anchors are an important concept with regards to FIFOs. They inform the main loop which module wrote which string.
 
 #+begin_src shell
-# Specify the Anchor Character for each module
 ANCHOR_BACKLIGHT='L'
 ANCHOR_BATTERY='B'
 ANCHOR_CPU='C'
@@ -166,11 +173,9 @@ REFRESH_TIME=1
 REFRESH_VOLUME=2
 #+end_src
 
-I played around with fonts in lemonbar, but honestly I'm not really a fan. If I want to enable it at any point, just need to set =LEMONBAR_ENABLE_ICONS= in the local config to be a non-empty string. But this aren't actually used *EVER* in the modules anymore as I'm using powerline icons now. I /should/ probably delete this and remove this segment of code.
+I played around with fonts in lemonbar, but honestly I'm not really a fan. If I want to enable it at any point, just need to set =LEMONBAR_ENABLE_ICONS= in the local config to be a non-empty string. But this aren't actually used *EVER* in the modules anymore as I'm using powerline icons now. I /should/ probably delete this and remove this segment of code. The unicode characters are taken form [[https://fontawesome.com/icons?d=gallery&m=free][Font Awesome]].
 
 #+begin_src shell
-# Font Awesome icons for various modules
-# https://fontawesome.com/icons?d=gallery&m=free
 if [ -n "$LEMONBAR_ENABLE_ICONS" ]; then
     ICON_BACKLIGHT=$(env printf "\uf042 ")
     ICON_BATTERY_AC=$(env printf "\uf1e6 ")
@@ -213,7 +218,6 @@ fi
 There define the powerline icons (to use these, the module strings have to specially confiugred to use them).
 
 #+begin_src shell
-# Powerline Icons
 PL_R=$(env printf "\ue0b0")
 PL_Rb=$(env printf "\ue0b1")
 PL_L=$(env printf "\ue0b2")
@@ -223,7 +227,6 @@ PL_Lb=$(env printf "\ue0b3")
 Setup network interfaces and filesystem paths. These are dummy values and should be overriden with the locally generated config.
 
 #+begin_src shell
-# Hardware Specification (override this values in local config)
 WIFI_INTERFACE=${WIFI_INTERFACE:-"wlan0"}
 ETHERNET_INTERFACE=${ETHERNET_INTERFACE:-"eth0"}
 FILESYSTEMS=${FILESYSTEMS:-"/dev/sda4"}
@@ -232,7 +235,7 @@ FILESYSTEMS=${FILESYSTEMS:-"/dev/sda4"}
 ** Utilities
 *** Main Loop
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/utils/loop :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/utils/loop :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 Source the main config, setup the loggers and figure out which mode this loop belows to (=TOP= or =BOTTOM=).
@@ -248,7 +251,6 @@ $LOGGER "Configuring the $MODE loop"
 This setup below is pretty confusing but it was done because I have two different monitor setups. A triple monitor setup and standalone laptop mode. Depending on the mode we were in, the panel output should be split over three monitors or all should appear on the same one. The variables below simply help in using the same looping function instead of rewriting a different one for each monitor setup. Refer to the lemonbar documentation to understand how monitor specification works.
 
 #+begin_src shell
-# Define the monitors
 $LOGGER "Checking for multi monitor support"
 if [ -f $TRIPLE_MONITOR_TOGGLE ]; then
 
@@ -316,7 +318,7 @@ done
 
 *** Make FIFOs
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/utils/make_fifos :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/utils/make_fifos :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 We use a seperate script to make the FIFOs so that other processes can start buffering without having to wait for lemonbar to finish starting. *Therefore*, this needs to be called before spawning lemonbar.
@@ -365,7 +367,7 @@ echo "volume fifo init"    > $EVENT_VOL_FIFO &
 
 *** Trigger FIFOs
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/utils/trigger_fifos :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/utils/trigger_fifos :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 We use a sepeate script to send signals to the fifos that an event has occured since we don't want oother processes to really know the locations of these fifos in case they change. It also just serves to create a simpler interface lol.
@@ -394,17 +396,15 @@ fi
 
 *** Where FIFOs
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/utils/where_fifos :mkdirp yes
+:header-args:shell: :tangle ~/.config/lemonbar/utils/where_fifos :mkdirp yes :comments both
 :END:
 
 Not much to be said here. This is just a seperate config file that keeps track of where we make the FIFOs in case I decide to change them.
 
 #+begin_src shell
-# Primary FIFOs
 PANEL_TOP_FIFO=/tmp/.lemonbar.panel_top.fifo
 PANEL_BOT_FIFO=/tmp/.lemonbar.panel_bot.fifo
 
-# Event FIFOs
 EVENT_BKL_FIFO=/tmp/.lemonbar.backlight_event.fifo
 EVENT_VOL_FIFO=/tmp/.lemonbar.volume_event.fifo
 EVENT_WSP_FIFO=/tmp/.lemonbar.workspace_event.fifo
@@ -413,7 +413,7 @@ EVENT_WIN_FIFO=/tmp/.lemonbar.wininfo_event.fifo
 
 *** Output Wrappers
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/utils/wrappers :mkdirp yes
+:header-args:shell: :tangle ~/.config/lemonbar/utils/wrappers :mkdirp yes :comments both
 :END:
 
 Wrappers are basically used by the modules so that we don't have to rewrite output code code for each module. *Ironically* I ended up doing that anyway since I decide to setup a powerline look for them. In any case, there are still here in case I want to use them in the future. And maybe, it might be possible to setup a more complicated wrapper that supports powerline icons.
@@ -421,17 +421,15 @@ Wrappers are basically used by the modules so that we don't have to rewrite outp
 The minimal wrapper just displays text in square brackets for each module and its also colored as well.
 
 #+begin_src shell
-# Minimal wrapper
 legacy_wrapper() {
     icon=$1 && shift && color=$1 && shift && msg=$@
     printf "[$icon %{F$color}$msg%{F-}]"
 }
 #+end_src
 
-The icon wrapper on the other hand is meant for displaying the module with a font icon (this is configured through the global config file) and the default icons are the SIJI icon pack.
+The icon wrapper on the other hand is meant for displaying the module with a font icon (this is configured through the global config file) and the default icons are the SIJI icon pack. This expects that a unicode icon is passed as the first argument (like siji).
 
 #+begin_src shell
-# Use siji fonts or some other unicode fonts
 icon_wrapper() {
     icon=$1 && shift && color=$1 && shift && msg=$@
     printf " $icon %%{F$color}$msg%%{F-} "
@@ -441,7 +439,6 @@ icon_wrapper() {
 The debug wrapper is primarily used when debugging a module since all the formatting can sometimes make it hard to tell what the panel is really outputting.
 
 #+begin_src shell
-# debug wrapper for testing
 debug_wrapper() {
     icon=$1 && shift && color=$1 && shift && msg=$@
     echo -ne "[DEBUG $icon $color $msg]"
@@ -450,20 +447,19 @@ debug_wrapper() {
 
 *** Multi-Monitor Support
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/utils/multi_monitor_support :mkdirp yes
+:header-args:shell: :tangle ~/.config/lemonbar/utils/multi_monitor_support :mkdirp yes :comments both
 :END:
 
 This might be pointless to keep as a seperate script but as (not anymore) was another script that needed the location of where to trigger the monitor toggle (whether I am in a multi monitor environment or not), this was necessary. Keep it setup for backwards compatibility.
 
 #+begin_src shell
-# Triple Monitor Toggle File
 TRIPLE_MONITOR_TOGGLE=$HOME/.config/lemonbar/enable_triple_monitor
 #+end_src
 
 ** Modules
 *** Backlight
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/backlight :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/backlight :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -488,7 +484,7 @@ done
 
 *** Battery
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/battery :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/battery :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -555,7 +551,7 @@ done
 
 *** CPU
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/cpu :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/cpu :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -580,7 +576,7 @@ done
 
 *** Date
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/date :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/date :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -604,7 +600,7 @@ done
 
 *** Filesystems
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/filesystems :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/filesystems :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -635,7 +631,7 @@ done
 
 *** Memory
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/memory :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/memory :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -673,7 +669,7 @@ done
 
 *** Network
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/network :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/network :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -740,7 +736,7 @@ done
 
 *** Spotify
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/spotify :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/spotify :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 This makes use of =spotify-cli=, a simple script I wrote that interfaces with spotify's dbus.
@@ -791,7 +787,7 @@ done
 
 *** Time
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/time :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/time :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -811,7 +807,7 @@ done
 
 *** Who am I
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/whoami :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/whoami :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
@@ -840,7 +836,7 @@ echo "$ANCHOR_WHOAMI$msg"
 
 *** Volume
 :PROPERTIES:
-:header-args:shell: :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 The volume module is a bit different from the other modules so far. We need to update it whenever we trigger a volume change (this is done by capturing the volume events via the media keys. Herbstluftwm will then pass a message to the volume event FIFO). However this is not enough as the volume can be changed by the software as well. So ontop of this, we also have a periodic update as well.
@@ -849,7 +845,6 @@ The volume module is a bit different from the other modules so far. We need to u
 
 #+NAME: LEMONBAR_VOLUME_UPDATE_OP
 #+begin_src shell
-# LEMONBAR_VOLUME_UPDATE_OP
 if [ $(pulsemixer --get-mute) -eq 0 ]; then
     msg="$(pulsemixer --get-volume | awk '{print $1}')%"
     color=$CYAN
@@ -892,7 +887,7 @@ done
 
 *** Window Info
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/windowinfo :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/windowinfo :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 I don't actually use this module anymore, but its here in case I ever do again.
@@ -925,7 +920,7 @@ done
 
 *** Workspaces
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/lemonbar/modules/workspaces :mkdirp yes :shebang #!/bin/sh
+:header-args:shell: :tangle ~/.config/lemonbar/modules/workspaces :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell
