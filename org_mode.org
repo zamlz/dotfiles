@@ -3,7 +3,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-02 Fri 10:47:43]
+#+LAST_MODIFIED: [2021-04-03 Sat 10:55:13]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -310,8 +310,22 @@ Pretty straightforward except that you need to have =latex= installed and also =
 
 #+begin_src emacs-lisp
 (setq org-startup-with-latex-preview t)
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 1.0))
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
 (setq org-preview-latex-image-directory  "/tmp/ltximg/")
+#+end_src
+
+** Org Latex FragTog
+
+[[https://github.com/io12/org-fragtog][github:io12/org-fragtog]] basically toggles  latex fragements when you hover over them. Here is some latex to test it with:
+
+\[
+\sqrt{\beta^2+3}-\sum_{\phi=1}^\infty \frac{x^\phi-1}{\Gamma(a)}
+\]
+
+
+#+begin_src emacs-lisp
+(use-package org-fragtog
+  :hook (org-mode . org-fragtog-mode))
 #+end_src
 
 ** Habit Tracking
@@ -350,15 +364,6 @@ Added [[https://github.com/awth13/org-appear][github:awth13/org-appear]]
   (org-appear-autolinks t)
   (org-appear-autoemphasis t)
   (org-appear-autosubmarkers nil))
-#+end_src
-
-** Org FragTog
-
-[[https://github.com/io12/org-fragtog][github:io12/org-fragtog]] basically toggles  latex fragements when you hover over them.
-
-#+begin_src emacs-lisp
-(use-package org-fragtog
-  :hook (org-mode . org-fragtog-mode))
 #+end_src
 
 ** Org Last Modified Timestamp
