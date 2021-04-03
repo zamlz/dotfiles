@@ -26,12 +26,11 @@ print_repo_dirs() {
 # Configure dotfiles in the current directory
 # (Used when installing new distros)
 configure_dots() {
-
-    d="${1:-$HOME}"
+    HOME="${1:-$HOME}"
 
     # Setting up emacs config file
     echo "Setting up emacs config file"
-    ln -s $d/org/config/init.el $d/.emacs.d/init.el
+    ln -s $HOME/org/config/init.el $HOME/.emacs.d/init.el
 
     # Setup custom color information
     echo "Setting up color info for xorg apps"
