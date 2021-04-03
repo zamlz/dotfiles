@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-02 Fri 11:16:55]
+#+LAST_MODIFIED: [2021-04-02 Fri 20:54:20]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -1212,24 +1212,6 @@ Provides useful integration to a variety of project formats. Able to automatical
   :config (projectile-mode))
 #+end_src
 
-*** Magit Git Interface
-
-Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
-
-#+begin_src emacs-lisp
-(use-package magit
-  :hook (with-editor-mode . evil-insert-state)
-  :bind ("C-x g" . magit-status))
-#+end_src
-
-*** Magit TODOs
-
-#+begin_src emacs-lisp
-(use-package magit-todos
-  :after magit
-  :init (magit-todos-mode))
-#+end_src
-
 *** Diff HL Mode
 
 [[https://github.com/dgutov/diff-hl][github:dgutov/diff-hl]] highlights uncommited changes on the left side of text buffers.
@@ -1248,6 +1230,13 @@ Package provides integration to upstream GitHub, GitLab APIs and more. Setting t
 #+end_src
 
 ** External Package Import
+*** Development and Project Management Packages:
+
+#+begin_src emacs-lisp
+(require 'init-magit)
+#+end_src
+
+*** Org Mode Packages:
 
 #+begin_src emacs-lisp
 (require 'init-org)

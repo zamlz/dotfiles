@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+ROAM_KEY: https://magit.vc/
 #+CREATED: [2021-03-30 Tue 11:36]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:48:08]
+#+LAST_MODIFIED: [2021-04-02 Fri 20:52:36]
 
 #+DOWNLOADED: screenshot @ 2021-03-30 11:38:53
 [[file:data/magit_logo.png]]
@@ -13,3 +13,33 @@ Magit is a [[file:git.org][Git]] porcelain inside [[file:emacs.org][GNU/Emacs]].
 
 * Useful Resources
 - [[https://youtu.be/j-k-lkilbEs][John Wiegley's Magit Demonstration]]
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-magit.el :comments both
+:END:
+** Magit Package
+
+Sets up the package and bind the key for calling the main status buffer. I should probably add more bindings and configuration options but I need to explore the package for that. For now, it works pretty damn well out of the box.
+
+#+begin_src emacs-lisp
+(use-package magit
+  :hook (with-editor-mode . evil-insert-state)
+  :bind ("C-x g" . magit-status))
+#+end_src
+
+** Magit TODOs
+
+In projects, magit will look into the source code and try to create TODO entries for it in the status buffer
+
+#+begin_src emacs-lisp
+(use-package magit-todos
+  :after magit
+  :init (magit-todos-mode))
+#+end_src
+
+** Package Provider
+
+#+begin_src emacs-lisp
+(provide 'init-magit)
+#+end_src

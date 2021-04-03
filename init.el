@@ -1244,26 +1244,6 @@
   :config (projectile-mode))
 ;; Projectile:1 ends here
 
-;; Magit Git Interface
-
-;; Git interface for emacs. Very quickly run git commands and evaluate diffs, etc.
-
-
-;; [[file:emacs.org::*Magit Git Interface][Magit Git Interface:1]]
-(use-package magit
-  :hook (with-editor-mode . evil-insert-state)
-  :bind ("C-x g" . magit-status))
-;; Magit Git Interface:1 ends here
-
-;; Magit TODOs
-
-
-;; [[file:emacs.org::*Magit TODOs][Magit TODOs:1]]
-(use-package magit-todos
-  :after magit
-  :init (magit-todos-mode))
-;; Magit TODOs:1 ends here
-
 ;; Diff HL Mode
 
 ;; [[https://github.com/dgutov/diff-hl][github:dgutov/diff-hl]] highlights uncommited changes on the left side of text buffers.
@@ -1283,14 +1263,21 @@
 ;; (use-package forge)
 ;; Forge:1 ends here
 
-;; External Package Import
+;; Development and Project Management Packages:
 
 
-;; [[file:emacs.org::*External Package Import][External Package Import:1]]
+;; [[file:emacs.org::*Development and Project Management Packages:][Development and Project Management Packages::1]]
+(require 'init-magit)
+;; Development and Project Management Packages::1 ends here
+
+;; Org Mode Packages:
+
+
+;; [[file:emacs.org::*Org Mode Packages:][Org Mode Packages::1]]
 (require 'init-org)
 (require 'init-org-babel)
 (require 'init-org-roam)
-;; External Package Import:1 ends here
+;; Org Mode Packages::1 ends here
 
 ;; PDF Tools
 
