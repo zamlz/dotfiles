@@ -4,22 +4,24 @@
 #+ROAM_TAGS: SOFTWARE CONFIG
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-01 Thu 13:50:40]
+#+LAST_MODIFIED: [2021-04-03 Sat 10:40:17]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:38:29
 [[file:data/git_logo.png]]
 
 * Useful Resources
 - [[https://git-scm.com/doc][Official Git Documentation]]
+- [[https://protesilaos.com/codelog/2021-01-26-git-diff-hunk-elisp-org/][Informative Diff Hunks for Emacs Lisp ad Org]]
 
 * Tips and Tricks
 Nothing yet, but as I remember them, I'll add them here.
 
-* Git Configuration
+* Configuration
+** Primary Settings
 :PROPERTIES:
-:header-args:conf: :tangle ~/.gitconfig :comments both
+:header-args:conf: :tangle ~/.config/git/config :comments both :mkdirp yes
 :END:
-** User Profile
+*** User Profile
 
 #+begin_src conf
 [user]
@@ -28,42 +30,55 @@ Nothing yet, but as I remember them, I'll add them here.
     email = zamlz@pm.me
 #+end_src
 
-** GnuPG
+*** Core
 
-#+begin_src conf
-[gpg]
-    program = gpg
-#+end_src
-
-** Core
+Specify the global ignore and attributes path
 
 #+begin_src conf
 [core]
     pager = less
+    excludesfile = ~/.config/git/ignore
+    attributesfile = ~/.config/git/attributes
 #+end_src
 
-** Commit Settings
+*** Commit Settings
 
 #+begin_src conf
 [commit]
     gpgsign = true
 #+end_src
 
-** Diff Settings
+*** Diff Settings
 
 #+begin_src conf
 [diff "gpg"]
     textconv = gpg --no-tty --decrypt
 #+end_src
 
-** Pull Settings
+Protesilaos Stravrou has an excellent blog post on how to improve the diff view of [[file:../notes/elisp.org][Elisp]] and [[file:org_mode.org][Org-mode]]. This is done by specifying the =xfuncname= regex which is used to identify which heading/function the change belongs to. Full blog post is under the [[*Useful Resources]] section.
+
+#+begin_src conf
+[diff "lisp"]
+    xfuncname = "^(\\(.*)$"
+[diff "org"]
+    xfuncname = "^(\\*+ +.*)$"
+#+end_src
+
+*** Pull Settings
 
 #+begin_src conf
 [pull]
     ff = only
 #+end_src
 
-** Aliases
+*** GnuPG
+
+#+begin_src conf
+[gpg]
+    program = gpg
+#+end_src
+
+*** Aliases
 
 These are just useful aliases I've found online
 
@@ -73,4 +88,30 @@ These are just useful aliases I've found online
     root = rev-parse --show-toplevel
     lol = log --graph --decorate --pretty=oneline --abbrev-commit
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+#+end_src
+
+** Excludes File
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/git/ignore :comments both :mkdirp yes
+:END:
+
+Many programs generate a bunch of garbage files. We don't want git to consider these files. It's often a pain as well to continuously copy =.gitignore= files around so instead we maintain a global gitignore that is used for all git repos. This is primarily for ignoring files that *ONLY* my system would generate (i.e. Emacs being the main culprit). There may be some repos where I /do/ want these files checked in and that case we can just =--force= it.
+
+Emacs garbage:
+
+#+begin_src conf
+.dir-locals.el
+#+end_src
+
+** Attributes File
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/git/attributes :comments both :mkdirp yes
+:END:
+
+Attributes let us assign file types to specific behaviours within git. In this case, we want these files types to use a special diff settings that we've defined for it in the global configuraiton. /(Note, there is a comma there which shouldn't exist but its there because we need to escape the character for org-mode/)
+
+#+begin_src conf
+,*.lisp  diff=lisp
+,*.el    diff=lisp
+,*.org   diff=org
 #+end_src
