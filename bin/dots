@@ -40,6 +40,7 @@ configure_dots() {
     # post setup messages
     echo ""
     echo ">     Make sure to tangle the dotfiles from emacs"
+    echo ">         (hint: dots tangle)"
     echo ">     Colorscheme defaulted to gruvbox-black"
     echo ">     Make sure to populate lemonbar config"
 }
@@ -67,6 +68,24 @@ run_git_over_all() {
     run_git ${PASSWORD_STORE_DIR} $GIT_ARGS;
 }
 
+# Tangle is a literative programming contruct to write out
+# all the configuration files from the org files.
+tangle() {
+    HOME="${1:-$HOME}"
+
+    # iterate through all config *.org files and tangle them
+    find $HOME/org/config -type f -name "*.org" | while read -r orgconf; do
+        emacs --batch --eval "(require 'org)" \
+              --eval "(org-babel-tangle-file \"${orgconf}\")"
+    done
+
+    # post setup message
+    echo ""
+    echo "> If this is a system being tangled for the first time"
+    echo "> make sure to rerun tangle after a fully configured"
+    echo "> emacs is setup."
+}
+
 if [ -z "$@" ]; then
     CMD="" && ARGS=""
 else
@@ -80,5 +99,6 @@ case "$CMD" in
     "push")         run_git_over_all "push"         ;;
     "info")         print_repo_dirs                 ;;
     "configure")    configure_dots $ARGS            ;;
+    "tangle")       tangle $ARGS                    ;;
     *)              run_git_over_all "status"       ;;
 esac
