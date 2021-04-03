@@ -3,7 +3,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-03 Sat 11:01:54]
+#+LAST_MODIFIED: [2021-04-03 Sat 12:12:58]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -17,7 +17,7 @@ Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emac
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-org.el :comments both
+:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-org.el :comments both :mkdirp yes
 :END:
 ** Better Font Faces Hook
 

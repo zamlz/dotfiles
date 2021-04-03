@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-03 Sat 10:42:36]
+#+LAST_MODIFIED: [2021-04-03 Sat 12:12:40]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -26,7 +26,7 @@ As I find things to write here, I'll put it in.
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ./init.el :comments both
+:header-args:emacs-lisp: :tangle ./init.el :comments both :mkdirp yes
 :END:
 ** Internal Configuration
 *** Garbage Collector Hooks

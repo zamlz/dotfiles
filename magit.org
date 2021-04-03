@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+ROAM_KEY: https://magit.vc/
 #+CREATED: [2021-03-30 Tue 11:36]
-#+LAST_MODIFIED: [2021-04-02 Fri 20:52:36]
+#+LAST_MODIFIED: [2021-04-03 Sat 12:13:45]
 
 #+DOWNLOADED: screenshot @ 2021-03-30 11:38:53
 [[file:data/magit_logo.png]]
@@ -16,7 +16,7 @@ Magit is a [[file:git.org][Git]] porcelain inside [[file:emacs.org][GNU/Emacs]].
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-magit.el :comments both
+:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-magit.el :comments both :mkdirp yes
 :END:
 ** Magit Package
 

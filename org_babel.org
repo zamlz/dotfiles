@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-04-02 Fri 20:43:50]
+#+LAST_MODIFIED: [2021-04-03 Sat 12:13:24]
 
 #+DOWNLOADED: screenshot @ 2021-04-02 10:23:00
 [[file:data/tower_of_babel.png]]
@@ -20,7 +20,7 @@
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-org-babel.el :comments both
+:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-org-babel.el :comments both :mkdirp yes
 :END:
 ** Basic Setup
 
