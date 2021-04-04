@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-04-03 Sat 12:14:01]
+#+LAST_MODIFIED: [2021-04-03 Sat 22:30:07]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -92,16 +92,6 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
                         "#+AUTHOR: %n (%(user-login-name))\n"
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: CONFIG SOFTWARE\n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n")
-         :unnarrowed t)
-        ("t" "talks/lectures" plain (function org-roam--capture-get-point)
-         "\n%?"
-         :file-name "talks/${slug}"
-         :head ,(concat "#+TITLE: ${title}\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS:\n"
-                        "#+ROAM_TAGS: \n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n")
          :unnarrowed t)

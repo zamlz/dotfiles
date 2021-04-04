@@ -75,7 +75,7 @@ tangle() {
 
     # iterate through all config *.org files and tangle them
     find $HOME/org/config -type f -name "*.org" | while read -r orgconf; do
-        emacs --batch --eval "(require 'org)" \
+        emacs -Q --batch --eval "(require 'org)" \
               --eval "(org-babel-tangle-file \"${orgconf}\")"
     done
 
