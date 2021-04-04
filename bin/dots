@@ -93,12 +93,12 @@ else
 fi
 
 case "$CMD" in
-    "status")       run_git_over_all "status"       ;;
-    "fetch")        run_git_over_all "fetch origin" ;;
-    "pull")         run_git_over_all "pull"         ;;
-    "push")         run_git_over_all "push"         ;;
-    "info")         print_repo_dirs                 ;;
-    "configure")    configure_dots $ARGS            ;;
-    "tangle")       tangle $ARGS                    ;;
-    *)              run_git_over_all "status"       ;;
+    "status")       run_git_over_all "status --short" ;;
+    "fetch")        run_git_over_all "fetch origin"   ;;
+    "pull")         run_git_over_all "pull"           ;;
+    "push")         run_git_over_all "push"           ;;
+    "info")         print_repo_dirs                   ;;
+    "configure")    configure_dots $ARGS              ;;
+    "tangle")       tangle $ARGS                      ;;
+    *)              run_git_over_all "status --short" ;;
 esac
