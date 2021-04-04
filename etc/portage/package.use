@@ -49,6 +49,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by app-editors/emacs-27.1-r2::gentoo
 # required by @world (argument)
 =app-emacs/emacs-common-gentoo-1.6-r4 gui
+=app-emacs/emacs-common-1.8 gui
 
 # required by net-im/discord-bin-0.0.12::gentoo
 # required by @apps-social (argument)
@@ -99,6 +100,7 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 =dev-python/pillow-8.1.0 jpeg
 =dev-python/pillow-8.1.1 jpeg
 =dev-python/pillow-8.1.2 jpeg
+=dev-python/pillow-8.2.0 jpeg
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
