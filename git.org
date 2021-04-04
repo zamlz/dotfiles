@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE CONFIG
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-04 Sun 09:47:49]
+#+LAST_MODIFIED: [2021-04-04 Sun 10:13:38]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:38:29
 [[file:data/git_logo.png]]
@@ -55,7 +55,7 @@ Specify the global ignore and attributes path
     textconv = gpg --no-tty --decrypt
 #+end_src
 
-Protesilaos Stravrou has an excellent blog post on how to improve the diff view of [[file:../notes/elisp.org][Elisp]] and [[file:org_mode.org][Org-mode]]. This is done by specifying the =xfuncname= regex which is used to identify which heading/function the change belongs to. Full blog post is under the [[*Useful Resources]] section.
+Protesilaos Stravrou has an excellent blog post on how to improve the diff view of [[file:../notes/emacs_lisp.org][Elisp]] and [[file:org_mode.org][Org-mode]]. This is done by specifying the =xfuncname= regex which is used to identify which heading/function the change belongs to. Full blog post is under the [[*Useful Resources]] section.
 
 #+begin_src conf
 [diff "lisp"]
