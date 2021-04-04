@@ -1,14 +1,15 @@
-#+TITLE: Org-mode
+#+TITLE: Org-mode "Your Life in Plain Text"
 #+ROAM_KEY: https://orgmode.org/
+#+ROAM_ALILAS: "org-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-03 Sat 22:12:32]
+#+LAST_MODIFIED: [2021-04-04 Sun 10:04:48]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
 
-Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emacs]].
+Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emacs]]. You can use it for taking notes, generating to-do-lists, creating research papers, running code, you name it!
 
 * Useful Resources
 - [[https://orgmode.org/manual/index.html][The Official Org Manual]]

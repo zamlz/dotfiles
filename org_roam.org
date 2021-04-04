@@ -1,10 +1,10 @@
-#+TITLE: Org-roam
-#+ROAM_ALIAS:
+#+TITLE: Org-roam "Roam Replica for Emacs"
+#+ROAM_ALIAS: "org-roam"
 #+ROAM_KEY: https://www.orgroam.com/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-04-03 Sat 22:30:07]
+#+LAST_MODIFIED: [2021-04-04 Sun 10:04:31]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
