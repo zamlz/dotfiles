@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE CONFIG
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-03 Sat 10:40:17]
+#+LAST_MODIFIED: [2021-04-04 Sun 09:47:49]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:38:29
 [[file:data/git_logo.png]]
@@ -97,10 +97,24 @@ These are just useful aliases I've found online
 
 Many programs generate a bunch of garbage files. We don't want git to consider these files. It's often a pain as well to continuously copy =.gitignore= files around so instead we maintain a global gitignore that is used for all git repos. This is primarily for ignoring files that *ONLY* my system would generate (i.e. Emacs being the main culprit). There may be some repos where I /do/ want these files checked in and that case we can just =--force= it.
 
-Emacs garbage:
+/Emacs garbage:/
 
 #+begin_src conf
+# autosave/backup/compiled files
+,*~
+\#*\#
+,*.elc
+
+# Directory Configuration
 .dir-locals.el
+#+end_src
+
+/Python Garbage:/
+
+#+begin_src conf
+.venv/
+__pycache__/
+*.pyc
 #+end_src
 
 ** Attributes File
