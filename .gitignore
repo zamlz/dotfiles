@@ -1,2 +1,5 @@
 # Ignore any emacs generated files
 *#
+*.tex
+*.pdf
+*.html
