@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-04-04 Sun 17:39:31]
+#+LAST_MODIFIED: [2021-04-04 Sun 20:00:27]
 
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
@@ -45,7 +45,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
   ;; Show the full virtual file paths
   (ivy-virtual-abbreviate 'full)
   ;; Avoid displaying things like "./" and "../" in the list
-  (ivy-extra-directories nil)
+  ;; (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
   (ivy-height 20))
 #+end_src
