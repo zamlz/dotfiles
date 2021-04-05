@@ -283,21 +283,7 @@ Org mode template definitions in the doct format
                                       "%?"
                                       "%i"
                                       "%a"))))
-              ("Journal Entries and Data Capture" :keys "j"
-               :file "journal.org"
-               :type entry
-               :datetree t
-               :template ("* %U :JOURNAL:%{extra-tags}"
-                          "%?")
-               :children (("Journal (now)" :keys "j"
-                           :extra-tags "REALITY:")
-                          ("Journal (dream)" :keys "d"
-                           :extra-tags "DREAM:")
-                          ("Journal (context)" :keys "i"
-                           :template ("* %U :JOURNAL:CONTEXT:"
-                                      "%?"
-                                      "%i"
-                                      "%a")))))))
+              )))
 #+end_src
 
 ** Org Make TOC
