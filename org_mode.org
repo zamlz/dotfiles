@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-04 Sun 18:12:24]
+#+LAST_MODIFIED: [2021-04-04 Sun 19:53:58]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -17,7 +17,7 @@ Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emac
 - [[https://www.reddit.com/r/orgmode/comments/i2d75e/tracking_my_diet_with_emacs_and_orgmode/][Reddit: Tracking my diet with Emacs and Org-mode]]
 
 * GTD System
-I'll use this section here to document how I use the [[file:../notes/gtd_framework-20210327090444.org][GTD Framework]] with org-mode.
+I'll use this section here to document how I use the [[file:../notes/gtd_framework.org][GTD Framework]] with org-mode.
 
 * Configuration
 :PROPERTIES:

@@ -4,14 +4,14 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-04-04 Sun 18:14:37]
+#+LAST_MODIFIED: [2021-04-04 Sun 19:52:54]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
 
 * Org-Roam: A Plain Text Personal Knowledge Management System
 
-Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[file:org_mode.org][Org-mode]]. The project aims to implement [[file:../notes/zettelkasten_method-20210226160505.org][Zettelkasten Method]] through software.
+Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[file:org_mode.org][Org-mode]]. The project aims to implement [[file:../notes/zettelkasten_method.org][Zettelkasten Method]] through software.
 
 * Useful Resources
 - [[https://www.orgroam.com/manual.html][Org-roam Official User Manual]]
