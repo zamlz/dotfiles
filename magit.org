@@ -1,10 +1,10 @@
-#+TITLE: Magit "Git Porcelain inside Emacs"
+#+TITLE: Magit
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: magit
+#+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+ROAM_KEY: https://magit.vc/
 #+CREATED: [2021-03-30 Tue 11:36]
-#+LAST_MODIFIED: [2021-04-04 Sun 10:12:48]
+#+LAST_MODIFIED: [2021-04-04 Sun 18:17:14]
 
 #+DOWNLOADED: screenshot @ 2021-03-30 11:38:53
 [[file:data/magit_logo.png]]
