@@ -1,7 +1,7 @@
 #+TITLE: My Dotfile Configurations
 #+AUTHOR: Amlesh Sivanantham
 #+CREATED: [2021-02-18 Thu 15:09]
-#+LAST_MODIFIED: [2021-04-02 Fri 11:09:13]
+#+LAST_MODIFIED: [2021-04-04 Sun 18:14:50]
 
 #+DOWNLOADED: screenshot @ 2021-04-01 11:19:07
 [[file:data/2021-04-01_11-19-07_screenshot.png]]
@@ -34,6 +34,10 @@
 
 * Emacs Configuration
 - [[file:../emacs.org][GNU/Emacs]]
+- [[file:../ivy.org][Ivy Generic Completion Mechanism]]
+- [[file:../helm.org][Helm Incremental Completion Framework]]
+- [[file:../evil.org][Extensible Vi Layer for Emacs (EVIL)]]
+- [[file:../magit.org][Magit "Git Porcelain inside Emacs"]]
 - [[file:../org_mode.org][Org-mode]]
-- [[file:../org_babel.org][Org-babel]]
-- [[file:../org_roam.org][Org-roam]]
+  - [[file:../org_babel.org][Org-babel]]
+  - [[file:../org_roam.org][Org-roam]]

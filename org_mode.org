@@ -1,10 +1,10 @@
-#+TITLE: Org-mode "Your Life in Plain Text"
+#+TITLE: Org-mode
 #+ROAM_KEY: https://orgmode.org/
-#+ROAM_ALIAS: "org-mode"
+#+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-04 Sun 17:59:40]
+#+LAST_MODIFIED: [2021-04-04 Sun 18:12:24]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
