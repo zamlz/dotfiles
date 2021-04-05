@@ -1,0 +1,171 @@
+#+TITLE: Helm Incremental Completion Framework
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: helm
+#+ROAM_KEY: https://emacs-helm.github.io/helm/
+#+ROAM_TAGS: CONFIG SOFTWARE EMACS
+#+CREATED: [2021-04-04 Sun 17:31]
+#+LAST_MODIFIED: [2021-04-04 Sun 17:50:25]
+
+#+DOWNLOADED: screenshot @ 2021-04-04 17:42:20
+[[file:data/helm_logo.png]]
+
+Helm is a incremental completion framework for [[file:emacs.org][GNU/Emacs]]. The vast majority of this configuration is commented out however as I use
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-helm.el :comments both :mkdirp yes
+:END:
+** Helm
+
+Trying out helm. Got most of the stuff on how this works from [[https://tuhdo.github.io/helm-intro.html][this guide]].
+
+#+begin_src emacs-lisp
+(use-package helm
+  :bind (
+  ;;        ("M-x"     . helm-M-x)
+  ;;        ("M-y"     . helm-show-kill-ring)
+  ;;        ("C-x b"   . helm-mini)
+  ;;        ("C-x C-f" . helm-find-files)
+  ;;        ("C-x C-l" . helm-locate)
+  ;;        ("C-x r b" . helm-bookmarks)
+  ;;        ;; ("C-c h"   . helm-command-prefix)
+  ;;        ("C-x TAB" . helm-semantic-or-imenu)
+  ;;        ("C-s"     . helm-occur)
+  ;;        :map helm-map
+  ;;        ("<tab>" . helm-execute-persistent-action) ; rebind tab to run persistent action
+  ;;        ("C-i"   . helm-execute-persistent-action) ; make TAB work in terminal
+  ;;        ("C-z"   . helm-select-action) ; list actions using C-z
+         )
+  :custom
+  ; max height for the helm buffer
+  (helm-autoresize-max-height 30)
+  ; min height for the helm buffer
+  (helm-autoresize-min-height 0)
+  ; open helm buffer inside current window, not occupy whole other window
+  (helm-split-window-in-side-p t)
+  ; move to end or beginning of source when reaching top or bottom of source.
+  ;; (helm-move-to-line-cycle-in-source t)
+  ; search for library in `require' and `declare-function' sexp.
+  (helm-ff-search-library-in-sexp t)
+  ; scroll 8 lines other window using M-<next>/M-<prior>
+  (helm-scroll-amount 8)
+  ;; use recentf-list for recent files
+  (helm-ff-file-name-history-use-recentf t)
+  ;; show current input in header line
+  (helm-echo-input-in-header-line t)
+  ;; enable fuzzy searching in semantic-or-imenu
+  (helm-semantic-fuzzy-match t)
+  (helm-imenu-fuzzy-match t)
+  ;; enable fuzzy matching in buffer list
+  (helm-buffers-fuzzy-matching t)
+  (helm-recentf-fuzzy-match t)
+  :config
+  (require 'helm-config)
+  ;; Use curl when found
+  (when (executable-find "curl")
+    (setq helm-google-suggest-use-curl-p t))
+  (helm-autoresize-mode 1)
+  ;; The default "C-x c" is quite close to "C-x C-c", which quits Emacs.
+  ;; Changed to "C-c h". Note: We must set "C-c h" globally, because we
+  ;; cannot change `helm-command-prefix-key' once `helm-config' is loaded.
+  (global-set-key (kbd "C-c h") 'helm-command-prefix)
+  (global-unset-key (kbd "C-x c"))
+  ;; (helm-mode 1)
+  )
+#+end_src
+
+** Describe Bindings
+
+A useful package for figuring out what bindings there is in a particular major/minor mode.
+
+#+begin_src emacs-lisp
+;; (use-package helm-descbinds
+;;   :bind ([remap describe-bindings] . helm-descbinds))
+#+end_src
+
+** Describe Mode
+
+[[https://github.com/emacs-helm/helm-describe-modes/tree/11fb36af119b784539d31c6160002de1957408aa][github:emacs-helm/helm-describe-modes]]
+
+#+begin_src emacs-lisp
+;; (use-package helm-describe-modes
+;;   ;; This is just bound to "C-h m"
+;;   :bind ([remap describe-mode] . helm-describe-modes))
+#+end_src
+
+** Bibtex
+
+[[https://github.com/tmalsburg/helm-bibtex][github:tmalsburg/helm-bibtex]]
+
+#+begin_src emacs-lisp
+;; (use-package helm-bibtex
+;;   :after helm
+;;   :custom
+;;   ;; Helm specific UI changes
+;;   (helm-bibtex-full-frame nil)
+;;   ;; Currently this points to my old pubs paper archive
+;;   (bibtex-completion-bibliography '("~/org/papers/bibliography.bib"))
+;;   (bibtex-completion-library-path '("~/org/papers/pdfs/"))
+;;   ;; Store my paper notes alongside my roam notes stuff
+;;   (bibtex-completion-notes-path "~/org/papers/")
+;;   ;; Style the output indicators
+;;   (bibtex-completion-pdf-symbol "⌘")
+;;   (bibtex-completion-notes-symbol "✎")
+;;   ;; TODO Use bibtex-completion-additional-search-fields
+;;   )
+#+end_src
+
+** Dictioary
+
+[[https://github.com/emacs-helm/helm-dictionary][github:emacs-helm/helm-dictionary]]
+
+#+begin_src emacs-lisp
+(use-package helm-dictionary
+  :after helm
+  :bind ("C-c h d" . helm-dictionary))
+#+end_src
+
+** Org Rifle
+
+[[https://github.com/alphapapa/org-rifle][github:alphapapa/org-rifle]]. We shall see if I truly find this useful or not.
+
+#+begin_src emacs-lisp
+(use-package helm-org-rifle
+  :after helm)
+#+end_src
+
+** Themes
+
+[[https://github.com/emacsorphanage/helm-themes][github:emacsorphanage/helm-themes]]
+
+#+begin_src emacs-lisp
+(use-package helm-themes
+  :after helm
+  :bind (("C-c h C-t" . helm-themes)))
+#+end_src
+
+** Spotify Plus
+
+[[https://github.com/wandersoncferreira/helm-spotify-plus][github:wandersoncferreira/helm-spotify-plus]]
+
+#+begin_src emacs-lisp
+;; (use-package helm-spotify-plus
+;;   :after helm
+;;   :bind ("C-c h C-s" . helm-spotify-plus))
+#+end_src
+
+** Pass
+
+[[https://github.com/emacs-helm/helm-pass/][github:emacs-helm/helm-pass]]
+
+#+begin_src emacs-lisp
+(use-package helm-pass
+  :after helm)
+  ;; :bind ("C-x C-p" . helm-pass))
+#+end_src
+
+** Package Provide
+
+#+begin_src emacs-lisp
+(provide 'init-helm)
+#+end_src
