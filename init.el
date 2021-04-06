@@ -518,23 +518,23 @@
   :ensure t)
 
 (add-to-list 'custom-theme-load-path "~/org/config/lib/emacs-themes/")
-;; (load-theme 'gruvbox-black t)
+(load-theme 'gruvbox-black t)
 
-(use-package doom-themes
-  :config
-  ;; Global settings (defaults)
-  (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
-        doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-homage-black t)
-  ;; Enable flashing mode-line on errors
-  (doom-themes-visual-bell-config)
-  ;; Enable custom neotree theme (all-the-icons must be installed!)
-  (doom-themes-neotree-config)
-  ;; or for treemacs users
-  (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
-  (doom-themes-treemacs-config)
-  ;; Corrects (and improves) org-mode's native fontification.
-  (doom-themes-org-config))
+;; (use-package doom-themes
+;;   :config
+;;   ;; Global settings (defaults)
+;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
+;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
+;;   (load-theme 'doom-homage-black t)
+;;   ;; Enable flashing mode-line on errors
+;;   (doom-themes-visual-bell-config)
+;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
+;;   (doom-themes-neotree-config)
+;;   ;; or for treemacs users
+;;   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
+;;   (doom-themes-treemacs-config)
+;;   ;; Corrects (and improves) org-mode's native fontification.
+;;   (doom-themes-org-config))
 
 ;; (use-package spacemacs-theme
 ;;   :defer t
@@ -585,7 +585,7 @@
   "tx" '(zamlz/set-transparency :which-key "Set transparency"))
 
 ;; Set the default transparency
-(zamlz/set-transparency 80)
+(zamlz/set-transparency 100)
 ;; Transparency:1 ends here
 
 ;; Single Dired Buffer
@@ -729,10 +729,10 @@
 
 
 ;; [[file:emacs.org::*Beancount][Beancount:1]]
-(add-to-list 'load-path "~/.emacs.d/beancount-mode")
-(require 'beancount)
-(add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
-(add-hook 'beancount-mode-hook #'outline-minor-mode)
+;; (add-to-list 'load-path "~/.emacs.d/beancount-mode")
+;; (require 'beancount)
+;; (add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
+;; (add-hook 'beancount-mode-hook #'outline-minor-mode)
 ;; Beancount:1 ends here
 
 ;; Company Auto-Completion for Programming Languages

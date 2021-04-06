@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-04 Sun 22:13:54]
+#+LAST_MODIFIED: [2021-04-05 Mon 15:54:12]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -346,13 +346,13 @@ This package should let me quickly download images from web browsers and have im
 Added [[https://github.com/awth13/org-appear][github:awth13/org-appear]]
 
 #+begin_src emacs-lisp
-(use-package org-appear
-  :hook (org-mode . org-appear-mode)
-  :custom
-  (org-appear-autoentities t)
-  (org-appear-autolinks t)
-  (org-appear-autoemphasis t)
-  (org-appear-autosubmarkers t))
+;; (use-package org-appear
+;;   :hook (org-mode . org-appear-mode)
+;;   :custom
+;;   (org-appear-autoentities t)
+;;   (org-appear-autolinks t)
+;;   (org-appear-autoemphasis t)
+;;   (org-appear-autosubmarkers t))
 #+end_src
 
 ** Org Last Modified Timestamp
