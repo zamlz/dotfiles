@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/krypt-n/bar
 #+CREATED: [2021-03-29 Mon 19:25]
-#+LAST_MODIFIED: [2021-04-01 Thu 21:55:47]
+#+LAST_MODIFIED: [2021-04-06 Tue 10:31:40]
 
 Lemonbar (XFT Fork) is a lightweight bar based on XCB. Its pretty neat tool that you just pipe output into to display the bar of your design. Unfortunately, it seems like the repo is archived so it is unmaintained. It will likely break at some point so I should look for alternatives.
 
@@ -954,7 +954,7 @@ while read -r workspace_event; do
         | cut -d " " -f3- ; done)
     msg=""
 
-    # Is there to get this info without relying on herbs?
+    # FIXME Is there to get this info without relying on herbs?
     mon_1=$(hclm | grep '0:' | awk '{print $5}' | tr -d '"')
     mon_2=$(hclm | grep '1:' | awk '{print $5}' | tr -d '"')
     mon_3=$(hclm | grep '2:' | awk '{print $5}' | tr -d '"')
@@ -963,6 +963,7 @@ while read -r workspace_event; do
 
         # Get the actual name of the workspace
         ws=$(echo $all_space_names | awk -v N=$space_id '{print $N}')
+
         # Fix the index of the space_id to be zero index
         # (note, awk needs to be in index 1 format)
         space_id=$((space_id - 1))
@@ -980,12 +981,16 @@ while read -r workspace_event; do
             ws="%{F#585858}$ws%{F-}"
         fi
 
+        # Add the jump to workspace command
+        ws="%{A:xdotool set_desktop $space_id:}$ws%{A}"
+
         # mark output if currently focused
         if [ $space_id -eq $current_space_id ]; then
             msg="$msg %{+u}$ws%{-u}"
         else
             msg="$msg $ws"
         fi
+
     done;
 
     l_msg="%{F$BLACK}${PL_L}%{F-}%{B$BLACK}"
