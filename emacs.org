@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-05 Mon 17:24:12]
+#+LAST_MODIFIED: [2021-04-06 Tue 00:02:08]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
@@ -617,6 +617,15 @@ Hide hidden files from dired buffers (toggleable)
     "H" 'dired-hide-dotfiles-mode))
 #+end_src
 
+*** Info Colors
+
+#+begin_src emacs-lisp
+(use-package info-colors
+  :hook
+  (Info-selection . info-colors-fontify-node)
+  (info-mode . mixed-pitch-mode))
+#+end_src
+
 *** Daemon and Client Hooks
 
 #+begin_src emacs-lisp
@@ -626,7 +635,7 @@ Hide hidden files from dired buffers (toggleable)
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 80))))
+                  (zamlz/set-transparency 100))))
   (zamlz/set-font-faces))
 #+end_src
 

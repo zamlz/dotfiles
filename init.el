@@ -618,6 +618,16 @@
     "H" 'dired-hide-dotfiles-mode))
 ;; Hide Dotfiles:1 ends here
 
+;; Info Colors
+
+
+;; [[file:emacs.org::*Info Colors][Info Colors:1]]
+(use-package info-colors
+  :hook
+  (Info-selection . info-colors-fontify-node)
+  (info-mode . mixed-pitch-mode))
+;; Info Colors:1 ends here
+
 ;; Daemon and Client Hooks
 
 
@@ -628,7 +638,7 @@
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 80))))
+                  (zamlz/set-transparency 100))))
   (zamlz/set-font-faces))
 ;; Daemon and Client Hooks:1 ends here
 
