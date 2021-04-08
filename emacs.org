@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-07 Wed 18:19:48]
+#+LAST_MODIFIED: [2021-04-07 Wed 18:42:56]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -603,7 +603,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   "tx" '(zamlz/set-transparency :which-key "Set transparency"))
 
 ;; Set the default transparency
-(zamlz/set-transparency 90)
+(zamlz/set-transparency 100)
 #+end_src
 
 *** Dired Improvements
@@ -770,7 +770,14 @@ Provides useful integration to a variety of project formats. Able to automatical
   :config (projectile-mode))
 #+end_src
 
-** External Package Import
+** New TO BE NAMED roamed config method lol
+
+*** Internal
+
+#+begin_src emacs-lisp
+(require 'init-ibuffer)
+#+end_src
+
 *** Interface
 
 #+begin_src emacs-lisp

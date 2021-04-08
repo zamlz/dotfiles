@@ -1,0 +1,34 @@
+#+TITLE: Ibuffer Mode
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE EMACS
+#+CREATED: [2021-04-07 Wed 18:31]
+#+LAST_MODIFIED: [2021-04-07 Wed 18:39:50]
+
+Advanced menu for buffers within [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ibuffer.el :comments both :mkdirp yes
+:END:
+** Internal Setup
+
+#+begin_src emacs-lisp
+(use-package ibuffer
+  :ensure nil
+  :bind ("C-x C-b" . ibuffer)
+  :init (setq ibuffer-filter-group-name-face '(:inherit (font-lock-string-face bold))))
+#+end_src
+
+** All the Icons
+
+#+begin_src emacs-lisp
+(use-package all-the-icons-ibuffer
+  :init (all-the-icons-ibuffer-mode 1))
+#+end_src
+
+** Package Provides
+
+#+begin_src emacs-lisp
+(provide 'init-ibuffer)
+#+end_src
