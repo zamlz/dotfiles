@@ -1,0 +1,59 @@
+#+TITLE: Flycheck Syntax Checking
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-07 Wed 17:46]
+#+LAST_MODIFIED: [2021-04-07 Wed 18:22:49]
+
+A package for [[file:emacs.org][GNU/Emacs]] that enables syntax checking for many different languages.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-flycheck.el :comments both :mkdirp yes
+:END:
+** Package Setup
+
+#+begin_src emacs-lisp
+(use-package flycheck
+  :diminish
+  :commands flycheck-redefine-standard-error-levels
+  :hook (after-init . global-flycheck-mode)
+  :init (setq flycheck-global-modes
+              '(not text-mode outline-mode fundamental-mode lisp-interaction-mode
+                    org-mode diff-mode shell-mode eshell-mode term-mode vterm-mode)
+              flycheck-emacs-lisp-load-path 'inherit
+              flycheck-indication-mode (if (display-graphic-p)
+                                           'right-fringe
+                                         'right-margin)
+              ;; Only check while saving and opening files
+              flycheck-check-syntax-automatically '(save mode-enabled)))
+#+end_src
+
+** Posframe
+
+#+begin_src emacs-lisp
+;; (use-package flycheck-posframe
+;;   :custom-face
+;;   (flycheck-posframe-face ((t (:foreground ,(face-foreground 'success)))))
+;;   (flycheck-posframe-info-face ((t (:foreground ,(face-foreground 'success)))))
+;;   (flycheck-posframe-background-face ((t (:inherit tooltip))))
+;;   (flycheck-posframe-border-face ((t (:inherit font-lock-comment-face))))
+;;   :hook (flycheck-mode . flycheck-posframe-mode)
+;;   :init
+;;   (setq flycheck-posframe-border-width 1)
+;;   (add-hook 'flycheck-posframe-inhibit-functions
+;;             (lambda (&rest _) (bound-and-true-p company-backend))))
+#+end_src
+
+** Popup Tip
+
+#+begin_src emacs-lisp
+;; (use-package flycheck-popup-tip
+;;   :hook (flycheck-mode . flycheck-popup-tip-mode))
+#+end_src
+
+** Package Provides
+
+#+begin_src emacs-lisp
+(provide 'init-flycheck)
+#+end_src
