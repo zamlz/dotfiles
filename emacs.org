@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-07 Wed 18:42:56]
+#+LAST_MODIFIED: [2021-04-07 Wed 19:17:58]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -155,7 +155,7 @@ Original startup is hideous...
 
 *** Modernize Selection Behaviour
 
-Replaces active region just by typing text (is this true in visual mode as well?)
+Replaces active region just by typing text.
 
 #+begin_src emacs-lisp
 (use-package delsel
@@ -308,21 +308,6 @@ Super useful for auto-pairing certain characters. However we should make use of 
   :custom (custom-file (concat user-emacs-directory "to-be-dumped.el")))
 #+end_src
 
-*** Dired Customization
-
-#+begin_src emacs-lisp
-(use-package dired
-  :ensure nil
-  :after evil-collection
-  :commands (dired dired-jump)
-  :bind (("C-x C-j" . dired-jump))
-  :custom ((dired-listing-switches "-lahF --group-directories-first"))
-  :config
-  (evil-collection-define-key 'normal 'dired-mode-map
-    "h" 'dired-single-up-directory
-    "l" 'dired-single-buffer))
-#+end_src
-
 *** Easy PGP Assistant (EPA)
 
 EPA is a built-in emacs package for interfacing with GnuPG.
@@ -447,10 +432,6 @@ Hydra lets me also define functions that can very quickly let me do various task
 #+begin_src emacs-lisp
 (use-package hydra)
 #+end_src
-
-*** Leader Keybindings
-
-I chose not to put this in the previous section because I feel like this might grow alot and its also its own unique space. This where my custom functions that get bound to various keys will be assigned via =General=.
 
 **** Misc Shortcuts
 
@@ -606,34 +587,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 (zamlz/set-transparency 100)
 #+end_src
 
-*** Dired Improvements
-**** Single Dired Buffer
-
-This doesn't prevent dired from having multiple buffers open at once, rather, it forces dired to not create a new buffer whenever a new directory is open.
-
-#+begin_src emacs-lisp
-(use-package dired-single)
-#+end_src
-
-**** Icons for Dired
-
-#+begin_src emacs-lisp
-(use-package all-the-icons-dired
-  :hook (dired-mode . all-the-icons-dired-mode))
-#+end_src
-
-**** Hide Dotfiles
-
-Hide hidden files from dired buffers (toggleable)
-
-#+begin_src emacs-lisp
-(use-package dired-hide-dotfiles
-  :hook (dired-mode . dired-hide-dotfiles-mode)
-  :config
-  (evil-collection-define-key 'normal 'dired-mode-map
-    "H" 'dired-hide-dotfiles-mode))
-#+end_src
-
 *** Info Colors
 
 #+begin_src emacs-lisp
@@ -657,9 +610,6 @@ Hide hidden files from dired buffers (toggleable)
 #+end_src
 
 ** Development and Project Management
-
-Language specific and Project Management related configurations here...
-
 *** Languages
 **** Language Server Protocol
 
@@ -771,11 +721,11 @@ Provides useful integration to a variety of project formats. Able to automatical
 #+end_src
 
 ** New TO BE NAMED roamed config method lol
-
 *** Internal
 
 #+begin_src emacs-lisp
 (require 'init-ibuffer)
+(require 'init-dired)
 #+end_src
 
 *** Interface
@@ -835,32 +785,6 @@ A nice standalone replacement for DocView.
   :custom
   (pdf-view-midnight-colors '("#ebdbb2" . "#000000"))
   :init (pdf-tools-install))
-#+end_src
-
-*** xkcd
-
-A simple plugin for getting the today's xkcd comic.
-
-#+begin_src emacs-lisp
-(use-package xkcd)
-#+end_src
-
-*** Wttr.in
-
-A frontend for [[http://wttr.in/][wttr.in]].
-
-#+begin_src emacs-lisp
-(use-package wttrin
-  :custom
-  (wttrin-default-cities '("Union City, CA")))
-#+end_src
-
-*** Key Quiz
-
-A fun litte package for memorizing and learning keybindings. To play, simply use =M-x key-quiz= which will open up the game. It will default to *Fundamental-Mode* but this can be changed by setting the variable =key-quiz-use-mode=.
-
-#+begin_src emacs-lisp
-(use-package key-quiz)
 #+end_src
 
 *** Mu4e

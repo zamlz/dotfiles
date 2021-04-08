@@ -1,0 +1,60 @@
+#+TITLE: Dired File Manager
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE EMACS
+#+CREATED: [2021-04-07 Wed 18:57]
+#+LAST_MODIFIED: [2021-04-07 Wed 19:01:47]
+
+Dired is a file manager for [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-dired.el :comments both :mkdirp yes
+:END:
+** Internal Setup
+
+#+begin_src emacs-lisp
+(use-package dired
+  :ensure nil
+  :after evil-collection
+  :commands (dired dired-jump)
+  :bind (("C-x C-j" . dired-jump))
+  :custom ((dired-listing-switches "-lahF --group-directories-first"))
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-single-up-directory
+    "l" 'dired-single-buffer))
+#+end_src
+
+** Single Buffer Mode
+
+This doesn't prevent dired from having multiple buffers open at once, rather, it forces dired to not create a new buffer whenever a new directory is open.
+
+#+begin_src emacs-lisp
+(use-package dired-single)
+#+end_src
+
+** All the Icons Integration
+
+#+begin_src emacs-lisp
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode))
+#+end_src
+
+** Hide Dotfiles
+
+Hide hidden files from dired buffers (toggleable)
+
+#+begin_src emacs-lisp
+(use-package dired-hide-dotfiles
+  :hook (dired-mode . dired-hide-dotfiles-mode)
+  :config
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "H" 'dired-hide-dotfiles-mode))
+#+end_src
+
+** Package Provides
+
+#+begin_src emacs-lisp
+(provide 'init-dired)
+#+end_src
