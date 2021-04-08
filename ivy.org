@@ -1,15 +1,15 @@
 #+TITLE: Ivy Generic Completion Mechanism
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-04-04 Sun 20:00:27]
+#+LAST_MODIFIED: [2021-04-07 Wed 10:38:33]
 
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-ivy.el :comments both :mkdirp yes
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ivy.el :comments both :mkdirp yes
 :END:
 ** Ivy
 
@@ -47,7 +47,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
   ;; Avoid displaying things like "./" and "../" in the list
   ;; (ivy-extra-directories nil)
   ;; Set the height of the ivy minibuffer
-  (ivy-height 20))
+  (ivy-height 10))
 #+end_src
 
 ** Counsel
@@ -119,15 +119,15 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 ;;   :after counsel
 ;;   :custom
 ;;   ;; Specify the the display posframe
-;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display-at-frame-bottom-window-center)))
+;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
 ;;   ;; Customize height and width of the posframe
-;;   (ivy-posframe-height 20)
-;;   (ivy-posframe-min-height 5)
-;;   (ivy-posframe-width 120)
-;;   (ivy-posframe-min-width 120)
-;;   (ivy-posframe-border-width 20)
+;;   (ivy-posframe-height nil)
+;;   (ivy-posframe-min-height nil)
+;;   (ivy-posframe-width 100)
+;;   (ivy-posframe-min-width 100)
+;;   (ivy-posframe-border-width 4)
 ;;   :init
-;;   (ivy-posframe-mode 1)
+;;   (ivy-posframe-mode 1))
 #+end_src
 
 ** Ivy Hydra

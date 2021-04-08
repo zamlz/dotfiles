@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-05 Mon 15:54:12]
+#+LAST_MODIFIED: [2021-04-07 Wed 15:07:51]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -21,7 +21,7 @@ I'll use this section here to document how I use the [[file:../notes/gtd_framewo
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-org.el :comments both :mkdirp yes
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org.el :comments both :mkdirp yes
 :END:
 ** Better Font Faces Hook
 
@@ -95,7 +95,7 @@ I should probably split this bloody mess up.
   (org-ellipsis " ▾")
 
   ;; These will be unhidden by the org-appear package
-  (org-hide-emphasis-markers t)
+  (org-hide-emphasis-markers nil)
 
   ;; This is so that the imenu displays all levels in ivy
   (org-imenu-depth 10)

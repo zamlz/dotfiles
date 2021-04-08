@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-04-04 Sun 19:52:54]
+#+LAST_MODIFIED: [2021-04-07 Wed 10:35:27]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -22,7 +22,7 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-org-roam.el :comments both :mkdirp yes
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam.el :comments both :mkdirp yes
 :END:
 ** Basic Configuration
 

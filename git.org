@@ -1,10 +1,10 @@
 #+TITLE: Git
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS:
-#+ROAM_TAGS: SOFTWARE CONFIG
+#+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-04 Sun 10:13:38]
+#+LAST_MODIFIED: [2021-04-07 Wed 16:38:22]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:38:29
 [[file:data/git_logo.png]]
@@ -12,12 +12,13 @@
 * Useful Resources
 - [[https://git-scm.com/doc][Official Git Documentation]]
 - [[https://protesilaos.com/codelog/2021-01-26-git-diff-hunk-elisp-org/][Informative Diff Hunks for Emacs Lisp ad Org]]
+- [[https://youtu.be/j-k-lkilbEs][John Wiegley's Magit Demonstration]]
 
 * Tips and Tricks
 Nothing yet, but as I remember them, I'll add them here.
 
 * Configuration
-** Primary Settings
+** Global Config
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/git/config :comments both :mkdirp yes
 :END:
@@ -128,4 +129,77 @@ Attributes let us assign file types to specific behaviours within git. In this c
 ,*.lisp  diff=lisp
 ,*.el    diff=lisp
 ,*.org   diff=org
+#+end_src
+
+** Emacs Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git.el :comments both :mkdirp yes
+:END:
+*** Magit
+
+Magit is package for [[file:emacs.org][GNU/Emacs]] that provides easy and fast control over git repositories. I should probably add more bindings and configuration options but I need to explore the package for that. For now, it works pretty damn well out of the box.
+
+#+begin_src emacs-lisp
+(use-package magit
+  :hook (with-editor-mode . evil-insert-state)
+  :bind ("C-x g" . magit-status))
+#+end_src
+
+*** Magit TODOs
+
+In projects, magit will look into the source code and try to create TODO entries for it in the status buffer
+
+#+begin_src emacs-lisp
+(use-package magit-todos
+  :after magit
+  :init (magit-todos-mode))
+#+end_src
+
+*** Forge
+
+Package provides integration to upstream GitHub, GitLab APIs and more. Setting this up would let me merge/review pull requests, create/address issues, etc. from within emacs.
+
+#+begin_src emacs-lisp
+(use-package forge)
+#+end_src
+
+*** Diff HL Mode
+
+[[https://github.com/dgutov/diff-hl][github:dgutov/diff-hl]] highlights uncommited changes on the left side of text buffers.
+
+#+begin_src emacs-lisp
+(use-package diff-hl
+  :init (global-diff-hl-mode 1))
+#+end_src
+
+*** Git Time Machine
+
+Need to configure this more
+
+#+begin_src emacs-lisp
+(use-package git-timemachine)
+#+end_src
+
+*** Git Messenger
+
+need to configure this more
+
+#+begin_src emacs-lisp
+(use-package git-messenger)
+#+end_src
+
+*** Git Modes
+
+These are grouped together as you don't need to configure it, but it adds modes for git related files so they won't be =Fundamental=.
+
+#+begin_src emacs-lisp
+(use-package gitconfig-mode)
+(use-package gitignore-mode)
+(use-package gitattributes-mode)
+#+end_src
+
+*** Package Provider
+
+#+begin_src emacs-lisp
+(provide 'init-git)
 #+end_src

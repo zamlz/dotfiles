@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "evil-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-04-04 Sun 18:13:36]
+#+LAST_MODIFIED: [2021-04-07 Wed 10:37:04]
 #+STARTUP: content
 
 #+DOWNLOADED: screenshot @ 2021-04-04 13:11:33
@@ -13,7 +13,7 @@ A pretty nice package that is used for lets you use the primary features of vim 
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-evil.el :comments both :mkdirp yes
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-evil.el :comments both :mkdirp yes
 :END:
 ** Enable Evil
 

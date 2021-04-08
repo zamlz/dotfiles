@@ -1,14 +1,15 @@
 #+TITLE: GNU/Emacs
-#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+AUTHOR: Amlesh Sivanantham (zaml)
 #+ROAM_ALIAS:
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-06 Tue 00:02:08]
+#+LAST_MODIFIED: [2021-04-07 Wed 17:16:46]
 #+STARTUP: overview
 
-#+DOWNLOADED: screenshot @ 2021-03-27 10:32:33
-[[file:data/emacs_logo.png]]
+#+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
+[[file:data/xkcd_378.png]]
+/[[https://xkcd.com/378/][Real Programmers - Randall Munroe]]/
 
 * Useful Resources
 
@@ -26,7 +27,7 @@ As I find things to write here, I'll put it in.
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ./init.el :comments both :mkdirp yes
+:header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments both :mkdirp yes
 :END:
 ** Internal Configuration
 *** Garbage Collector Hooks
@@ -75,6 +76,12 @@ Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (advice-add #'package-initialize :after #'add-subdirs-to-load-path)
 
 (update-load-path)
+#+end_src
+
+The =site-lisp= directory may not be populated. /(Do I even need this?)/
+
+#+begin_src conf :tangle ~/.config/emacs/site-lisp/.keep :mkdirp yes
+#placeholder file to generate directory
 #+end_src
 
 *** Package Manager
@@ -218,7 +225,7 @@ Emacs decides to save backup files and lockfiles within the same directory as th
      :ensure nil
      :custom
      (create-lockfiles nil) ; don't create .# files (crashes 'npm start')
-     (backup-directory-alist `(("." . "~/.emacs.d/backup"))))
+     (backup-directory-alist `(("." . "~/.config/emacs/backup"))))
    #+end_src
 
 *** Auto-Refresh Changes from External Buffers
@@ -363,7 +370,8 @@ The default landing page isn't quite nice. I originally had it configured to dis
   :ensure t
   :custom
   ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
-  (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
+  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
+  (dashboard-startup-banner "~/org/config/lib/emacs-themes/name.txt")
   (dashboard-center-content t)
   (dashboard-set-heading-icons t)
   (dashboard-set-file-icons t)
@@ -386,7 +394,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
   ;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
   ;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
   ;; (set-face-attribute 'default nil :font "Dina" :height 100)
-  (set-face-attribute 'default nil :font "Iosevka Term" :height 110)
+  (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
   ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
 
   ;; Set the fixed pitch face
@@ -530,20 +538,28 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
 ;;   ;; Global settings (defaults)
 ;;   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
 ;;         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-;;   (load-theme 'doom-homage-black t)
-;;   ;; Enable flashing mode-line on errors
-;;   (doom-themes-visual-bell-config)
-;;   ;; Enable custom neotree theme (all-the-icons must be installed!)
-;;   (doom-themes-neotree-config)
+;;   (load-theme 'doom-nord t)
+;;   (doom-themes-visual-bell-config) ;; Enable flashing mode-line on errors
+;;   (doom-themes-neotree-config)     ;; Enable custom neotree theme (all-the-icons must be installed!)
 ;;   ;; or for treemacs users
 ;;   (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 ;;   (doom-themes-treemacs-config)
 ;;   ;; Corrects (and improves) org-mode's native fontification.
 ;;   (doom-themes-org-config))
 
+;; (use-package tron-legacy-theme
+;;   :custom
+;;   (tron-legacy-theme-vivid-cursor t)
+;;   ;; :config (load-theme 'tron-legacy t)
+;;   )
+
 ;; (use-package spacemacs-theme
 ;;   :defer t
-;;   :init (load-theme 'spacemacs-dark t))
+;;   ;; :init (load-theme 'spacemacs-dark t)
+;;   )
+
+;; (use-package atom-one-dark-theme
+;;   :config (load-theme 'atom-one-dark t))
 #+end_src
 
 **** Rainbow Delimiters
@@ -586,7 +602,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   "tx" '(zamlz/set-transparency :which-key "Set transparency"))
 
 ;; Set the default transparency
-(zamlz/set-transparency 100)
+(zamlz/set-transparency 90)
 #+end_src
 
 *** Dired Improvements
@@ -635,30 +651,13 @@ Hide hidden files from dired buffers (toggleable)
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 100))))
+                  (zamlz/set-transparency 90))))
   (zamlz/set-font-faces))
 #+end_src
 
 ** Development and Project Management
 
 Language specific and Project Management related configurations here...
-
-*** Vterm
-
-Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
-
-#+begin_src emacs-lisp
-(use-package vterm
-  :custom
-  ;; (vterm-shell "/bin/fish")
-  (vterm-ignore-blink-cursor nil)
-  (vterm-buffer-name-string "vterm [%s]")
-  (vterm-always-compile-module t))
-
-(zamlz/leader-keys
-  "e" '(:ignore t :which-key "Exec Commands")
-  "ee" '(vterm :which-key "Spawn vterm instance"))
-#+end_src
 
 *** Languages
 **** Language Server Protocol
@@ -672,15 +671,6 @@ Powerful languages server protocols that were designed originally for visual stu
   (setq lsp-keymap-prefix "C-c l")
   :config
   (lsp-enable-which-key-integration t))
-#+end_src
-
-**** Python
-
-#+begin_src emacs-lisp
-(use-package python
-  :ensure nil
-  :hook (python-mode . lsp-deferred)
-  :config (setq python-indent-offset zamlz/indent-width))
 #+end_src
 
 **** C/C++/Java
@@ -786,23 +776,6 @@ Provides useful integration to a variety of project formats. Able to automatical
   :config (projectile-mode))
 #+end_src
 
-*** Diff HL Mode
-
-[[https://github.com/dgutov/diff-hl][github:dgutov/diff-hl]] highlights uncommited changes on the left side of text buffers.
-
-#+begin_src emacs-lisp
-(use-package diff-hl
-  :init (global-diff-hl-mode 1))
-#+end_src
-
-*** Forge
-
-Package provides integration to upstream GitHub, GitLab APIs and more. Setting this up would let me merge/review pull requests, create/address issues, etc. from within emacs.
-
-#+begin_src emacs-lisp
-;; (use-package forge)
-#+end_src
-
 ** External Package Import
 *** Interface
 
@@ -817,13 +790,14 @@ Package provides integration to upstream GitHub, GitLab APIs and more. Setting t
 (require 'init-evil)
 #+end_src
 
-*** Development and Project Management Packages:
+*** Integrated Development Environment
 
 #+begin_src emacs-lisp
-(require 'init-magit)
+(require 'init-git)
+(require 'init-python)
 #+end_src
 
-*** Org Mode Packages:
+*** Org Mode Packages
 
 #+begin_src emacs-lisp
 (require 'init-org)
@@ -832,6 +806,23 @@ Package provides integration to upstream GitHub, GitLab APIs and more. Setting t
 #+end_src
 
 ** Misc Packages
+*** Vterm
+
+Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
+
+#+begin_src emacs-lisp
+(use-package vterm
+  :custom
+  ;; (vterm-shell "/bin/fish")
+  (vterm-ignore-blink-cursor nil)
+  (vterm-buffer-name-string "vterm [%s]")
+  (vterm-always-compile-module t))
+
+(zamlz/leader-keys
+  "e" '(:ignore t :which-key "Exec Commands")
+  "ee" '(vterm :which-key "Spawn vterm instance"))
+#+end_src
+
 *** PDF Tools
 
 A nice standalone replacement for DocView.

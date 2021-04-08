@@ -4,16 +4,13 @@
 #+ROAM_KEY: https://emacs-helm.github.io/helm/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:31]
-#+LAST_MODIFIED: [2021-04-04 Sun 17:50:25]
-
-#+DOWNLOADED: screenshot @ 2021-04-04 17:42:20
-[[file:data/helm_logo.png]]
+#+LAST_MODIFIED: [2021-04-07 Wed 12:33:25]
 
 Helm is a incremental completion framework for [[file:emacs.org][GNU/Emacs]]. The vast majority of this configuration is commented out however as I use
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.emacs.d/lisp/init-helm.el :comments both :mkdirp yes
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-helm.el :comments both :mkdirp yes
 :END:
 ** Helm
 
