@@ -4,10 +4,13 @@
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-07 Wed 16:38:22]
+#+LAST_MODIFIED: [2021-04-07 Wed 17:27:06]
 
-#+DOWNLOADED: screenshot @ 2021-03-27 09:38:29
-[[file:data/git_logo.png]]
+#+DOWNLOADED: screenshot @ 2021-04-07 17:26:44
+[[file:data/2021-04-07_17-26-44_screenshot.png]]
+
+
+/[[https://xkcd.com/1296/][Git Commit - Randall Munroe]]/
 
 * Useful Resources
 - [[https://git-scm.com/doc][Official Git Documentation]]
