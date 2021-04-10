@@ -57,6 +57,12 @@ www-client/qutebrowser ~amd64
 # required by dev-lang/julia-1.4.0-r2::gentoo
 =sci-libs/openlibm-0.7.0 ~amd64
 
+# required by dev-lang/julia-1.6.0::gentoo
+# required by @apps-devel
+# required by @selected
+# required by @world (argument)
+=sci-mathematics/dsfmt-2.2.4 ~amd64
+
 # required by dev-lang/julia-1.4.0-r2::gentoo
 =sci-visualization/gr-0.50.0-r1 ~amd64
 
