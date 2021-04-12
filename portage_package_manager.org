@@ -1,0 +1,32 @@
+#+TITLE: Portage Package Manager
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: Portage
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-12 Mon 12:43]
+#+LAST_MODIFIED: [2021-04-12 Mon 12:51:55]
+
+Portage is a source based package manager and the official package distribution system for [[file:gentoo_linux.org][Gentoo Linux]].
+
+* Configuration
+** Portage Environment (make.conf)
+** Per-Package Environments
+*** Debug Symbols
+:PROPERTIES:
+:header-args:shell: :tangle "/sudo::/etc/portage/env/debugsyms" :mkdirp yes :comments both
+:END:
+
+#+begin_src shell
+CFLAGS="${CFLAGS} -ggdb"
+CXXFLAGS="${CXXFLAGS} -ggdb"
+FEATURES="${FEATURES} splitdebug compressdebug -nostrip"
+#+end_src
+
+*** Install Sources
+:PROPERTIES:
+:header-args:shell: :tangle "/sudo::/etc/portage/env/installsources" :mkdirp yes :comments both
+:END:
+
+#+begin_src shell
+FEATURES="${FEATURES} installsources"
+#+end_src
