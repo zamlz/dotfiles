@@ -4,3 +4,4 @@ make.conf/system.conf
 env/
 repos.conf/
 make.conf
+repo.postsync.d/
