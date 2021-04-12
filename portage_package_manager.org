@@ -4,14 +4,163 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-12 Mon 12:43]
-#+LAST_MODIFIED: [2021-04-12 Mon 12:51:55]
+#+LAST_MODIFIED: [2021-04-12 Mon 15:07:36]
 
 Portage is a source based package manager and the official package distribution system for [[file:gentoo_linux.org][Gentoo Linux]].
 
 * Configuration
-** Portage Environment (make.conf)
+** Portage Environment
+:PROPERTIES:
+:header-args:shell: :tangle "/sudo::/etc/portage/make.conf" :mkdirp yes :comments both
+:END:
+
+Consult [[file:/usr/share/portage/config/make.conf.example][/usr/share/portage/config/make.conf.example]] for a more detailed example of what can be configured in the =make.conf= file.
+
+*** Build Flags
+
+#+begin_src shell
+COMMON_FLAGS="-march=native -O2 -pipe"
+CFLAGS="${COMMON_FLAGS}"
+CXXFLAGS="${COMMON_FLAGS}"
+FCFLAGS="${COMMON_FLAGS}"
+FFLAGS="${COMMON_FLAGS}"
+#+end_src
+
+*** System Variables
+**** Andromeda
+
+#+begin_src shell :tangle (if (string-equal (system-name) "andromeda") "/sudo::/etc/portage/make.conf" "no")
+GRUB_PLATFORMS="efi-64"
+INPUT_DEVICES="libinput synaptics"
+VIDEO_CARDS="nvidia"
+
+# parallel ops
+MAKEOPTS="-j18"
+
+# Use app-portage/cpuid2cpuflags to figure out correct cpu flags
+CPU=""
+CPU="${CPU} aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt sha"
+CPU="${CPU} sse sse2 sse3 sse4_1 sse4_2 sse4a ssse3"
+
+CPU_FLAGS_X86="${CPU}"
+#+end_src
+
+**** GalaxyPad
+
+#+begin_src shell :tangle (if (string-equal (system-name) "galaxypad") "/sudo::/etc/portage/make.conf" "no")
+GRUB_PLATFORMS="efi-64"
+INPUT_DEVICES="libinput synaptics wacom"
+VIDEO_CARDS="nvidia"
+
+# parallel ops
+MAKEOPTS="-j10"
+
+# Use app-portage/cpuid2cpuflags to figure out correct cpu flags
+CPU=""
+CPU="${CPU} aes avx avx2 f16c fma3 mmx mmxext pclmul popcnt"
+CPU="${CPU} rdrand sse sse2 sse3 sse4_1 sse4_2 ssse3"
+
+CPU_FLAGS_X86="${CPU}"
+#+end_src
+
+*** Ebuild and Package Directories
+
+Specify the main repo is stored and where package files are downlaoded.
+
+#+begin_src shell
+PORTDIR="/var/db/repos/gentoo"
+DISTDIR="/var/cache/distfiles"
+PKGDIR="/var/cache/binpkgs"
+#+end_src
+
+*** Language Localization
+
+Set default language for the build output.
+
+#+begin_src shell
+LC_MESSAGES=C
+#+end_src
+
+Enable language localization. I just enable all languages.
+
+#+begin_src shell
+L10N=""
+L10N="${L10N} ach af am an ar as ast az be bg bn bn-BD bn-IN bo br brx bs ca"
+L10N="${L10N} ca-valencia cak ceb chr cnr co cs cy da de de-1901 de-CH de-DE"
+L10N="${L10N} dgo doi dsb dv dz el en en-AU en-CA en-GB en-NZ en-US en-ZA eo"
+L10N="${L10N} es es-419 es-AR es-CL es-ES es-MX es-PE et eu fa ff fi fil fo fr"
+L10N="${L10N} fr-CA fy ga gd gl gn gu gug he hi hr hsb ht hu hy ia id io is it"
+L10N="${L10N} iu ja jbo jv ka kab kk km kmr-Latn kn ko kok ks ku ky la lb lij"
+L10N="${L10N} lo lt lv mai mi mk ml mn mni mr ms mt my nan nb ne nl nn no nr"
+L10N="${L10N} nso oc om or pa pl ps pt pt-BR pt-PT qu rm ro ru rw sa sat sc"
+L10N="${L10N} sco sd si sid sk sl so son sq sr sr-Latn ss st su sv sw sw-TZ"
+L10N="${L10N} syc ta ta-LK te tg th ti tk tl tn to tr ts tt ug uk ur uz ve vi"
+L10N="${L10N} xh yi yo zh zh-CN zh-TW zu"
+#+end_src
+
+*** Repository Mirror List
+
+Setup the repository mirrors list. This isn't really needed I think now that I'm using the github mirror, but it's still useful to have. We can use the following command to get the list of mirrors ordered by ping speed.
+
+#+begin_src shell :tangle no
+mirrorselect -s10 -b10 -D -o
+#+end_src
+
+#+begin_src shell
+GM=""
+GM="${GM} http://mirrors.evowise.com/gentoo/"
+GM="${GM} https://mirrors.evowise.com/gentoo/"
+GM="${GM} http://mirror.leaseweb.com/gentoo/"
+GM="${GM} https://mirror.leaseweb.com/gentoo/"
+GM="${GM} http://gentoo.mirrors.easynews.com/linux/gentoo/"
+GM="${GM} http://gentoo.mirrors.tera-byte.com/"
+GM="${GM} http://mirror.csclub.uwaterloo.ca/gentoo-distfiles/"
+GM="${GM} http://gentoo.osuosl.org/"
+GM="${GM} http://gentoo.mirrors.pair.com/"
+GM="${GM} http://mirrors.rit.edu/gentoo/"
+GM="${GM} http://gentoo.ussg.indiana.edu/"
+GM="${GM} http://www.gtlib.gatech.edu/pub/gentoo"
+GM="${GM} https://mirrors.rit.edu/gentoo/"
+GM="${GM} http://gentoo.gossamerhost.com"
+GM="${GM} https://gentoo.osuosl.org/"
+GM="${GM} http://ftp.snt.utwente.nl/pub/os/linux/gentoo"
+GM="${GM} http://gentoo.cs.utah.edu/"
+GM="${GM} http://ftp.free.fr/mirrors/ftp.gentoo.org/"
+GM="${GM} http://mirror.bytemark.co.uk/gentoo/"
+GM="${GM} http://www.mirrorservice.org/sites/distfiles.gentoo.org/"
+#+end_src
+
+*** Global USE Flags
+
+*IMPORTANT:* Essentially during install time, comment out the variables below so that they are incrementally added to avoid build time confusions of any sort. (already ordered too).
+
+#+begin_src shell
+USE=""
+
+# Enables Xorg support for any application that supports it
+USE="${USE} X xinerama"
+
+# User Session Management (choose one)
+USE="${USE} elogind -systemd -consolekit"
+
+# Enable Linux Audio
+USE="${USE} alsa pulseaudio"
+
+# Global ZSH completion (enable only after emerging zsh shell)
+USE="${USE} zsh-completion"
+
+# Enable Network Management
+USE="${USE} networkmanager"
+
+# Specify CUDA version
+USE="${USE} -cuda10-1 -cuda10-2 cuda11-0 -cuda11-1"
+#+end_src
+
 ** Per-Package Environments
-*** Debug Symbols
+
+Package environments like the ones below allow us to modify the build process for each individual package. This is useful for debugging or forcing portage to install the sources of a particular pacakge. Package Environments can be specified in =/etc/portage/package.env/= directory.
+
+*** Debug Symbols (debugsyms)
 :PROPERTIES:
 :header-args:shell: :tangle "/sudo::/etc/portage/env/debugsyms" :mkdirp yes :comments both
 :END:
@@ -22,11 +171,70 @@ CXXFLAGS="${CXXFLAGS} -ggdb"
 FEATURES="${FEATURES} splitdebug compressdebug -nostrip"
 #+end_src
 
-*** Install Sources
+*** Install Sources (installsources)
 :PROPERTIES:
 :header-args:shell: :tangle "/sudo::/etc/portage/env/installsources" :mkdirp yes :comments both
 :END:
 
 #+begin_src shell
 FEATURES="${FEATURES} installsources"
+#+end_src
+
+** Ebuild Repositories
+*** Main Upstream Repo
+:PROPERTIES:
+:header-args:conf: :tangle "/sudo::/etc/portage/repos.conf/gentoo.conf" :mkdirp yes :comments both
+:END:
+
+This is a ebuild repository configuration for the Gentoo Mirror. The main reason for using ths repository is that we make use of [[file:git.org][Git]] which is faster than the default rsync. Also make sure that proper security precautions are taken to verify commits. We set the =sync-depth= to 1 so that we only pull the latest HEAD.
+
+#+begin_src conf
+[DEFAULT]
+main-repo = gentoo
+
+[gentoo]
+location = /var/db/repos/gentoo
+sync-type = git
+sync-uri = https://github.com/gentoo-mirror/gentoo.git
+auto-sync = yes
+sync-depth = 1
+sync-git-verify-commit-signature = true
+sync-openpgp-key-path = /usr/share/openpgp-keys/gentoo-release.asc
+sync-openpgp-key-refresh-retry-count = 40
+sync-openpgp-key-refresh-retry-overall-timeout = 1200
+sync-openpgp-key-refresh-retry-delay-exp-base = 2
+sync-openpgp-key-refresh-retry-delay-max = 60
+sync-openpgp-key-refresh-retry-delay-mult = 4
+#+end_src
+
+*** Personal Package Repo
+:PROPERTIES:
+:header-args:conf: :tangle "/sudo::/etc/portage/repos.conf/zamlz.conf" :mkdirp yes :comments both
+:END:
+
+This is my personal package repository. Make sure to clone it locally as well.
+
+#+begin_src conf
+[zamlz]
+masters = gentoo
+location = /home/zamlz/src/gentoo/zamlz
+sync-type = git
+sync-uri = https://githtub.com/zamlz/portage-overlay.git
+auto-sync = yes
+sync-openpgp-key-path = /var/lib/gentoo/gkeys/keyrings/gentoo/release/pubring.gpg
+#+end_src
+
+*** Layman Repositories
+:PROPERTIES:
+:header-args:conf: :tangle "/sudo::/etc/portage/repos.conf/layman.conf" :mkdirp yes :comments both
+:END:
+
+I'm honestly not sure if I should be putting my layman config here.
+
+#+begin_src conf
+[steam-overlay]
+priority = 50
+location = /var/lib/layman/steam-overlay
+layman-type = git
+auto-sync = No
 #+end_src
