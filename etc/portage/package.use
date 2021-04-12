@@ -24,15 +24,11 @@ games-util/steam-client-meta steamfonts
 
 media-fonts/terminus-font distinct-l
 
-media-sound/jack2 dbus
-
 media-video/mpv libcaca
 
 net-mail/mu emacs
 
 net-misc/networkmanager -ppp -modemmanager dhclient
-
-sci-libs/tensorflow cuda mpi
 
 sci-visualization/gnuplot examples latex libcaca
 
