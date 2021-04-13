@@ -74,8 +74,15 @@ tangle() {
     HOME="${1:-$HOME}"
 
     # iterate through all config *.org files and tangle them
+    # Okay this can be way better. Instead of passing the file
+    # one at a time, I should be getting the arguments in
+    # a prewritten .el file where I output the iteratively.
     find $HOME/org/config -type f -name "*.org" | while read -r orgconf; do
-        emacs -Q --batch --eval "(require 'org)" \
+        echo -e "[${Bold}CONFIG: ${Blue}$orgconf${Rst}]"
+        emacs -Q --batch \
+              --eval "(require 'org)" \
+              --eval "(require 'cl-lib)" \
+              --eval "(advice-add 'sh-set-shell :around (lambda (orig-fun &rest args) (cl-letf (((symbol-function 'message) #'ignore)) (apply orig-fun args))))" \
               --eval "(org-babel-tangle-file \"${orgconf}\")"
     done
 
