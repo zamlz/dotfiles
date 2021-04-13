@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-13 Tue 12:14:28]
+#+LAST_MODIFIED: [2021-04-13 Tue 12:21:51]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -746,6 +746,7 @@ Provides useful integration to a variety of project formats. Able to automatical
 #+begin_src emacs-lisp
 (require 'init-git)
 (require 'init-python)
+(require 'init-julia)
 (require 'init-flycheck)
 #+end_src
 
