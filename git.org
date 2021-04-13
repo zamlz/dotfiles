@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-12 Mon 18:46:34]
+#+LAST_MODIFIED: [2021-04-12 Mon 23:06:07]
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:26:44
 [[file:data/2021-04-07_17-26-44_screenshot.png]]
@@ -209,7 +209,7 @@ These are grouped together as you don't need to configure it, but it adds modes 
 
 ** Portage Setup
 :PROPERTIES:
-:header-args:conf: :tangle "/sudo::/etc/portage/sets/apps-git" :mkdirp yes :comments both
+:header-args:conf: :tangle ~/.config/portage/sets/apps-git :mkdirp yes :comments both
 :END:
 
 #+begin_src conf
