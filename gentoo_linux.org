@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-12 Mon 12:43]
-#+LAST_MODIFIED: [2021-04-12 Mon 22:46:51]
+#+LAST_MODIFIED: [2021-04-12 Mon 22:58:56]
 
 * Portage Environment
 :PROPERTIES:
@@ -708,4 +708,198 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by @selected
 # required by @world (argument)
 >=x11-libs/libvdpau-1.3 abi_x86_32
+#+end_src
+
+** Package Sets
+*** Apps Audio
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-audio :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+media-sound/alsa-utils
+media-sound/pulsemixer
+media-sound/pavucontrol-qt
+media-sound/spotify
+#+end_src
+
+*** Apps CLI
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-cli :mkdirp yes :comments both
+:END:
+
+Main Apps
+
+#+begin_src conf
+app-admin/pass
+app-arch/zip
+net-irc/irssi
+app-office/ledger
+sys-process/htop
+#+end_src
+
+Apps I keep for fun
+
+#+begin_src conf
+app-misc/cmatrix
+app-misc/figlet
+app-misc/neofetch
+#+end_src
+
+*** Apps Desktop
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-desktop :mkdirp yes :comments both
+:END:
+
+Primary Programs
+
+#+begin_src conf
+x11-misc/compton
+x11-misc/lemonbar
+x11-misc/i3lock
+x11-misc/rofi
+x11-misc/sxhkd
+x11-terms/rxvt-unicode
+x11-terms/xst
+x11-wm/herbstluftwm
+#+end_src
+
+Required dependencies for the above programs
+
+#+begin_src conf
+dev-python/argcomplete
+media-fonts/dina
+media-fonts/fira-code
+media-fonts/fontawesome
+media-fonts/iosevka
+media-fonts/terminus-font
+x11-apps/setxkbmap
+x11-apps/xbacklight
+x11-apps/xprop
+x11-apps/xset
+x11-apps/xsetroot
+x11-misc/xdotool
+#+end_src
+
+*** Apps Development
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-devel :mkdirp yes :comments both
+:END:
+
+Generic Packages
+
+#+begin_src conf
+dev-util/ctags
+#+end_src
+
+C/C++ Packages
+
+#+begin_src conf
+dev-util/valgrind
+sys-devel/gdb
+#+end_src
+
+Julia packages
+
+#+begin_src conf
+dev-lang/julia
+#+end_src
+
+Misc programming tools
+
+#+begin_src conf
+app-misc/jq
+app-text/pandoc-bin
+sci-visualization/gnuplot
+#+end_src
+
+*** Apps Documents
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-documents :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+app-text/mupdf
+app-text/zathura
+app-text/zathura-meta
+kde-apps/okular
+#+end_src
+
+*** Apps Gentoo
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-gentoo :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+app-portage/eix
+app-portage/euses
+app-portage/genlop
+app-portage/gentoolkit
+app-portage/layman
+app-portage/metagen
+#app-portage/mirrorselect
+app-portage/pfl
+app-portage/repoman
+#+end_src
+
+*** Apps Image
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-image :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+media-gfx/feh
+media-gfx/gimp
+media-gfx/scrot
+#+end_src
+
+*** Apps Social
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-social :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+net-im/discord-bin
+net-im/zoom
+#+end_src
+
+*** Apps Video
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-video :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+media-video/mpv
+media-video/peek
+net-misc/youtube-dl
+#+end_src
+
+*** Apps Web
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-web :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+www-client/firefox-bin
+www-client/qutebrowser
+www-plugins/pdfjs
+#+end_src
+
+*** Slippi
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/slippi :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+games-emulation/slippi-bin
+#+end_src
+
+*** CUDA Stack
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/stack-cuda :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+=dev-libs/cudnn-8.0.4.30
+=dev-util/nvidia-cuda-toolkit-11.0.3
 #+end_src
