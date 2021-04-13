@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-12 Mon 22:40:20]
+#+LAST_MODIFIED: [2021-04-13 Tue 10:25:45]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -29,8 +29,6 @@ As I find things to write here, I'll put it in.
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments both :mkdirp yes
-:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs :mkdirp yes :comments both
-:header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes :comments no
 :END:
 ** Internal Configuration
 *** Garbage Collector Hooks
@@ -829,7 +827,9 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
 #+end_src
 
 ** Xresources Setup
-
+:PROPERTIES:
+:header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes :comments no
+:END:
 The colorscheme below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
 
 #+begin_src C
@@ -855,7 +855,10 @@ Emacs.color15: xcolor15
 #+end_src
 
 ** Portage Setup
-
+*** Pacakges
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs :mkdirp yes :comments both
+:END:
 We need to ensure that emacs gets installed via the package set. This code block actually isn't needed because we need to already have emacs installed before we could even possibly have tangled this! None the less, we have it here for the sake of the package sets.
 
 #+begin_src conf
@@ -867,4 +870,26 @@ Currently the utilites needed for =mu4e= have to installed via the distro's paca
 #+begin_src conf
 net-mail/isync
 net-mail/mu
+#+end_src
+
+*** USE Flags
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/package.use/apps-emacs :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+app-editors/emacs cairo dbus dynamic-loading gui gif gpm harfbuzz imagemagick
+app-editors/emacs jpeg png sound svg threads xft tiff athena Xaw3d -gtk -motif
+app-editors/emacs xwidgets libxml2
+#+end_src
+
+#+begin_src conf
+net-mail/mu emacs
+#+end_src
+
+#+begin_src conf
+# required by app-editors/emacs-27.1-r2::gentoo
+# required by @world (argument)
+=app-emacs/emacs-common-gentoo-1.6-r4 gui
+=app-emacs/emacs-common-1.8 gui
 #+end_src

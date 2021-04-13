@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-12 Mon 12:43]
-#+LAST_MODIFIED: [2021-04-12 Mon 22:58:56]
+#+LAST_MODIFIED: [2021-04-13 Tue 11:59:54]
 
 * Portage Environment
 :PROPERTIES:
@@ -247,14 +247,11 @@ auto-sync = No
 #  Personal Accept-Keyworks Changes
 # ------------------------------------------------------------------------
 
-app-misc/elasticsearch ~amd64
 app-text/pandoc-bin ~amd64
-dev-lang/julia ~amd64
 dev-libs/cudnn ~amd64
 dev-util/nvidia-cuda-toolkit ~amd64
 media-sound/pulsemixer ~amd64
 media-sound/spotify ~amd64
-media-video/peek ~amd64
 net-im/discord-bin ~amd64
 net-im/zoom ~amd64
 net-misc/youtube-dl ~amd64
@@ -263,9 +260,6 @@ www-client/qutebrowser ~amd64
 # ------------------------------------------------------------------------
 #  Dependant Accept-Keywords Changes
 # ------------------------------------------------------------------------
-
-# required by dev-lang/julia-1.4.0-r2::gentoo
-=dev-libs/openspecfun-0.5.1 ~amd64
 
 # required by www-client/qutebrowser-1.14.1::gentoo
 # required by qutebrowser (argument)
@@ -298,18 +292,6 @@ www-client/qutebrowser ~amd64
 # required by games-util/steam-meta-0-r20160817::steam-overlay
 # required by games-util/steam-meta (argument)
 =media-fonts/steamfonts-1 ~amd64
-
-# required by dev-lang/julia-1.4.0-r2::gentoo
-=sci-libs/openlibm-0.7.0 ~amd64
-
-# required by dev-lang/julia-1.6.0::gentoo
-# required by @apps-devel
-# required by @selected
-# required by @world (argument)
-=sci-mathematics/dsfmt-2.2.4 ~amd64
-
-# required by dev-lang/julia-1.4.0-r2::gentoo
-=sci-visualization/gr-0.50.0-r1 ~amd64
 
 # required by @apps-web (argument)
 =www-plugins/pdfjs-2.4.456 ~amd64
@@ -354,9 +336,6 @@ www-client/qutebrowser ~amd64
 # required by x11-base/xorg-server-1.20.8-r1::gentoo[xorg]
 # required by x11-drivers/xf86-input-libinput-0.30.0::gentoo
 >=x11-drivers/nvidia-drivers-450.66 NVIDIA-r2
-
-# required by google-chrome (argument)
->=www-client/google-chrome-89.0.4389.72 google-chrome
 #+end_src
 
 ** Package USE Flags
@@ -369,19 +348,9 @@ www-client/qutebrowser ~amd64
 #  Personal USE Flag Changes
 # ------------------------------------------------------------------------
 
-app-editors/emacs cairo dbus dynamic-loading gui gif gpm harfbuzz imagemagick
-app-editors/emacs jpeg png sound svg threads xft tiff athena Xaw3d -gtk -motif
-app-editors/emacs xwidgets libxml2
-
 app-portage/pfl -network-cron
 
-app-text/texlive graphics music science xetex
-
 app-text/zathura-meta cb djvu pdf postscript
-
-dev-lang/julia system-llvm
-
-dev-lang/python sqlite tk
 
 dev-qt/qtwebengine jumbo-build
 
@@ -392,8 +361,6 @@ games-util/steam-client-meta steamfonts
 media-fonts/terminus-font distinct-l
 
 media-video/mpv libcaca
-
-net-mail/mu emacs
 
 net-misc/networkmanager -ppp -modemmanager dhclient
 
@@ -411,11 +378,6 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 #  Dependant USE Flag Changes
 # ------------------------------------------------------------------------
 
-# required by app-editors/emacs-27.1-r2::gentoo
-# required by @world (argument)
-=app-emacs/emacs-common-gentoo-1.6-r4 gui
-=app-emacs/emacs-common-1.8 gui
-
 # required by net-im/discord-bin-0.0.12::gentoo
 # required by @apps-social (argument)
 =app-text/ghostscript-gpl-9.52-r1 cups
@@ -432,10 +394,6 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by kde-apps/okular-20.08.3::gentoo[pdf]
 # required by kde-apps/okular (argument)
 >=app-text/poppler-20.11.0 qt5
-
-# required by app-text/texlive-core-2020-r12::gentoo
-# required by app-text/texlive-2020-r9::gentoo[l10n_sk,l10n_cs]
-=app-text/texlive-core-2020-r12 cjk xetex
 
 # required by net-im/discord-bin-0.0.12::gentoo
 # required by @apps-social (argument)
@@ -459,13 +417,6 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 =dev-lua/lpeg-1.0.1 luajit
 =dev-lua/luv-1.32.0.0 luajit
 =dev-lua/mpack-1.0.4 luajit
-
-# required by dev-python/matplotlib-3.3.2::gentoo[-test]
-# required by @apps-devel (argument)
-=dev-python/pillow-8.1.0 jpeg
-=dev-python/pillow-8.1.1 jpeg
-=dev-python/pillow-8.1.2 jpeg
-=dev-python/pillow-8.2.0 jpeg
 
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
@@ -505,43 +456,22 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by app-text/zathura-meta-0::gentoo[djvu]
 =media-libs/freetype-2.10.4 png
 
-# required by app-text/texlive-core-2020-r12::gentoo
-# required by app-text/texlive-2020-r9::gentoo
-=media-libs/gd-2.3.0 png jpeg fontconfig truetype
-=media-libs/gd-2.3.1 png jpeg fontconfig truetype
-
 # required by media-gfx/gimp-2.10.18-r1::gentoo
 # required by @image-apps (argument)
 =media-libs/gegl-0.4.22 cairo
 =media-libs/gegl-0.4.24 cairo
 =media-libs/gegl-0.4.26-r1 cairo
 
-# required by app-text/texlive-core-2020-r12::gentoo
-# required by app-text/texlive-2020-r9::gentoo
-=media-libs/harfbuzz-2.6.7 icu
-=media-libs/harfbuzz-2.7.2 icu
-=media-libs/harfbuzz-2.7.4 icu
-
 # required by www-client/qutebrowser-1.13.1::gentoo
 # required by qutebrowser (argument)
 =media-libs/libvpx-1.7.0-r1 svc
 =media-libs/libvpx-1.9.0 svc
-
-# required by media-video/peek-1.5.1::gentoo
-# required by @apps-video
-=media-video/ffmpeg-4.3.1 vpx
-=media-video/ffmpeg-4.3.2 vpx
 
 # required by kde-apps/okular-20.08.3::gentoo
 # required by kde-apps/okular (argument)
 =media-video/vlc-3.0.11.1 dbus ogg vorbis
 =media-video/vlc-3.0.12.1 dbus ogg vorbis
 =media-video/vlc-3.0.12.1-r100 dbus vorbis ogg
-
-# required by dev-python/ipython-7.19.0-r1::gentoo[smp]
-# required by @apps-devel
-=net-libs/zeromq-4.3.3 drafts
-=net-libs/zeromq-4.3.3-r1 drafts
 
 # required by media-sound/spotify-1.1.55::gentoo
 # required by @apps-audio
@@ -553,11 +483,6 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by @world (argument)
 =net-wireless/wpa_supplicant-2.9-r2 dbus
 
-# required by dev-lang/julia-1.4.0-r2::gentoo
-# required by @apps-devel
-=sci-libs/fftw-3.3.8-r1 threads
-=sci-libs/fftw-3.3.9 threads
-
 # required by sys-boot/os-prober-1.77::gentoo
 # required by sys-boot/os-prober (argument)
 =sys-boot/grub-2.04-r1 mount
@@ -568,11 +493,6 @@ x11-terms/rxvt-unicode 256-color blink fading-colors unicode3 xft
 # required by qutebrowser (argument)
 =sys-libs/zlib-1.2.11-r2 minizip
 =sys-libs/zlib-1.2.11-r3 minizip
-
-# required by dev-lang/julia-1.5.2::gentoo
-# required by @apps-devel
-=sys-libs/zlib-1.2.11-r2 static-libs
-=sys-libs/zlib-1.2.11-r3 static-libs
 
 # required by app-misc/neofetch-6.0.0::gentoo[X]
 # required by @cli-apps (argument)
@@ -767,7 +687,6 @@ x11-wm/herbstluftwm
 Required dependencies for the above programs
 
 #+begin_src conf
-dev-python/argcomplete
 media-fonts/dina
 media-fonts/fira-code
 media-fonts/fontawesome
@@ -797,12 +716,6 @@ C/C++ Packages
 #+begin_src conf
 dev-util/valgrind
 sys-devel/gdb
-#+end_src
-
-Julia packages
-
-#+begin_src conf
-dev-lang/julia
 #+end_src
 
 Misc programming tools
@@ -870,7 +783,6 @@ net-im/zoom
 
 #+begin_src conf
 media-video/mpv
-media-video/peek
 net-misc/youtube-dl
 #+end_src
 

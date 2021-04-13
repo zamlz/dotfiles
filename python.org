@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: Python
 #+ROAM_TAGS: PROGRAMMING CONFIG SOFTWARE
 #+CREATED: [2021-04-07 Wed 16:43]
-#+LAST_MODIFIED: [2021-04-12 Mon 22:38:31]
+#+LAST_MODIFIED: [2021-04-13 Tue 11:24:36]
 
 Python Programming Language....
 
@@ -12,7 +12,6 @@ Python Programming Language....
 * Emacs Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-python.el :comments both :mkdirp yes
-:header-args:conf: :tangle ~/.config/portage/sets/apps-dev-python :mkdirp yes :comments both
 :END:
 ** Python Mode
 
@@ -50,13 +49,48 @@ This is the configuration for the built-in python mode found in [[file:emacs.org
 (provide 'init-python)
 #+end_src
 
-** Portage Setup
-
+* Portage Setup
+** Packages
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-dev-python :mkdirp yes :comments both
+:END:
 Install any packages that we would need for a proper python environment with portage
 
 #+begin_src conf
-dev-python/ipython
 dev-python/pip
-dev-python/matplotlib
+dev-python/ipython
 dev-python/numpy
+dev-python/matplotlib
+dev-python/pandas
+#+end_src
+
+** USE Flags
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/package.use/apps-dev-python :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+dev-lang/python sqlite tk
+dev-python/ipython matplotlib nbconvert
+dev-python/numpy lapack
+dev-python/matplotlib latex tk
+dev-python/pandas full-support
+#+end_src
+
+External USE Flags
+
+#+begin_src conf
+# required by dev-python/matplotlib-3.3.2::gentoo[-test]
+# required by @apps-devel (argument)
+=dev-python/pillow-8.1.0 jpeg
+=dev-python/pillow-8.1.1 jpeg
+=dev-python/pillow-8.1.2 jpeg
+=dev-python/pillow-8.2.0 jpeg
+#+end_src
+
+#+begin_src conf
+# required by dev-python/ipython-7.19.0-r1::gentoo[smp]
+# required by @apps-devel
+=net-libs/zeromq-4.3.3 drafts
+=net-libs/zeromq-4.3.3-r1 drafts
 #+end_src
