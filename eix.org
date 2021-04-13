@@ -3,9 +3,9 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-12 Mon 15:37]
-#+LAST_MODIFIED: [2021-04-12 Mon 22:37:50]
+#+LAST_MODIFIED: [2021-04-13 Tue 12:28:30]
 
-eix is a tool for querying ebuild repositories on a [[file:gentoo_linux.org][Gentoo Linux]] system. It's a much better tool than using the inbuild =emerge --search= feature.
+eix is a tool for querying ebuild repositories that are pulled in by the [[file:portage.org][Portage Pacakge Manager]]. It's a much better tool than using the inbuild =emerge --search= feature.
 
 * Configuration
 ** Updating the Package Cache
