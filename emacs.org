@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-13 Tue 10:25:45]
+#+LAST_MODIFIED: [2021-04-13 Tue 12:14:28]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -26,7 +26,7 @@ There are some cool configurations from other people that I've taken influence f
 * Tips and Tricks
 As I find things to write here, I'll put it in.
 
-* Configuration
+* Emacs Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments both :mkdirp yes
 :END:
@@ -826,7 +826,7 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
   :config (paradox-enable))
 #+end_src
 
-** Xresources Setup
+* Xresources Setup
 :PROPERTIES:
 :header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes :comments no
 :END:
@@ -854,8 +854,8 @@ Emacs.color14: xcolor14
 Emacs.color15: xcolor15
 #+end_src
 
-** Portage Setup
-*** Pacakges
+* Portage Setup
+** Pacakges
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/portage/sets/apps-emacs :mkdirp yes :comments both
 :END:
@@ -872,7 +872,7 @@ net-mail/isync
 net-mail/mu
 #+end_src
 
-*** USE Flags
+** USE Flags
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/portage/package.use/apps-emacs :mkdirp yes :comments both
 :END:
