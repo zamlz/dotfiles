@@ -5,3 +5,4 @@ env/
 repos.conf/
 make.conf
 repo.postsync.d/
+sets/
