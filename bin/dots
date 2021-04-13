@@ -90,7 +90,10 @@ tangle() {
     echo ""
     echo "> If this is a system being tangled for the first time"
     echo "> make sure to rerun tangle after a fully configured"
-    echo "> emacs is setup."
+    echo "> emacs is setup. (am I sure about this?)"
+    echo "> "
+    echo "> Also make sure to udpate the portage directory if this"
+    echo "> is a Gentoo System and the Profile via =eselect profile="
 }
 
 if [ -z "$@" ]; then
