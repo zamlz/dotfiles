@@ -8,12 +8,6 @@ dev-util/ctags
 dev-util/valgrind
 sys-devel/gdb
 
-# Python Packages
-dev-python/ipython
-dev-python/pip
-dev-python/matplotlib
-dev-python/numpy
-
 # Julia packages
 dev-lang/julia
 
