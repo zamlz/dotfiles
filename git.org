@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-07 Wed 17:27:06]
+#+LAST_MODIFIED: [2021-04-12 Mon 18:46:34]
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:26:44
 [[file:data/2021-04-07_17-26-44_screenshot.png]]
@@ -205,4 +205,13 @@ These are grouped together as you don't need to configure it, but it adds modes 
 
 #+begin_src emacs-lisp
 (provide 'init-git)
+#+end_src
+
+** Portage Setup
+:PROPERTIES:
+:header-args:conf: :tangle "/sudo::/etc/portage/sets/apps-git" :mkdirp yes :comments both
+:END:
+
+#+begin_src conf
+dev-vcs/git
 #+end_src
