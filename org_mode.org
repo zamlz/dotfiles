@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-12 Mon 18:20:01]
+#+LAST_MODIFIED: [2021-04-12 Mon 18:32:32]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -393,5 +393,6 @@ It is made available like so.
 ** Portage Setup
 
 #+begin_src conf
+app-text/texlive
 app-text/dvipng
 #+end_src

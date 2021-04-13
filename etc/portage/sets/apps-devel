@@ -8,9 +8,6 @@ dev-util/ctags
 dev-util/valgrind
 sys-devel/gdb
 
-# Latex Environment
-app-text/texlive
-
 # Python Packages
 dev-python/ipython
 dev-python/pip
