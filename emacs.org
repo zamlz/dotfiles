@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-12 Mon 18:20:51]
+#+LAST_MODIFIED: [2021-04-12 Mon 22:40:20]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -29,7 +29,7 @@ As I find things to write here, I'll put it in.
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments both :mkdirp yes
-:header-args:conf: :tangle "/sudo::/etc/portage/sets/apps-emacs" :mkdirp yes :comments both
+:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs :mkdirp yes :comments both
 :header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes :comments no
 :END:
 ** Internal Configuration

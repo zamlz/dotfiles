@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: Python
 #+ROAM_TAGS: PROGRAMMING CONFIG SOFTWARE
 #+CREATED: [2021-04-07 Wed 16:43]
-#+LAST_MODIFIED: [2021-04-12 Mon 18:36:32]
+#+LAST_MODIFIED: [2021-04-12 Mon 22:38:31]
 
 Python Programming Language....
 
@@ -12,7 +12,7 @@ Python Programming Language....
 * Emacs Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-python.el :comments both :mkdirp yes
-:header-args:conf: :tangle "/sudo::/etc/portage/sets/apps-dev-python" :mkdirp yes :comments both
+:header-args:conf: :tangle ~/.config/portage/sets/apps-dev-python :mkdirp yes :comments both
 :END:
 ** Python Mode
 

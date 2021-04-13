@@ -3,14 +3,14 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-12 Mon 15:37]
-#+LAST_MODIFIED: [2021-04-12 Mon 15:52:00]
+#+LAST_MODIFIED: [2021-04-12 Mon 22:37:50]
 
 eix is a tool for querying ebuild repositories on a [[file:gentoo_linux.org][Gentoo Linux]] system. It's a much better tool than using the inbuild =emerge --search= feature.
 
 * Configuration
 ** Updating the Package Cache
 :PROPERTIES:
-:header-args:shell: :tangle "/sudo::/etc/portage/repo.postsync.d/eix" :mkdirp yes :shebang "#!/usr/bin/env bash" :comments both
+:header-args:shell: :tangle ~/.config/portage/repo.postsync.d/eix :mkdirp yes :shebang "#!/usr/bin/env bash" :comments both
 :END:
 
 This will udpate the eix cache file. However this sync is done after every repo sync and it can get quite messy, so I've redirected it to =/dev/null= until I can find a better way to run this after all the ebuild repositories are synced. This file is generated inside portage's postsync hooks directory.
@@ -29,7 +29,7 @@ fi
 
 ** Generating Caches for Local Repos
 :PROPERTIES:
-:header-args:shell: :tangle "/sudo::/etc/portage/repo.postsync.d/egencache" :mkdirp yes :shebang "#!/bin/sh" :comments both
+:header-args:shell: :tangle ~/.config/portage/repo.postsync.d/egencache :mkdirp yes :shebang "#!/bin/sh" :comments both
 :END:
 
 I use other ebuild repositories as well and they don't come with precomputed caches. So, we'll have to use portage's postsync hooks to build caches for them as well. Otherwise, =eix-udpate= can get pretty slow.
