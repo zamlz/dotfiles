@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-07 Wed 15:07:51]
+#+LAST_MODIFIED: [2021-04-12 Mon 18:20:01]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -22,6 +22,7 @@ I'll use this section here to document how I use the [[file:../notes/gtd_framewo
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org.el :comments both :mkdirp yes
+:header-args:conf: :tangle "/sudo::/etc/portage/sets/apps-emacs-org-mode" :mkdirp yes :comments both
 :END:
 ** Better Font Faces Hook
 
@@ -296,7 +297,7 @@ Dynamically make table of contents in org files
 
 ** LaTeX Inline Preview
 
-Pretty straightforward except that you need to have =latex= installed and also =dvi2png= as well. Need to figure out how to configure the size of the generated latex image.
+Pretty straightforward except that you need to have =latex= installed and also =dvipng= as well. Need to figure out how to configure the size of the generated latex image.
 
 #+begin_src emacs-lisp
 (setq org-startup-with-latex-preview t)
@@ -387,4 +388,10 @@ It is made available like so.
 
 #+begin_src emacs-lisp
 (provide 'init-org)
+#+end_src
+
+** Portage Setup
+
+#+begin_src conf
+app-text/dvipng
 #+end_src

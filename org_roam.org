@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-04-07 Wed 10:35:27]
+#+LAST_MODIFIED: [2021-04-12 Mon 18:17:07]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -23,6 +23,7 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam.el :comments both :mkdirp yes
+:header-args:conf: :tangle "/sudo::/etc/portage/sets/apps-emacs-org-roam" :mkdirp yes :comments both
 :END:
 ** Basic Configuration
 
@@ -172,4 +173,13 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 
 #+begin_src emacs-lisp
 (provide 'init-org-roam)
+#+end_src
+
+** Portage Setup
+
+Org roam also needs to have =sqlite= and =graphviz= for full functionality so let's make sure portage also installs that as well.
+
+#+begin_src conf
+dev-db/sqlite
+media-gfx/graphviz
 #+end_src

@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-09 Fri 13:10:49]
+#+LAST_MODIFIED: [2021-04-12 Mon 18:20:51]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -29,6 +29,8 @@ As I find things to write here, I'll put it in.
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments both :mkdirp yes
+:header-args:conf: :tangle "/sudo::/etc/portage/sets/apps-emacs" :mkdirp yes :comments both
+:header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes :comments no
 :END:
 ** Internal Configuration
 *** Garbage Collector Hooks
@@ -826,10 +828,8 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
   :config (paradox-enable))
 #+end_src
 
-* Xresources
-:PROPERTIES:
-:header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes
-:END:
+** Xresources Setup
+
 The colorscheme below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
 
 #+begin_src C
@@ -852,4 +852,19 @@ Emacs.color12: xcolor12
 Emacs.color13: xcolor13
 Emacs.color14: xcolor14
 Emacs.color15: xcolor15
+#+end_src
+
+** Portage Setup
+
+We need to ensure that emacs gets installed via the package set. This code block actually isn't needed because we need to already have emacs installed before we could even possibly have tangled this! None the less, we have it here for the sake of the package sets.
+
+#+begin_src conf
+app-editors/emacs
+#+end_src
+
+Currently the utilites needed for =mu4e= have to installed via the distro's pacakge manager so lets ensure that portage pulls the needed files in here.
+
+#+begin_src conf
+net-mail/isync
+net-mail/mu
 #+end_src
