@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-12 Mon 12:43]
-#+LAST_MODIFIED: [2021-04-13 Tue 13:04:38]
+#+LAST_MODIFIED: [2021-04-14 Wed 11:33:04]
 
 Portage is a source based package manager and official distribution system of [[file:gentoo.org][Gentoo Linux]].
 
@@ -338,6 +338,11 @@ www-client/qutebrowser ~amd64
 # required by x11-base/xorg-server-1.20.8-r1::gentoo[xorg]
 # required by x11-drivers/xf86-input-libinput-0.30.0::gentoo
 >=x11-drivers/nvidia-drivers-450.66 NVIDIA-r2
+
+# required by @apps-web
+# required by @selected
+# required by @world (argument)
+>=www-client/google-chrome-89.0.4389.128 google-chrome
 #+end_src
 
 ** Package USE Flags
@@ -793,6 +798,7 @@ net-misc/youtube-dl
 #+begin_src conf
 www-client/firefox-bin
 www-client/qutebrowser
+www-client/google-chrome
 www-plugins/pdfjs
 #+end_src
 
