@@ -9,7 +9,7 @@ This page just pertains to package management within [[file:emacs.org][GNU/Emacs
 
 * Configuration
 :PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-pacakge.el :comments both :mkdirp yes
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-package.el :comments both :mkdirp yes
 :END:
 
 ** Configure the Package Archive
