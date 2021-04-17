@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-16 Fri 21:24:49]
+#+LAST_MODIFIED: [2021-04-16 Fri 22:18:25]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -30,8 +30,7 @@ As I find things to write here, I'll put it in.
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments both :mkdirp yes
 :END:
-** Internal Configuration
-*** Garbage Collector Hooks
+** Garbage Collector Hooks
 
 Supposedly makes the startup a bit more effecient. We also revert the changes to the GC via a hook once the startup has completed.
 
@@ -51,14 +50,16 @@ Supposedly makes the startup a bit more effecient. We also revert the changes to
                   gc-cons-percentage 0.1
                   file-name-handler-alist file-name-handler-alist-original)))
 
-(add-hook 'minibuffer-setup-hook (lambda ()
-                                   (setq gc-cons-threshold (* zamlz/gc-cons-threshold 2))))
-(add-hook 'minibuffer-exit-hook (lambda ()
-                                  (garbage-collect)
-                                  (setq gc-cons-threshold zamlz/gc-cons-threshold)))
+(add-hook 'minibuffer-setup-hook
+          (lambda ()
+            (setq gc-cons-threshold (* zamlz/gc-cons-threshold 2))))
+(add-hook 'minibuffer-exit-hook
+          (lambda ()
+            (garbage-collect)
+            (setq gc-cons-threshold zamlz/gc-cons-threshold)))
 #+end_src
 
-*** Update Load Path
+** Update Load Path
 
 Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 
@@ -85,28 +86,16 @@ The =site-lisp= directory may not be populated. /(Do I even need this?)/
 #placeholder file to generate directory
 #+end_src
 
-*** Package Manager
-
-Setup the package manager for use later on downstream.
+** Internal
 
 #+begin_src emacs-lisp
-(require 'package)
-(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
-(add-to-list 'package-archives '("org"   . "https://orgmode.org/elpa/"))
-(add-to-list 'package-archives '("gnu"   . "https://elpa.gnu.org/packages/"))
-(setq package-enable-at-startup nil)
-(package-initialize)
-
-;; Setting up the package manager. Install if missing.
-(unless (package-installed-p 'use-package)
-  (package-refresh-contents)
-  (package-install 'use-package))
-(eval-and-compile
-  (setq use-package-always-ensure t)
-  (setq use-package-verbose t))
+(require 'init-package)
+(require 'init-dired)
+(require 'init-ibuffer)
 #+end_src
 
-*** Basic Emacs Setup
+*** Reorganize This
+**** Basic Emacs Setup
 
 Lets get some basic settings out of the way here.
 
@@ -143,7 +132,7 @@ Lets get some basic settings out of the way here.
                 fill-column zamlz/default-screen-width))
 #+end_src
 
-*** Disable Default Startup
+**** Disable Default Startup
 
 Original startup is hideous...
 
@@ -153,7 +142,7 @@ Original startup is hideous...
   :custom (inhibit-startup-screen t))
 #+end_src
 
-*** Modernize Selection Behaviour
+**** Modernize Selection Behaviour
 
 Replaces active region just by typing text.
 
@@ -163,7 +152,7 @@ Replaces active region just by typing text.
   :config (delete-selection-mode +1))
 #+end_src
 
-*** Disable Scroll-Bar
+**** Disable Scroll-Bar
 
 #+begin_src emacs-lisp
 (use-package scroll-bar
@@ -179,7 +168,7 @@ Replaces active region just by typing text.
   (scroll-bar-mode -1))
 #+end_src
 
-*** Enable Column Numbers
+**** Enable Column Numbers
 
 #+begin_src emacs-lisp
 (use-package simple
@@ -196,7 +185,7 @@ Replaces active region just by typing text.
   (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
-*** Split and Follow Windows
+**** Split and Follow Windows
 
 #+begin_src emacs-lisp
 (use-package "window"
@@ -217,7 +206,7 @@ Replaces active region just by typing text.
   (global-set-key (kbd "C-x 3") #'zamlz/split-and-follow-vertically))
 #+end_src
 
-*** Backup and Autosave Files
+**** Backup and Autosave Files
 
 Emacs decides to save backup files and lockfiles within the same directory as the files we are editing. Thats just ugly when looking at the filesystem. This will fix that.
 
@@ -229,23 +218,7 @@ Emacs decides to save backup files and lockfiles within the same directory as th
      (backup-directory-alist `(("." . "~/.config/emacs/backup"))))
    #+end_src
 
-*** Auto-Refresh Changes from External Buffers
-
-Auto refresh changes from outsides buffers. What more needs to be said.
-
-#+begin_src emacs-lisp
-;; (use-package autorevert
-;;   :ensure nil
-;;   :config
-;;   (auto-revert-interval 2)
-;;   (auto-revert-check-vc-info t)
-;;   (global-auto-revert-non-file-buffers t)
-;;   (auto-revert-verbose nil)
-;;   :config
-;;   (global-auto-revert-mode +1))
-#+end_src
-
-*** Eldoc Documentation
+**** Eldoc Documentation
 
 Slightly shorten the Eldoc display delay
 
@@ -257,7 +230,7 @@ Slightly shorten the Eldoc display delay
   (eldoc-idle-delay 0.4))
 #+end_src
 
-*** Mouse Wheel Scroll Speed
+**** Mouse Wheel Scroll Speed
 
 #+begin_src emacs-lisp
 (use-package mwheel
@@ -267,7 +240,7 @@ Slightly shorten the Eldoc display delay
   (mouse-wheel-progressive-speed nil))
 #+end_src
 
-*** Highlight Matching Parentheses
+**** Highlight Matching Parentheses
 
 #+begin_src emacs-lisp
 (use-package paren
@@ -276,7 +249,7 @@ Slightly shorten the Eldoc display delay
   :config (show-paren-mode +1))
 #+end_src
 
-*** Auto-pairing Quotes and Parentheses
+**** Auto-pairing Quotes and Parentheses
 
 Super useful for auto-pairing certain characters. However we should make use of a hook to prevent it for left carrot bracket in org-mode buffers
 
@@ -292,7 +265,7 @@ Super useful for auto-pairing certain characters. However we should make use of 
                    (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))))
 #+end_src
 
-*** Clean Whitespace on Buffer Save
+**** Clean Whitespace on Buffer Save
 
 #+begin_src emacs-lisp
 (use-package whitespace
@@ -300,7 +273,7 @@ Super useful for auto-pairing certain characters. However we should make use of 
   :hook (before-save . whitespace-cleanup))
 #+end_src
 
-*** Dump Custom-Set-Variables
+**** Dump Custom-Set-Variables
 
 #+begin_src emacs-lisp
 (use-package cus-edit
@@ -308,7 +281,7 @@ Super useful for auto-pairing certain characters. However we should make use of 
   :custom (custom-file (concat user-emacs-directory "to-be-dumped.el")))
 #+end_src
 
-*** Easy PGP Assistant (EPA)
+**** Easy PGP Assistant (EPA)
 
 EPA is a built-in emacs package for interfacing with GnuPG.
 
@@ -325,7 +298,7 @@ EPA is a built-in emacs package for interfacing with GnuPG.
   (epa-pinentry-mode 'loopback))
 #+end_src
 
-*** Auth Source Pass
+**** Auth Source Pass
 
 The auth-source-pass package, formerly known as auth-password-store, integrates Emacs' auth-source library with password-store. The auth-source library is a way for Emacs to answer the old burning question “What are my user name and password?”. Password-store (or just pass) is a standard unix password manager following the Unix philosophy. More details can be found at [[https://github.com/DamienCassou/auth-source-pass][github:DamienCassou/auth-source-pass]].
 
@@ -335,7 +308,7 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
   :init (auth-source-pass-enable))
 #+end_src
 
-*** Calc
+**** Calc
 
 #+begin_src emacs-lisp
 (use-package calc
@@ -345,8 +318,15 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
   (calc-symbolic-mode t))
 #+end_src
 
-** Package Configuration
-*** Startup Dashboard
+** Interface
+
+#+begin_src emacs-lisp
+(require 'init-ivy)
+(require 'init-helm)
+#+end_src
+
+*** Reorganize This
+**** Startup Dashboard
 
 The default landing page isn't quite nice. I originally had it configured to display the scratch page, but then I really wanted like a menu to quickly access my stuff.
 
@@ -370,7 +350,7 @@ The default landing page isn't quite nice. I originally had it configured to dis
   (dashboard-setup-startup-hook))
 #+end_src
 
-*** Font Configuration
+**** Font Configuration
 
 I have a lot of fonts commented out right now because I can't decide on which ones to keep lol.
 
@@ -391,7 +371,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
   )
 #+end_src
 
-*** Emojify
+**** Emojify
 
 Display emojis within emacs thanks to [[https://github.com/iqbalansari/emacs-emojify][github:iqbalansari/emacs-emojify]].
 
@@ -400,8 +380,8 @@ Display emojis within emacs thanks to [[https://github.com/iqbalansari/emacs-emo
   ;; :hook (after-init . global-emojify-mode))
 #+end_src
 
-*** Keybinding Configuration
-**** Which Key
+**** Keybinding Configuration
+***** Which Key
 
 Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
 
@@ -412,7 +392,7 @@ Spawns a simple UI panel that shows available keybindings based on what keys I'v
   :custom (which-key-idle-delay 1.0))
 #+end_src
 
-**** General Keybinder
+***** General Keybinder
 
 This is an interesting package. It basically lets me define my own keybinding space and configure it to run various commands as I see fit.
 
@@ -425,7 +405,7 @@ This is an interesting package. It basically lets me define my own keybinding sp
     :global-prefix "C-SPC"))
 #+end_src
 
-**** Hydra
+***** Hydra
 
 Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
 
@@ -433,7 +413,7 @@ Hydra lets me also define functions that can very quickly let me do various task
 (use-package hydra)
 #+end_src
 
-**** Misc Shortcuts
+***** Misc Shortcuts
 
 These are just random shorts to emacs built-in commands that I'd like access to as a keybinding.
 
@@ -443,7 +423,7 @@ These are just random shorts to emacs built-in commands that I'd like access to 
  "tt" '(counsel-load-theme :which-key "choose theme"))
 #+end_src
 
-**** Text Size Scaling
+***** Text Size Scaling
 
 Adds a =Hydra= function to =General= to control the size of the font face.
 
@@ -459,7 +439,7 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
-*** Helpful Help Commands
+**** Helpful Help Commands
 
 [[https://github.com/Wilfred/helpful][Wilfred/helpful]] improves the documentation shown when running one of emacs's =describe-*= functions.
 
@@ -483,8 +463,8 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   )
 #+end_src
 
-*** Themes and Appearance
-**** Modeline
+**** Themes and Appearance
+***** Modeline
 
 To use =Doom-Modeline=, we need to have some custom icons installed. However, they must be manually installed via the following command (=M-x all-the-icons-install-fonts=)
 
@@ -496,7 +476,7 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
   :custom ((doom-modeline-height 15)))
 #+end_src
 
-**** Color Theme
+***** Color Theme
 
 I have a couple themes here. Eventually I want to setup my own custom theme but for now this will have to do.
 
@@ -536,7 +516,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
 ;;   :config (load-theme 'atom-one-dark t))
 #+end_src
 
-**** Solaire Mode
+***** Solaire Mode
 
 #+begin_src emacs-lisp
 (use-package solaire-mode
@@ -544,7 +524,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
   :hook (after-init . solaire-global-mode))
 #+end_src
 
-**** Rainbow Delimiters
+***** Rainbow Delimiters
 
 Normally I don't like rainbow delimiters but its actually pretty good on emacs. And you actually can't survive without it IMO.
 
@@ -553,7 +533,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 
-**** Syntax Highlighting
+***** Syntax Highlighting
 
 #+begin_src emacs-lisp
 (use-package highlight-numbers
@@ -563,14 +543,14 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . hes-mode))
 #+end_src
 
-**** Rainbow Mode
+***** Rainbow Mode
 
 #+begin_src emacs-lisp
 (use-package rainbow-mode
   :init (rainbow-mode))
 #+end_src
 
-**** Transparency
+***** Transparency
 
 #+begin_src emacs-lisp
 ;; Set transparency of emacs
@@ -587,7 +567,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 (zamlz/set-transparency 100)
 #+end_src
 
-*** Info Colors
+**** Info Colors
 
 #+begin_src emacs-lisp
 (use-package info-colors
@@ -596,7 +576,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (info-mode . mixed-pitch-mode))
 #+end_src
 
-*** Daemon and Client Hooks
+**** Daemon and Client Hooks
 
 #+begin_src emacs-lisp
 (if (daemonp)
@@ -609,56 +589,8 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (zamlz/set-font-faces))
 #+end_src
 
-** New TO BE NAMED roamed config method lol
-*** Internal
-
-#+begin_src emacs-lisp
-(require 'init-ibuffer)
-(require 'init-dired)
-#+end_src
-
-*** Interface
-
-#+begin_src emacs-lisp
-(require 'init-ivy)
-(require 'init-helm)
-#+end_src
-
-*** keybinding Improvements
-
-#+begin_src emacs-lisp
-(require 'init-evil)
-#+end_src
-
-*** Integrated Development Environment
-**** Utilities
-
-#+begin_src emacs-lisp
-(require 'init-git)
-(require 'init-projectile)
-(require 'init-company)
-(require 'init-flycheck)
-#+end_src
-
-**** Languages
-
-#+begin_src emacs-lisp
-(require 'init-python)
-(require 'init-julia)
-(require 'init-ledger)
-(require 'init-markdown)
-#+end_src
-
-*** Org Mode Packages
-
-#+begin_src emacs-lisp
-(require 'init-org)
-(require 'init-org-babel)
-(require 'init-org-roam)
-#+end_src
-
-** Misc Packages
-*** Vterm
+**** Misc Packages
+***** Vterm
 
 Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
 
@@ -675,7 +607,7 @@ Installs a better virtual terminal to use within emacs. I'm just playing around 
   "ee" '(vterm :which-key "Spawn vterm instance"))
 #+end_src
 
-*** PDF Tools
+***** PDF Tools
 
 A nice standalone replacement for DocView.
 
@@ -687,7 +619,7 @@ A nice standalone replacement for DocView.
   :init (pdf-tools-install))
 #+end_src
 
-*** Mu4e
+***** Mu4e
 
 We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the IMAP to use with mu4e.
 
@@ -719,11 +651,37 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
       (:maildir "/[Gmail]/All Mail"  :key ?a))))
 #+end_src
 
-*** Paradox
+** keybinding Improvements
 
 #+begin_src emacs-lisp
-(use-package paradox
-  :config (paradox-enable))
+(require 'init-evil)
+#+end_src
+
+** Integrated Development Environment
+*** Utilities
+
+#+begin_src emacs-lisp
+(require 'init-git)
+(require 'init-projectile)
+(require 'init-company)
+(require 'init-flycheck)
+#+end_src
+
+*** Languages
+
+#+begin_src emacs-lisp
+(require 'init-python)
+(require 'init-julia)
+(require 'init-ledger)
+(require 'init-markdown)
+#+end_src
+
+** Org Mode Packages
+
+#+begin_src emacs-lisp
+(require 'init-org)
+(require 'init-org-babel)
+(require 'init-org-roam)
 #+end_src
 
 * Xresources Setup
