@@ -1,0 +1,41 @@
+#+TITLE: Company Autocompletion System
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-16 Fri 21:21]
+#+LAST_MODIFIED: [2021-04-16 Fri 21:23:19]
+
+Company is an autocompletion system that we will use for programming languages in [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-company.el :comments both :mkdirp yes
+:END:
+** Company
+
+Use =C-n= and =C-p= to navigate tooltip
+
+#+begin_src emacs-lisp
+(use-package company
+  :diminish company-mode
+  :hook (prog-mode . company-mode)
+  :config
+  (setq company-minimum-prefix-length 1
+        company-idle-delay 0.1
+        company-selection-wrap-around t
+        company-tooltip-align-annotations t
+        ; show tooltip even for single candidate
+        company-frontends '(company-pseudo-tooltip-frontend
+                            company-echo-metadata-frontend))
+  (with-eval-after-load 'company
+    (define-key company-active-map (kbd "C-n") 'company-select-next)
+    (define-key company-active-map (kbd "C-p") 'company-select-previous)
+    (define-key company-active-map (kbd "RET") 'company-complete-selection)
+    (define-key company-active-map (kbd "TAB") 'company-complete-common)))
+#+end_src
+
+** Pacakge Provies
+
+#+begin_src emacs-lisp
+(provide 'init-company)
+#+end_src

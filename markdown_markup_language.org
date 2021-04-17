@@ -1,0 +1,29 @@
+#+TITLE: Markdown Markup Language
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-16 Fri 21:15]
+#+LAST_MODIFIED: [2021-04-16 Fri 21:16:38]
+
+Markdown is a markup language.
+
+* Useful Resources
+* Tips and Tricks
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-markdown.el :comments both :mkdirp yes
+:END:
+** Markdown Mode
+
+Provides a major mode for editing markdown files
+
+#+begin_src emacs-lisp
+(use-package markdown-mode
+  :hook (markdown-mode . visual-line-mode))
+#+end_src
+
+** Package Provides
+
+#+begin_src emacs-lisp
+(provide 'init-markdown)
+#+end_src

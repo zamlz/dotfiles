@@ -1,0 +1,33 @@
+#+TITLE: Projectile
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-16 Fri 21:18]
+#+LAST_MODIFIED: [2021-04-16 Fri 21:20:22]
+
+Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
+
+* Configuraiton
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-projectile.el :comments both :mkdirp yes
+:END:
+** Projectile Core
+
+#+begin_src emacs-lisp
+(use-package projectile
+  :diminish projectile-mode
+  :bind-keymap
+  ("C-c p" . projectile-command-map)
+  :init
+  (when (file-directory-p "~/src")
+    (setq projectile-project-search-path '("~/src")))
+  (setq projectile-switch-project-action #'projectile-dired)
+  :custom (projectile-completion-system 'ivy)
+  :config (projectile-mode))
+#+end_src
+
+** Pacakge Provides
+
+#+begin_src emacs-lisp
+(provide 'init-projectile)
+#+end_src

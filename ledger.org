@@ -1,0 +1,28 @@
+#+TITLE: Ledger
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-16 Fri 21:10]
+#+LAST_MODIFIED: [2021-04-16 Fri 21:12:43]
+
+Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
+
+* Useful Resources
+* Tips and Tricks
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ledger.el :comments both :mkdirp yes
+:END:
+** Ledger Mode
+
+The following package provides a dedicated mode for editing ledger files.
+
+#+begin_src emacs-lisp
+(use-package ledger-mode)
+#+end_src
+
+** Package Provides
+
+#+begin_src emacs-lisp
+(provide 'init-ledger)
+#+end_src

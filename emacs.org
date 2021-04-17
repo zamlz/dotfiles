@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-16 Fri 20:23:46]
+#+LAST_MODIFIED: [2021-04-16 Fri 21:24:49]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -609,117 +609,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (zamlz/set-font-faces))
 #+end_src
 
-** Development and Project Management
-*** Languages
-**** Language Server Protocol
-
-Powerful languages server protocols that were designed originally for visual studio code in order to created a unified protocol for getting functionality of the langauge from within the editor.
-
-#+begin_src emacs-lisp
-(use-package lsp-mode
-  :commands (lsp lsp-deferred)
-  :init
-  (setq lsp-keymap-prefix "C-c l")
-  :config
-  (lsp-enable-which-key-integration t))
-#+end_src
-
-**** C/C++/Java
-
-Sets the formatting style for C/C++/Java from GNU (default) to the popular standard K&R.
-
-#+begin_src emacs-lisp
-(use-package cc-vars
-  :ensure nil
-  :config
-  (setq-default c-basic-offset zamlz/indent-width)
-  (setq c-default-style '((java-mode . "java")
-                          (awk-mode . "awk")
-                          (other . "k&r"))))
-#+end_src
-
-**** Web Languages
-
-Useful mode for editing web based files
-
-#+begin_src emacs-lisp
-(use-package web-mode
-  :mode (("\\.html?\\'" . web-mode)
-         ("\\.css\\'"   . web-mode)
-         ("\\.jsx?\\'"  . web-mode)
-         ("\\.tsx?\\'"  . web-mode)
-         ("\\.json\\'"  . web-mode))
-  :custom
-  (web-mode-markup-indent-offset 2) ; HTML
-  (web-mode-css-indent-offset 2)    ; CSS
-  (web-mode-code-indent-offset 2)   ; JS/JSX/TS/TSX
-  (web-mode-content-types-alist '(("jsx" . "\\.js[x]?\\'"))))
-#+end_src
-
-**** Markdown
-
-#+begin_src emacs-lisp
-(use-package markdown-mode
-  :hook (markdown-mode . visual-line-mode))
-#+end_src
-
-**** Ledger
-
-#+begin_src emacs-lisp
-(use-package ledger-mode)
-#+end_src
-
-**** Beancount
-
-Beancount is a plain text accounting ledger-like program that I've been experimenting with. This simply just adds the mode via **on-disk** extension. If the extension is missing, emacs will complain. Make sure to pull it from the repo!
-
-#+begin_src emacs-lisp
-;; (add-to-list 'load-path "~/.emacs.d/beancount-mode")
-;; (require 'beancount)
-;; (add-to-list 'auto-mode-alist '("\\.lgr\\'" . beancount-mode))
-;; (add-hook 'beancount-mode-hook #'outline-minor-mode)
-#+end_src
-
-*** Company Auto-Completion for Programming Languages
-
-Use =C-n= and =C-p= to navigate tooltip
-
-#+begin_src emacs-lisp
-(use-package company
-  :diminish company-mode
-  :hook (prog-mode . company-mode)
-  :config
-  (setq company-minimum-prefix-length 1
-        company-idle-delay 0.1
-        company-selection-wrap-around t
-        company-tooltip-align-annotations t
-        ; show tooltip even for single candidate
-        company-frontends '(company-pseudo-tooltip-frontend
-                            company-echo-metadata-frontend))
-  (with-eval-after-load 'company
-    (define-key company-active-map (kbd "C-n") 'company-select-next)
-    (define-key company-active-map (kbd "C-p") 'company-select-previous)
-    (define-key company-active-map (kbd "RET") 'company-complete-selection)
-    (define-key company-active-map (kbd "TAB") 'company-complete-common)))
-#+end_src
-
-*** Projectile
-
-Provides useful integration to a variety of project formats. Able to automatically identify project directories and can be configured to build, run unit-tests, etc. Need to explore this more.
-
-#+begin_src emacs-lisp
-(use-package projectile
-  :diminish projectile-mode
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  (when (file-directory-p "~/src")
-    (setq projectile-project-search-path '("~/src")))
-  (setq projectile-switch-project-action #'projectile-dired)
-  :custom (projectile-completion-system 'ivy)
-  :config (projectile-mode))
-#+end_src
-
 ** New TO BE NAMED roamed config method lol
 *** Internal
 
@@ -742,12 +631,22 @@ Provides useful integration to a variety of project formats. Able to automatical
 #+end_src
 
 *** Integrated Development Environment
+**** Utilities
 
 #+begin_src emacs-lisp
 (require 'init-git)
+(require 'init-projectile)
+(require 'init-company)
+(require 'init-flycheck)
+#+end_src
+
+**** Languages
+
+#+begin_src emacs-lisp
 (require 'init-python)
 (require 'init-julia)
-(require 'init-flycheck)
+(require 'init-ledger)
+(require 'init-markdown)
 #+end_src
 
 *** Org Mode Packages
