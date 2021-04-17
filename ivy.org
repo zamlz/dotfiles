@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-04-07 Wed 10:38:33]
+#+LAST_MODIFIED: [2021-04-16 Fri 21:01:22]
 
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
@@ -36,7 +36,9 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
   :custom
-  ;; Default count format
+  (ivy-height 24)
+  (ivy-wrap t)
+  (ivy-fixed-height-minibuffer t)
   (ivy-count-format "[%d/%d] ")
   ;; Don't start searches with ^
   (ivy-initial-inputs-alist nil)
@@ -44,10 +46,36 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
   (ivy-use-virtual-buffers nil)
   ;; Show the full virtual file paths
   (ivy-virtual-abbreviate 'full)
-  ;; Avoid displaying things like "./" and "../" in the list
-  ;; (ivy-extra-directories nil)
-  ;; Set the height of the ivy minibuffer
-  (ivy-height 10))
+  ;; Do not quit the minibuffer on delete-error
+  (ivy-on-del-error-function #'ignore)
+  ;; Enable ability to select the prompt
+  (ivy-use-selectable-prompt t))
+#+end_src
+
+** Ivy Rich
+
+=Ivy-Rich= provides extra columns in the counsel commands to get more information about each item during autocompletion.
+
+#+begin_src emacs-lisp
+(use-package ivy-rich
+  :after (counsel all-the-icons-ivy-rich)
+  :custom
+  (ivy-virtual-abbreviate 'full
+                          ivy-rich-switch-buffer-align-virtual-buffer t
+                          ivy-rich-path-style 'abbrev)
+  :config
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+  (ivy-set-display-transformer 'ivy-switch-buffer
+                               'ivy-rich-switch-buffer-transformer)
+  :init (ivy-rich-mode 1))
+#+end_src
+
+Make ivy rich even more aesthetic with icons!
+
+#+begin_src emacs-lisp
+(use-package all-the-icons-ivy-rich
+  :after (counsel counsel-projectile)
+  :init (all-the-icons-ivy-rich-mode 1))
 #+end_src
 
 ** Counsel
@@ -82,52 +110,9 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 #+begin_src emacs-lisp
 (use-package swiper
   :after counsel
+  :custom (swiper-action-recent t)
   :bind (("C-s"   . swiper)
          ("C-M-s" . swiper-all)))
-#+end_src
-
-** Ivy Rich
-
-=Ivy-Rich= provides extra columns in the counsel commands to get more information about each item during autocompletion.
-
-#+begin_src emacs-lisp
-;; Adds nice icons to the ivy rich buffer
-(use-package all-the-icons-ivy-rich
-  :after (counsel counsel-projectile)
-  :init (all-the-icons-ivy-rich-mode 1))
-
-;; Actually install ivy rich
-(use-package ivy-rich
-  :after (counsel all-the-icons-ivy-rich)
-  :custom
-  (ivy-virtual-abbreviate 'full
-                          ivy-rich-switch-buffer-align-virtual-buffer t
-                          ivy-rich-path-style 'abbrev)
-  :config
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  (ivy-set-display-transformer 'ivy-switch-buffer
-                               'ivy-rich-switch-buffer-transformer)
-  :init (ivy-rich-mode 1))
-#+end_src
-
-** Ivy Posframe
-
-[[https://github.com/tumashu/ivy-posframe][tumashu/ivy-postframe]] is ivy extension, which let ivy use the postframe to show its candidate menu.
-
-#+begin_src emacs-lisp
-;; (use-package ivy-posframe
-;;   :after counsel
-;;   :custom
-;;   ;; Specify the the display posframe
-;;   (ivy-posframe-display-functions-alist '((t . ivy-posframe-display)))
-;;   ;; Customize height and width of the posframe
-;;   (ivy-posframe-height nil)
-;;   (ivy-posframe-min-height nil)
-;;   (ivy-posframe-width 100)
-;;   (ivy-posframe-min-width 100)
-;;   (ivy-posframe-border-width 4)
-;;   :init
-;;   (ivy-posframe-mode 1))
 #+end_src
 
 ** Ivy Hydra
@@ -165,21 +150,6 @@ Ivy Hydra is part of the original repo, but its bundled seperately as a package.
   )
 #+end_src
 
-** Ivy Pass
-
-#+begin_src emacs-lisp
-(use-package ivy-pass
-  :after ivy
-  :bind ("C-x C-p" . ivy-pass))
-#+end_src
-
-** Ivy Prescient
-
-#+begin_src emacs-lisp
-(use-package ivy-prescient
-  :after (ivy prescient))
-#+end_src
-
 ** Counsel Projectile
 
 Provides counsel interface for projectile.
@@ -188,6 +158,22 @@ Provides counsel interface for projectile.
 (use-package counsel-projectile
   :after counsel
   :init (counsel-projectile-mode))
+#+end_src
+
+** Prescient
+
+Simple but effective sorting and filtering for emacs completion buffers.
+
+#+begin_src emacs-lisp
+(use-package prescient)
+#+end_src
+
+** Ivy Prescient
+
+#+begin_src emacs-lisp
+(use-package ivy-prescient
+  :after (ivy prescient))
+  ;; :init (ivy-prescient-mode))
 #+end_src
 
 ** Package Provides

@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-13 Tue 12:21:51]
+#+LAST_MODIFIED: [2021-04-16 Fri 20:23:46]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -459,14 +459,6 @@ Adds a =Hydra= function to =General= to control the size of the font face.
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
-*** Prescient
-
-Simple but effective sorting and filtering for emacs completion buffers.
-
-#+begin_src emacs-lisp
-(use-package prescient)
-#+end_src
-
 *** Helpful Help Commands
 
 [[https://github.com/Wilfred/helpful][Wilfred/helpful]] improves the documentation shown when running one of emacs's =describe-*= functions.
@@ -520,7 +512,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-homage-black t)
+  (load-theme 'doom-one t)
   (doom-themes-visual-bell-config) ;; Enable flashing mode-line on errors
   (doom-themes-neotree-config)     ;; Enable custom neotree theme (all-the-icons must be installed!)
   ;; or for treemacs users
@@ -542,6 +534,14 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
 
 ;; (use-package atom-one-dark-theme
 ;;   :config (load-theme 'atom-one-dark t))
+#+end_src
+
+**** Solaire Mode
+
+#+begin_src emacs-lisp
+(use-package solaire-mode
+  :after (doom-themes)
+  :hook (after-init . solaire-global-mode))
 #+end_src
 
 **** Rainbow Delimiters
@@ -605,7 +605,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 80))))
+                  (zamlz/set-transparency 100))))
   (zamlz/set-font-faces))
 #+end_src
 
