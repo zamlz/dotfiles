@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-16 Fri 22:18:25]
+#+LAST_MODIFIED: [2021-04-17 Sat 21:49:02]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -371,17 +371,8 @@ I have a lot of fonts commented out right now because I can't decide on which on
   )
 #+end_src
 
-**** Emojify
-
-Display emojis within emacs thanks to [[https://github.com/iqbalansari/emacs-emojify][github:iqbalansari/emacs-emojify]].
-
-#+begin_src emacs-lisp
-(use-package emojify)
-  ;; :hook (after-init . global-emojify-mode))
-#+end_src
-
 **** Keybinding Configuration
-***** Which Key
+**** Which Key
 
 Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
 
@@ -392,7 +383,7 @@ Spawns a simple UI panel that shows available keybindings based on what keys I'v
   :custom (which-key-idle-delay 1.0))
 #+end_src
 
-***** General Keybinder
+**** General Keybinder
 
 This is an interesting package. It basically lets me define my own keybinding space and configure it to run various commands as I see fit.
 
@@ -405,7 +396,7 @@ This is an interesting package. It basically lets me define my own keybinding sp
     :global-prefix "C-SPC"))
 #+end_src
 
-***** Hydra
+**** Hydra
 
 Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
 
@@ -413,7 +404,7 @@ Hydra lets me also define functions that can very quickly let me do various task
 (use-package hydra)
 #+end_src
 
-***** Misc Shortcuts
+**** Misc Shortcuts
 
 These are just random shorts to emacs built-in commands that I'd like access to as a keybinding.
 
@@ -423,7 +414,7 @@ These are just random shorts to emacs built-in commands that I'd like access to 
  "tt" '(counsel-load-theme :which-key "choose theme"))
 #+end_src
 
-***** Text Size Scaling
+**** Text Size Scaling
 
 Adds a =Hydra= function to =General= to control the size of the font face.
 
