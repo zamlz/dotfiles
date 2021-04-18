@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-18 Sun 15:30:37]
+#+LAST_MODIFIED: [2021-04-18 Sun 15:33:19]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -371,7 +371,6 @@ I have a lot of fonts commented out right now because I can't decide on which on
   )
 #+end_src
 
-**** Keybinding Configuration
 **** Which Key
 
 Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
