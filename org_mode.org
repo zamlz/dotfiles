@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-18 Sun 17:01:26]
+#+LAST_MODIFIED: [2021-04-18 Sun 17:34:24]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -171,6 +171,12 @@ This new version of the task colors pulls in existing colors from preexisting fa
             ("DONE"      . (:weight bold :foreground ,green :background ,(doom-blend green black 0.2)))
             ("COMPLETED" . (:weight bold :foreground ,green :background ,(doom-blend green black 0.2)))
             ))))
+#+end_src
+
+The tasks colors function needs to be called. Unfortunately, there is an issue where its not really set when we're running it via a daemon.
+
+#+begin_src emacs-lisp
+(zamlz/configure-org-todo-keyword-faces)
 #+end_src
 
 ** Better Heading Bullets
