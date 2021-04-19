@@ -4,7 +4,8 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-18 Sun 17:34:24]
+#+LAST_MODIFIED: [2021-04-19 Mon 08:07:17]
+#+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -163,14 +164,15 @@ This new version of the task colors pulls in existing colors from preexisting fa
        (cyan    (face-attribute 'all-the-icons-cyan :foreground))
        (white   (face-attribute 'term-color-white :foreground)))
     (setq org-todo-keyword-faces
-          `(("TODO"      . (:weight bold :foreground ,red :background ,(doom-blend red black 0.2)))
-            ("ROUTINE"   . (:weight bold :foreground ,blue :background ,(doom-blend blue black 0.2)))
-            ("MEETING"   . (:weight bold :foreground ,yellow :background ,(doom-blend yellow black 0.4)))
-            ("PROJECT"   . (:weight bold :foreground ,cyan :background ,(doom-blend cyan black 0.2)))
-            ("WAITING"   . (:weight bold :foreground ,yellow :background ,(doom-blend yellow black 0.2)))
-            ("DONE"      . (:weight bold :foreground ,green :background ,(doom-blend green black 0.2)))
-            ("COMPLETED" . (:weight bold :foreground ,green :background ,(doom-blend green black 0.2)))
-            ))))
+          `(("TODO"      . (:weight bold :foreground ,black :background ,red))
+            ("ROUTINE"   . (:weight bold :foreground ,black :background ,blue))
+            ("MEETING"   . (:weight bold :foreground ,black :background ,magenta))
+            ("PROJECT"   . (:weight bold :foreground ,black :background ,cyan))
+            ("WAITING"   . (:weight bold :foreground ,black :background ,yellow))
+            ("SOMEDAY"   . (:weight bold :foreground ,black :background ,(doom-darken white 0.5)))
+            ("DONE"      . (:weight bold :foreground ,black :background ,green))
+            ("COMPLETED" . (:weight bold :foreground ,black :background ,green))
+            )))
 #+end_src
 
 The tasks colors function needs to be called. Unfortunately, there is an issue where its not really set when we're running it via a daemon.
