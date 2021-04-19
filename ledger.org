@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-04-16 Fri 21:12:43]
+#+LAST_MODIFIED: [2021-04-19 Mon 08:27:17]
 
 Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
 
@@ -18,7 +18,30 @@ Ledger is a command line accounting tool for [[file:../notes/plain_text_accounti
 The following package provides a dedicated mode for editing ledger files.
 
 #+begin_src emacs-lisp
-(use-package ledger-mode)
+(use-package ledger-mode
+  :custom
+  (ledger-clear-whole-transaction 1)
+  (ledger-mode-should-check-version nil))
+#+end_src
+
+** Evil Integration
+
+Adds some nice [[file:evil.org][evil-mode]] integration for ledger mode.
+
+#+begin_src emacs-lisp
+(use-package evil-ledger
+  :after ledger-mode
+  :hook (ledger-mode . evil-ledger-mode)
+  :custom (evil-ledger-sort-key "S"))
+#+end_src
+
+** Flycheck Integration
+
+Ledger files should always be syntax checked as much as possible so let's setup a [[file:flycheck.org][Flycheck Syntax Checking]] package for that.
+
+#+begin_src emacs-lisp
+(use-package flycheck-ledger
+  :after ledger-mode)
 #+end_src
 
 ** Package Provides
