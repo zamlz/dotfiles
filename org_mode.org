@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-19 Mon 08:07:17]
+#+LAST_MODIFIED: [2021-04-19 Mon 09:24:40]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -172,7 +172,7 @@ This new version of the task colors pulls in existing colors from preexisting fa
             ("SOMEDAY"   . (:weight bold :foreground ,black :background ,(doom-darken white 0.5)))
             ("DONE"      . (:weight bold :foreground ,black :background ,green))
             ("COMPLETED" . (:weight bold :foreground ,black :background ,green))
-            )))
+            ))))
 #+end_src
 
 The tasks colors function needs to be called. Unfortunately, there is an issue where its not really set when we're running it via a daemon.
