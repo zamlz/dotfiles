@@ -1,0 +1,42 @@
+#+TITLE: Calfw
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-18 Sun 22:41]
+#+LAST_MODIFIED: [2021-04-18 Sun 22:53:12]
+
+Calfw is a calendar framework for [[file:emacs.org][GNU/Emacs]] that is better than the original.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-calfw.el :comments both :mkdirp yes
+:END:
+
+** Calfw
+
+#+begin_src emacs-lisp
+(use-package calfw
+  :custom
+  (cfw:face-item-separator-color nil)
+  (cfw:render-line-breaker 'cfw:render-line-breaker-none)
+  (cfw:fchar-junction ?╋)
+  (cfw:fchar-vertical-line ?┃)
+  (cfw:fchar-horizontal-line ?━)
+  (cfw:fchar-left-junction ?┣)
+  (cfw:fchar-right-junction ?┫)
+  (cfw:fchar-top-junction ?┯)
+  (cfw:fchar-top-left-corner ?┏)
+  (cfw:fchar-top-right-corner ?┓))
+#+end_src
+
+** Calfw Org
+
+#+begin_src emacs-lisp
+(use-package calfw-org)
+#+end_src
+
+** Package Provides
+
+#+begin_src emacs-lisp
+(provide 'init-calfw)
+#+end_src

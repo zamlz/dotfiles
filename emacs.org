@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-18 Sun 15:33:19]
+#+LAST_MODIFIED: [2021-04-18 Sun 22:41:06]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -323,6 +323,7 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 #+begin_src emacs-lisp
 (require 'init-ivy)
 (require 'init-helm)
+(require 'init-calfw)
 #+end_src
 
 *** Reorganize This
