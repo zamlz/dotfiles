@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-04-16 Fri 21:01:22]
+#+LAST_MODIFIED: [2021-04-18 Sun 17:12:33]
 
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
@@ -17,10 +17,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package ivy
-  :defer 0.1
   :init
-  ;; Change completion method (not working as expected)
-  ;; This needs to be in the init it seems othrewise, it doesn't get loaded...
   (setq ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
   (ivy-mode)
   :bind (:map ivy-minibuffer-map
@@ -49,7 +46,10 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
   ;; Do not quit the minibuffer on delete-error
   (ivy-on-del-error-function #'ignore)
   ;; Enable ability to select the prompt
-  (ivy-use-selectable-prompt t))
+  (ivy-use-selectable-prompt t)
+  :config
+  ;; For some reason, we need to load counsel as soon as possible.
+  (require 'counsel nil t))
 #+end_src
 
 ** Ivy Rich
@@ -58,7 +58,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package ivy-rich
-  :after (counsel all-the-icons-ivy-rich)
+  :after ivy
   :custom
   (ivy-virtual-abbreviate 'full
                           ivy-rich-switch-buffer-align-virtual-buffer t
@@ -84,7 +84,7 @@ Make ivy rich even more aesthetic with icons!
 
 #+begin_src emacs-lisp
 (use-package counsel
-  :after ivy
+  :defer t
   :bind (
          ("M-x"       . counsel-M-x)
          ("C-x TAB"   . counsel-semantic-or-imenu)
