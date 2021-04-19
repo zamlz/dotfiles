@@ -1,9 +1,9 @@
 #+TITLE: Ledger
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
+#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-04-19 Mon 08:27:17]
+#+LAST_MODIFIED: [2021-04-19 Mon 08:41:20]
 
 Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
 
