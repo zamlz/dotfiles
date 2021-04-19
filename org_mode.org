@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-13 Tue 10:44:21]
+#+LAST_MODIFIED: [2021-04-18 Sun 16:57:43]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
@@ -22,7 +22,6 @@ I'll use this section here to document how I use the [[file:../notes/gtd_framewo
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org.el :comments both :mkdirp yes
-:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs-org-mode :mkdirp yes :comments both
 :END:
 ** Better Font Faces Hook
 
@@ -72,7 +71,7 @@ These are some hooks that we would like to run when =org-mode= is started.
   ;; (variable-pitch-mode 1)
   (visual-line-mode +1)
   (setq evil-auto-indent nil)
-  (setq fill-column 10000000))
+  (setq fill-column 10000))
 #+end_src
 
 ** Basic Configuration
@@ -148,32 +147,36 @@ I should probably split this bloody mess up.
 
 ** Task Colors
 
-The first version here works nice with the =doom-nord= theme. The second version here works better with my custom gruvbox theme.
+This new version of the task colors pulls in existing colors from preexisting faces and uses the doom-theme built in functionality to darken and recolor them selevtively. This one configuration will now color all my tasks categories how I want it to be depending on the doom-theme.
 
 #+begin_src emacs-lisp
-;; (setq org-todo-keyword-faces
-;;   '(("DONE"      . (:background "#98be65" :foreground "#ffffff" :weight bold))
-;;     ("TODO"      . (:background "#ff6c6b" :foreground "#ffffff" :weight bold))
-;;     ("ROUTINE"   . (:background "#3f444a" :foreground "#51afef" :weight bold))
-;;     ("PROJECT"   . (:background "#51afef" :foreground "#ffffff" :weight bold))
-;;     ("COMPLETED" . (:background "#98be65" :foreground "#ffffff" :weight bold))
-;;     ("WAITING"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
-;;     ("CANCELLED" . (:background "#181818" :foreground "#ffffff" :weight bold))
-;;     ("SOMEDAY"   . (:background "#3f444a" :foreground "#ffffff" :weight bold))
-;;     ("MEETING"   . (:background "#a9a1e1" :foreground "#ffffff" :weight bold))))
+(defun zamlz/configure-org-todo-keyword-faces ()
+  (interactive)
+  (message "Configure org todo keyword faces")
+  (let
+      ((black   (face-attribute 'term-color-black :foreground))
+       (red     (face-attribute 'all-the-icons-red :foreground))
+       (green   (face-attribute 'all-the-icons-green :foreground))
+       (yellow  (face-attribute 'all-the-icons-yellow :foreground))
+       (blue    (face-attribute 'all-the-icons-blue :foreground))
+       (magenta (face-attribute 'all-the-icons-purple :foreground))
+       (cyan    (face-attribute 'all-the-icons-cyan :foreground))
+       (white   (face-attribute 'term-color-white :foreground)))
+    (setq org-todo-keyword-faces
+          `(("TODO"      . (:weight bold :foreground ,red :background ,(doom-blend red black 0.2)))
+            ("ROUTINE"   . (:weight bold :foreground ,blue :background ,(doom-blend blue black 0.2)))
+            ("MEETING"   . (:weight bold :foreground ,yellow :background ,(doom-blend yellow black 0.4)))
+            ("PROJECT"   . (:weight bold :foreground ,cyan :background ,(doom-blend cyan black 0.2)))
+            ("WAITING"   . (:weight bold :foreground ,yellow :background ,(doom-blend yellow black 0.2)))
+            ("DONE"      . (:weight bold :foreground ,green :background ,(doom-blend green black 0.2)))
+            ("COMPLETED" . (:weight bold :foreground ,green :background ,(doom-blend green black 0.2)))
+            ))))
 #+end_src
 
+We must add it to a hook afterwards as well
+
 #+begin_src emacs-lisp
-(setq org-todo-keyword-faces
-  '(("DONE"      . (:background "#b8bb26" :foreground "#000000" :weight bold))
-    ("TODO"      . (:background "#fb4934" :foreground "#000000" :weight bold))
-    ("ROUTINE"   . (:background "#689d6a" :foreground "#000000" :weight bold))
-    ("PROJECT"   . (:background "#458588" :foreground "#000000" :weight bold))
-    ("COMPLETED" . (:background "#b8bb26" :foreground "#000000" :weight bold))
-    ("WAITING"   . (:background "#d79921" :foreground "#000000" :weight bold))
-    ("CANCELLED" . (:background "#181818" :foreground "#fb4934" :weight bold))
-    ("SOMEDAY"   . (:background "#3f444a" :foreground "#000000" :weight bold))
-    ("MEETING"   . (:background "#b16286" :foreground "#000000" :weight bold))))
+(add-hook 'after-init-hook 'zamlz/configure-org-todo-keyword-faces)
 #+end_src
 
 ** Better Heading Bullets
@@ -392,7 +395,10 @@ It is made available like so.
 (provide 'init-org)
 #+end_src
 
-** Portage Setup
+* Portage Setup
+:PROPERTIES:
+:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs-org-mode :mkdirp yes :comments both
+:END:
 
 #+begin_src conf
 app-text/dvipng
