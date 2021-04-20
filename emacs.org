@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-19 Mon 09:29:41]
+#+LAST_MODIFIED: [2021-04-19 Mon 21:08:43]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -471,6 +471,8 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
 
 #+begin_src emacs-lisp
 (use-package solaire-mode
+  :custom
+  (solaire-mode-auto-swap-bg t)
   :config (solaire-global-mode +1))
 #+end_src
 
@@ -493,7 +495,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-gruvbox t)
+  (load-theme 'doom-henna t)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
@@ -580,7 +582,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 90))))
+                  (zamlz/set-transparency 100))))
   (zamlz/set-font-faces))
 #+end_src
 
@@ -610,7 +612,9 @@ A nice standalone replacement for DocView.
 (use-package pdf-tools
   :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
   :custom
-  (pdf-view-midnight-colors '("#ebdbb2" . "#000000"))
+  (pdf-view-midnight-colors
+   `(,(face-attribute 'term :foreground)
+     . ,(face-attribute 'term-color-black :foreground)))
   :init (pdf-tools-install))
 #+end_src
 

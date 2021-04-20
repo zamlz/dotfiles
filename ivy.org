@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-04-18 Sun 17:12:33]
+#+LAST_MODIFIED: [2021-04-19 Mon 21:11:10]
 
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
@@ -33,7 +33,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
          ("C-k" . ivy-previous-line)
          ("C-d" . ivy-reverse-i-search-kill))
   :custom
-  (ivy-height 24)
+  (ivy-height 14)
   (ivy-wrap t)
   (ivy-fixed-height-minibuffer t)
   (ivy-count-format "[%d/%d] ")
