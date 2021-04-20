@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-19 Mon 21:08:43]
+#+LAST_MODIFIED: [2021-04-20 Tue 13:20:01]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -318,11 +318,83 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
   (calc-symbolic-mode t))
 #+end_src
 
+** keybinding Improvements
+
+#+begin_src emacs-lisp
+(require 'init-evil)
+#+end_src
+
+*** Reorganize This
+**** General Keybinder
+
+This is an interesting package. It basically lets me define my own keybinding space and configure it to run various commands as I see fit.
+
+#+begin_src emacs-lisp
+(use-package general
+  :config
+  (general-create-definer zamlz/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC"))
+#+end_src
+
+**** Hydra
+
+Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
+
+#+begin_src emacs-lisp
+(use-package hydra)
+#+end_src
+
+**** Major Mode Hydra
+
+#+begin_src emacs-lisp
+(use-package major-mode-hydra
+  :after hydra)
+#+end_src
+
+**** Which Key
+
+Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
+
+#+begin_src emacs-lisp
+(use-package which-key
+  :init (which-key-mode)
+  :diminish which-key-mode
+  :custom (which-key-idle-delay 1.0))
+#+end_src
+
+**** Misc Shortcuts
+
+These are just random shorts to emacs built-in commands that I'd like access to as a keybinding.
+
+#+begin_src emacs-lisp
+(zamlz/leader-keys
+ "t"  '(:ignore t :which-key "toggles")
+ "tt" '(counsel-load-theme :which-key "choose theme"))
+#+end_src
+
+**** Text Size Scaling
+
+Adds a =Hydra= function to =General= to control the size of the font face.
+
+#+begin_src emacs-lisp
+(defhydra hydra-text-scale (:timeout 4)
+  "scale text"
+  ("j" text-scale-increase "in")
+  ("k" text-scale-decrease "out")
+  ("f" nil "finished" :exit t))
+
+;; Add hydra func to our personal keybindings
+(zamlz/leader-keys
+  "ts" '(hydra-text-scale/body :which-key "scale text"))
+#+end_src
+
+
 ** Interface
 
 #+begin_src emacs-lisp
 (require 'init-ivy)
-(require 'init-helm)
 (require 'init-calfw)
 #+end_src
 
@@ -370,64 +442,6 @@ I have a lot of fonts commented out right now because I can't decide on which on
   ;; Set the variable pitch face
   ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
   )
-#+end_src
-
-**** Which Key
-
-Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
-
-#+begin_src emacs-lisp
-(use-package which-key
-  :init (which-key-mode)
-  :diminish which-key-mode
-  :custom (which-key-idle-delay 1.0))
-#+end_src
-
-**** General Keybinder
-
-This is an interesting package. It basically lets me define my own keybinding space and configure it to run various commands as I see fit.
-
-#+begin_src emacs-lisp
-(use-package general
-  :config
-  (general-create-definer zamlz/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC"))
-#+end_src
-
-**** Hydra
-
-Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
-
-#+begin_src emacs-lisp
-(use-package hydra)
-#+end_src
-
-**** Misc Shortcuts
-
-These are just random shorts to emacs built-in commands that I'd like access to as a keybinding.
-
-#+begin_src emacs-lisp
-(zamlz/leader-keys
- "t"  '(:ignore t :which-key "toggles")
- "tt" '(counsel-load-theme :which-key "choose theme"))
-#+end_src
-
-**** Text Size Scaling
-
-Adds a =Hydra= function to =General= to control the size of the font face.
-
-#+begin_src emacs-lisp
-(defhydra hydra-text-scale (:timeout 4)
-  "scale text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("f" nil "finished" :exit t))
-
-;; Add hydra func to our personal keybindings
-(zamlz/leader-keys
-  "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
 **** Helpful Help Commands
@@ -597,7 +611,9 @@ Installs a better virtual terminal to use within emacs. I'm just playing around 
   ;; (vterm-shell "/bin/fish")
   (vterm-ignore-blink-cursor nil)
   (vterm-buffer-name-string "vterm [%s]")
-  (vterm-always-compile-module t))
+  (vterm-always-compile-module t)
+  (vterm-kill-buffer-on-exit t)
+  (vterm-max-scrollback 5000))
 
 (zamlz/leader-keys
   "e" '(:ignore t :which-key "Exec Commands")
@@ -648,12 +664,6 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
       (:maildir "/[Gmail]/Trash"     :key ?t)
       (:maildir "/[Gmail]/Drafts"    :key ?d)
       (:maildir "/[Gmail]/All Mail"  :key ?a))))
-#+end_src
-
-** keybinding Improvements
-
-#+begin_src emacs-lisp
-(require 'init-evil)
 #+end_src
 
 ** Integrated Development Environment
