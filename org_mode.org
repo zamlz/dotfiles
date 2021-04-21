@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-19 Mon 09:25:59]
+#+LAST_MODIFIED: [2021-04-20 Tue 18:56:22]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -127,7 +127,7 @@ I should probably split this bloody mess up.
 
   ;; Inline Image improvements
   (org-startup-with-inline-images t)
-  (org-image-actual-width 500)
+  (org-image-actual-width 300)
 
   ;; Finally a post setup func to setup fonts
   (zamlz/org-font-setup))
