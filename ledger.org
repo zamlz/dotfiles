@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-04-19 Mon 08:41:20]
+#+LAST_MODIFIED: [2021-04-21 Wed 08:36:55]
 
 Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
 
@@ -19,9 +19,29 @@ The following package provides a dedicated mode for editing ledger files.
 
 #+begin_src emacs-lisp
 (use-package ledger-mode
+  :mode ("\\.journal\\'")
   :custom
   (ledger-clear-whole-transaction 1)
-  (ledger-mode-should-check-version nil))
+  (ledger-mode-should-check-version nil)
+  (ledger-report-use-header-line t)
+  (ledger-reports
+   `(("Balance Sheet"
+      "%(binary) balance --real [[ledger-mode-flags]] -f %(ledger-file) ^assets ^liabilities ^equity")
+     ("Net Worth"
+      "%(binary) cleared --real [[ledger-mode-flags]] -f %(ledger-file) ^assets ^liabilities")
+     ("Net Worth (Virtual)"
+      "%(binary) cleared [[ledger-mode-flags]] -f %(ledger-file) ^assets ^liabilities ^virtual:budget ^virtual:savings")
+     ("Budget"
+      "%(binary) balance [[ledger-mode-flags]] -f %(ledger-file) ^virtual:budget")
+     ("Savings"
+      "%(binary) balance [[ledger-mode-flags]] -f %(ledger-file) ^virtual:savings")
+     ("Uncleared Transactions"
+      "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) --uncleared")
+     ("Account Statement"
+      "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) ^%(account)")
+     ("Payee Statement"
+      "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) ^%(payee)")
+     )))
 #+end_src
 
 ** Evil Integration
@@ -30,9 +50,8 @@ Adds some nice [[file:evil.org][evil-mode]] integration for ledger mode.
 
 #+begin_src emacs-lisp
 (use-package evil-ledger
-  :after ledger-mode
-  :hook (ledger-mode . evil-ledger-mode)
-  :custom (evil-ledger-sort-key "S"))
+  :after (ledger-mode evil)
+  :hook (ledger-mode . evil-ledger-mode))
 #+end_src
 
 ** Flycheck Integration
