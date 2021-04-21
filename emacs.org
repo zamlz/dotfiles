@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-20 Tue 13:20:01]
+#+LAST_MODIFIED: [2021-04-20 Tue 19:04:53]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -22,6 +22,7 @@ There are some cool configurations from other people that I've taken influence f
 - [[https://config.phundrak.com/emacs][Phundrak's Emacs Configuration]]
 - [[https://writequit.org/org/][WriteQuit's Dotfiles with Org]]
 - [[https://protesilaos.com/dotemacs/][Protosilaos Stavrou's Dotfiles]]
+- [[https://github.com/rememberYou/.emacs.d][rememberYou's Emacs Configuration]]
 
 * Tips and Tricks
 As I find things to write here, I'll put it in.
