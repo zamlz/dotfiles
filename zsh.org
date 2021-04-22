@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-04-01 Thu 13:27:55]
+#+LAST_MODIFIED: [2021-04-22 Thu 12:51:21]
 
 A powerful shell that has more features that bash.
 
@@ -492,6 +492,19 @@ function ext() {
 }
 #+end_src
 
+*** Dog
+
+#+begin_src shell
+function dog() {
+    for item in $@; do
+        echo "[$item]"
+        echo ""
+        highlight -O ansi --force -n $item
+        echo ""
+    done
+}
+#+end_src
+
 ** Aliases
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zsh.d/aliases.zsh :mkdirp yes :comments both
@@ -532,7 +545,6 @@ Make various commands pretty by default
 #+begin_src shell
 alias grep="grep --color=always"
 alias tree="tree -C"
-alias dog="pygmentize"
 #+end_src
 
 Misc things

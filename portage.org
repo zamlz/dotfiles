@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-12 Mon 12:43]
-#+LAST_MODIFIED: [2021-04-14 Wed 11:33:04]
+#+LAST_MODIFIED: [2021-04-22 Thu 12:43:45]
 
 Portage is a source based package manager and official distribution system of [[file:gentoo.org][Gentoo Linux]].
 
@@ -670,6 +670,7 @@ Apps I keep for fun
 app-misc/cmatrix
 app-misc/figlet
 app-misc/neofetch
+app-text/highlight
 #+end_src
 
 *** Apps Desktop
