@@ -231,11 +231,6 @@ sync-openpgp-key-path = /var/lib/gentoo/gkeys/keyrings/gentoo/release/pubring.gp
 I'm honestly not sure if I should be putting my layman config here.
 
 #+begin_src conf
-[steam-overlay]
-priority = 50
-location = /var/lib/layman/steam-overlay
-layman-type = git
-auto-sync = No
 #+end_src
 
 * TODO Disentangle this mess
