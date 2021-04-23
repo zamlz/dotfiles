@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 22:06]
-#+LAST_MODIFIED: [2021-04-17 Sat 07:50:32]
+#+LAST_MODIFIED: [2021-04-22 Thu 17:14:27]
 
 This page just pertains to package management within [[file:emacs.org][GNU/Emacs]]. We make use of =use-package= as our primary package manager.
 
@@ -38,6 +38,22 @@ Installs =use-package= if it doesn't already exist.
   (setq use-package-verbose t))
 #+end_src
 
+** Ensure System Packages
+
+The =:ensure-system-package= keyword can be used to install system packages.
+
+#+begin_src emacs-lisp
+(use-package use-package-ensure-system-package
+  :ensure t)
+#+end_src
+
+It makes use of the =system-packages= package from MELPA so let's install that too.
+
+#+begin_src emacs-lisp
+(use-package system-packages
+  :ensure t)
+#+end_src
+
 ** Auto Package Updater
 
 Always update packages daily! This is a rolling release system after all. It's better to get small update periodically than to get a bunch at once. We also should make sure that we
@@ -64,7 +80,14 @@ Use =paradox-list-packages= to get a better interface.
 
 #+begin_src emacs-lisp
 (use-package paradox
-  :init (paradox-enable))
+  :defer 1
+  :custom
+  (paradox-column-width-package 27)
+  (paradox-column-width-version 13)
+  (paradox-execute-asynchronously t)
+  (paradox-hide-wiki-packages t)
+  :config (paradox-enable)
+  (remove-hook 'paradox-after-execute-functions #'paradox--report-buffer-print))
 #+end_src
 
 ** Package Provides

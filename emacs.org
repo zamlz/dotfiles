@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-20 Tue 19:04:53]
+#+LAST_MODIFIED: [2021-04-22 Thu 17:07:12]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -390,7 +390,6 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 (zamlz/leader-keys
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
-
 
 ** Interface
 
