@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-04-25 Sun 00:26:58]
+#+LAST_MODIFIED: [2021-04-25 Sun 15:34:00]
 
 Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
 
@@ -33,6 +33,7 @@ The following package provides a dedicated mode for editing ledger files.
 (use-package ledger-reports
   :ensure nil
   :after ledger-mode
+  :custom
   (ledger-reports
    `(("Balance Sheet"
       "%(binary) balance --real [[ledger-mode-flags]] -f %(ledger-file) ^assets ^liabilities ^equity")
