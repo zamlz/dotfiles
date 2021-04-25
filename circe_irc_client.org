@@ -1,0 +1,29 @@
+#+TITLE: Circe IRC Client
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-24 Sat 22:34]
+#+LAST_MODIFIED: [2021-04-25 Sun 14:38:52]
+
+Circe is an IRC Client for [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-circe.el :comments both :mkdirp yes
+:END:
+** Circe
+
+#+begin_src emacs-lisp
+(use-package circe)
+
+;; (use-package circe
+;;   :ensure-system-package
+;;   `(cond ((executable-find "emerge")
+;;           '("/usr/include/gnutls/gnutls.h" . net-libs/gnutls))))
+#+end_src
+
+** Package Provides
+
+#+begin_src emacs-lisp
+(provide 'init-circe)
+#+end_src
