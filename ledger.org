@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-04-21 Wed 08:36:55]
+#+LAST_MODIFIED: [2021-04-25 Sun 00:26:58]
 
 Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
 
@@ -20,10 +20,19 @@ The following package provides a dedicated mode for editing ledger files.
 #+begin_src emacs-lisp
 (use-package ledger-mode
   :mode ("\\.journal\\'")
+  :hook (ledger-mode . outline-minor-mode)
   :custom
   (ledger-clear-whole-transaction 1)
-  (ledger-mode-should-check-version nil)
-  (ledger-report-use-header-line t)
+  (ledger-mode-should-check-version t)
+  (ledger-report-use-header-line t))
+#+end_src
+
+** Ledger Reports
+
+#+begin_src emacs-lisp
+(use-package ledger-reports
+  :ensure nil
+  :after ledger-mode
   (ledger-reports
    `(("Balance Sheet"
       "%(binary) balance --real [[ledger-mode-flags]] -f %(ledger-file) ^assets ^liabilities ^equity")
@@ -60,7 +69,8 @@ Ledger files should always be syntax checked as much as possible so let's setup 
 
 #+begin_src emacs-lisp
 (use-package flycheck-ledger
-  :after ledger-mode)
+  :after ledger-mode
+  :hook (ledger-mode . ledger-flymake-enable))
 #+end_src
 
 ** Package Provides
