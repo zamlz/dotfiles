@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-20 Tue 18:56:22]
+#+LAST_MODIFIED: [2021-04-23 Fri 10:20:16]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -24,6 +24,69 @@ I'll use this section here to document how I use the [[file:../notes/gtd_framewo
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org.el :comments both :mkdirp yes
 :END:
+** Basic Configuration
+
+I should probably split this bloody mess up.
+
+#+begin_src emacs-lisp
+(use-package org
+  :ensure org-plus-contrib
+  :hook
+  (org-mode    . org-indent-mode)
+  (org-mode    . org-make-toc-mode)
+  (org-mode    . zamlz/org-mode-setup)
+  (before-save . zamlz/update-org-modified-property-hook)
+  :bind (:map org-mode-map
+              ("C-M-h" . org-previous-link)
+              ("C-M-l" . org-next-link))
+  :custom
+  ;; Setup directories
+  (org-directory "~/org/gtd/")
+  (org-agenda-files (list org-directory))
+  ;; Add some nice visuals changes
+  (org-ellipsis " ▾")
+  ;; These will be unhidden by the org-appear package
+  (org-hide-emphasis-markers nil)
+  ;; This is so that the imenu displays all levels in ivy
+  (org-imenu-depth 10)
+  ;; dont use C-c C-o for opening links REEEEEEEEEEEE
+  (org-return-follows-link t)
+  ;; Some todo/logging changes
+  (org-enforce-todo-dependencies t)
+  (org-log-done t)
+  (org-log-into-drawer t)
+  (org-treat-S-cursor-todo-selection-as-state-change nil)
+  ;; Setup org capture mode
+  ;; Setup refiling
+  (org-log-refile t)
+  (org-refile-use-outline-path 'file)
+  (org-outline-path-complete-in-steps nil)
+  (org-refile-allow-creating-parent-nodes 'confirm)
+  (org-refile-targets
+   `((,(concat org-directory "/gtd.org") :maxlevel . 1)))
+  ;; Setup archive location
+  (org-archive-location (concat org-directory "/archive.org::"))
+  ;; ensure that refiling saves buffers
+  (advice-add 'org-refile :after 'org-save-all-org-buffers)
+  ;; Inline Image improvements
+  (org-startup-with-inline-images t)
+  (org-image-actual-width 300)
+  ;; Finally a post setup func to setup fonts
+  (zamlz/org-font-setup))
+#+end_src
+
+** Mode Startup Hooks
+
+These are some hooks that we would like to run when =org-mode= is started.
+
+#+begin_src emacs-lisp
+(defun zamlz/org-mode-setup ()
+  ;; (variable-pitch-mode 1)
+  (visual-line-mode +1)
+  (setq evil-auto-indent nil)
+  (setq fill-column 10000))
+#+end_src
+
 ** Better Font Faces Hook
 
 We can configure =org-mode= font faces via a seperate function that we define. We need to add it as a hook afterwards however which is why this section appears before the basic configuration.
@@ -59,78 +122,6 @@ We can configure =org-mode= font faces via a seperate function that we define. W
   ;; (set-face-attribute 'org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
   ;; (set-face-attribute 'org-checkbox nil :inherit 'fixed-pitch))
   )
-#+end_src
-
-** Mode Startup Hooks
-
-These are some hooks that we would like to run when =org-mode= is started.
-
-#+begin_src emacs-lisp
-(defun zamlz/org-mode-setup ()
-  (org-indent-mode)
-  (org-make-toc-mode)
-  ;; (variable-pitch-mode 1)
-  (visual-line-mode +1)
-  (setq evil-auto-indent nil)
-  (setq fill-column 10000))
-#+end_src
-
-** Basic Configuration
-
-I should probably split this bloody mess up.
-
-#+begin_src emacs-lisp
-(use-package org
-  :ensure org-plus-contrib
-  :hook ((org-mode . zamlz/org-mode-setup))
-  :bind (:map org-mode-map
-              ("C-M-h" . org-previous-link)
-              ("C-M-l" . org-next-link))
-  :custom
-
-  ;; Setup directories
-  (org-directory "~/org/gtd/")
-  (org-agenda-files (list org-directory))
-
-  ;; Add some nice visuals changes
-  (org-ellipsis " ▾")
-
-  ;; These will be unhidden by the org-appear package
-  (org-hide-emphasis-markers nil)
-
-  ;; This is so that the imenu displays all levels in ivy
-  (org-imenu-depth 10)
-
-  ;; dont use C-c C-o for opening links REEEEEEEEEEEE
-  (org-return-follows-link t)
-
-  ;; Some todo/logging changes
-  (org-enforce-todo-dependencies t)
-  (org-log-done t)
-  (org-log-into-drawer t)
-  (org-treat-S-cursor-todo-selection-as-state-change nil)
-
-  ;; Setup org capture mode
-    ;; Setup refiling
-  (org-log-refile t)
-  (org-refile-use-outline-path 'file)
-  (org-outline-path-complete-in-steps nil)
-  (org-refile-allow-creating-parent-nodes 'confirm)
-  (org-refile-targets
-   `((,(concat org-directory "/gtd.org") :maxlevel . 1)))
-
-  ;; Setup archive location
-  (org-archive-location (concat org-directory "/archive.org::"))
-
-  ;; ensure that refiling saves buffers
-  (advice-add 'org-refile :after 'org-save-all-org-buffers)
-
-  ;; Inline Image improvements
-  (org-startup-with-inline-images t)
-  (org-image-actual-width 300)
-
-  ;; Finally a post setup func to setup fonts
-  (zamlz/org-font-setup))
 #+end_src
 
 ** Task Categories
@@ -368,27 +359,18 @@ Added [[https://github.com/awth13/org-appear][github:awth13/org-appear]]
 The following allows any =#+LAST_MODIFIED= headers to be updated on file-save.
 
 #+begin_src emacs-lisp
-(defun zamlz/update-org-modified-property ()
-  "If a file contains a '#+LAST_MODIFIED' property update it to contain
-  the current date/time"
-  (interactive)
-  (save-excursion
-    (widen)
-    (goto-char (point-min))
-    (when (re-search-forward "^#\\+LAST_MODIFIED:" (point-max) t)
-      (progn
-        (kill-line)
-        (insert (format-time-string " [%Y-%m-%d %a %H:%M:%S]") )))))
-#+end_src
-
-It is made available like so.
-
-#+begin_src emacs-lisp
-(defun zamlz/org-mode-before-save-hook ()
+(defun zamlz/update-org-modified-property-hook ()
+  "If an org file contains a '#+LAST_MODIFIED' property,
+  update it to contain the current date/time"
   (when (eq major-mode 'org-mode)
-    (zamlz/update-org-modified-property)))
-
-(add-hook 'before-save-hook #'zamlz/org-mode-before-save-hook)
+    (interactive)
+    (save-excursion
+      (widen)
+      (goto-char (point-min))
+      (when (re-search-forward "^#\\+LAST_MODIFIED:" (point-max) t)
+        (progn
+          (delete-region (point) (save-excursion (move-end-of-line 1) (point)))
+          (insert (format-time-string " [%Y-%m-%d %a %H:%M:%S]") ))))))
 #+end_src
 
 ** Package Provider
