@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-23 Fri 10:20:16]
+#+LAST_MODIFIED: [2021-04-26 Mon 12:52:28]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -48,12 +48,12 @@ I should probably split this bloody mess up.
   ;; These will be unhidden by the org-appear package
   (org-hide-emphasis-markers nil)
   ;; This is so that the imenu displays all levels in ivy
-  (org-imenu-depth 10)
+  (org-imenu-depth 6)
   ;; dont use C-c C-o for opening links REEEEEEEEEEEE
   (org-return-follows-link t)
   ;; Some todo/logging changes
   (org-enforce-todo-dependencies t)
-  (org-log-done t)
+  (org-log-done 'note)
   (org-log-into-drawer t)
   (org-treat-S-cursor-todo-selection-as-state-change nil)
   ;; Setup org capture mode
@@ -61,9 +61,10 @@ I should probably split this bloody mess up.
   (org-log-refile t)
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
-  (org-refile-allow-creating-parent-nodes 'confirm)
-  (org-refile-targets
-   `((,(concat org-directory "/gtd.org") :maxlevel . 1)))
+  (org-refile-allow-creating-parent-nodes nil)
+  ;; TODO: need to figure out how to setup project refile targets
+  ;; (org-refile-targets
+   ;; `((,(concat org-directory "/gtd.org") :maxlevel . 1)))
   ;; Setup archive location
   (org-archive-location (concat org-directory "/archive.org::"))
   ;; ensure that refiling saves buffers
@@ -201,37 +202,24 @@ Center the org buffers and remove line numbers to reduce visual clutter.
 #+end_src
 
 ** Org Keybindings
-*** Default Keybindings
-
-Just some keybindings to access various =org-mode= commands.
-
-#+begin_src emacs-lisp
-(global-set-key (kbd "C-c l") 'org-store-link)
-(global-set-key (kbd "C-c a") 'org-agenda)
-(global-set-key (kbd "C-c c") 'org-capture)
-#+end_src
-
-*** Org Mode Quick Access
+*** Org Mode Keybindings
 
 Just quick access to my most used org-mode functions via the leader key.
 
 #+begin_src emacs-lisp
 (zamlz/leader-keys
   "o"  '(:ignore t :which-key "Org Mode")
-  "oa" '(org-agenda-list :which-key "Org Agenda Weekly View")
-  "oo" '(org-capture :which-key "Org Capture Templates")
+  "oa" '(org-agenda :which-key "org-agenda")
+  "oc" '(org-capture :which-key "org-capture")
+  "ol" '(org-store-link :which-key "org-store-link")
   "oi" '((lambda () (interactive)
-           (find-file (concat org-directory "/inbox.org"))
+           (org-tags-view t "INBOX")
            (message "Opened:  %s" (buffer-name)))
          :which-key "Inbox")
   "og" '((lambda () (interactive)
-           (find-file (concat org-directory "/gtd.org"))
+           (find-file (concat org-directory "/tasks.org"))
            (message "Opened:  %s" (buffer-name)))
-         :which-key "GTD")
-  "oj" '((lambda () (interactive)
-           (find-file (concat org-directory "/journal.org"))
-           (message "Opened:  %s" (buffer-name)))
-         :which-key "Journal"))
+         :which-key "GOTO tasks.org"))
 #+end_src
 
 ** Org Capture Templates
@@ -252,11 +240,12 @@ Org mode template definitions in the doct format
 
 #+begin_src emacs-lisp
 (setq org-capture-templates
-      (doct '(("Todo, Meetings, Projects and more!" :keys "t"
-               :file "inbox.org"
+      (doct '(("Agenda Capture for GTD Tasks" :keys "a"
+               :file "tasks.org"
+               :headline "GTD Inbox"
                :type entry
                :prepend t
-               :template ("* %{todo-state} %^{Description}"
+               :template ("* %{todo-state} %^{Description} :INBOX:"
                           ":PROPERTIES:"
                           ":Created: %U"
                           ":END:"
@@ -270,17 +259,7 @@ Org mode template definitions in the doct format
                           ("Someday/Maybe" :keys "s"
                            :todo-state "SOMEDAY")
                           ("Meeting/Appointment" :keys "m"
-                           :todo-state "MEETING")
-                          ("Todo Task (context)" :keys "i"
-                           :todo-state "TODO"
-                           :template ("* %{todo-state} %^{Description}"
-                                      ":PROPERTIES:"
-                                      ":Created: %U"
-                                      ":END:"
-                                      "%?"
-                                      "%i"
-                                      "%a"))))
-              )))
+                           :todo-state "MEETING"))))))
 #+end_src
 
 ** Org Make TOC
