@@ -72,6 +72,9 @@ I should probably split this bloody mess up.
   ;; Inline Image improvements
   (org-startup-with-inline-images t)
   (org-image-actual-width 300)
+  ;; Align org tags
+  (org-tags-column (* -1 (- zamlz/default-screen-width 10)))
+  (org-agenda-tags-column (* -1 zamlz/default-screen-width ))
   ;; Finally a post setup func to setup fonts
   (zamlz/org-font-setup))
 #+end_src
