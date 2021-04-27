@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-26 Mon 12:52:28]
+#+LAST_MODIFIED: [2021-04-26 Mon 23:54:14]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -129,13 +129,13 @@ We can configure =org-mode= font faces via a seperate function that we define. W
 
 #+begin_src emacs-lisp
 (setq org-todo-keywords
-      (quote ((sequence "TODO(t)" "|" "DONE(d)")
-              (sequence "ROUTINE(r)" "|" "DONE(d)")
-              (sequence "PROJECT(p)" "|" "COMPLETED(d)" "CANCELLED(c)")
-              (sequence "WAITING(w)" "|")
-              (sequence "|" "CANCELLED(c)")
-              (sequence "SOMEDAY(s)" "|" "CANCELLED(c)")
-              (sequence "MEETING(m)" "|"))))
+      (quote ((sequence "SOMEDAY(s)"
+                        "TODO(t)"
+                        "MEETING(m)"
+                        "WAITING(w)"
+                        "|"
+                        "DONE(d)"
+                        "CANCELLED(c)"))))
 #+end_src
 
 ** Task Colors
@@ -157,13 +157,11 @@ This new version of the task colors pulls in existing colors from preexisting fa
        (white   (face-attribute 'term-color-white :foreground)))
     (setq org-todo-keyword-faces
           `(("TODO"      . (:weight bold :foreground ,black :background ,red))
-            ("ROUTINE"   . (:weight bold :foreground ,black :background ,blue))
             ("MEETING"   . (:weight bold :foreground ,black :background ,magenta))
-            ("PROJECT"   . (:weight bold :foreground ,black :background ,cyan))
             ("WAITING"   . (:weight bold :foreground ,black :background ,yellow))
-            ("SOMEDAY"   . (:weight bold :foreground ,black :background ,(doom-darken white 0.5)))
-            ("DONE"      . (:weight bold :foreground ,black :background ,green))
-            ("COMPLETED" . (:weight bold :foreground ,black :background ,green))
+            ("SOMEDAY"   . (:weight bold :foreground ,black :background ,blue))
+            ("DONE"      . (:weight bold :foreground ,black :background ,green :Strike-through t))
+            ("CANCELLED" . (:weight bold :foreground ,black :background ,(doom-darken red 0.4) :Strike-through t))
             ))))
 #+end_src
 
