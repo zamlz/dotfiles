@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-26 Mon 23:54:14]
+#+LAST_MODIFIED: [2021-04-27 Tue 14:57:03]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -150,21 +150,23 @@ This new version of the task colors pulls in existing colors from preexisting fa
   (interactive)
   (message "Configure org todo keyword faces")
   (let
-      ((black   (face-attribute 'term-color-black :foreground))
-       (red     (face-attribute 'all-the-icons-red :foreground))
-       (green   (face-attribute 'all-the-icons-green :foreground))
-       (yellow  (face-attribute 'all-the-icons-yellow :foreground))
-       (blue    (face-attribute 'all-the-icons-blue :foreground))
-       (magenta (face-attribute 'all-the-icons-purple :foreground))
-       (cyan    (face-attribute 'all-the-icons-cyan :foreground))
-       (white   (face-attribute 'term-color-white :foreground)))
+      ((black   (doom-color 'bg))
+       (grey    (doom-color 'base1))
+       (red     (doom-color 'red))
+       (orange  (doom-color 'orange))
+       (green   (doom-color 'green))
+       (yellow  (doom-color 'yellow))
+       (blue    (doom-color 'blue))
+       (violet  (doom-color 'violet))
+       (cyan    (doom-color 'cyan))
+       (white   (doom-color 'white)))
     (setq org-todo-keyword-faces
-          `(("TODO"      . (:weight bold :foreground ,black :background ,red))
-            ("MEETING"   . (:weight bold :foreground ,black :background ,magenta))
-            ("WAITING"   . (:weight bold :foreground ,black :background ,yellow))
-            ("SOMEDAY"   . (:weight bold :foreground ,black :background ,blue))
-            ("DONE"      . (:weight bold :foreground ,black :background ,green :Strike-through t))
-            ("CANCELLED" . (:weight bold :foreground ,black :background ,(doom-darken red 0.4) :Strike-through t))
+          `(("TODO"      . (:weight bold :foreground ,black  :background ,red))
+            ("MEETING"   . (:weight bold :foreground ,black  :background ,violet))
+            ("DONE"      . (:weight bold :foreground ,black  :background ,green))
+            ("WAITING"   . (:weight bold :foreground ,cyan   :background ,grey))
+            ("SOMEDAY"   . (:weight bold :foreground ,violet :background ,grey))
+            ("CANCELLED" . (:weight bold :foreground ,red    :background ,grey))
             ))))
 #+end_src
 
