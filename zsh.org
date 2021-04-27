@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-04-22 Thu 17:25:05]
+#+LAST_MODIFIED: [2021-04-27 Tue 00:15:15]
 
 A powerful shell that has more features that bash.
 
@@ -249,6 +249,15 @@ if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
     $LOGGER "Starting xinitrc parameterized on emacs"
     export WINDOW_MANAGER='exwm'
     exec startx $HOME/.xinitrc exwm
+fi
+#+end_src
+
+Lets make =tty3= the shell version of emacs which can be useful in certain situations
+#+begin_src shell
+if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 3 ]; then
+    $LOGGER "Starting Emacs CLI"
+    export WINDOW_MANAGER='emacs-cli'
+    exec emacs
 fi
 #+end_src
 
