@@ -63,8 +63,8 @@ I should probably split this bloody mess up.
   (org-outline-path-complete-in-steps nil)
   (org-refile-allow-creating-parent-nodes nil)
   ;; TODO: need to figure out how to setup project refile targets
-  ;; (org-refile-targets
-   ;; `((,(concat org-directory "/gtd.org") :maxlevel . 1)))
+  (org-refile-targets
+   `((,(concat org-directory "/tasks.org") :maxlevel . 5)))
   ;; Setup archive location
   (org-archive-location (concat org-directory "/archive.org::"))
   ;; ensure that refiling saves buffers
