@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-27 Tue 18:02:38]
+#+LAST_MODIFIED: [2021-04-27 Tue 23:29:47]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -689,7 +689,6 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
 
 #+begin_src emacs-lisp
 (require 'init-org)
-(require 'init-org-crypt)
 (require 'init-org-babel)
 (require 'init-org-roam)
 #+end_src
@@ -697,7 +696,15 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
 ** Applications
 
 #+begin_src emacs-lisp
-(require 'init-circe)
+#+end_src
+
+** Load Modules
+
+#+begin_src emacs-lisp
+(dolist
+    (dir (directory-files (expand-file-name "lisp" user-emacs-directory)
+                          nil directory-files-no-dot-files-regexp))
+  (require (intern (s-replace-regexp "\\.el" "" dir))))
 #+end_src
 
 * Xresources Setup
