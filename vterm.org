@@ -1,0 +1,40 @@
+#+TITLE: VTerm
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: emacs-libvterm
+#+ROAM_KEY: https://github.com/akermu/emacs-libvterm
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-28 Wed 08:27]
+#+LAST_MODIFIED: [2021-04-28 Wed 08:32:43]
+
+=vterm= is a terminal emulator for [[file:emacs.org][GNU/Emacs]] that makes use of the =libvterm= C library. As this code is compiled, it is /much/ faster than existing term modes.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-vterm.el :comments both :mkdirp yes
+:END:
+
+Load up and configure vterm. There is also some shell side configurations that I do in [[file:zsh.org][Zsh]] that I should document here.
+
+#+begin_src emacs-lisp
+(use-package vterm
+  :custom
+  (vterm-ignore-blink-cursor nil)
+  (vterm-buffer-name-string "vterm [%s]")
+  (vterm-always-compile-module t)
+  (vterm-kill-buffer-on-exit t)
+  (vterm-max-scrollback 5000))
+#+end_src
+
+Add this to my leader keys so I we can quickly jump to the terminal emulator whenever we want.
+
+#+begin_src emacs-lisp
+(zamlz/leader-keys
+  "e" '(:ignore t :which-key "Exec Commands")
+  "ee" '(vterm :which-key "Spawn vterm instance"))
+#+end_src
+
+Don't forget to provide this file...
+
+#+begin_src emacs-lisp
+(provide 'init-vterm)
+#+end_src

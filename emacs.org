@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-27 Tue 23:29:47]
+#+LAST_MODIFIED: [2021-04-28 Wed 08:36:04]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -600,72 +600,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (zamlz/set-font-faces))
 #+end_src
 
-**** Misc Packages
-***** Vterm
-
-Installs a better virtual terminal to use within emacs. I'm just playing around with this for now.
-
-#+begin_src emacs-lisp
-(use-package vterm
-  :custom
-  ;; (vterm-shell "/bin/fish")
-  (vterm-ignore-blink-cursor nil)
-  (vterm-buffer-name-string "vterm [%s]")
-  (vterm-always-compile-module t)
-  (vterm-kill-buffer-on-exit t)
-  (vterm-max-scrollback 5000))
-
-(zamlz/leader-keys
-  "e" '(:ignore t :which-key "Exec Commands")
-  "ee" '(vterm :which-key "Spawn vterm instance"))
-#+end_src
-
-***** PDF Tools
-
-A nice standalone replacement for DocView.
-
-#+begin_src emacs-lisp
-(use-package pdf-tools
-  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
-  :custom
-  (pdf-view-midnight-colors
-   `(,(face-attribute 'term :foreground)
-     . ,(face-attribute 'term-color-black :foreground)))
-  :init (pdf-tools-install))
-#+end_src
-
-***** Mu4e
-
-We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the IMAP to use with mu4e.
-
-#+begin_src emacs-lisp
-(use-package mu4e
-  :ensure nil
-  ;; :load-path "/usr/share/emacs/site-lisp/mu4e/"
-  ;; :defer 20 ; Wait until 20 seconds after startup
-
-  :config
-  ;; This is set to 't' to avoid mail syncing issues when using mbsync
-  (setq mu4e-change-filenames-when-moving t)
-
-  ;; Refresh mail using isync every 10 minutes
-  (setq mu4e-update-interval (* 10 60))
-  (setq mu4e-get-mail-command "mbsync -a")
-  (setq mu4e-maildir "~/.mail/samlesh@gmail.com/")
-
-  (setq mu4e-sent-folder   "/[Gmail]/Sent Mail")
-  (setq mu4e-trash-folder  "/[Gmail]/Trash")
-  (setq mu4e-drafts-folder "/[Gmail]/Drafts")
-  (setq mu4e-refile-folder "/[Gmail]/All Mail")
-
-  (setq mu4e-maildir-shortcuts
-    '((:maildir "/inbox"    :key ?i)
-      (:maildir "/[Gmail]/Sent Mail" :key ?s)
-      (:maildir "/[Gmail]/Trash"     :key ?t)
-      (:maildir "/[Gmail]/Drafts"    :key ?d)
-      (:maildir "/[Gmail]/All Mail"  :key ?a))))
-#+end_src
-
 ** Integrated Development Environment
 *** Utilities
 
@@ -693,12 +627,7 @@ We make use of [[file:isync.org][Isync (mbsync)]] to clone a local copy of the I
 (require 'init-org-roam)
 #+end_src
 
-** Applications
-
-#+begin_src emacs-lisp
-#+end_src
-
-** Load Modules
+** Load Remaining Modules
 
 #+begin_src emacs-lisp
 (dolist

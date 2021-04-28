@@ -1,0 +1,32 @@
+#+TITLE: PDF Tools
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/politza/pdf-tools
+#+ROAM_ALIAS: pdf-tools
+#+ROAM_TAGS: EMACS CONFIG SOFTWARE
+#+CREATED: [2021-04-28 Wed 08:33]
+#+LAST_MODIFIED: [2021-04-28 Wed 08:35:54]
+
+PDF Tools is a replace for the inbuilt =DocView= mode in [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-pdf-tools.el :comments both :mkdirp yes
+:END:
+
+Other than installing =pdf-tools=, we also add a hook to enable night mode by default and configure the night mode's colors.
+
+#+begin_src emacs-lisp
+(use-package pdf-tools
+  :hook (pdf-tools-enabled . pdf-view-midnight-minor-mode)
+  :custom
+  (pdf-view-midnight-colors
+   `(,(face-attribute 'term :foreground)
+     . ,(face-attribute 'term-color-black :foreground)))
+  :init (pdf-tools-install))
+#+end_src
+
+Don't forget to provide this file...
+
+#+begin_src emacs-lisp
+(provide 'init-pdf-tools)
+#+end_src
