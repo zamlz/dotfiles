@@ -3,11 +3,12 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-04-25 Sun 15:34:00]
+#+LAST_MODIFIED: [2021-04-27 Tue 19:17:36]
 
 Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
 
 * Useful Resources
+- [[https://rolfschr.github.io/gswl-book/latest.html][Getting Started with Ledger]]
 * Tips and Tricks
 * Configuration
 :PROPERTIES:
