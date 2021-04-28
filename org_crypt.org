@@ -1,0 +1,56 @@
+#+TITLE: Org Crypt
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: EMACS CONFIG SOFTWARE
+#+CREATED: [2021-04-27 Tue 17:31]
+#+LAST_MODIFIED: [2021-04-27 Tue 18:42:26]
+
+Org Crypt is a package that lets us encrypt blocks of text in an [[file:org_mode.org][Org-mode]] file using [[file:gnupg.org][GnuPG]] without having the full file encrypted like usual.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-crypt.el :comments both :mkdirp yes
+:END:
+
+[[file:org_mode.org][Org-mode]] needs to be loaded as =org-crypt= is bundled along with the package but isn't loaded by default.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
+Once that's done, we can now laod up =org-crypt=!
+
+#+begin_src emacs-lisp
+(require 'org-crypt)
+#+end_src
+
+We have to deal with autosaving as we don't want unencrypted data to get to the disk. We'll keep it disabled in buffers that make use of the module. We will set the =org-crypt-disable-auto-save= to ='encrypt= which re-encrypts on ever autosave so unencrypted data doesn't get on disk which is good, but it also reverts the buffer back to the encrypted version which can be annoying. This is price to pay for good security I suppose.
+
+#+begin_src emacs-lisp
+(org-crypt-use-before-save-magic)
+(setq org-crypt-disable-auto-save 'encrypt)
+#+end_src
+
+We must either specify a Key ID from [[file:gnupg.org][GnuPG]] or keep the value =nil= to use symmetric encryption.
+
+#+begin_src emacs-lisp
+(setq org-crypt-key user-mail-address)
+#+end_src
+
+We need to specify which tag to use for encrypting org headings. We will make use of #ENCRYPTED.
+
+#+begin_src emacs-lisp
+(setq org-crypt-tag-matcher "ENCRYPTED")
+#+end_src
+
+*DO NOT* let this tag be inherited. It will cause =org-encrypt= having encrypted text inside of encrypted text.
+
+#+begin_src emacs-lisp
+(add-to-list 'org-tags-exclude-from-inheritance org-crypt-tag-matcher)
+#+end_src
+
+Finally we need to provide this module.
+
+#+begin_src emacs-lisp
+(provide 'init-org-crypt)
+#+end_src
