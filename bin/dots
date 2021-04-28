@@ -73,6 +73,14 @@ run_git_over_all() {
 tangle() {
     HOME="${1:-$HOME}"
 
+    # Due to the nature of tangling, it can only writes files its
+    # been configured to write to. But say there was a file whose
+    # literate config file has been moved or replaced in some way.
+    # The resulting tangled file would still exist on disk.
+    # We need to add paths to force cleanup if they exist.
+    # Add those directories here:
+    rm -rf $HOME/.config/emacs/lisp/
+
     # iterate through all config *.org files and tangle them
     # Okay this can be way better. Instead of passing the file
     # one at a time, I should be getting the arguments in
