@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-04-27 Tue 16:08:48]
+#+LAST_MODIFIED: [2021-04-29 Thu 09:01:37]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -132,8 +132,8 @@ We can configure =org-mode= font faces via a seperate function that we define. W
 
 #+begin_src emacs-lisp
 (setq org-todo-keywords
-      (quote ((sequence "SOMEDAY(s)"
-                        "TODO(t)"
+      (quote ((sequence "TODO(t)"
+                        "SOMEDAY(s)"
                         "MEETING(m)"
                         "WAITING(w)"
                         "|"
