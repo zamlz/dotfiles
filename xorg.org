@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-04-01 Thu 14:17:10]
+#+LAST_MODIFIED: [2021-04-28 Wed 23:01:53]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]
@@ -12,6 +12,19 @@
 Xorg is an open source implementation of the X window system.
 
 * Configuration
+** Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-xorg.el :comments both :mkdirp yes
+:END:
+
+Instal the Xorg package if hasn't been installed already
+
+#+begin_src emacs-lisp
+(zamlz/system-packages-ensure "xorg" "Xorg")
+(zamlz/system-packages-ensure "xorg-xinit" "startx")
+(provide 'init-xorg)
+#+end_src
+
 ** Xinitrc
 :PROPERTIES:
 :header-args:shell: :tangle ~/.xinitrc :shebang #!/bin/sh :comments both

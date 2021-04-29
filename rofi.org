@@ -4,22 +4,36 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/davatorium/rofi
 #+CREATED: [2021-04-01 Thu 10:32]
-#+LAST_MODIFIED: [2021-04-01 Thu 10:34:19]
+#+LAST_MODIFIED: [2021-04-28 Wed 23:24:53]
 
 Rofi is a window switcher, application launcher and dmenu program for [[file:xorg.org][X11]].
 
-* Xresources Configuration
+* Configuration
+** Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-rofi-dmenu.el :comments both :mkdirp yes
+:END:
+
+Install the rofi package. Ensure that [[file:xorg.org][Xorg X11 Window System]] is install first however.
+
+#+begin_src emacs-lisp
+(require 'init-xorg)
+(zamlz/system-packages-ensure "rofi")
+(provide 'init-rofi-dmenu)
+#+end_src
+
+** Xresources
 :PROPERTIES:
 :header-args:C: :tangle ~/.Xresources.d/rofi :mkdirp yes
 :END:
-** Enabled Modes
+*** Enabled Modes
 
 #+begin_src C
 ! "Enabled modi" Set from: Default
 rofi.modi:                           window,run,ssh
 #+end_src
 
-** Window Geometry
+*** Window Geometry
 
 #+begin_src C
 ! "Window width" Set from: Default
@@ -32,7 +46,7 @@ rofi.modi:                           window,run,ssh
 ! rofi.columns:                        1
 #+end_src
 
-** Colorscheme and Font
+*** Colorscheme and Font
 
 #+begin_src C
 ! "Font to use" Set from: XResources
@@ -53,7 +67,7 @@ rofi.font:                            Iosevka Term 12
 rofi.bw:                             4
 #+end_src
 
-** Unused Rofi Settings
+*** Unused Rofi Settings
 
 #+begin_src C
 ! "Location on screen" Set from: Default

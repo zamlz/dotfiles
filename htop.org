@@ -4,9 +4,9 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 15:38]
-#+LAST_MODIFIED: [2021-04-28 Wed 16:37:57]
+#+LAST_MODIFIED: [2021-04-28 Wed 23:39:35]
 
-Bpytop is a python port of bashtop. It is a powerful resource monitor.
+Htop is a [[file:cli_application.org][CLI Application]] that is a system resource monitor.
 
 * Configuration
 :PROPERTIES:

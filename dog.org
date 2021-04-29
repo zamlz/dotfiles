@@ -1,0 +1,33 @@
+#+TITLE: dog
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-28 Wed 23:22]
+#+LAST_MODIFIED: [2021-04-28 Wed 23:38:39]
+
+Dog is a [[file:cli_application.org][CLI Application]] that I wrote which sort of functions like =cat=. However, it will highlight syntax for you as well.
+
+* Configuration
+** Dependency Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-dog-syntax-highlighter.el :comments both :mkdirp yes
+:END:
+
+#+begin_src emacs-lisp
+(zamlz/system-packages-ensure "highlight")
+(provide 'init-dog-syntax-highlighter)
+#+end_src
+
+** Script
+:PROPERTIES:
+:header-args:shell: :tangle ~/.bin/dog :mkdirp yes :comments both :shebang #!/bin/sh
+:END:
+
+#+begin_src shell
+for item in $@; do
+    echo "[$item]"
+    echo ""
+    highlight -O ansi --force -n $item
+    echo ""
+done
+#+end_src

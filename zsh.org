@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-04-27 Tue 00:15:15]
+#+LAST_MODIFIED: [2021-04-28 Wed 23:32:43]
 
 A powerful shell that has more features that bash.
 
@@ -31,7 +31,8 @@ Update path to use my custom scripts and other locally installed scripts.
 #+begin_src shell
 # Update the path variable
 export PATH="$HOME/org/config/bin:$PATH"
-export PATH="$HOME/.local/bin/:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.bin:$PATH"
 
 # Update any system specific path settings
 source $HOME/sys/path.sh 2> /dev/null
@@ -265,35 +266,6 @@ fi
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zsh.d/functions.zsh :mkdirp yes :comments both
 :END:
-*** GnuPG Utilities
-
-The following code blocks contains code to encrypt/decrypt files with [[file:gnupg.org][GnuPG]] very easily.
-
-#+begin_src shell
-function gpg-lock() {
-    infile=$1
-    if [ -z "$(echo $infile | grep -E '.+\.gpg$')" ]; then
-        gpg_id=$(cat ~/.gpg-id)
-        outfile="${1}.gpg"
-        gpg --output $outfile -r $gpg_id --encrypt $infile
-    else
-        echo "Trying to encrypt already encrypted file"
-    fi
-}
-#+end_src
-
-#+begin_src shell
-function gpg-unlock() {
-    infile=$1
-    if [ -n "$(echo $infile | grep -E '.+\.gpg$')" ]; then
-        outfile=$(echo ${infile} | sed -e 's/\.gpg$//g')
-        gpg --output $outfile --decrypt $infile
-    else
-        echo "Not a valid gpg locked file; Unable to unlock!"
-    fi
-}
-#+end_src
-
 *** Groot
 
 I wrote a simple script to get me pretty details of a [[file:git.org][Git]] repo.
@@ -496,19 +468,6 @@ function ext() {
         ,*)           echo "Unable to extract '$1'." ;;
     esac
 
-}
-#+end_src
-
-*** Dog
-
-#+begin_src shell
-function dog() {
-    for item in $@; do
-        echo "[$item]"
-        echo ""
-        highlight -O ansi --force -n $item
-        echo ""
-    done
 }
 #+end_src
 
