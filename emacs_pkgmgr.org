@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 22:06]
-#+LAST_MODIFIED: [2021-04-22 Thu 17:14:27]
+#+LAST_MODIFIED: [2021-04-28 Wed 10:49:29]
 
 This page just pertains to package management within [[file:emacs.org][GNU/Emacs]]. We make use of =use-package= as our primary package manager.
 
@@ -44,6 +44,7 @@ The =:ensure-system-package= keyword can be used to install system packages.
 
 #+begin_src emacs-lisp
 (use-package use-package-ensure-system-package
+  :after system-packages
   :ensure t)
 #+end_src
 
@@ -52,6 +53,24 @@ It makes use of the =system-packages= package from MELPA so let's install that t
 #+begin_src emacs-lisp
 (use-package system-packages
   :ensure t)
+#+end_src
+
+We'll also write our own function to ensure system packages since the in-built one doesn't work so well.
+
+#+begin_src emacs-lisp
+(defun zamlz/system-packages-ensure (pack &optional binfile args)
+  "Ensure PACK is installed on systemi if BINFILE not found
+Search for BINFILE with `system-packages-package-installed-p', and
+install the package if not found.  Use ARGS to pass options to
+the package manager."
+  (interactive "sPackage to ensure is present: ")
+  (if binfile
+      (if (system-packages-package-installed-p binfile)
+          t
+        (system-packages-install pack args))
+      (if (system-packages-package-installed-p pack)
+          t
+        (system-packages-install pack args))))
 #+end_src
 
 ** Auto Package Updater
