@@ -1,0 +1,19 @@
+#+TITLE: htop
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://htop.dev/
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-04-28 Wed 15:38]
+#+LAST_MODIFIED: [2021-04-28 Wed 16:37:57]
+
+Bpytop is a python port of bashtop. It is a powerful resource monitor.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-htop.el :comments both :mkdirp yes
+:END:
+
+#+begin_src emacs-lisp
+(zamlz/system-packages-ensure "htop")
+(provide 'init-htop)
+#+end_src
