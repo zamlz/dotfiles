@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-04-28 Wed 23:01:53]
+#+LAST_MODIFIED: [2021-04-30 Fri 11:15:23]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]
@@ -64,12 +64,10 @@ This part of the script decides which window manager to start. This is ultimatel
 session=${1:-herbstluftwm}
 $LOGGER "Starting session: $session"
 
-EXEC_DBUS="exec dbus-launch --exit-with-session"
-
 case $session in
-    herbstluftwm)   $EXEC_DBUS herbstluftwm;;
-    exwm)           $EXEC_DBUS emacs -mm --debug-init;;
-    *)              exec $1;;
+    herbstluftwm)   herbstluftwm;;
+    exwm)           emacs -mm --debug-init;;
+    ,*)             exec $1;;
 esac
 #+end_src
 
