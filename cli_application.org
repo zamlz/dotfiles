@@ -1,6 +1,0 @@
-#+TITLE: CLI Application
-#+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+CREATED: [2021-04-28 Wed 23:38]
-#+LAST_MODIFIED: [2021-04-28 Wed 23:38:20]

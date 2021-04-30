@@ -3,9 +3,9 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 23:22]
-#+LAST_MODIFIED: [2021-04-28 Wed 23:38:39]
+#+LAST_MODIFIED: [2021-04-30 Fri 09:40:00]
 
-Dog is a [[file:cli_application.org][CLI Application]] that I wrote which sort of functions like =cat=. However, it will highlight syntax for you as well.
+Dog is a script that I wrote which sort of functions like =cat=. However, it will highlight syntax for you as well.
 
 * Configuration
 ** Dependency Install

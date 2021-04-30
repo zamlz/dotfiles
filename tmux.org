@@ -4,10 +4,12 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/tmux/tmux
 #+CREATED: [2021-03-29 Mon 19:15]
-#+LAST_MODIFIED: [2021-04-01 Thu 14:10:51]
+#+LAST_MODIFIED: [2021-04-30 Fri 09:40:36]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:16:27
 [[file:data/tmux_logo.png]]
+
+Tmux is a terminal multiplexer. I however mainly use it for its ability to create sessions in remote machines and it's ability to keep those sessions alive and running even after I have closed them from [[file:ssh.org][OpenSSH]].
 
 * Configuration
 :PROPERTIES:
