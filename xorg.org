@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-04-30 Fri 20:04:54]
+#+LAST_MODIFIED: [2021-04-30 Fri 20:32:44]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]
@@ -27,7 +27,7 @@ Instal the Xorg package if hasn't been installed already
 
 ** Xinitrc
 :PROPERTIES:
-:header-args:shell: :tangle ~/.xinitrc :shebang #!/bin/sh :comments both
+:header-args:shell: :tangle ~/.config/xinitrc :shebang #!/bin/sh :comments both
 :END:
 
 #+begin_src shell

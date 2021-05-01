@@ -4,9 +4,9 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-04-30 Fri 20:01:43]
+#+LAST_MODIFIED: [2021-04-30 Fri 20:30:57]
 
-A powerful shell that has more features that bash.
+Z Shell (ZSH) is a powerful shell that has more features that something like bash. It's also very configurable.
 
 * Configuration
 ** Environment
@@ -217,49 +217,6 @@ Adding another zsh hook to capture changes in directory I believe. This ultimate
 #+begin_src shell
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
-#+end_src
-
-** Login Script
-:PROPERTIES:
-:header-args:shell: :tangle ~/.zlogin :comments both
-:END:
-
-Need a logger just to keep track of things
-
-#+begin_src shell
-source $HOME/org/config/lib/shell/logger
-LOGGER=$(get_logger zsh.profile)
-#+end_src
-
-Setup the [[file:herbstluftwm.org][Herbstluftwm Tiling Window Manager]] during login
-
-#+begin_src shell
-# Regular StartX Boot for Herbsluftwm
-if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
-    $LOGGER "Starting xinitrc parameterized on herbstluftwm"
-    export WINDOW_MANAGER='herbstluftwm'
-    exec startx $HOME/.xinitrc herbstluftwm
-fi
-#+end_src
-
-The remaining =tty= are for testing or recovery purposes. I primarily use =tty2= for testing new window managers. In the case below, I'm trying out [[file:emacs.org][GNU/Emacs]] as a window manager.
-
-#+begin_src shell
-# Regular StartX Boot for Emacs
-if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
-    $LOGGER "Starting xinitrc parameterized on emacs"
-    export WINDOW_MANAGER='exwm'
-    exec startx $HOME/.xinitrc exwm
-fi
-#+end_src
-
-Lets make =tty3= the shell version of emacs which can be useful in certain situations
-#+begin_src shell
-if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 3 ]; then
-    $LOGGER "Starting Emacs CLI"
-    export WINDOW_MANAGER='emacs-cli'
-    exec emacs
-fi
 #+end_src
 
 ** Functions
