@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://gnupg.org/
 #+CREATED: [2021-03-29 Mon 18:57]
-#+LAST_MODIFIED: [2021-04-28 Wed 23:19:19]
+#+LAST_MODIFIED: [2021-04-30 Fri 19:59:03]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:05:47
 [[file:data/gnupg_logo.png]]
@@ -105,7 +105,7 @@ allow-loopback-pinentry
 
 Here is a simple script I setup to quickly encrypt files with GPG. Can't say I use this too much now days, but I have it here because its something to have in my back pocket. It looks for =~/.gpg-id= for the key-id to use.
 
-#+begin_src shell :tangle ~/.bin/gpg-lock
+#+begin_src shell :tangle ~/.config/bin/gpg-lock
 infile=$1
 if [ -z "$(echo $infile | grep -E '.+\.gpg$')" ]; then
     gpg_id=$(cat ~/.gpg-id)
@@ -120,7 +120,7 @@ fi
 
 Like the =gpg-lock= but instead this is for decrypting. Like before, it uses =~/.gpg-id= for the key-id to use.
 
-#+begin_src shell :tangle ~/.bin/gpg-unlock
+#+begin_src shell :tangle ~/.config/bin/gpg-unlock
 infile=$1
 if [ -n "$(echo $infile | grep -E '.+\.gpg$')" ]; then
     outfile=$(echo ${infile} | sed -e 's/\.gpg$//g')

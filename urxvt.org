@@ -4,13 +4,13 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: http://software.schmorp.de/pkg/rxvt-unicode.html
 #+CREATED: [2021-04-01 Thu 09:40]
-#+LAST_MODIFIED: [2021-04-01 Thu 10:31:30]
+#+LAST_MODIFIED: [2021-04-30 Fri 20:05:40]
 
 URxvt is a popular fork of the Rxvt Terminal Emulator but with Unicode support for [[file:xorg.org][X11]].
 
 * Xresouces Configuration
 :PROPERTIES:
-:header-args:C: :tangle ~/.Xresources.d/urxvt :mkdirp yes
+:header-args:C: :tangle ~/.config/xresources.d/urxvt :mkdirp yes
 :END:
 ** General Settings
 

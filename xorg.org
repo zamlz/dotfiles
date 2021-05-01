@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-04-30 Fri 11:15:23]
+#+LAST_MODIFIED: [2021-04-30 Fri 20:04:54]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]
@@ -209,7 +209,7 @@ Xft.hintstyle:              hintslight
 We need to source the xresources of [[file:urxvt.org][URxvt Terminal Emulator]], [[file:rofi.org][Rofi Dmenu]], and [[file:emacs.org][GNU/Emacs]].
 
 #+begin_src C
-#include ".Xresources.d/urxvt"
-#include ".Xresources.d/rofi"
-#include ".Xresources.d/emacs"
+#include ".config/xresources.d/urxvt"
+#include ".config/xresources.d/rofi"
+#include ".config/xresources.d/emacs"
 #+end_src

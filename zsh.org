@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-04-28 Wed 23:32:43]
+#+LAST_MODIFIED: [2021-04-30 Fri 20:01:43]
 
 A powerful shell that has more features that bash.
 
@@ -32,7 +32,7 @@ Update path to use my custom scripts and other locally installed scripts.
 # Update the path variable
 export PATH="$HOME/org/config/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.bin:$PATH"
+export PATH="$HOME/.config/bin:$PATH"
 
 # Update any system specific path settings
 source $HOME/sys/path.sh 2> /dev/null
@@ -128,15 +128,15 @@ bindkey -v
 The directory we store the completion file will already exist due to the tangling of other zsh files.
 
 #+begin_src shell
-autoload -Uz compinit && compinit -d "$HOME/.zsh.d/compdump"
+autoload -Uz compinit && compinit -d "$HOME/.config/zsh.d/compdump"
 autoload -U bashcompinit && bashcompinit
 #+end_src
 
 *** Source Aliases and Functions
 
 #+begin_src shell
-source $HOME/.zsh.d/aliases.zsh
-source $HOME/.zsh.d/functions.zsh
+source $HOME/.config/zsh.d/aliases.zsh
+source $HOME/.config/zsh.d/functions.zsh
 #+end_src
 
 *** Configure SSH & GnuPG Variables
@@ -264,7 +264,7 @@ fi
 
 ** Functions
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zsh.d/functions.zsh :mkdirp yes :comments both
+:header-args:shell: :tangle ~/.config/zsh.d/functions.zsh :mkdirp yes :comments both
 :END:
 *** Groot
 
@@ -473,7 +473,7 @@ function ext() {
 
 ** Aliases
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zsh.d/aliases.zsh :mkdirp yes :comments both
+:header-args:shell: :tangle ~/.config/zsh.d/aliases.zsh :mkdirp yes :comments both
 :END:
 
 Shortcuts for =ls=

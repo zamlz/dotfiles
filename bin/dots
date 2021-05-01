@@ -78,7 +78,11 @@ tangle() {
     # literate config file has been moved or replaced in some way.
     # The resulting tangled file would still exist on disk.
     # We need to add paths to force cleanup if they exist.
+    # Essentially these are directories that get sources in some way.
     # Add those directories here:
+    rm -rf $HOME/.config/bin/
+    rm -rf $HOME/.config/zsh.d/
+    rm -rf $HOME/.config/xresources.d/
     rm -rf $HOME/.config/emacs/lisp/
 
     # iterate through all config *.org files and tangle them

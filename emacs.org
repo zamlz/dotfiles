@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-04-28 Wed 08:36:04]
+#+LAST_MODIFIED: [2021-04-30 Fri 20:06:24]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -638,7 +638,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 
 * Xresources Setup
 :PROPERTIES:
-:header-args:C: :tangle ~/.Xresources.d/emacs :mkdirp yes :comments no
+:header-args:C: :tangle ~/.config/xresources.d/emacs :mkdirp yes :comments no
 :END:
 The colorscheme below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
 
