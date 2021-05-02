@@ -1,0 +1,82 @@
+#+TITLE: Zsh Environment
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-02 Sun 12:10]
+#+LAST_MODIFIED: [2021-05-02 Sun 12:57:51]
+
+This is the environment file for [[file:zsh.org][Zsh]]. It is saved in the home directory as =~/.zshenv=. It is sourced everytime and first of all the configuration files.
+
+* Environment Configuration
+:PROPERTIES:
+:header-args:shell: :tangle ~/.zshenv :comments both
+:END:
+
+Need to source this file which contains locations for all my repos
+
+#+begin_src shell
+source $HOME/org/config/lib/repos
+#+end_src
+
+Update path the =$PATH= variable to use some local bin directories.
+
+#+begin_src shell
+export PATH="$HOME/org/config/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.config/bin:$PATH"
+#+end_src
+
+Set the distro name. Sometimes some distros don't have a environment variable for this already so I just have a generic solution for this.
+
+#+begin_src shell
+export DISTRO=$(grep --color=none ^ID= /etc/os-release \
+    | sed -e 's/^ID=//g' \
+    | tr -d '"')
+#+end_src
+
+We should also figure out if we are in the Windows Susbsytem for Linux (WSL) which will be
+used to configure how certain programs will behave later on.
+
+#+begin_src shell
+export WSL=$(uname -r | grep "microsoft")
+#+end_src
+
+The =less= program does not behave correctly when using windows. Some of these arguments are not supported for some reason.
+
+#+begin_src shell
+if [ -z "$WSL" ]; then
+    export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
+else
+    export LESS='-R --no-init --quit-if-one-screen'
+fi
+#+end_src
+
+Set the location of the journal file for [[file:ledger.org][Ledger]] to use.
+
+#+begin_src shell
+export LEDGER_FILE="$LEDGER_DIR/main.journal"
+#+end_src
+
+When using zsh inside [[file:emacs.org][GNU/Emacs]], we also need to update the editor. The default system editor will be [[file:neovim.org][vim]] as its a good fallback, but we definetly do not want it opening inside [[file:emacs.org][GNU/Emacs]].
+
+#+begin_src shell
+if [ -n "$INSIDE_EMACS" ]; then
+    export VISUAL="emacsclient --socket-name=xorg-emacs-daemon"
+    export EDITOR="$VISUAL"
+    alias vi="$EDITOR" # lmao
+fi
+#+end_src
+
+Configure Zsh command history
+
+#+begin_src shell
+HISTFILE=$HOME/.zhistory
+HISTSIZE=10000
+SAVEHIST=5000
+#+end_src
+
+This is sort of a weird hack. Basically, we're setting the pinentry program here before we even get to the =~/.zshrc= file. The reason is that we want pinentry to default to /GUI/ based applications instead of the /tty/. But if we enter an interactive shell environment (where =~/.zshrc= would be invoked), then we set it back to /tty/.
+
+#+begin_src shell
+#export PINENTRY_USER_DATA='rofi'
+#+end_src

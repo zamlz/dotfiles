@@ -4,98 +4,11 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-04-30 Fri 20:30:57]
+#+LAST_MODIFIED: [2021-05-02 Sun 13:01:20]
 
 Z Shell (ZSH) is a powerful shell that has more features that something like bash. It's also very configurable.
 
 * Configuration
-** Environment
-:PROPERTIES:
-:header-args:shell: :tangle ~/.zshenv :comments both
-:END:
-
-Source system profile
-
-#+begin_src shell
-source /etc/profile
-#+end_src
-
-Need to source this file which contains locations for all my repos
-
-#+begin_src shell
-source $HOME/org/config/lib/repos
-#+end_src
-
-Update path to use my custom scripts and other locally installed scripts.
-
-#+begin_src shell
-# Update the path variable
-export PATH="$HOME/org/config/bin:$PATH"
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.config/bin:$PATH"
-
-# Update any system specific path settings
-source $HOME/sys/path.sh 2> /dev/null
-#+end_src
-
-Collection system information
-
-#+begin_src shell
-# Get system info
-export WSL=$(uname -r | grep "microsoft")
-export DISTRO=$(grep --color=none ^ID= /etc/os-release \
-    | sed -e 's/^ID=//g' \
-    | tr -d '"')
-#+end_src
-
-Configure =less= arguments if we are in a windows linux subsystem. It doesn't support some of the standard arguments you would see in a normal =less=.
-
-#+begin_src shell
-# Override default windows less arguments
-if [ -z "$WSL" ]; then
-    export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
-else
-    export LESS='-R --no-init --quit-if-one-screen'
-fi
-#+end_src
-
-Why am I settings my python venv directory here? This could be improved...
-
-#+begin_src shell
-# Set the python venv dir
-export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
-if [ -d "$PYTHON_VENVS_DIR" ]; then
-    mkdir -p "$PYTHON_VENVS_DIR"
-fi
-
-# Specify location of ledger file
-export LEDGER_FILE="$LEDGER_DIR/main.journal"
-#+end_src
-
-When using zsh inside [[file:emacs.org][GNU/Emacs]], we also need to update the editor. The default system editor will be [[file:neovim.org][vim]] as its a good fallback, but we definetly do not want it opening inside [[file:emacs.org][GNU/Emacs]].
-
-#+begin_src shell
-if [ -n "$INSIDE_EMACS" ]; then
-    export VISUAL="emacsclient --socket-name=xorg-emacs-daemon"
-    export EDITOR="$VISUAL"
-    alias vi="$EDITOR" # lmao
-fi
-#+end_src
-
-Configure Zsh command history
-
-#+begin_src shell
-HISTFILE=$HOME/.zhistory
-HISTSIZE=10000
-SAVEHIST=5000
-#+end_src
-
-This is sort of a weird hack. Basically, we're setting the pinentry program here before we even get to the =~/.zshrc= file. The reason is that we want pinentry to default to /GUI/ based applications instead of the /tty/. But if we enter an interactive shell environment (where =~/.zshrc= would be invoked), then we set it back to /tty/.
-
-#+begin_src shell
-#export PINENTRY_USER_DATA='rofi'
-#+end_src
-
 ** Interactive Session
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zshrc :comments both
