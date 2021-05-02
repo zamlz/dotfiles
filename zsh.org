@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-05-02 Sun 13:01:20]
+#+LAST_MODIFIED: [2021-05-02 Sun 13:25:31]
 
 Z Shell (ZSH) is a powerful shell that has more features that something like bash. It's also very configurable.
 
@@ -274,37 +274,6 @@ if [ -n "$DISPLAY" ]; then
         save_window_info
     fi
 fi
-#+end_src
-
-*** Universal Extract Script
-
-#+begin_src shell
-function ext() {
-    # Make sure some argument is given
-    if [ ! -f "$1" ] ; then
-        echo "'$1' does not exist."
-        return 1
-    fi
-    # based on filetype, extract the file
-    case "$1" in
-        ,*.tar.bz2)   tar xvjf "$1"   ;;
-        ,*.tar.xz)    tar xvJf "$1"   ;;
-        ,*.tar.gz)    tar xvzf "$1"   ;;
-        ,*.bz2)       bunzip2 "$1"    ;;
-        ,*.rar)       rar x "$1"      ;;
-        ,*.gz)        gunzip "$1"     ;;
-        ,*.tar)       tar xvf "$1"    ;;
-        ,*.tbz2)      tar xvjf "$1"   ;;
-        ,*.tgz)       tar xvzf "$1"   ;;
-        ,*.zip)       unzip "$1"      ;;
-        ,*.Z)         uncompress "$1" ;;
-        ,*.xz)        xz -d "$1"      ;;
-        ,*.7z)        7z x "$1"       ;;
-        ,*.a)         ar x "$1"       ;;
-        ,*)           echo "Unable to extract '$1'." ;;
-    esac
-
-}
 #+end_src
 
 ** Aliases
