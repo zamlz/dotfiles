@@ -241,40 +241,6 @@ function prompt_generate() {
 }
 #+end_src
 
-*** Python Venv Wrapper
-
-There may be a better solution to this, but I just like using the built in =venv= that is part of =python3=. But its a pain to write out every command so this does a lot of things.
-
-#+begin_src shell
-function venv() {
-    # A simple wrapper for virtualenv
-    PYTHON_VENVS_DIR=${PYTHON_VENVS_DIR:-$HOME/.venvs}
-    if [[ ! -z "$@" ]]; then
-        vname=$1;
-        shift;
-        if [[ -z "$@" ]]; then
-            if [[ ! -d "$PYTHON_VENVS_DIR/$vname" ]]; then
-                echo "Create a new virtual environment named '$vname' ?";
-                echo 'Press any key to continue or Ctrl+C to exit...\n'
-                # note this is zsh read
-                read -k1 -rs
-                echo "Creating new venv: $vname";
-                python -m venv $PYTHON_VENVS_DIR/$vname
-            fi
-            echo "Starting venv: $vname"
-            source $PYTHON_VENVS_DIR/${vname}/bin/activate
-            save_window_info
-        else
-            python -m venv $PYTHON_VENVS_DIR/$vname $@
-            save_window_info
-        fi
-    else
-        echo "Python Virtual Environments (venvs)"
-        tree -L 1 -d --noreport $PYTHON_VENVS_DIR/ | tail -n +2
-    fi
-}
-#+end_src
-
 *** X Window Terminal Info
 
 The following code helps save [[file:xorg.org][X11]] window information for every terminal. This can be used later to start new terminal sessions in those directories (Meant to be used with [[file:urxvt.org][URxvt]]). In a nuteshell, the built-in =cd= is overridden to now save this window info.
