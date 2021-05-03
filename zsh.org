@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-05-02 Sun 13:25:31]
+#+LAST_MODIFIED: [2021-05-02 Sun 18:21:04]
 
 Z Shell (ZSH) is a powerful shell that has more features that something like bash. It's also very configurable.
 
@@ -136,32 +136,6 @@ add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
 :PROPERTIES:
 :header-args:shell: :tangle ~/.config/zsh.d/functions.zsh :mkdirp yes :comments both
 :END:
-*** Groot
-
-I wrote a simple script to get me pretty details of a [[file:git.org][Git]] repo.
-
-#+begin_src shell
-function groot() {
-    GITROOT=$(git rev-parse --show-toplevel 2> /dev/null);
-    ROOTEXIST=$?
-
-    if [ $ROOTEXIST -eq 0 ]; then
-
-        cd $GITROOT;
-        NAME=$(basename -s .git `git config --get remote.origin.url` 2> /dev/null)
-
-        if [ -z "$NAME" ]; then
-            NAME="[ ]"
-        fi
-
-        BRANCH=$(git branch --list --no-color | cut -d " " -f 2 | tr -d '\n');
-        figlet -t -f slant $@ "${NAME} @.${BRANCH}" | lolcat
-
-        git status
-    fi
-}
-#+end_src
-
 *** One of my many prompts
 
 I really like this prompt. I should probably set this up such that it's only used when I'm using the =tty=. Here is what is normally looks like:
