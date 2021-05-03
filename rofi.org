@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/davatorium/rofi
 #+CREATED: [2021-04-01 Thu 10:32]
-#+LAST_MODIFIED: [2021-04-30 Fri 20:06:09]
+#+LAST_MODIFIED: [2021-05-02 Sun 17:31:53]
 
 Rofi is a window switcher, application launcher and dmenu program for [[file:xorg.org][X11]].
 
@@ -26,6 +26,9 @@ Install the rofi package. Ensure that [[file:xorg.org][Xorg X11 Window System]] 
 :PROPERTIES:
 :header-args:C: :tangle ~/.config/xresources.d/rofi :mkdirp yes
 :END:
+
+We configure rofi with it's [[file:xresources.org][Xresources]] file.
+
 *** Enabled Modes
 
 #+begin_src C
