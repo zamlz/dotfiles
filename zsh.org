@@ -4,14 +4,14 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-05-02 Sun 18:21:04]
+#+LAST_MODIFIED: [2021-05-03 Mon 10:07:45]
 
 Z Shell (ZSH) is a powerful shell that has more features that something like bash. It's also very configurable.
 
 * Configuration
 ** Interactive Session
 :PROPERTIES:
-:header-args:shell: :tangle ~/.zshrc :comments both
+:header-args:shell: :tangle ~/.config/zsh/.zshrc :comments both :mkdirp yes
 :END:
 *** Zsh Configuration
 
@@ -41,15 +41,15 @@ bindkey -v
 The directory we store the completion file will already exist due to the tangling of other zsh files.
 
 #+begin_src shell
-autoload -Uz compinit && compinit -d "$HOME/.config/zsh.d/compdump"
+autoload -Uz compinit && compinit -d "$HOME/.config/zsh/compdump"
 autoload -U bashcompinit && bashcompinit
 #+end_src
 
 *** Source Aliases and Functions
 
 #+begin_src shell
-source $HOME/.config/zsh.d/aliases.zsh
-source $HOME/.config/zsh.d/functions.zsh
+source $HOME/.config/zsh/aliases.zsh
+source $HOME/.config/zsh/functions.zsh
 #+end_src
 
 *** Configure SSH & GnuPG Variables
@@ -134,7 +134,7 @@ add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
 
 ** Functions
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/zsh.d/functions.zsh :mkdirp yes :comments both
+:header-args:shell: :tangle ~/.config/zsh/functions.zsh :mkdirp yes :comments both
 :END:
 *** One of my many prompts
 
@@ -252,7 +252,7 @@ fi
 
 ** Aliases
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/zsh.d/aliases.zsh :mkdirp yes :comments both
+:header-args:shell: :tangle ~/.config/zsh/aliases.zsh :mkdirp yes :comments both
 :END:
 
 Shortcuts for =ls=

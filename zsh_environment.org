@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 12:10]
-#+LAST_MODIFIED: [2021-05-02 Sun 12:57:51]
+#+LAST_MODIFIED: [2021-05-03 Mon 10:05:23]
 
 This is the environment file for [[file:zsh.org][Zsh]]. It is saved in the home directory as =~/.zshenv=. It is sourced everytime and first of all the configuration files.
 
@@ -11,6 +11,12 @@ This is the environment file for [[file:zsh.org][Zsh]]. It is saved in the home 
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zshenv :comments both
 :END:
+
+First lets make sure to set the =$ZDOTDIR= environment variable. This will be where the rest of our [[file:zsh.org][Zsh]] configuration files will be.
+
+#+begin_src shell
+export ZDOTDIR="$HOME/.config/zsh"
+#+end_src
 
 Need to source this file which contains locations for all my repos
 
