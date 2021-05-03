@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-04-30 Fri 20:32:44]
+#+LAST_MODIFIED: [2021-05-02 Sun 17:27:36]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]
@@ -174,42 +174,4 @@ Finally start lemonbar once everything else is setup.
 #+begin_src shell
 pkill -x lemonbar
 $HOME/.config/lemonbar/lemonbar &
-#+end_src
-
-** Xresources
-:PROPERTIES:
-:header-args:C: :tangle ~/.Xresources
-:END:
-*** Source Colorscheme
-
-#+begin_src C
-#include ".config/xcolor/scheme"
-#+end_src
-
-*** Xft Font Settings
-
-#+begin_src C
-Xft.dpi:                    96
-Xft.antialias:              true
-Xft.rgba:                   rgb
-Xft.hinting:                true
-Xft.hintstyle:              hintslight
-#+end_src
-
-*** Default Font Face
-
-#+begin_src C
-!*font: xft:Iosevka Term:size=11
-!*font: xft:xos4 Terminus:size=12
-#define system_font xft:xos4 Terminus:size=12
-#+end_src
-
-*** External Configurations
-
-We need to source the xresources of [[file:urxvt.org][URxvt Terminal Emulator]], [[file:rofi.org][Rofi Dmenu]], and [[file:emacs.org][GNU/Emacs]].
-
-#+begin_src C
-#include ".config/xresources.d/urxvt"
-#include ".config/xresources.d/rofi"
-#include ".config/xresources.d/emacs"
 #+end_src
