@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 12:10]
-#+LAST_MODIFIED: [2021-05-03 Mon 10:05:23]
+#+LAST_MODIFIED: [2021-05-03 Mon 22:11:22]
 
 This is the environment file for [[file:zsh.org][Zsh]]. It is saved in the home directory as =~/.zshenv=. It is sourced everytime and first of all the configuration files.
 

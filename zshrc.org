@@ -1,0 +1,252 @@
+#+TITLE: zshrc
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-03 Mon 21:17]
+#+LAST_MODIFIED: [2021-05-03 Mon 22:11:05]
+
+This is configuration file for the interactive session for [[file:zsh.org][Zsh]].
+
+* Interactive Configuration
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/zsh/.zshrc :comments both :mkdirp yes
+:END:
+** Zsh Configuration
+
+Configure how zsh remembers history.
+
+#+begin_src shell
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+#+end_src
+
+Other useful defaults like auto-cd and turning off terminal beeps!
+
+#+begin_src shell
+setopt AUTO_CD
+unsetopt BEEP # turn of audible beeps
+#+end_src
+
+Setup Vim Bindings in Zsh.
+
+#+begin_src shell
+bindkey -v
+#+end_src
+
+** Load Autocompletion Engine
+
+The directory we store the completion file will already exist due to the tangling of other zsh files.
+
+#+begin_src shell
+autoload -Uz compinit && compinit -d "$HOME/.config/zsh/compdump"
+autoload -U bashcompinit && bashcompinit
+#+end_src
+
+** Source Aliases and Functions
+
+#+begin_src shell
+source $HOME/.config/zsh/aliases.zsh
+source $HOME/.config/zsh/functions.zsh
+#+end_src
+
+** Configure SSH & GnuPG Variables
+
+I don't know what to make of this. I thought I could have this code block in the =~/.zshenv= file but I was unable to do so as it causing many issues. Seems like it needs to be set during an interactive session. Very strange indeed. Essentially this configured what pinentry program should be used for [[file:gnupg.org][GnuPG]] and [[file:ssh.org][OpenSSH]]. Furthermore, it also tells [[file:ssh.org][OpenSSH]] that it should look into [[file:gnupg.org][GnuPG]] to get the ssh authentication key.
+
+#+begin_src shell
+export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA='tty'
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
+#+end_src
+
+** Setup $PS1
+
+There are basically two ways to set prompts. My old prompt was dynamic and required a function to run everytime it generated so we used the precmd code to generate it. However it introduces some problems with =sh= if you want to run it from =zsh=. Luckily, if you wish to run =sh= from =zsh= for whatever reason, one can simply override the hook before the command is run.
+
+I however, am currently not using this setup, but I should configure it such that if I am in a pure terminal environment that I do in fact use my more /verbose/ prompt. In my gui environment however, that level of information is overkill.
+
+#+begin_src
+~ λ
+#+end_src
+
+#+begin_src shell
+export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
+#+end_src
+
+This prompt below is my old setup
+
+#+begin_src
+.-|ssh|-(amlesh@xanadu)-[debian::~/src/website]-<website.master>
+`-->
+#+end_src
+
+Here is the generation function that builds the prompt.
+
+#+begin_src shell
+function prompt_generate() {
+    echo -ne "%B%F{cyan}.-"
+
+    # Check if we are in an SSH connection
+    if [ -n "$SSH_TTY" ]; then
+        echo -ne "%F{black}|%b%F{blue}ssh%F{black}%B|%F{cyan}-"
+    fi
+
+    # user @ hostname
+    echo -ne "%F{black}(%b%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)"
+
+    # distro :: current working directory
+    echo -ne "%F{cyan}-%F{black}[%b%F{cyan}${DISTRO}"
+    echo -ne "%F{white}::%F{blue}%~%B%F{black}]"
+
+    if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
+
+        GIT_NAME=$(basename -s .git `git config --get remote.origin.url` \
+            2> /dev/null)
+        GIT_NAME=$(echo $GIT_NAME | sed -e 's|^.*:||g')
+
+        if [ -z "$GIT_NAME" ]; then
+            GIT_NAME="[?]"
+        fi
+
+        GIT_BRANCH=$(git branch --list --no-color | grep --color=auto '\*' \
+            | sed -e 's/^\* //g' | head -n1 | tr -d '\n')
+
+        # (yes/no add ; no commited)
+        #YA=$(git status --porcelain 2>/dev/null| egrep "^M" | wc -l)
+        #NA=$(git status --porcelain 2>/dev/null| egrep "^ M" | wc -l)
+        NC=$(git status --porcelain 2>/dev/null| egrep "^(M| M | D)" | wc -l)
+
+        # Use this info to construct our real status
+        if [ $NC -eq 0 ]; then
+            C='green'
+        else
+            C='red'
+        fi
+        echo -ne "%F{cyan}-%F{black}<%b%F{$C}$GIT_NAME.$GIT_BRANCH%B%F{black}>"
+
+    fi
+    if [ -n "${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
+
+        echo -ne "%F{cyan}-%F{black}{%b%F{yellow}"
+        MOD=""
+
+        if [ -n "$VIRTUAL_ENV" ]; then
+            # Support both the old way of using venvs and new way
+            echo -ne "venv:$(basename $VIRTUAL_ENV /.venv)"
+            MOD="/"
+        fi
+
+        if [ -n "$PIPENV_ACTIVE" ]; then
+            echo -ne "${MOD}pipenv"
+            MOD="/"
+        fi
+
+        if [ -n "$ENV_NAME" ]; then
+            echo -ne "$MOD$ENV_NAME"
+        fi
+
+        echo -ne "%B%F{black}}"
+    fi
+    echo -ne "\n"
+    echo -ne "%F{cyan}\`--%B%F{white}> %{\e[0m%}"
+}
+#+end_src
+
+I have this commented out, otherwise it would be using my old prompt. Maybe I should have this setup in only =tty= environments...
+
+#+begin_src shell
+# precmd() {
+#     export PROMPT=$(prompt_generate)
+# }
+#+end_src
+
+** Override LS Colors
+
+The =ls= command is sometimes not colored properly (and I may have some custom colors that it doesn't like using for certain files by default) so lets override that here. Maybe I should have this in the =~/.zshenv= file?
+
+#+begin_src shell
+eval $(dircolors -b $HOME/org/config/lib/shell/lscolors)
+#+end_src
+
+** Enter a Python Virtual Environment
+
+If certain =$VIRTUAL_ENV= exist during session startup, then immediately jump into that python virtual environment.
+
+#+begin_src shell
+if [ -n "$VIRTUAL_ENV" ]; then
+    source ${VIRTUAL_ENV}/bin/activate
+fi
+#+end_src
+
+** Emacs Vterm Shell-side Integration
+
+Woah what is a function doing here!?
+
+Well, Vterm (emacs) requires some shell-side configuration in order to make use of its full functionality. It's quite powerful when as you can jump between prompts and other things. Basically although its a function, I'm keeping it here so that all shell-side code is in one place.
+
+#+begin_src shell
+vterm_printf() {
+    if [ -n "$TMUX" ] && ([ "${TERM%%-*}" = "tmux" ] || [ "${TERM%%-*}" = "screen" ] ); then
+        # Tell tmux to pass the escape sequences through
+        printf "\ePtmux;\e\e]%s\007\e\\" "$1"
+    elif [ "${TERM%%-*}" = "screen" ]; then
+        # GNU screen (screen, screen-256color, screen-256color-bce)
+        printf "\eP\e]%s\007\e\\" "$1"
+    else
+        printf "\e]%s\e\\" "$1"
+    fi
+}
+#+end_src
+
+This is used to pass information about =user=, =hostname=, and =pwd= back to vterm.
+
+#+begin_src shell
+vterm_prompt_end() {
+    vterm_printf "51;A$(whoami)@$(hostname):$(pwd)";
+}
+setopt PROMPT_SUBST
+PROMPT=$PROMPT'%{$(vterm_prompt_end)%}'
+#+end_src
+
+Adding another zsh hook to capture changes in directory I believe. This ultimately is used to set the buffer name for vterm in emacs buffer list.
+
+#+begin_src shell
+autoload -U add-zsh-hook
+add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
+#+end_src
+
+** X Window Terminal Info
+
+The following code helps save [[file:xorg.org][X11]] window information for every terminal. This can be used later to start new terminal sessions in those directories (Meant to be used with [[file:urxvt.org][URxvt]]). In a nuteshell, the built-in =cd= is overridden to now save this window info.
+
+#+begin_src shell
+function window_info() {
+    echo "WINDOW_PWD='$(pwd)'";
+    echo "VIRTUAL_ENV='${VIRTUAL_ENV}'";
+}
+#+end_src
+
+#+begin_src shell
+function save_window_info() {
+    window_info > /tmp/.wid_${WINDOWID}
+}
+#+end_src
+
+Overrides default =cd= and also saves the terminal info at initial startup
+
+#+begin_src shell
+if [ -n "$DISPLAY" ]; then
+    # Build our custom cd
+    function cd () {
+        builtin cd $@
+        save_window_info
+    }
+    # Every terminal should generate its id file on spawn
+    if [ -z "$WINDOWID" ]; then
+        # echo "Terminal doesn't have a Window ID!!!"
+    else
+        save_window_info
+    fi
+fi
+#+end_src

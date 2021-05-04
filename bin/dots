@@ -74,14 +74,12 @@ tangle() {
     HOME="${1:-$HOME}"
 
     # Due to the nature of tangling, it can only writes files its
-    # been configured to write to. But say there was a file whose
-    # literate config file has been moved or replaced in some way.
-    # The resulting tangled file would still exist on disk.
-    # We need to add paths to force cleanup if they exist.
-    # Essentially these are directories that get sources in some way.
-    # Add those directories here:
+    # been configured to write to. It cannot delete files that
+    # no longer exist. These folders are dynamics and thus need to
+    # be cleared out before we attempt to tangle files to them
+    # again.
+    # > Add those directories here:
     rm -rf $HOME/.config/bin/
-    rm -rf $HOME/.config/zsh.d/
     rm -rf $HOME/.config/xresources.d/
     rm -rf $HOME/.config/emacs/lisp/
 
