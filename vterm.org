@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://github.com/akermu/emacs-libvterm
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 08:27]
-#+LAST_MODIFIED: [2021-04-28 Wed 08:32:43]
+#+LAST_MODIFIED: [2021-05-04 Tue 08:20:15]
 
 =vterm= is a terminal emulator for [[file:emacs.org][GNU/Emacs]] that makes use of the =libvterm= C library. As this code is compiled, it is /much/ faster than existing term modes.
 
@@ -12,8 +12,6 @@
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-vterm.el :comments both :mkdirp yes
 :END:
-
-Load up and configure vterm. There is also some shell side configurations that I do in [[file:zsh.org][Zsh]] that I should document here.
 
 #+begin_src emacs-lisp
 (use-package vterm

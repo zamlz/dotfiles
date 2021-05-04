@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-03 Mon 21:17]
-#+LAST_MODIFIED: [2021-05-03 Mon 22:11:05]
+#+LAST_MODIFIED: [2021-05-04 Tue 08:21:28]
 
 This is configuration file for the interactive session for [[file:zsh.org][Zsh]].
 
@@ -183,7 +183,7 @@ fi
 
 Woah what is a function doing here!?
 
-Well, Vterm (emacs) requires some shell-side configuration in order to make use of its full functionality. It's quite powerful when as you can jump between prompts and other things. Basically although its a function, I'm keeping it here so that all shell-side code is in one place.
+Well, [[file:vterm.org][VTerm]] requires some shell-side configuration in order to make use of its full functionality. It's quite powerful when as you can jump between prompts and other things. This is all done with the help of this function below, I'm keeping it here so that all shell-side code is in one place.
 
 #+begin_src shell
 vterm_printf() {
