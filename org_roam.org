@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-04-12 Mon 22:38:51]
+#+LAST_MODIFIED: [2021-05-04 Tue 23:26:49]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -23,36 +23,19 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam.el :comments both :mkdirp yes
-:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs-org-roam :mkdirp yes :comments both
 :END:
-** Basic Configuration
 
-=org-roam= is a useful package for taking notes.
+** Package Setup
+
+=org-roam= is a useful package for taking notes. While this may not be needed, let's make sure [[file:org_mode.org][Org-mode]] is loaded first.
 
 #+begin_src emacs-lisp
+(require 'init-org)
 (use-package org-roam
   :ensure t
   :after org
   :hook (after-init . org-roam-mode)
-  :bind (:map org-roam-mode-map
-         ;; Standard Roam Stuff
-         ("C-c n l" . org-roam)
-         ("C-c n /" . org-roam-find-file)
-         ;; Graph Functions
-         ("C-c n g" . org-roam-graph)
-         ("C-c n b" . org-roam-db-build-cache)
-         ;; Quick access to Dired buffers
-         ("C-c n f" . org-roam-find-directory)
-         ("C-c n F" . org-roam-dailies-find-directory)
-         ;; Daily Journal
-         ("C-c n j" . org-roam-dailies-capture-today)
-         ("C-c n y" . org-roam-dailies-capture-yesterday)
-         ("C-c n d" . org-roam-dailies-capture-date)
-         ;; Org Roam File Mods
-         ("C-c n t" . org-roam-tag-add)
-         ("C-c n a" . org-roam-alias-add)
-         :map org-mode-map
-         ;; Insert notes...
+  :bind (:map org-mode-map
          ("M-i" . org-roam-insert)
          ("M-I" . org-roam-insert-immediate))
   :custom
@@ -62,7 +45,36 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
   (org-roam-db-udpate-method 'immediate))
 #+end_src
 
+** Leader Keybindings
+
+Let's add some commonly used functions into our leader keybinding provided by general.
+
+#+begin_src emacs-lisp
+(zamlz/leader-keys
+  ;;:keymaps 'org-roam-mode-map
+  "n"  '(:ignore t :which-key "org-roam")
+  ;; Standard Roam Operations
+  "nl" 'org-roam
+  "n/" 'org-roam-find-file
+  ;; Graph Operations
+  "ng" 'org-roam-graph
+  "nb" 'org-roam-db-build-cache
+  ;; Dired Quick Access
+  "nf" 'org-roam-find-directory
+  "nF" 'org-roam-dailies-find-directory
+  ;; Journal
+  "nj" 'org-roam-dailies-capture-today
+  "ny" 'org-roam-dailies-capture-yesterday
+  "nd" 'org-roam-dailies-capture-date
+  ;; Roam Header Modifiers
+  "nt" 'org-roam-tag-add
+  "na" 'org-roam-alias-add
+  )
+#+end_src
+
 ** Capture Templates
+
+Capture templates, not much to explain here.
 
 #+begin_src emacs-lisp
 (setq org-roam-capture-templates
@@ -122,6 +134,8 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 
 ** Daily Notes
 
+My setup for my daily notes. I don't really use this anymore though.
+
 #+begin_src emacs-lisp
 (setq org-roam-dailies-capture-templates
       `(("d" "default" entry
@@ -138,22 +152,13 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
         ))
 #+end_src
 
-** Quick Access
-
-#+begin_src emacs-lisp
-;; (zamlz/leader-keys
-;;   "n"  '(:ignore t :which-key "Org Roam Notes")
-;;   "nj" '(org-roam-dailies-capture-today :which-key "Roam Daily Capture Today")
-;;   "ny" '(org-roam-dailies-capture-yesterday :which-key "Roam Daily Capture Yesterday"))
-#+end_src
-
 ** Server
 
 =org-roam-server= provides a useful way to view my notes in a graph like view. I can also open them from this view as well.
 
 #+begin_src emacs-lisp
 (use-package org-roam-server
-  :ensure t
+  :after org-roam
   :custom
   (org-roam-server-host "127.0.0.1")
   (org-roam-server-port 8080
@@ -169,17 +174,8 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
   :config (org-roam-server-mode))
 #+end_src
 
-** Package Provide
+** Module Footer
 
 #+begin_src emacs-lisp
 (provide 'init-org-roam)
-#+end_src
-
-** Portage Setup
-
-Org roam also needs to have =sqlite= and =graphviz= for full functionality so let's make sure portage also installs that as well.
-
-#+begin_src conf
-dev-db/sqlite
-media-gfx/graphviz
 #+end_src
