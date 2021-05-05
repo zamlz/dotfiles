@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:18]
-#+LAST_MODIFIED: [2021-04-16 Fri 21:20:22]
+#+LAST_MODIFIED: [2021-05-04 Tue 16:38:31]
 
 Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
 
@@ -11,7 +11,8 @@ Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-projectile.el :comments both :mkdirp yes
 :END:
-** Projectile Core
+
+Load up =projectile= first.
 
 #+begin_src emacs-lisp
 (use-package projectile
@@ -26,7 +27,15 @@ Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
   :config (projectile-mode))
 #+end_src
 
-** Pacakge Provides
+Next let's make sure to add the commands we want into our leader keybindings.
+
+#+begin_src emacs-lisp
+(zamlz/leader-keys
+  "p" '(:ignore t :which-key "projectile")
+  "pp" '(projectile-switch-project :which-key "switch-project"))
+#+end_src
+
+Like always, make sure to provide this module.
 
 #+begin_src emacs-lisp
 (provide 'init-projectile)
