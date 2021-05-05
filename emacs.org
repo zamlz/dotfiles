@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-04 Tue 22:37:20]
+#+LAST_MODIFIED: [2021-05-04 Tue 23:37:13]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -626,8 +626,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 
 #+begin_src emacs-lisp
 (require 'init-org)
-(require 'init-org-babel)
-(require 'init-org-roam)
 #+end_src
 
 ** Load Remaining Modules
