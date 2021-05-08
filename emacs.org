@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-07 Fri 23:39:17]
+#+LAST_MODIFIED: [2021-05-08 Sat 11:40:07]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -324,22 +324,41 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 #+begin_src emacs-lisp
 (require 'init-evil)
 (require 'init-general)
+(require 'init-hydra)
 #+end_src
 
 *** Reorganize This
-**** Hydra
-
-Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
-
-#+begin_src emacs-lisp
-(use-package hydra)
-#+end_src
-
 **** Major Mode Hydra
 
 #+begin_src emacs-lisp
 (use-package major-mode-hydra
   :after hydra)
+#+end_src
+
+#+begin_src emacs-lisp
+(pretty-hydra-define jp-toggles
+  (:color amaranth :quit-key "q" :title jp-toggles--title)
+  ("Basic"
+   (("n" linum-mode "line number" :toggle t)
+    ("w" whitespace-mode "whitespace" :toggle t)
+    ("W" whitespace-cleanup-mode "whitespace cleanup" :toggle t)
+    ("r" rainbow-mode "rainbow" :toggle t)
+    ("L" page-break-lines-mode "page break lines" :toggle t))
+   "Highlight"
+   (("s" symbol-overlay-mode "symbol" :toggle t)
+    ("l" hl-line-mode "line" :toggle t)
+    ("x" highlight-sexp-mode "sexp" :toggle t)
+    ("t" hl-todo-mode "todo" :toggle t))
+   "UI"
+   (("d" jp-themes-toggle-light-dark "dark theme" :toggle jp-current-theme-dark-p))
+   "Coding"
+   (("p" smartparens-mode "smartparens" :toggle t)
+    ("P" smartparens-strict-mode "smartparens strict" :toggle t)
+    ("S" show-smartparens-mode "show smartparens" :toggle t)
+    ("f" flycheck-mode "flycheck" :toggle t))
+   "Emacs"
+   (("D" toggle-debug-on-error "debug on error" :toggle (default-value 'debug-on-error))
+    ("X" toggle-debug-on-quit "debug on quit" :toggle (default-value 'debug-on-quit)))))
 #+end_src
 
 **** Which Key
@@ -386,7 +405,6 @@ Adds a =Hydra= function to =General= to control the size of the font face.
 
 #+begin_src emacs-lisp
 (require 'init-ivy)
-(require 'init-calfw)
 #+end_src
 
 *** Reorganize This
@@ -467,6 +485,36 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
 #+begin_src emacs-lisp
 (use-package all-the-icons)
 
+;; https://github.com/jerrypnz/.emacs.d/blob/master/lisp/jp-icons.el
+(defun with-faicon (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-faicon icon :v-adjust (or v-adjust 0)
+                                  :height (or height 1)) " " str))
+
+(defun with-fileicon (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-fileicon icon :v-adjust (or v-adjust 0)
+                                    :height (or height 1)) " " str))
+
+(defun with-octicon (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-octicon icon :v-adjust (or v-adjust 0)
+                                   :height (or height 1)) " " str))
+
+(defun with-material (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-material icon :v-adjust (or v-adjust 0)
+                                    :height (or height 1)) " " str))
+
+(defun with-mode-icon (mode str &optional height nospace face)
+  (let* ((v-adjust (if (eq major-mode 'emacs-lisp-mode) 0.0 0.05))
+         (args     `(:height ,(or height 1) :v-adjust ,v-adjust))
+         (_         (when face
+                      (lax-plist-put args :face face)))
+         (icon     (apply #'all-the-icons-icon-for-mode mode args))
+         (icon     (if (symbolp icon)
+                       (apply #'all-the-icons-octicon "file-text" args)
+                     icon)))
+    (s-concat icon (if nospace "" " ") str)))
+#+end_src
+
+#+begin_src emacs-lisp
 (use-package doom-modeline
   :init (doom-modeline-mode 1)
   :custom ((doom-modeline-height 15)))
@@ -651,44 +699,4 @@ Emacs.color12: xcolor12
 Emacs.color13: xcolor13
 Emacs.color14: xcolor14
 Emacs.color15: xcolor15
-#+end_src
-
-* Portage Setup
-** Pacakges
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs :mkdirp yes :comments both
-:END:
-We need to ensure that emacs gets installed via the package set. This code block actually isn't needed because we need to already have emacs installed before we could even possibly have tangled this! None the less, we have it here for the sake of the package sets.
-
-#+begin_src conf
-app-editors/emacs
-#+end_src
-
-Currently the utilites needed for =mu4e= have to installed via the distro's pacakge manager so lets ensure that portage pulls the needed files in here.
-
-#+begin_src conf
-net-mail/isync
-net-mail/mu
-#+end_src
-
-** USE Flags
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/package.use/apps-emacs :mkdirp yes :comments both
-:END:
-
-#+begin_src conf
-app-editors/emacs cairo dbus dynamic-loading gui gif gpm harfbuzz imagemagick
-app-editors/emacs jpeg png sound svg threads xft tiff athena Xaw3d -gtk -motif
-app-editors/emacs xwidgets libxml2
-#+end_src
-
-#+begin_src conf
-net-mail/mu emacs
-#+end_src
-
-#+begin_src conf
-# required by app-editors/emacs-27.1-r2::gentoo
-# required by @world (argument)
-=app-emacs/emacs-common-gentoo-1.6-r4 gui
-=app-emacs/emacs-common-1.8 gui
 #+end_src

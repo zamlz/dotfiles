@@ -1,0 +1,30 @@
+#+TITLE: Hydra
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/abo-abo/hydra
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-08 Sat 11:33]
+#+LAST_MODIFIED: [2021-05-08 Sat 11:58:25]
+
+* Hydra
+
+#+DOWNLOADED: screenshot @ 2021-05-08 11:41:25
+[[file:data/2021-05-08_11-41-25_screenshot.png]]
+
+#+begin_quote
+/*Hydra & Hercules* by Unknown/
+
+/Once you summon the Hydra through the prefixed binding (the body + any one head), all heads can be called in succession with only a short extension./
+
+/The Hydra is vanquished once Hercules, any binding that isn't the Hydra's head, arrives. Note that Hercules, besides vanquishing the Hydra, will still serve his original purpose, calling his proper command. This makes the Hydra very seamless, it's like a minor mode that disables itself auto-magically./
+#+end_quote
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-hydra.el :comments both :mkdirp yes
+:END:
+
+#+begin_src emacs-lisp
+(use-package hydra)
+(provide 'init-hydra)
+#+end_src

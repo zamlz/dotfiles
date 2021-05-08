@@ -3,7 +3,15 @@
 #+ROAM_ALIAS: "General Leader Keybindings Definer"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-07 Fri 23:23]
-#+LAST_MODIFIED: [2021-05-07 Fri 23:35:53]
+#+LAST_MODIFIED: [2021-05-08 Sat 11:53:29]
+
+* General: More Conveniet Key Definitions in Emacs
+
+#+DOWNLOADED: screenshot @ 2021-05-08 11:50:15
+[[file:data/2021-05-08_11-50-15_screenshot.png]]
+#+begin_quote
+/*Napoleon Crossing the Alps* by Jacques-Louis David/
+#+end_quote
 
 =general.el= is a wrapper for the interface that lets users define keybindings for [[file:emacs.org][GNU/Emacs]].
 
