@@ -640,7 +640,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 #+begin_src emacs-lisp
 (require 'init-python)
 (require 'init-julia)
-(require 'init-ledger)
 (require 'init-markdown)
 #+end_src
 

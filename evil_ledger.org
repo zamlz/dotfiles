@@ -1,0 +1,28 @@
+#+TITLE: evil-ledger
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/atheriel/evil-ledger
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-08 Sat 15:40]
+#+LAST_MODIFIED: [2021-05-08 Sat 15:55:35]
+
+* Making Ledger-Mode more Evil
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-evil-ledger.el :comments both :mkdirp yes
+:END:
+
+=evil-ledger= is a package that provides [[file:evil.org][evil-mode]] support for [[file:ledger.org][ledger-mode]]. Make sure to configure both of those dependencies prior to configuring this pakcage. Make sure to add the hook to =ledger-mode= as well.
+
+#+begin_src emacs-lisp
+(require 'init-evil)
+(require 'init-ledger)
+(use-package evil-ledger
+  :after (ledger-mode evil)
+  :hook (ledger-mode . evil-ledger-mode))
+#+end_src
+
+Make sure to provide the module.
+
+#+begin_src emacs-lisp
+(provide 'init-evil-ledger)
+#+end_src

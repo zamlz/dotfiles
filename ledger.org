@@ -1,22 +1,25 @@
 #+TITLE: Ledger
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
+#+ROAK_KEY: https://www.ledger-cli.org/
+#+ROAM_ALIAS: ledger-mode
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-04-27 Tue 19:17:36]
+#+LAST_MODIFIED: [2021-05-08 Sat 15:58:11]
 
-Ledger is a command line accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
+* Ledger: Double-Entry Accounting System
+
+Ledger is a command line double-entry accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
 
 * Useful Resources
 - [[https://rolfschr.github.io/gswl-book/latest.html][Getting Started with Ledger]]
+
 * Tips and Tricks
-* Configuration
+* Package Install
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ledger.el :comments both :mkdirp yes
 :END:
-** Ledger Mode
 
-The following package provides a dedicated mode for editing ledger files.
+The following package provides a dedicated mode for editing ledger files with [[file:emacs.org][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package ledger-mode
@@ -28,14 +31,10 @@ The following package provides a dedicated mode for editing ledger files.
   (ledger-report-use-header-line t))
 #+end_src
 
-** Ledger Reports
+Configure my default report views.
 
 #+begin_src emacs-lisp
-(use-package ledger-reports
-  :ensure nil
-  :after ledger-mode
-  :custom
-  (ledger-reports
+(setq ledger-reports
    `(("Balance Sheet"
       "%(binary) balance --real [[ledger-mode-flags]] -f %(ledger-file) ^assets ^liabilities ^equity")
      ("Net Worth"
@@ -52,30 +51,10 @@ The following package provides a dedicated mode for editing ledger files.
       "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) ^%(account)")
      ("Payee Statement"
       "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) ^%(payee)")
-     )))
+     ))
 #+end_src
 
-** Evil Integration
-
-Adds some nice [[file:evil.org][evil-mode]] integration for ledger mode.
-
-#+begin_src emacs-lisp
-(use-package evil-ledger
-  :after (ledger-mode evil)
-  :hook (ledger-mode . evil-ledger-mode))
-#+end_src
-
-** Flycheck Integration
-
-Ledger files should always be syntax checked as much as possible so let's setup a [[file:flycheck.org][Flycheck Syntax Checking]] package for that.
-
-#+begin_src emacs-lisp
-(use-package flycheck-ledger
-  :after ledger-mode
-  :hook (ledger-mode . ledger-flymake-enable))
-#+end_src
-
-** Package Provides
+Make sure to provide the module.
 
 #+begin_src emacs-lisp
 (provide 'init-ledger)
