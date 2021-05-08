@@ -163,7 +163,8 @@ In projects, magit will look into the source code and try to create TODO entries
 Package provides integration to upstream GitHub, GitLab APIs and more. Setting this up would let me merge/review pull requests, create/address issues, etc. from within emacs.
 
 #+begin_src emacs-lisp
-(use-package forge)
+(use-package forge
+  :disabled)
 #+end_src
 
 ** Diff HL Mode
