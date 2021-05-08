@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://github.com/akermu/emacs-libvterm
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 08:27]
-#+LAST_MODIFIED: [2021-05-04 Tue 08:20:15]
+#+LAST_MODIFIED: [2021-05-07 Fri 23:53:56]
 
 =vterm= is a terminal emulator for [[file:emacs.org][GNU/Emacs]] that makes use of the =libvterm= C library. As this code is compiled, it is /much/ faster than existing term modes.
 
@@ -23,9 +23,10 @@
   (vterm-max-scrollback 5000))
 #+end_src
 
-Add this to my leader keys so I we can quickly jump to the terminal emulator whenever we want.
+Add this to my [[file:general_el.org][General Leader Keybindings Definer]] so I we can quickly jump to the terminal emulator whenever we want.
 
 #+begin_src emacs-lisp
+(require 'init-general)
 (zamlz/leader-keys
   "e" '(:ignore t :which-key "Exec Commands")
   "ee" '(vterm :which-key "Spawn vterm instance"))

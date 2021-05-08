@@ -1,0 +1,30 @@
+#+TITLE: general.el
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: "General Leader Keybindings Definer"
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-07 Fri 23:23]
+#+LAST_MODIFIED: [2021-05-07 Fri 23:35:53]
+
+=general.el= is a wrapper for the interface that lets users define keybindings for [[file:emacs.org][GNU/Emacs]].
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-general.el :comments both :mkdirp yes
+:END:
+
+Lets load up the =general.el= package here. With this package, we create a function that is called =zamlz/leader-keys= that lets us quickly define personal keybindings to a global prefix.
+
+#+begin_src emacs-lisp
+(use-package general
+  :config
+  (general-create-definer zamlz/leader-keys
+    :keymaps '(normal insert visual emacs)
+    :prefix "SPC"
+    :global-prefix "C-SPC"))
+#+end_src
+
+Make sure to provide the package as well.
+
+#+begin_src emacs-lisp
+(provide 'init-general)
+#+end_src

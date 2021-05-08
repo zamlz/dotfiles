@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-04 Tue 23:26:49]
+#+LAST_MODIFIED: [2021-05-07 Fri 23:55:13]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -47,7 +47,7 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 
 ** Leader Keybindings
 
-Let's add some commonly used functions into our leader keybinding provided by general.
+Let's add some commonly used functions into our [[file:general_el.org][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (zamlz/leader-keys

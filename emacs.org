@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-04 Tue 23:37:13]
+#+LAST_MODIFIED: [2021-05-07 Fri 23:39:17]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -323,22 +323,10 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 
 #+begin_src emacs-lisp
 (require 'init-evil)
+(require 'init-general)
 #+end_src
 
 *** Reorganize This
-**** General Keybinder
-
-This is an interesting package. It basically lets me define my own keybinding space and configure it to run various commands as I see fit.
-
-#+begin_src emacs-lisp
-(use-package general
-  :config
-  (general-create-definer zamlz/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC"))
-#+end_src
-
 **** Hydra
 
 Hydra lets me also define functions that can very quickly let me do various tasks in quick succession. I will be using this a lot of =general= I imagine.
