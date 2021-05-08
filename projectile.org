@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:18]
-#+LAST_MODIFIED: [2021-05-07 Fri 23:10:09]
+#+LAST_MODIFIED: [2021-05-07 Fri 23:19:40]
 
 Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
 
@@ -43,7 +43,7 @@ To make switching between project buffers easier, I've created a hydra for it.
   ("k" projectile-previous-project-buffer
    "previous-project-buffer")
   ("j" projectile-next-project-buffer
-   "next-project-buffer")
+   "next-project-buffer"))
 #+end_src
 
 Like always, make sure to provide this module.
