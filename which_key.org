@@ -4,14 +4,14 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 12:03]
-#+LAST_MODIFIED: [2021-05-08 Sat 12:12:11]
+#+LAST_MODIFIED: [2021-05-08 Sat 12:15:16]
 
 * which-key: Keybindings Popup Display
 
 #+DOWNLOADED: screenshot @ 2021-05-08 12:10:57
 [[file:data/my-personal-which-key-setup.png]]
 
-/=which-key= is a minor mode for Emacs that displays the key bindings following your currently entered incomplete command (a prefix) in a popup. For example, after enabling the minor mode if you enter =C-x= and wait for the default of 1 second the minibuffer will expand with all of the available key bindings that follow =C-x= (or as many as space allows given your settings). This includes prefixes like =C-x 8= which are shown in a different face. Screenshots of what the popup will look like are included below. =which-key= started as a rewrite of =guide-key-mode=, but the feature sets have diverged to a certain extent./
+/"=which-key= is a minor mode for [[file:emacs.org][GNU/Emacs]] that displays the key bindings following your currently entered incomplete command (a prefix) in a popup. For example, after enabling the minor mode if you enter =C-x= and wait for the default of 1 second the minibuffer will expand with all of the available key bindings that follow =C-x= (or as many as space allows given your settings). This includes prefixes like =C-x 8= which are shown in a different face. Screenshots of what the popup will look like are included below. =which-key= started as a rewrite of =guide-key-mode=, but the feature sets have diverged to a certain extent."/ - [[https://github.com/justbur][justbur]]
 
 * Package Install
 :PROPERTIES:
