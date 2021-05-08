@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-08 Sat 12:47:00]
+#+LAST_MODIFIED: [2021-05-08 Sat 16:02:06]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -633,14 +633,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 (require 'init-projectile)
 (require 'init-company)
 (require 'init-flycheck)
-#+end_src
-
-*** Languages
-
-#+begin_src emacs-lisp
-(require 'init-python)
-(require 'init-julia)
-(require 'init-markdown)
 #+end_src
 
 ** Org Mode Packages

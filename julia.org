@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE PROGRAMMING CONFIG
 #+ROAM_KEY: https://julialang.org/
 #+CREATED: [2021-03-27 Sat 09:16]
-#+LAST_MODIFIED: [2021-04-13 Tue 12:23:24]
+#+LAST_MODIFIED: [2021-05-08 Sat 15:35:48]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:18:28
 [[file:data/julia_lang_logo.png]]
@@ -25,73 +25,4 @@ The package below provides [[file:emacs.org][GNU/Emacs]] with a major mode for e
 
 #+begin_src emacs-lisp
 (provide 'init-julia)
-#+end_src
-
-* Portage Setup
-** Packages
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/sets/apps-dev-julia :mkdirp yes :comments both
-:END:
-
-#+begin_src conf
-dev-lang/julia
-#+end_src
-
-** USE Flags
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/package.use/apps-dev-julia :mkdirp yes :comments both
-:END:
-
-#+begin_src conf
-dev-lang/julia system-llvm
-#+end_src
-
-External USE Flag requirements
-
-#+begin_src conf
-# required by dev-lang/julia-1.4.0-r2::gentoo
-# required by @apps-devel
-=sci-libs/fftw-3.3.8-r1 threads
-=sci-libs/fftw-3.3.9 threads
-#+end_src
-
-#+begin_src conf
-# required by dev-lang/julia-1.5.2::gentoo
-# required by @apps-devel
-=sys-libs/zlib-1.2.11-r2 static-libs
-=sys-libs/zlib-1.2.11-r3 static-libs
-#+end_src
-
-** Accept Keywords
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/package.accept_keywords/apps-dev-julia :mkdirp yes :comments both
-:END:
-
-#+begin_src conf
-dev-lang/julia ~amd64
-#+end_src
-
-External Accept Keywords
-
-#+begin_src conf
-# required by dev-lang/julia-1.4.0-r2::gentoo
-=dev-libs/openspecfun-0.5.1 ~amd64
-#+end_src
-
-#+begin_src conf
-# required by dev-lang/julia-1.4.0-r2::gentoo
-=sci-libs/openlibm-0.7.0 ~amd64
-#+end_src
-
-#+begin_src conf
-# required by dev-lang/julia-1.6.0::gentoo
-# required by @apps-devel
-# required by @selected
-# required by @world (argument)
-=sci-mathematics/dsfmt-2.2.4 ~amd64
-#+end_src
-
-#+begin_src conf
-# required by dev-lang/julia-1.4.0-r2::gentoo
-=sci-visualization/gr-0.50.0-r1 ~amd64
 #+end_src

@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 11:33]
-#+LAST_MODIFIED: [2021-05-08 Sat 11:58:25]
+#+LAST_MODIFIED: [2021-05-08 Sat 16:03:59]
 
 * Hydra
 
@@ -18,6 +18,8 @@
 
 /The Hydra is vanquished once Hercules, any binding that isn't the Hydra's head, arrives. Note that Hercules, besides vanquishing the Hydra, will still serve his original purpose, calling his proper command. This makes the Hydra very seamless, it's like a minor mode that disables itself auto-magically./
 #+end_quote
+
+=hydra= is simply a package that provides lets us create configurable menus for quick access to commands for [[file:emacs.org][GNU/Emacs]]
 
 * Package Install
 :PROPERTIES:
