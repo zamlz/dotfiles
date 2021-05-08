@@ -1,9 +1,0 @@
-#+TITLE: Gentoo Linux
-#+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: Gentoo
-#+ROAM_KEY: https://www.gentoo.org/
-#+ROAM_TAGS: SOFTWARE CONFIG
-#+CREATED: [2021-04-13 Tue 12:27]
-#+LAST_MODIFIED: [2021-04-13 Tue 12:52:33]
-
-Gentoo linux is a source based linux distribution.
