@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-04-16 Fri 12:29:45]
+#+LAST_MODIFIED: [2021-05-08 Sat 13:11:41]
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:26:44
 [[file:data/2021-04-07_17-26-44_screenshot.png]]
@@ -138,35 +138,6 @@ Attributes let us assign file types to specific behaviours within git. In this c
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git.el :comments both :mkdirp yes
 :END:
-** Magit
-
-Magit is package for [[file:emacs.org][GNU/Emacs]] that provides easy and fast control over git repositories. I should probably add more bindings and configuration options but I need to explore the package for that. For now, it works pretty damn well out of the box.
-
-#+begin_src emacs-lisp
-(use-package magit
-  :hook (with-editor-mode . evil-insert-state)
-  :bind ("C-x g" . magit-status))
-#+end_src
-
-** Magit TODOs
-
-In projects, magit will look into the source code and try to create TODO entries for it in the status buffer
-
-#+begin_src emacs-lisp
-(use-package magit-todos
-  :after magit
-  :init (magit-todos-mode))
-#+end_src
-
-** Forge
-
-Package provides integration to upstream GitHub, GitLab APIs and more. Setting this up would let me merge/review pull requests, create/address issues, etc. from within emacs.
-
-#+begin_src emacs-lisp
-(use-package forge
-  :disabled)
-#+end_src
-
 ** Diff HL Mode
 
 [[https://github.com/dgutov/diff-hl][github:dgutov/diff-hl]] highlights uncommited changes on the left side of text buffers.
@@ -206,13 +177,4 @@ These are grouped together as you don't need to configure it, but it adds modes 
 
 #+begin_src emacs-lisp
 (provide 'init-git)
-#+end_src
-
-* Portage Setup
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/sets/apps-git :mkdirp yes :comments both
-:END:
-
-#+begin_src conf
-dev-vcs/git
 #+end_src

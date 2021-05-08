@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:18]
-#+LAST_MODIFIED: [2021-05-07 Fri 23:39:57]
+#+LAST_MODIFIED: [2021-05-08 Sat 12:44:59]
 
 Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
 
@@ -37,9 +37,10 @@ Next let's make sure to add the commands we want into our [[file:general_el.org]
          :which-key "projectile-next/prev-project-buffer"))
 #+end_src
 
-To make switching between project buffers easier, I've created a hydra for it.
+To make switching between project buffers easier, I've created a [[file:hydra.org][Hydra]] for it.
 
 #+begin_src emacs-lisp
+(require 'init-hydra)
 (defhydra hydra-projectile-switch-buffer (:timeout 4)
   "next/prev project buffers"
   ("k" projectile-previous-project-buffer

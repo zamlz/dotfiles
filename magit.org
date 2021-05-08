@@ -1,0 +1,24 @@
+#+TITLE: Magit
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://magit.vc/
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-08 Sat 12:58]
+#+LAST_MODIFIED: [2021-05-08 Sat 13:12:30]
+
+* Magit: A Git Porcelain inside Emacs
+
+#+DOWNLOADED: screenshot @ 2021-05-08 13:01:32
+[[file:data/magit-logo.png]]
+
+=magit= is a complete text based interface to [[file:git.org][Git]] from within [[file:emacs.org][GNU/Emacs]].
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-magit.el :comments both :mkdirp yes
+:END:
+
+#+begin_src emacs-lisp
+(use-package magit
+  :hook (with-editor-mode . evil-insert-state))
+#+end_src
