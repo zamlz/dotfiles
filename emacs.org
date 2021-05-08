@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-08 Sat 11:40:07]
+#+LAST_MODIFIED: [2021-05-08 Sat 12:09:32]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -359,20 +359,6 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
    "Emacs"
    (("D" toggle-debug-on-error "debug on error" :toggle (default-value 'debug-on-error))
     ("X" toggle-debug-on-quit "debug on quit" :toggle (default-value 'debug-on-quit)))))
-#+end_src
-
-**** Which Key
-
-Spawns a simple UI panel that shows available keybindings based on what keys I've pressed so far.
-
-#+begin_src emacs-lisp
-(use-package which-key
-  :init
-  (which-key-mode)
-  (which-key-setup-side-window-bottom)
-  ;;(which-key-setup-side-window-right)
-  :diminish which-key-mode
-  :custom (which-key-idle-delay 1.0))
 #+end_src
 
 **** Misc Shortcuts
