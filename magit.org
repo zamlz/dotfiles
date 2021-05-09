@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 12:58]
-#+LAST_MODIFIED: [2021-05-08 Sat 13:12:30]
+#+LAST_MODIFIED: [2021-05-08 Sat 19:42:18]
 
 * Magit: A Git Porcelain inside Emacs
 
@@ -21,4 +21,11 @@
 #+begin_src emacs-lisp
 (use-package magit
   :hook (with-editor-mode . evil-insert-state))
+#+end_src
+
+Somehow I always forget to keep providing these modules...
+
+
+#+begin_src emacs-lisp
+(provide 'init-magit)
 #+end_src
