@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-08 Sat 17:05:37]
+#+LAST_MODIFIED: [2021-05-08 Sat 19:41:14]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -84,11 +84,11 @@ Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 Make sure to populate the =lisp= and =site-lisp= directories.
 
 #+begin_src conf :tangle ~/.config/emacs/lisp/.keep :mkdirp yes
-PLACEHOLDER FILE FOR LISP DIR
+#PLACEHOLDER FILE FOR LISP DIR
 #+end_src
 
 #+begin_src conf :tangle ~/.config/emacs/site-lisp/.keep :mkdirp yes
-PLACEHOLDER FILE FOR SITE-LISP DIR
+#PLACEHOLDER FILE FOR SITE-LISP DIR
 #+end_src
 
 ** Internal
@@ -579,8 +579,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 
 #+begin_src emacs-lisp
 (dolist
-    (dir (directory-files (expand-file-name "lisp" user-emacs-directory)
-                          nil directory-files-no-dot-files-regexp))
+    (dir (directory-files (expand-file-name "lisp" user-emacs-directory) nil ".*\\.el"))
   (require (intern (s-replace-regexp "\\.el" "" dir))))
 #+end_src
 
