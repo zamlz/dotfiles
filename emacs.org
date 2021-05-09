@@ -569,16 +569,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (zamlz/set-font-faces))
 #+end_src
 
-** Integrated Development Environment
-*** Utilities
-
-#+begin_src emacs-lisp
-(require 'init-git)
-(require 'init-projectile)
-(require 'init-company)
-(require 'init-flycheck)
-#+end_src
-
 ** Org Mode Packages
 
 #+begin_src emacs-lisp
