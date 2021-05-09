@@ -1,0 +1,33 @@
+#+TITLE: org-appear
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-09 Sun 10:36]
+#+LAST_MODIFIED: [2021-05-09 Sun 10:42:59]
+
+* Org-Appear: Toggle Visibility of Hidden Org Elements
+
+=org-appear= provides a way to toggle various emphasis markers, links, subscripts, as the cursor appears over them. This helps keep the buffers very clean and tidy!
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-appear.el :comments both :mkdirp yes
+:END:
+
+Install the package and add the hook to [[file:org_mode.org][Org-mode]]. /I have disabled it until I find better fonts to use./
+
+#+begin_src emacs-lisp
+(use-package org-appear
+  :disabled
+  :after org
+  :hook (org-mode . org-appear-mode)
+  :custom
+  (org-appear-autoentities t)
+  (org-appear-autolinks t)
+  (org-appear-autoemphasis t)
+  (org-appear-autosubmarkers t))
+#+end_src
+
+#+begin_src emacs-lisp
+(provide 'init-org-appear)
+#+end_src

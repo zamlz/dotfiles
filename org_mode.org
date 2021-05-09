@@ -320,20 +320,6 @@ This package should let me quickly download images from web browsers and have im
   (org-download-method 'directory))
 #+end_src
 
-** Org Appear
-
-Added [[https://github.com/awth13/org-appear][github:awth13/org-appear]]
-
-#+begin_src emacs-lisp
-;; (use-package org-appear
-;;   :hook (org-mode . org-appear-mode)
-;;   :custom
-;;   (org-appear-autoentities t)
-;;   (org-appear-autolinks t)
-;;   (org-appear-autoemphasis t)
-;;   (org-appear-autosubmarkers t))
-#+end_src
-
 ** Org Last Modified Timestamp
 
 The following allows any =#+LAST_MODIFIED= headers to be updated on file-save.
