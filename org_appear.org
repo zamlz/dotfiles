@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-09 Sun 10:36]
-#+LAST_MODIFIED: [2021-05-09 Sun 14:06:02]
+#+LAST_MODIFIED: [2021-05-09 Sun 14:48:43]
 
 * Org-Appear: Toggle Visibility of Hidden Org Elements
 
@@ -29,11 +29,14 @@ Install the package and add the hook to [[file:org_mode.org][Org-mode]].  We mus
   :custom
   ;; These will be unhidden by the org-appear package
   (org-hide-emphasis-markers t)
+  (org-pretty-entities t)
   (org-appear-autoentities t)
-  (org-appear-autolinks t)
+  (org-appear-autolinks nil)
   (org-appear-autoemphasis t)
   (org-appear-autosubmarkers t))
 #+end_src
+
+Now we can get pretty stuff that looks like this, \alpha_3 and \Omega^{\gamma + 2} all without any actual latex.
 
 #+begin_src emacs-lisp
 (provide 'init-org-appear)

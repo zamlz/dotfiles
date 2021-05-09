@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-09 Sun 14:32:54]
+#+LAST_MODIFIED: [2021-05-09 Sun 14:41:25]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -119,6 +119,7 @@ We can configure =org-mode= font faces via a seperate function that we define. W
                       :inherit 'org-level-8))
 #+end_src
 
+Thanks to [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][this blog post]] from Protesliaos, I was able to properly configure variable pitched fonts in these =org-mode= buffers.
 #+begin_src emacs-lisp
 (defun zamlz/org-fixed-pitch-setup ()
   (interactive)
