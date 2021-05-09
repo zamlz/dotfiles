@@ -161,14 +161,6 @@ Need to configure this more
 (use-package git-timemachine)
 #+end_src
 
-** Git Messenger
-
-need to configure this more
-
-#+begin_src emacs-lisp
-(use-package git-messenger)
-#+end_src
-
 ** Git Modes
 
 These are grouped together as you don't need to configure it, but it adds modes for git related files so they won't be =Fundamental=.

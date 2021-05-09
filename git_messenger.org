@@ -1,0 +1,64 @@
+#+TITLE: git-messenger
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/emacsorphanage/git-messenger
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-08 Sat 19:05]
+#+LAST_MODIFIED: [2021-05-08 Sat 19:27:12]
+
+* Git-Messenger: Emacs Port of git-messenger.vim
+
+=git-messenger= is a simple package that provides a popup display for the [[file:git.org][Git]] commit message at the current line of an [[file:emacs.org][GNU/Emacs]] buffer.
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git-messenger.el :comments both :mkdirp yes
+:END:
+
+Let's ensure that [[file:magit.org][Magit]] is properly setup as we'll configure =git-messenger= to use it instead of [[file:git.org][Git]] directly.
+
+#+begin_src emacs-lisp
+(require 'init-magit)
+#+end_src
+
+Now we can load up the package
+
+#+begin_src emacs-lisp
+(use-package git-messenger)
+#+end_src
+
+Configure the popup to show a little more detail (Commit ID, Author)
+
+#+begin_src emacs-lisp
+(setq git-messenger:show-detail t)
+#+end_src
+
+Don't display output from the shell command but rather output directly from [[file:magit.org][Magit]].
+
+#+begin_src emacs-lisp
+(setq git-messenger:use-magit-popup t)
+#+end_src
+
+Unfortunately, =git-messenger= also displays PGP signatures of the commit message.
+
+#+begin_src emacs-lisp
+(defun zamlz/git-messenger-commit-msg-gpg-fix-hook (msg)
+  (with-temp-buffer
+    (insert msg)
+    (goto-char (point-min))
+    (when (search-forward "-----BEGIN PGP SIGNATURE-----" nil t)
+      (let ((start (line-beginning-position)))
+        (when (search-forward "-----END PGP SIGNATURE-----" nil t)
+          (delete-region start (point)))
+        (message (buffer-substring-no-properties (point-min) (point-max)))
+        (setq git-messenger:last-message
+              (buffer-substring-no-properties (point-min) (point-max)))))))
+
+(add-hook 'git-messenger:before-popup-hook 'zamlz/git-messenger-commit-msg-gpg-fix-hook)
+#+end_src
+
+Don't forget to provide the module.
+
+#+begin_src emacs-lisp
+(provide 'init-git-messenger)
+#+end_src
