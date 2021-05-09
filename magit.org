@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 12:58]
-#+LAST_MODIFIED: [2021-05-08 Sat 19:42:18]
+#+LAST_MODIFIED: [2021-05-09 Sun 10:05:35]
 
 * Magit: A Git Porcelain inside Emacs
 
@@ -24,7 +24,6 @@
 #+end_src
 
 Somehow I always forget to keep providing these modules...
-
 
 #+begin_src emacs-lisp
 (provide 'init-magit)
