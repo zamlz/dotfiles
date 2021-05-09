@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "General Leader Keybindings Definer"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-07 Fri 23:23]
-#+LAST_MODIFIED: [2021-05-08 Sat 11:53:29]
+#+LAST_MODIFIED: [2021-05-08 Sat 16:57:11]
 
 * General: More Conveniet Key Definitions in Emacs
 
@@ -20,15 +20,27 @@
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-general.el :comments both :mkdirp yes
 :END:
 
-Lets load up the =general.el= package here. With this package, we create a function that is called =zamlz/leader-keys= that lets us quickly define personal keybindings to a global prefix.
+Lets load up the =general.el= package here.
 
 #+begin_src emacs-lisp
-(use-package general
-  :config
-  (general-create-definer zamlz/leader-keys
-    :keymaps '(normal insert visual emacs)
-    :prefix "SPC"
-    :global-prefix "C-SPC"))
+(use-package general)
+#+end_src
+
+With this package, we create a function that is called =zamlz/leader-keys= that lets us quickly define personal keybindings to a global prefix.
+
+#+begin_src emacs-lisp
+(general-create-definer zamlz/leader-keys
+  :keymaps '(normal insert visual emacs)
+  :prefix "SPC"
+  :global-prefix "C-SPC")
+#+end_src
+
+Add a couple of useful keybindings here for fun. I'll have to properly organize this later. This also showcases how to use the predefined function above.
+
+#+begin_src emacs-lisp
+(zamlz/leader-keys
+ "t"  '(:ignore t :which-key "toggles")
+ "tt" '(counsel-load-theme :which-key "choose theme"))
 #+end_src
 
 Make sure to provide the package as well.

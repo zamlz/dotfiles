@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-08 Sat 16:02:06]
+#+LAST_MODIFIED: [2021-05-08 Sat 17:05:37]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -81,10 +81,14 @@ Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
 (update-load-path)
 #+end_src
 
-The =site-lisp= directory may not be populated. /(Do I even need this?)/
+Make sure to populate the =lisp= and =site-lisp= directories.
+
+#+begin_src conf :tangle ~/.config/emacs/lisp/.keep :mkdirp yes
+PLACEHOLDER FILE FOR LISP DIR
+#+end_src
 
 #+begin_src conf :tangle ~/.config/emacs/site-lisp/.keep :mkdirp yes
-#placeholder file to generate directory
+PLACEHOLDER FILE FOR SITE-LISP DIR
 #+end_src
 
 ** Internal
@@ -325,66 +329,6 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 (require 'init-evil)
 (require 'init-general)
 (require 'init-hydra)
-#+end_src
-
-*** Reorganize This
-**** Major Mode Hydra
-
-#+begin_src emacs-lisp
-(use-package major-mode-hydra
-  :after hydra)
-#+end_src
-
-#+begin_src emacs-lisp
-(pretty-hydra-define jp-toggles
-  (:color amaranth :quit-key "q" :title jp-toggles--title)
-  ("Basic"
-   (("n" linum-mode "line number" :toggle t)
-    ("w" whitespace-mode "whitespace" :toggle t)
-    ("W" whitespace-cleanup-mode "whitespace cleanup" :toggle t)
-    ("r" rainbow-mode "rainbow" :toggle t)
-    ("L" page-break-lines-mode "page break lines" :toggle t))
-   "Highlight"
-   (("s" symbol-overlay-mode "symbol" :toggle t)
-    ("l" hl-line-mode "line" :toggle t)
-    ("x" highlight-sexp-mode "sexp" :toggle t)
-    ("t" hl-todo-mode "todo" :toggle t))
-   "UI"
-   (("d" jp-themes-toggle-light-dark "dark theme" :toggle jp-current-theme-dark-p))
-   "Coding"
-   (("p" smartparens-mode "smartparens" :toggle t)
-    ("P" smartparens-strict-mode "smartparens strict" :toggle t)
-    ("S" show-smartparens-mode "show smartparens" :toggle t)
-    ("f" flycheck-mode "flycheck" :toggle t))
-   "Emacs"
-   (("D" toggle-debug-on-error "debug on error" :toggle (default-value 'debug-on-error))
-    ("X" toggle-debug-on-quit "debug on quit" :toggle (default-value 'debug-on-quit)))))
-#+end_src
-
-**** Misc Shortcuts
-
-These are just random shorts to emacs built-in commands that I'd like access to as a keybinding.
-
-#+begin_src emacs-lisp
-(zamlz/leader-keys
- "t"  '(:ignore t :which-key "toggles")
- "tt" '(counsel-load-theme :which-key "choose theme"))
-#+end_src
-
-**** Text Size Scaling
-
-Adds a =Hydra= function to =General= to control the size of the font face.
-
-#+begin_src emacs-lisp
-(defhydra hydra-text-scale (:timeout 4)
-  "scale text"
-  ("j" text-scale-increase "in")
-  ("k" text-scale-decrease "out")
-  ("f" nil "finished" :exit t))
-
-;; Add hydra func to our personal keybindings
-(zamlz/leader-keys
-  "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
 ** Interface

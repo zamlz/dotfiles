@@ -1,0 +1,43 @@
+#+TITLE: major-mode-hydra
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/jerrypnz/major-mode-hydra.el
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-08 Sat 17:00]
+#+LAST_MODIFIED: [2021-05-08 Sat 17:10:29]
+
+* Major Mode Hydra and Pretty Hydra
+
+A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] menus for specific meajor-modes in [[file:emacs.org][GNU/Emacs]].
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-major-mode-hydra.el :comments both :mkdirp yes
+:END:
+
+Ensure that [[file:hydra.org][Hydra]] is configured first.
+
+#+begin_src emacs-lisp
+(require 'init-hydra)
+#+end_src
+
+Now we can configure this package.
+
+#+begin_src emacs-lisp
+(use-package major-mode-hydra
+  :after hydra)
+#+end_src
+
+We also want to be able to access the =major-mode-hydra= menu as easily as possible so let's add that to our [[file:general_el.org][General Leader Keybindings Definer]].
+
+#+begin_src emacs-lisp
+(require 'init-general)
+(zamlz/leader-keys
+  "SPC" 'major-mode-hydra)
+#+end_src
+
+Make sure to provide this module
+
+#+begin_src emacs-lisp
+(provide 'init-major-mode-hydra)
+#+end_src
