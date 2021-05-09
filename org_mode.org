@@ -358,12 +358,3 @@ The following allows any =#+LAST_MODIFIED= headers to be updated on file-save.
 #+begin_src emacs-lisp
 (provide 'init-org)
 #+end_src
-
-* Portage Setup
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/sets/apps-emacs-org-mode :mkdirp yes :comments both
-:END:
-
-#+begin_src conf
-app-text/dvipng
-#+end_src
