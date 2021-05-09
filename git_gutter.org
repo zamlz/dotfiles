@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-09 Sun 01:27]
-#+LAST_MODIFIED: [2021-05-09 Sun 01:34:07]
+#+LAST_MODIFIED: [2021-05-09 Sun 09:11:17]
 
 * Git-Gutter: Emacs Port of the Sublime Package, GitGutter
 
@@ -19,4 +19,8 @@
 (use-package git-gutter
   :disabled
   :init (git-gutter-mode))
+#+end_src
+
+#+begin_src emacs-lisp
+(provide 'init-git-gutter)
 #+end_src
