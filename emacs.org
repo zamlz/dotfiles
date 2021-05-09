@@ -1,10 +1,10 @@
 #+TITLE: GNU/Emacs
-#+AUTHOR: Amlesh Sivanantham (zaml)
+#+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS:
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-08 Sat 19:41:14]
+#+LAST_MODIFIED: [2021-05-09 Sun 13:49:00]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -62,7 +62,7 @@ Supposedly makes the startup a bit more effecient. We also revert the changes to
 
 ** Update Load Path
 
-Optimize: Force "lisp"" and "site-lisp" at the head to reduce the startup time.
+Optimize: Force =lisp= and =site-lisp= at the head to reduce the startup time.
 
 #+begin_src emacs-lisp
 (defun update-load-path (&rest _)
@@ -368,19 +368,12 @@ I have a lot of fonts commented out right now because I can't decide on which on
 
 #+begin_src emacs-lisp
 (defun zamlz/set-font-faces ()
-  ;; Set default face
-  ;; (set-face-attribute 'default nil :font "xos4 Terminus" :height 110)
-  ;; (set-face-attribute 'default nil :font "Fira Code" :height 100)
-  ;; (set-face-attribute 'default nil :font "Dina" :height 100)
-  (set-face-attribute 'default nil :font "Iosevka Term" :height 100)
-  ;; (set-face-attribute 'default nil :font "Source Code Pro" :height 100)
-
-  ;; Set the fixed pitch face
-  ;; (set-face-attribute 'fixed-pitch nil :font "xos4 Terminus" :height 100)
-
+  (interactive)
+  ;; Set default and fixed pitch face
+  (dolist (face '(default fixed-pitch))
+    (set-face-attribute `,face nil :font "Iosevka Term" :height 100))
   ;; Set the variable pitch face
-  ;; (set-face-attribute 'variable-pitch nil :font "Fira Code" :height 100)
-  )
+  (set-face-attribute 'variable-pitch nil :font "DejaVu Serif" :height 100))
 #+end_src
 
 **** Helpful Help Commands

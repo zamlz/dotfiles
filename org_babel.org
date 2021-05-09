@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-05-04 Tue 23:35:16]
+#+LAST_MODIFIED: [2021-05-09 Sun 13:57:50]
 
 #+DOWNLOADED: screenshot @ 2021-04-02 10:23:00
 [[file:data/tower_of_babel.png]]
@@ -19,6 +19,7 @@
 * Useful Resources
 - [[https://org-babel.readthedocs.io/en/latest/][Org Babel Reference Card]]
 - [[https://orgmode.org/worg/org-contrib/babel/languages/index.html][List of Supported Languages]]
+
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-babel.el :comments both :mkdirp yes
@@ -34,12 +35,12 @@ Make sure that we load in [[file:org_mode.org][Org-mode]] first just to be safe.
 Now we confiugre some of the parameters for =babel=.
 
 #+begin_src emacs-lisp
-(setq org-confirm-babel-evaluate nil
-  org-src-fontify-natively t
-  org-src-strip-leading-and-trailing-blank-lines t
-  org-src-preserve-indentation nil
-  org-src-tab-acts-natively t
-  org-edit-src-content-indentation 0)
+(setq org-confirm-babel-evaluate nil)
+(setq org-src-fontify-natively t)
+(setq org-src-strip-leading-and-trailing-blank-lines t)
+(setq org-src-preserve-indentation nil)
+(setq org-src-tab-acts-natively t)
+(setq org-edit-src-content-indentation 0)
 #+end_src
 
 ** Languages
@@ -57,6 +58,26 @@ Now we confiugre some of the parameters for =babel=.
 ** Structure Tempalates
 
 I use this only for org-babel at the moment, but maybe there is more to this package.
+
+|--------------------+--------------------|
+| Structure Template | Template Expansion |
+|--------------------+--------------------|
+| cf                 | src conf           |
+| py                 | src python         |
+| el                 | src emacs-lisp     |
+| sh                 | src shell          |
+| a                  | export ascii       |
+| c                  | center             |
+| C                  | comment            |
+| e                  | example            |
+| E                  | export             |
+| h                  | export html        |
+| l                  | export latex       |
+| q                  | quote              |
+| s                  | src                |
+| v                  | verse              |
+|--------------------+--------------------|
+
 
 #+begin_src emacs-lisp
 ;; Setup structure templates for org-babel

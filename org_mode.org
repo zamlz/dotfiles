@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-09 Sun 10:39:22]
+#+LAST_MODIFIED: [2021-05-09 Sun 14:03:59]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -34,8 +34,10 @@ I should probably split this bloody mess up.
   :hook
   (org-mode    . org-indent-mode)
   (org-mode    . org-make-toc-mode)
+  (org-mode    . variable-pitch-mode)
   (org-mode    . zamlz/org-mode-setup)
   (org-mode    . zamlz/org-level-face-setup)
+  (org-mode    . zamlz/org-fixed-pitch-setup)
   (before-save . zamlz/update-org-modified-property-hook)
   :bind (:map org-mode-map
               ("C-M-h" . org-previous-link)
@@ -46,8 +48,6 @@ I should probably split this bloody mess up.
   (org-agenda-files (list org-directory))
   ;; Add some nice visuals changes
   (org-ellipsis " ▾")
-  ;; These will be unhidden by the org-appear package
-  (org-hide-emphasis-markers nil)
   ;; This is so that the imenu displays all levels in ivy
   (org-imenu-depth 6)
   ;; dont use C-c C-o for opening links REEEEEEEEEEEE
@@ -84,7 +84,6 @@ These are some hooks that we would like to run when =org-mode= is started.
 
 #+begin_src emacs-lisp
 (defun zamlz/org-mode-setup ()
-  ;; (variable-pitch-mode 1)
   (visual-line-mode +1)
   (setq evil-auto-indent nil)
   (setq fill-column 10000))
@@ -118,6 +117,23 @@ We can configure =org-mode= font faces via a seperate function that we define. W
                       :height 3.074
                       :foreground 'unspecified
                       :inherit 'org-level-8))
+#+end_src
+
+#+begin_src emacs-lisp
+(defun zamlz/org-fixed-pitch-setup ()
+  (interactive)
+  (dolist (face '(org-block
+                  org-block-begin-line
+                  org-code
+                  org-drawer
+                  org-special-keyword
+                  org-property-value
+                  org-document-info-keyword
+                  org-meta-line
+                  org-table
+                  org-verbatim))
+    (set-face-attribute `,face nil :inherit 'fixed-pitch))
+  (set-face-attribute 'org-block-end-line nil :inherit 'org-block-begin-line))
 #+end_src
 
 ** Task Categories
