@@ -1,0 +1,22 @@
+#+TITLE: git-gutter
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/emacsorphanage/git-gutter
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-09 Sun 01:27]
+#+LAST_MODIFIED: [2021-05-09 Sun 01:34:07]
+
+* Git-Gutter: Emacs Port of the Sublime Package, GitGutter
+
+=git-gutter= is a package that provides live [[file:git.org][Git]] diff information in the current [[file:emacs.org][GNU/Emacs]] buffer that is being edited.
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git-gutter.el :comments both :mkdirp yes
+:END:
+
+#+begin_src emacs-lisp
+(use-package git-gutter
+  :disabled
+  :init (git-gutter-mode))
+#+end_src

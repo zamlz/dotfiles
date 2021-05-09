@@ -1,10 +1,10 @@
 #+TITLE: Git
 #+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://git-scm.com/
 #+ROAM_ALIAS:
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
-#+ROAM_KEY: https://git-scm.com/
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-05-08 Sat 19:10:30]
+#+LAST_MODIFIED: [2021-05-09 Sun 01:52:10]
 
 * Git: The Stupod Content Tracker
 
@@ -144,24 +144,6 @@ Attributes let us assign file types to specific behaviours within git. In this c
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git.el :comments both :mkdirp yes
 :END:
-** Diff HL Mode
-
-[[https://github.com/dgutov/diff-hl][github:dgutov/diff-hl]] highlights uncommited changes on the left side of text buffers.
-
-#+begin_src emacs-lisp
-(use-package diff-hl
-  :init (global-diff-hl-mode 1))
-#+end_src
-
-** Git Time Machine
-
-Need to configure this more
-
-#+begin_src emacs-lisp
-(use-package git-timemachine)
-#+end_src
-
-** Git Modes
 
 These are grouped together as you don't need to configure it, but it adds modes for git related files so they won't be =Fundamental=.
 
@@ -170,8 +152,6 @@ These are grouped together as you don't need to configure it, but it adds modes 
 (use-package gitignore-mode)
 (use-package gitattributes-mode)
 #+end_src
-
-** Package Provider
 
 #+begin_src emacs-lisp
 (provide 'init-git)

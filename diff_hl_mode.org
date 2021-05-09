@@ -1,0 +1,35 @@
+#+TITLE: diff-hl
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/dgutov/diff-hl
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-09 Sun 01:34]
+#+LAST_MODIFIED: [2021-05-09 Sun 01:51:22]
+
+* Diff-HL: Highlight Uncommited Changes
+
+This package provides a uncommited changes from with [[file:emacs.org][GNU/Emacs]] buffers regardless of which version control system is used.
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-diff-hl.el :comments both :mkdirp yes
+:END:
+
+#+begin_src emacs-lisp
+(use-package diff-hl
+  :init
+  (global-diff-hl-mode)
+  (global-diff-hl-show-hunk-mouse-mode)
+  (diff-hl-flydiff-mode))
+#+end_src
+
+If we are using a version of [[file:magit.org][Magit]] that is greater than =2.4.0=, we need to also add the following hooks.
+
+#+begin_src emacs-lisp
+(add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)
+(add-hook 'magit-post-refresh-hook 'diff-hl-magit-post-refresh)
+#+end_src
+
+#+begin_src emacs-lisp
+(provide 'init-diff-hl)
+#+end_src

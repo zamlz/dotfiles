@@ -1,0 +1,26 @@
+#+TITLE: git-timemachine
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://gitlab.com/pidu/git-timemachine
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-09 Sun 01:11]
+#+LAST_MODIFIED: [2021-05-09 Sun 01:18:29]
+
+* Git-Timemachine: Step through historic versions of git controlled files
+
+This package lets us step through historic versions of files that have been checked into [[file:git.org][Git]] as an interactive [[file:emacs.org][GNU/Emacs]] buffer.
+
+* Package Install
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git-timemachine.el :comments both :mkdirp yes
+:END:
+
+There really isn't much to configure in this package. It's defaults are already what I need.
+
+#+begin_src emacs-lisp
+(use-package git-timemachine)
+#+end_src
+
+#+begin_src emacs-lisp
+(provide 'init-git-timemachine)
+#+end_src
