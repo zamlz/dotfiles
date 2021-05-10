@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-03 Mon 21:17]
-#+LAST_MODIFIED: [2021-05-04 Tue 08:21:28]
+#+LAST_MODIFIED: [2021-05-09 Sun 22:34:26]
 
 This is configuration file for the interactive session for [[file:zsh.org][Zsh]].
 
@@ -43,11 +43,10 @@ autoload -Uz compinit && compinit -d "$HOME/.config/zsh/compdump"
 autoload -U bashcompinit && bashcompinit
 #+end_src
 
-** Source Aliases and Functions
+** Source Aliases
 
 #+begin_src shell
 source $HOME/.config/zsh/aliases.zsh
-source $HOME/.config/zsh/functions.zsh
 #+end_src
 
 ** Configure SSH & GnuPG Variables
