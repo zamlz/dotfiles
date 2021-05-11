@@ -4,7 +4,7 @@
 #+ROAM_TAGS: SOFTWARE CONFIG
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 09:53]
-#+LAST_MODIFIED: [2021-04-13 Tue 11:29:18]
+#+LAST_MODIFIED: [2021-05-11 Tue 08:38:26]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:55:03
 [[file:data/latex_lang_logo.png]]
@@ -13,47 +13,3 @@ LaTeX is a powerful typesetting system. Although I've used it for many years, it
 
 * Useful Resources
 - [[https://en.wikibooks.org/wiki/LaTeX][LaTeX WikiBooks Pages]]
-
-* Portage Setup
-** Package
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/sets/apps-latex :mkdirp yes :comments both
-:END:
-
-\(\LaTeX\) is typically installed via a texlive distribution. Portage provides one below.
-
-#+begin_src conf
-app-text/texlive
-#+end_src
-
-** USE Flags
-:PROPERTIES:
-:header-args:conf: :tangle ~/.config/portage/package.use/apps-latex :mkdirp yes :comments both
-:END:
-
-#+begin_src conf
-app-text/texlive graphics music science xetex
-#+end_src
-
-External USE Flag requirements needed for \(\LaTeX\).
-
-#+begin_src conf
-# required by app-text/texlive-core-2020-r12::gentoo
-# required by app-text/texlive-2020-r9::gentoo[l10n_sk,l10n_cs]
-=app-text/texlive-core-2020-r12 cjk xetex
-#+end_src
-
-#+begin_src conf
-# required by app-text/texlive-core-2020-r12::gentoo
-# required by app-text/texlive-2020-r9::gentoo
-=media-libs/gd-2.3.0 png jpeg fontconfig truetype
-=media-libs/gd-2.3.1 png jpeg fontconfig truetype
-#+end_src
-
-#+begin_src conf
-# required by app-text/texlive-core-2020-r12::gentoo
-# required by app-text/texlive-2020-r9::gentoo
-=media-libs/harfbuzz-2.6.7 icu
-=media-libs/harfbuzz-2.7.2 icu
-=media-libs/harfbuzz-2.7.4 icu
-#+end_src
