@@ -1,10 +1,10 @@
 #+TITLE: Picom Compositor
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: compton
+#+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/yshui/picom
 #+CREATED: [2021-03-29 Mon 19:22]
-#+LAST_MODIFIED: [2021-05-11 Tue 09:19:09]
+#+LAST_MODIFIED: [2021-05-11 Tue 09:44:29]
 
 Compton is a compositor for the [[file:xorg.org][Xorg X11 Window System]].
 
