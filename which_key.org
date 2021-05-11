@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 12:03]
-#+LAST_MODIFIED: [2021-05-08 Sat 12:36:45]
+#+LAST_MODIFIED: [2021-05-11 Tue 11:05:28]
 
 * which-key: Keybindings Popup Display
 
@@ -26,14 +26,14 @@
 
 There are a couple of different setup modes that we can configure:
 
-|--------------------------------------------+---------------------------------------------|
-| Which Key Setup Mode                       | Description                                 |
-|--------------------------------------------+---------------------------------------------|
-| =which-key-setup-side-window-bottom=       | Popup which-key window at the bottom        |
-| =which-key-setup-side-window-right=        | Popup which-key window at the top           |
-| =which-key-setup-side-window-right-bottom= | Favor right side, but if too big use bottom |
-| =which-key-setup-minibuffer=               | Use minibuffer for which-key window         |
-|--------------------------------------------+---------------------------------------------|
+|------------------------------------------+---------------------------------------------|
+| Which Key Setup Mode                     | Description                                 |
+|------------------------------------------+---------------------------------------------|
+| which-key-setup-side-window-bottom       | Popup which-key window at the bottom        |
+| which-key-setup-side-window-right        | Popup which-key window at the top           |
+| which-key-setup-side-window-right-bottom | Favor right side, but if too big use bottom |
+| which-key-setup-minibuffer               | Use minibuffer for which-key window         |
+|------------------------------------------+---------------------------------------------|
 
 #+begin_src emacs-lisp
 (which-key-setup-side-window-bottom)
