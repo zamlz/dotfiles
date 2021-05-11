@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-09 Sun 14:41:25]
+#+LAST_MODIFIED: [2021-05-10 Mon 14:08:47]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -185,19 +185,6 @@ The tasks colors function needs to be called. Unfortunately, there is an issue w
 (zamlz/configure-org-todo-keyword-faces)
 #+end_src
 
-** Better Heading Bullets
-
-The default bullets are asteriks and thats just plain ugly. We change it to some nice unicode characters. I should also look into =org-superstar-mode= as well at some point.
-
-#+begin_src emacs-lisp
-(use-package org-bullets
-  :after org
-  :hook (org-mode . org-bullets-mode)
-  :custom
-  (org-bullets-bullet-list '("◉" "●" "○" "●" "○" "●" "○")))
-  ;; (org-bullets-bullet-list '("◇")))
-#+end_src
-
 ** Center Org buffers
 
 Center the org buffers and remove line numbers to reduce visual clutter.
@@ -214,7 +201,6 @@ Center the org buffers and remove line numbers to reduce visual clutter.
 #+end_src
 
 ** Org Keybindings
-*** Org Mode Keybindings
 
 Just quick access to my most used org-mode functions via the [[file:general_el.org][General Leader Keybindings Definer]].
 
