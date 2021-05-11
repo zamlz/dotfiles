@@ -4,9 +4,9 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-05-09 Sun 01:52:10]
+#+LAST_MODIFIED: [2021-05-10 Mon 14:12:10]
 
-* Git: The Stupod Content Tracker
+* Git: The Stupid Content Tracker
 
 #+begin_quote
 No, really, look at the =man= page, thats the full title!
