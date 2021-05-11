@@ -1,16 +1,16 @@
-#+TITLE: Compton Compositor
+#+TITLE: Picom Compositor
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS: compton
 #+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://github.com/chjj/compton
+#+ROAM_KEY: https://github.com/yshui/picom
 #+CREATED: [2021-03-29 Mon 19:22]
-#+LAST_MODIFIED: [2021-04-01 Thu 22:14:58]
+#+LAST_MODIFIED: [2021-05-11 Tue 09:19:09]
 
 Compton is a compositor for the [[file:xorg.org][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:
-:header-args:conf: :tangle ~/.config/compton.conf :mkdirp yes :comments both
+:header-args:conf: :tangle ~/.config/picom/picom.conf :mkdirp yes :comments both
 :END:
 [[http://9m.no/ꪯ鵞][Thank you code_nomad!]] Copied a lot of this person's config...
 ** Backend
@@ -42,36 +42,12 @@ GLX backend: Avoid rebinding pixmap on window damage. Probably could improve per
 # glx-no-rebind-pixmap = true;
 #+end_src
 
-GLX backend: GLX buffer swap method we assume. Could be undefined (0), copy (1), exchange (2), 3-6, or buffer-age (-1). undefined is the slowest and the safest, and the default value. copy is fastest, but may fail on some drivers, 2-6 are gradually slower but safer (6 is still faster than 0). Usually, double buffer means 2, triple buffer means 3. buffer-age means auto-detect using GLX_EXT_buffer_age, supported by some drivers. Useless with --glx-use-copysubbuffermesa. Partially breaks --resize-damage. Defaults to undefined.
-
-#+begin_src conf
-glx-swap-method = "undefined";
-#+end_src
-
 ** Shadows
 
 Enabled client-side shadows on windows.
 
 #+begin_src conf
 shadow = true;
-#+end_src
-
-Don't draw shadows on DND windows.
-
-#+begin_src conf
-no-dnd-shadow = true;
-#+end_src
-
-Avoid drawing shadows on dock/panel windows.
-
-#+begin_src conf
-no-dock-shadow = true;
-#+end_src
-
-Zero the part of the shadow's mask behind the window. Fix some weirdness with ARGB windows.
-
-#+begin_src conf
-clear-shadow = true;
 #+end_src
 
 The blur radius for shadows. (default 12) The x offset for shadows. (default -15) The y offset for shadows. (default -15)
@@ -132,12 +108,10 @@ shadow-ignore-shaped = false;
 Define opacity
 
 #+begin_src conf
-menu-opacity = 1;
 inactive-opacity = 1;
 active-opacity = 1;
 frame-opacity = 1;
 inactive-opacity-override = false;
-alpha-step = 0.06;
 #+end_src
 
 Dim inactive windows. (0.0 - 1.0)
@@ -264,26 +238,13 @@ Set VSync method. VSync methods currently available:
 /(Note some VSync methods may not be enabled at compile time.)/
 
 #+begin_src conf
-vsync = "opengl-swc";
+vsync = true;
 #+end_src
 
 Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate tearing. Reported to have no effect, though.
 
 #+begin_src conf
-
 dbe = false;
-#+end_src
-
-Painting on X Composite overlay window. Recommended.
-
-#+begin_src conf
-paint-on-overlay = true;
-#+end_src
-
-Limit compton to repaint at most once every 1 / refresh_rate second to boost performance. This should not be used with =--vsync drm/opengl/opengl-oml= as they essentially does =--sw-opti's= job already, unless you wish to specify a lower refresh rate than the actual value.
-
-#+begin_src conf
-sw-opti = true;
 #+end_src
 
 Unredirect all windows if a full-screen opaque window is detected, to maximize performance for full-screen windows, like games. Known to cause flickering when redirecting/unredirecting windows. paint-on-overlay may make the flickering less obvious.

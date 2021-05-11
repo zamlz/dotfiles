@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.x.org/wiki/
 #+CREATED: [2021-03-29 Mon 19:39]
-#+LAST_MODIFIED: [2021-05-02 Sun 17:27:36]
+#+LAST_MODIFIED: [2021-05-11 Tue 09:20:54]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:46:34
 [[file:data/xorg_logo.png]]
@@ -84,34 +84,20 @@ LOGGER=$(get_logger xorg.wminit)
 $LOGGER "Initializing window manager common utilities"
 #+end_src
 
-Start compton if a config file exists. /Looks crisp as hell!/
+Start [[file:picom.org][Picom Compositor]] if a config file exists. /Looks crisp as hell!/
 
 #+begin_src shell
-pkill -x compton
-if [ -f "$HOME/.config/compton.conf" ]; then
-    $LOGGER "Starting Compton"
-    compton &
+pkill -x picom
+if [ -f "$HOME/.config/picom/picom.conf" ]; then
+    $LOGGER "Starting Picom"
+    picom &
 fi
 #+end_src
 
-Make sure xrdb loads up the xresouces file
+Make sure xrdb loads up the [[file:xresources.org][Xresources]] file
 
 #+begin_src shell
 xrdb -I$HOME $HOME/.Xresources
-#+end_src
-
-I had =xst= terminal installed as it was a lightweight alternative to urxvt. If I ever do continue using it, make sure it gets the config reset switch. *NOTE:* this wil fail if the colorscheme isn't properly set!
-
-#+begin_src shell
-pkill -USR1 xst
-#+end_src
-
-If I was still using =rxvt-unicode='s daemon, this would be uncommented...
-
-#+begin_src shell
-# if [ -z "$(pgrep urxvtd)" ]; then
-#     urxvtd -q -o -f
-# fi
 #+end_src
 
 *Very Important!* Make sure we start the emacs daemon here! But do not start it if it's already running.
