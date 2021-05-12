@@ -346,6 +346,15 @@ The following allows any =#+LAST_MODIFIED= headers to be updated on file-save.
           (insert (format-time-string " [%Y-%m-%d %a %H:%M:%S]") ))))))
 #+end_src
 
+** Custom Link Types
+
+The variable =org-link-abbrev-alist= provides us a powerful way of defining our own link types to be used within org-mode. Let's define one for Google Maps below. Now to use it, we simply need to type =[[gmap:UCSC, Santa Cruz][UCSC]]= and we'll have a link open up to google maps!
+
+#+begin_src emacs-lisp
+(setq org-link-abbrev-alist
+      '(("gmap" . "http://maps.google.com/maps?q=%s")))
+#+end_src
+
 ** Package Provider
 
 #+begin_src emacs-lisp
