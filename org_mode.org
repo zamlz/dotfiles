@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-10 Mon 14:08:47]
+#+LAST_MODIFIED: [2021-05-11 Tue 20:17:19]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -285,7 +285,7 @@ Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] in
 
 ** Org Latex FragTog
 
-[[https://github.com/io12/org-fragtog][github:io12/org-fragtog]] basically toggles  latex fragements when you hover over them. Here is some inline latex to test it with: \(\int_0^1\frac{x^2}{3}\). And now where is some more but on a seperate line:
+[[https://github.com/io12/org-fragtog][github:io12/org-fragtog]] basically toggles latex fragements when you hover over them. Here is some inline latex to test it with: \(\int_0^1\frac{x^2}{3}\). And now where is some more but on a seperate line:
 
 \[\sqrt{\beta^2+5}-\sum_{\phi=1}^\infty \frac{x^\phi-1}{\Gamma(a)}\]
 
