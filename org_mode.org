@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-11 Tue 20:17:19]
+#+LAST_MODIFIED: [2021-05-12 Wed 00:36:39]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -33,7 +33,6 @@ I should probably split this bloody mess up.
   :ensure org-plus-contrib
   :hook
   (org-mode    . org-indent-mode)
-  (org-mode    . org-make-toc-mode)
   (org-mode    . variable-pitch-mode)
   (org-mode    . zamlz/org-mode-setup)
   (org-mode    . zamlz/org-level-face-setup)
@@ -266,7 +265,9 @@ Org mode template definitions in the doct format
 Dynamically make table of contents in org files
 
 #+begin_src emacs-lisp
-(use-package org-make-toc)
+(use-package org-make-toc
+  :after org
+  :hook (org-mode . org-make-toc-mode))
 #+end_src
 
 ** LaTeX Inline Preview
