@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-12 Wed 00:36:39]
+#+LAST_MODIFIED: [2021-05-12 Wed 07:44:38]
 #+STATUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
@@ -302,17 +302,17 @@ Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] in
 Enables habit tracking in =org-mode= via =org-habit=.
 
 #+begin_src emacs-lisp
-
-  (use-package org-habit
-    :ensure nil
-    :after org
-    :init (add-to-list 'org-modules 'org-habit t)
-    :custom
-    (org-habit-preceding-days 31)
-    (org-habit-following-days 3)
-    (org-habit-show-habits-only-for-today t)
-    (org-habit-show-all-today nil)
-    (org-habit-show-done-always-green nil))
+(use-package org-habit
+  :ensure nil
+  :after org
+  :init (add-to-list 'org-modules 'org-habit t)
+  :custom
+  (org-habit-graph-column 40)
+  (org-habit-preceding-days 28)
+  (org-habit-following-days 7)
+  (org-habit-show-habits-only-for-today t)
+  (org-habit-show-all-today t)
+  (org-habit-show-done-always-green t))
 #+end_src
 
 ** Org Download
