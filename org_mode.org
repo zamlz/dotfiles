@@ -119,6 +119,7 @@ We can configure =org-mode= font faces via a seperate function that we define. W
 #+end_src
 
 Thanks to [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][this blog post]] from Protesliaos, I was able to properly configure variable pitched fonts in these =org-mode= buffers.
+
 #+begin_src emacs-lisp
 (defun zamlz/org-fixed-pitch-setup ()
   (interactive)
@@ -277,11 +278,12 @@ Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] in
 /Need to figure out how to configure the size of the generated latex image./
 
 #+begin_src emacs-lisp
-(setq org-startup-with-latex-preview t)
-(setq org-highlight-latex-and-related '(native script entities))
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
-(setq org-preview-latex-image-directory  "/tmp/ltximg/")
-(add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t)))
+  (setq org-startup-with-latex-preview t)
+  (setq org-highlight-latex-and-related '(native script entities))
+  (with-eval-after-load 'org
+    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+    (setq org-preview-latex-image-directory  "/tmp/ltximg/")
+    (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t))))
 #+end_src
 
 ** Org Latex FragTog
@@ -301,15 +303,16 @@ Enables habit tracking in =org-mode= via =org-habit=.
 
 #+begin_src emacs-lisp
 
-(use-package org-habit
-  :ensure nil
-  :init (add-to-list 'org-modules 'org-habit t)
-  :custom
-  (org-habit-preceding-days 31)
-  (org-habit-following-days 3)
-  (org-habit-show-habits-only-for-today t)
-  (org-habit-show-all-today nil)
-  (org-habit-show-done-always-green nil))
+  (use-package org-habit
+    :ensure nil
+    :after org
+    :init (add-to-list 'org-modules 'org-habit t)
+    :custom
+    (org-habit-preceding-days 31)
+    (org-habit-following-days 3)
+    (org-habit-show-habits-only-for-today t)
+    (org-habit-show-all-today nil)
+    (org-habit-show-done-always-green nil))
 #+end_src
 
 ** Org Download
