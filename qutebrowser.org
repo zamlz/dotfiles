@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://qutebrowser.org/
 #+CREATED: [2021-03-29 Mon 20:08]
-#+LAST_MODIFIED: [2021-05-11 Tue 16:58:39]
+#+LAST_MODIFIED: [2021-05-11 Tue 17:20:37]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:52:55
 [[file:data/qutebrowser_logo.png]]
@@ -12,6 +12,7 @@
 Qutebrowser is a minimal browser with vim-like keybindings.
 
 * Configuration
+** config.py
 :PROPERTIES:
 :header-args:python: :tangle ~/.config/qutebrowser/config.py :mkdirp yes
 :END:
@@ -27,7 +28,7 @@ Qutebrowser is a minimal browser with vim-like keybindings.
 config.load_autoconfig(False)
 #+end_src
 
-** Get the system color configuration
+*** Get the system color configuration
 
 #+begin_src python
 # Obtain the current colors I use
@@ -38,7 +39,7 @@ def read_colorscheme(path):
 cs = read_colorscheme('/home/zamlz/.config/xcolor/scheme')
 #+end_src
 
-** Settings
+*** Settings
 
 #+begin_src python
 ## Always restore open sites when qutebrowser is reopened.
@@ -219,7 +220,7 @@ c.colors.webpage.darkmode.threshold.text = 156
 c.downloads.position = 'bottom'
 #+end_src
 
-** Keybindings
+*** Keybindings
 
 #+begin_src python
 ## Bindings for normal mode
@@ -540,4 +541,16 @@ config.bind(
      "'org-protocol://roam-ref?template=w"
      "&ref='+encodeURIComponent(location.href)+'"
      "&title='+encodeURIComponent(document.title)"))
+#+end_src
+
+** Set as Default Browser
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/xinitrc.d/xdg-mime-qutebrowser.sh :comments both :mkdirp yes :shebang #!/bin/sh
+:END:
+
+By using [[file:xdg_utils.org][XDG Utils]], we can set the default browser for the system to be =qutebrowser=.
+
+#+begin_src shell
+xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https
+xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/http
 #+end_src
