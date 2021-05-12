@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://qutebrowser.org/
 #+CREATED: [2021-03-29 Mon 20:08]
-#+LAST_MODIFIED: [2021-03-31 Wed 18:53:11]
+#+LAST_MODIFIED: [2021-05-11 Tue 16:58:39]
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:52:55
 [[file:data/qutebrowser_logo.png]]
@@ -529,4 +529,15 @@ config.bind('y', 'prompt-accept yes', mode='yesno')
 
 ## User defined bindings
 config.bind(',m', 'spawn mpv {url}')
+#+end_src
+
+We're going to add one more special keybinding here which lets make use of the [[file:org_roam_protocol.org][Org-roam Protocol]].
+
+#+begin_src python
+config.bind(
+    "<Ctrl-r>",
+    ("open javascript:location.href="
+     "'org-protocol://roam-ref?template=w"
+     "&ref='+encodeURIComponent(location.href)+'"
+     "&title='+encodeURIComponent(document.title)"))
 #+end_src
