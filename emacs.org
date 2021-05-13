@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-12 Wed 14:25:48]
+#+LAST_MODIFIED: [2021-05-12 Wed 22:47:58]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -70,14 +70,6 @@ Optimize: Force =lisp= and =site-lisp= at the head to reduce the startup time.
   (dolist (dir '("site-lisp" "lisp"))
     (push (expand-file-name dir user-emacs-directory) load-path)))
 
-(defun add-subdirs-to-load-path (&rest _)
-  "Add subdirectories to `load-path'."
-  (let ((default-directory (expand-file-name "site-lisp" user-emacs-directory)))
-    (normal-top-level-add-subdirs-to-load-path)))
-
-(advice-add #'package-initialize :after #'update-load-path)
-(advice-add #'package-initialize :after #'add-subdirs-to-load-path)
-
 (update-load-path)
 #+end_src
 
@@ -87,14 +79,18 @@ Make sure to populate the =lisp= and =site-lisp= directories.
 #PLACEHOLDER FILE FOR LISP DIR
 #+end_src
 
-#+begin_src conf :tangle ~/.config/emacs/site-lisp/.keep :mkdirp yes
-#PLACEHOLDER FILE FOR SITE-LISP DIR
+** Package Management
+
+I originally was using the internal =package.el= that is a part of Emacs, but while simple and straightforward to use, it has some limitations. I have found that it may be better to make use of ...
+
+#+begin_src emacs-lisp
+(require 'init-straight)
 #+end_src
 
 ** Internal
 
 #+begin_src emacs-lisp
-(require 'init-package)
+;;(require 'init-package) ;; CONTAINS OLD USE PACKAGE SETUP
 (require 'init-dired)
 (require 'init-ibuffer)
 #+end_src
@@ -142,9 +138,7 @@ Lets get some basic settings out of the way here.
 Original startup is hideous...
 
 #+begin_src emacs-lisp
-(use-package "startup"
-  :ensure nil
-  :custom (inhibit-startup-screen t))
+(setq inhibit-startup-screen t)
 #+end_src
 
 **** Modernize Selection Behaviour
@@ -152,107 +146,92 @@ Original startup is hideous...
 Replaces active region just by typing text.
 
 #+begin_src emacs-lisp
-(use-package delsel
-  :ensure nil
-  :config (delete-selection-mode +1))
+(setq delete-selection-mode +1)
 #+end_src
 
 **** Disable Scroll-Bar
 
+Better scrolling experience
+
 #+begin_src emacs-lisp
-(use-package scroll-bar
-  :ensure nil
-  :custom
-  ;; better scrolling experience
-  (scroll-margin 0)
-  (scroll-conservatively 101) ; > 100
-  (scroll-preserve-screen-position t)
-  (auto-window-vscroll nil)
-  :config
-  ;; Don't display the scroll bar in buffers
-  (scroll-bar-mode -1))
+(setq scroll-margin 0)
+(setq scroll-conservatively 101) ; > 100
+(setq scroll-preserve-screen-position t)
+(setq auto-window-vscroll nil)
+#+end_src
+
+Don't display the scroll bar in buffers
+
+#+begin_src emacs-lisp
+(scroll-bar-mode -1)
 #+end_src
 
 **** Enable Column Numbers
 
 #+begin_src emacs-lisp
-(use-package simple
-  :ensure nil
-  :config
-  (column-number-mode +1)
-  (global-display-line-numbers-mode t)
+(column-number-mode +1)
+(global-display-line-numbers-mode t)
+#+end_src
 
-  ;; DONT display line numbers in certain modes
-  (dolist (mode '(org-mode-hook
-                  term-mode-hook
-                  shell-mode-hook
-                  eshell-mode-hook
-                  vterm-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0)))))
+Don't display line numbers in certain modes
+
+#+begin_src emacs-lisp
+(dolist (mode '(org-mode-hook
+                term-mode-hook
+                shell-mode-hook
+                eshell-mode-hook
+                vterm-mode-hook))
+  (add-hook mode (lambda () (display-line-numbers-mode 0))))
 #+end_src
 
 **** Split and Follow Windows
 
 #+begin_src emacs-lisp
-(use-package "window"
-  :ensure nil
-  :preface
-  (defun zamlz/split-and-follow-horizontally ()
-    "Split window below."
-    (interactive)
-    (split-window-below)
-    (other-window 1))
-  (defun zamlz/split-and-follow-vertically ()
-    "Split window right."
-    (interactive)
-    (split-window-right)
-    (other-window 1))
-  :config
-  (global-set-key (kbd "C-x 2") #'zamlz/split-and-follow-horizontally)
-  (global-set-key (kbd "C-x 3") #'zamlz/split-and-follow-vertically))
+(defun zamlz/split-and-follow-horizontally ()
+  "Split window below."
+  (interactive)
+  (split-window-below)
+  (other-window 1))
+
+(defun zamlz/split-and-follow-vertically ()
+  "Split window right."
+  (interactive)
+  (split-window-right)
+  (other-window 1))
+
+(global-set-key (kbd "C-x 2") #'zamlz/split-and-follow-horizontally)
+(global-set-key (kbd "C-x 3") #'zamlz/split-and-follow-vertically)
 #+end_src
 
 **** Backup and Autosave Files
 
 Emacs decides to save backup files and lockfiles within the same directory as the files we are editing. Thats just ugly when looking at the filesystem. This will fix that.
 
-   #+begin_src emacs-lisp
-   (use-package files
-     :ensure nil
-     :custom
-     (create-lockfiles nil) ; don't create .# files (crashes 'npm start')
-     (backup-directory-alist `(("." . "~/.config/emacs/backup"))))
-   #+end_src
+#+begin_src emacs-lisp
+(setq create-lockfiles nil) ; don't create .# files (crashes 'npm start')
+(setq backup-directory-alist `(("." . "~/.config/emacs/backup")))
+#+end_src
 
 **** Eldoc Documentation
 
 Slightly shorten the Eldoc display delay
 
 #+begin_src emacs-lisp
-(use-package eldoc
-  :ensure nil
-  :diminish eldoc-mode
-  :custom
-  (eldoc-idle-delay 0.4))
+(setq eldoc-idle-delay 0.4)
 #+end_src
 
 **** Mouse Wheel Scroll Speed
 
 #+begin_src emacs-lisp
-(use-package mwheel
-  :ensure nil
-  :custom
-  (mouse-wheel-scroll-amount '(2 ((shift) . 1)))
-  (mouse-wheel-progressive-speed nil))
+(setq mouse-wheel-scroll-amount '(2 ((shift) . 1)))
+(setq mouse-wheel-progressive-speed nil)
 #+end_src
 
 **** Highlight Matching Parentheses
 
 #+begin_src emacs-lisp
-(use-package paren
-  :ensure nil
-  :custom (show-paren-delay 0)
-  :config (show-paren-mode +1))
+(setq show-paren-delay 0)
+(show-paren-mode +1)
 #+end_src
 
 **** Auto-pairing Quotes and Parentheses
@@ -261,7 +240,6 @@ Super useful for auto-pairing certain characters. However we should make use of 
 
 #+begin_src emacs-lisp
 (use-package elec-pair
-  :ensure nil
   :hook
   (prog-mode . electric-pair-mode)
   ;; disable <> auto-pairing in org-mode buffers
@@ -275,33 +253,35 @@ Super useful for auto-pairing certain characters. However we should make use of 
 
 #+begin_src emacs-lisp
 (use-package whitespace
-  :ensure nil
   :hook (before-save . whitespace-cleanup))
 #+end_src
 
 **** Dump Custom-Set-Variables
 
 #+begin_src emacs-lisp
-(use-package cus-edit
-  :ensure nil
-  :custom (custom-file (concat user-emacs-directory "to-be-dumped.el")))
+(setq custom-file (concat user-emacs-directory "to-be-dumped.el"))
 #+end_src
 
 **** Easy PGP Assistant (EPA)
 
 EPA is a built-in emacs package for interfacing with GnuPG.
 
+Don't ask by default which key to use
+
 #+begin_src emacs-lisp
-(use-package epa-file
-  :ensure nil
-  :custom
-  ;; Don't ask by default which key to use
-  (epa-file-select-keys nil)
-  ;; default to user mail address
-  (epa-file-encrypt-to user-mail-address)
-  ;; Set the pinentry mode to be loopback to gpg gets the password
-  ;; through emacs instead of using pinentry.
-  (epa-pinentry-mode 'loopback))
+(setq epa-file-select-keys nil)
+#+end_src
+
+Default to user mail address
+
+#+begin_src emacs-lisp
+(setq epa-file-encrypt-to user-mail-address)
+#+end_src
+
+Set the pinentry mode to be loopback to gpg gets the password through emacs instead of using pinentry.
+
+#+begin_src emacs-lisp
+(setq epa-pinentry-mode 'loopback)
 #+end_src
 
 **** Auth Source Pass
@@ -310,7 +290,6 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 
 #+begin_src emacs-lisp
 (use-package auth-source-pass
-  :ensure nil
   :init (auth-source-pass-enable))
 #+end_src
 
@@ -318,7 +297,6 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 
 #+begin_src emacs-lisp
 (use-package calc
-  :ensure nil
   :custom
   (calc-angle-mode 'rad)
   (calc-symbolic-mode t))
@@ -346,7 +324,6 @@ The default landing page isn't quite nice. I originally had it configured to dis
 #+begin_src emacs-lisp
 ;; Enable custom dashboard
 (use-package dashboard
-  :ensure t
   :custom
   ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
   ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
@@ -458,8 +435,7 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
 I have a couple themes here. Eventually I want to setup my own custom theme but for now this will have to do.
 
 #+begin_src emacs-lisp
-(use-package autothemer
-  :ensure t)
+(use-package autothemer)
 
 (add-to-list 'custom-theme-load-path "~/org/config/lib/emacs-themes/")
 ;; (load-theme 'gruvbox-black t)

@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-07 Wed 18:57]
-#+LAST_MODIFIED: [2021-04-16 Fri 21:45:53]
+#+LAST_MODIFIED: [2021-05-12 Wed 22:33:20]
 
 Dired is a file manager for [[file:emacs.org][GNU/Emacs]].
 
@@ -13,17 +13,15 @@ Dired is a file manager for [[file:emacs.org][GNU/Emacs]].
 :END:
 ** Internal Setup
 
+Add a global binding for =dired= with [[file:general_el.org][General Leader Keybindings Definer]].
+
 #+begin_src emacs-lisp
-(use-package dired
-  :ensure nil
-  :after evil-collection
-  :commands (dired dired-jump)
-  :bind (("C-x C-j" . dired-jump))
-  :custom ((dired-listing-switches "-lahF --group-directories-first"))
-  :config
-  (evil-collection-define-key 'normal 'dired-mode-map
-    "h" 'dired-single-up-directory
-    "l" 'dired-single-buffer))
+(require 'init-general)
+(general-define-key "C-x C-j" 'dired-jump)
+#+end_src
+
+#+begin_src emacs-lisp
+(setq dired-listing-switches "-lahF --group-directories-first")
 #+end_src
 
 ** Single Buffer Mode

@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "evil-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-04-18 Sun 22:29:05]
+#+LAST_MODIFIED: [2021-05-12 Wed 22:32:11]
 #+STARTUP: content
 
 #+DOWNLOADED: screenshot @ 2021-04-04 13:11:33
@@ -58,7 +58,11 @@ A pretty nice package that is used for lets you use the primary features of vim 
 #+begin_src emacs-lisp
 (use-package evil-collection
   :after evil
-  :config (evil-collection-init))
+  :config
+  (evil-collection-init)
+  (evil-collection-define-key 'normal 'dired-mode-map
+    "h" 'dired-single-up-directory
+    "l" 'dired-single-buffer))
 #+end_src
 
 ** Org Mode Bindings
