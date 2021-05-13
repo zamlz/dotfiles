@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-07 Fri 23:55:13]
+#+LAST_MODIFIED: [2021-05-12 Wed 11:05:09]
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -158,6 +158,7 @@ My setup for my daily notes. I don't really use this anymore though.
 
 #+begin_src emacs-lisp
 (use-package org-roam-server
+  :if (daemonp)
   :after org-roam
   :custom
   (org-roam-server-host "127.0.0.1")

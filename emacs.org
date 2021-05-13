@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-12 Wed 00:47:07]
+#+LAST_MODIFIED: [2021-05-12 Wed 14:25:48]
 #+STARTUP: overview
 
 #+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
@@ -180,14 +180,15 @@ Replaces active region just by typing text.
   :ensure nil
   :config
   (column-number-mode +1)
-  (global-display-line-numbers-mode t))
+  (global-display-line-numbers-mode t)
 
   ;; DONT display line numbers in certain modes
-  (dolist (mode '(term-mode-hook
+  (dolist (mode '(org-mode-hook
+                  term-mode-hook
                   shell-mode-hook
                   eshell-mode-hook
                   vterm-mode-hook))
-  (add-hook mode (lambda () (display-line-numbers-mode 0))))
+  (add-hook mode (lambda () (display-line-numbers-mode 0)))))
 #+end_src
 
 **** Split and Follow Windows
@@ -373,7 +374,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
   (dolist (face '(default fixed-pitch))
     (set-face-attribute `,face nil :font "Iosevka Term" :height 100))
   ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "DejaVu Sans Mono" :height 100))
+  (set-face-attribute 'variable-pitch nil :font "ETBembo" :height 120))
 #+end_src
 
 **** Helpful Help Commands
@@ -471,7 +472,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-homage-black t)
+  (load-theme 'doom-opera t)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
@@ -544,7 +545,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 90))))
+                  (zamlz/set-transparency 95))))
   (zamlz/set-font-faces))
 #+end_src
 

@@ -4,9 +4,10 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-12 Wed 07:44:38]
+#+LAST_MODIFIED: [2021-05-12 Wed 13:06:57]
 #+STATUP: content
 
+* Your Life in Plain Text
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
 
@@ -46,7 +47,8 @@ I should probably split this bloody mess up.
   (org-directory "~/org/gtd/")
   (org-agenda-files (list org-directory))
   ;; Add some nice visuals changes
-  (org-ellipsis " ▾")
+  ;;(org-ellipsis " ▾")
+  (org-ellipsis "  ")
   ;; This is so that the imenu displays all levels in ivy
   (org-imenu-depth 6)
   ;; dont use C-c C-o for opening links REEEEEEEEEEEE
@@ -97,8 +99,11 @@ We can configure =org-mode= font faces via a seperate function that we define. W
   (interactive)
   ;; hide #+TITLE:
   (setq org-hidden-keywords '(title))
+  (setq org-fontify-whole-heading-line t)
+  (setq org-fontify-done-headline t)
+  (setq org-fontify-quote-and-verse-blocks t)
   ;; set basic title font
-  (set-face-attribute 'org-level-8 nil :weight 'bold :inherit 'default)
+  (set-face-attribute 'org-level-8 nil :weight 'normal :inherit 'default :slant 'italic)
   ;; Low levels are unimportant => no scaling
   (set-face-attribute 'org-level-7 nil :inherit 'org-level-8)
   (set-face-attribute 'org-level-6 nil :inherit 'org-level-8)
@@ -113,6 +118,8 @@ We can configure =org-mode= font faces via a seperate function that we define. W
   (setq org-n-level-faces 4)
   ;; Document Title, (\huge)
   (set-face-attribute 'org-document-title nil
+                      :slant 'normal
+                      :weight 'normal
                       :height 3.074
                       :foreground 'unspecified
                       :inherit 'org-level-8))

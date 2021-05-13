@@ -4,6 +4,11 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-05-03 Mon 22:11:03]
+#+LAST_MODIFIED: [2021-05-12 Wed 20:03:56]
 
-Z Shell (ZSH) is a powerful shell that has more features that something like bash. It's also very configurable.
+* The Z Shell
+
+#+DOWNLOADED: screenshot @ 2021-05-12 14:28:04
+[[file:data/the_weird_zsh_logo.png]]
+
+Z Shell (=zsh=) is a powerful shell that has more features that something like bash. It's also very configurable.

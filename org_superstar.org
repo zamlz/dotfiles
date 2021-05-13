@@ -1,12 +1,12 @@
-#+TITLE: org-superstar
+#+TITLE: Org Superstar
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_KEY: https://github.com/integral-dw/org-superstar-mode
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-10 Mon 12:51]
-#+LAST_MODIFIED: [2021-05-10 Mon 14:07:37]
+#+LAST_MODIFIED: [2021-05-12 Wed 13:02:11]
 
-* Org Super Star: Prettify Headings and Lists
+* What is it?
 
 =org-superstar-mode= is a simple package that aims to prettify [[file:org_mode.org][Org-mode]] headings and lists by using UTF-8 characters for the faces.
 
@@ -40,7 +40,8 @@ We should make the leading stars here, truly invisible.
 Let's also define our own custom bullets.
 
 #+begin_src emacs-lisp
-(setq org-superstar-headline-bullets-list '("◉" "●""○" "▷"))
+;;(setq org-superstar-headline-bullets-list '("◉" "●""○" "▷"))
+(setq org-superstar-headline-bullets-list '("•"))
 (setq org-superstar-cycle-headline-bullets nil)
 #+end_src
 
@@ -48,9 +49,9 @@ The sizes of the bullets with the existing font is a little too much, let's redu
 
 #+begin_src emacs-lisp
 ;; (with-eval-after-load 'org-superstar
-;;   (set-face-attribute 'org-superstar-item nil :height 0.75)
-;;   (set-face-attribute 'org-superstar-header-bullet nil :height 0.75)
-;;   (set-face-attribute 'org-superstar-leading nil :height 0.75))
+;;   (set-face-attribute 'org-superstar-item nil :height 0.5)
+;;   (set-face-attribute 'org-superstar-header-bullet nil :height 0.5)
+;;   (set-face-attribute 'org-superstar-leading nil :height 0.5))
 #+end_src
 
 #+begin_src emacs-lisp
