@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-04-19 Mon 21:11:10]
+#+LAST_MODIFIED: [2021-05-12 Wed 23:33:48]
 
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
@@ -11,6 +11,33 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ivy.el :comments both :mkdirp yes
 :END:
+
+** Counsel
+
+=Counsel= on the other hand, provides replaces commands that replace the typical emacs commands.
+
+#+begin_src emacs-lisp
+(use-package counsel
+  :bind (
+         ("M-x"       . counsel-M-x)
+         ("C-x TAB"   . counsel-semantic-or-imenu)
+         ("C-x b"     . counsel-switch-buffer)
+         ("M-y"       . counsel-yank-pop)
+         ("M-o"       . counsel-recentf)
+         ("M-m"       . counsel-evil-marks)
+         ("C-x B"     . counsel-switch-buffer-other-window)
+         ("C-x C-f"   . counsel-find-file)
+         ("C-x C-M-f" . counsel-find-file-extern)
+         ("C-x C-l"   . counsel-locate)
+         ("C-x C-M-l" . counsel-locate-action-extern)
+         ("C-x C-v"   . counsel-set-variable)
+         ("C-c u"     . counsel-unicode-char)
+         :map minibuffer-local-map
+         ("C-r"       . 'counsel-minibuffer-history))
+  :config (counsel-mode)
+  )
+#+end_src
+
 ** Ivy
 
 =Ivy= is basically a completion framework. Its minimal but provides a simple but powerful menu that appears when switching files, opening buffers, etc.
@@ -76,33 +103,6 @@ Make ivy rich even more aesthetic with icons!
 (use-package all-the-icons-ivy-rich
   :after (counsel counsel-projectile)
   :init (all-the-icons-ivy-rich-mode 1))
-#+end_src
-
-** Counsel
-
-=Counsel= on the other hand, provides replaces commands that replace the typical emacs commands.
-
-#+begin_src emacs-lisp
-(use-package counsel
-  :defer t
-  :bind (
-         ("M-x"       . counsel-M-x)
-         ("C-x TAB"   . counsel-semantic-or-imenu)
-         ("C-x b"     . counsel-switch-buffer)
-         ("M-y"       . counsel-yank-pop)
-         ("M-o"       . counsel-recentf)
-         ("M-m"       . counsel-evil-marks)
-         ("C-x B"     . counsel-switch-buffer-other-window)
-         ("C-x C-f"   . counsel-find-file)
-         ("C-x C-M-f" . counsel-find-file-extern)
-         ("C-x C-l"   . counsel-locate)
-         ("C-x C-M-l" . counsel-locate-action-extern)
-         ("C-x C-v"   . counsel-set-variable)
-         ("C-c u"     . counsel-unicode-char)
-         :map minibuffer-local-map
-         ("C-r"       . 'counsel-minibuffer-history))
-  :config (counsel-mode)
-  )
 #+end_src
 
 ** Swiper
