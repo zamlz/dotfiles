@@ -1,0 +1,77 @@
+#+TITLE: straight.el
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: "straight-use-package"
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-12 Wed 22:01]
+#+LAST_MODIFIED: [2021-05-12 Wed 23:03:16]
+
+* Next-generation, Purely Functional Package Manager for the Emacs Hacker!
+
+=straight.el= is a replacement for =package.el= which is shipped by default with [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-straight.el :comments both :mkdirp yes
+:END:
+** Bootstrap Code
+
+Since =straight.el= is not built into [[file:emacs.org][GNU/Emacs]], we must install it. This can be achieved with this short snippet.
+
+#+begin_src emacs-lisp
+(defvar bootstrap-version)
+(let ((bootstrap-file
+       (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
+      (bootstrap-version 5))
+  (unless (file-exists-p bootstrap-file)
+    (with-current-buffer
+        (url-retrieve-synchronously
+         "https://raw.githubusercontent.com/raxod502/straight.el/develop/install.el"
+         'silent 'inhibit-cookies)
+      (goto-char (point-max))
+      (eval-print-last-sexp)))
+  (load bootstrap-file nil 'nomessage))
+#+end_src
+
+** Use-Package Integration
+
+=use-package= is a very nice wrapper over =package.el=, but it doesn't work with =straight.el= by default. The snippet below will install =use-package= but also force it use to use =straight.el= instead.
+
+#+begin_src emacs-lisp
+(straight-use-package 'use-package)
+(setq straight-use-package-by-default t)
+#+end_src
+
+** System Packages
+
+#+begin_src emacs-lisp
+(use-package system-packages)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package use-package-ensure-system-package
+  :requires (system-packages))
+#+end_src
+
+We'll also write our own function to ensure system packages since the in-built one doesn't work so well.
+
+#+begin_src emacs-lisp
+(defun zamlz/system-packages-ensure (pack &optional binfile args)
+  "Ensure PACK is installed on systemi if BINFILE not found
+Search for BINFILE with `system-packages-package-installed-p', and
+install the package if not found.  Use ARGS to pass options to
+the package manager."
+  (interactive "sPackage to ensure is present: ")
+  (if binfile
+      (if (system-packages-package-installed-p binfile)
+          t
+        (system-packages-install pack args))
+      (if (system-packages-package-installed-p pack)
+          t
+        (system-packages-install pack args))))
+#+end_src
+
+** Footer
+
+#+begin_src emacs-lisp
+(provide 'init-straight)
+#+end_src
