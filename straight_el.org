@@ -3,9 +3,9 @@
 #+ROAM_ALIAS: "straight-use-package"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-12 Wed 22:01]
-#+LAST_MODIFIED: [2021-05-12 Wed 23:03:16]
+#+LAST_MODIFIED: [2021-05-12 Wed 23:38:00]
 
-* Next-generation, Purely Functional Package Manager for the Emacs Hacker!
+* Purely Functional Package Manager for the Emacs Hacker!
 
 =straight.el= is a replacement for =package.el= which is shipped by default with [[file:emacs.org][GNU/Emacs]].
 
@@ -30,6 +30,17 @@ Since =straight.el= is not built into [[file:emacs.org][GNU/Emacs]], we must ins
       (goto-char (point-max))
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+#+end_src
+
+** Early Init
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/early-init.el :comments both :mkdirp yes
+:END:
+
+This ensures that =package.el= isn't used at all.
+
+#+begin_src emacs-lisp
+(setq package-enable-at-startup nil)
 #+end_src
 
 ** Use-Package Integration
