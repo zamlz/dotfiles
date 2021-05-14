@@ -4,13 +4,12 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-12 Wed 22:47:58]
-#+STARTUP: overview
+#+LAST_MODIFIED: [2021-05-13 Thu 19:49:32]
+#+STARTUP: content
 
-#+DOWNLOADED: screenshot @ 2021-04-07 17:14:36
-[[file:data/xkcd_378.png]]
-
-/[[https://xkcd.com/378/][Real Programmers - Randall Munroe]]/
+* The Extensible, Customizable Free/Libre Text Editor
+#+DOWNLOADED: screenshot @ 2021-05-13 10:02:43
+[[file:data/emacs_logo.png]]
 
 * Useful Resources
 
@@ -81,7 +80,7 @@ Make sure to populate the =lisp= and =site-lisp= directories.
 
 ** Package Management
 
-I originally was using the internal =package.el= that is a part of Emacs, but while simple and straightforward to use, it has some limitations. I have found that it may be better to make use of ...
+I originally was using the internal =package.el= that is a part of Emacs, but while simple and straightforward to use, it has some limitations. I have found that it may be better to make use of [[file:straight_el.org][straight.el]].
 
 #+begin_src emacs-lisp
 (require 'init-straight)
@@ -302,7 +301,7 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
   (calc-symbolic-mode t))
 #+end_src
 
-** keybinding Improvements
+** Keybinding Improvements
 
 #+begin_src emacs-lisp
 (require 'init-evil)
@@ -523,12 +522,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                   (zamlz/set-font-faces)
                   (zamlz/set-transparency 95))))
   (zamlz/set-font-faces))
-#+end_src
-
-** Org Mode Packages
-
-#+begin_src emacs-lisp
-(require 'init-org)
 #+end_src
 
 ** Load Remaining Modules

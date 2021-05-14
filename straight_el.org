@@ -1,13 +1,13 @@
 #+TITLE: straight.el
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: "straight-use-package"
+#+ROAM_ALIAS: "straight-use-package" "system-packages"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-12 Wed 22:01]
-#+LAST_MODIFIED: [2021-05-12 Wed 23:38:00]
+#+LAST_MODIFIED: [2021-05-13 Thu 09:59:45]
 
 * Purely Functional Package Manager for the Emacs Hacker!
 
-=straight.el= is a replacement for =package.el= which is shipped by default with [[file:emacs.org][GNU/Emacs]].
+=straight.el= is a replacement for =package.el= which is shipped by default with [[file:emacs.org][GNU/Emacs]]. We also integrate it with =use-package= and =system-packages=.
 
 * Configuration
 :PROPERTIES:
