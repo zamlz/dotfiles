@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-13 Thu 19:49:32]
+#+LAST_MODIFIED: [2021-05-14 Fri 07:19:24]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -489,7 +489,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 95))))
+                  (zamlz/set-transparency 80))))
   (zamlz/set-font-faces))
 #+end_src
 
