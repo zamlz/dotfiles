@@ -1,0 +1,96 @@
+#+TITLE: Dashboard
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/emacs-dashboard/emacs-dashboard
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-13 Thu 19:13]
+#+LAST_MODIFIED: [2021-05-13 Thu 19:45:15]
+#+STARTUP: content
+
+* An Extensible Emacs Dashboard
+
+=dashboard.el= is a package that provides a much better startup screen for [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-dashboard.el :comments both :mkdirp yes
+:END:
+** Disable Default Startup Screen
+
+#+begin_src emacs-lisp
+(setq inhibit-startup-screen t)
+#+end_src
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package dashboard)
+#+end_src
+
+** Appearance
+
+Lot of options here for the startup banner, but I like the ascii art of the application name the most.
+
+#+begin_src emacs-lisp
+;; (setq dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
+;; (setq dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
+(setq dashboard-startup-banner "~/org/config/lib/emacs-themes/name.txt")
+#+end_src
+
+Center content because that looks way nicer
+
+#+begin_src emacs-lisp
+(setq dashboard-center-content t)
+#+end_src
+
+Configure icons for everything that supports it. The default ='bookmarks= icon is also not great so let's change that as well.
+
+#+begin_src emacs-lisp
+(setq dashboard-set-heading-icons t)
+(setq dashboard-set-file-icons t)
+(dashboard-modify-heading-icons '((bookmarks . "book")))
+#+end_src
+
+Show the navigator /(wait, I dont't see it?!?)/
+
+#+begin_src emacs-lisp
+(setq dashboard-set-navigator t)
+#+end_src
+
+*Show the following initialization statistics:*
+- Time taken for [[file:straight_el.org][straight.el]] to load packages.
+
+#+begin_src emacs-lisp
+(setq dashboard-set-init-info t)
+#+end_src
+
+** Section Setup
+
+Simply configure which sections I want to see
+
+#+begin_src emacs-lisp
+(setq dashboard-items
+      '((recents . 5)
+        (projects . 5)
+        (agenda)))
+#+end_src
+
+** Initialize Hooks
+
+One would expect that =(dashboard-setup-startup-hook)= which will configure everything as needed /(unless we are using a daemon process)/
+
+#+begin_src emacs-lisp
+(dashboard-setup-startup-hook)
+#+end_src
+
+In the event that we are using a daemon /(and I am)/, set the =inital-buffer-choice= variable as well.
+
+#+begin_src emacs-lisp
+(setq initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-dashboard)
+#+end_src

@@ -132,14 +132,6 @@ Lets get some basic settings out of the way here.
                 fill-column zamlz/default-screen-width))
 #+end_src
 
-**** Disable Default Startup
-
-Original startup is hideous...
-
-#+begin_src emacs-lisp
-(setq inhibit-startup-screen t)
-#+end_src
-
 **** Modernize Selection Behaviour
 
 Replaces active region just by typing text.
@@ -316,29 +308,6 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 #+end_src
 
 *** Reorganize This
-**** Startup Dashboard
-
-The default landing page isn't quite nice. I originally had it configured to display the scratch page, but then I really wanted like a menu to quickly access my stuff.
-
-#+begin_src emacs-lisp
-;; Enable custom dashboard
-(use-package dashboard
-  :custom
-  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
-  ;; (dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
-  (dashboard-startup-banner "~/org/config/lib/emacs-themes/name.txt")
-  (dashboard-center-content t)
-  (dashboard-set-heading-icons t)
-  (dashboard-set-file-icons t)
-  (dashboard-set-navigator t)
-  (dashboard-set-init-info t)
-  (initial-buffer-choice (lambda() (get-buffer "*dashboard*")))
-  (dashboard-items '())
-  :config
-  (dashboard-modify-heading-icons '((bookmarks . "book")))
-  (dashboard-setup-startup-hook))
-#+end_src
-
 **** Font Configuration
 
 I have a lot of fonts commented out right now because I can't decide on which ones to keep lol.
