@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-12 Wed 22:54:24]
+#+LAST_MODIFIED: [2021-05-13 Thu 11:28:19]
 #+STATUP: content
 
 * Your Life in Plain Text
@@ -139,6 +139,8 @@ Thanks to [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][t
                   org-document-info-keyword
                   org-meta-line
                   org-table
+                  org-formula
+                  font-lock-comment-face
                   org-verbatim))
     (set-face-attribute `,face nil :inherit 'fixed-pitch))
   (set-face-attribute 'org-block-end-line nil :inherit 'org-block-begin-line))
@@ -357,6 +359,14 @@ The variable =org-link-abbrev-alist= provides us a powerful way of defining our 
 #+begin_src emacs-lisp
 (setq org-link-abbrev-alist
       '(("gmap" . "http://maps.google.com/maps?q=%s")))
+#+end_src
+
+** Pretty Tables
+
+#+begin_src emacs-lisp
+(use-package org-pretty-table
+  :straight (org-pretty-table :type git :host github :repo "Fuco1/org-pretty-table")
+  :hook (org-mode . org-pretty-table-mode))
 #+end_src
 
 ** Package Provider

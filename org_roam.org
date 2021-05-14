@@ -4,12 +4,13 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-12 Wed 11:05:09]
+#+LAST_MODIFIED: [2021-05-13 Thu 10:06:52]
+#+STARTUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
 
-* Org-Roam: A Plain Text Personal Knowledge Management System
+* A Plain Text Personal Knowledge Management System
 
 Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[file:org_mode.org][Org-mode]]. The project aims to implement [[file:../notes/zettelkasten_method.org][Zettelkasten Method]] through software.
 
@@ -86,7 +87,8 @@ Capture templates, not much to explain here.
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n")
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+STARTUP: content\n")
          :unnarrowed t)
         ("p" "private" plain (function org-roam--capture-get-point)
          "\n%?"
@@ -96,7 +98,8 @@ Capture templates, not much to explain here.
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS:\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n")
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+STARTUP: content\n")
          :unnarrowed t)
         ("c" "config" plain (function org-roam--capture-get-point)
          "\n%?"
@@ -106,7 +109,8 @@ Capture templates, not much to explain here.
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: CONFIG SOFTWARE\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n")
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+STARTUP: content\n")
          :unnarrowed t)
         ("w" "webpages/bookmarks" plain (function org-roam--capture-get-point)
          "\n%?"
@@ -117,7 +121,8 @@ Capture templates, not much to explain here.
                         "#+ROAM_TAGS: BOOKMARK\n"
                         "#+ROAM_KEY: %x\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n")
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+STARTUP: content\n")
          :unnarrowed t)
         ("b" "blogpost" plain (function org-roam--capture-get-point)
          "\n%?"
@@ -127,7 +132,8 @@ Capture templates, not much to explain here.
                         "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: BLOGPOST\n"
                         "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n")
+                        "#+LAST_MODIFIED: %U\n"
+                        "#+STARTUP: content\n")
          :unnarrowed t)
         ))
 #+end_src
