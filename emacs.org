@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-14 Fri 07:19:24]
+#+LAST_MODIFIED: [2021-05-14 Fri 08:38:02]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -489,7 +489,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 80))))
+                  (zamlz/set-transparency 85))))
   (zamlz/set-font-faces))
 #+end_src
 
@@ -501,11 +501,24 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (require (intern (s-replace-regexp "\\.el" "" dir))))
 #+end_src
 
+* Summon the Daemon
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/xinitrc.d/emacs-daemon-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
+:END:
+
+*Very Important!* Make sure we start the emacs daemon here! But do not start it if it's already running. Add this to the [[file:xinit.org][xinit]] user-level scripts.
+
+#+begin_src shell
+if [ -z "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon')"]; then
+    emacs --daemon=xorg-emacs-daemon
+fi
+#+end_src
+
 * Xresources Setup
 :PROPERTIES:
 :header-args:C: :tangle ~/.config/xresources.d/emacs :mkdirp yes :comments no
 :END:
-The colorscheme defined in [[file:xresources.org][Xresources]] below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
+The colorscheme defined in [[file:x_resources.org][Xresources]] below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
 
 #+begin_src C
 Emacs.foreground: xforeground

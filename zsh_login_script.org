@@ -1,9 +1,9 @@
 #+TITLE: Zsh Login Script
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: zlogin
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-30 Fri 20:25]
-#+LAST_MODIFIED: [2021-05-03 Mon 22:11:29]
+#+LAST_MODIFIED: [2021-05-14 Fri 07:55:28]
 
 This is the login script for [[file:zsh.org][Zsh]] which is used to create different environments in different =tty=.
 

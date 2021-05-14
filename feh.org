@@ -1,0 +1,27 @@
+#+TITLE: Feh
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-14 Fri 08:30]
+#+LAST_MODIFIED: [2021-05-14 Fri 08:34:27]
+#+STARTUP: content
+
+* Tiny X11 Image Viewer
+
+=feh= is a tiny image viewer for [[file:xorg.org][X11]] that is primarily configured via the command line. It is very versatile and I primarily use it for setting the desktop background
+
+* Configuration
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/xinitrc.d/fehbg-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
+:END:
+
+Set the background for the desktop environment. If  the =~/.fehbg= file doesn't exist, setup the bitmap wallpaper isntead. Add this snippet to the [[file:xinit.org][xinit]] user-level scripts.
+
+#+begin_src shell
+if [ -f "$HOME/.fehbg" ]; then
+    $HOME/.fehbg
+else
+    . $HOME/org/config/lib/shell/xrdb_colors
+    xsetroot -bitmap ~/org/config/lib/bitmaps/tile.xbm -fg $XCOLOR0 -bg $XBACKGROUND
+fi
+#+end_src

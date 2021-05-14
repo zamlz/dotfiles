@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://herbstluftwm.org/
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-04-01 Thu 14:48:43]
+#+LAST_MODIFIED: [2021-05-14 Fri 08:49:33]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
 [[file:data/herbstluftwm_logo.png]]
@@ -29,6 +29,14 @@ hc() {
 }
 
 hc emit_hook reload
+#+end_src
+
+** Source Xorg Universal Settings
+
+We need to configure some X11 specific things that are universally needed regardless of window manager.
+
+#+begin_src shell
+$HOME/.config/bin/refresh-xinitrc.sh
 #+end_src
 
 ** WM Custom Rules
@@ -56,14 +64,6 @@ hc rule class~'(Discord|DiscordCanary)' focus=off
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
-#+end_src
-
-** Source Xorg Universal Settings
-
-We need to configure some X11 specific things that are universally needed regardless of window manager.
-
-#+begin_src shell :noweb yes
-$HOME/.config/wm_init.sh
 #+end_src
 
 ** Keybindings

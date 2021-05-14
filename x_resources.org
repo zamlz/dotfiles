@@ -1,16 +1,26 @@
-#+TITLE: Xresources
+#+TITLE: X Resources
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: xrdb xresources
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 17:14]
-#+LAST_MODIFIED: [2021-05-07 Fri 09:10:25]
+#+LAST_MODIFIED: [2021-05-14 Fri 08:28:28]
 
+* User-level Dotfile for X11
 The =Xresources= file is used to confiugre user level options for various [[file:xorg.org][Xorg X11 Window System]] Applications.
 
 * Configuration
 :PROPERTIES:
 :header-args:C: :tangle ~/.Xresources
+:header-args:shell: :tangle ~/.config/xinitrc.d/xrdb-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
+** XRDB Refresh
+
+We should make sure we add a small refresh script to the [[file:xinit.org][xinit]] user-level scripts so that they get refreshed whenever our window manager refreshes its  settings.
+
+#+begin_src shell
+xrdb -I$HOME $HOME/.Xresources
+#+end_src
+
 ** Source Colorscheme
 
 #+begin_src C

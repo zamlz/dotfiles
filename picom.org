@@ -4,15 +4,26 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/yshui/picom
 #+CREATED: [2021-03-29 Mon 19:22]
-#+LAST_MODIFIED: [2021-05-11 Tue 09:44:29]
+#+LAST_MODIFIED: [2021-05-14 Fri 08:27:10]
 
 Compton is a compositor for the [[file:xorg.org][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/picom/picom.conf :mkdirp yes :comments both
+:header-args:shell: :tangle ~/.config/xinitrc.d/picom-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
-[[http://9m.no/ꪯ鵞][Thank you code_nomad!]] Copied a lot of this person's config...
+** Refresh Script
+
+We'd like to make sure that =picom='s configuration is refreshed when our window manager is also refreshed. We have our window mannager configured so that it will refresh [[file:xinit.org][xinit]] user-level scripts so let's create a simple one that performs the refresh. Make sure to =sleep 1= otherwise the new picom instance might not start up because it believes that another one is still alive.
+
+#+begin_src shell
+pkill -x picom
+if [ -f "$HOME/.config/picom/picom.conf" ]; then
+    sleep 1 && picom &
+fi
+#+end_src
+
 ** Backend
 
 Backend to use: "xrender" or "glx".

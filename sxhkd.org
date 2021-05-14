@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/baskerville/sxhkd
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-04-01 Thu 14:29:57]
+#+LAST_MODIFIED: [2021-05-14 Fri 08:42:34]
 
 Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
 
@@ -12,6 +12,20 @@ Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
 :PROPERTIES:
 :header-args:shell: :tangle ~/.config/sxhkd/sxhkdrc :mkdirp yes :comments both
 :END:
+** Startup Script
+:PROPERTIES:
+:header-args:shell: :tangle ~/.config/xinitrc.d/sxhkd-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
+:END:
+
+We need to configure =sxhkd= to startup and refresh whenever our window manager is refreshed. Add this snippet to the [[file:xinit.org][xinit]] user-level scripts.
+
+#+begin_src shell
+SXHKD_SHELL=sh
+export SXHKD_TERMINAL=$HOME/org/config/bin/emacsclient-launcher
+pkill -x sxhkd
+sxhkd &
+#+end_src
+
 ** Terminal Exec Keybindings
 
 Keybinding to spawn a terminal. This variable is defined in the [[file:xorg.org][X11]] window manager utilities init file.

@@ -81,6 +81,7 @@ tangle() {
     # > Add those directories here:
     rm -rf $HOME/.config/bin/
     rm -rf $HOME/.config/xresources.d/
+    rm -rf $HOME/.config/xinitrc.d/
     rm -rf $HOME/.config/emacs/lisp/
 
     # iterate through all config *.org files and tangle them
