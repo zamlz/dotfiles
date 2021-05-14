@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-07 Wed 18:57]
-#+LAST_MODIFIED: [2021-05-12 Wed 22:33:20]
+#+LAST_MODIFIED: [2021-05-13 Thu 19:08:15]
 
 Dired is a file manager for [[file:emacs.org][GNU/Emacs]].
 
@@ -34,11 +34,9 @@ This doesn't prevent dired from having multiple buffers open at once, rather, it
 
 ** All the Icons Integration
 
-Package is currently broken!!!
-
 #+begin_src emacs-lisp
-;; (use-package all-the-icons-dired
-;;   :hook (dired-mode . all-the-icons-dired-mode))
+(use-package all-the-icons-dired
+  :hook (dired-mode . all-the-icons-dired-mode))
 #+end_src
 
 ** Hide Dotfiles
