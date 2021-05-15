@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-14 Fri 00:36:13]
+#+LAST_MODIFIED: [2021-05-15 Sat 08:04:04]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -369,7 +369,7 @@ The variable =org-link-abbrev-alist= provides us a powerful way of defining our 
   :hook (org-mode . org-pretty-table-mode))
 #+end_src
 
-** Package Provider
+** Feature Provider
 
 #+begin_src emacs-lisp
 (provide 'init-org)
