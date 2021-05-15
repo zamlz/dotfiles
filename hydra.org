@@ -4,33 +4,37 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 11:33]
-#+LAST_MODIFIED: [2021-05-08 Sat 16:59:10]
+#+LAST_MODIFIED: [2021-05-14 Fri 15:07:12]
 
-* Hydra
+* Make Emacs Bindings that Stick Around
 
 #+DOWNLOADED: screenshot @ 2021-05-08 11:41:25
 [[file:data/2021-05-08_11-41-25_screenshot.png]]
 
 #+begin_quote
-/*Hydra & Hercules* by Unknown/
+*Hydra & Hercules* by Unknown
 
-/Once you summon the Hydra through the prefixed binding (the body + any one head), all heads can be called in succession with only a short extension./
+Once you summon the Hydra through the prefixed binding (the body + any one head), all heads can be called in succession with only a short extension.
 
-/The Hydra is vanquished once Hercules, any binding that isn't the Hydra's head, arrives. Note that Hercules, besides vanquishing the Hydra, will still serve his original purpose, calling his proper command. This makes the Hydra very seamless, it's like a minor mode that disables itself auto-magically./
+The Hydra is vanquished once Hercules, any binding that isn't the Hydra's head, arrives. Note that Hercules, besides vanquishing the Hydra, will still serve his original purpose, calling his proper command. This makes the Hydra very seamless, it's like a minor mode that disables itself auto-magically.
 #+end_quote
 
 =hydra= is simply a package that provides lets us create configurable menus for quick access to commands for [[file:emacs.org][GNU/Emacs]]
 
-* Package Install
+* Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-hydra.el :comments both :mkdirp yes
 :END:
+
+** Package Install
 
 Load up the =hydra= package.
 
 #+begin_src emacs-lisp
 (use-package hydra)
 #+end_src
+
+** Text Scale Example Function
 
 Here is a simple =hydra= function for scaling text.
 
@@ -50,7 +54,9 @@ We can add this =hydra= function to our [[file:general_el.org][General Leader Ke
   "ts" '(hydra-text-scale/body :which-key "scale text"))
 #+end_src
 
-Make sure to provide the module.
+** Feature Provider
+
+Make sure to provide the feature.
 
 #+begin_src emacs-lisp
 (provide 'init-hydra)

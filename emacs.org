@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:38:02]
+#+LAST_MODIFIED: [2021-05-14 Fri 15:12:10]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -26,7 +26,7 @@ There are some cool configurations from other people that I've taken influence f
 * Tips and Tricks
 As I find things to write here, I'll put it in.
 
-* Emacs Configuration
+* Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments both :mkdirp yes
 :END:
@@ -297,8 +297,6 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 
 #+begin_src emacs-lisp
 (require 'init-evil)
-(require 'init-general)
-(require 'init-hydra)
 #+end_src
 
 ** Interface
@@ -464,6 +462,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (set-frame-parameter (selected-frame) 'alpha value))
 
 ;; Add the transparency function to my leader keys
+(require 'init-general)
 (zamlz/leader-keys
   "tx" '(zamlz/set-transparency :which-key "Set transparency"))
 
