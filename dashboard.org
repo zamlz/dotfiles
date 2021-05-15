@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-13 Thu 19:13]
-#+LAST_MODIFIED: [2021-05-13 Thu 19:45:15]
+#+LAST_MODIFIED: [2021-05-14 Fri 09:12:31]
 #+STARTUP: content
 
 * An Extensible Emacs Dashboard
@@ -69,10 +69,7 @@ Show the navigator /(wait, I dont't see it?!?)/
 Simply configure which sections I want to see
 
 #+begin_src emacs-lisp
-(setq dashboard-items
-      '((recents . 5)
-        (projects . 5)
-        (agenda)))
+(setq dashboard-items '())
 #+end_src
 
 ** Initialize Hooks
