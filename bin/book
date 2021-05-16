@@ -15,7 +15,7 @@
 #       for now, this script should do, but it could be much better.
 
 # source the repos file to get bookmarks dir if it exists
-. $HOME/lib/repos
+. $HOME/org/config/lib/repos
 
 # Don't put a '/' at the end or the code will fail.
 BMLIB=${BOOKMARKS_DIR:-$HOME/usr/bookmarks}
