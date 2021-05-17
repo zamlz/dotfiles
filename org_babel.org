@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-05-12 Wed 13:01:15]
+#+LAST_MODIFIED: [2021-05-17 Mon 09:57:01]
 
 * Babel: Multi-Language Computing Environment for Literate-Programming/Reproducible-Research
 
@@ -53,6 +53,7 @@ Now we confiugre some of the parameters for =babel=.
    (python . t)
    (gnuplot . t)
    (latex . t)
+   (plantuml . t)
    ))
 #+end_src
 
@@ -77,6 +78,7 @@ I use this only for org-babel at the moment, but maybe there is more to this pac
 | q                  | quote              |
 | s                  | src                |
 | v                  | verse              |
+| uml                | plantuml           |
 |--------------------+--------------------|
 
 
@@ -87,6 +89,7 @@ I use this only for org-babel at the moment, but maybe there is more to this pac
 (add-to-list `org-structure-template-alist '("el" . "src emacs-lisp"))
 (add-to-list `org-structure-template-alist '("py" . "src python"))
 (add-to-list `org-structure-template-alist '("cf" . "src conf"))
+(add-to-list `org-structure-template-alist '("uml" . "src plantuml"))
 #+end_src
 
 ** Auto-Tangle Configuration Files
