@@ -1,0 +1,33 @@
+#+TITLE: Getting Things Done Framework
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: "GTD Framework" "GTD Method"
+#+ROAM_TAGS: CONFIG SOFTWARE GTD
+#+CREATED: [2021-03-27 Sat 09:04]
+#+LAST_MODIFIED: [2021-05-17 Mon 10:01:51]
+
+* Useful Resources
+- [[https://hamberg.no/gtd][https://hamberg.no/gtd]]
+
+* What is GTD?
+
+GTD is an acronym for "Getting Things Done". It is a framework for managing tasks and projects.
+
+This document covers how I use GTD. We configure this framework for [[file:../config/org_mode.org][Org-mode]] which really just provides a barebones system for implementnig any task management system. So, what I've ended up doing is not exactly "GTD", but it is a variation that better suits my workflow.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-gtd.el :comments both :mkdirp yes
+:END:
+** Setup Org
+
+First let's make sure we pull in [[file:../config/org_mode.org][Org-mode]] as we build of it's provided system.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-gtd)
+#+end_src
