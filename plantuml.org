@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: plantuml-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-17 Mon 10:06]
-#+LAST_MODIFIED: [2021-05-17 Mon 16:05:46]
+#+LAST_MODIFIED: [2021-05-17 Mon 16:08:27]
 #+STARTUP: content
 
 * UML Diagrams Made Easy
@@ -15,6 +15,7 @@
 'hide footbox
 skinparam backgroundcolor transparent
 skinparam monochrome reverse
+skinparam shadowing false
 
 participant "Bob on\nseveral lines" as Bob
 actor Alice
