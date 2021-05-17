@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: plantuml-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-17 Mon 10:06]
-#+LAST_MODIFIED: [2021-05-17 Mon 11:32:55]
+#+LAST_MODIFIED: [2021-05-17 Mon 12:14:33]
 #+STARTUP: content
 
 * UML Diagrams Made Easy
@@ -63,4 +63,10 @@ Let's also set the output type to =txt= so we get nice ASCII art
 
 #+begin_src emacs-lisp
 (setq plantuml-output-type "svg")
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-plantuml)
 #+end_src
