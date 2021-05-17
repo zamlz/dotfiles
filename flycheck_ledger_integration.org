@@ -1,10 +1,10 @@
-#+TITLE: flycheck-ledger
+#+TITLE: Flycheck Ledger Integration
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_KEY: https://github.com/purcell/flycheck-ledger
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: flycheck-ledger
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 15:48]
-#+LAST_MODIFIED: [2021-05-08 Sat 15:58:29]
+#+LAST_MODIFIED: [2021-05-17 Mon 15:10:20]
 
 * Flycheck Integration for Ledger-Mode
 :PROPERTIES:
