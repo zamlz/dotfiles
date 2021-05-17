@@ -3,16 +3,18 @@
 #+ROAM_ALIAS: plantuml-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-17 Mon 10:06]
-#+LAST_MODIFIED: [2021-05-17 Mon 15:50:58]
+#+LAST_MODIFIED: [2021-05-17 Mon 16:05:46]
 #+STARTUP: content
 
 * UML Diagrams Made Easy
 
 =PlantUML= a simple program that can help us very easily build UML diagrams. Even other types of diagrams are supported. Below is an example of what is possible.
 
-#+begin_src plantuml :file ./data/plantuml_test.svg
+#+begin_src plantuml :file ./data/plantuml_test.png :exports results
 @startuml
 'hide footbox
+skinparam backgroundcolor transparent
+skinparam monochrome reverse
 
 participant "Bob on\nseveral lines" as Bob
 actor Alice
@@ -59,7 +61,7 @@ end
 #+end_src
 
 #+RESULTS:
-[[file:./data/plantuml_test.svg]]
+[[file:./data/plantuml_test.png]]
 
 * Configuration
 :PROPERTIES:
