@@ -1,0 +1,50 @@
+#+TITLE: Flycheck PlantUML Integration
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: flycheck-plantuml
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-17 Mon 14:59]
+#+LAST_MODIFIED: [2021-05-17 Mon 15:19:42]
+#+STARTUP: content
+
+* Integrate Flycheck with PlantUML
+
+This project adds [[file:flycheck.org][Flycheck Syntax Checking]] when in [[file:plantuml.org][plantuml-mode]]. It will automatically check syntax of your files and highlight errors as they appear.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-flycheck-plantuml.el :comments both :mkdirp yes
+:END:
+
+** Dependency Setup
+
+As this package makes use of both [[file:flycheck.org][Flycheck Syntax Checking]] and [[file:plantuml.org][PlantUML]], let's ensure both of those modules are in fact setup.
+
+#+begin_src emacs-lisp
+(require 'init-plantuml)
+(require 'init-flycheck)
+#+end_src
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package flycheck-plantuml
+  :after (flycheck plantuml))
+#+end_src
+
+Set the executable path
+
+#+begin_src emacs-lisp
+(setq flycheck-plantuml-executable "plantuml")
+#+end_src
+
+Now make sure to enable =flycheck-plantuml=!
+
+#+begin_src emacs-lisp
+(flycheck-plantuml-setup)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-flycheck-plantuml)
+#+end_src

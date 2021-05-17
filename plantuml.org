@@ -3,39 +3,68 @@
 #+ROAM_ALIAS: plantuml-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-17 Mon 10:06]
-#+LAST_MODIFIED: [2021-05-17 Mon 12:14:33]
+#+LAST_MODIFIED: [2021-05-17 Mon 15:50:58]
 #+STARTUP: content
 
 * UML Diagrams Made Easy
 
 =PlantUML= a simple program that can help us very easily build UML diagrams. Even other types of diagrams are supported. Below is an example of what is possible.
 
-#+begin_src plantuml
-title Sample State Diagram
-scale 600 width
+#+begin_src plantuml :file ./data/plantuml_test.svg
+@startuml
+'hide footbox
 
-[*] -> State1
-State1 --> State2 : Succeeded
-State1 --> [*] : Aborted
-State2 --> State3 : Succeeded
-State2 --> [*] : Aborted
-state State3 {
-  state "Accumulate Enough Data\nLong State Name" as long1
-  long1 : Just a test
-  [*] --> long1
-  long1 --> long1 : New Data
-  long1 --> ProcessData : Enough Data
-}
-State3 --> State3 : Failed
-State3 --> [*] : Succeeded / Save Result
-State3 --> [*] : Aborted
+participant "Bob on\nseveral lines" as Bob
+actor Alice
+
+Bob -> Alice : hello
+note right of Alice
+  this is a note
+end note
+
+Alice -> Bob : Is it ok\nwith a message that is\non several lines?
+
+note right
+  This other note
+  should work
+  on several lines
+end note
+
+== This is a separation ==
+
+Bob -> Last : Yes it works!
+Last -> Last : working in progress
+note left : this is\nanother note
+
+Last --> Last : working in progress
+
+Last --> Bob : done
+
+opt dummy comment
+  Bob -> Last : Error\nOn\nSeveral\nLine
+  Last --> Bob : None
+else
+  Last --> Bob : None
+  Last -> Bob : None
+else other
+  Last -> Bob : None
+  note over Alice, Last
+    This is a long note
+    over Alice and Last
+  end note
+  Last -> Bob : None
+  Last -> Bob : None
+end
+@enduml
 #+end_src
+
+#+RESULTS:
+[[file:./data/plantuml_test.svg]]
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-plantuml.el :comments both :mkdirp yes
 :END:
-
 ** System Package
 
 Make sure to install the system package for =plantuml=, otherwise, we won't be able to interface with it.
