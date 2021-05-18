@@ -9,5 +9,6 @@ export NOTES_PRIVATE_DIR="$ORGMODE_DIR/private"
 
 export PAPERS_DIR="$ORGMODE_DIR/papers"
 export BLOG_DIR="$ORGMODE_DIR/blog"
+export BOOKMARKS_DIR="$ORGMODE_DIR/bookmarks"
 export LEDGER_DIR="$HOME/usr/ledger"
 export PASSWORD_STORE_DIR="$HOME/usr/passwords"
