@@ -1,0 +1,41 @@
+#+TITLE: Marginalia
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/minad/marginalia
+#+ROAM_ALIAS: marginalia-mode
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-18 Tue 20:57]
+#+LAST_MODIFIED: [2021-05-18 Tue 21:19:13]
+#+STARTUP: content
+
+* Marginalia in the Minibuffer
+=marginalia-mode= provides really nice annotations to minibuffer completions
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-marginalia.el :comments both :mkdirp yes
+:END:
+
+** Setup Vertico
+
+Before anything else, we should make sure [[file:vertico.org][Vertico]] is setup properly.
+
+#+begin_src emacs-lisp
+(require 'init-vertico)
+#+end_src
+
+** Package Install
+
+Setup =marginalia= but make sure we don't load it up before [[file:vertico.org][Vertico]].
+
+#+begin_src emacs-lisp
+(use-package marginalia
+  :after vertico
+  :init
+  (marginalia-mode))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-marginalia)
+#+end_src

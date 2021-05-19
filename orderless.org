@@ -1,0 +1,49 @@
+#+TITLE: Orderless
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/oantolin/orderless
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-18 Tue 20:05]
+#+LAST_MODIFIED: [2021-05-18 Tue 21:18:39]
+#+STARTUP: content
+
+* Orderless Completion Mode
+
+=orderless= is a simple package that adds multiple orderless completion styles.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-orderless.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package orderless)
+#+end_src
+
+** Completion Styles
+
+Set the default completion style
+
+#+begin_src emacs-lisp
+(setq completion-styles '(orderless))
+#+end_src
+
+Remove any prior settings that are enabled by default.
+
+#+begin_src emacs-lisp
+(setq completion-category-defaults nil)
+#+end_src
+
+Override completion style for =file= category
+
+#+begin_src emacs-lisp
+(setq completion-category-overrides '((file (styles . (partial-completion)))))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-orderless)
+#+end_src
