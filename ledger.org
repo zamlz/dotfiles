@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: ledger-mode
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-05-08 Sat 15:58:11]
+#+LAST_MODIFIED: [2021-05-18 Tue 10:40:11]
 
 * Ledger: Double-Entry Accounting System
 
@@ -49,6 +49,8 @@ Configure my default report views.
       "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) --uncleared")
      ("Account Statement"
       "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) ^%(account)")
+     ("Account Statement (Virtual)"
+      "%(binary) register [[ledger-mode-flags]] -f %(ledger-file) ^%(account)")
      ("Payee Statement"
       "%(binary) register --real [[ledger-mode-flags]] -f %(ledger-file) ^%(payee)")
      ))
