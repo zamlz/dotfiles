@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-14 Fri 15:12:10]
+#+LAST_MODIFIED: [2021-05-18 Tue 19:40:04]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -299,14 +299,8 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 (require 'init-evil)
 #+end_src
 
-** Interface
-
-#+begin_src emacs-lisp
-(require 'init-ivy)
-#+end_src
-
-*** Reorganize This
-**** Font Configuration
+** Interface (Reorganize This)
+*** Font Configuration
 
 I have a lot of fonts commented out right now because I can't decide on which ones to keep lol.
 
@@ -320,32 +314,8 @@ I have a lot of fonts commented out right now because I can't decide on which on
   (set-face-attribute 'variable-pitch nil :font "ETBembo" :height 120))
 #+end_src
 
-**** Helpful Help Commands
-
-[[https://github.com/Wilfred/helpful][Wilfred/helpful]] improves the documentation shown when running one of emacs's =describe-*= functions.
-
-#+begin_src emacs-lisp
-(use-package helpful
-  :after counsel
-  :custom
-  ; This is only needed if I'm still using counsel
-  (counsel-describe-function-function #'helpful-callable)
-  (counsel-describe-variable-function #'helpful-variable)
-  :bind
-  ;; Note that the built-in `describe-function' includes both functions
-  ;; and macros. `helpful-function' is functions only, so we provide
-  ;; `helpful-callable' as a drop-in replacement.
-  ([remap describe-function] . helpful-callable)
-  ([remap describe-variable] . helpful-variable)
-  ([remap describe-key]      . helpful-key)
-  ([remap describe-command]  . helpful-command)
-  ("C-c C-d"                 . helpful-at-point)
-  ("C-h F"                   . helpful-function)
-  )
-#+end_src
-
-**** Themes and Appearance
-***** Modeline
+*** Themes and Appearance
+**** Modeline
 
 To use =Doom-Modeline=, we need to have some custom icons installed. However, they must be manually installed via the following command (=M-x all-the-icons-install-fonts=)
 
@@ -387,7 +357,7 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
   :custom ((doom-modeline-height 15)))
 #+end_src
 
-***** Solaire Mode
+**** Solaire Mode
 
 #+begin_src emacs-lisp
 ;; (use-package solaire-mode
@@ -396,7 +366,7 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
 ;;   :config (solaire-global-mode +1))
 #+end_src
 
-***** Color Theme
+**** Color Theme
 
 I have a couple themes here. Eventually I want to setup my own custom theme but for now this will have to do.
 
@@ -426,7 +396,7 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
   (doom-themes-org-config))
 #+end_src
 
-***** Rainbow Delimiters
+**** Rainbow Delimiters
 
 Normally I don't like rainbow delimiters but its actually pretty good on emacs. And you actually can't survive without it IMO.
 
@@ -435,7 +405,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 
-***** Syntax Highlighting
+**** Syntax Highlighting
 
 #+begin_src emacs-lisp
 (use-package highlight-numbers
@@ -445,14 +415,14 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . hes-mode))
 #+end_src
 
-***** Rainbow Mode
+**** Rainbow Mode
 
 #+begin_src emacs-lisp
 (use-package rainbow-mode
   :init (rainbow-mode))
 #+end_src
 
-***** Transparency
+**** Transparency
 
 #+begin_src emacs-lisp
 ;; Set transparency of emacs
@@ -470,7 +440,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 (zamlz/set-transparency 100)
 #+end_src
 
-**** Info Colors
+*** Info Colors
 
 #+begin_src emacs-lisp
 (use-package info-colors
@@ -479,7 +449,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (info-mode . mixed-pitch-mode))
 #+end_src
 
-**** Daemon and Client Hooks
+*** Daemon and Client Hooks
 
 #+begin_src emacs-lisp
 (if (daemonp)

@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-05-18 Tue 19:20:10]
+#+LAST_MODIFIED: [2021-05-18 Tue 19:34:31]
 
 * A Generic Completion Framework for Emacs
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
@@ -19,6 +19,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package counsel
+  :disabled
   :bind (
          ("M-x"       . counsel-M-x)
          ("C-x TAB"   . counsel-semantic-or-imenu)
@@ -45,6 +46,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package ivy
+  :after counsel
   :init
   (setq ivy-re-builders-alist `((t . ivy--regex-ignore-order)))
   (ivy-mode)
@@ -74,10 +76,7 @@ Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
   ;; Do not quit the minibuffer on delete-error
   (ivy-on-del-error-function #'ignore)
   ;; Enable ability to select the prompt
-  (ivy-use-selectable-prompt t)
-  :config
-  ;; For some reason, we need to load counsel as soon as possible.
-  (require 'counsel nil t))
+  (ivy-use-selectable-prompt t))
 #+end_src
 
 ** Ivy Rich
@@ -159,6 +158,30 @@ Provides counsel interface for projectile.
 (use-package counsel-projectile
   :after counsel
   :init (counsel-projectile-mode))
+#+end_src
+
+** Helpful Help Commands
+
+[[https://github.com/Wilfred/helpful][Wilfred/helpful]] improves the documentation shown when running one of emacs's =describe-*= functions.
+
+#+begin_src emacs-lisp
+(use-package helpful
+  :after counsel
+  :custom
+  ; This is only needed if I'm still using counsel
+  (counsel-describe-function-function #'helpful-callable)
+  (counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ;; Note that the built-in `describe-function' includes both functions
+  ;; and macros. `helpful-function' is functions only, so we provide
+  ;; `helpful-callable' as a drop-in replacement.
+  ([remap describe-function] . helpful-callable)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-key]      . helpful-key)
+  ([remap describe-command]  . helpful-command)
+  ("C-c C-d"                 . helpful-at-point)
+  ("C-h F"                   . helpful-function)
+  )
 #+end_src
 
 ** Package Provides
