@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "General Leader Keybindings Definer"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-07 Fri 23:23]
-#+LAST_MODIFIED: [2021-05-12 Wed 13:51:28]
+#+LAST_MODIFIED: [2021-05-18 Tue 22:00:11]
 
 * More Conveniet Key Definitions in Emacs
 
@@ -33,7 +33,7 @@ With this package, we create a function that is called =zamlz/leader-keys= that 
 (general-create-definer zamlz/leader-keys
   :keymaps '(normal insert visual emacs)
   :prefix "SPC"
-  :global-prefix "C-SPC")
+  :global-prefix "M-SPC")
 #+end_src
 
 Add a couple of useful keybindings here for fun. I'll have to properly organize this later. This also showcases how to use the predefined function above.
