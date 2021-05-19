@@ -1,10 +1,11 @@
-#+TITLE: Ivy Generic Completion Mechanism
+#+TITLE: Ivy Completion Framework
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-05-12 Wed 23:33:48]
+#+LAST_MODIFIED: [2021-05-18 Tue 19:20:10]
 
+* A Generic Completion Framework for Emacs
 Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]].
 
 * Configuration
@@ -158,22 +159,6 @@ Provides counsel interface for projectile.
 (use-package counsel-projectile
   :after counsel
   :init (counsel-projectile-mode))
-#+end_src
-
-** Prescient
-
-Simple but effective sorting and filtering for emacs completion buffers.
-
-#+begin_src emacs-lisp
-(use-package prescient)
-#+end_src
-
-** Ivy Prescient
-
-#+begin_src emacs-lisp
-(use-package ivy-prescient
-  :after (ivy prescient))
-  ;; :init (ivy-prescient-mode))
 #+end_src
 
 ** Package Provides
