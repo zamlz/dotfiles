@@ -4,17 +4,16 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 21:41]
-#+LAST_MODIFIED: [2021-05-18 Tue 22:03:12]
+#+LAST_MODIFIED: [2021-05-19 Wed 21:00:07]
 #+STARTUP: content
 
 * Consulting Completing-Read
-Provides various practical commands for completing-read.
+Provides various practical commands for completing-read. It essentially is meant to be used on top of completion systems like [[file:vertico.org][Vertico]].
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-consult.el :comments both :mkdirp yes
 :END:
-
 ** Package Install
 
 Setup =consult=.
@@ -54,7 +53,7 @@ Setup =consult=.
          ("M-s g" . consult-grep)
          ("M-s G" . consult-git-grep)
          ("M-s r" . consult-ripgrep)
-         ("M-s l" . consult-line)
+         ("C-s" . consult-line)
          ("M-s m" . consult-multi-occur)
          ("M-s k" . consult-keep-lines)
          ("M-s u" . consult-focus-lines)
@@ -64,6 +63,21 @@ Setup =consult=.
          ("M-e" . consult-isearch)                 ;; orig. isearch-edit-string
          ("M-s e" . consult-isearch)               ;; orig. isearch-edit-string
          ("M-s l" . consult-line)))                ;; required by consult-line to detect isearch
+#+end_src
+
+** Recent Files Sources
+
+#+begin_src emacs-lisp
+(recentf-mode +1)
+#+end_src
+
+** Project Sources
+
+We want to be able to see project files in the =consult-buffer-*= views. But to get this to work, we need to register a project root function. We will get this from [[file:projectile.org][Projectile]]. /(Make use of =autoload= to tell emacs that we will load this function at some point)/
+
+#+begin_src emacs-lisp
+(autoload 'projectile-project-root "projectile")
+(setq consult-project-root-function #'projectile-project-root)
 #+end_src
 
 ** Setup Keybindings
