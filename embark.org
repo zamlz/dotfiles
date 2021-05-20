@@ -1,0 +1,76 @@
+#+TITLE: Embark
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/oantolin/embark
+#+ROAM_ALIAS: embark-consult
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-19 Wed 20:58]
+#+LAST_MODIFIED: [2021-05-20 Thu 14:06:48]
+#+STARTUP: content
+
+* Minibuffer Actions Rooted in Keymaps
+=embark= provides actions for minibuffer stuff.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-embark.el :comments both :mkdirp yes
+:END:
+** Package Install
+
+Time to setup the =embark= package.
+
+#+begin_src emacs-lisp
+(use-package embark
+  :disabled
+  :bind (
+  ;; Run the context menu for embark
+  ("M-a"   . embark-act)
+  ;; Run the context menu for embark but do not quit
+  ("M-S-a" . zamlz/embark-act-noquit)
+  ;; alternative for `describe-bindings'
+  ("C-h B" . embark-bindings)))
+#+end_src
+
+** Embark-Act No Quit
+
+This is a simple function that lets us run =embark-act= but not quit after running the corresponding action. For some reason this doesn't work as expected...
+
+#+begin_src emacs-lisp
+(defun zamlz/embark-act-noquit ()
+  "Run action but don't quit the minibuffer afterwards."
+  (interactive)
+  (let ((embark-quit-after-action nil))
+    (embark-act)))
+#+end_src
+
+** Consult Integration
+
+This also sets up [[file:consult.org][Consult]] integration for =embark=.
+
+#+begin_src emacs-lisp
+(use-package embark-consult
+  :disabled
+  :after (embark consult)
+  :demand t ; only necessary if you have the hook below
+  ;; if you want to have consult previews as you move around an
+  ;; auto-updating embark collect buffer
+  :hook
+  (embark-collect-mode . consult-preview-at-point-mode))
+#+end_src
+
+** Which Key Integration
+
+When running =embark-act=, let's make sure to use [[file:which_key.org][which-key]] so that we don't have to always remember which keys are available to us.
+
+#+begin_src emacs-lisp
+(setq embark-action-indicator
+      (lambda (map _target)
+        (which-key--show-keymap "Embark" map nil nil 'no-paging)
+        #'which-key--hide-popup-ignore-command)
+      embark-become-indicator embark-action-indicator)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-embark)
+#+end_src

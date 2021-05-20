@@ -1,0 +1,44 @@
+#+TITLE: Helpful
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/Wilfred/helpful
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-20 Thu 13:00]
+#+LAST_MODIFIED: [2021-05-20 Thu 13:47:40]
+#+STARTUP: content
+
+* An Improved Emacs * Help * Buffer
+
+=Helpful= provides an alternative to the existing built-in help menu for [[file:emacs.org][GNU/Emacs]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-helpful.el :comments both :mkdirp yes
+:END:
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package helpful
+  ;:after counsel
+  ;:custom
+  ; This is only needed if I'm still using counsel
+  ;(counsel-describe-function-function #'helpful-callable)
+  ;(counsel-describe-variable-function #'helpful-variable)
+  :bind
+  ;; Note that the built-in `describe-function' includes both functions
+  ;; and macros. `helpful-function' is functions only, so we provide
+  ;; `helpful-callable' as a drop-in replacement.
+  ([remap describe-function] . helpful-callable)
+  ([remap describe-variable] . helpful-variable)
+  ([remap describe-key]      . helpful-key)
+  ([remap describe-command]  . helpful-command)
+  ("C-c C-d"                 . helpful-at-point)
+  ("C-h F"                   . helpful-function)
+  )
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-helpful)
+#+end_src
