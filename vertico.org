@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: vertico-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-05-18 Tue 21:33:35]
+#+LAST_MODIFIED: [2021-05-19 Wed 12:41:23]
 #+STARTUP: content
 
 * VERTical Interactive COmpletion
@@ -38,6 +38,14 @@ In order to make =vertico= completion a lot nicer that what it is, we make use o
 
 #+begin_src emacs-lisp
 (setq vertico-cycle t)
+#+end_src
+
+** Persist History
+
+Persist history over Emacs restarts. Vertico will sort by history position for all completion buffers.
+
+#+begin_src emacs-lisp
+(savehist-mode +1)
 #+end_src
 
 ** Better Minibuffer Support
