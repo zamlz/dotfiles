@@ -4,10 +4,10 @@
 #+ROAM_ALIAS: vertico-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-05-19 Wed 12:41:23]
+#+LAST_MODIFIED: [2021-05-20 Thu 18:39:54]
 #+STARTUP: content
 
-* VERTical Interactive COmpletion
+* Vertical Interactive Completion
 =vertico= is a minimal completion UI for [[file:emacs.org][GNU/Emacs]]. It is built ontop of the regular completion system unlike other alternatives.
 
 * Configuration
@@ -24,6 +24,8 @@ In order to make =vertico= completion a lot nicer that what it is, we make use o
 
 ** Package Install
 
+Setup the =vertico= package.
+
 #+begin_src emacs-lisp
 (use-package vertico
   :bind (:map vertico-map
@@ -35,6 +37,8 @@ In order to make =vertico= completion a lot nicer that what it is, we make use o
   :init
   (vertico-mode))
 #+end_src
+
+Allow =vertico= to cycle between results
 
 #+begin_src emacs-lisp
 (setq vertico-cycle t)

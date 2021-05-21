@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 21:41]
-#+LAST_MODIFIED: [2021-05-19 Wed 21:00:07]
+#+LAST_MODIFIED: [2021-05-20 Thu 18:44:59]
 #+STARTUP: content
 
 * Consulting Completing-Read
@@ -85,7 +85,8 @@ We want to be able to see project files in the =consult-buffer-*= views. But to 
 We make use of  [[file:general_el.org][General Leader Keybindings Definer]] to add all our =consult= functions.
 
 #+begin_src emacs-lisp
-
+(zamlz/leader-keys
+ "tt" '(consult-theme :which-key "choose theme"))
 #+end_src
 
 ** Feature Provide
