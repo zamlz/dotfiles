@@ -1,0 +1,95 @@
+#+TITLE: BibTeX Actions
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-20 Thu 19:43]
+#+LAST_MODIFIED: [2021-05-20 Thu 20:21:06]
+#+STARTUP: content
+
+* Quickly Find and Act on BibTeX Entries
+
+=bibtex-actions= is a package that is meant to quickly find bibtex entries using simple completion frameworks like [[file:vertico.org][Vertico]] and builds off [[file:embark.org][Embark]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-bibtex-actions.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+
+We really just need to make sure [[file:embark.org][Embark]] is configured first probably.
+
+#+begin_src emacs-lisp
+(require 'init-embark)
+#+end_src
+
+** Package Install
+
+While setting up the package.
+
+#+begin_src emacs-lisp
+(use-package bibtex-actions
+  :after embark
+  :after (add-to-list 'embark-keymap-alist '(bibtex  . bibtex-actions-map)))
+#+end_src
+
+** Configure BibTeX Completion
+
+Configure paths for the bib file, docs, and notes.
+
+#+begin_src emacs-lisp
+(setq bibtex-completion-bibliography `((,(directory-files-recursively "~/org/papers/bib/" ""))))
+(setq bibtex-completion-library-path '("~/org/papers/doc/"))
+(setq bibtex-completion-notes-path "~/org/papers/notes/")
+#+end_src
+
+Define my note templates
+
+#+begin_src emacs-lisp
+(setq bibtex-completion-notes-template-multiple-files
+      (concat "#+TITLE: Notes on \"${title}\" by ${author-or-editor} (${year})\n"
+              "#+AUTHOR: %n (%(user-login-name))\n"
+              "#+ROAM_ALIAS:\n"
+              "#+ROAM_TAGS:\n"
+              "#+ROAM_KEY: cite:${=key=}\n"
+              "#+CREATED: %U\n"
+              "#+LAST_MODIFIED: %U\n"))
+#+end_src
+
+** Configure Template
+
+#+begin_src emacs-lisp
+(setq bibtex-actions-template
+      '((t . "${author:20}   ${title:48}   ${year:4}")))
+(setq bibtex-actions-template-suffix
+      '((t . "          ${=key=:15}    ${=type=:12}    ${tags:*}")))
+#+end_src
+
+** All-the-icons Integration
+
+#+begin_src emacs-lisp
+(setq bibtex-actions-symbols
+  `((pdf . (,(all-the-icons-icon-for-file "foo.pdf" :face 'all-the-icons-dred) .
+            ,(all-the-icons-icon-for-file "foo.pdf" :face 'bibtex-actions-icon-dim)))
+    (note . (,(all-the-icons-icon-for-file "foo.txt") .
+            ,(all-the-icons-icon-for-file "foo.txt" :face 'bibtex-actions-icon-dim)))
+    (link .
+        (,(all-the-icons-faicon "external-link-square" :v-adjust 0.02 :face 'all-the-icons-dpurple) .
+        ,(all-the-icons-faicon "external-link-square" :v-adjust 0.02 :face 'bibtex-actions-icon-dim)))))
+#+end_src
+
+Here we define a face to dim non 'active' icons, but preserve alignment
+
+#+begin_src emacs-lisp
+(defface bibtex-actions-icon-dim
+    '((((background dark)) :foreground "#282c34")
+     (((background light)) :foreground "#fafafa"))
+     "Face for obscuring/dimming icons"
+     :group 'all-the-icons-faces)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-bibtex-actions)
+#+end_src
