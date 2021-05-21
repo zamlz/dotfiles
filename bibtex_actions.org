@@ -30,7 +30,7 @@ While setting up the package.
 #+begin_src emacs-lisp
 (use-package bibtex-actions
   :after embark
-  :after (add-to-list 'embark-keymap-alist '(bibtex  . bibtex-actions-map)))
+  :config (add-to-list 'embark-keymap-alist '(bibtex  . bibtex-actions-map)))
 #+end_src
 
 ** Configure BibTeX Completion
