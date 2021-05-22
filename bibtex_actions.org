@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-20 Thu 19:43]
-#+LAST_MODIFIED: [2021-05-20 Thu 20:21:06]
+#+LAST_MODIFIED: [2021-05-21 Fri 17:59:00]
 #+STARTUP: content
 
 * Quickly Find and Act on BibTeX Entries
@@ -53,7 +53,8 @@ Define my note templates
               "#+ROAM_TAGS:\n"
               "#+ROAM_KEY: cite:${=key=}\n"
               "#+CREATED: %U\n"
-              "#+LAST_MODIFIED: %U\n"))
+              "#+LAST_MODIFIED: %U\n"
+              "#+STARTUP: content\n"))
 #+end_src
 
 ** Configure Template
