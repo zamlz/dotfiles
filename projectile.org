@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:18]
-#+LAST_MODIFIED: [2021-05-23 Sun 12:07:40]
+#+LAST_MODIFIED: [2021-05-23 Sun 12:08:32]
 
 Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
 
@@ -23,6 +23,8 @@ Load up =projectile= first.
   (setq projectile-project-search-path '("~/org"))
   (when (file-directory-p "~/src")
     (add-to-list 'projectile-project-search-path "~/src"))
+  (when (file-directory-p "~/usr")
+    (add-to-list 'projectile-project-search-path "~/usr"))
   (setq projectile-switch-project-action #'projectile-dired)
   :config (projectile-mode))
 #+end_src
