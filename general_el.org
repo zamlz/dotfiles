@@ -3,12 +3,12 @@
 #+ROAM_ALIAS: "General Leader Keybindings Definer"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-07 Fri 23:23]
-#+LAST_MODIFIED: [2021-05-20 Thu 18:44:31]
+#+LAST_MODIFIED: [2021-05-23 Sun 12:03:31]
 
 * More Conveniet Key Definitions in Emacs
 
 #+DOWNLOADED: screenshot @ 2021-05-08 11:50:15
-[[file:data/2021-05-08_11-50-15_screenshot.png]]
+[[file:data/napoleon_crossing_the_alps.png]]
 
 #+begin_quote
 *Napoleon Crossing the Alps* by Jacques-Louis David

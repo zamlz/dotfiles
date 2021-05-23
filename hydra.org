@@ -4,12 +4,12 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 11:33]
-#+LAST_MODIFIED: [2021-05-14 Fri 15:07:12]
+#+LAST_MODIFIED: [2021-05-23 Sun 11:57:42]
 
 * Make Emacs Bindings that Stick Around
 
 #+DOWNLOADED: screenshot @ 2021-05-08 11:41:25
-[[file:data/2021-05-08_11-41-25_screenshot.png]]
+[[file:data/hydra_and_hercules.png]]
 
 #+begin_quote
 *Hydra & Hercules* by Unknown
