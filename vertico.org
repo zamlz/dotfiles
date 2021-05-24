@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: vertico-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-05-22 Sat 15:16:05]
+#+LAST_MODIFIED: [2021-05-24 Mon 10:25:36]
 #+STARTUP: content
 
 * Vertical Interactive Completion
@@ -39,7 +39,8 @@ Setup the =vertico= package.
          ("M-k" . vertico-previous)
          ("M-f" . vertico-exit)
          :map minibuffer-local-map
-         ("M-h" . backward-kill-word))
+         ;; See section below of directory movement
+         ("<backspace>" . zamlz/minibuffer-backward-kill))
   :init
   (vertico-mode))
 #+end_src
@@ -92,6 +93,23 @@ I actually I'm kinda unsure about the purpose of this block. I saw it in the ori
 (defun crm-indicator (args)
   (cons (concat "[CRM] " (car args)) (cdr args)))
 (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
+#+end_src
+
+** Upwards Directory Movement in =find-file=
+
+I stole this little snippet of code [[https://systemcrafters.cc/live-streams/may-21-2021/#going-up-a-directory-in-kbdfind-filekbd][from David (System Crafters)]].  It basically mimics the same behaviour that =counsel-find-file= has when using =<Backspace>=, that is, it would essentially delete the characters in the path string such that it would go up a directory. This does the same thing now, but in =vertico=.
+
+#+begin_src emacs-lisp
+(defun zamlz/minibuffer-backward-kill (arg)
+  "When minibuffer is completing a file name delete up to parent
+folder, otherwise delete a character backward"
+  (interactive "p")
+  (if minibuffer-completing-file-name
+      ;; Borrowed from https://github.com/raxod502/selectrum/issues/498#issuecomment-803283608
+      (if (string-match-p "/." (minibuffer-contents))
+          (zap-up-to-char (- arg) ?/)
+        (delete-minibuffer-contents))
+      (delete-backward-char arg)))
 #+end_src
 
 ** Feature Provide
