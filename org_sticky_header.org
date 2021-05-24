@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-23 Sun 19:13]
-#+LAST_MODIFIED: [2021-05-23 Sun 19:27:00]
+#+LAST_MODIFIED: [2021-05-24 Mon 00:14:02]
 #+STARTUP: content
 
 * Off-screen Org Headings at the top of the Window
@@ -17,7 +17,7 @@ Display headings at the header line of the window for [[file:org_mode.org][Org-m
 Make sure to setup [[file:org_mode.org][Org-mode]] first.
 
 #+begin_src emacs-lisp
-(requrie 'init-org)
+(require 'init-org)
 #+end_src
 
 ** Package Install
