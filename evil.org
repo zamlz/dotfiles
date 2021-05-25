@@ -1,11 +1,12 @@
-#+TITLE: Extensible Vi Layer for Emacs (EVIL)
+#+TITLE: Evil Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_ALIAS: "evil-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-05-25 Tue 11:13:46]
+#+LAST_MODIFIED: [2021-05-25 Tue 11:20:25]
 #+STARTUP: content
 
+* Extensible Vi Layer for Emacs
 #+DOWNLOADED: screenshot @ 2021-04-04 13:11:33
 [[file:data/evil_mode_logo.png]]
 
