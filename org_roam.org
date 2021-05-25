@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-14 Fri 15:11:13]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:17:30]
 #+STARTUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
@@ -25,7 +25,6 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam.el :comments both :mkdirp yes
 :END:
-
 ** Package Setup
 
 =org-roam= is a useful package for taking notes. While this may not be needed, let's make sure [[file:org_mode.org][Org-mode]] is loaded first.
