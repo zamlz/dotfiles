@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "evil-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-05-25 Tue 11:20:25]
+#+LAST_MODIFIED: [2021-05-25 Tue 11:35:10]
 #+STARTUP: content
 
 * Extensible Vi Layer for Emacs
@@ -102,17 +102,6 @@ A pretty nice package that is used for lets you use the primary features of vim 
   (evil-fringe-mark-show-special t)
   :config
   (global-evil-fringe-mark-mode))
-#+end_src
-
-** Visual Goggles
-
-[[https://github.com/edkolev/evil-goggles][github:edkolev/evil-goggles]] lets us visualize all evil operations that we perform.
-
-#+begin_src emacs-lisp
-(use-package evil-goggles
-  :after evil
-  :init (evil-goggles-mode)
-  :config (evil-goggles-use-diff-faces))
 #+end_src
 
 ** Package Provides

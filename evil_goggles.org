@@ -1,0 +1,44 @@
+#+TITLE: Evil Goggles
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/edkolev/evil-goggles
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-25 Tue 11:15]
+#+LAST_MODIFIED: [2021-05-25 Tue 11:37:27]
+#+STARTUP: content
+
+* Visual Hints of Evil Operations
+=evil-goggles-mode= provides visual hints of various different [[file:evil.org][evil-mode]] operations.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-evil-goggles.el :comments both :mkdirp yes
+:END:
+** Setup Evil
+
+Maybe I should be setting up [[file:evil.org][Evil Mode]] before I do this...
+
+#+begin_src emacs-lisp
+(require 'init-evil)
+#+end_src
+
+** Package Install
+Install and setup =evil-goggles-mode=
+
+#+begin_src emacs-lisp
+(use-package evil-goggles
+  :init (evil-goggles-mode +1))
+#+end_src
+
+** Customize Faces
+
+#+begin_src emacs-lisp
+;; TODO: diff face colors are not being used?
+(evil-goggles-use-diff-faces)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-evil-goggles)
+#+end_src
