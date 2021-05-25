@@ -357,15 +357,6 @@ To use =Doom-Modeline=, we need to have some custom icons installed. However, th
   :custom ((doom-modeline-height 15)))
 #+end_src
 
-**** Solaire Mode
-
-#+begin_src emacs-lisp
-;; (use-package solaire-mode
-;;   :custom
-;;   (solaire-mode-auto-swap-bg t)
-;;   :config (solaire-global-mode +1))
-#+end_src
-
 **** Color Theme
 
 I have a couple themes here. Eventually I want to setup my own custom theme but for now this will have to do.
