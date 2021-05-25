@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "evil-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-05-12 Wed 22:32:11]
+#+LAST_MODIFIED: [2021-05-25 Tue 11:13:46]
 #+STARTUP: content
 
 #+DOWNLOADED: screenshot @ 2021-04-04 13:11:33
@@ -21,10 +21,8 @@ A pretty nice package that is used for lets you use the primary features of vim 
 
 #+begin_src emacs-lisp
 (use-package evil
-  :after undo-fu
   :init
   (setq evil-want-keybinding nil)
-  (setq evil-undo-system 'undo-fu)
   :config
   (evil-mode 1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
@@ -95,6 +93,7 @@ A pretty nice package that is used for lets you use the primary features of vim 
 
 #+begin_src emacs-lisp
 (use-package evil-fringe-mark
+  :disabled
   :after evil
   :custom
   ;; (right-fringe-width 16)
@@ -114,16 +113,6 @@ A pretty nice package that is used for lets you use the primary features of vim 
   :init (evil-goggles-mode)
   :config (evil-goggles-use-diff-faces))
 #+end_src
-
-** Undo Fu System
-
-A simple undo system that is basically a wrapper over the existing undo system. Also make sure to integrate it with evil mode.
-
-#+begin_src emacs-lisp
-(use-package undo-fu)
-#+end_src
-
-TODO, should consider integrating =undo-fu-session= as well.
 
 ** Package Provides
 
