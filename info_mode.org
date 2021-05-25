@@ -1,0 +1,10 @@
+#+TITLE: info-mode
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-24 Mon 17:09]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:10:53]
+#+STARTUP: content
+
+* Major mode for Browsing the Info Documentation Tree
+=info-mode= provides commands for viewing the documentation tree. Many [[file:emacs.org][GNU/Emacs]] packages will add their documentation here. It can be accessed with =<C-h i>=.

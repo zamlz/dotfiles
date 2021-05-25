@@ -1,0 +1,35 @@
+#+TITLE: Info Colors
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-24 Mon 17:07]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:19:04]
+#+STARTUP: content
+
+* Extra Colors for Emacs Info Pages
+Adds extra flair to [[file:info_mode.org][info-mode]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-info-colors.el :comments both :mkdirp yes
+:END:
+** Package Install
+Time to setup =info-colors=.
+
+#+begin_src emacs-lisp
+(use-package info-colors)
+#+end_src
+
+** Setup Hooks
+The first hook enables the package. The second hook is unclear. Must have came somewhere when I copied it...
+
+#+begin_src emacs-lisp
+(add-hook 'Info-selection-hook 'info-colors-fontify-node)
+;;(add-hook 'info-mode-hook 'mixed-pitch-mode)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-info-colors)
+#+end_src

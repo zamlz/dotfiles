@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-20 Thu 19:17:23]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:12:09]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -429,15 +429,6 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 
 ;; Set the default transparency
 (zamlz/set-transparency 100)
-#+end_src
-
-*** Info Colors
-
-#+begin_src emacs-lisp
-(use-package info-colors
-  :hook
-  (Info-selection . info-colors-fontify-node)
-  (info-mode . mixed-pitch-mode))
 #+end_src
 
 *** Daemon and Client Hooks
