@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-24 Mon 17:12:09]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:30:43]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -318,38 +318,6 @@ I have a lot of fonts commented out right now because I can't decide on which on
 **** Modeline
 
 To use =Doom-Modeline=, we need to have some custom icons installed. However, they must be manually installed via the following command (=M-x all-the-icons-install-fonts=)
-
-#+begin_src emacs-lisp
-(use-package all-the-icons)
-
-;; https://github.com/jerrypnz/.emacs.d/blob/master/lisp/jp-icons.el
-(defun with-faicon (icon str &optional height v-adjust)
-  (s-concat (all-the-icons-faicon icon :v-adjust (or v-adjust 0)
-                                  :height (or height 1)) " " str))
-
-(defun with-fileicon (icon str &optional height v-adjust)
-  (s-concat (all-the-icons-fileicon icon :v-adjust (or v-adjust 0)
-                                    :height (or height 1)) " " str))
-
-(defun with-octicon (icon str &optional height v-adjust)
-  (s-concat (all-the-icons-octicon icon :v-adjust (or v-adjust 0)
-                                   :height (or height 1)) " " str))
-
-(defun with-material (icon str &optional height v-adjust)
-  (s-concat (all-the-icons-material icon :v-adjust (or v-adjust 0)
-                                    :height (or height 1)) " " str))
-
-(defun with-mode-icon (mode str &optional height nospace face)
-  (let* ((v-adjust (if (eq major-mode 'emacs-lisp-mode) 0.0 0.05))
-         (args     `(:height ,(or height 1) :v-adjust ,v-adjust))
-         (_         (when face
-                      (lax-plist-put args :face face)))
-         (icon     (apply #'all-the-icons-icon-for-mode mode args))
-         (icon     (if (symbolp icon)
-                       (apply #'all-the-icons-octicon "file-text" args)
-                     icon)))
-    (s-concat icon (if nospace "" " ") str)))
-#+end_src
 
 #+begin_src emacs-lisp
 (use-package doom-modeline

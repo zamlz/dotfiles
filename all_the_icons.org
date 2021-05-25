@@ -1,0 +1,91 @@
+#+TITLE: All The Icons
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/domtronn/all-the-icons.el
+#+ROAM_ALIAS: all-the-icons
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-24 Mon 17:24]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:33:43]
+#+STARTUP: content
+
+* Utility Package for Icon Fonts
+=all-the-icons= is an amazing package that provides a great deal of icons but also have them categorized very nicely. The following functions can be used to infer the icons.
+
+- =all-the-icons-icon-for-buffer=
+- =all-the-icons-icon-for-dir=
+- =all-the-icons-icon-for-file=
+- =all-the-icons-icon-for-mode=
+- =all-the-icons-icon-for-url=
+
+Here is an example usage:
+
+#+begin_src emacs-lisp
+(insert (all-the-icons-icon-for-file "foo.js"))
+#+end_src
+
+Icons can also just be inserted directly using on the following functions
+
+- =all-the-icons-alltheicon=
+- =all-the-icons-faicon=
+- =all-the-icons-fileicon=
+- =all-the-icons-octicon=
+- =all-the-icons-wicon=
+
+Here is an example usage:
+
+#+begin_src emacs-lisp
+(all-the-icons-octicon "file-binary")  ;; GitHub Octicon for Binary File
+(all-the-icons-faicon  "cogs")         ;; FontAwesome icon for cogs
+(all-the-icons-wicon   "tornado")      ;; Weather Icon for tornado
+#+end_src
+
+Refer to the official docs for far more example uses.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-all-the-icons.el :comments both :mkdirp yes
+:END:
+** Package Install
+Install the =all-the-icons= package. An important bit is that we need to manually install the actual icons with =M-x all-the-icons-install-fonts=.
+
+#+begin_src emacs-lisp
+(use-package all-the-icons)
+#+end_src
+
+** Helper Functions
+I found these useful helper functions from [[https://github.com/jerrypnz/.emacs.d/blob/master/lisp/jp-icons.el][this repo]] and snagged it for myself. I haven't really used it yet, but good to have lol.
+
+#+begin_src emacs-lisp
+;;
+(defun with-faicon (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-faicon icon :v-adjust (or v-adjust 0)
+                                  :height (or height 1)) " " str))
+
+(defun with-fileicon (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-fileicon icon :v-adjust (or v-adjust 0)
+                                    :height (or height 1)) " " str))
+
+(defun with-octicon (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-octicon icon :v-adjust (or v-adjust 0)
+                                   :height (or height 1)) " " str))
+
+(defun with-material (icon str &optional height v-adjust)
+  (s-concat (all-the-icons-material icon :v-adjust (or v-adjust 0)
+                                    :height (or height 1)) " " str))
+
+(defun with-mode-icon (mode str &optional height nospace face)
+  (let* ((v-adjust (if (eq major-mode 'emacs-lisp-mode) 0.0 0.05))
+         (args     `(:height ,(or height 1) :v-adjust ,v-adjust))
+         (_         (when face
+                      (lax-plist-put args :face face)))
+         (icon     (apply #'all-the-icons-icon-for-mode mode args))
+         (icon     (if (symbolp icon)
+                       (apply #'all-the-icons-octicon "file-text" args)
+                     icon)))
+    (s-concat icon (if nospace "" " ") str)))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-all-the-icons)
+#+end_src
