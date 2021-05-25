@@ -405,6 +405,10 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
 ** Load Remaining Modules
 
 #+begin_src emacs-lisp
+(use-package s)
+#+end_src
+
+#+begin_src emacs-lisp
 (dolist
     (dir (directory-files (expand-file-name "lisp" user-emacs-directory) nil ".*\\.el"))
   (require (intern (s-replace-regexp "\\.el" "" dir))))
