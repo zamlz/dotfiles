@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-24 Mon 17:38:40]
+#+LAST_MODIFIED: [2021-05-24 Mon 18:02:01]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -354,12 +354,16 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 
-**** Syntax Highlighting
+**** Highlight Numbers
 
 #+begin_src emacs-lisp
 (use-package highlight-numbers
   :hook (prog-mode . highlight-numbers-mode))
+#+end_src
 
+**** Highlight Escape Sequences
+
+#+begin_src emacs-lisp
 (use-package highlight-escape-sequences
   :hook (prog-mode . hes-mode))
 #+end_src
