@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-17 Mon 09:30:04]
+#+LAST_MODIFIED: [2021-05-24 Mon 23:30:35]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -284,12 +284,12 @@ Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] in
 /Need to figure out how to configure the size of the generated latex image./
 
 #+begin_src emacs-lisp
-  (setq org-startup-with-latex-preview t)
-  (setq org-highlight-latex-and-related '(native script entities))
-  (with-eval-after-load 'org
-    (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
-    (setq org-preview-latex-image-directory  "/tmp/ltximg/")
-    (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t))))
+(setq org-startup-with-latex-preview t)
+(setq org-highlight-latex-and-related '(native script entities))
+(with-eval-after-load 'org
+  (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+  (setq org-preview-latex-image-directory  "/tmp/ltximg/")
+  (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t))))
 #+end_src
 
 ** Org Latex FragTog
