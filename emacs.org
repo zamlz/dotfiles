@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-24 Mon 17:30:43]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:38:40]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -315,16 +315,6 @@ I have a lot of fonts commented out right now because I can't decide on which on
 #+end_src
 
 *** Themes and Appearance
-**** Modeline
-
-To use =Doom-Modeline=, we need to have some custom icons installed. However, they must be manually installed via the following command (=M-x all-the-icons-install-fonts=)
-
-#+begin_src emacs-lisp
-(use-package doom-modeline
-  :init (doom-modeline-mode 1)
-  :custom ((doom-modeline-height 15)))
-#+end_src
-
 **** Color Theme
 
 I have a couple themes here. Eventually I want to setup my own custom theme but for now this will have to do.

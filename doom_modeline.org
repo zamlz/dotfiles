@@ -1,0 +1,48 @@
+#+TITLE: Doom Modeline
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/seagle0128/doom-modeline
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-24 Mon 17:35]
+#+LAST_MODIFIED: [2021-05-24 Mon 17:58:21]
+#+STARTUP: content
+
+* A Fancy and Fast Modeline for Emacs
+A very fancy and fast modeline for [[file:emacs.org][GNU/Emacs]]. It is used it many different distrubtions of [[file:emacs.org][GNU/Emacs]], most notably it's namesake, Doom Emacs.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-doom-modeline.el :comments both :mkdirp yes
+:END:
+** Setup Dependencies
+While [[file:all_the_icons.org][All The Icons]] is not really a hard dependency, =doom-modeline= let's set this up to make sure it looks very nice.
+
+#+begin_src emacs-lisp
+(require 'init-all-the-icons)
+#+end_src
+
+We also want to use [[file:projectile.org][Projectile]] to help our =doom-modeline= identify project root and stuff.
+
+#+begin_src emacs-lisp
+(require 'init-projectile)
+#+end_src
+
+** Package Install
+Install =doom-modeline= with our package manager.
+
+#+begin_src emacs-lisp
+(use-package doom-modeline
+  :init (doom-modeline-mode +1))
+#+end_src
+
+** Customize Aesthetics
+
+#+begin_src emacs-lisp
+(setq doom-modeline-height 15)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-doom-modeline)
+#+end_src
