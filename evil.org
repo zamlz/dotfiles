@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "evil-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-05-25 Tue 11:35:10]
+#+LAST_MODIFIED: [2021-05-25 Tue 16:35:53]
 #+STARTUP: content
 
 * Extensible Vi Layer for Emacs
@@ -62,19 +62,6 @@ A pretty nice package that is used for lets you use the primary features of vim 
   (evil-collection-define-key 'normal 'dired-mode-map
     "h" 'dired-single-up-directory
     "l" 'dired-single-buffer))
-#+end_src
-
-** Org Mode Bindings
-
-[[https://github.com/Somelauw/evil-org-mode][github:Somelauw/evil-org-mode]] provides useful vi-like bindings for [[file:org_mode.org][org-mode]] files.
-
-#+begin_src emacs-lisp
-(use-package evil-org
-  :after (evil org)
-  :hook (org-mode . (lambda() evil-org-mode))
-  :config
-  (require 'evil-org-agenda)
-  (evil-org-agenda-set-keys))
 #+end_src
 
 ** Quick Commenting

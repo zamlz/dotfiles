@@ -1,0 +1,49 @@
+#+TITLE: Evil Org
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: "evil-org-mode"
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-25 Tue 16:30]
+#+LAST_MODIFIED: [2021-05-25 Tue 16:40:23]
+#+STARTUP: content
+
+* Make Org-Mode More Evil
+=evil-org-mode= adds [[file:evil.org][Evil Mode]] keybindings to [[file:org_mode.org][Org-mode]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-evil-org.el :comments both :mkdirp yes
+:END:
+** Setup Dependencies
+We should ensure that [[file:evil.org][Evil Mode]] and [[file:org_mode.org][Org-mode]] are configured first.
+
+#+begin_src emacs-lisp
+(require 'init-evil)
+(require 'init-org)
+#+end_src
+
+** Package Install
+Setup the =evil-org= package.
+
+#+begin_src emacs-lisp
+(use-package evil-org
+  :hook (org-mode . evil-org-mode))
+#+end_src
+
+** Setup Keybindings
+Some extra steps are required if we wish to use =evil-org-agenda=. It is pulled in by =evil-org=, but it is not loaded up by default so let's load that first.
+
+#+begin_src emacs-lisp
+(require 'evil-org-agenda)
+#+end_src
+
+We need to set the keys for that as well.
+
+#+begin_src emacs-lisp
+(evil-org-agenda-set-keys)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-evil-org)
+#+end_src
