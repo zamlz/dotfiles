@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "evil-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-05-25 Tue 16:35:53]
+#+LAST_MODIFIED: [2021-05-25 Tue 17:03:41]
 #+STARTUP: content
 
 * Extensible Vi Layer for Emacs
@@ -48,6 +48,19 @@ A pretty nice package that is used for lets you use the primary features of vim 
   ;; configure initial states in specific modes
   (evil-set-initial-state 'messages-buffer-mode 'normal)
   (evil-set-initial-state 'dashboard-mode 'normal))
+#+end_src
+
+** Setup Undo-Tree
+=evil-mode= is nice, but the undo system could be improved alot if we make use of [[file:undo_tree.org][Undo Tree]] so let's ensure that's setup first.
+
+#+begin_src emacs-lisp
+(require 'init-undo-tree)
+#+end_src
+
+We also need to tell =evil-mode= to actually use it once its loaded.
+
+#+begin_src emacs-lisp
+(evil-set-undo-system 'undo-tree)
 #+end_src
 
 ** Extra Collections
