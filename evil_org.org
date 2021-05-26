@@ -1,9 +1,10 @@
 #+TITLE: Evil Org
 #+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/Somelauw/evil-org-mode
 #+ROAM_ALIAS: "evil-org-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-25 Tue 16:30]
-#+LAST_MODIFIED: [2021-05-25 Tue 16:40:23]
+#+LAST_MODIFIED: [2021-05-25 Tue 16:51:51]
 #+STARTUP: content
 
 * Make Org-Mode More Evil
