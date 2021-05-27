@@ -4,10 +4,9 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-05-08 Sat 17:10:29]
+#+LAST_MODIFIED: [2021-05-26 Wed 15:27:05]
 
 * Major Mode Hydra and Pretty Hydra
-
 A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] menus for specific meajor-modes in [[file:emacs.org][GNU/Emacs]].
 
 * Package Install
@@ -15,12 +14,14 @@ A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] me
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-major-mode-hydra.el :comments both :mkdirp yes
 :END:
 
+** Setup Hydra
 Ensure that [[file:hydra.org][Hydra]] is configured first.
 
 #+begin_src emacs-lisp
 (require 'init-hydra)
 #+end_src
 
+** Package Install
 Now we can configure this package.
 
 #+begin_src emacs-lisp
@@ -28,6 +29,7 @@ Now we can configure this package.
   :after hydra)
 #+end_src
 
+** Configure Major-mode Keybindings
 We also want to be able to access the =major-mode-hydra= menu as easily as possible so let's add that to our [[file:general_el.org][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
@@ -36,6 +38,52 @@ We also want to be able to access the =major-mode-hydra= menu as easily as possi
   "SPC" 'major-mode-hydra)
 #+end_src
 
+** Personal Hydras
+*** Notetaking
+
+#+begin_src emacs-lisp
+(pretty-hydra-define zamlz/hydra-notes
+  (:title "Notetaking Commands" :color blue :quit-key "q" :exit t)
+  ("Roam"
+   (("l" org-roam "Show Backlinks" :toggle t)
+    ("/" org-roam-find-file "Find File")
+    ("g" org-roam-graph "Graph View")
+    ("r" org-roam-db-build-cache "Rebuild Cache")
+    ("t" org-roam-tag-add "Add Tags")
+    ("a" org-roam-alias-add "Add Alias"))))
+#+end_src
+
+#+begin_src emacs-lisp
+(zamlz/leader-keys
+  "n" 'zamlz/hydra-notes/body)
+#+end_src
+
+*** Documentation & Help
+
+#+begin_src emacs-lisp
+(pretty-hydra-define zamlz/hydra-documentation
+  (:title "Help & Documentation Commands" :color green :quit-key "q" :exit t)
+  ("CMDs/Funcs/Macros"
+   (("h" helpful-callable "[ALL]")
+    ("c" helpful-command "Command")
+    ("f" helpful-function "Function")
+    ("m" helpful-macro "Macro"))
+  "Variable"
+   (("v" helpful-variable "Variable")
+    ("V" set-variable "Set Variable")
+    ("s" helpful-at-point "Symbol at Point"))
+  "Keybindings"
+   (("k" helpful-key "Describe Key")
+    ("b" embark-bindings "List Bindings")
+    )))
+#+end_src
+
+#+begin_src emacs-lisp
+(zamlz/leader-keys
+  "h" 'zamlz/hydra-documentation/body)
+#+end_src
+
+** Feature Provide
 Make sure to provide this module
 
 #+begin_src emacs-lisp

@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-24 Mon 17:17:30]
+#+LAST_MODIFIED: [2021-05-26 Wed 15:17:23]
 #+STARTUP: content
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
@@ -43,34 +43,6 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
   (org-roam-dailies-directory "private/journal/")
   (org-roam-file-exclude-regexp "README.org")
   (org-roam-db-udpate-method 'immediate))
-#+end_src
-
-** Leader Keybindings
-
-Let's add some commonly used functions into our [[file:general_el.org][General Leader Keybindings Definer]].
-
-#+begin_src emacs-lisp
-(require 'init-general)
-(zamlz/leader-keys
-  ;;:keymaps 'org-roam-mode-map
-  "n"  '(:ignore t :which-key "org-roam")
-  ;; Standard Roam Operations
-  "nl" 'org-roam
-  "n/" 'org-roam-find-file
-  ;; Graph Operations
-  "ng" 'org-roam-graph
-  "nb" 'org-roam-db-build-cache
-  ;; Dired Quick Access
-  "nf" 'org-roam-find-directory
-  "nF" 'org-roam-dailies-find-directory
-  ;; Journal
-  "nj" 'org-roam-dailies-capture-today
-  "ny" 'org-roam-dailies-capture-yesterday
-  "nd" 'org-roam-dailies-capture-date
-  ;; Roam Header Modifiers
-  "nt" 'org-roam-tag-add
-  "na" 'org-roam-alias-add
-  )
 #+end_src
 
 ** Capture Templates
