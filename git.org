@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-05-23 Sun 12:02:45]
+#+LAST_MODIFIED: [2021-05-26 Wed 23:44:24]
 
 * Git: The Stupid Content Tracker
 
@@ -99,7 +99,7 @@ These are just useful aliases I've found online
     lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
 #+end_src
 
-** Excludes File
+** Ignore File
 :PROPERTIES:
 :header-args:conf: :tangle ~/.config/git/ignore :comments both :mkdirp yes
 :END:
@@ -108,14 +108,24 @@ Many programs generate a bunch of garbage files. We don't want git to consider t
 
 /Emacs garbage:/
 
+- /Autosave, Backup, and Compiled Files/
+
 #+begin_src conf
-# autosave/backup/compiled files
 ,*~
 \#*\#
 ,*.elc
+#+end_src
 
-# Directory Configuration
+- /Local Directory Configuration/
+
+#+begin_src conf
 .dir-locals.el
+#+end_src
+
+- /Undo History/
+
+#+begin_src emacs-lisp
+*..~undo-tree~
 #+end_src
 
 /Python Garbage:/

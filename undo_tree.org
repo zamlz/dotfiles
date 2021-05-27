@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: "undo-tree-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-25 Tue 16:53]
-#+LAST_MODIFIED: [2021-05-25 Tue 16:57:00]
+#+LAST_MODIFIED: [2021-05-26 Wed 23:45:07]
 #+STARTUP: content
 
 * Visualize The Undo Tree
@@ -25,6 +25,27 @@ Install =undo-tree= like any other package.
 
 #+begin_src emacs-lisp
 (global-undo-tree-mode)
+#+end_src
+
+** Improve Tree Visuals
+Let's make sure by default when we see the tree, we also see the diff of each node.
+
+#+begin_src emacs-lisp
+(setq  undo-tree-visualizer-diff t)
+#+end_src
+
+Let's also see the timestamps of when the change was made
+
+#+begin_src emacs-lisp
+(setq undo-tree-visualizer-timestamps t)
+(setq undo-tree-visualizer-relative-timestamps nil)
+#+end_src
+
+** Autosave Undo History
+We can confiure =undo-tree= to save the undo history to a file so that it can be persistant over sessions.
+
+#+begin_src emacs-lisp
+(setq undo-tree-auto-save-history t)
 #+end_src
 
 ** Feature Provide
