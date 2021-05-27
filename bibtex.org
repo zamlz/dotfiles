@@ -1,0 +1,50 @@
+#+TITLE: BibTeX
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS: "bibtex-mode"
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-26 Wed 08:08]
+#+LAST_MODIFIED: [2021-05-26 Wed 08:33:22]
+#+STARTUP: content
+
+* Manage Bibliography Entries
+=BibTeX= is pimarily used by [[file:latex.org][LaTeX]] to manage bibliography entries.
+[[file:emacs.org][GNU/Emacs]] already provides a major-mode for editing =BibTeX= files.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-bibtex.el :comments both :mkdirp yes
+:END:
+** Setup Spellcheking
+In =bibtex-mode= buffers, let's also have spell checking setup. Can't be writing citations with typos. We incorporate =flyspell= which is part of the [[file:flycheck.org][Flycheck Syntax Checking]] package.
+
+#+begin_src emacs-lisp
+(require 'init-flycheck)
+(add-hook 'bibtex-mode-hook 'flyspell-mode)
+#+end_src
+
+** User Defined Fields
+We can have specially defined fields that are not normally added by =bibtex-mode=.
+
+#+begin_src emacs-lisp
+(setq bibtex-user-optional-fields
+      '(("keywords" "Keywords to describe the entry" "")))
+#+end_src
+
+Disable the use of OTP keys.
+
+#+begin_src emacs-lisp
+(setq bibtex-include-OPTkey nil)
+#+end_src
+
+** Alignment
+Let's make =bibtex-mode='s formatting more pretty
+
+#+begin_src emacs-lisp
+(setq bibtex-align-at-equal-sign t)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-bibtex)
+#+end_src

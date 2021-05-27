@@ -3,18 +3,17 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-20 Thu 19:43]
-#+LAST_MODIFIED: [2021-05-22 Sat 17:14:05]
+#+LAST_MODIFIED: [2021-05-26 Wed 08:46:18]
 #+STARTUP: content
 
 * Quickly Find and Act on BibTeX Entries
 
-=bibtex-actions= is a package that is meant to quickly find bibtex entries using simple completion frameworks like [[file:vertico.org][Vertico]] and builds off [[file:embark.org][Embark]].
+=bibtex-actions= is a package that is meant to quickly find [[file:bibtex.org][BibTeX]] entries using simple completion frameworks like [[file:vertico.org][Vertico]] and builds off [[file:embark.org][Embark]].
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-bibtex-actions.el :comments both :mkdirp yes
 :END:
-
 ** Setup Dependencies
 
 We really just need to make sure [[file:embark.org][Embark]] is configured first probably.
@@ -38,9 +37,9 @@ While setting up the package.
 Configure paths for the bib file, docs, and notes.
 
 #+begin_src emacs-lisp
-(setq bibtex-completion-bibliography `((,(directory-files-recursively "~/org/papers/bib/" ""))))
-(setq bibtex-completion-library-path '("~/org/papers/doc/"))
-(setq bibtex-completion-notes-path "~/org/papers/notes/")
+(setq bibtex-completion-bibliography "~/org/papers/references.bib")
+(setq bibtex-completion-library-path "~/org/papers/docs/")
+(setq bibtex-completion-notes-path "~/org/papers/")
 #+end_src
 
 Define my note templates
@@ -55,6 +54,12 @@ Define my note templates
               "#+CREATED: %U\n"
               "#+LAST_MODIFIED: %U\n"
               "#+STARTUP: content\n"))
+#+end_src
+
+We make use of =tags= fields withn [[file:bibtex.org][BibTeX]] but since that's non-standard, we need to let =bibtex-actions= know that we are using these.
+
+#+begin_src emacs-lisp
+(setq bibtex-completion-additional-search-fields '(tags))
 #+end_src
 
 ** Configure Template
