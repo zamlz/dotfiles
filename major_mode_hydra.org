@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-05-26 Wed 15:27:05]
+#+LAST_MODIFIED: [2021-05-27 Thu 08:28:22]
 
 * Major Mode Hydra and Pretty Hydra
 A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] menus for specific meajor-modes in [[file:emacs.org][GNU/Emacs]].
@@ -40,6 +40,7 @@ We also want to be able to access the =major-mode-hydra= menu as easily as possi
 
 ** Personal Hydras
 *** Notetaking
+Let's define a =hydra= for accessing all notetaking related functions in packages like [[file:org_roam.org][Org-roam]] and [[file:bibtex_actions.org][BibTeX Actions]]. We don't need to worry about setting up the dependencies as they will be setup at some point, =hydra= will automatically find them when the function is run.
 
 #+begin_src emacs-lisp
 (pretty-hydra-define zamlz/hydra-notes
@@ -50,8 +51,14 @@ We also want to be able to access the =major-mode-hydra= menu as easily as possi
     ("g" org-roam-graph "Graph View")
     ("r" org-roam-db-build-cache "Rebuild Cache")
     ("t" org-roam-tag-add "Add Tags")
-    ("a" org-roam-alias-add "Add Alias"))))
+    ("a" org-roam-alias-add "Add Alias"))
+   "BibTeX"
+   (("b" bibtex-actions-open "Library"))
+   "Journal"
+   ()))
 #+end_src
+
+Add the notetaking =hydra= to [[file:general_el.org][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (zamlz/leader-keys
@@ -59,6 +66,7 @@ We also want to be able to access the =major-mode-hydra= menu as easily as possi
 #+end_src
 
 *** Documentation & Help
+Create a =hydra= for accessing all help documentation super easily and also provide bindings for packages like [[file:helpful.org][Helpful]].
 
 #+begin_src emacs-lisp
 (pretty-hydra-define zamlz/hydra-documentation
@@ -77,6 +85,8 @@ We also want to be able to access the =major-mode-hydra= menu as easily as possi
     ("b" embark-bindings "List Bindings")
     )))
 #+end_src
+
+Add the documentation & help =hydra= to [[file:general_el.org][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (zamlz/leader-keys
