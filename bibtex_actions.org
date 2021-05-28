@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-20 Thu 19:43]
-#+LAST_MODIFIED: [2021-05-26 Wed 08:46:18]
+#+LAST_MODIFIED: [2021-05-28 Fri 07:38:50]
 #+STARTUP: content
 
 * Quickly Find and Act on BibTeX Entries
@@ -60,6 +60,17 @@ We make use of =tags= fields withn [[file:bibtex.org][BibTeX]] but since that's 
 
 #+begin_src emacs-lisp
 (setq bibtex-completion-additional-search-fields '(tags))
+#+end_src
+
+** Setup Action Inputs
+I prefer to have the initial inputs for the various commands setup a little differently. Find it more intuitive.
+
+#+begin_src emacs-lisp
+(setq bibtex-actions-initial-inputs
+  '((pdf    . "has:pdf")
+    (note   . "has:note")
+    (link   . "has:link")
+    (source . nil)))
 #+end_src
 
 ** Configure Template

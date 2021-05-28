@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-05-27 Thu 10:39:22]
+#+LAST_MODIFIED: [2021-05-28 Fri 07:48:45]
 
 * Major Mode Hydra and Pretty Hydra
 A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] menus for specific meajor-modes in [[file:emacs.org][GNU/Emacs]].
@@ -49,13 +49,18 @@ Let's define a =hydra= for accessing all notetaking related functions in package
    (("l" org-roam "Show Backlinks" :toggle t)
     ("/" org-roam-find-file "Find File")
     ("g" org-roam-graph "Graph View")
-    ("r" org-roam-db-build-cache "Rebuild DB")
     ("t" org-roam-tag-add "Add Tags")
     ("a" org-roam-alias-add "Add Alias"))
    "BibTeX"
-   (("b" bibtex-actions-open "Library"))
+   (("b" bibtex-actions-open "Library")
+    ("n" bibtex-actions-open-notes "Notes")
+    ("p" bibtex-actions-open-pdf "PDF")
+    ("L" bibtex-actions-open-link "Open Link")
+    ("e" bibtex-actions-open-entry "View Entry"))
    "Journal"
-   ()))
+   ()
+   "Misc"
+   (("r" zamlz/notetaking-system-refresh "Refresh"))))
 #+end_src
 
 Add the notetaking =hydra= to [[file:general_el.org][General Leader Keybindings Definer]].
@@ -63,6 +68,16 @@ Add the notetaking =hydra= to [[file:general_el.org][General Leader Keybindings 
 #+begin_src emacs-lisp
 (zamlz/leader-keys
   "n" 'zamlz/hydra-notes/body)
+#+end_src
+
+We also create a single function that will refresh all parts of our notetaking system.
+
+#+begin_src emacs-lisp
+(defun zamlz/notetaking-system-refresh()
+  "Refreshes Org-Roam and Bibtex-Actions"
+  (interactive)
+  (org-roam-db-build-cache)
+  (bibtex-actions-refresh))
 #+end_src
 
 *** Documentation & Help
