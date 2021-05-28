@@ -4,12 +4,12 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-05-28 Fri 07:48:45]
+#+LAST_MODIFIED: [2021-05-28 Fri 07:56:32]
 
 * Major Mode Hydra and Pretty Hydra
 A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] menus for specific meajor-modes in [[file:emacs.org][GNU/Emacs]].
 
-* Package Install
+* Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-major-mode-hydra.el :comments both :mkdirp yes
 :END:
