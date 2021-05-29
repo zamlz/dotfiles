@@ -1,0 +1,50 @@
+#+TITLE: Helm
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-29 Sat 11:38]
+#+LAST_MODIFIED: [2021-05-29 Sat 12:02:43]
+#+STARTUP: content
+
+* Incremental Completion and Selection Framework
+=Helm= is an extremely powerful package for [[file:emacs.org][GNU/Emacs]] that serves to act as a powerful completion framework. For now, I'm not using it, but I might switch to it again...
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-helm.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+Install the =Helm= package.
+
+#+begin_src emacs-lisp
+(use-package helm)
+#+end_src
+
+We also need to pull in =helm-config= afterwards as well.
+
+#+begin_src emacs-lisp
+(require 'helm-config)
+#+end_src
+
+** Aesthetic Options
+Let's  setup =Helm= to auto-resize as we narrow the selection.
+
+#+begin_src emacs-lisp
+(setq helm-autoresize-max-height 30)
+(setq helm-autoresize-min-height 0)
+(helm-autoresize-mode +1)
+#+end_src
+
+** Reset Command Prefix
+
+#+begin_src emacs-lisp
+(global-set-key (kbd "C-c h") 'helm-command-prefix)
+(global-unset-key (kbd "C-x c"))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-helm)
+#+end_src
