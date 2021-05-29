@@ -1,0 +1,44 @@
+#+TITLE: Org-ref
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/jkitchin/org-ref
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-29 Sat 12:27]
+#+LAST_MODIFIED: [2021-05-29 Sat 12:59:10]
+#+STARTUP: content
+
+* Citations, Cross-References, Indexes, Glossaries for Org
+=Org-ref= is a packae that adds various types of refences and links for [[file:org_mode.org][Org-mode]]. It also provides a variety os sub-packages for downloading bibtex references and PDFs from various sources like =ArXiV= , DOI, and many more.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-ref.el :comments both :mkdirp yes
+:END:
+
+** Setup BibTeX
+[[file:bibtex_completions.org][BibTeX Completions]] isn't actually necessary for this package, but since we use, we want to make sure that we use the same path variables for =Org-ref= so Let's load that in.
+
+#+begin_src emacs-lisp
+(require 'init-bibtex-completions)
+#+end_src
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package org-ref)
+#+end_src
+
+** Sync Library Path
+As mentioned before, let's make sure to sync our library path with [[file:bibtex_completions.org][BibTeX Completions]].
+
+#+begin_src emacs-lisp
+(setq reftex-default-bibliography `(,bibtex-completion-bibliography))
+(setq org-ref-bibliography-notes nil)
+(setq org-ref-default-bibliography `(,bibtex-completion-bibliography))
+(setq org-ref-pdf-directory bibtex-completion-library-path)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-org-ref)
+#+end_src
