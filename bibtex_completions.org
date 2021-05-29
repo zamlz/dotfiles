@@ -1,0 +1,60 @@
+#+TITLE: BibTeX Completions
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/tmalsburg/helm-bibtex
+#+ROAM_ALIAS:
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-29 Sat 12:05]
+#+LAST_MODIFIED: [2021-05-29 Sat 12:13:34]
+#+STARTUP: content
+
+* Search and Manage Bibliographies in Emacs
+=bibtex-completions= is *the* package for interfacing with your BibTeX references on your filesystem. It is used my many other packages.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-bibtex-completions.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+Install the =bibtex-completion= package. /Note, that on its own, this package is useless and it will need a supplementary package to interface with it/.
+
+#+begin_src emacs-lisp
+(use-package bibtex-completion)
+#+end_src
+
+** Library Paths
+Set the paths to my papers and docs.
+
+#+begin_src emacs-lisp
+(setq bibtex-completion-bibliography "~/org/papers/references.bib")
+(setq bibtex-completion-library-path "~/org/papers/docs/")
+(setq bibtex-completion-notes-path "~/org/papers/")
+#+end_src
+
+** Note Template
+We should create a note template here that works alongside [[file:org_roam.org][Org-roam]].
+
+#+begin_src emacs-lisp
+(setq bibtex-completion-notes-template-multiple-files
+      (concat "#+TITLE: ${title}\n"
+              "#+AUTHOR: %n (%(user-login-name))\n"
+              "#+ROAM_ALIAS: ${=key=}\n"
+              "#+ROAM_TAGS: LITERATURE_REVIEW\n"
+              "#+ROAM_KEY: cite:${=key=}\n"
+              "#+CREATED: %U\n"
+              "#+LAST_MODIFIED: %U\n"
+              "#+STARTUP: content\n"))
+#+end_src
+
+** Non-Standard Parameters
+We make use of =tags= fields withn [[file:bibtex.org][BibTeX]] but since that's non-standard, we need to let =bibtex-actions= know that we are using these.
+
+#+begin_src emacs-lisp
+(setq bibtex-completion-additional-search-fields '(tags))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-bibtex-completions)
+#+end_src

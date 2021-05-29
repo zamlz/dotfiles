@@ -3,23 +3,30 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-20 Thu 19:43]
-#+LAST_MODIFIED: [2021-05-28 Fri 07:38:50]
+#+LAST_MODIFIED: [2021-05-29 Sat 12:13:32]
 #+STARTUP: content
 
 * Quickly Find and Act on BibTeX Entries
 
-=bibtex-actions= is a package that is meant to quickly find [[file:bibtex.org][BibTeX]] entries using simple completion frameworks like [[file:vertico.org][Vertico]] and builds off [[file:embark.org][Embark]].
+=bibtex-actions= is a package that is meant to quickly find [[file:bibtex.org][BibTeX]] entries using the [[file:bibtex_completions.org][BibTeX Completions]] backend via completion frameworks like [[file:vertico.org][Vertico]], also adding various actions that can be run via [[file:embark.org][Embark]].
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-bibtex-actions.el :comments both :mkdirp yes
 :END:
+
 ** Setup Dependencies
 
 We really just need to make sure [[file:embark.org][Embark]] is configured first probably.
 
 #+begin_src emacs-lisp
 (require 'init-embark)
+#+end_src
+
+More importantly, =bibtex-actions= makes use of [[file:bibtex_completions.org][BibTeX Completions]] which needs to be configured as well.
+
+#+begin_src emacs-lisp
+(require 'init-bibtex-completions)
 #+end_src
 
 ** Package Install
@@ -30,36 +37,6 @@ While setting up the package.
 (use-package bibtex-actions
   :after embark
   :config (add-to-list 'embark-keymap-alist '(bibtex  . bibtex-actions-map)))
-#+end_src
-
-** Configure BibTeX Completion
-
-Configure paths for the bib file, docs, and notes.
-
-#+begin_src emacs-lisp
-(setq bibtex-completion-bibliography "~/org/papers/references.bib")
-(setq bibtex-completion-library-path "~/org/papers/docs/")
-(setq bibtex-completion-notes-path "~/org/papers/")
-#+end_src
-
-Define my note templates
-
-#+begin_src emacs-lisp
-(setq bibtex-completion-notes-template-multiple-files
-      (concat "#+TITLE: ${title}\n"
-              "#+AUTHOR: %n (%(user-login-name))\n"
-              "#+ROAM_ALIAS: ${=key=}\n"
-              "#+ROAM_TAGS: LITERATURE_REVIEW\n"
-              "#+ROAM_KEY: cite:${=key=}\n"
-              "#+CREATED: %U\n"
-              "#+LAST_MODIFIED: %U\n"
-              "#+STARTUP: content\n"))
-#+end_src
-
-We make use of =tags= fields withn [[file:bibtex.org][BibTeX]] but since that's non-standard, we need to let =bibtex-actions= know that we are using these.
-
-#+begin_src emacs-lisp
-(setq bibtex-completion-additional-search-fields '(tags))
 #+end_src
 
 ** Setup Action Inputs
