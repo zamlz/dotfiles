@@ -2,7 +2,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-30 Sun 12:13:41]
+#+LAST_MODIFIED: [2021-05-30 Sun 12:18:08]
 #+STARTUP: content
 #+ROAM_KEY: https://www.orgroam.com/
 
@@ -55,8 +55,6 @@ Capture templates, not much to explain here.
          :file-name "notes/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS:\n"
-                        "#+ROAM_TAGS:\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n"
                         "#+STARTUP: content\n")
@@ -66,8 +64,6 @@ Capture templates, not much to explain here.
          :file-name "private/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS:\n"
-                        "#+ROAM_TAGS:\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n"
                         "#+STARTUP: content\n")
@@ -77,7 +73,6 @@ Capture templates, not much to explain here.
          :file-name "config/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: CONFIG SOFTWARE\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n"
@@ -88,7 +83,6 @@ Capture templates, not much to explain here.
          :file-name "bookmarks/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: BOOKMARK\n"
                         "#+ROAM_KEY: %x\n"
                         "#+CREATED: %U\n"
@@ -100,7 +94,6 @@ Capture templates, not much to explain here.
          :file-name "blog/${slug}"
          :head ,(concat "#+TITLE: ${title}\n"
                         "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS:\n"
                         "#+ROAM_TAGS: BLOGPOST\n"
                         "#+CREATED: %U\n"
                         "#+LAST_MODIFIED: %U\n"
