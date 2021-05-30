@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-09 Sun 10:36]
-#+LAST_MODIFIED: [2021-05-12 Wed 13:01:51]
+#+LAST_MODIFIED: [2021-05-30 Sun 15:19:30]
 
 * What is it?
 
@@ -20,20 +20,38 @@
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-appear.el :comments both :mkdirp yes
 :END:
 
-Install the package and add the hook to [[file:org_mode.org][Org-mode]].  We must also make sure that =org-hide-emphasis-markers= is set to =t= /(otherwise, what is the point lol?)/
+** Setup Dependencies
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
+** Package Install
+Install the package and add the hook to [[file:org_mode.org][Org-mode]].
 
 #+begin_src emacs-lisp
 (use-package org-appear
-  :after org
-  :hook (org-mode . org-appear-mode)
-  :custom
-  ;; These will be unhidden by the org-appear package
-  (org-hide-emphasis-markers t)
-  (org-appear-autoentities nil)
-  (org-appear-autolinks nil)
-  (org-appear-autoemphasis t)
-  (org-appear-autosubmarkers t))
+  :hook (org-mode . org-appear-mode))
 #+end_src
+
+** Hide Emphasis Marker
+We must also make sure that =org-hide-emphasis-markers= is set to =t= /(otherwise, what is the point lol?)/
+
+#+begin_src emacs-lisp
+(setq org-hide-emphasis-markers t)
+#+end_src
+
+** Autohide Elements
+I don't autoshow links and entities, but I do autohide emphasis and submarkers.
+
+#+begin_src emacs-lisp
+(setq org-appear-autoentities nil)
+(setq org-appear-autolinks nil)
+(setq org-appear-autoemphasis t)
+(setq org-appear-autosubmarkers t)
+#+end_src
+
+** Feature Provide
 
 #+begin_src emacs-lisp
 (provide 'init-org-appear)

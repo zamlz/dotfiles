@@ -3,7 +3,7 @@
 #+ROAM_KEY: https://github.com/abo-abo/org-download
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-30 Sun 11:26]
-#+LAST_MODIFIED: [2021-05-30 Sun 11:29:27]
+#+LAST_MODIFIED: [2021-05-30 Sun 15:06:33]
 #+STARTUP: content
 
 * Drag and Drop Images to Org-Mode
@@ -13,6 +13,13 @@
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-download.el :comments both :mkdirp yes
 :END:
+
+** Setup Dependencies
+We should pull in [[file:org_mode.org][Org-mode]] first so we don't accidentally use the built-in version.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
 
 ** Package Install
 Install =Org-download=.

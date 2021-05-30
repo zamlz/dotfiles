@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-30 Sun 11:28:14]
+#+LAST_MODIFIED: [2021-05-30 Sun 14:05:13]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -51,12 +51,12 @@ I should probably split this bloody mess up.
   (org-return-follows-link t)
   ;; Some todo/logging changes
   (org-enforce-todo-dependencies t)
-  (org-log-done 'note)
+  (org-log-done 'time)
   (org-log-into-drawer t)
   (org-treat-S-cursor-todo-selection-as-state-change nil)
   ;; Setup org capture mode
   ;; Setup refiling
-  (org-log-refile t)
+  (org-log-refile 'time)
   (org-refile-use-outline-path 'file)
   (org-outline-path-complete-in-steps nil)
   (org-refile-allow-creating-parent-nodes nil)

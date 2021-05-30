@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-30 Sun 08:43:27]
+#+LAST_MODIFIED: [2021-05-30 Sun 15:48:42]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -293,12 +293,6 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
   (calc-symbolic-mode t))
 #+end_src
 
-** Keybinding Improvements
-
-#+begin_src emacs-lisp
-(require 'init-evil)
-#+end_src
-
 ** Interface (Reorganize This)
 *** Font Configuration
 
@@ -406,11 +400,21 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
   (zamlz/set-font-faces))
 #+end_src
 
+** Setup Org-mode
+We should also make sure to load up [[file:org_mode.org][Org-mode]] first. This is vital because we don't want any internal package to accidentally load in built-in version.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
 ** Load Remaining Modules
+So turns out that =s-replace-regexp= was part of an external package. I should figure out how to remove this dependency to this.
 
 #+begin_src emacs-lisp
 (use-package s)
 #+end_src
+
+Let us import the rest of the modules in whatever order we want.
 
 #+begin_src emacs-lisp
 (dolist

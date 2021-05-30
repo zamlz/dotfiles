@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-05-17 Mon 09:57:01]
+#+LAST_MODIFIED: [2021-05-30 Sun 15:24:47]
 
 * Babel: Multi-Language Computing Environment for Literate-Programming/Reproducible-Research
 
@@ -25,14 +25,15 @@ The Tower of Babel by Pieter Brueghel the Elder
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-babel.el :comments both :mkdirp yes
 :END:
-** Basic Setup
 
+** Setup Dependencies
 Make sure that we load in [[file:org_mode.org][Org-mode]] first just to be safe.
 
 #+begin_src emacs-lisp
 (require 'init-org)
 #+end_src
 
+** Customize Parameters
 Now we confiugre some of the parameters for =babel=.
 
 #+begin_src emacs-lisp

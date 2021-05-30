@@ -3,7 +3,7 @@
 #+ROAM_KEY: https://github.com/jkitchin/org-ref
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 12:27]
-#+LAST_MODIFIED: [2021-05-29 Sat 12:59:10]
+#+LAST_MODIFIED: [2021-05-30 Sun 15:27:21]
 #+STARTUP: content
 
 * Citations, Cross-References, Indexes, Glossaries for Org
@@ -14,11 +14,17 @@
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-ref.el :comments both :mkdirp yes
 :END:
 
-** Setup BibTeX
+** Setup Dependencies
 [[file:bibtex_completions.org][BibTeX Completions]] isn't actually necessary for this package, but since we use, we want to make sure that we use the same path variables for =Org-ref= so Let's load that in.
 
 #+begin_src emacs-lisp
 (require 'init-bibtex-completions)
+#+end_src
+
+[[file:org_mode.org][Org-mode]] needs to also be loaded.
+
+#+begin_src emacs-lisp
+(require 'init-org)
 #+end_src
 
 ** Package Install
