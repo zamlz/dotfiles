@@ -138,6 +138,7 @@ Thanks to [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][t
                   org-table
                   org-formula
                   font-lock-comment-face
+                  org-date
                   org-verbatim))
     (set-face-attribute `,face nil :inherit 'fixed-pitch))
   (set-face-attribute 'org-block-begin-line nil :inherit 'org-block :slant 'italic)
