@@ -1,0 +1,35 @@
+#+TITLE: Org-contrib
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://orgmode.org/worg/org-contrib/
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-30 Sun 10:59]
+#+LAST_MODIFIED: [2021-05-30 Sun 11:06:33]
+#+STARTUP: content
+
+* Contributed Packages for Org-mode
+=Org-contrib= is a collection of user-contributed packages for [[file:org_mode.org][Org-mode]]. Though I don't think I'm really using stuff from this package.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-contrib.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+Make sure to load up [[file:org_mode.org][Org-mode]] first.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
+** Package Install
+Install the =org-contrib= package.
+
+#+begin_src emacs-lisp
+(use-package org-contrib)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-org-contrib)
+#+end_src

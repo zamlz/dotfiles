@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-29 Sat 13:18:02]
+#+LAST_MODIFIED: [2021-05-30 Sun 11:28:14]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -28,7 +28,6 @@ I should probably split this bloody mess up.
 
 #+begin_src emacs-lisp
 (use-package org
-  :ensure org-plus-contrib
   :hook
   (org-mode    . org-indent-mode)
   (org-mode    . variable-pitch-mode)
