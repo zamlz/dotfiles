@@ -1,11 +1,10 @@
 #+TITLE: Org-roam
-#+ROAM_ALIAS:
-#+ROAM_KEY: https://www.orgroam.com/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-26 Wed 15:17:23]
+#+LAST_MODIFIED: [2021-05-30 Sun 12:13:41]
 #+STARTUP: content
+#+ROAM_KEY: https://www.orgroam.com/
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -151,6 +150,37 @@ My setup for my daily notes. I don't really use this anymore though.
   (org-roam-server-network-label-truncate-length 60)
   (org-roam-server-network-label-wrap-length 20))
   :config (org-roam-server-mode))
+#+end_src
+
+** Custom Property Setters
+=Org-roam= already comes with prety good property setters, but we only have two here, =org-roam-tag-add= and =org-roam-alias-add=. We should create our own function here for setting the =ROAM_KEY= property since a function for it doesn't exist.
+
+#+begin_src emacs-lisp
+(defun zamlz/org-roam-key-add ()
+  "Add a key to Org-roam file.
+
+Return added key."
+  (interactive)
+  (unless org-roam-mode (org-roam-mode))
+  (let ((key (read-string "Key: " )))
+    (when (string-empty-p key)
+      (user-error "Key can't be empty"))
+    (org-roam--set-global-prop
+     "roam_key" key)
+    (org-roam-db--update-file (buffer-file-name (buffer-base-buffer)))
+    alias))
+#+end_src
+
+All the properties that get set are not in caps unfortunately, and I prefer to see them in caps as I like the idea of global properties being in caps. To fix this, we should /advice/ the =org-roam--set-global-props= function and configure it such that the argument for the global property is always caps.
+
+#+begin_src emacs-lisp
+(defun zamlz/org-roam-uppercase-global-props (args)
+  "Ensure that car of ARGS are uppercase"
+  (append (list (upcase (car args))) (cdr args)))
+#+end_src
+
+#+begin_src emacs-lisp
+(advice-add 'org-roam--set-global-prop :filter-args #'zamlz/org-roam-uppercase-global-props)
 #+end_src
 
 ** Module Footer
