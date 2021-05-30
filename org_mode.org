@@ -320,18 +320,6 @@ Enables habit tracking in =org-mode= via =org-habit=.
   (setq org-habit-show-done-always-green t))
 #+end_src
 
-** Org Download
-
-This package should let me quickly download images from web browsers and have images in my clipboard and paste them into my org files.
-
-#+begin_src emacs-lisp
-(use-package org-download
-  :custom
-  (org-download-image-dir "./data")
-  (org-download-heading-lvl nil)
-  (org-download-method 'directory))
-#+end_src
-
 ** Org Last Modified Timestamp
 
 The following allows any =#+LAST_MODIFIED= headers to be updated on file-save.

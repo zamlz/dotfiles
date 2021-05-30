@@ -1,0 +1,36 @@
+#+TITLE: Org-Download
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_KEY: https://github.com/abo-abo/org-download
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-30 Sun 11:26]
+#+LAST_MODIFIED: [2021-05-30 Sun 11:29:27]
+#+STARTUP: content
+
+* Drag and Drop Images to Org-Mode
+=Org-download= adds quick image drag and drop functionality for [[file:org_mode.org][Org-mode]] buffers. You can also download from clipboard as well.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-download.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+Install =Org-download=.
+
+#+begin_src emacs-lisp
+(use-package org-download)
+#+end_src
+
+** Setup Download Directory
+
+#+begin_src emacs-lisp
+(setq org-download-image-dir "./data")
+(setq org-download-heading-lvl nil)
+(setq org-download-method 'directory)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-org-download)
+#+end_src
