@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-05-28 Fri 07:56:32]
+#+LAST_MODIFIED: [2021-05-30 Sun 11:51:03]
 
 * Major Mode Hydra and Pretty Hydra
 A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] menus for specific meajor-modes in [[file:emacs.org][GNU/Emacs]].
@@ -46,11 +46,12 @@ Let's define a =hydra= for accessing all notetaking related functions in package
 (pretty-hydra-define zamlz/hydra-notes
   (:title "Notetaking Commands" :color blue :quit-key "q" :exit t)
   ("Roam"
-   (("l" org-roam "Show Backlinks" :toggle t)
+   (("l" org-roam-buffer-toggle-display "Show Backlinks" :toggle t)
     ("/" org-roam-find-file "Find File")
     ("g" org-roam-graph "Graph View")
     ("t" org-roam-tag-add "Add Tags")
-    ("a" org-roam-alias-add "Add Alias"))
+    ("a" org-roam-alias-add "Add Alias")
+    ("k" zamlz/org-roam-key-add "Add Key"))
    "BibTeX"
    (("b" bibtex-actions-open "Library")
     ("n" bibtex-actions-open-notes "Notes")
