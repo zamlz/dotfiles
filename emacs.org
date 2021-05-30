@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-05-30 Sun 15:48:42]
+#+LAST_MODIFIED: [2021-05-30 Sun 15:55:00]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -408,18 +408,12 @@ We should also make sure to load up [[file:org_mode.org][Org-mode]] first. This 
 #+end_src
 
 ** Load Remaining Modules
-So turns out that =s-replace-regexp= was part of an external package. I should figure out how to remove this dependency to this.
-
-#+begin_src emacs-lisp
-(use-package s)
-#+end_src
-
 Let us import the rest of the modules in whatever order we want.
 
 #+begin_src emacs-lisp
 (dolist
     (dir (directory-files (expand-file-name "lisp" user-emacs-directory) nil ".*\\.el"))
-  (require (intern (s-replace-regexp "\\.el" "" dir))))
+  (require (intern (replace-regexp-in-string "\\.el" "" dir))))
 #+end_src
 
 * Summon the Daemon
