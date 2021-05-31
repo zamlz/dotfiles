@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-30 Sun 23:20]
-#+LAST_MODIFIED: [2021-05-30 Sun 23:28:28]
+#+LAST_MODIFIED: [2021-05-30 Sun 23:31:19]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/org-roam/org-roam-server
 
@@ -31,7 +31,7 @@ We need to make sure [[file:org_roam.org][Org-roam]] is setup first.
 
 #+begin_src emacs-lisp
 (setq org-roam-server-host "127.0.0.1")
-(setq org-roam-server-port 8080
+(setq org-roam-server-port 8080)
 (setq org-roam-server-authenticate nil)
 (setq org-roam-server-export-inline-images t)
 (setq org-roam-server-serve-files t)
@@ -40,7 +40,7 @@ We need to make sure [[file:org_roam.org][Org-roam]] is setup first.
 (setq org-roam-server-network-arrows t)
 (setq org-roam-server-network-label-truncate t)
 (setq org-roam-server-network-label-truncate-length 60)
-(setq org-roam-server-network-label-wrap-length 20))
+(setq org-roam-server-network-label-wrap-length 20)
 #+end_src
 
 ** Initialize Server
@@ -48,4 +48,10 @@ Run the server if we are running in =daemon= mode.
 
 #+begin_src emacs-lisp
 (when (daemonp) (org-roam-server-mode))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-org-roam-server)
 #+end_src

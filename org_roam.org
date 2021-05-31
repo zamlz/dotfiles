@@ -2,7 +2,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-30 Sun 23:23:51]
+#+LAST_MODIFIED: [2021-05-30 Sun 23:37:34]
 #+STARTUP: content
 #+ROAM_KEY: https://www.orgroam.com/
 
@@ -36,16 +36,20 @@ Let's setup =org-roam= now.
 
 #+begin_src emacs-lisp
 (use-package org-roam
-  :ensure t
   :hook (after-init . org-roam-mode)
   :bind (:map org-mode-map
          ("M-i" . org-roam-insert)
-         ("M-I" . org-roam-insert-immediate))
-  :custom
-  (org-roam-directory "~/org/")
-  (org-roam-dailies-directory "private/journal/")
-  (org-roam-file-exclude-regexp "README.org")
-  (org-roam-db-udpate-method 'immediate))
+         ("M-I" . org-roam-insert-immediate)))
+#+end_src
+
+** Customize Parameter
+Configure various paths for =org-roam=.
+
+#+begin_src emacs-lisp
+(setq org-roam-directory "~/org/")
+(setq org-roam-dailies-directory "private/journal/")
+(setq org-roam-file-exclude-regexp "README.org")
+(setq org-roam-db-update-method 'immediate)
 #+end_src
 
 ** Capture Templates
@@ -155,7 +159,7 @@ All the properties that get set are not in caps unfortunately, and I prefer to s
 (advice-add 'org-roam--set-global-prop :filter-args #'zamlz/org-roam-uppercase-global-props)
 #+end_src
 
-** Module Footer
+** Feature Provide
 
 #+begin_src emacs-lisp
 (provide 'init-org-roam)
