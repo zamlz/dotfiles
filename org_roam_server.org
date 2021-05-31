@@ -1,0 +1,51 @@
+#+TITLE: Org-roam Server
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-05-30 Sun 23:20]
+#+LAST_MODIFIED: [2021-05-30 Sun 23:28:28]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/org-roam/org-roam-server
+
+* Webapp for Visualizing Org-roam Database
+=org-roam-server= is a simple webapp that is useful for visualizing my [[file:org_roam.org][Org-roam]] database. It can be customized a lot but I haven't really looked into customizing it to much.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam-server.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+We need to make sure [[file:org_roam.org][Org-roam]] is setup first.
+
+#+begin_src emacs-lisp
+(require 'init-org-roam)
+#+end_src
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package org-roam-server)
+#+end_src
+
+** Customize Parameters
+
+#+begin_src emacs-lisp
+(setq org-roam-server-host "127.0.0.1")
+(setq org-roam-server-port 8080
+(setq org-roam-server-authenticate nil)
+(setq org-roam-server-export-inline-images t)
+(setq org-roam-server-serve-files t)
+(setq org-roam-server-served-file-extensions '("pdf" "mp4" "ogv" "png" "svg"))
+(setq org-roam-server-network-poll t)
+(setq org-roam-server-network-arrows t)
+(setq org-roam-server-network-label-truncate t)
+(setq org-roam-server-network-label-truncate-length 60)
+(setq org-roam-server-network-label-wrap-length 20))
+#+end_src
+
+** Initialize Server
+Run the server if we are running in =daemon= mode.
+
+#+begin_src emacs-lisp
+(when (daemonp) (org-roam-server-mode))
+#+end_src

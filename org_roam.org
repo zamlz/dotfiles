@@ -2,7 +2,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-05-30 Sun 12:18:08]
+#+LAST_MODIFIED: [2021-05-30 Sun 23:23:51]
 #+STARTUP: content
 #+ROAM_KEY: https://www.orgroam.com/
 
@@ -24,15 +24,19 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam.el :comments both :mkdirp yes
 :END:
-** Package Setup
-
-=org-roam= is a useful package for taking notes. While this may not be needed, let's make sure [[file:org_mode.org][Org-mode]] is loaded first.
+** Setup Dependencies
+Before loading up any =org-roam= related things, let's import [[file:org_mode.org][Org-mode]] first.
 
 #+begin_src emacs-lisp
 (require 'init-org)
+#+end_src
+
+** Package Install
+Let's setup =org-roam= now.
+
+#+begin_src emacs-lisp
 (use-package org-roam
   :ensure t
-  :after org
   :hook (after-init . org-roam-mode)
   :bind (:map org-mode-map
          ("M-i" . org-roam-insert)
@@ -45,7 +49,6 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 #+end_src
 
 ** Capture Templates
-
 Capture templates, not much to explain here.
 
 #+begin_src emacs-lisp
@@ -103,7 +106,6 @@ Capture templates, not much to explain here.
 #+end_src
 
 ** Daily Notes
-
 My setup for my daily notes. I don't really use this anymore though.
 
 #+begin_src emacs-lisp
@@ -120,29 +122,6 @@ My setup for my daily notes. I don't really use this anymore though.
                         "#+LAST_MODIFIED: %U\n"
                         "\n"))
         ))
-#+end_src
-
-** Server
-
-=org-roam-server= provides a useful way to view my notes in a graph like view. I can also open them from this view as well.
-
-#+begin_src emacs-lisp
-(use-package org-roam-server
-  :if (daemonp)
-  :after org-roam
-  :custom
-  (org-roam-server-host "127.0.0.1")
-  (org-roam-server-port 8080
-  (org-roam-server-authenticate nil)
-  (org-roam-server-export-inline-images t)
-  (org-roam-server-serve-files t)
-  (org-roam-server-served-file-extensions '("pdf" "mp4" "ogv" "png" "svg"))
-  (org-roam-server-network-poll t)
-  (org-roam-server-network-arrows t)
-  (org-roam-server-network-label-truncate t)
-  (org-roam-server-network-label-truncate-length 60)
-  (org-roam-server-network-label-wrap-length 20))
-  :config (org-roam-server-mode))
 #+end_src
 
 ** Custom Property Setters
