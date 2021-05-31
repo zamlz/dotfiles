@@ -1,10 +1,10 @@
 #+TITLE: Git
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_KEY: https://git-scm.com/
-#+ROAM_ALIAS:
+#+ROAM_ALIAS: gitignore gitattributes gitconfig
 #+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-05-26 Wed 23:44:24]
+#+LAST_MODIFIED: [2021-05-31 Mon 11:59:02]
 
 * Git: The Stupid Content Tracker
 
@@ -106,9 +106,7 @@ These are just useful aliases I've found online
 
 Many programs generate a bunch of garbage files. We don't want git to consider these files. It's often a pain as well to continuously copy =.gitignore= files around so instead we maintain a global gitignore that is used for all git repos. This is primarily for ignoring files that *ONLY* my system would generate (i.e. Emacs being the main culprit). There may be some repos where I /do/ want these files checked in and that case we can just =--force= it.
 
-/Emacs garbage:/
-
-- /Autosave, Backup, and Compiled Files/
+/Emacs garbage (Autosave, Backup, and Compiled Files):/
 
 #+begin_src conf
 ,*~
@@ -116,24 +114,30 @@ Many programs generate a bunch of garbage files. We don't want git to consider t
 ,*.elc
 #+end_src
 
-- /Local Directory Configuration/
+/Emacs Local Directory Configuration:/
 
 #+begin_src conf
 .dir-locals.el
 #+end_src
 
-- /Undo History/
+/Undo History from [[file:undo_tree.org][Undo Tree]]:/
 
 #+begin_src emacs-lisp
 *..~undo-tree~
 #+end_src
 
-/Python Garbage:/
+/[[file:python.org][Python]] Garbage:/
 
 #+begin_src conf
 .venv/
 __pycache__/
 *.pyc
+#+end_src
+
+/[[file:latex.org][LaTeX]] Garbage:/
+
+#+begin_src conf
+*.bbl
 #+end_src
 
 ** Attributes File
