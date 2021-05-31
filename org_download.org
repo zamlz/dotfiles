@@ -3,7 +3,7 @@
 #+ROAM_KEY: https://github.com/abo-abo/org-download
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-30 Sun 11:26]
-#+LAST_MODIFIED: [2021-05-30 Sun 15:06:33]
+#+LAST_MODIFIED: [2021-05-31 Mon 13:12:22]
 #+STARTUP: content
 
 * Drag and Drop Images to Org-Mode
@@ -31,9 +31,9 @@ Install =Org-download=.
 ** Setup Download Directory
 
 #+begin_src emacs-lisp
-(setq org-download-image-dir "./data")
-(setq org-download-heading-lvl nil)
-(setq org-download-method 'directory)
+(setq-default org-download-image-dir "./data")
+(setq-default org-download-heading-lvl nil)
+(setq-default org-download-method 'directory)
 #+end_src
 
 ** Feature Provide
