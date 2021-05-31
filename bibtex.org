@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "bibtex-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-26 Wed 08:08]
-#+LAST_MODIFIED: [2021-05-26 Wed 08:33:22]
+#+LAST_MODIFIED: [2021-05-31 Mon 11:32:58]
 #+STARTUP: content
 
 * Manage Bibliography Entries
@@ -41,6 +41,20 @@ Let's make =bibtex-mode='s formatting more pretty
 
 #+begin_src emacs-lisp
 (setq bibtex-align-at-equal-sign t)
+#+end_src
+
+** Org Export Support
+We should provide =BibTeX= export support for [[file:org_mode.org][Org-mode]]. Make sure to pull in [[file:org_mode.org][Org-mode]] first however!
+
+#+begin_src emacs-lisp
+(require 'init-org)
+(require 'ox-bibtex)
+#+end_src
+
+We should change the build command for [[file:latex.org][LaTeX]] in [[file:org_mode.org][Org-mode]] to support the =BibTeX= as well. By using =latexmk=, as its runs =pdflatex= the correct number of times and also runs =bibtex= as well to ensure references are correctly built.
+
+#+begin_src emacs-lisp
+(setq org-latex-pdf-process '("latexmk -pdf -outdir=%o %f"))
 #+end_src
 
 ** Feature Provide

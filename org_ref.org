@@ -3,11 +3,18 @@
 #+ROAM_KEY: https://github.com/jkitchin/org-ref
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 12:27]
-#+LAST_MODIFIED: [2021-05-30 Sun 15:27:21]
+#+LAST_MODIFIED: [2021-05-31 Mon 11:40:50]
 #+STARTUP: content
 
 * Citations, Cross-References, Indexes, Glossaries for Org
 =Org-ref= is a packae that adds various types of refences and links for [[file:org_mode.org][Org-mode]]. It also provides a variety os sub-packages for downloading bibtex references and PDFs from various sources like =ArXiV= , DOI, and many more.
+
+\begin{equation}
+\label{mytesteq}
+y = \sinh x
+\end{equation}
+
+We can also insert links to papers like so, citet:holden2017
 
 * Configuration
 :PROPERTIES:
@@ -34,13 +41,28 @@
 #+end_src
 
 ** Sync Library Path
-As mentioned before, let's make sure to sync our library path with [[file:bibtex_completions.org][BibTeX Completions]].
+As mentioned before, let's make sure to sync our library path with [[file:bibtex_completions.org][BibTeX Completions]]. /Also =org-ref= needs full file paths for some reason.../
 
 #+begin_src emacs-lisp
-(setq reftex-default-bibliography `(,bibtex-completion-bibliography))
+(setq reftex-default-bibliography bibtex-completion-bibliography)
 (setq org-ref-bibliography-notes nil)
-(setq org-ref-default-bibliography `(,bibtex-completion-bibliography))
-(setq org-ref-pdf-directory bibtex-completion-library-path)
+(setq org-ref-default-bibliography bibtex-completion-bibliography)
+(setq org-ref-pdf-directory (car bibtex-completion-library-path))
+#+end_src
+
+**  Prefer User Labels for LaTeX
+When exporting to [[file:latex.org][LaTeX]], let's make sure to tell the exporting process that we wish to use our own defined variables.
+
+#+begin_src emacs-lisp
+(setq org-latex-prefer-user-labels t)
+#+end_src
+
+** Setup LaTeX Package Support for References
+We need to add a few packages for [[file:latex.org][LaTeX]] to load up so that exporting with references works properly.
+
+#+begin_src emacs-lisp
+(add-to-list 'org-latex-default-packages-alist '("" "natbib" nil) t)
+(add-to-list 'org-latex-default-packages-alist '("" "cleveref" nil) t)
 #+end_src
 
 ** Feature Provide
@@ -48,3 +70,9 @@ As mentioned before, let's make sure to sync our library path with [[file:bibtex
 #+begin_src emacs-lisp
 (provide 'init-org-ref)
 #+end_src
+
+* Bibliography Test
+We can now reference this equation like so, eqref:mytesteq
+
+bibliographystyle:authordate1
+bibliography:/home/zamlz/org/papers/references.bib

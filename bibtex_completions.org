@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 12:05]
-#+LAST_MODIFIED: [2021-05-31 Mon 09:43:31]
+#+LAST_MODIFIED: [2021-05-31 Mon 09:59:52]
 #+STARTUP: content
 
 * Search and Manage Bibliographies in Emacs
@@ -23,11 +23,11 @@ Install the =bibtex-completion= package. /Note, that on its own, this package is
 #+end_src
 
 ** Library Paths
-Set the paths to my papers and docs.
+Set the paths to my papers and docs. These don't need to be a list of directories with their full paths, but [[file:org_ref.org][Org-ref]] for some reasons wants to use these variables even though they have their own defined. So strange.
 
 #+begin_src emacs-lisp
-(setq bibtex-completion-bibliography "~/org/papers/references.bib")
-(setq bibtex-completion-library-path "~/org/papers/docs/")
+(setq bibtex-completion-bibliography `(,(file-truename "~/org/papers/references.bib")))
+(setq bibtex-completion-library-path `(,(file-truename "~/org/papers/docs/")))
 (setq bibtex-completion-notes-path "~/org/papers/")
 #+end_src
 
