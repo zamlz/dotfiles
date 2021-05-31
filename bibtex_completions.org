@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 12:05]
-#+LAST_MODIFIED: [2021-05-31 Mon 09:42:27]
+#+LAST_MODIFIED: [2021-05-31 Mon 09:43:31]
 #+STARTUP: content
 
 * Search and Manage Bibliographies in Emacs
@@ -38,7 +38,6 @@ We should create a note template here that works alongside [[file:org_roam.org][
 (setq bibtex-completion-notes-template-multiple-files
       (concat "#+TITLE: ${title}\n"
               "#+AUTHOR: %n (%(user-login-name))\n"
-              "#+ROAM_ALIAS: cite:${=key=}\n"
               "#+ROAM_TAGS: LITERATURE_REVIEW\n"
               "#+ROAM_KEY: cite:${=key=}\n"
               "#+CREATED: %U\n"
