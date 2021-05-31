@@ -3,7 +3,7 @@
 #+ROAM_KEY: https://github.com/jkitchin/org-ref
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 12:27]
-#+LAST_MODIFIED: [2021-05-31 Mon 11:40:50]
+#+LAST_MODIFIED: [2021-05-31 Mon 11:45:12]
 #+STARTUP: content
 
 * Citations, Cross-References, Indexes, Glossaries for Org
@@ -58,7 +58,7 @@ When exporting to [[file:latex.org][LaTeX]], let's make sure to tell the exporti
 #+end_src
 
 ** Setup LaTeX Package Support for References
-We need to add a few packages for [[file:latex.org][LaTeX]] to load up so that exporting with references works properly.
+We need to add a few packages for [[file:latex.org][LaTeX]] to load up so that exporting with [[file:bibtex.org][BibTeX]] references works properly.
 
 #+begin_src emacs-lisp
 (add-to-list 'org-latex-default-packages-alist '("" "natbib" nil) t)
