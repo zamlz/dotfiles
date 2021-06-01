@@ -1,8 +1,8 @@
-#+TITLE: Org Pretty Tables
+#+TITLE: Org-pretty-tables
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-01 Tue 08:48]
-#+LAST_MODIFIED: [2021-06-01 Tue 09:02:12]
+#+LAST_MODIFIED: [2021-06-01 Tue 09:07:02]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/Fuco1/org-pretty-table
 
