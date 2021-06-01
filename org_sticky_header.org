@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-23 Sun 19:13]
-#+LAST_MODIFIED: [2021-05-24 Mon 00:14:02]
+#+LAST_MODIFIED: [2021-06-01 Tue 11:50:30]
 #+STARTUP: content
 
 * Off-screen Org Headings at the top of the Window
@@ -25,6 +25,7 @@ With that done, we can install =org-sticky-header=.
 
 #+begin_src emacs-lisp
 (use-package org-sticky-header
+  :disabled
   :hook (org-mode . org-sticky-header-mode))
 #+end_src
 
