@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-05-30 Sun 14:05:13]
+#+LAST_MODIFIED: [2021-06-01 Tue 09:03:22]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -360,14 +360,6 @@ The variable =org-link-abbrev-alist= provides us a powerful way of defining our 
 #+begin_src emacs-lisp
 (setq org-link-abbrev-alist
       '(("gmap" . "http://maps.google.com/maps?q=%s")))
-#+end_src
-
-** Pretty Tables
-
-#+begin_src emacs-lisp
-(use-package org-pretty-table
-  :straight (org-pretty-table :type git :host github :repo "Fuco1/org-pretty-table")
-  :hook (org-mode . org-pretty-table-mode))
 #+end_src
 
 ** Feature Provider

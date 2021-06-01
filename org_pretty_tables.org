@@ -1,0 +1,37 @@
+#+TITLE: Org Pretty Tables
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-06-01 Tue 08:48]
+#+LAST_MODIFIED: [2021-06-01 Tue 09:02:12]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/Fuco1/org-pretty-table
+
+* Replace Org-table Characters with Unicode Glyphs
+=org-pretty-table= is a simple aesthetic package that updates the look of tables in [[file:org_mode.org][Org-mode]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-pretty-tables.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+We need to setup [[file:org_mode.org][Org-mode]] first before trying to setup this package.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
+** Package Install
+Install the =org-pretty-table= package. It's not on any upstream repo so let's manually pull the repo from GitHub.
+
+#+begin_src emacs-lisp
+(use-package org-pretty-table
+  :straight (org-pretty-table :type git :host github :repo "Fuco1/org-pretty-table")
+  :hook (org-mode . org-pretty-table-mode))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-org-pretty-tables)
+#+end_src
