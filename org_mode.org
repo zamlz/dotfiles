@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-01 Tue 09:03:22]
+#+LAST_MODIFIED: [2021-06-01 Tue 09:10:31]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -281,16 +281,6 @@ Org mode template definitions in the doct format
                                ("[Journal] Dream Entry" :keys "d" :journal-type ":DREAM:")
                                ("[Journal] Phone Call" :keys "p" :journal-type ":@PHONE:")))
                       ))))
-#+end_src
-
-** Org Make TOC
-
-Dynamically make table of contents in org files
-
-#+begin_src emacs-lisp
-(use-package org-make-toc
-  :after org
-  :hook (org-mode . org-make-toc-mode))
 #+end_src
 
 ** LaTeX Inline Preview
