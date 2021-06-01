@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-01 Tue 09:10:31]
+#+LAST_MODIFIED: [2021-06-01 Tue 11:24:15]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -296,17 +296,6 @@ Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] in
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
   (setq org-preview-latex-image-directory  "/tmp/ltximg/")
   (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t))))
-#+end_src
-
-** Org Latex FragTog
-
-[[https://github.com/io12/org-fragtog][github:io12/org-fragtog]] basically toggles latex fragements when you hover over them. Here is some inline latex to test it with: \(\int_0^1\frac{x^3}{3}\). And now where is some more but on a seperate line:
-
-\[\sqrt{\beta^2+5}-\sum_{\phi=1}^\infty \frac{x^\phi-1}{\Gamma(x)}\]
-
-#+begin_src emacs-lisp
-(use-package org-fragtog
-  :hook (org-mode . org-fragtog-mode))
 #+end_src
 
 ** Habit Tracking

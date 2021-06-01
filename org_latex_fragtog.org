@@ -1,0 +1,48 @@
+#+TITLE: Org Latex FragTog
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-06-01 Tue 11:16]
+#+LAST_MODIFIED: [2021-06-01 Tue 11:24:42]
+#+STARTUP: content
+
+* Automatically Toggle LaTeX Fragments in Org-mode
+
+=org-fragtog= toggles [[file:latex.org][LaTeX]] fragements in [[file:org_mode.org][Org-mode]] when you hover over them. Here is some inline [[file:latex.org][LaTeX]] to test it with: \(\int_0^1\frac{x^3}{3}\). And now where is some more but on a seperate line:
+
+\[\sqrt{\beta^2+5}-\sum_{\phi=1}^\infty \frac{x^\phi-1}{\Gamma(x)}\]
+
+\begin{equation}
+R_{\mu \nu} - {1 \over 2}g_{\mu \nu}\,R + g_{\mu \nu} \Lambda =
+ {8 \pi G \over c^4} T_{\mu \nu}
+\end{equation}
+
+\begin{equation}
+i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},\,t) =
+    -\frac{\hbar^2}{2m}\nabla^2 \Psi(\mathbf{r},\,t) + V(\mathbf{r})\Psi(\mathbf{r},\,t)
+\end{equation}
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-fragtog.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+We need to make sure to pull in [[file:org_mode.org][Org-mode]] and set it up first.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
+** Package Install
+Time to install the =org-fragtog= package and hook it to [[file:org_mode.org][Org-mode]].
+
+#+begin_src emacs-lisp
+(use-package org-fragtog
+  :hook (org-mode . org-fragtog-mode))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-org-fragtog)
+#+end_src
