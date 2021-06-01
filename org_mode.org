@@ -214,9 +214,9 @@ Just quick access to my most used org-mode functions via the [[file:general_el.o
 #+begin_src emacs-lisp
 (require 'init-general)
 (zamlz/leader-keys
+  "c" '(org-capture :which-key "org-capture")
   "o"  '(:ignore t :which-key "Org Mode")
   "oa" '(org-agenda :which-key "org-agenda")
-  "oc" '(org-capture :which-key "org-capture")
   "ol" '(org-store-link :which-key "org-store-link")
   "oi" '((lambda () (interactive)
            (org-tags-view t "INBOX")
@@ -225,7 +225,11 @@ Just quick access to my most used org-mode functions via the [[file:general_el.o
   "og" '((lambda () (interactive)
            (find-file (concat org-directory "/tasks.org"))
            (message "Opened:  %s" (buffer-name)))
-         :which-key "GOTO tasks.org"))
+         :which-key "GOTO tasks.org")
+  "oj" '((lambda () (interactive)
+           (find-file (concat org-directory "/journal.org"))
+           (message "Opened:  %s" (buffer-name)))
+         :which-key "GOTO journal.org"))
 #+end_src
 
 ** Org Capture Templates
@@ -246,26 +250,37 @@ Org mode template definitions in the doct format
 
 #+begin_src emacs-lisp
 (setq org-capture-templates
-      (doct '(("Agenda Capture for GTD Tasks" :keys "a"
-               :file "tasks.org"
-               :headline "Inbox"
-               :type entry
-               :prepend t
-               :template ("* %{todo-state} %^{Description} :INBOX:"
-                          ":PROPERTIES:"
-                          ":Created: %U"
-                          ":END:"
-                          "%?")
-               :children (("Todo Task" :keys "t"
-                           :todo-state "TODO")
-                          ("Routine/Habit" :keys "r"
-                           :todo-state "ROUTINE")
-                          ("Project Group" :keys "p"
-                           :todo-state "PROJECT")
-                          ("Someday/Maybe" :keys "s"
-                           :todo-state "SOMEDAY")
-                          ("Meeting/Appointment" :keys "m"
-                           :todo-state "MEETING"))))))
+      (doct '(:group "ORG CAPTURE TEMPLATES"
+                     :children
+                     ((:group "GTD Tasks"
+                              :file "tasks.org"
+                              :headline "Inbox"
+                              :type entry
+                              :prepend t
+                              :template ("* %{todo-state} %? :INBOX:"
+                                         ":PROPERTIES:"
+                                         ":created: %U"
+                                         ":END:")
+                              :children
+                              (("[GTD] Todo Task" :keys "t" :todo-state "TODO")
+                               ("[GTD] Someday/Maybe" :keys "s" :todo-state "SOMEDAY")
+                               ("[GTD] Meeting/Appointment" :keys "m" :todo-state "MEETING")))
+                      (:group "Journal"
+                              :file "journal.org"
+                              :datetree t
+                              :type entry
+                              :prepend t
+                              :template ("* %U - %? %{journal-type}"
+                                         ":PROPERTIES:"
+                                         ":created: %U"
+                                         ":END:")
+                              :children
+                              (("[Journal] Entry" :keys "j" :journal-type ":JOURNAL:")
+                               ("[Journal] Recollection" :keys "r"
+                                :journal-type ":RECOLLECTION:" :time-prompt t)
+                               ("[Journal] Dream Entry" :keys "d" :journal-type ":DREAM:")
+                               ("[Journal] Phone Call" :keys "p" :journal-type ":@PHONE:")))
+                      ))))
 #+end_src
 
 ** Org Make TOC
