@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-30 Sun 23:20]
-#+LAST_MODIFIED: [2021-05-30 Sun 23:31:19]
+#+LAST_MODIFIED: [2021-05-31 Mon 14:23:38]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/org-roam/org-roam-server
 
@@ -37,10 +37,12 @@ We need to make sure [[file:org_roam.org][Org-roam]] is setup first.
 (setq org-roam-server-serve-files t)
 (setq org-roam-server-served-file-extensions '("pdf" "mp4" "ogv" "png" "svg"))
 (setq org-roam-server-network-poll t)
-(setq org-roam-server-network-arrows t)
+(setq org-roam-server-network-arrows nil)
 (setq org-roam-server-network-label-truncate t)
 (setq org-roam-server-network-label-truncate-length 60)
 (setq org-roam-server-network-label-wrap-length 20)
+(setq org-roam-server-cite-edge-dashes t)
+(setq org-roam-server-extra-cite-edge-options (list (cons 'width 3)))
 #+end_src
 
 ** Initialize Server
