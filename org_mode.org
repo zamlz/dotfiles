@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-01 Tue 11:24:15]
+#+LAST_MODIFIED: [2021-06-02 Wed 11:59:19]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -117,6 +117,7 @@ We can configure =org-mode= font faces via a seperate function that we define. W
                       :slant 'normal
                       :weight 'normal
                       :height 3.074
+                      :underline t
                       :foreground 'unspecified
                       :inherit 'org-level-8))
 #+end_src
