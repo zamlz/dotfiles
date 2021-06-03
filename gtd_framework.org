@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "GTD Framework" "GTD Method"
 #+ROAM_TAGS: CONFIG SOFTWARE GTD
 #+CREATED: [2021-03-27 Sat 09:04]
-#+LAST_MODIFIED: [2021-05-17 Mon 10:01:51]
+#+LAST_MODIFIED: [2021-06-02 Wed 18:17:35]
 
 * Useful Resources
 - [[https://hamberg.no/gtd][https://hamberg.no/gtd]]
@@ -18,12 +18,54 @@ This document covers how I use GTD. We configure this framework for [[file:../co
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-gtd.el :comments both :mkdirp yes
 :END:
-** Setup Org
 
+** Setup Dependencies
 First let's make sure we pull in [[file:../config/org_mode.org][Org-mode]] as we build of it's provided system.
 
 #+begin_src emacs-lisp
 (require 'init-org)
+#+end_src
+
+** Task Management Workflow
+
+#+begin_src plantuml :file ./data/gtd_workflow.png :exports results
+@startuml
+'hide footbox
+skinparam backgroundcolor transparent
+skinparam monochrome reverse
+skinparam shadowing false
+hide empty description
+
+[*] -> TODO
+[*] --> SOMEDAY
+SOMEDAY -> TODO
+SOMEDAY -> CANCELLED
+TODO -> DONE
+TODO -> WAITING
+TODO --> CANCELLED
+WAITING -> TODO
+WAITING -> DONE
+WAITING --> CANCELLED
+DONE -> [*]
+ROUTINE -> ROUTINE
+@enduml
+#+end_src
+
+#+RESULTS:
+[[file:./data/gtd_workflow.png]]
+
+** Track Habits
+Enables habit tracking in =org-mode= via =org-habit=.
+
+#+begin_src emacs-lisp
+(with-eval-after-load 'org
+  (add-to-list 'org-modules 'org-habit t)
+  (setq org-habit-graph-column 40)
+  (setq org-habit-preceding-days 28)
+  (setq org-habit-following-days 7)
+  (setq org-habit-show-habits-only-for-today t)
+  (setq org-habit-show-all-today t)
+  (setq org-habit-show-done-always-green t))
 #+end_src
 
 ** Feature Provide

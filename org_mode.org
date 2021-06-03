@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-02 Wed 11:59:19]
+#+LAST_MODIFIED: [2021-06-02 Wed 17:33:46]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -297,21 +297,6 @@ Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] in
   (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
   (setq org-preview-latex-image-directory  "/tmp/ltximg/")
   (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t))))
-#+end_src
-
-** Habit Tracking
-
-Enables habit tracking in =org-mode= via =org-habit=.
-
-#+begin_src emacs-lisp
-(with-eval-after-load 'org
-  (add-to-list 'org-modules 'org-habit t)
-  (setq org-habit-graph-column 40)
-  (setq org-habit-preceding-days 28)
-  (setq org-habit-following-days 7)
-  (setq org-habit-show-habits-only-for-today t)
-  (setq org-habit-show-all-today t)
-  (setq org-habit-show-done-always-green t))
 #+end_src
 
 ** Org Last Modified Timestamp
