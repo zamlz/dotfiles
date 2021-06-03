@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: vertico-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-05-29 Sat 13:23:47]
+#+LAST_MODIFIED: [2021-06-03 Thu 08:19:26]
 #+STARTUP: content
 
 * Vertical Interactive Completion
@@ -61,7 +61,7 @@ Let's also set the max size of =vertico= minibuffers.
 
 #+begin_src emacs-lisp
 (with-eval-after-load 'vertico
-  (set-face-attribute 'vertico-current nil :inherit 'popup-face))
+  (set-face-attribute 'vertico-current nil :inherit 'custom-modified))
 #+end_src
 
 ** Persist History
