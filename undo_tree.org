@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: "undo-tree-mode"
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-25 Tue 16:53]
-#+LAST_MODIFIED: [2021-05-26 Wed 23:45:07]
+#+LAST_MODIFIED: [2021-06-04 Fri 07:26:52]
 #+STARTUP: content
 
 * Visualize The Undo Tree
@@ -42,10 +42,11 @@ Let's also see the timestamps of when the change was made
 #+end_src
 
 ** Autosave Undo History
-We can confiure =undo-tree= to save the undo history to a file so that it can be persistant over sessions.
+We can confiure =undo-tree= to save the undo history to a file so that it can be persistant over sessions. By default =undo-tree= will attempt to save the history file alongside the file in question. This is messy so let's save it elsewhere as well like the =~/.cache= folder.
 
 #+begin_src emacs-lisp
 (setq undo-tree-auto-save-history t)
+(setq undo-tree-history-directory-alist '(("." . "~/.cache/undo-tree/")))
 #+end_src
 
 ** Feature Provide
