@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-03 Mon 20:50]
-#+LAST_MODIFIED: [2021-05-03 Mon 22:15:29]
+#+LAST_MODIFIED: [2021-06-09 Wed 08:31:42]
 
 Aliases let us create shortcuts for commonly used terminal commands within [[file:zsh.org][Zsh]].
 
@@ -78,4 +78,10 @@ Make certain commands safer to use by default
 alias rm="rm -I --preserve-root"
 alias mv="mv -i"
 alias cp="cp -i"
+#+end_src
+
+This is just to configure =vi= to actually just be an alias pointing to the default editor I have set.
+
+#+begin_src shell
+alias vi=$EDITOR # lmao
 #+end_src

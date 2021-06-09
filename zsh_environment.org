@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 12:10]
-#+LAST_MODIFIED: [2021-05-03 Mon 22:11:22]
+#+LAST_MODIFIED: [2021-06-09 Wed 08:28:24]
 
 This is the environment file for [[file:zsh.org][Zsh]]. It is saved in the home directory as =~/.zshenv=. It is sourced everytime and first of all the configuration files.
 
@@ -63,25 +63,28 @@ Set the location of the journal file for [[file:ledger.org][Ledger]] to use.
 export LEDGER_FILE="$LEDGER_DIR/main.journal"
 #+end_src
 
-When using zsh inside [[file:emacs.org][GNU/Emacs]], we also need to update the editor. The default system editor will be [[file:neovim.org][vim]] as its a good fallback, but we definetly do not want it opening inside [[file:emacs.org][GNU/Emacs]].
+When using zsh inside [[file:emacs.org][GNU/Emacs]], we also need to update the editor. The default system editor will be [[file:neovim.org][vim]] as its a good fallback, but we definetly do not want it opening inside [[file:emacs.org][GNU/Emacs]]. Be sure to set the [[file:zsh_aliases.org][Zsh Aliases]] for =vi=.
 
 #+begin_src shell
 if [ -n "$INSIDE_EMACS" ]; then
     export VISUAL="emacsclient --socket-name=xorg-emacs-daemon"
-    export EDITOR="$VISUAL"
-    alias vi="$EDITOR" # lmao
+else
+    export VISUAL="nvim"
 fi
+export EDITOR="$VISUAL"
 #+end_src
 
 Configure Zsh command history
 
 #+begin_src shell
-HISTFILE=$HOME/.zhistory
-HISTSIZE=10000
-SAVEHIST=5000
+export HISTFILE=$ZDOTDIR/history
+export HISTSIZE=10000
+export SAVEHIST=5000
 #+end_src
 
 This is sort of a weird hack. Basically, we're setting the pinentry program here before we even get to the =~/.zshrc= file. The reason is that we want pinentry to default to /GUI/ based applications instead of the /tty/. But if we enter an interactive shell environment (where =~/.zshrc= would be invoked), then we set it back to /tty/.
+
+Update: This is madness... commenting it out for now.
 
 #+begin_src shell
 #export PINENTRY_USER_DATA='rofi'
