@@ -1,0 +1,42 @@
+#+TITLE: ccls
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-06-08 Tue 00:29]
+#+LAST_MODIFIED: [2021-06-08 Tue 00:38:34]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/MaskRay/ccls
+
+* C/C++/ObjC Language Server
+=ccls= is a language server for the [[file:c_programming_language.org][C Programming Language]] and the C++ Programming Language. =ccls= is an external package which must be installed, but it also has package that connects it to the [[file:lsp_mode.org][Lsp Mode]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ccls.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+Make sure [[file:lsp_mode.org][Lsp Mode]] is setup
+
+#+begin_src emacs-lisp
+(require 'init-lsp-mode)
+#+end_src
+
+** Package Install
+Time to install =ccls=.
+
+#+begin_src emacs-lisp
+(use-package ccls)
+#+end_src
+
+** Executable Path
+=ccls= needs us to specify where the executbale exists on our filesystem.
+
+#+begin_src emacs-lisp
+(setq ccls-executable "ccls")
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-ccls)
+#+end_src

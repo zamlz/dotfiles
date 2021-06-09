@@ -1,0 +1,6 @@
+#+TITLE: C Programming Language
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-06-08 Tue 00:31]
+#+LAST_MODIFIED: [2021-06-08 Tue 00:32:28]
+#+STARTUP: content
