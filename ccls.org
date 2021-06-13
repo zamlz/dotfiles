@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-08 Tue 00:29]
-#+LAST_MODIFIED: [2021-06-08 Tue 00:38:34]
+#+LAST_MODIFIED: [2021-06-12 Sat 18:19:01]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/MaskRay/ccls
 
@@ -33,6 +33,13 @@ Time to install =ccls=.
 
 #+begin_src emacs-lisp
 (setq ccls-executable "ccls")
+#+end_src
+
+** Initialization Options
+We need to tell the server how to configure itself. Use =t= for True, =:json-false= for False and =:json-null=.
+
+#+begin_src emacs-lisp
+(setq ccls-initialization-options '(:index (:comments 2) :completion (:detailedLabel t)))
 #+end_src
 
 ** Feature Provide
