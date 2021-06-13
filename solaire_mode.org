@@ -1,0 +1,34 @@
+#+TITLE: Solaire Mode
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-06-13 Sun 13:10]
+#+LAST_MODIFIED: [2021-06-13 Sun 13:28:51]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/hlissner/emacs-solaire-mode
+
+* If only certain buffers could be so grossly Incandescent
+=solaire-mode= is a package that makes visual distinctions between real text buffers and popups/sidebars etc.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-solaire-mode.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+Let's setup =solaire-mode=
+
+#+begin_src emacs-lisp
+(use-package solaire-mode)
+#+end_src
+
+** Activate Mode
+
+#+begin_src emacs-lisp
+;; (solaire-global-mode +1)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-solaire-mode)
+#+end_src
