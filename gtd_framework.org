@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "GTD Framework" "GTD Method"
 #+ROAM_TAGS: CONFIG SOFTWARE GTD
 #+CREATED: [2021-03-27 Sat 09:04]
-#+LAST_MODIFIED: [2021-06-13 Sun 18:37:05]
+#+LAST_MODIFIED: [2021-06-14 Mon 07:34:43]
 
 * Useful Resources
 - [[https://hamberg.no/gtd][https://hamberg.no/gtd]]
@@ -61,7 +61,7 @@ We can define a workflow that achieves this with the following set of sequences 
       '((sequence "TODO(t)" "|" "DONE(d)")
         (sequence "|" "BACKLOG(b)")
         (sequence "|" "BLOCKED(B)")
-        (sequence "|" "CANCELLED(c)"))
+        (sequence "|" "CANCELLED(c)")))
 #+end_src
 
 ** Task State Face Customization
