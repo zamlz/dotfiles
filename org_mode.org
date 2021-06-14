@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-02 Wed 17:33:46]
+#+LAST_MODIFIED: [2021-06-13 Sun 18:21:23]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -143,54 +143,6 @@ Thanks to [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][t
     (set-face-attribute `,face nil :inherit 'fixed-pitch))
   (set-face-attribute 'org-block-begin-line nil :inherit 'org-block :slant 'italic)
   (set-face-attribute 'org-block-end-line nil :inherit 'org-block-begin-line :slant 'italic))
-#+end_src
-
-** Task Categories
-
-#+begin_src emacs-lisp
-(setq org-todo-keywords
-      (quote ((sequence "TODO(t)"
-                        "SOMEDAY(s)"
-                        "MEETING(m)"
-                        "WAITING(w)"
-                        "|"
-                        "DONE(d)"
-                        "CANCELLED(c)"))))
-#+end_src
-
-** Task Colors
-
-This new version of the task colors pulls in existing colors from preexisting faces and uses the doom-theme built in functionality to darken and recolor them selevtively. This one configuration will now color all my tasks categories how I want it to be depending on the doom-theme.
-
-#+begin_src emacs-lisp
-(defun zamlz/configure-org-todo-keyword-faces ()
-  (interactive)
-  (message "Configure org todo keyword faces")
-  (let
-      ((black   (doom-color 'bg))
-       (grey    (doom-color 'base1))
-       (red     (doom-color 'red))
-       (orange  (doom-color 'orange))
-       (green   (doom-color 'green))
-       (yellow  (doom-color 'yellow))
-       (blue    (doom-color 'blue))
-       (violet  (doom-color 'violet))
-       (cyan    (doom-color 'cyan))
-       (white   (doom-color 'white)))
-    (setq org-todo-keyword-faces
-          `(("TODO"      . (:weight bold :foreground ,black  :background ,red))
-            ("MEETING"   . (:weight bold :foreground ,black  :background ,violet))
-            ("DONE"      . (:weight bold :foreground ,black  :background ,green))
-            ("WAITING"   . (:weight bold :foreground ,cyan   :background ,grey))
-            ("SOMEDAY"   . (:weight bold :foreground ,violet :background ,grey))
-            ("CANCELLED" . (:weight bold :foreground ,red    :background ,grey))
-            ))))
-#+end_src
-
-The tasks colors function needs to be called. Unfortunately, there is an issue where its not really set when we're running it via a daemon.
-
-#+begin_src emacs-lisp
-(zamlz/configure-org-todo-keyword-faces)
 #+end_src
 
 ** Center Org buffers

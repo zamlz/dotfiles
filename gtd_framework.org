@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "GTD Framework" "GTD Method"
 #+ROAM_TAGS: CONFIG SOFTWARE GTD
 #+CREATED: [2021-03-27 Sat 09:04]
-#+LAST_MODIFIED: [2021-06-02 Wed 18:17:35]
+#+LAST_MODIFIED: [2021-06-13 Sun 18:37:05]
 
 * Useful Resources
 - [[https://hamberg.no/gtd][https://hamberg.no/gtd]]
@@ -37,15 +37,15 @@ skinparam shadowing false
 hide empty description
 
 [*] -> TODO
-[*] --> SOMEDAY
-SOMEDAY -> TODO
-SOMEDAY -> CANCELLED
+[*] --> BACKLOG
+BACKLOG -> TODO
+BACKLOG -> CANCELLED
 TODO -> DONE
-TODO -> WAITING
+TODO -> BLOCKED
 TODO --> CANCELLED
-WAITING -> TODO
-WAITING -> DONE
-WAITING --> CANCELLED
+BLOCKED -> TODO
+BLOCKED -> DONE
+BLOCKED --> CANCELLED
 DONE -> [*]
 ROUTINE -> ROUTINE
 @enduml
@@ -53,6 +53,48 @@ ROUTINE -> ROUTINE
 
 #+RESULTS:
 [[file:./data/gtd_workflow.png]]
+
+We can define a workflow that achieves this with the following set of sequences for =org-todo-keywords=.
+
+#+begin_src emacs-lisp
+(setq org-todo-keywords
+      '((sequence "TODO(t)" "|" "DONE(d)")
+        (sequence "|" "BACKLOG(b)")
+        (sequence "|" "BLOCKED(B)")
+        (sequence "|" "CANCELLED(c)"))
+#+end_src
+
+** Task State Face Customization
+We make use of =doom-themes= built in functions to get the primary colors of the current theme we are using. This also means that we have to use a =doom-theme=.
+
+#+begin_src emacs-lisp
+(defun zamlz/configure-org-todo-keyword-faces ()
+  (interactive)
+  (message "Configure org todo keyword faces")
+  (let
+      ((black   (doom-color 'bg))
+       (grey    (doom-color 'base1))
+       (red     (doom-color 'red))
+       (orange  (doom-color 'orange))
+       (green   (doom-color 'green))
+       (yellow  (doom-color 'yellow))
+       (blue    (doom-color 'blue))
+       (violet  (doom-color 'violet))
+       (cyan    (doom-color 'cyan))
+       (white   (doom-color 'white)))
+    (setq org-todo-keyword-faces
+          `(("TODO"      . (:weight bold :foreground ,black  :background ,red))
+            ("BLOCKED"   . (:weight bold :foreground ,black  :background ,yellow))
+            ("BACKLOG"   . (:weight bold :foreground ,black  :background ,violet))
+            ("CANCELLED" . (:weight bold :foreground ,black :background ,grey))
+            ("DONE"      . (:weight bold :foreground ,black  :background ,green))))))
+#+end_src
+
+We should call this function in order to set those colors.
+
+#+begin_src emacs-lisp
+(zamlz/configure-org-todo-keyword-faces)
+#+end_src
 
 ** Track Habits
 Enables habit tracking in =org-mode= via =org-habit=.
