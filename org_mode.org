@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-14 Mon 20:06:23]
+#+LAST_MODIFIED: [2021-06-15 Tue 10:44:04]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -31,11 +31,11 @@ I should probably split this bloody mess up.
   :hook
   (org-mode    . org-indent-mode)
   (org-mode    . zamlz/org-mode-setup)
-  (org-mode    . zamlz/org-level-face-setup-simple)
+  ;; (org-mode    . zamlz/org-level-face-setup-simple)
   ;; FANCY MODE
-  ;; (org-mode    . variable-pitch-mode)
-  ;; (org-mode    . zamlz/org-level-face-setup-fancy)
-  ;; (org-mode    . zamlz/org-fixed-pitch-setup-fancy)
+  (org-mode    . variable-pitch-mode)
+  (org-mode    . zamlz/org-level-face-setup-fancy)
+  (org-mode    . zamlz/org-fixed-pitch-setup-fancy)
   (before-save . zamlz/update-org-modified-property-hook)
   :bind (:map org-mode-map
               ("C-M-h" . org-previous-link)
@@ -118,7 +118,7 @@ We can configure =org-mode= font faces via a seperate function that we define. W
   (set-face-attribute 'org-document-title nil
                       :slant 'normal
                       :weight 'normal
-                      :height 3.074
+                      :height 2.5
                       :underline t
                       :foreground 'unspecified
                       :inherit 'org-level-8))
