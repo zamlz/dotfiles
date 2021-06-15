@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-14 Mon 19:41:02]
+#+LAST_MODIFIED: [2021-06-14 Mon 20:06:23]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -136,7 +136,6 @@ Here is an alternate that is simpler.
   (setq org-fontify-quote-and-verse-blocks t)
   ;; set basic title font
   (set-face-attribute 'org-level-8 nil :weight 'bold :inherit 'default)
-  ;; Low levels are unimportant => no scaling
   (set-face-attribute 'org-level-7 nil :inherit 'org-level-8)
   (set-face-attribute 'org-level-6 nil :inherit 'org-level-8)
   (set-face-attribute 'org-level-5 nil :inherit 'org-level-8)
@@ -145,8 +144,7 @@ Here is an alternate that is simpler.
   (set-face-attribute 'org-level-2 nil :inherit 'org-level-8)
   (set-face-attribute 'org-level-1 nil :inherit 'org-level-8)
   ;; Only use the first 4 styles and do not cycle.
-  (setq org-cycle-level-faces nil)
-  (setq org-n-level-faces 4)
+  (setq org-cycle-level-faces t)
   (set-face-attribute 'org-document-title nil
                       :slant 'normal
                       :weight 'normal
