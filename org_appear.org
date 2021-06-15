@@ -3,7 +3,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-09 Sun 10:36]
-#+LAST_MODIFIED: [2021-05-30 Sun 15:19:30]
+#+LAST_MODIFIED: [2021-06-14 Mon 20:13:02]
 
 * What is it?
 
@@ -19,7 +19,6 @@
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-appear.el :comments both :mkdirp yes
 :END:
-
 ** Setup Dependencies
 
 #+begin_src emacs-lisp
@@ -31,6 +30,7 @@ Install the package and add the hook to [[file:org_mode.org][Org-mode]].
 
 #+begin_src emacs-lisp
 (use-package org-appear
+  :disabled
   :hook (org-mode . org-appear-mode))
 #+end_src
 
@@ -38,7 +38,8 @@ Install the package and add the hook to [[file:org_mode.org][Org-mode]].
 We must also make sure that =org-hide-emphasis-markers= is set to =t= /(otherwise, what is the point lol?)/
 
 #+begin_src emacs-lisp
-(setq org-hide-emphasis-markers t)
+(when (featurep 'org-appear)
+  (setq org-hide-emphasis-markers t))
 #+end_src
 
 ** Autohide Elements
