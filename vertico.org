@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: vertico-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-06-03 Thu 08:19:26]
+#+LAST_MODIFIED: [2021-06-14 Mon 20:39:22]
 #+STARTUP: content
 
 * Vertical Interactive Completion
@@ -40,7 +40,7 @@ Setup the =vertico= package.
          ("M-f" . vertico-exit)
          :map minibuffer-local-map
          ;; See section below of directory movement
-         ("<backspace>" . zamlz/minibuffer-backward-kill))
+         ("S-<backspace>" . zamlz/minibuffer-backward-kill))
   :init
   (vertico-mode))
 #+end_src
