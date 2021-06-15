@@ -4,7 +4,7 @@
 #+ROAM_ALIAS: vertico-mode
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-06-14 Mon 20:39:22]
+#+LAST_MODIFIED: [2021-06-15 Tue 10:49:38]
 #+STARTUP: content
 
 * Vertical Interactive Completion
@@ -54,7 +54,7 @@ Allow =vertico= to cycle between results
 Let's also set the max size of =vertico= minibuffers.
 
 #+begin_src emacs-lisp
-(setq vertico-count 20)
+(setq vertico-count 16)
 #+end_src
 
 ** Custom Faces
