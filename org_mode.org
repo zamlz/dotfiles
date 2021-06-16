@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-15 Tue 19:46:05]
+#+LAST_MODIFIED: [2021-06-16 Wed 08:03:14]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -31,11 +31,11 @@ I should probably split this bloody mess up.
   :hook
   (org-mode    . org-indent-mode)
   (org-mode    . zamlz/org-mode-setup)
-  (org-mode    . zamlz/org-level-face-setup-simple)
+  ;; (org-mode    . zamlz/org-level-face-setup-simple)
   ;; FANCY MODE
-  ;; (org-mode    . variable-pitch-mode)
-  ;; (org-mode    . zamlz/org-level-face-setup-fancy)
-  ;; (org-mode    . zamlz/org-fixed-pitch-setup-fancy)
+  (org-mode    . variable-pitch-mode)
+  (org-mode    . zamlz/org-level-face-setup-fancy)
+  (org-mode    . zamlz/org-fixed-pitch-setup-fancy)
   (before-save . zamlz/update-org-modified-property-hook)
   :bind (:map org-mode-map
               ("C-M-h" . org-previous-link)
@@ -101,16 +101,19 @@ We can configure =org-mode= font faces via a seperate function that we define. W
   (setq org-fontify-done-headline t)
   (setq org-fontify-quote-and-verse-blocks t)
   ;; set basic title font
-  (set-face-attribute 'org-level-8 nil :weight 'normal :inherit 'default :slant 'italic)
+  (set-face-attribute 'org-level-8 nil :weight 'normal :slant 'italic :inherit 'outline-8)
   ;; Low levels are unimportant => no scaling
-  (set-face-attribute 'org-level-7 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-6 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-5 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-4 nil :inherit 'org-level-8)
+  (set-face-attribute 'org-level-7 nil :weight 'normal :slant 'italic :inherit 'outline-7)
+  (set-face-attribute 'org-level-6 nil :weight 'normal :slant 'italic :inherit 'outline-6)
+  (set-face-attribute 'org-level-5 nil :weight 'normal :slant 'italic :inherit 'outline-5)
+  (set-face-attribute 'org-level-4 nil :weight 'normal :slant 'italic :inherit 'outline-4)
   ;; Top ones get scaled the same as in LaTeX (\large, \Large, \LARGE)
-  (set-face-attribute 'org-level-3 nil :inherit 'org-level-8 :height 1.2) ;\large
-  (set-face-attribute 'org-level-2 nil :inherit 'org-level-8 :height 1.44) ;\Large
-  (set-face-attribute 'org-level-1 nil :inherit 'org-level-8 :height 1.728) ;\LARGE
+  (set-face-attribute 'org-level-3 nil :weight 'normal :slant 'italic :inherit 'outline-3
+                      :height 1.2) ;\large
+  (set-face-attribute 'org-level-2 nil :weight 'normal :slant 'italic :inherit 'outline-2
+                      :height 1.44) ;\Large
+  (set-face-attribute 'org-level-1 nil :weight 'normal :slant 'italic :inherit 'outline-1
+                      :height 1.728) ;\LARGE
   ;; Only use the first 4 styles and do not cycle.
   (setq org-cycle-level-faces nil)
   (setq org-n-level-faces 4)
@@ -120,8 +123,7 @@ We can configure =org-mode= font faces via a seperate function that we define. W
                       :weight 'normal
                       :height 2.5
                       :underline t
-                      :foreground 'unspecified
-                      :inherit 'org-level-8))
+                      :foreground 'unspecified))
 #+end_src
 
 Here is an alternate that is simpler.
@@ -134,15 +136,6 @@ Here is an alternate that is simpler.
   (setq org-fontify-whole-heading-line t)
   (setq org-fontify-done-headline t)
   (setq org-fontify-quote-and-verse-blocks t)
-  ;; set basic title font
-  (set-face-attribute 'org-level-8 nil :weight 'bold :inherit 'default)
-  (set-face-attribute 'org-level-7 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-6 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-5 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-4 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-3 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-2 nil :inherit 'org-level-8)
-  (set-face-attribute 'org-level-1 nil :inherit 'org-level-8)
   ;; Only use the first 4 styles and do not cycle.
   (setq org-cycle-level-faces t)
   (set-face-attribute 'org-document-title nil
@@ -150,8 +143,7 @@ Here is an alternate that is simpler.
                       :weight 'normal
                       :height 2.0
                       :underline t
-                      :foreground 'unspecified
-                      :inherit 'org-level-8))
+                      :foreground 'unspecified))
 #+end_src
 
 Thanks to [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][this blog post]] from Protesliaos, I was able to properly configure variable pitched fonts in these =org-mode= buffers.
