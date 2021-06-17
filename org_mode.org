@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-16 Wed 08:03:14]
+#+LAST_MODIFIED: [2021-06-16 Wed 22:44:05]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -185,7 +185,7 @@ Center the org buffers and remove line numbers to reduce visual clutter.
    :hook (org-mode . zamlz/org-mode-visual-fill))
 #+end_src
 
-** Org Keybindings
+** General Keybindings
 
 Just quick access to my most used org-mode functions via the [[file:general_el.org][General Leader Keybindings Definer]].
 
@@ -210,57 +210,6 @@ Just quick access to my most used org-mode functions via the [[file:general_el.o
          :which-key "GOTO journal.org"))
 #+end_src
 
-** Org Capture Templates
-*** DOCT: Declarative Org Capture Templates
-
-DOCT is a cool package that lets me build =org-capture= templates with ease. It's really way more readable than the original syntax.
-
-#+begin_src emacs-lisp
-(use-package doct
-  :ensure t
-  ;;recommended: defer until calling doct
-  :commands (doct))
-#+end_src
-
-*** Template Definitions
-
-Org mode template definitions in the doct format
-
-#+begin_src emacs-lisp
-(setq org-capture-templates
-      (doct '(:group "ORG CAPTURE TEMPLATES"
-                     :children
-                     ((:group "GTD Tasks"
-                              :file "tasks.org"
-                              :headline "Inbox"
-                              :type entry
-                              :prepend t
-                              :template ("* %{todo-state} %? :INBOX:"
-                                         ":PROPERTIES:"
-                                         ":created: %U"
-                                         ":END:")
-                              :children
-                              (("[GTD] Todo Task" :keys "t" :todo-state "TODO")
-                               ("[GTD] Someday/Maybe" :keys "s" :todo-state "SOMEDAY")
-                               ("[GTD] Meeting/Appointment" :keys "m" :todo-state "MEETING")))
-                      (:group "Journal"
-                              :file "journal.org"
-                              :datetree t
-                              :type entry
-                              :prepend t
-                              :template ("* %U - %? %{journal-type}"
-                                         ":PROPERTIES:"
-                                         ":created: %U"
-                                         ":END:")
-                              :children
-                              (("[Journal] Entry" :keys "j" :journal-type ":JOURNAL:")
-                               ("[Journal] Recollection" :keys "r"
-                                :journal-type ":RECOLLECTION:" :time-prompt t)
-                               ("[Journal] Dream Entry" :keys "d" :journal-type ":DREAM:")
-                               ("[Journal] Phone Call" :keys "p" :journal-type ":@PHONE:")))
-                      ))))
-#+end_src
-
 ** LaTeX Inline Preview
 
 Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] installed and also =dvipng= as well. We'll add =dvipng= to this file's package set.
@@ -276,7 +225,7 @@ Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] in
   (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t))))
 #+end_src
 
-** Org Last Modified Timestamp
+** Last Modified Timestamp
 
 The following allows any =#+LAST_MODIFIED= headers to be updated on file-save.
 

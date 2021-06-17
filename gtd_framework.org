@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: "GTD Framework" "GTD Method"
 #+ROAM_TAGS: CONFIG SOFTWARE GTD
 #+CREATED: [2021-03-27 Sat 09:04]
-#+LAST_MODIFIED: [2021-06-16 Wed 00:13:41]
+#+LAST_MODIFIED: [2021-06-16 Wed 22:46:26]
 
 * Useful Resources
 - [[https://hamberg.no/gtd][GTD in 15 Minutes]]
@@ -25,6 +25,12 @@ First let's make sure we pull in [[file:../config/org_mode.org][Org-mode]] as we
 
 #+begin_src emacs-lisp
 (require 'init-org)
+#+end_src
+
+We define capture templates with [[file:doct.org][Doct]] here as well.
+
+#+begin_src emacs-lisp
+(require 'init-doct)
 #+end_src
 
 ** Task Management Workflow
@@ -65,7 +71,7 @@ We can define a workflow that achieves this with the following set of sequences 
         (sequence "|" "CANCELLED(c)")))
 #+end_src
 
-** Task State Face Customization
+** Face Customization
 We make use of =doom-themes= built in functions to get the primary colors of the current theme we are using. This also means that we have to use a =doom-theme=.
 
 #+begin_src emacs-lisp
@@ -129,6 +135,44 @@ Enables habit tracking in =org-mode= via =org-habit=.
   (setq org-habit-show-habits-only-for-today t)
   (setq org-habit-show-all-today t)
   (setq org-habit-show-done-always-green t))
+#+end_src
+
+** Capture Templates
+Org mode template definitions in the doct format
+
+#+begin_src emacs-lisp
+(setq org-capture-templates
+      (doct '(:group "ORG CAPTURE TEMPLATES"
+                     :children
+                     ((:group "GTD Tasks"
+                              :file "tasks.org"
+                              :headline "Inbox"
+                              :type entry
+                              :prepend t
+                              :template ("* %{todo-state} %? :INBOX:"
+                                         ":PROPERTIES:"
+                                         ":created: %U"
+                                         ":END:")
+                              :children
+                              (("[GTD] Todo Task" :keys "t" :todo-state "TODO")
+                               ("[GTD] Someday/Maybe" :keys "s" :todo-state "SOMEDAY")
+                               ("[GTD] Meeting/Appointment" :keys "m" :todo-state "MEETING")))
+                      (:group "Journal"
+                              :file "journal.org"
+                              :datetree t
+                              :type entry
+                              :prepend t
+                              :template ("* %U - %? %{journal-type}"
+                                         ":PROPERTIES:"
+                                         ":created: %U"
+                                         ":END:")
+                              :children
+                              (("[Journal] Entry" :keys "j" :journal-type ":JOURNAL:")
+                               ("[Journal] Recollection" :keys "r"
+                                :journal-type ":RECOLLECTION:" :time-prompt t)
+                               ("[Journal] Dream Entry" :keys "d" :journal-type ":DREAM:")
+                               ("[Journal] Phone Call" :keys "p" :journal-type ":@PHONE:")))
+                      ))))
 #+end_src
 
 ** Feature Provide

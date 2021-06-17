@@ -1,0 +1,35 @@
+#+TITLE: Doct
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-06-16 Wed 22:40]
+#+LAST_MODIFIED: [2021-06-16 Wed 22:43:22]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/progfolio/doct
+
+* Declarative Org Capture Templates
+=doct= is a function that provides a more readable way of describing [[file:org_mode.org][Org-mode]] capture tempaltes.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-doct.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+We have to setup [[file:org_mode.org][Org-mode]] first.
+
+#+begin_src emacs-lisp
+(require 'init-org)
+#+end_src
+
+** Package Install
+Actually install the =doct= package now.
+
+#+begin_src emacs-lisp
+(use-package doct)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-doct)
+#+end_src
