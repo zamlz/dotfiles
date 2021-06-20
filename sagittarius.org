@@ -1,0 +1,30 @@
+#+TITLE: Sagittarius
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE WORKSTATION
+#+CREATED: [2021-06-20 Sun 13:59]
+#+LAST_MODIFIED: [2021-06-20 Sun 14:04:01]
+#+STARTUP: content
+
+* System Specs
+#+begin_src shell :results verbatim
+inxi -Fx -c 0
+#+end_src
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle (when (equal system-name "sagittarius") "~/.config/emacs/lisp/init-system.el") :comments both :mkdirp yes
+:header-args:shell: :tangle (when (equal system-name "sagittarius") "~/.config/xinitrc.d/system-andromeda.sh") :comments both :mkdirp yes :shebang #!/bin/sh
+:END:
+
+** Org-mode LaTeX Scaling Factor
+[[file:org_mode.org][Org-mode]] and [[file:org_latex_fragtog.org][Org Latex FragTog]] Don't automatically play nice with the scaling so we set it here instead.
+
+#+begin_src emacs-lisp
+(defvar zamlz/org-latex-scale-factor 1.0)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-system)
+#+end_src

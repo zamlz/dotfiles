@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-06-16 Wed 08:22:56]
+#+LAST_MODIFIED: [2021-06-20 Sun 14:00:22]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -398,6 +398,13 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                   (zamlz/set-font-faces)
                   (zamlz/set-transparency 100))))
   (zamlz/set-font-faces))
+#+end_src
+
+** Configure System
+Before we do anything to crazy, lets load up some system specific settings. Usually this should just contain variable definitions used for other packages to use. Also the contents of this file could be any =system= file. Currently there are only two being managed right now ([[file:andromeda.org][Andromeda Workstation]] and Sagitarrius Workstation).
+
+#+begin_src emacs-lisp
+(require 'init-system)
 #+end_src
 
 ** Setup Org-mode

@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-06-16 Wed 22:44:05]
+#+LAST_MODIFIED: [2021-06-20 Sun 13:59:29]
 #+STARTUP: content
 
 * Your Life in Plain Text
@@ -214,13 +214,12 @@ Just quick access to my most used org-mode functions via the [[file:general_el.o
 
 Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] installed and also =dvipng= as well. We'll add =dvipng= to this file's package set.
 
-/Need to figure out how to configure the size of the generated latex image./
-
 #+begin_src emacs-lisp
 (setq org-startup-with-latex-preview t)
 (setq org-highlight-latex-and-related '(native script entities))
 (with-eval-after-load 'org
-  (setq org-format-latex-options (plist-put org-format-latex-options :scale 2.0))
+  (setq org-format-latex-options (plist-put org-format-latex-options
+                                            :scale zamlz/org-latex-scale-factor))
   (setq org-preview-latex-image-directory  "/tmp/ltximg/")
   (add-to-list 'org-src-block-faces '("latex" (:inherit default :extend t))))
 #+end_src
