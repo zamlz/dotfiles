@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-05-30 Sun 15:24:47]
+#+LAST_MODIFIED: [2021-06-20 Sun 13:28:42]
 
 * Babel: Multi-Language Computing Environment for Literate-Programming/Reproducible-Research
 
@@ -51,10 +51,11 @@ Now we confiugre some of the parameters for =babel=.
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . t)
-   (python . t)
-   (gnuplot . t)
-   (latex . t)
-   (plantuml . t)
+   (python     . t)
+   (gnuplot    . t)
+   (latex      . t)
+   (plantuml   . t)
+   (shell      . t)
    ))
 #+end_src
 
