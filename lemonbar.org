@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://github.com/krypt-n/bar
 #+CREATED: [2021-03-29 Mon 19:25]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:46:46]
+#+LAST_MODIFIED: [2021-06-22 Tue 09:02:39]
 
 Lemonbar (XFT Fork) is a lightweight bar based on XCB. Its pretty neat tool that you just pipe output into to display the bar of your design. Unfortunately, it seems like the repo is archived so it is unmaintained. It will likely break at some point so I should look for alternatives.
 
@@ -103,7 +103,7 @@ Other fonts:
 OPTS="-g x20
 -F ${XBACKGROUND}
 -B ${XBACKGROUND}
--f IosevkaTerm:size=12
+-f Iosevka\ Term:size=12
 -f FontAwesome5Free:style=Regular:size=14
 -f FontAwesome5Free:style=Solid:size=14
 -f FontAwesome5Brands:style=Regular:size=14
