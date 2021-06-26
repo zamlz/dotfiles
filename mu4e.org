@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 08:18]
-#+LAST_MODIFIED: [2021-04-28 Wed 08:23:58]
+#+LAST_MODIFIED: [2021-06-23 Wed 10:00:31]
 
 =mu4e= is a e-mail client for [[file:emacs.org][GNU/Emacs]] that uses =mu= as the backend. =mu= is simply a mail indexer so we have to make use of [[file:isync.org][Isync (mbsync)]] in order to get a local copy of the IMAP to use with =mu4e=.
 
@@ -14,6 +14,9 @@
 :END:
 
 Disabled because I haven't set this up properly yet...
+
+ALSO TAKE A LOOK AT THIS
+[[https://github.com/stardiviner/mu4e-marker-icons][https://github.com/stardiviner/mu4e-marker-icons]]
 
 #+begin_src emacs-lisp
 (use-package mu4e
