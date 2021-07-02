@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-06-20 Sun 14:00:22]
+#+LAST_MODIFIED: [2021-07-02 Fri 13:05:53]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -322,12 +322,12 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
 (use-package doom-themes
   ;; Solaire mode won't work unless its global mode is setup before the
   ;; =load-theme= function is called.
-  ;; :after (solaire-mode)
+  :after (solaire-mode)
   :config
   ;; Global settings (defaults)
   (setq doom-themes-enable-bold t    ; if nil, bold is universally disabled
         doom-themes-enable-italic t) ; if nil, italics is universally disabled
-  (load-theme 'doom-Iosvkem t)
+  (load-theme 'doom-opera t)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; Enable custom neotree theme (all-the-icons must be installed!)
@@ -396,7 +396,7 @@ Normally I don't like rainbow delimiters but its actually pretty good on emacs. 
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 100))))
+                  (zamlz/set-transparency 90))))
   (zamlz/set-font-faces))
 #+end_src
 
