@@ -3,7 +3,7 @@
 #+ROAM_ALIAS: xrdb xresources
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 17:14]
-#+LAST_MODIFIED: [2021-06-22 Tue 09:08:18]
+#+LAST_MODIFIED: [2021-07-03 Sat 09:51:35]
 
 * User-level Dotfile for X11
 The =Xresources= file is used to confiugre user level options for various [[file:xorg.org][Xorg X11 Window System]] Applications.
@@ -42,7 +42,7 @@ Xft.hintstyle:              hintslight
 #+begin_src C
 !*font: xft:Iosevka Term:size=11
 !*font: xft:xos4 Terminus:size=12
-#define system_font xft:xos4 Terminus:size=12
+#define system_font xft:Terminus:size=12
 !#define system_font xft:Iosevka Term:size=8
 #+end_src
 
