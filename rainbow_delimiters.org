@@ -1,0 +1,29 @@
+#+TITLE: Rainbow Delimiters
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-07-05 Mon 19:26]
+#+LAST_MODIFIED: [2021-07-05 Mon 19:30:56]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/Fanael/rainbow-delimiters
+
+* Emacs Rainbow Delimiters Mode
+=rainbow-delimiters-mode= provides multi color matching paranethesis, brackets and braces depending on their level.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-rainbow-delimiters.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+Install the =rainbow-delimiters= package. We also specifically add it to all prog mode hooks.
+
+#+begin_src emacs-lisp
+(use-package rainbow-delimiters
+  :hook (prog-mode . rainbow-delimiters-mode))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-rainbow-delimiters)
+#+end_src

@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-07-02 Fri 13:05:53]
+#+LAST_MODIFIED: [2021-07-05 Mon 19:50:08]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -337,15 +337,6 @@ I have a couple themes here. Eventually I want to setup my own custom theme but 
   (doom-themes-treemacs-config)
   ;; Corrects (and improves) org-mode's native fontification.
   (doom-themes-org-config))
-#+end_src
-
-**** Rainbow Delimiters
-
-Normally I don't like rainbow delimiters but its actually pretty good on emacs. And you actually can't survive without it IMO.
-
-#+begin_src emacs-lisp
-(use-package rainbow-delimiters
-  :hook (prog-mode . rainbow-delimiters-mode))
 #+end_src
 
 **** Highlight Numbers
