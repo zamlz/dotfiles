@@ -1,0 +1,33 @@
+#+TITLE: Powerline
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-07-05 Mon 20:08]
+#+LAST_MODIFIED: [2021-07-05 Mon 20:11:20]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/milkypostman/powerline
+
+* Emacs Version of Vim Powerline
+=powerline= is a fork of the popular vim package of the same name.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-powerline.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package powerline)
+#+end_src
+
+** Configure Default Theme
+
+#+begin_src emacs-lisp
+(powerline-default-theme)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-powerline)
+#+end_src

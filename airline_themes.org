@@ -1,0 +1,39 @@
+#+TITLE: Airline Themes
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-07-05 Mon 20:13]
+#+LAST_MODIFIED: [2021-07-05 Mon 20:19:10]
+#+STARTUP: content
+
+* Custom Themes for Powerline
+=airline-themes= provides custom themes for [[file:powerline.org][Powerline]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-airline-themes.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+We need to make sure [[file:powerline.org][Powerline]] is setup first.
+
+#+begin_src emacs-lisp
+(require 'init-powerline)
+#+end_src
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package airline-themes)
+#+end_src
+
+** Setup Theme
+
+#+begin_src emacs-lisp
+(load-theme 'airline-jet t)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-airline-themes)
+#+end_src
