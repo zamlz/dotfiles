@@ -1,0 +1,34 @@
+#+TITLE: Autothemer
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+ROAM_TAGS: CONFIG SOFTWARE
+#+CREATED: [2021-07-05 Mon 19:36]
+#+LAST_MODIFIED: [2021-07-05 Mon 19:38:46]
+#+STARTUP: content
+#+ROAM_KEY: https://github.com/jasonm23/autothemer
+
+* Conveniently create Emacs Themes
+=autothemer= provides a wrapper on the existing =deftheme= and =custom-theme-set-faces= functionality.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-autothemer.el :comments both :mkdirp yes
+:END:
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package autothemer)
+#+end_src
+
+** Custom Theme Path
+
+#+begin_src emacs-lisp
+(add-to-list 'custom-theme-load-path "~/org/config/lib/emacs-themes/")
+;; (load-theme 'gruvbox-black t)
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-autothemer)
+#+end_src
