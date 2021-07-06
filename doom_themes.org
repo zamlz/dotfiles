@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 19:40]
-#+LAST_MODIFIED: [2021-07-05 Mon 20:19:59]
+#+LAST_MODIFIED: [2021-07-06 Tue 09:01:00]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/hlissner/emacs-doom-themes
 
@@ -39,7 +39,7 @@ I'm not entirely sure how to get [[file:solaire_mode.org][Solaire Mode]] working
 ** Load Theme
 
 #+begin_src emacs-lisp
-(load-theme 'doom-homage-black t)
+;; (load-theme 'doom-homage-black t)
 #+end_src
 
 ** Flashing Modeline on Errors

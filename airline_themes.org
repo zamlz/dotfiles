@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 20:13]
-#+LAST_MODIFIED: [2021-07-05 Mon 20:19:10]
+#+LAST_MODIFIED: [2021-07-06 Tue 12:30:33]
 #+STARTUP: content
 
 * Custom Themes for Powerline
@@ -29,7 +29,86 @@ We need to make sure [[file:powerline.org][Powerline]] is setup first.
 ** Setup Theme
 
 #+begin_src emacs-lisp
-(load-theme 'airline-jet t)
+(load-theme 'airline-dark t)
+#+end_src
+
+** Customize Options
+
+Hide Evil and buffer state on inactive buffers:
+- Valid Values: t (hidden), nil (shown)
+
+#+begin_src emacs-lisp
+(setq airline-hide-state-on-inactive-buffers nil)
+#+end_src
+
+Hide eyebrowse indicator on inactive buffers.
+- Valid Values: t (hidden), nil (shown)
+
+#+begin_src emacs-lisp
+(setq airline-hide-eyebrowse-on-inactive-buffers nil)
+#+end_src
+
+Hide vc branch on inactive buffers:
+- Valid Values: t (hidden), nil (shown)
+
+#+begin_src emacs-lisp
+(setq airline-hide-vc-branch-on-inactive-buffers nil)
+#+end_src
+
+Set eshell prompt colors to match the airline theme.
+- Valid Values: t (enabled), nil (disabled)
+
+#+begin_src emacs-lisp
+(setq airline-eshell-colors nil)
+#+end_src
+
+Set helm colors to match the airline theme:
+- Valid Values: t (enabled), nil (disabled)
+
+#+begin_src emacs-lisp
+(setq airline-helm-colors t)
+#+end_src
+
+Set the cursor color based on the current evil state:
+- Valid Values: t (enabled), nil (disabled)
+
+#+begin_src emacs-lisp
+(setq airline-cursor-colors t)
+#+end_src
+
+Display the currend directory along with the filename.
+- Valid Values: ='airline-directory-full= ='airline-directory-shortened= =nil= (disabled)
+
+#+begin_src emacs-lisp
+(setq airline-display-directory 'airline-directory-shortened)
+#+end_src
+
+Max directory length to display when using 'airline-directory-shortened
+
+#+begin_src emacs-lisp
+(setq airline-shortened-directory-length 30)
+#+end_src
+
+Unicode character choices
+
+#+begin_src emacs-lisp
+(setq airline-utf-glyph-separator-left #xe0b0)
+(setq airline-utf-glyph-separator-right #xe0b2)
+(setq airline-utf-glyph-subseparator-left #xe0b1)
+(setq airline-utf-glyph-subseparator-right #xe0b3)
+(setq airline-utf-glyph-branch #xe0a0)
+(setq airline-utf-glyph-readonly #xe0a2)
+(setq airline-utf-glyph-linenumber #x2630)
+#+end_src
+
+You may also wish to force powerline to use utf8 character separators:
+- Valid Values: alternate, arrow, arrow-fade, bar, box, brace, butt, chamfer, contour, curve, rounded, roundstub, wave, zigzag, slant, utf-8.
+
+
+#+begin_src emacs-lisp
+(setq powerline-default-separator 'arrow)
+(setq powerline-utf-8-separator-left  #xe0b0)
+(setq powerline-utf-8-separator-right #xe0b2)
 #+end_src
 
 ** Feature Provide

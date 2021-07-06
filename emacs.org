@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-07-05 Mon 19:50:08]
+#+LAST_MODIFIED: [2021-07-06 Tue 09:02:22]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -294,7 +294,7 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 #+end_src
 
 ** Interface (Reorganize This)
-*** Font Configuration
+** Font Configuration
 
 I have a lot of fonts commented out right now because I can't decide on which ones to keep lol.
 
@@ -357,7 +357,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 90))))
+                  (zamlz/set-transparency 100))))
   (zamlz/set-font-faces))
 #+end_src
 

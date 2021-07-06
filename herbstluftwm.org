@@ -4,7 +4,7 @@
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+ROAM_KEY: https://herbstluftwm.org/
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:49:33]
+#+LAST_MODIFIED: [2021-07-06 Tue 08:23:55]
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
 [[file:data/herbstluftwm_logo.png]]
@@ -257,7 +257,7 @@ hc set frame_bg_normal_color $XBACKGROUND
 hc set frame_bg_active_color $XCOLOR8
 
 hc set always_show_frame 0
-hc set frame_gap 8
+hc set frame_gap 16
 hc set frame_padding 0
 #+end_src
 
@@ -285,7 +285,7 @@ hc attr theme.floating.outer_width 4
 hc attr theme.floating.outer_color $XBACKGROUND
 hc attr theme.background_color '#141414'
 
-hc set window_gap 0
+hc set window_gap 12
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0
