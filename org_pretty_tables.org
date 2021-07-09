@@ -2,13 +2,20 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-01 Tue 08:48]
-#+LAST_MODIFIED: [2021-07-02 Fri 13:17:51]
+#+LAST_MODIFIED: [2021-07-07 Wed 11:15:12]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/Fuco1/org-pretty-table
 #+ROAM_ALIAS: org-pretty-tables
 
 * Replace Org-table Characters with Unicode Glyphs
 =org-pretty-table= is a simple aesthetic package that updates the look of tables in [[file:org_mode.org][Org-mode]].
+
+|---+--------+-------|
+| ! | Sample | Table |
+|---+--------+-------|
+|   |      1 |     2 |
+|   |      4 |     5 |
+|---+--------+-------|
 
 * Configuration
 :PROPERTIES:
