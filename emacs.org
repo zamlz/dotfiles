@@ -4,7 +4,7 @@
 #+ROAM_KEY: https://www.gnu.org/software/emacs/
 #+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-07-06 Tue 09:02:22]
+#+LAST_MODIFIED: [2021-07-12 Mon 09:28:18]
 #+STARTUP: content
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -357,7 +357,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 100))))
+                  (zamlz/set-transparency 95))))
   (zamlz/set-font-faces))
 #+end_src
 

@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 19:36]
-#+LAST_MODIFIED: [2021-07-06 Tue 09:01:10]
+#+LAST_MODIFIED: [2021-07-12 Mon 09:25:25]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/jasonm23/autothemer
 
@@ -24,7 +24,7 @@
 
 #+begin_src emacs-lisp
 (add-to-list 'custom-theme-load-path "~/org/config/lib/emacs-themes/")
-(load-theme 'gruvbox-black t)
+;; (load-theme 'gruvbox-black t)
 #+end_src
 
 ** Feature Provide
