@@ -4,7 +4,7 @@
 #+ROAM_ALIAS:
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-24 Mon 17:35]
-#+LAST_MODIFIED: [2021-07-05 Mon 19:58:33]
+#+LAST_MODIFIED: [2021-07-12 Mon 09:26:22]
 #+STARTUP: content
 
 * A Fancy and Fast Modeline for Emacs
@@ -32,7 +32,6 @@ Install =doom-modeline= with our package manager.
 
 #+begin_src emacs-lisp
 (use-package doom-modeline
-  :disabled
   :init (doom-modeline-mode +1))
 #+end_src
 

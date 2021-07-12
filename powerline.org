@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 20:08]
-#+LAST_MODIFIED: [2021-07-05 Mon 20:11:20]
+#+LAST_MODIFIED: [2021-07-12 Mon 09:27:15]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/milkypostman/powerline
 
@@ -17,13 +17,15 @@
 ** Package Install
 
 #+begin_src emacs-lisp
-(use-package powerline)
+(use-package powerline
+  :disabled)
 #+end_src
 
 ** Configure Default Theme
 
 #+begin_src emacs-lisp
-(powerline-default-theme)
+(with-eval-after-load 'powerline
+  (powerline-default-theme))
 #+end_src
 
 ** Feature Provide

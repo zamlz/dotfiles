@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 20:13]
-#+LAST_MODIFIED: [2021-07-06 Tue 12:30:33]
+#+LAST_MODIFIED: [2021-07-12 Mon 09:29:43]
 #+STARTUP: content
 
 * Custom Themes for Powerline
@@ -23,13 +23,15 @@ We need to make sure [[file:powerline.org][Powerline]] is setup first.
 ** Package Install
 
 #+begin_src emacs-lisp
-(use-package airline-themes)
+(use-package airline-themes
+  :disabled)
 #+end_src
 
 ** Setup Theme
 
 #+begin_src emacs-lisp
-(load-theme 'airline-dark t)
+(with-eval-after-load 'airline-themes
+  (load-theme 'airline-dark t))
 #+end_src
 
 ** Customize Options
