@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       3e96a117-bf2b-45e5-bc99-e44f3dccb360
+:ROAM_REFS: https://isync.sourceforge.io/
+:END:
 #+TITLE: Isync (mbsync)
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://isync.sourceforge.io/
 #+CREATED: [2021-03-29 Mon 19:19]
-#+LAST_MODIFIED: [2021-03-29 Mon 19:20:31]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:11]
+#+filetags: CONFIG SOFTWARE
 
 Isync is a tool for IMAP and MailDir Synchronization
 

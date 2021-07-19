@@ -1,21 +1,23 @@
+:PROPERTIES:
+:ID:       341bbf71-7114-41e1-9fb7-f1bc66328c30
+:ROAM_REFS: https://github.com/atheriel/evil-ledger
+:END:
 #+TITLE: Evil Ledger
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/atheriel/evil-ledger
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 15:40]
-#+LAST_MODIFIED: [2021-05-25 Tue 11:41:13]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
 * Making Ledger-Mode more Evil
 
-=evil-ledger= is a package that provides [[file:evil.org][Evil Mode]] keybinding support for [[file:ledger.org][ledger-mode]]. Make sure to configure both of those dependencies prior to configuring this pakcage. Make sure to add the hook to =ledger-mode= as well.
+=evil-ledger= is a package that provides [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][Evil Mode]] keybinding support for [[id:55bd3dcf-dd49-42bb-92cb-8ea127809651][ledger-mode]]. Make sure to configure both of those dependencies prior to configuring this pakcage. Make sure to add the hook to =ledger-mode= as well.
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-evil-ledger.el :comments both :mkdirp yes
 :END:
 ** Setup Dependencies
-We should ensure that both [[file:evil.org][Evil Mode]] and [[file:ledger.org][ledger-mode]] and available and configured.
+We should ensure that both [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][Evil Mode]] and [[id:55bd3dcf-dd49-42bb-92cb-8ea127809651][ledger-mode]] and available and configured.
 
 #+begin_src emacs-lisp
 (require 'init-evil)

@@ -1,17 +1,19 @@
+:PROPERTIES:
+:ID:       c457ffad-2808-4679-88c0-b866872ccf5b
+:ROAM_REFS: https://magit.vc/
+:END:
 #+TITLE: Magit
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://magit.vc/
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 12:58]
-#+LAST_MODIFIED: [2021-05-09 Sun 10:05:35]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
 * Magit: A Git Porcelain inside Emacs
 
 #+DOWNLOADED: screenshot @ 2021-05-08 13:01:32
 [[file:data/magit-logo.png]]
 
-=magit= is a complete text based interface to [[file:git.org][Git]] from within [[file:emacs.org][GNU/Emacs]].
+=magit= is a complete text based interface to [[id:907ccf31-cf51-441c-a6d1-f9f7f58fe112][Git]] from within [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 * Package Install
 :PROPERTIES:

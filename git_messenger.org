@@ -1,21 +1,23 @@
+:PROPERTIES:
+:ID:       c315e17c-74a5-4f31-b2b0-dc16dd528f20
+:ROAM_REFS: https://github.com/emacsorphanage/git-messenger
+:END:
 #+TITLE: git-messenger
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/emacsorphanage/git-messenger
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 19:05]
-#+LAST_MODIFIED: [2021-05-08 Sat 19:27:12]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
 * Git-Messenger: Emacs Port of git-messenger.vim
 
-=git-messenger= is a simple package that provides a popup display for the [[file:git.org][Git]] commit message at the current line of an [[file:emacs.org][GNU/Emacs]] buffer.
+=git-messenger= is a simple package that provides a popup display for the [[id:907ccf31-cf51-441c-a6d1-f9f7f58fe112][Git]] commit message at the current line of an [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] buffer.
 
 * Package Install
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git-messenger.el :comments both :mkdirp yes
 :END:
 
-Let's ensure that [[file:magit.org][Magit]] is properly setup as we'll configure =git-messenger= to use it instead of [[file:git.org][Git]] directly.
+Let's ensure that [[id:c457ffad-2808-4679-88c0-b866872ccf5b][Magit]] is properly setup as we'll configure =git-messenger= to use it instead of [[id:907ccf31-cf51-441c-a6d1-f9f7f58fe112][Git]] directly.
 
 #+begin_src emacs-lisp
 (require 'init-magit)
@@ -33,7 +35,7 @@ Configure the popup to show a little more detail (Commit ID, Author)
 (setq git-messenger:show-detail t)
 #+end_src
 
-Don't display output from the shell command but rather output directly from [[file:magit.org][Magit]].
+Don't display output from the shell command but rather output directly from [[id:c457ffad-2808-4679-88c0-b866872ccf5b][Magit]].
 
 #+begin_src emacs-lisp
 (setq git-messenger:use-magit-popup t)

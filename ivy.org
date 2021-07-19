@@ -1,15 +1,17 @@
+:PROPERTIES:
+:ID:       40de6793-5260-4ef0-9635-673c7c1ad3b8
+:END:
 #+TITLE: Ivy Completion Framework
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 17:36]
-#+LAST_MODIFIED: [2021-05-20 Thu 13:04:45]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE EMACS
 
 * A Generic Completion Framework for Emacs
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ivy.el :comments both :mkdirp yes
 :END:
-Ivy is a generic completion mechanism for [[file:emacs.org][GNU/Emacs]]. Currently this is disabled...
+Ivy is a generic completion mechanism for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. Currently this is disabled...
 
 * Configuration
 ** Counsel

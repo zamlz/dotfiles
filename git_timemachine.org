@@ -1,14 +1,16 @@
+:PROPERTIES:
+:ID:       823aaccf-868d-41f2-bc91-5358ba328e8b
+:ROAM_REFS: https://gitlab.com/pidu/git-timemachine
+:END:
 #+TITLE: git-timemachine
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://gitlab.com/pidu/git-timemachine
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-09 Sun 01:11]
-#+LAST_MODIFIED: [2021-05-09 Sun 01:18:29]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
 * Git-Timemachine: Step through historic versions of git controlled files
 
-This package lets us step through historic versions of files that have been checked into [[file:git.org][Git]] as an interactive [[file:emacs.org][GNU/Emacs]] buffer.
+This package lets us step through historic versions of files that have been checked into [[id:907ccf31-cf51-441c-a6d1-f9f7f58fe112][Git]] as an interactive [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] buffer.
 
 * Package Install
 :PROPERTIES:

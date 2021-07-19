@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       bacf0ad9-008e-4d7d-9d20-eda7e02599a0
+:END:
 #+TITLE: Org Latex FragTog
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-01 Tue 11:16]
-#+LAST_MODIFIED: [2021-06-01 Tue 11:24:42]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Automatically Toggle LaTeX Fragments in Org-mode
 
-=org-fragtog= toggles [[file:latex.org][LaTeX]] fragements in [[file:org_mode.org][Org-mode]] when you hover over them. Here is some inline [[file:latex.org][LaTeX]] to test it with: \(\int_0^1\frac{x^3}{3}\). And now where is some more but on a seperate line:
+=org-fragtog= toggles [[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]] fragements in [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] when you hover over them. Here is some inline [[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]] to test it with: \(\int_0^1\frac{x^3}{3}\). And now where is some more but on a seperate line:
 
 \[\sqrt{\beta^2+5}-\sum_{\phi=1}^\infty \frac{x^\phi-1}{\Gamma(x)}\]
 
@@ -27,14 +30,14 @@ i\hbar\frac{\partial}{\partial t} \Psi(\mathbf{r},\,t) =
 :END:
 
 ** Setup Dependencies
-We need to make sure to pull in [[file:org_mode.org][Org-mode]] and set it up first.
+We need to make sure to pull in [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] and set it up first.
 
 #+begin_src emacs-lisp
 (require 'init-org)
 #+end_src
 
 ** Package Install
-Time to install the =org-fragtog= package and hook it to [[file:org_mode.org][Org-mode]].
+Time to install the =org-fragtog= package and hook it to [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]].
 
 #+begin_src emacs-lisp
 (use-package org-fragtog

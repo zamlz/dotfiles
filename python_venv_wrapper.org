@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       cc7d9ff0-7de7-4d18-8ffc-e9b4d7fa2c56
+:END:
 #+TITLE: Python Venv Wrapper
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 12:53]
-#+LAST_MODIFIED: [2021-05-23 Sun 12:36:18]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
-This is a helper script I wrote to manage [[file:python.org][Python]] virtual environments.
+This is a helper script I wrote to manage [[id:793b435f-ac8c-4140-a6f3-bb4b5575412a][Python]] virtual environments.
 
 * Wrapper Script
 :PROPERTIES:

@@ -1,18 +1,20 @@
+:PROPERTIES:
+:ID:       cf930896-5e59-4d65-abec-77c0e72daf5c
+:END:
 #+TITLE: Org Crypt
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: EMACS CONFIG SOFTWARE
 #+CREATED: [2021-04-27 Tue 17:31]
-#+LAST_MODIFIED: [2021-04-27 Tue 18:42:26]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: EMACS CONFIG SOFTWARE
 
-Org Crypt is a package that lets us encrypt blocks of text in an [[file:org_mode.org][Org-mode]] file using [[file:gnupg.org][GnuPG]] without having the full file encrypted like usual.
+Org Crypt is a package that lets us encrypt blocks of text in an [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] file using [[id:3c804840-b83d-4853-9b2d-66e47cdc483c][GnuPG]] without having the full file encrypted like usual.
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-crypt.el :comments both :mkdirp yes
 :END:
 
-[[file:org_mode.org][Org-mode]] needs to be loaded as =org-crypt= is bundled along with the package but isn't loaded by default.
+[[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] needs to be loaded as =org-crypt= is bundled along with the package but isn't loaded by default.
 
 #+begin_src emacs-lisp
 (require 'init-org)
@@ -31,7 +33,7 @@ We have to deal with autosaving as we don't want unencrypted data to get to the 
 (setq org-crypt-disable-auto-save 'encrypt)
 #+end_src
 
-We must either specify a Key ID from [[file:gnupg.org][GnuPG]] or keep the value =nil= to use symmetric encryption.
+We must either specify a Key ID from [[id:3c804840-b83d-4853-9b2d-66e47cdc483c][GnuPG]] or keep the value =nil= to use symmetric encryption.
 
 #+begin_src emacs-lisp
 (setq org-crypt-key user-mail-address)

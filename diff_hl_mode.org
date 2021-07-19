@@ -1,14 +1,16 @@
+:PROPERTIES:
+:ID:       fa796328-9853-4ed0-b75d-9182f0d67b68
+:ROAM_REFS: https://github.com/dgutov/diff-hl
+:END:
 #+TITLE: diff-hl
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/dgutov/diff-hl
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-09 Sun 01:34]
-#+LAST_MODIFIED: [2021-05-25 Tue 11:06:09]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
 * Diff-HL: Highlight Uncommited Changes
 
-This package indicates which lines have been changed within [[file:emacs.org][GNU/Emacs]] buffers regardless of which version control system is used. Although, I only use [[file:git.org][Git]].
+This package indicates which lines have been changed within [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] buffers regardless of which version control system is used. Although, I only use [[id:907ccf31-cf51-441c-a6d1-f9f7f58fe112][Git]].
 
 * Package Install
 :PROPERTIES:
@@ -23,7 +25,7 @@ This package indicates which lines have been changed within [[file:emacs.org][GN
   (diff-hl-flydiff-mode))
 #+end_src
 
-If we are using a version of [[file:magit.org][Magit]] that is greater than =2.4.0=, we need to also add the following hooks.
+If we are using a version of [[id:c457ffad-2808-4679-88c0-b866872ccf5b][Magit]] that is greater than =2.4.0=, we need to also add the following hooks.
 
 #+begin_src emacs-lisp
 (add-hook 'magit-pre-refresh-hook 'diff-hl-magit-pre-refresh)

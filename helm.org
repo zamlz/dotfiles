@@ -1,13 +1,15 @@
+:PROPERTIES:
+:ID:       b7643aed-9325-4776-942b-850e69a036cc
+:END:
 #+TITLE: Helm
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 11:38]
-#+LAST_MODIFIED: [2021-05-29 Sat 12:02:43]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Incremental Completion and Selection Framework
-=Helm= is an extremely powerful package for [[file:emacs.org][GNU/Emacs]] that serves to act as a powerful completion framework. For now, I'm not using it, but I might switch to it again...
+=Helm= is an extremely powerful package for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] that serves to act as a powerful completion framework. For now, I'm not using it, but I might switch to it again...
 
 * Configuration
 :PROPERTIES:

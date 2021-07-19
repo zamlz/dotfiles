@@ -1,17 +1,19 @@
+:PROPERTIES:
+:ID:       ef93dff4-b19f-4835-9002-9d4215f8a6fe
+:ROAM_REFS: https://orgmode.org/
+:END:
 #+TITLE: Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://orgmode.org/
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-07-12 Mon 09:30:13]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE EMACS
 
 * Your Life in Plain Text
 #+DOWNLOADED: screenshot @ 2021-03-31 18:49:35
 [[file:data/org_mode_logo.png]]
 
-Org-mode is a powerful plain text markup language for [[file:emacs.org][GNU/Emacs]]. You can use it for taking notes, generating to-do-lists, creating research papers, running code, you name it!
+Org-mode is a powerful plain text markup language for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. You can use it for taking notes, generating to-do-lists, creating research papers, running code, you name it!
 
 * Useful Resources
 - [[https://orgmode.org/manual/index.html][The Official Org Manual]]
@@ -187,7 +189,7 @@ Center the org buffers and remove line numbers to reduce visual clutter.
 
 ** General Keybindings
 
-Just quick access to my most used org-mode functions via the [[file:general_el.org][General Leader Keybindings Definer]].
+Just quick access to my most used org-mode functions via the [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (require 'init-general)
@@ -212,7 +214,7 @@ Just quick access to my most used org-mode functions via the [[file:general_el.o
 
 ** LaTeX Inline Preview
 
-Pretty straightforward except that you need to have [[file:latex.org][LaTeX]] installed and also =dvipng= as well. We'll add =dvipng= to this file's package set.
+Pretty straightforward except that you need to have [[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]] installed and also =dvipng= as well. We'll add =dvipng= to this file's package set.
 
 #+begin_src emacs-lisp
 (setq org-startup-with-latex-preview t)

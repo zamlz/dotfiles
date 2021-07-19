@@ -1,9 +1,12 @@
+:PROPERTIES:
+:ID:       09d3b373-11d0-43b7-a593-4118afa216ad
+:ROAM_ALIASES: "GTD Method" "GTD Framework"
+:END:
 #+TITLE: Getting Things Done Framework
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: "GTD Framework" "GTD Method"
-#+ROAM_TAGS: CONFIG SOFTWARE GTD
 #+CREATED: [2021-03-27 Sat 09:04]
-#+LAST_MODIFIED: [2021-07-12 Mon 09:30:45]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE GTD
 
 * Useful Resources
 - [[https://hamberg.no/gtd][GTD in 15 Minutes]]
@@ -13,7 +16,7 @@
 
 GTD is an acronym for "Getting Things Done". It is a framework for managing tasks and projects.
 
-This document covers how I use GTD. We configure this framework for [[file:../config/org_mode.org][Org-mode]] which really just provides a barebones system for implementnig any task management system. So, what I've ended up doing is not exactly "GTD", but it is a variation that better suits my workflow.
+This document covers how I use GTD. We configure this framework for [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] which really just provides a barebones system for implementnig any task management system. So, what I've ended up doing is not exactly "GTD", but it is a variation that better suits my workflow.
 
 * Configuration
 :PROPERTIES:
@@ -21,13 +24,13 @@ This document covers how I use GTD. We configure this framework for [[file:../co
 :END:
 
 ** Setup Dependencies
-First let's make sure we pull in [[file:../config/org_mode.org][Org-mode]] as we build of it's provided system.
+First let's make sure we pull in [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] as we build of it's provided system.
 
 #+begin_src emacs-lisp
 (require 'init-org)
 #+end_src
 
-We define capture templates with [[file:doct.org][Doct]] here as well.
+We define capture templates with [[id:f6caaa7b-aaa7-4ba1-9479-d599fcddb331][Doct]] here as well.
 
 #+begin_src emacs-lisp
 (require 'init-doct)

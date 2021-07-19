@@ -1,17 +1,20 @@
+:PROPERTIES:
+:ID:       2678f23a-08d2-4fb8-869c-02f5c305c6a2
+:ROAM_REFS: https://github.com/purcell/flycheck-ledger
+:ROAM_ALIASES: flycheck-ledger
+:END:
 #+TITLE: Flycheck Ledger Integration
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/purcell/flycheck-ledger
-#+ROAM_ALIAS: flycheck-ledger
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 15:48]
-#+LAST_MODIFIED: [2021-05-17 Mon 15:10:20]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
 * Flycheck Integration for Ledger-Mode
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-flycheck-ledger.el :comments both :mkdirp yes
 :END:
 
-=flycheck-ledger= provides [[file:flycheck.org][Flycheck Syntax Checking]] integration for [[file:ledger.org][ledger-mode]].
+=flycheck-ledger= provides [[id:e565a047-e13a-425d-b86e-e0ea33887e17][Flycheck Syntax Checking]] integration for [[id:55bd3dcf-dd49-42bb-92cb-8ea127809651][ledger-mode]].
 
 #+begin_src emacs-lisp
 (use-package flycheck-ledger

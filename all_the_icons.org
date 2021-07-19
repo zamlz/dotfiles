@@ -1,11 +1,14 @@
+:PROPERTIES:
+:ID:       36dbad05-71b2-47b1-ae87-9f8334a4f554
+:ROAM_REFS: https://github.com/domtronn/all-the-icons.el
+:ROAM_ALIASES: all-the-icons
+:END:
 #+TITLE: All The Icons
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/domtronn/all-the-icons.el
-#+ROAM_ALIAS: all-the-icons
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-24 Mon 17:24]
-#+LAST_MODIFIED: [2021-05-24 Mon 17:33:43]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Utility Package for Icon Fonts
 =all-the-icons= is an amazing package that provides a great deal of icons but also have them categorized very nicely. The following functions can be used to infer the icons.

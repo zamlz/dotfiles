@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       c859d8a4-cc60-4942-a12d-ca5a17288ab0
+:ROAM_REFS: https://github.com/emacs-lsp/lsp-ui
+:END:
 #+TITLE: LSP UI
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-08 Tue 23:43]
-#+LAST_MODIFIED: [2021-06-12 Sat 18:11:56]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/emacs-lsp/lsp-ui
+#+filetags: CONFIG SOFTWARE
 
 * UI Integrations for LSP Mode
-=lsp-ui= provides UI integration for [[file:lsp_mode.org][LSP Mode]].
+=lsp-ui= provides UI integration for [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][LSP Mode]].
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 
 **  Setup Dependencies
-Let's make sure to configure [[file:lsp_mode.org][LSP Mode]] first.
+Let's make sure to configure [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][LSP Mode]] first.
 
 #+begin_src emacs-lisp
 (require 'init-lsp-mode)

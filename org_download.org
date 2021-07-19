@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       7a83daa1-5bb5-41a5-aa51-14d44766eb58
+:ROAM_REFS: https://github.com/abo-abo/org-download
+:END:
 #+TITLE: Org-Download
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/abo-abo/org-download
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-30 Sun 11:26]
-#+LAST_MODIFIED: [2021-05-31 Mon 13:12:22]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Drag and Drop Images to Org-Mode
-=Org-download= adds quick image drag and drop functionality for [[file:org_mode.org][Org-mode]] buffers. You can also download from clipboard as well.
+=Org-download= adds quick image drag and drop functionality for [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] buffers. You can also download from clipboard as well.
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 
 ** Setup Dependencies
-We should pull in [[file:org_mode.org][Org-mode]] first so we don't accidentally use the built-in version.
+We should pull in [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] first so we don't accidentally use the built-in version.
 
 #+begin_src emacs-lisp
 (require 'init-org)

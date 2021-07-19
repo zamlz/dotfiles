@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       18e7c3fa-99fc-47ee-b429-d5fdc2e0183e
+:ROAM_REFS: https://orgmode.org/worg/org-contrib/
+:END:
 #+TITLE: Org-contrib
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://orgmode.org/worg/org-contrib/
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-30 Sun 10:59]
-#+LAST_MODIFIED: [2021-05-30 Sun 11:06:33]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Contributed Packages for Org-mode
-=Org-contrib= is a collection of user-contributed packages for [[file:org_mode.org][Org-mode]]. Though I don't think I'm really using stuff from this package.
+=Org-contrib= is a collection of user-contributed packages for [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]. Though I don't think I'm really using stuff from this package.
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 
 ** Setup Dependencies
-Make sure to load up [[file:org_mode.org][Org-mode]] first.
+Make sure to load up [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] first.
 
 #+begin_src emacs-lisp
 (require 'init-org)

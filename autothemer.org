@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       1de51c27-5e25-484b-be98-21fff27c7f1d
+:ROAM_REFS: https://github.com/jasonm23/autothemer
+:END:
 #+TITLE: Autothemer
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 19:36]
-#+LAST_MODIFIED: [2021-07-12 Mon 09:25:25]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/jasonm23/autothemer
+#+filetags: CONFIG SOFTWARE
 
 * Conveniently create Emacs Themes
 =autothemer= provides a wrapper on the existing =deftheme= and =custom-theme-set-faces= functionality.

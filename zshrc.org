@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       147fe8dc-539e-4dca-a3bb-361ab86931d5
+:END:
 #+TITLE: zshrc
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-03 Mon 21:17]
-#+LAST_MODIFIED: [2021-05-09 Sun 22:34:26]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
-This is configuration file for the interactive session for [[file:zsh.org][Zsh]].
+This is configuration file for the interactive session for [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]].
 
 * Interactive Configuration
 :PROPERTIES:
@@ -51,7 +53,7 @@ source $HOME/.config/zsh/aliases.zsh
 
 ** Configure SSH & GnuPG Variables
 
-I don't know what to make of this. I thought I could have this code block in the =~/.zshenv= file but I was unable to do so as it causing many issues. Seems like it needs to be set during an interactive session. Very strange indeed. Essentially this configured what pinentry program should be used for [[file:gnupg.org][GnuPG]] and [[file:ssh.org][OpenSSH]]. Furthermore, it also tells [[file:ssh.org][OpenSSH]] that it should look into [[file:gnupg.org][GnuPG]] to get the ssh authentication key.
+I don't know what to make of this. I thought I could have this code block in the =~/.zshenv= file but I was unable to do so as it causing many issues. Seems like it needs to be set during an interactive session. Very strange indeed. Essentially this configured what pinentry program should be used for [[id:3c804840-b83d-4853-9b2d-66e47cdc483c][GnuPG]] and [[id:1a2b90be-56f8-4b79-987c-e2696aabcba5][OpenSSH]]. Furthermore, it also tells [[id:1a2b90be-56f8-4b79-987c-e2696aabcba5][OpenSSH]] that it should look into [[id:3c804840-b83d-4853-9b2d-66e47cdc483c][GnuPG]] to get the ssh authentication key.
 
 #+begin_src shell
 export GPG_TTY=$(tty)
@@ -182,7 +184,7 @@ fi
 
 Woah what is a function doing here!?
 
-Well, [[file:vterm.org][VTerm]] requires some shell-side configuration in order to make use of its full functionality. It's quite powerful when as you can jump between prompts and other things. This is all done with the help of this function below, I'm keeping it here so that all shell-side code is in one place.
+Well, [[id:99412e7d-e04e-49a0-8a32-448f12ca5de2][VTerm]] requires some shell-side configuration in order to make use of its full functionality. It's quite powerful when as you can jump between prompts and other things. This is all done with the help of this function below, I'm keeping it here so that all shell-side code is in one place.
 
 #+begin_src shell
 vterm_printf() {
@@ -217,7 +219,7 @@ add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
 
 ** X Window Terminal Info
 
-The following code helps save [[file:xorg.org][X11]] window information for every terminal. This can be used later to start new terminal sessions in those directories (Meant to be used with [[file:urxvt.org][URxvt]]). In a nuteshell, the built-in =cd= is overridden to now save this window info.
+The following code helps save [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][X11]] window information for every terminal. This can be used later to start new terminal sessions in those directories (Meant to be used with [[id:397019f9-e2ea-4c92-bd5c-c1a4666132ee][URxvt]]). In a nuteshell, the built-in =cd= is overridden to now save this window info.
 
 #+begin_src shell
 function window_info() {

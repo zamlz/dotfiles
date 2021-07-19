@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       373bca38-3d14-42d4-9fd6-c47449926525
+:ROAM_REFS: https://github.com/Fanael/rainbow-delimiters
+:END:
 #+TITLE: Rainbow Delimiters
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 19:26]
-#+LAST_MODIFIED: [2021-07-05 Mon 19:30:56]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:13]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/Fanael/rainbow-delimiters
+#+filetags: CONFIG SOFTWARE
 
 * Emacs Rainbow Delimiters Mode
 =rainbow-delimiters-mode= provides multi color matching paranethesis, brackets and braces depending on their level.

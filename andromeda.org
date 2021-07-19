@@ -1,9 +1,12 @@
+:PROPERTIES:
+:ID:       41f09830-6fd1-4f9c-8656-44470647c061
+:END:
 #+TITLE: Andromeda
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE WORKSTATION
 #+CREATED: [2021-06-20 Sun 12:51]
-#+LAST_MODIFIED: [2021-06-20 Sun 14:04:16]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE WORKSTATION
 
 * System Specs
 #+begin_src shell :results verbatim
@@ -75,7 +78,7 @@ Info:      Processes: 434 Uptime: 58m Memory: 15.64 GiB used: 4.65 GiB (29.7%) I
 :END:
 
 ** Video Resolution Fix
-By default, my machine does not use the max resolution for [[file:xorg.org][Xorg X11 Window System]] so we use this script to make sure that it is being set.
+By default, my machine does not use the max resolution for [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]] so we use this script to make sure that it is being set.
 
 #+begin_src shell
 xrandr \
@@ -90,7 +93,7 @@ xrandr \
 #+end_src
 
 ** Org-mode LaTeX Scaling Factor
-[[file:org_mode.org][Org-mode]] and [[file:org_latex_fragtog.org][Org Latex FragTog]] Don't automatically play nice with the scaling so we set it here instead.
+[[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] and [[id:bacf0ad9-008e-4d7d-9d20-eda7e02599a0][Org Latex FragTog]] Don't automatically play nice with the scaling so we set it here instead.
 
 #+begin_src emacs-lisp
 (defvar zamlz/org-latex-scale-factor 2.0)

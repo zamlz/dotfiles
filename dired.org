@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       474e0e13-c810-4299-868d-871d3d15ba0c
+:END:
 #+TITLE: Dired File Manager
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-07 Wed 18:57]
-#+LAST_MODIFIED: [2021-05-13 Thu 19:08:15]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE EMACS
 
-Dired is a file manager for [[file:emacs.org][GNU/Emacs]].
+Dired is a file manager for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 * Configuration
 :PROPERTIES:
@@ -13,7 +15,7 @@ Dired is a file manager for [[file:emacs.org][GNU/Emacs]].
 :END:
 ** Internal Setup
 
-Add a global binding for =dired= with [[file:general_el.org][General Leader Keybindings Definer]].
+Add a global binding for =dired= with [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (require 'init-general)

@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       cf447557-1f87-4a07-916a-160cfd2310cf
+:ROAM_REFS: https://www.gnu.org/software/emacs/
+:END:
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_KEY: https://www.gnu.org/software/emacs/
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-07-12 Mon 09:28:18]
+#+LAST_MODIFIED: [2021-07-19 Mon 10:34:02]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE EMACS
 
 * The Extensible, Customizable Free/Libre Text Editor
 #+DOWNLOADED: screenshot @ 2021-05-13 10:02:43
@@ -80,7 +82,7 @@ Make sure to populate the =lisp= and =site-lisp= directories.
 
 ** Package Management
 
-I originally was using the internal =package.el= that is a part of Emacs, but while simple and straightforward to use, it has some limitations. I have found that it may be better to make use of [[file:straight_el.org][straight.el]].
+I originally was using the internal =package.el= that is a part of Emacs, but while simple and straightforward to use, it has some limitations. I have found that it may be better to make use of [[id:750e3e6c-e469-4be6-b65d-6ed0b58dabb9][straight.el]].
 
 #+begin_src emacs-lisp
 (require 'init-straight)
@@ -362,14 +364,14 @@ I have a lot of fonts commented out right now because I can't decide on which on
 #+end_src
 
 ** Configure System
-Before we do anything to crazy, lets load up some system specific settings. Usually this should just contain variable definitions used for other packages to use. Also the contents of this file could be any =system= file. Currently there are only two being managed right now ([[file:andromeda.org][Andromeda Workstation]] and Sagitarrius Workstation).
+Before we do anything to crazy, lets load up some system specific settings. Usually this should just contain variable definitions used for other packages to use. Also the contents of this file could be any =system= file. Currently there are only two being managed right now ([[id:41f09830-6fd1-4f9c-8656-44470647c061][Andromeda Workstation]] and Sagitarrius Workstation).
 
 #+begin_src emacs-lisp
 (require 'init-system)
 #+end_src
 
 ** Setup Org-mode
-We should also make sure to load up [[file:org_mode.org][Org-mode]] first. This is vital because we don't want any internal package to accidentally load in built-in version.
+We should also make sure to load up [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] first. This is vital because we don't want any internal package to accidentally load in built-in version.
 
 #+begin_src emacs-lisp
 (require 'init-org)
@@ -389,11 +391,11 @@ Let us import the rest of the modules in whatever order we want.
 :header-args:shell: :tangle ~/.config/xinitrc.d/emacs-daemon-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
-*Very Important!* Make sure we start the emacs daemon here! But do not start it if it's already running. Add this to the [[file:xinit.org][xinit]] user-level scripts.
+*Very Important!* Make sure we start the emacs daemon here! But do not start it if it's already running. Add this to the [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user-level scripts.
 
 #+begin_src shell
-if [ -z "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon')"]; then
-    emacs --daemon=xorg-emacs-daemon
+if [ -z "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon --with-x-toolkit=lucid')"]; then
+    emacs --daemon=xorg-emacs-daemon --with-x-toolkit=lucid
 fi
 #+end_src
 
@@ -401,7 +403,7 @@ fi
 :PROPERTIES:
 :header-args:C: :tangle ~/.config/xresources.d/emacs :mkdirp yes :comments no
 :END:
-The colorscheme defined in [[file:x_resources.org][Xresources]] below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
+The colorscheme defined in [[id:560ce224-98e4-4b11-a7d9-fedd64b3fc14][Xresources]] below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
 
 #+begin_src C
 Emacs.foreground: xforeground

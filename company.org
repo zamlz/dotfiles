@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       866f3d9a-d071-49cb-97f8-53ce0076df7a
+:END:
 #+TITLE: Company Autocompletion System
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:21]
-#+LAST_MODIFIED: [2021-04-16 Fri 21:23:19]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
-Company is an autocompletion system that we will use for programming languages in [[file:emacs.org][GNU/Emacs]].
+Company is an autocompletion system that we will use for programming languages in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 * Configuration
 :PROPERTIES:

@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       70241ca3-43a7-416c-8d09-ad1e1c6666c6
+:ROAM_REFS: https://qutebrowser.org/
+:END:
 #+TITLE: Qutebrowser
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://qutebrowser.org/
 #+CREATED: [2021-03-29 Mon 20:08]
-#+LAST_MODIFIED: [2021-05-11 Tue 17:20:37]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:52:55
 [[file:data/qutebrowser_logo.png]]
@@ -532,7 +534,7 @@ config.bind('y', 'prompt-accept yes', mode='yesno')
 config.bind(',m', 'spawn mpv {url}')
 #+end_src
 
-We're going to add one more special keybinding here which lets make use of the [[file:org_roam_protocol.org][Org-roam Protocol]].
+We're going to add one more special keybinding here which lets make use of the [[id:81a8ca92-b995-4b95-9abd-7bea70f73a30][Org-roam Protocol]].
 
 #+begin_src python
 config.bind(
@@ -548,7 +550,7 @@ config.bind(
 :header-args:shell: :tangle ~/.config/xinitrc.d/xdg-mime-qutebrowser.sh :comments both :mkdirp yes :shebang #!/bin/sh
 :END:
 
-By using [[file:xdg_utils.org][XDG Utils]], we can set the default browser for the system to be =qutebrowser=.
+By using [[id:5b41aa58-7edc-4467-957d-d2383e816d57][XDG Utils]], we can set the default browser for the system to be =qutebrowser=.
 
 #+begin_src shell
 xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https

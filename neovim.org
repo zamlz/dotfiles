@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       8c181e91-9d27-4fda-89da-e3d3c732c55b
+:ROAM_REFS: https://neovim.io/
+:ROAM_ALIASES: vim
+:END:
 #+TITLE: Neovim
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: vim
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://neovim.io/
 #+CREATED: [2021-03-29 Mon 19:11]
-#+LAST_MODIFIED: [2021-04-01 Thu 09:45:24]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:13]
+#+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:12:44
 [[file:data/neovim_logo.png]]

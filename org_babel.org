@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       53ec3970-b77b-4732-99d9-120792cecd55
+:ROAM_REFS: https://orgmode.org/worg/org-contrib/babel/
+:END:
 #+TITLE: Org Babel
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_KEY: https://orgmode.org/worg/org-contrib/babel/
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-06-20 Sun 13:28:42]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE EMACS
 
 * Babel: Multi-Language Computing Environment for Literate-Programming/Reproducible-Research
 
@@ -15,7 +17,7 @@
 The Tower of Babel by Pieter Brueghel the Elder
 #+end_quote
 
-*Babel* is a powerful extension to [[file:org_mode.org][Org-mode]] which adds multi-language [[file:../notes/literate_programming.org][Literate Programming]] to Org files within emacs. My whole configuration basically exists because of the power of this package...
+*Babel* is a powerful extension to [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] which adds multi-language [[id:f904797e-8609-464b-955d-49e0c0c878fd][Literate Programming]] to Org files within emacs. My whole configuration basically exists because of the power of this package...
 
 * Useful Resources
 - [[https://org-babel.readthedocs.io/en/latest/][Org Babel Reference Card]]
@@ -27,7 +29,7 @@ The Tower of Babel by Pieter Brueghel the Elder
 :END:
 
 ** Setup Dependencies
-Make sure that we load in [[file:org_mode.org][Org-mode]] first just to be safe.
+Make sure that we load in [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] first just to be safe.
 
 #+begin_src emacs-lisp
 (require 'init-org)

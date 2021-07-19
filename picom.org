@@ -1,12 +1,14 @@
+:PROPERTIES:
+:ID:       22d1d7d1-e024-4d8b-b63b-8358f4188dbe
+:ROAM_REFS: https://github.com/yshui/picom
+:END:
 #+TITLE: Picom Compositor
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://github.com/yshui/picom
 #+CREATED: [2021-03-29 Mon 19:22]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:27:10]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
-Compton is a compositor for the [[file:xorg.org][Xorg X11 Window System]].
+Compton is a compositor for the [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +17,7 @@ Compton is a compositor for the [[file:xorg.org][Xorg X11 Window System]].
 :END:
 ** Refresh Script
 
-We'd like to make sure that =picom='s configuration is refreshed when our window manager is also refreshed. We have our window mannager configured so that it will refresh [[file:xinit.org][xinit]] user-level scripts so let's create a simple one that performs the refresh. Make sure to =sleep 1= otherwise the new picom instance might not start up because it believes that another one is still alive.
+We'd like to make sure that =picom='s configuration is refreshed when our window manager is also refreshed. We have our window mannager configured so that it will refresh [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user-level scripts so let's create a simple one that performs the refresh. Make sure to =sleep 1= otherwise the new picom instance might not start up because it believes that another one is still alive.
 
 #+begin_src shell
 pkill -x picom

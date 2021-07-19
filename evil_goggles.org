@@ -1,14 +1,16 @@
+:PROPERTIES:
+:ID:       70c6ae75-fa13-4a1c-9544-5c4317c781c4
+:ROAM_REFS: https://github.com/edkolev/evil-goggles
+:END:
 #+TITLE: Evil Goggles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/edkolev/evil-goggles
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-25 Tue 11:15]
-#+LAST_MODIFIED: [2021-05-25 Tue 11:37:27]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Visual Hints of Evil Operations
-=evil-goggles-mode= provides visual hints of various different [[file:evil.org][evil-mode]] operations.
+=evil-goggles-mode= provides visual hints of various different [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][evil-mode]] operations.
 
 * Configuration
 :PROPERTIES:
@@ -16,7 +18,7 @@
 :END:
 ** Setup Evil
 
-Maybe I should be setting up [[file:evil.org][Evil Mode]] before I do this...
+Maybe I should be setting up [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][Evil Mode]] before I do this...
 
 #+begin_src emacs-lisp
 (require 'init-evil)

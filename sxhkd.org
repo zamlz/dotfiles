@@ -1,12 +1,15 @@
+:PROPERTIES:
+:ID:       a2b556d7-a664-4b17-be7c-a42f7ddf72af
+:ROAM_REFS: https://github.com/baskerville/sxhkd
+:ROAM_ALIASES: sxhkd
+:END:
 #+TITLE: Sxhkd Hotkey Daemon
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: sxhkd
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://github.com/baskerville/sxhkd
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:42:34]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
-Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
+Sxhkd is a hotkey daemon for the [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]].
 
 * Configuration
 :PROPERTIES:
@@ -17,7 +20,7 @@ Sxhkd is a hotkey daemon for the [[file:xorg.org][Xorg X11 Window System]].
 :header-args:shell: :tangle ~/.config/xinitrc.d/sxhkd-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
-We need to configure =sxhkd= to startup and refresh whenever our window manager is refreshed. Add this snippet to the [[file:xinit.org][xinit]] user-level scripts.
+We need to configure =sxhkd= to startup and refresh whenever our window manager is refreshed. Add this snippet to the [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user-level scripts.
 
 #+begin_src shell
 SXHKD_SHELL=sh
@@ -28,7 +31,7 @@ sxhkd &
 
 ** Terminal Exec Keybindings
 
-Keybinding to spawn a terminal. This variable is defined in the [[file:xorg.org][X11]] window manager utilities init file.
+Keybinding to spawn a terminal. This variable is defined in the [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][X11]] window manager utilities init file.
 
 #+begin_src shell
 super + Return
@@ -44,7 +47,7 @@ super + shift + Return
 
 ** Rofi Dmenu Launcher Keybindings
 
-Here we make use of [[file:rofi.org][Rofi Dmenu]] to create various dmenus to do various tasks. Half of these are probably deprecated now that I'm using emacs, but nonetheless, here they are.
+Here we make use of [[id:962dd4f7-01dc-4b3f-8fbf-fa1b480735ca][Rofi Dmenu]] to create various dmenus to do various tasks. Half of these are probably deprecated now that I'm using emacs, but nonetheless, here they are.
 
 Dmenu for launching a program from =$PATH=.
 
@@ -85,7 +88,7 @@ super + shift + n
     $HOME/org/config/lib/rofi/rofi-wiki --pdf
 #+end_src
 
-Choose which [[file:qutebrowser.org][Qutebrowser]] session to load. Unforunately its pretty buggy and is not working the way I expect.
+Choose which [[id:70241ca3-43a7-416c-8d09-ad1e1c6666c6][Qutebrowser]] session to load. Unforunately its pretty buggy and is not working the way I expect.
 
 #+begin_src shell
 super + shift + w
@@ -124,7 +127,7 @@ Interactively select a window or rectangle with the mouse to take a screen shot 
 
 ** Media Control Keybindings
 
-Various media keybindings that both actually do the what the media key describes and also /(usually)/ sends a signal to the [[file:lemonbar.org][Lemonbar]] FIFOs.
+Various media keybindings that both actually do the what the media key describes and also /(usually)/ sends a signal to the [[id:e85b69f9-e309-4d26-9516-2e79524ffe00][Lemonbar]] FIFOs.
 
 #+begin_src shell
 XF86MonBrightnessUp

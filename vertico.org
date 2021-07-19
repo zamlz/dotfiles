@@ -1,14 +1,17 @@
+:PROPERTIES:
+:ID:       cc5f32f8-c334-448a-9970-08d037f2d83a
+:ROAM_REFS: https://github.com/minad/vertico
+:ROAM_ALIASES: vertico-mode
+:END:
 #+TITLE: Vertico
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/minad/vertico
-#+ROAM_ALIAS: vertico-mode
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-06-15 Tue 10:49:38]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Vertical Interactive Completion
-=vertico= is a minimal completion UI for [[file:emacs.org][GNU/Emacs]]. It is built ontop of the regular completion system unlike other alternatives.
+=vertico= is a minimal completion UI for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. It is built ontop of the regular completion system unlike other alternatives.
 
 * Configuration
 :PROPERTIES:
@@ -16,13 +19,13 @@
 :END:
 ** Enable Dependencies
 
-In order to make =vertico= completion a lot nicer that what it is, we make use of the [[file:orderless.org][Orderless]] package which enables orderless completion modes in various completion buffers.
+In order to make =vertico= completion a lot nicer that what it is, we make use of the [[id:6d690d97-0791-4225-bb3c-8b0deeb95045][Orderless]] package which enables orderless completion modes in various completion buffers.
 
 #+begin_src emacs-lisp
 (require 'init-orderless)
 #+end_src
 
-We also wan to have multiple minibuffers open, we can set this up with the [[file:recursion_indicator.org][Recursion Indicator]] package so we know how many minibuffers are on the stack.
+We also wan to have multiple minibuffers open, we can set this up with the [[id:555b3fa0-0b25-4694-a173-2c16046e3ca7][Recursion Indicator]] package so we know how many minibuffers are on the stack.
 
 #+begin_src emacs-lisp
 (require 'init-recursion-indicator)

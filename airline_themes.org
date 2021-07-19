@@ -1,12 +1,15 @@
+:PROPERTIES:
+:ID:       c48b6dbc-47ba-4dfe-9752-0737de722cb2
+:END:
 #+TITLE: Airline Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 20:13]
-#+LAST_MODIFIED: [2021-07-12 Mon 09:29:43]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Custom Themes for Powerline
-=airline-themes= provides custom themes for [[file:powerline.org][Powerline]].
+=airline-themes= provides custom themes for [[id:c66413fa-4d8b-4183-b690-8b015a42b194][Powerline]].
 
 * Configuration
 :PROPERTIES:
@@ -14,7 +17,7 @@
 :END:
 
 ** Setup Dependencies
-We need to make sure [[file:powerline.org][Powerline]] is setup first.
+We need to make sure [[id:c66413fa-4d8b-4183-b690-8b015a42b194][Powerline]] is setup first.
 
 #+begin_src emacs-lisp
 (require 'init-powerline)

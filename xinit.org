@@ -1,14 +1,17 @@
+:PROPERTIES:
+:ID:       64c66aeb-1b89-4f51-8e36-2931fb24399a
+:ROAM_ALIASES: startx
+:END:
 #+TITLE: xinit
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: startx
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-14 Fri 07:54]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:16:20]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * X Window System Initializer
 
-The =xinit= program allows a user to manually start the [[file:xorg.org][Xorg X11 Window System]] without the need of a login manager. However, this also means that we have to manually manage our environments ourselves. We won't directly use =xinit=, but rather =startx= which is a nicer frontend for =xinit= that is bundled alongside it.
+The =xinit= program allows a user to manually start the [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]] without the need of a login manager. However, this also means that we have to manually manage our environments ourselves. We won't directly use =xinit=, but rather =startx= which is a nicer frontend for =xinit= that is bundled alongside it.
 
 * Configuration
 ** Package Install
@@ -16,7 +19,7 @@ The =xinit= program allows a user to manually start the [[file:xorg.org][Xorg X1
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-xinit.el :comments both :mkdirp yes
 :END:
 
-Install the =xinit= package, but not before setting up [[file:xorg.org][Xorg X11 Window System]].
+Install the =xinit= package, but not before setting up [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]].
 
 #+begin_src emacs-lisp
 (require 'init-xorg)
@@ -46,7 +49,7 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 #+end_src
 
-This part of the script decides which window manager to start. This is ultimately passed as an argument to =starx=. It is configured from =$1= which must be passed to it. Currently we have options to trigger the [[file:herbstluftwm.org][Herbstluftwm Tiling Window Manager]] and [[file:emacs.org][GNU/Emacs]].
+This part of the script decides which window manager to start. This is ultimately passed as an argument to =starx=. It is configured from =$1= which must be passed to it. Currently we have options to trigger the [[id:3c22f3fd-a4a1-4c08-9ee4-336d5c6491fa][Herbstluftwm Tiling Window Manager]] and [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 #+begin_src shell
 session=${1:-herbstluftwm}

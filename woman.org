@@ -1,13 +1,15 @@
+:PROPERTIES:
+:ID:       e2f233f0-8218-4e46-a2e5-bcb3a1598e7a
+:END:
 #+TITLE: WoMan
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-13 Thu 19:59]
-#+LAST_MODIFIED: [2021-05-30 Sun 23:45:21]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Browse Unix Man Pages W.O. (without) Man
-=WoMan= is a program that is an alternative to =Man= package that is typically installed on UNIX systems for reading manual pages on [[file:emacs.org][GNU/Emacs]]. It certain situations, the package might not be present and =WoMan= is another similar interface for reading the manual pages.
+=WoMan= is a program that is an alternative to =Man= package that is typically installed on UNIX systems for reading manual pages on [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. It certain situations, the package might not be present and =WoMan= is another similar interface for reading the manual pages.
 
 * Configuration
 :PROPERTIES:

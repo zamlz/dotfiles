@@ -1,16 +1,19 @@
+:PROPERTIES:
+:ID:       6125052e-63a9-4165-a194-cfc12cb7beb2
+:ROAM_ALIASES: evil-mode
+:END:
 #+TITLE: Evil Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: "evil-mode"
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-05-25 Tue 17:03:41]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE EMACS
 
 * Extensible Vi Layer for Emacs
 #+DOWNLOADED: screenshot @ 2021-04-04 13:11:33
 [[file:data/evil_mode_logo.png]]
 
-A pretty nice package that is used for lets you use the primary features of vim keybindings from wtihin [[file:emacs.org][GNU/Emacs]]. The configuration below will contain any packages that have to do with setting up evil properly.
+A pretty nice package that is used for lets you use the primary features of vim keybindings from wtihin [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. The configuration below will contain any packages that have to do with setting up evil properly.
 
 * Configuration
 :PROPERTIES:
@@ -51,7 +54,7 @@ A pretty nice package that is used for lets you use the primary features of vim 
 #+end_src
 
 ** Setup Undo-Tree
-=evil-mode= is nice, but the undo system could be improved alot if we make use of [[file:undo_tree.org][Undo Tree]] so let's ensure that's setup first.
+=evil-mode= is nice, but the undo system could be improved alot if we make use of [[id:ebd23b73-f91a-4737-aec9-c1064b5350a8][Undo Tree]] so let's ensure that's setup first.
 
 #+begin_src emacs-lisp
 (require 'init-undo-tree)

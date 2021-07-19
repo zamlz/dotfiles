@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       bdd614b0-e670-479f-9aeb-083faa38d204
+:ROAM_REFS: https://github.com/tigersoldier/company-lsp
+:END:
 #+TITLE: Company LSP
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-08 Tue 23:49]
-#+LAST_MODIFIED: [2021-06-08 Tue 23:53:50]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/tigersoldier/company-lsp
+#+filetags: CONFIG SOFTWARE
 
 * Company Completion Backend for LSP Mode
-=company-lsp= provides a [[file:company.org][Company Autocompletion System]] backend for [[file:lsp_mode.org][LSP Mode]].
+=company-lsp= provides a [[id:866f3d9a-d071-49cb-97f8-53ce0076df7a][Company Autocompletion System]] backend for [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][LSP Mode]].
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 
 ** Setup Dependencies
-We should make sure to setup the [[file:company.org][Company Autocompletion System]] and [[file:lsp_mode.org][LSP Mode]].
+We should make sure to setup the [[id:866f3d9a-d071-49cb-97f8-53ce0076df7a][Company Autocompletion System]] and [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][LSP Mode]].
 
 #+begin_src emacs-lisp
 (require 'init-company)

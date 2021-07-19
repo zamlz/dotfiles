@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       e85b69f9-e309-4d26-9516-2e79524ffe00
+:ROAM_REFS: https://github.com/krypt-n/bar
+:END:
 #+TITLE: Lemonbar
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://github.com/krypt-n/bar
 #+CREATED: [2021-03-29 Mon 19:25]
-#+LAST_MODIFIED: [2021-06-22 Tue 09:02:39]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
 Lemonbar (XFT Fork) is a lightweight bar based on XCB. Its pretty neat tool that you just pipe output into to display the bar of your design. Unfortunately, it seems like the repo is archived so it is unmaintained. It will likely break at some point so I should look for alternatives.
 
@@ -14,7 +16,7 @@ Lemonbar (XFT Fork) is a lightweight bar based on XCB. Its pretty neat tool that
 :header-args:shell: :tangle ~/.config/xinitrc.d/lemonbar-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
-This snippet simply kill the existing =lemonbar= process and restarts it. This is necessary when we refresh the window manager configuration so let's add this to the [[file:xinit.org][xinit]] user-level scripts.
+This snippet simply kill the existing =lemonbar= process and restarts it. This is necessary when we refresh the window manager configuration so let's add this to the [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user-level scripts.
 
 #+begin_src shell
 pkill -x lemonbar

@@ -1,14 +1,16 @@
+:PROPERTIES:
+:ID:       922b51cc-2e63-45e8-96a1-8cfc1a9fb030
+:ROAM_REFS: https://github.com/integral-dw/org-superstar-mode
+:END:
 #+TITLE: Org Superstar
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/integral-dw/org-superstar-mode
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-10 Mon 12:51]
-#+LAST_MODIFIED: [2021-05-23 Sun 11:49:15]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
 * What is it?
 
-=org-superstar-mode= is a simple package that aims to prettify [[file:org_mode.org][Org-mode]] headings and lists by using UTF-8 characters for the faces.
+=org-superstar-mode= is a simple package that aims to prettify [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] headings and lists by using UTF-8 characters for the faces.
 
 * Configuration
 :PROPERTIES:
@@ -16,7 +18,7 @@
 :END:
 
 ** Setup Org-mode
-First we should make sure that [[file:org_mode.org][Org-mode]] is loaded up first.
+First we should make sure that [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] is loaded up first.
 
 #+begin_src emacs-lisp
 (require 'init-org)

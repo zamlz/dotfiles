@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       be79dd51-6d4a-44f1-985f-cf58c30560b0
+:END:
 #+TITLE: Ibuffer Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-07 Wed 18:31]
-#+LAST_MODIFIED: [2021-04-07 Wed 18:39:50]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE EMACS
 
-Advanced menu for buffers within [[file:emacs.org][GNU/Emacs]].
+Advanced menu for buffers within [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 * Configuration
 :PROPERTIES:

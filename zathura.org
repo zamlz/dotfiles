@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       1cbb96ac-fe2f-4edc-90ac-08543c0dfb5b
+:ROAM_REFS: https://pwmt.org/projects/zathura/
+:ROAM_ALIASES: zathura
+:END:
 #+TITLE: Zathura Document Viewer
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: zathura
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://pwmt.org/projects/zathura/
 #+CREATED: [2021-03-29 Mon 18:15]
-#+LAST_MODIFIED: [2021-04-01 Thu 09:31:27]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
+#+filetags: CONFIG SOFTWARE
 
 * Configuration
 :PROPERTIES:

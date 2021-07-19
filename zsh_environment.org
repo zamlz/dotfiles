@@ -1,18 +1,20 @@
+:PROPERTIES:
+:ID:       1ab6521b-ee20-4517-b793-a1f2a754797e
+:END:
 #+TITLE: Zsh Environment
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 12:10]
-#+LAST_MODIFIED: [2021-06-09 Wed 08:28:24]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
-This is the environment file for [[file:zsh.org][Zsh]]. It is saved in the home directory as =~/.zshenv=. It is sourced everytime and first of all the configuration files.
+This is the environment file for [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]]. It is saved in the home directory as =~/.zshenv=. It is sourced everytime and first of all the configuration files.
 
 * Environment Configuration
 :PROPERTIES:
 :header-args:shell: :tangle ~/.zshenv :comments both
 :END:
 
-First lets make sure to set the =$ZDOTDIR= environment variable. This will be where the rest of our [[file:zsh.org][Zsh]] configuration files will be.
+First lets make sure to set the =$ZDOTDIR= environment variable. This will be where the rest of our [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]] configuration files will be.
 
 #+begin_src shell
 export ZDOTDIR="$HOME/.config/zsh"
@@ -57,13 +59,13 @@ else
 fi
 #+end_src
 
-Set the location of the journal file for [[file:ledger.org][Ledger]] to use.
+Set the location of the journal file for [[id:55bd3dcf-dd49-42bb-92cb-8ea127809651][Ledger]] to use.
 
 #+begin_src shell
 export LEDGER_FILE="$LEDGER_DIR/main.journal"
 #+end_src
 
-When using zsh inside [[file:emacs.org][GNU/Emacs]], we also need to update the editor. The default system editor will be [[file:neovim.org][vim]] as its a good fallback, but we definetly do not want it opening inside [[file:emacs.org][GNU/Emacs]]. Be sure to set the [[file:zsh_aliases.org][Zsh Aliases]] for =vi=.
+When using zsh inside [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]], we also need to update the editor. The default system editor will be [[id:8c181e91-9d27-4fda-89da-e3d3c732c55b][vim]] as its a good fallback, but we definetly do not want it opening inside [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. Be sure to set the [[id:13924794-494d-4f70-ad04-6618e150d4ba][Zsh Aliases]] for =vi=.
 
 #+begin_src shell
 if [ -n "$INSIDE_EMACS" ]; then

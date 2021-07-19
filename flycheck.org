@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       e565a047-e13a-425d-b86e-e0ea33887e17
+:END:
 #+TITLE: Flycheck Syntax Checking
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-07 Wed 17:46]
-#+LAST_MODIFIED: [2021-04-07 Wed 18:22:49]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
-A package for [[file:emacs.org][GNU/Emacs]] that enables syntax checking for many different languages.
+A package for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] that enables syntax checking for many different languages.
 
 * Configuration
 :PROPERTIES:

@@ -1,11 +1,14 @@
+:PROPERTIES:
+:ID:       7678cc2c-e9b1-4610-93e1-c6a0e1e4dd1d
+:ROAM_REFS: https://github.com/oantolin/embark
+:ROAM_ALIASES: embark-consult
+:END:
 #+TITLE: Embark
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/oantolin/embark
-#+ROAM_ALIAS: embark-consult
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-19 Wed 20:58]
-#+LAST_MODIFIED: [2021-05-20 Thu 18:13:47]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Minibuffer Actions Rooted in Keymaps
 =embark= provides actions for minibuffer stuff.
@@ -43,7 +46,7 @@ This is a simple function that lets us run =embark-act= but not quit after runni
 
 ** Consult Integration
 
-This also sets up [[file:consult.org][Consult]] integration for =embark=.
+This also sets up [[id:ff440da4-1dda-418e-a744-35f275902f65][Consult]] integration for =embark=.
 
 #+begin_src emacs-lisp
 (use-package embark-consult
@@ -58,7 +61,7 @@ This also sets up [[file:consult.org][Consult]] integration for =embark=.
 
 ** Which Key Integration
 
-When running =embark-act=, let's make sure to use [[file:which_key.org][which-key]] so that we don't have to always remember which keys are available to us.
+When running =embark-act=, let's make sure to use [[id:4d0acc67-0263-4a79-ad62-7428cf5634e0][which-key]] so that we don't have to always remember which keys are available to us.
 
 #+begin_src emacs-lisp
 (setq embark-action-indicator

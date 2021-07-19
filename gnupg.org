@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       3c804840-b83d-4853-9b2d-66e47cdc483c
+:ROAM_REFS: https://gnupg.org/
+:END:
 #+TITLE: GnuPG
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://gnupg.org/
 #+CREATED: [2021-03-29 Mon 18:57]
-#+LAST_MODIFIED: [2021-04-30 Fri 19:59:03]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:05:47
 [[file:data/gnupg_logo.png]]
@@ -78,7 +80,7 @@ default-cache-ttl 600
 max-cache-ttl 7200
 #+end_src
 
-This tells gpg to act as our [[file:ssh.org][OpenSSH]] agent as well.
+This tells gpg to act as our [[id:1a2b90be-56f8-4b79-987c-e2696aabcba5][OpenSSH]] agent as well.
 
 #+begin_src conf
 enable-ssh-support

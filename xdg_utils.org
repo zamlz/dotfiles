@@ -1,9 +1,11 @@
+:PROPERTIES:
+:ID:       5b41aa58-7edc-4467-957d-d2383e816d57
+:END:
 #+TITLE: XDG Utils
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-05 Wed 08:03]
-#+LAST_MODIFIED: [2021-05-05 Wed 08:15:11]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
+#+filetags: CONFIG SOFTWARE
 
 XDG Utils is a set of utilities for managing XDG MIME Applications. The provide an interface to open files with a specific /default/ application and also configure various directories.
 

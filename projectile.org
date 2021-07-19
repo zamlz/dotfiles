@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       58c11446-80f2-439c-a8bf-7b22f709707c
+:END:
 #+TITLE: Projectile
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:18]
-#+LAST_MODIFIED: [2021-05-23 Sun 12:08:32]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
-Projectile is a project integration library for [[file:emacs.org][GNU/Emacs]].
+Projectile is a project integration library for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 * Configuraiton
 :PROPERTIES:
@@ -29,7 +31,7 @@ Load up =projectile= first.
   :config (projectile-mode))
 #+end_src
 
-Next let's make sure to add the commands we want into our [[file:general_el.org][General Leader Keybindings Definer]].
+Next let's make sure to add the commands we want into our [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (require 'init-general)

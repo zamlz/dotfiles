@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       1a2b90be-56f8-4b79-987c-e2696aabcba5
+:ROAM_REFS: https://www.openssh.com/
+:END:
 #+TITLE: OpenSSH
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://www.openssh.com/
 #+CREATED: [2021-03-29 Mon 18:59]
-#+LAST_MODIFIED: [2021-04-03 Sat 22:40:56]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-29 19:02:35
 [[file:data/openssh_logo.png]]
@@ -18,7 +20,7 @@ OpenSSH is a tool provided by the OpenBSD Project that allows for remote login v
 
 ** Use GPG Agent
 
-Since we are using [[file:gnupg.org][GnuPG]]'s GPG Agent as the SSH agent, when in a terminal, ssh agent doesn't know that it has to change terminals (a bug in openssh). So when it connects to gpg-agent, it uses the terminal it was last configured to use. The following command when run in a terminal updates gpg-agent to use the current terminal for openssh. However, now if we run some ssh related command in the prior terminal, it will use the new terminal instead creating the exact inverse of the problem. Therefore we attempt to fix this by running this command before every SSH command.
+Since we are using [[id:3c804840-b83d-4853-9b2d-66e47cdc483c][GnuPG]]'s GPG Agent as the SSH agent, when in a terminal, ssh agent doesn't know that it has to change terminals (a bug in openssh). So when it connects to gpg-agent, it uses the terminal it was last configured to use. The following command when run in a terminal updates gpg-agent to use the current terminal for openssh. However, now if we run some ssh related command in the prior terminal, it will use the new terminal instead creating the exact inverse of the problem. Therefore we attempt to fix this by running this command before every SSH command.
 
 [[https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9][https://bugzilla.mindrot.org/show_bug.cgi?id=2824#c9]]
 

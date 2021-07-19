@@ -1,20 +1,22 @@
+:PROPERTIES:
+:ID:       92ca17bd-d711-45d4-9db9-aa0945f2ef36
+:END:
 #+TITLE: Org Sticky Header
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-23 Sun 19:13]
-#+LAST_MODIFIED: [2021-06-01 Tue 11:50:30]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Off-screen Org Headings at the top of the Window
-Display headings at the header line of the window for [[file:org_mode.org][Org-mode]] files.
+Display headings at the header line of the window for [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] files.
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-sticky-header.el :comments both :mkdirp yes
 :END:
 ** Dependency Install
-Make sure to setup [[file:org_mode.org][Org-mode]] first.
+Make sure to setup [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] first.
 
 #+begin_src emacs-lisp
 (require 'init-org)

@@ -1,14 +1,16 @@
+:PROPERTIES:
+:ID:       e84b4798-89bd-4bca-adb1-15878b6a8f50
+:END:
 #+TITLE: BibTeX Actions
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-20 Thu 19:43]
-#+LAST_MODIFIED: [2021-05-29 Sat 12:13:32]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Quickly Find and Act on BibTeX Entries
 
-=bibtex-actions= is a package that is meant to quickly find [[file:bibtex.org][BibTeX]] entries using the [[file:bibtex_completions.org][BibTeX Completions]] backend via completion frameworks like [[file:vertico.org][Vertico]], also adding various actions that can be run via [[file:embark.org][Embark]].
+=bibtex-actions= is a package that is meant to quickly find [[id:60f90e10-9f05-45f1-8567-925e7dafcc95][BibTeX]] entries using the [[id:88776879-cbf7-449e-88cf-305cafd1a0c3][BibTeX Completions]] backend via completion frameworks like [[id:cc5f32f8-c334-448a-9970-08d037f2d83a][Vertico]], also adding various actions that can be run via [[id:7678cc2c-e9b1-4610-93e1-c6a0e1e4dd1d][Embark]].
 
 * Configuration
 :PROPERTIES:
@@ -17,13 +19,13 @@
 
 ** Setup Dependencies
 
-We really just need to make sure [[file:embark.org][Embark]] is configured first probably.
+We really just need to make sure [[id:7678cc2c-e9b1-4610-93e1-c6a0e1e4dd1d][Embark]] is configured first probably.
 
 #+begin_src emacs-lisp
 (require 'init-embark)
 #+end_src
 
-More importantly, =bibtex-actions= makes use of [[file:bibtex_completions.org][BibTeX Completions]] which needs to be configured as well.
+More importantly, =bibtex-actions= makes use of [[id:88776879-cbf7-449e-88cf-305cafd1a0c3][BibTeX Completions]] which needs to be configured as well.
 
 #+begin_src emacs-lisp
 (require 'init-bibtex-completions)

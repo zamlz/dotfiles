@@ -1,9 +1,11 @@
+:PROPERTIES:
+:ID:       8d191dac-cb6a-4239-a21f-540a51939742
+:END:
 #+TITLE: Markdown Markup Language
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-16 Fri 21:15]
-#+LAST_MODIFIED: [2021-05-08 Sat 13:19:51]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
 * Markdown Markup Language
 
@@ -16,7 +18,7 @@ Markdown is a very vague markup language. Vague becuase there isn't a standard s
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-markdown.el :comments both :mkdirp yes
 :END:
 
-Provides a major mode for editing markdown files in [[file:emacs.org][GNU/Emacs]]
+Provides a major mode for editing markdown files in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]
 
 #+begin_src emacs-lisp
 (use-package markdown-mode

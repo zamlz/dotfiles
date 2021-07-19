@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       750e3e6c-e469-4be6-b65d-6ed0b58dabb9
+:ROAM_ALIASES: system-packages straight-use-package
+:END:
 #+TITLE: straight.el
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: "straight-use-package" "system-packages"
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-12 Wed 22:01]
-#+LAST_MODIFIED: [2021-05-13 Thu 09:59:45]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
 * Purely Functional Package Manager for the Emacs Hacker!
 
-=straight.el= is a replacement for =package.el= which is shipped by default with [[file:emacs.org][GNU/Emacs]]. We also integrate it with =use-package= and =system-packages=.
+=straight.el= is a replacement for =package.el= which is shipped by default with [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. We also integrate it with =use-package= and =system-packages=.
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 ** Bootstrap Code
 
-Since =straight.el= is not built into [[file:emacs.org][GNU/Emacs]], we must install it. This can be achieved with this short snippet.
+Since =straight.el= is not built into [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]], we must install it. This can be achieved with this short snippet.
 
 #+begin_src emacs-lisp
 (defvar bootstrap-version)

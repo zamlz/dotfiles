@@ -1,13 +1,15 @@
+:PROPERTIES:
+:ID:       b9a1f5eb-1da8-4f19-9303-153fdd376962
+:ROAM_REFS: https://github.com/jerrypnz/major-mode-hydra.el
+:END:
 #+TITLE: Major Mode Hydra
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/jerrypnz/major-mode-hydra.el
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-05-30 Sun 11:51:03]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:53:19]
+#+filetags: CONFIG SOFTWARE
 
 * Major Mode Hydra and Pretty Hydra
-A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] menus for specific meajor-modes in [[file:emacs.org][GNU/Emacs]].
+A pretty nice package that let's us define specific [[id:8061213e-6abf-4294-a357-ddba46d81a5e][Hydra]] menus for specific meajor-modes in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +17,7 @@ A pretty nice package that let's us define specific [[file:hydra.org][Hydra]] me
 :END:
 
 ** Setup Hydra
-Ensure that [[file:hydra.org][Hydra]] is configured first.
+Ensure that [[id:8061213e-6abf-4294-a357-ddba46d81a5e][Hydra]] is configured first.
 
 #+begin_src emacs-lisp
 (require 'init-hydra)
@@ -30,7 +32,7 @@ Now we can configure this package.
 #+end_src
 
 ** Configure Major-mode Keybindings
-We also want to be able to access the =major-mode-hydra= menu as easily as possible so let's add that to our [[file:general_el.org][General Leader Keybindings Definer]].
+We also want to be able to access the =major-mode-hydra= menu as easily as possible so let's add that to our [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (require 'init-general)
@@ -40,14 +42,14 @@ We also want to be able to access the =major-mode-hydra= menu as easily as possi
 
 ** Personal Hydras
 *** Notetaking
-Let's define a =hydra= for accessing all notetaking related functions in packages like [[file:org_roam.org][Org-roam]] and [[file:bibtex_actions.org][BibTeX Actions]]. We don't need to worry about setting up the dependencies as they will be setup at some point, =hydra= will automatically find them when the function is run.
+Let's define a =hydra= for accessing all notetaking related functions in packages like [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]] and [[id:e84b4798-89bd-4bca-adb1-15878b6a8f50][BibTeX Actions]]. We don't need to worry about setting up the dependencies as they will be setup at some point, =hydra= will automatically find them when the function is run.
 
 #+begin_src emacs-lisp
 (pretty-hydra-define zamlz/hydra-notes
   (:title "Notetaking Commands" :color blue :quit-key "q" :exit t)
   ("Roam"
-   (("l" org-roam-buffer-toggle-display "Show Backlinks" :toggle t)
-    ("/" org-roam-find-file "Find File")
+   (("l" org-roam-buffer-toggle "Show Backlinks" :toggle t)
+    ("/" org-roam-node-find "Find File")
     ("g" org-roam-graph "Graph View")
     ("t" org-roam-tag-add "Add Tags")
     ("a" org-roam-alias-add "Add Alias")
@@ -64,7 +66,7 @@ Let's define a =hydra= for accessing all notetaking related functions in package
    (("r" zamlz/notetaking-system-refresh "Refresh"))))
 #+end_src
 
-Add the notetaking =hydra= to [[file:general_el.org][General Leader Keybindings Definer]].
+Add the notetaking =hydra= to [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (zamlz/leader-keys
@@ -82,7 +84,7 @@ We also create a single function that will refresh all parts of our notetaking s
 #+end_src
 
 *** Documentation & Help
-Create a =hydra= for accessing all help documentation super easily and also provide bindings for packages like [[file:helpful.org][Helpful]].
+Create a =hydra= for accessing all help documentation super easily and also provide bindings for packages like [[id:9a2fb807-5ab2-4c0d-8c41-b0fda0d8cc7a][Helpful]].
 
 #+begin_src emacs-lisp
 (pretty-hydra-define zamlz/hydra-documentation
@@ -102,7 +104,7 @@ Create a =hydra= for accessing all help documentation super easily and also prov
     )))
 #+end_src
 
-Add the documentation & help =hydra= to [[file:general_el.org][General Leader Keybindings Definer]].
+Add the documentation & help =hydra= to [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
 
 #+begin_src emacs-lisp
 (zamlz/leader-keys

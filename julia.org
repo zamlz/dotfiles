@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       d2b824b5-cffd-43fc-8641-fa8ce93f8a8f
+:ROAM_REFS: https://julialang.org/
+:END:
 #+TITLE: Julia Programming Language
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: SOFTWARE PROGRAMMING CONFIG
-#+ROAM_KEY: https://julialang.org/
 #+CREATED: [2021-03-27 Sat 09:16]
-#+LAST_MODIFIED: [2021-05-08 Sat 15:35:48]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: SOFTWARE PROGRAMMING CONFIG
 
 #+DOWNLOADED: screenshot @ 2021-03-27 09:18:28
 [[file:data/julia_lang_logo.png]]
@@ -15,7 +17,7 @@
 :END:
 ** Julia Mode
 
-The package below provides [[file:emacs.org][GNU/Emacs]] with a major mode for editing Julia source files.
+The package below provides [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] with a major mode for editing Julia source files.
 
 #+begin_src emacs-lisp
 (use-package julia-mode)

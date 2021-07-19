@@ -1,9 +1,11 @@
+:PROPERTIES:
+:ID:       dc3904fe-5634-49ff-af22-21af35e08f4c
+:END:
 #+TITLE: dog
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 23:22]
-#+LAST_MODIFIED: [2021-04-30 Fri 19:58:29]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
+#+filetags: CONFIG SOFTWARE
 
 Dog is a script that I wrote which sort of functions like =cat=. However, it will highlight syntax for you as well.
 

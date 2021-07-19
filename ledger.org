@@ -1,14 +1,17 @@
+:PROPERTIES:
+:ID:       55bd3dcf-dd49-42bb-92cb-8ea127809651
+:ROAM_ALIASES: ledger-mode
+:END:
 #+TITLE: Ledger
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAK_KEY: https://www.ledger-cli.org/
-#+ROAM_ALIAS: ledger-mode
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+CREATED: [2021-04-16 Fri 21:10]
-#+LAST_MODIFIED: [2021-05-18 Tue 10:40:11]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE EMACS
 
 * Ledger: Double-Entry Accounting System
 
-Ledger is a command line double-entry accounting tool for [[file:../notes/plain_text_accounting.org][Plain Text Accounting]].
+Ledger is a command line double-entry accounting tool for [[id:0746cc66-2afa-41c5-8398-91f5e286f574][Plain Text Accounting]].
 
 * Useful Resources
 - [[https://rolfschr.github.io/gswl-book/latest.html][Getting Started with Ledger]]
@@ -19,7 +22,7 @@ Ledger is a command line double-entry accounting tool for [[file:../notes/plain_
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-ledger.el :comments both :mkdirp yes
 :END:
 
-The following package provides a dedicated mode for editing ledger files with [[file:emacs.org][GNU/Emacs]].
+The following package provides a dedicated mode for editing ledger files with [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package ledger-mode

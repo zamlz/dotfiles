@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       6d690d97-0791-4225-bb3c-8b0deeb95045
+:ROAM_REFS: https://github.com/oantolin/orderless
+:END:
 #+TITLE: Orderless
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/oantolin/orderless
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 20:05]
-#+LAST_MODIFIED: [2021-05-18 Tue 21:18:39]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:13]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Orderless Completion Mode
 

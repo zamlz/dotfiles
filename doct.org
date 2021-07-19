@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       f6caaa7b-aaa7-4ba1-9479-d599fcddb331
+:ROAM_REFS: https://github.com/progfolio/doct
+:END:
 #+TITLE: Doct
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-16 Wed 22:40]
-#+LAST_MODIFIED: [2021-06-16 Wed 22:43:22]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/progfolio/doct
+#+filetags: CONFIG SOFTWARE
 
 * Declarative Org Capture Templates
-=doct= is a function that provides a more readable way of describing [[file:org_mode.org][Org-mode]] capture tempaltes.
+=doct= is a function that provides a more readable way of describing [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] capture tempaltes.
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 
 ** Setup Dependencies
-We have to setup [[file:org_mode.org][Org-mode]] first.
+We have to setup [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] first.
 
 #+begin_src emacs-lisp
 (require 'init-org)

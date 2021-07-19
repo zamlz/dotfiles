@@ -1,13 +1,15 @@
+:PROPERTIES:
+:ID:       5f1fe9eb-bc2a-444d-bb82-a4fce53055ab
+:END:
 #+TITLE: Info Colors
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-24 Mon 17:07]
-#+LAST_MODIFIED: [2021-05-24 Mon 17:19:04]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Extra Colors for Emacs Info Pages
-Adds extra flair to [[file:info_mode.org][info-mode]].
+Adds extra flair to [[id:0b31cf3d-2228-4cee-95a7-e1562ff3cfec][info-mode]].
 
 * Configuration
 :PROPERTIES:

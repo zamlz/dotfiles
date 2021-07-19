@@ -1,17 +1,20 @@
+:PROPERTIES:
+:ID:       e6532b52-0b06-406f-a7ed-89591de98b40
+:ROAM_REFS: https://www.orgroam.com/
+:END:
 #+TITLE: Org-roam
-#+ROAM_TAGS: CONFIG SOFTWARE EMACS
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-06-03 Thu 08:38:01]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:56:30]
 #+STARTUP: content
-#+ROAM_KEY: https://www.orgroam.com/
+#+filetags: CONFIG SOFTWARE EMACS
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
 
 * A Plain Text Personal Knowledge Management System
 
-Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[file:org_mode.org][Org-mode]]. The project aims to implement [[file:../notes/zettelkasten_method.org][Zettelkasten Method]] through software.
+Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]. The project aims to implement [[id:1c9102c5-5e91-450a-ace9-e0ebdd73204f][Zettelkasten Method]] through software.
 
 * Useful Resources
 - [[https://www.orgroam.com/manual.html][Org-roam Official User Manual]]
@@ -26,7 +29,7 @@ Org-roam is a really cool piece of software thats built to emulate the feature o
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam.el :comments both :mkdirp yes
 :END:
 ** Setup Dependencies
-Before loading up any =org-roam= related things, let's import [[file:org_mode.org][Org-mode]] first.
+Before loading up any =org-roam= related things, let's import [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] first.
 
 #+begin_src emacs-lisp
 (require 'init-org)
@@ -39,11 +42,16 @@ Let's setup =org-roam= now.
 (use-package org-roam
   :hook (after-init . org-roam-mode)
   :bind (:map org-mode-map
-         ("M-i" . org-roam-insert)
-         ("M-I" . org-roam-insert-immediate)))
+         ("M-i" . org-roam-node-insert)))
 #+end_src
 
 ** Customize Parameter
+Before we use =org-roam=, we need to acknowledge that we are ready to use =v2=.
+
+#+begin_src emacs-lisp
+(setq org-roam-v2-ack t)
+#+end_src
+
 Configure various paths for =org-roam=.
 
 #+begin_src emacs-lisp

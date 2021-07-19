@@ -1,21 +1,24 @@
+:PROPERTIES:
+:ID:       d78f5b40-9448-466a-9261-d9d2abd80c13
+:ROAM_REFS: https://github.com/Somelauw/evil-org-mode
+:ROAM_ALIASES: evil-org-mode
+:END:
 #+TITLE: Evil Org
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/Somelauw/evil-org-mode
-#+ROAM_ALIAS: "evil-org-mode"
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-25 Tue 16:30]
-#+LAST_MODIFIED: [2021-05-25 Tue 16:51:51]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Make Org-Mode More Evil
-=evil-org-mode= adds [[file:evil.org][Evil Mode]] keybindings to [[file:org_mode.org][Org-mode]].
+=evil-org-mode= adds [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][Evil Mode]] keybindings to [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]].
 
 * Configuration
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-evil-org.el :comments both :mkdirp yes
 :END:
 ** Setup Dependencies
-We should ensure that [[file:evil.org][Evil Mode]] and [[file:org_mode.org][Org-mode]] are configured first.
+We should ensure that [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][Evil Mode]] and [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] are configured first.
 
 #+begin_src emacs-lisp
 (require 'init-evil)

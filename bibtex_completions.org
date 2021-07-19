@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       88776879-cbf7-449e-88cf-305cafd1a0c3
+:ROAM_REFS: https://github.com/tmalsburg/helm-bibtex
+:END:
 #+TITLE: BibTeX Completions
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/tmalsburg/helm-bibtex
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 12:05]
-#+LAST_MODIFIED: [2021-05-31 Mon 09:59:52]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Search and Manage Bibliographies in Emacs
 =bibtex-completions= is *the* package for interfacing with your BibTeX references on your filesystem. It is used my many other packages.
@@ -23,7 +25,7 @@ Install the =bibtex-completion= package. /Note, that on its own, this package is
 #+end_src
 
 ** Library Paths
-Set the paths to my papers and docs. These don't need to be a list of directories with their full paths, but [[file:org_ref.org][Org-ref]] for some reasons wants to use these variables even though they have their own defined. So strange.
+Set the paths to my papers and docs. These don't need to be a list of directories with their full paths, but [[id:355790b5-0daa-48a4-bd64-566b4c93ca9b][Org-ref]] for some reasons wants to use these variables even though they have their own defined. So strange.
 
 #+begin_src emacs-lisp
 (setq bibtex-completion-bibliography `(,(file-truename "~/org/papers/references.bib")))
@@ -32,7 +34,7 @@ Set the paths to my papers and docs. These don't need to be a list of directorie
 #+end_src
 
 ** Note Template
-We should create a note template here that works alongside [[file:org_roam.org][Org-roam]].
+We should create a note template here that works alongside [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]].
 
 #+begin_src emacs-lisp
 (setq bibtex-completion-notes-template-multiple-files
@@ -46,7 +48,7 @@ We should create a note template here that works alongside [[file:org_roam.org][
 #+end_src
 
 ** Non-Standard Parameters
-We make use of =tags= fields withn [[file:bibtex.org][BibTeX]] but since that's non-standard, we need to let =bibtex-actions= know that we are using these.
+We make use of =tags= fields withn [[id:60f90e10-9f05-45f1-8567-925e7dafcc95][BibTeX]] but since that's non-standard, we need to let =bibtex-actions= know that we are using these.
 
 #+begin_src emacs-lisp
 (setq bibtex-completion-additional-search-fields '(tags))

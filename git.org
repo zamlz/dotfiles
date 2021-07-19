@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       907ccf31-cf51-441c-a6d1-f9f7f58fe112
+:ROAM_REFS: https://git-scm.com/
+:ROAM_ALIASES: gitconfig gitattributes gitignore
+:END:
 #+TITLE: Git
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://git-scm.com/
-#+ROAM_ALIAS: gitignore gitattributes gitconfig
-#+ROAM_TAGS: SOFTWARE CONFIG EMACS
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-05-31 Mon 11:59:02]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: SOFTWARE CONFIG EMACS
 
 * Git: The Stupid Content Tracker
 
@@ -64,7 +67,7 @@ Specify the global ignore and attributes path
     textconv = gpg --no-tty --decrypt
 #+end_src
 
-Protesilaos Stravrou has an excellent blog post on how to improve the diff view of [[file:../notes/emacs_lisp.org][Elisp]] and [[file:org_mode.org][Org-mode]]. This is done by specifying the =xfuncname= regex which is used to identify which heading/function the change belongs to. Full blog post is under the [[*Useful Resources]] section.
+Protesilaos Stravrou has an excellent blog post on how to improve the diff view of [[id:5bfa4fbe-86c7-40d1-aa5c-7b981d145aa9][Elisp]] and [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]. This is done by specifying the =xfuncname= regex which is used to identify which heading/function the change belongs to. Full blog post is under the [[*Useful Resources]] section.
 
 #+begin_src conf
 [diff "lisp"]
@@ -120,13 +123,13 @@ Many programs generate a bunch of garbage files. We don't want git to consider t
 .dir-locals.el
 #+end_src
 
-/Undo History from [[file:undo_tree.org][Undo Tree]]:/
+/Undo History from [[id:ebd23b73-f91a-4737-aec9-c1064b5350a8][Undo Tree]]:/
 
 #+begin_src emacs-lisp
 *..~undo-tree~
 #+end_src
 
-/[[file:python.org][Python]] Garbage:/
+/[[id:793b435f-ac8c-4140-a6f3-bb4b5575412a][Python]] Garbage:/
 
 #+begin_src conf
 .venv/
@@ -134,7 +137,7 @@ __pycache__/
 *.pyc
 #+end_src
 
-/[[file:latex.org][LaTeX]] Garbage:/
+/[[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]] Garbage:/
 
 #+begin_src conf
 *.bbl

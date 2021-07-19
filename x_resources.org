@@ -1,12 +1,15 @@
+:PROPERTIES:
+:ID:       560ce224-98e4-4b11-a7d9-fedd64b3fc14
+:ROAM_ALIASES: xresources xrdb
+:END:
 #+TITLE: X Resources
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: xrdb xresources
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-02 Sun 17:14]
-#+LAST_MODIFIED: [2021-07-03 Sat 09:51:35]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
 * User-level Dotfile for X11
-The =Xresources= file is used to confiugre user level options for various [[file:xorg.org][Xorg X11 Window System]] Applications.
+The =Xresources= file is used to confiugre user level options for various [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]] Applications.
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@ The =Xresources= file is used to confiugre user level options for various [[file
 :END:
 ** XRDB Refresh
 
-We should make sure we add a small refresh script to the [[file:xinit.org][xinit]] user-level scripts so that they get refreshed whenever our window manager refreshes its  settings.
+We should make sure we add a small refresh script to the [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user-level scripts so that they get refreshed whenever our window manager refreshes its  settings.
 
 #+begin_src shell
 xrdb -I$HOME $HOME/.Xresources
@@ -48,7 +51,7 @@ Xft.hintstyle:              hintslight
 
 ** External Configurations
 
-We need to source the xresources of [[file:urxvt.org][URxvt Terminal Emulator]], [[file:rofi.org][Rofi Dmenu]], and [[file:emacs.org][GNU/Emacs]].
+We need to source the xresources of [[id:397019f9-e2ea-4c92-bd5c-c1a4666132ee][URxvt Terminal Emulator]], [[id:962dd4f7-01dc-4b3f-8fbf-fa1b480735ca][Rofi Dmenu]], and [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 #+begin_src C
 #include ".config/xresources.d/urxvt"

@@ -1,6 +1,9 @@
+:PROPERTIES:
+:ID:       546352d0-57b6-4efa-b772-36f53ec830f6
+:END:
 #+TITLE: C Programming Language
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-08 Tue 00:31]
-#+LAST_MODIFIED: [2021-06-08 Tue 00:32:28]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:11]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE

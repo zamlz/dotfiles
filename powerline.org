@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       c66413fa-4d8b-4183-b690-8b015a42b194
+:ROAM_REFS: https://github.com/milkypostman/powerline
+:END:
 #+TITLE: Powerline
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 20:08]
-#+LAST_MODIFIED: [2021-07-12 Mon 09:27:15]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:11]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/milkypostman/powerline
+#+filetags: CONFIG SOFTWARE
 
 * Emacs Version of Vim Powerline
 =powerline= is a fork of the popular vim package of the same name.

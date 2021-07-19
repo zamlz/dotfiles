@@ -1,14 +1,17 @@
+:PROPERTIES:
+:ID:       ebd23b73-f91a-4737-aec9-c1064b5350a8
+:ROAM_REFS: https://elpa.gnu.org/packages/undo-tree.html
+:ROAM_ALIASES: undo-tree-mode
+:END:
 #+TITLE: Undo Tree
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://elpa.gnu.org/packages/undo-tree.html
-#+ROAM_ALIAS: "undo-tree-mode"
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-25 Tue 16:53]
-#+LAST_MODIFIED: [2021-06-04 Fri 07:26:52]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Visualize The Undo Tree
-=undo-tree= provides a simple interface to visualize and traverse the [[file:emacs.org][GNU/Emacs]] undo tree.
+=undo-tree= provides a simple interface to visualize and traverse the [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] undo tree.
 
 * Configuration
 :PROPERTIES:

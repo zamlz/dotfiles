@@ -1,14 +1,17 @@
+:PROPERTIES:
+:ID:       ce5d9455-de17-449e-a337-eaa37266ef6f
+:ROAM_ALIASES: flycheck-plantuml
+:END:
 #+TITLE: Flycheck PlantUML Integration
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: flycheck-plantuml
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-17 Mon 14:59]
-#+LAST_MODIFIED: [2021-05-17 Mon 15:19:42]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Integrate Flycheck with PlantUML
 
-This project adds [[file:flycheck.org][Flycheck Syntax Checking]] when in [[file:plantuml.org][plantuml-mode]]. It will automatically check syntax of your files and highlight errors as they appear.
+This project adds [[id:e565a047-e13a-425d-b86e-e0ea33887e17][Flycheck Syntax Checking]] when in [[id:0337692a-40a5-41e3-b13f-4b1305984b1a][plantuml-mode]]. It will automatically check syntax of your files and highlight errors as they appear.
 
 * Configuration
 :PROPERTIES:
@@ -17,7 +20,7 @@ This project adds [[file:flycheck.org][Flycheck Syntax Checking]] when in [[file
 
 ** Dependency Setup
 
-As this package makes use of both [[file:flycheck.org][Flycheck Syntax Checking]] and [[file:plantuml.org][PlantUML]], let's ensure both of those modules are in fact setup.
+As this package makes use of both [[id:e565a047-e13a-425d-b86e-e0ea33887e17][Flycheck Syntax Checking]] and [[id:0337692a-40a5-41e3-b13f-4b1305984b1a][PlantUML]], let's ensure both of those modules are in fact setup.
 
 #+begin_src emacs-lisp
 (require 'init-plantuml)

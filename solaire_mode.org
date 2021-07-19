@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       93d0e947-ed12-4798-834c-4a0c029b49bf
+:ROAM_REFS: https://github.com/hlissner/emacs-solaire-mode
+:END:
 #+TITLE: Solaire Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-13 Sun 13:10]
-#+LAST_MODIFIED: [2021-06-13 Sun 17:32:00]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:13]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/hlissner/emacs-solaire-mode
+#+filetags: CONFIG SOFTWARE
 
 * If only certain buffers could be so grossly Incandescent
 =solaire-mode= is a package that makes visual distinctions between real text buffers and popups/sidebars etc.

@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       13924794-494d-4f70-ad04-6618e150d4ba
+:END:
 #+TITLE: Zsh Aliases
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-03 Mon 20:50]
-#+LAST_MODIFIED: [2021-06-09 Wed 08:31:42]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
-Aliases let us create shortcuts for commonly used terminal commands within [[file:zsh.org][Zsh]].
+Aliases let us create shortcuts for commonly used terminal commands within [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]].
 
 * Aliases
 :PROPERTIES:
@@ -20,7 +22,7 @@ alias ll="ls -oh"
 alias la="ls -lah"
 #+end_src
 
-Shell aliases to make using [[file:git.org][Git]] easier.
+Shell aliases to make using [[id:907ccf31-cf51-441c-a6d1-f9f7f58fe112][Git]] easier.
 
 #+begin_src shell
 alias gs="git status"

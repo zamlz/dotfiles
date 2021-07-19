@@ -1,12 +1,14 @@
+:PROPERTIES:
+:ID:       b2439c8c-4eab-4fe5-91b3-12d77fdd5097
+:ROAM_REFS: https://www.djcbsoftware.nl/code/mu/mu4e.html
+:END:
 #+TITLE: mu4e
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://www.djcbsoftware.nl/code/mu/mu4e.html
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 08:18]
-#+LAST_MODIFIED: [2021-06-23 Wed 10:00:31]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
-=mu4e= is a e-mail client for [[file:emacs.org][GNU/Emacs]] that uses =mu= as the backend. =mu= is simply a mail indexer so we have to make use of [[file:isync.org][Isync (mbsync)]] in order to get a local copy of the IMAP to use with =mu4e=.
+=mu4e= is a e-mail client for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] that uses =mu= as the backend. =mu= is simply a mail indexer so we have to make use of [[id:3e96a117-bf2b-45e5-bc99-e44f3dccb360][Isync (mbsync)]] in order to get a local copy of the IMAP to use with =mu4e=.
 
 * Configuration
 :PROPERTIES:

@@ -1,9 +1,11 @@
+:PROPERTIES:
+:ID:       90f2733a-30b0-4b30-aea4-9fc26219e6dc
+:END:
 #+TITLE: Org Appear
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-09 Sun 10:36]
-#+LAST_MODIFIED: [2021-06-14 Mon 20:13:02]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+filetags: CONFIG SOFTWARE
 
 * What is it?
 
@@ -26,7 +28,7 @@
 #+end_src
 
 ** Package Install
-Install the package and add the hook to [[file:org_mode.org][Org-mode]].
+Install the package and add the hook to [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]].
 
 #+begin_src emacs-lisp
 (use-package org-appear

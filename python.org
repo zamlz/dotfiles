@@ -1,9 +1,12 @@
+:PROPERTIES:
+:ID:       793b435f-ac8c-4140-a6f3-bb4b5575412a
+:ROAM_ALIASES: Python
+:END:
 #+TITLE: Python Programming Language
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: Python
-#+ROAM_TAGS: PROGRAMMING CONFIG SOFTWARE
 #+CREATED: [2021-04-07 Wed 16:43]
-#+LAST_MODIFIED: [2021-05-08 Sat 15:35:27]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: PROGRAMMING CONFIG SOFTWARE
 
 Python Programming Language....
 
@@ -15,7 +18,7 @@ Python Programming Language....
 :END:
 ** Python Mode
 
-This is the configuration for the built-in python mode found in [[file:emacs.org][GNU/Emacs]].
+This is the configuration for the built-in python mode found in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package python

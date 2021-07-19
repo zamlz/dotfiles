@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       0337692a-40a5-41e3-b13f-4b1305984b1a
+:ROAM_ALIASES: plantuml-mode
+:END:
 #+TITLE: PlantUML
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: plantuml-mode
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-17 Mon 10:06]
-#+LAST_MODIFIED: [2021-05-17 Mon 16:08:27]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * UML Diagrams Made Easy
 
@@ -78,7 +81,7 @@ Make sure to install the system package for =plantuml=, otherwise, we won't be a
 
 ** Major Mode
 
-This sets up a major-mode for =plantuml= in [[file:emacs.org][GNU/Emacs]]. You can directly edit uml files now
+This sets up a major-mode for =plantuml= in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. You can directly edit uml files now
 
 #+begin_src emacs-lisp
 (use-package plantuml-mode)

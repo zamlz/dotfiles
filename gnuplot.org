@@ -1,11 +1,13 @@
+:PROPERTIES:
+:ID:       ef24575b-8ac1-4e44-a426-b2718992a648
+:ROAM_REFS: http://www.gnuplot.info/
+:END:
 #+TITLE: Gnuplot
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: http://www.gnuplot.info/
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-24 Mon 08:12]
-#+LAST_MODIFIED: [2021-05-24 Mon 08:22:54]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Portable Command-Line Driven Graphing Utility
 =Gnuplot= is a powerful command-line utility for generating a variety of plots
@@ -33,7 +35,7 @@
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-gnuplot.el :comments both :mkdirp yes
 :END:
 ** Package Install
-The package provides a major-mode for =gnuplot= within [[file:emacs.org][GNU/Emacs]].
+The package provides a major-mode for =gnuplot= within [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 #+begin_src emacs-lisp
 (use-package gnuplot)

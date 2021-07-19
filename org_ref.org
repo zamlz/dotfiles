@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       355790b5-0daa-48a4-bd64-566b4c93ca9b
+:ROAM_REFS: https://github.com/jkitchin/org-ref
+:END:
 #+TITLE: Org-ref
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/jkitchin/org-ref
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-29 Sat 12:27]
-#+LAST_MODIFIED: [2021-05-31 Mon 11:45:12]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Citations, Cross-References, Indexes, Glossaries for Org
-=Org-ref= is a packae that adds various types of refences and links for [[file:org_mode.org][Org-mode]]. It also provides a variety os sub-packages for downloading bibtex references and PDFs from various sources like =ArXiV= , DOI, and many more.
+=Org-ref= is a packae that adds various types of refences and links for [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]. It also provides a variety os sub-packages for downloading bibtex references and PDFs from various sources like =ArXiV= , DOI, and many more.
 
 \begin{equation}
 \label{mytesteq}
@@ -22,13 +25,13 @@ We can also insert links to papers like so, citet:holden2017
 :END:
 
 ** Setup Dependencies
-[[file:bibtex_completions.org][BibTeX Completions]] isn't actually necessary for this package, but since we use, we want to make sure that we use the same path variables for =Org-ref= so Let's load that in.
+[[id:88776879-cbf7-449e-88cf-305cafd1a0c3][BibTeX Completions]] isn't actually necessary for this package, but since we use, we want to make sure that we use the same path variables for =Org-ref= so Let's load that in.
 
 #+begin_src emacs-lisp
 (require 'init-bibtex-completions)
 #+end_src
 
-[[file:org_mode.org][Org-mode]] needs to also be loaded.
+[[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]] needs to also be loaded.
 
 #+begin_src emacs-lisp
 (require 'init-org)
@@ -41,7 +44,7 @@ We can also insert links to papers like so, citet:holden2017
 #+end_src
 
 ** Sync Library Path
-As mentioned before, let's make sure to sync our library path with [[file:bibtex_completions.org][BibTeX Completions]]. /Also =org-ref= needs full file paths for some reason.../
+As mentioned before, let's make sure to sync our library path with [[id:88776879-cbf7-449e-88cf-305cafd1a0c3][BibTeX Completions]]. /Also =org-ref= needs full file paths for some reason.../
 
 #+begin_src emacs-lisp
 (setq reftex-default-bibliography bibtex-completion-bibliography)
@@ -51,14 +54,14 @@ As mentioned before, let's make sure to sync our library path with [[file:bibtex
 #+end_src
 
 **  Prefer User Labels for LaTeX
-When exporting to [[file:latex.org][LaTeX]], let's make sure to tell the exporting process that we wish to use our own defined variables.
+When exporting to [[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]], let's make sure to tell the exporting process that we wish to use our own defined variables.
 
 #+begin_src emacs-lisp
 (setq org-latex-prefer-user-labels t)
 #+end_src
 
 ** Setup LaTeX Package Support for References
-We need to add a few packages for [[file:latex.org][LaTeX]] to load up so that exporting with [[file:bibtex.org][BibTeX]] references works properly.
+We need to add a few packages for [[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]] to load up so that exporting with [[id:60f90e10-9f05-45f1-8567-925e7dafcc95][BibTeX]] references works properly.
 
 #+begin_src emacs-lisp
 (add-to-list 'org-latex-default-packages-alist '("" "natbib" nil) t)

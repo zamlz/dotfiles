@@ -1,19 +1,22 @@
+:PROPERTIES:
+:ID:       397019f9-e2ea-4c92-bd5c-c1a4666132ee
+:ROAM_REFS: http://software.schmorp.de/pkg/rxvt-unicode.html
+:ROAM_ALIASES: rxvt-unicode urxvt
+:END:
 #+TITLE: URxvt Terminal Emulator
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: "urxvt" "rxvt-unicode"
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: http://software.schmorp.de/pkg/rxvt-unicode.html
 #+CREATED: [2021-04-01 Thu 09:40]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:23:28]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
-URxvt is a popular fork of the Rxvt Terminal Emulator but with Unicode support for the [[file:xorg.org][Xorg X11 Window System]].
+URxvt is a popular fork of the Rxvt Terminal Emulator but with Unicode support for the [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]].
 
 * Xresouces Configuration
 :PROPERTIES:
 :header-args:C: :tangle ~/.config/xresources.d/urxvt :mkdirp yes
 :END:
 
-We configure it through [[file:x_resources.org][Xresources]].
+We configure it through [[id:560ce224-98e4-4b11-a7d9-fedd64b3fc14][Xresources]].
 
 ** General Settings
 

@@ -1,13 +1,15 @@
+:PROPERTIES:
+:ID:       81a8ca92-b995-4b95-9abd-7bea70f73a30
+:END:
 #+TITLE: Org-roam Protocol
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-11 Tue 10:08]
-#+LAST_MODIFIED: [2021-05-12 Wed 23:05:09]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
 * Org-roam Protocol: Browser Integration for Roam
 
-The purpose of the =org-roam-protocol= extension is to provide ways of interacting with your [[file:org_roam.org][Org-roam]] files from your browser.
+The purpose of the =org-roam-protocol= extension is to provide ways of interacting with your [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]] files from your browser.
 
 * Configuration
 ** Package Setup
@@ -15,7 +17,7 @@ The purpose of the =org-roam-protocol= extension is to provide ways of interacti
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam-protocol.el :comments both :mkdirp yes
 :END:
 
-Make sure we have [[file:org_roam.org][Org-roam]] all setup first before we enable the =org-roam-protocol=.
+Make sure we have [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]] all setup first before we enable the =org-roam-protocol=.
 
 #+begin_src emacs-lisp
 (require 'init-org-roam)
@@ -39,7 +41,7 @@ Make sure to provide it as well.
 :header-args:shell: :tangle ~/.config/xinitrc.d/xdg-mime-org-protocol.sh :comments both :mkdirp yes :shebang #!/bin/sh
 :END:
 
-In order for the protocol to work properly, we need to create a desktop entry for [[file:emacs.org][GNU/Emacs]] (connecting to our daemon) and associate the =org-protocol://= type links with the application using [[file:xdg_utils.org][XDG Utils]].
+In order for the protocol to work properly, we need to create a desktop entry for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] (connecting to our daemon) and associate the =org-protocol://= type links with the application using [[id:5b41aa58-7edc-4467-957d-d2383e816d57][XDG Utils]].
 
 #+begin_src conf
 [Desktop Entry]

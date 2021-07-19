@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       731e42f5-fe4e-4a87-9d80-94410e0d650e
+:ROAM_REFS: https://htop.dev/
+:END:
 #+TITLE: htop
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://htop.dev/
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-28 Wed 15:38]
-#+LAST_MODIFIED: [2021-04-30 Fri 09:40:20]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:11]
+#+filetags: CONFIG SOFTWARE
 
 Htop is a system resource monitor.
 

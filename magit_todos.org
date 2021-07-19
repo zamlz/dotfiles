@@ -1,9 +1,11 @@
+:PROPERTIES:
+:ID:       adf4fd89-ddbe-47b9-9581-f9656f3a19ed
+:END:
 #+TITLE: magit-todos
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-08 Sat 13:04]
-#+LAST_MODIFIED: [2021-05-08 Sat 13:11:28]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
 * Magit TODOs: Show TODOs from Source Files
 
@@ -14,7 +16,7 @@ Show source files' TODOs (and FIXMEs, etc) in Magit status buffer
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-magit-todos.el :comments both :mkdirp yes
 :END:
 
-Thanks to this package, [[file:magit.org][Magit]] will look into the source code files under a git repository and try to create TODO entries for it in the status buffer.
+Thanks to this package, [[id:c457ffad-2808-4679-88c0-b866872ccf5b][Magit]] will look into the source code files under a git repository and try to create TODO entries for it in the status buffer.
 
 #+begin_src emacs-lisp
 (require 'init-magit)

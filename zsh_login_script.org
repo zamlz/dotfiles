@@ -1,11 +1,14 @@
+:PROPERTIES:
+:ID:       755962ee-bb5b-43d8-935e-a04835ed196d
+:ROAM_ALIASES: zlogin
+:END:
 #+TITLE: Zsh Login Script
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: zlogin
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-04-30 Fri 20:25]
-#+LAST_MODIFIED: [2021-05-14 Fri 07:55:28]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+filetags: CONFIG SOFTWARE
 
-This is the login script for [[file:zsh.org][Zsh]] which is used to create different environments in different =tty=.
+This is the login script for [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]] which is used to create different environments in different =tty=.
 
 * Login Script
 :PROPERTIES:
@@ -19,7 +22,7 @@ source $HOME/org/config/lib/shell/logger
 LOGGER=$(get_logger zsh.profile)
 #+end_src
 
-Setup the [[file:herbstluftwm.org][Herbstluftwm Tiling Window Manager]] during login
+Setup the [[id:3c22f3fd-a4a1-4c08-9ee4-336d5c6491fa][Herbstluftwm Tiling Window Manager]] during login
 
 #+begin_src shell
 if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
@@ -29,7 +32,7 @@ if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
 fi
 #+end_src
 
-The remaining =tty= are for testing or recovery purposes. I primarily use =tty2= for testing new window managers. In the case below, I'm trying out [[file:emacs.org][GNU/Emacs]] as a window manager.
+The remaining =tty= are for testing or recovery purposes. I primarily use =tty2= for testing new window managers. In the case below, I'm trying out [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] as a window manager.
 
 #+begin_src shell
 if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then

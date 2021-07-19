@@ -1,12 +1,15 @@
+:PROPERTIES:
+:ID:       962dd4f7-01dc-4b3f-8fbf-fa1b480735ca
+:ROAM_REFS: https://github.com/davatorium/rofi
+:ROAM_ALIASES: rofi
+:END:
 #+TITLE: Rofi Dmenu
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS: "rofi"
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://github.com/davatorium/rofi
 #+CREATED: [2021-04-01 Thu 10:32]
-#+LAST_MODIFIED: [2021-05-14 Fri 08:23:28]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+filetags: CONFIG SOFTWARE
 
-Rofi is a window switcher, application launcher and dmenu program for [[file:xorg.org][X11]].
+Rofi is a window switcher, application launcher and dmenu program for [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][X11]].
 
 * Configuration
 ** Package Install
@@ -14,7 +17,7 @@ Rofi is a window switcher, application launcher and dmenu program for [[file:xor
 :header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-rofi-dmenu.el :comments both :mkdirp yes
 :END:
 
-Install the rofi package. Ensure that [[file:xorg.org][Xorg X11 Window System]] is install first however.
+Install the rofi package. Ensure that [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]] is install first however.
 
 #+begin_src emacs-lisp
 (require 'init-xorg)
@@ -27,7 +30,7 @@ Install the rofi package. Ensure that [[file:xorg.org][Xorg X11 Window System]] 
 :header-args:C: :tangle ~/.config/xresources.d/rofi :mkdirp yes
 :END:
 
-We configure rofi with it's [[file:x_resources.org][Xresources]] file.
+We configure rofi with it's [[id:560ce224-98e4-4b11-a7d9-fedd64b3fc14][Xresources]] file.
 
 *** Enabled Modes
 

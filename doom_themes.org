@@ -1,10 +1,13 @@
+:PROPERTIES:
+:ID:       85bb4296-3142-4357-9db3-339a18f05e97
+:ROAM_REFS: https://github.com/hlissner/emacs-doom-themes
+:END:
 #+TITLE: Doom Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-07-05 Mon 19:40]
-#+LAST_MODIFIED: [2021-07-12 Mon 09:32:40]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/hlissner/emacs-doom-themes
+#+filetags: CONFIG SOFTWARE
 
 * An Opinionated Pack of Modern Color-Themes
 =doom-themes= provides a bunch of very nice color themes. The benefit of using this package is that is also provides theme configuration for a lot of different packages.
@@ -15,7 +18,7 @@
 :END:
 
 ** Setup Dependencies
-I'm not entirely sure how to get [[file:solaire_mode.org][Solaire Mode]] working with =doom-themes= yet, but for now let's load it up first.
+I'm not entirely sure how to get [[id:93d0e947-ed12-4798-834c-4a0c029b49bf][Solaire Mode]] working with =doom-themes= yet, but for now let's load it up first.
 
 #+begin_src emacs-lisp
 (require 'init-solaire-mode)
@@ -49,7 +52,7 @@ I'm not entirely sure how to get [[file:solaire_mode.org][Solaire Mode]] working
 #+end_src
 
 ** Org-mode Fixes
-This fixes [[file:org_mode.org][Org-mode]]'s native fontifaction with =doom-themes=
+This fixes [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]'s native fontifaction with =doom-themes=
 
 #+begin_src emacs-lisp
 (doom-themes-org-config)

@@ -1,10 +1,12 @@
+:PROPERTIES:
+:ID:       be81e6a6-e2cf-489c-b563-5452c27a3382
+:ROAM_REFS: https://www.zsh.org/
+:END:
 #+TITLE: Zsh
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_ALIAS:
-#+ROAM_TAGS: CONFIG SOFTWARE
-#+ROAM_KEY: https://www.zsh.org/
 #+CREATED: [2021-03-29 Mon 18:51]
-#+LAST_MODIFIED: [2021-05-12 Wed 20:03:56]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:13]
+#+filetags: CONFIG SOFTWARE
 
 * The Z Shell
 

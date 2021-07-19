@@ -1,11 +1,14 @@
+:PROPERTIES:
+:ID:       d83d2508-561e-49c6-96db-9ab8785fa1f3
+:ROAM_REFS: https://github.com/minad/marginalia
+:ROAM_ALIASES: marginalia-mode
+:END:
 #+TITLE: Marginalia
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_KEY: https://github.com/minad/marginalia
-#+ROAM_ALIAS: marginalia-mode
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-18 Tue 20:57]
-#+LAST_MODIFIED: [2021-05-18 Tue 21:19:13]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
 #+STARTUP: content
+#+filetags: CONFIG SOFTWARE
 
 * Marginalia in the Minibuffer
 =marginalia-mode= provides really nice annotations to minibuffer completions
@@ -17,7 +20,7 @@
 
 ** Setup Vertico
 
-Before anything else, we should make sure [[file:vertico.org][Vertico]] is setup properly.
+Before anything else, we should make sure [[id:cc5f32f8-c334-448a-9970-08d037f2d83a][Vertico]] is setup properly.
 
 #+begin_src emacs-lisp
 (require 'init-vertico)
@@ -25,7 +28,7 @@ Before anything else, we should make sure [[file:vertico.org][Vertico]] is setup
 
 ** Package Install
 
-Setup =marginalia= but make sure we don't load it up before [[file:vertico.org][Vertico]].
+Setup =marginalia= but make sure we don't load it up before [[id:cc5f32f8-c334-448a-9970-08d037f2d83a][Vertico]].
 
 #+begin_src emacs-lisp
 (use-package marginalia

@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       866ecb3e-bf1e-4677-b82e-63cedbbdf860
+:ROAM_REFS: https://github.com/MaskRay/ccls
+:END:
 #+TITLE: ccls
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-08 Tue 00:29]
-#+LAST_MODIFIED: [2021-06-12 Sat 18:19:01]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/MaskRay/ccls
+#+filetags: CONFIG SOFTWARE
 
 * C/C++/ObjC Language Server
-=ccls= is a language server for the [[file:c_programming_language.org][C Programming Language]] and the C++ Programming Language. =ccls= is an external package which must be installed, but it also has package that connects it to the [[file:lsp_mode.org][Lsp Mode]].
+=ccls= is a language server for the [[id:546352d0-57b6-4efa-b772-36f53ec830f6][C Programming Language]] and the C++ Programming Language. =ccls= is an external package which must be installed, but it also has package that connects it to the [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][Lsp Mode]].
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 
 ** Setup Dependencies
-Make sure [[file:lsp_mode.org][Lsp Mode]] is setup
+Make sure [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][Lsp Mode]] is setup
 
 #+begin_src emacs-lisp
 (require 'init-lsp-mode)

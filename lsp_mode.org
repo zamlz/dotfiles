@@ -1,13 +1,16 @@
+:PROPERTIES:
+:ID:       034feb71-fa05-43cd-87a6-88bd22d27f23
+:ROAM_REFS: https://github.com/emacs-lsp/lsp-mode#supported-languages
+:END:
 #+TITLE: LSP Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
-#+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-06-07 Mon 23:59]
-#+LAST_MODIFIED: [2021-06-09 Wed 00:00:35]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
 #+STARTUP: content
-#+ROAM_KEY: https://github.com/emacs-lsp/lsp-mode#supported-languages
+#+filetags: CONFIG SOFTWARE
 
 * Emacs Client for the Language Server Protocol
-=lsp-mode= enables [[file:emacs.org][GNU/Emacs]] to have support for the language server protocol for various programming languages.
+=lsp-mode= enables [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]] to have support for the language server protocol for various programming languages.
 
 * Configuration
 :PROPERTIES:
@@ -15,7 +18,7 @@
 :END:
 
 ** Setup Dependencies
-While these are optional, it is nice to have integration for a couple things like [[file:flycheck.org][Flycheck Syntax Checking]], [[file:company.org][Company Autocompletion System]], and [[file:which_key.org][which-key]] integration.
+While these are optional, it is nice to have integration for a couple things like [[id:e565a047-e13a-425d-b86e-e0ea33887e17][Flycheck Syntax Checking]], [[id:866f3d9a-d071-49cb-97f8-53ce0076df7a][Company Autocompletion System]], and [[id:4d0acc67-0263-4a79-ad62-7428cf5634e0][which-key]] integration.
 
 #+begin_src emacs-lisp
 (require 'init-flycheck)
@@ -38,7 +41,7 @@ By default, we can only read =4k= at a time, but lsp servers responses are typic
 #+end_src
 
 ** Setup Hooks
-First let's make sure [[file:which_key.org][which-key]] is configured properly for =lsp-mode=.
+First let's make sure [[id:4d0acc67-0263-4a79-ad62-7428cf5634e0][which-key]] is configured properly for =lsp-mode=.
 
 #+begin_src emacs-lisp
 (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
