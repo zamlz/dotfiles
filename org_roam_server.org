@@ -2,7 +2,7 @@
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+ROAM_TAGS: CONFIG SOFTWARE
 #+CREATED: [2021-05-30 Sun 23:20]
-#+LAST_MODIFIED: [2021-05-31 Mon 14:23:38]
+#+LAST_MODIFIED: [2021-07-19 Mon 09:34:23]
 #+STARTUP: content
 #+ROAM_KEY: https://github.com/org-roam/org-roam-server
 
@@ -24,7 +24,8 @@ We need to make sure [[file:org_roam.org][Org-roam]] is setup first.
 ** Package Install
 
 #+begin_src emacs-lisp
-(use-package org-roam-server)
+(use-package org-roam-server
+  :disabled)
 #+end_src
 
 ** Customize Parameters
