@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-07-19 Mon 10:34:02]
+#+LAST_MODIFIED: [2021-07-20 Tue 09:52:40]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -225,21 +225,6 @@ Slightly shorten the Eldoc display delay
 #+begin_src emacs-lisp
 (setq show-paren-delay 0)
 (show-paren-mode +1)
-#+end_src
-
-**** Auto-pairing Quotes and Parentheses
-
-Super useful for auto-pairing certain characters. However we should make use of a hook to prevent it for left carrot bracket in org-mode buffers
-
-#+begin_src emacs-lisp
-(use-package elec-pair
-  :hook
-  (prog-mode . electric-pair-mode)
-  ;; disable <> auto-pairing in org-mode buffers
-  (org-mode  . (lambda ()
-    (setq-local electric-pair-inhibit-predicate
-                `(lambda (c)
-                   (if (char-equal c ?<) t (,electric-pair-inhibit-predicate c)))))))
 #+end_src
 
 **** Clean Whitespace on Buffer Save
