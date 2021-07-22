@@ -6,7 +6,7 @@
 #+TITLE: Sxhkd Hotkey Daemon
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-29 Mon 19:28]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-07-22 Thu 08:50:44]
 #+filetags: CONFIG SOFTWARE
 
 Sxhkd is a hotkey daemon for the [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][Xorg X11 Window System]].
@@ -24,7 +24,8 @@ We need to configure =sxhkd= to startup and refresh whenever our window manager 
 
 #+begin_src shell
 SXHKD_SHELL=sh
-export SXHKD_TERMINAL=$HOME/org/config/bin/emacsclient-launcher
+#export SXHKD_TERMINAL=$HOME/org/config/bin/emacsclient-launcher
+export SXHKD_TERMINAL=urxvt
 pkill -x sxhkd
 sxhkd &
 #+end_src
