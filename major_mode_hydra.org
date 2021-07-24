@@ -5,7 +5,7 @@
 #+TITLE: Major Mode Hydra
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:53:19]
+#+LAST_MODIFIED: [2021-07-24 Sat 11:44:58]
 #+filetags: CONFIG SOFTWARE
 
 * Major Mode Hydra and Pretty Hydra
@@ -53,6 +53,7 @@ Let's define a =hydra= for accessing all notetaking related functions in package
     ("g" org-roam-graph "Graph View")
     ("t" org-roam-tag-add "Add Tags")
     ("a" org-roam-alias-add "Add Alias")
+    ("A" org-roam-alias-remove "Remove Alias")
     ("k" zamlz/org-roam-key-add "Add Key"))
    "BibTeX"
    (("b" bibtex-actions-open "Library")

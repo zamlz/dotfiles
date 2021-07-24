@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:56:30]
+#+LAST_MODIFIED: [2021-07-24 Sat 11:06:26]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -59,6 +59,27 @@ Configure various paths for =org-roam=.
 (setq org-roam-dailies-directory "private/journal/")
 (setq org-roam-file-exclude-regexp "README.org")
 (setq org-roam-db-update-method 'immediate)
+#+end_src
+
+** Show Backlink Count in Search
+In =org-roam-node-find=, we want to also be able to see the number of backlinks. Note, we also update the =org-roam-node-display-template= here.
+
+#+begin_src emacs-lisp
+(cl-defmethod org-roam-node-directories ((node org-roam-node))
+  (if-let ((dirs (file-name-directory (file-relative-name (org-roam-node-file node) org-roam-directory))))
+      (format "(%s)" (car (f-split dirs)))
+    ""))
+
+(cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
+  (let* ((count (caar (org-roam-db-query
+                       [:select (funcall count source)
+                                :from links
+                                :where (= dest $s1)
+                                :and (= type "id")]
+                       (org-roam-node-id node)))))
+    (format "[%d]" count)))
+
+(setq org-roam-node-display-template "${directories:14} ${title:100} ${backlinkscount:6} ${tags:50}")
 #+end_src
 
 ** Capture Templates
@@ -115,25 +136,6 @@ Capture templates, not much to explain here.
                         "#+LAST_MODIFIED: %U\n"
                         "#+STARTUP: content\n")
          :unnarrowed t)
-        ))
-#+end_src
-
-** Daily Notes
-My setup for my daily notes. I don't really use this anymore though.
-
-#+begin_src emacs-lisp
-(setq org-roam-dailies-capture-templates
-      `(("d" "default" entry
-         #'org-roam-capture--get-point
-         "* %U\n%?"
-         :file-name "private/journal/%<%Y-%m-%d>"
-         :head ,(concat "#+TITLE: %<[%Y-%m-%d] %B %e, %Y (%A)>\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_ALIAS: %<%Y-%m-%d>\n"
-                        "#+ROAM_TAGS: JOURNAL\n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "\n"))
         ))
 #+end_src
 
