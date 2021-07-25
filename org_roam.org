@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-07-24 Sat 11:06:26]
+#+LAST_MODIFIED: [2021-07-25 Sun 08:59:09]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -40,9 +40,9 @@ Let's setup =org-roam= now.
 
 #+begin_src emacs-lisp
 (use-package org-roam
-  :hook (after-init . org-roam-mode)
   :bind (:map org-mode-map
-         ("M-i" . org-roam-node-insert)))
+              ("M-i" . org-roam-node-insert))
+  :config (org-roam-setup))
 #+end_src
 
 ** Customize Parameter
