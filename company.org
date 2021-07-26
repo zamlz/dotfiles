@@ -4,7 +4,7 @@
 #+TITLE: Company Autocompletion System
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-16 Fri 21:21]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-07-26 Mon 09:22:53]
 #+filetags: CONFIG SOFTWARE
 
 Company is an autocompletion system that we will use for programming languages in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
@@ -15,10 +15,11 @@ Company is an autocompletion system that we will use for programming languages i
 :END:
 ** Company
 
-Use =C-n= and =C-p= to navigate tooltip
+Use =C-n= and =C-p= to navigate tooltip.
 
 #+begin_src emacs-lisp
 (use-package company
+  :disabled
   :diminish company-mode
   :hook (prog-mode . company-mode)
   :config

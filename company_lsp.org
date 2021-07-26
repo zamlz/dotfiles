@@ -5,7 +5,7 @@
 #+TITLE: Company LSP
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-06-08 Tue 23:49]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-07-26 Mon 09:23:37]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -28,7 +28,8 @@ We should make sure to setup the [[id:866f3d9a-d071-49cb-97f8-53ce0076df7a][Comp
 ** Package Install
 
 #+begin_src emacs-lisp
-(use-package company-lsp)
+(use-package company-lsp
+  :disabled)
 #+end_src
 
 ** Feature Provide
