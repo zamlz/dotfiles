@@ -1,0 +1,38 @@
+:PROPERTIES:
+:ID:       5126d619-cb59-47f7-9a04-ff558ff6ab5b
+:ROAM_REFS: https://github.com/minad/corfu
+:END:
+#+TITLE: Corfu
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+CREATED: [2021-07-26 Mon 09:24]
+#+LAST_MODIFIED: [2021-07-26 Mon 09:32:07]
+#+STARTUP: content
+#+FILETAGS: CONFIG SOFTWARE
+
+* Completion Overlay Region Function
+=corfu= enhances the defeault completion in region functions with a improved and minimal completion overlay.
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-corfu.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+It is useful to incorporate [[id:6d690d97-0791-4225-bb3c-8b0deeb95045][Orderless]].
+
+#+begin_src emacs-lisp
+(require 'init-orderless)
+#+end_src
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package corfu
+  :init (corfu-global-mode))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-corfu)
+#+end_src

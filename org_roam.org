@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-07-25 Sun 09:58:01]
+#+LAST_MODIFIED: [2021-07-26 Mon 09:35:40]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -40,7 +40,12 @@ Let's setup =org-roam= now.
 
 #+begin_src emacs-lisp
 (use-package org-roam
-  :bind (:map org-mode-map ("M-i" . org-roam-node-insert)))
+  :bind
+  (("C-c n l" . org-roam-buffer-toggle)
+   ("C-c n f" . org-roam-node-find)
+   ("C-c n i" . org-roam)
+   :map org-mode-map
+   ("M-i"   . completion-at-point)))
 #+end_src
 
 ** Customize Parameter
@@ -56,7 +61,18 @@ Configure various paths for =org-roam=.
 (setq org-roam-directory "~/org/")
 (setq org-roam-dailies-directory "private/journal/")
 (setq org-roam-file-exclude-regexp "README.org")
+#+end_src
+
+We always want the database to be updated the moment any file is udpated.
+
+#+begin_src emacs-lisp
 (setq org-roam-db-update-method 'immediate)
+#+end_src
+
+Provides completion without the use of =[[=.
+
+#+begin_src emacs-lisp
+(setq org-roam-completion-everywhere t)
 #+end_src
 
 ** Start Org-roam
@@ -66,8 +82,10 @@ Let's manually start up =org-roam=
 (org-roam-setup)
 #+end_src
 
-** Show Backlink Count in Search
-In =org-roam-node-find=, we want to also be able to see the number of backlinks. Note, we also update the =org-roam-node-display-template= here.
+** Update Display Template
+In =org-roam-node-find=, we want to see various metadata as well.
+
+Here are some helper functions for figuring out backlinks count.
 
 #+begin_src emacs-lisp
 (cl-defmethod org-roam-node-directories ((node org-roam-node))
@@ -83,8 +101,31 @@ In =org-roam-node-find=, we want to also be able to see the number of backlinks.
                                 :and (= type "id")]
                        (org-roam-node-id node)))))
     (format "[%d]" count)))
+#+end_src
 
-(setq org-roam-node-display-template "${directories:14} ${title:100} ${backlinkscount:6} ${tags:50}")
+We can also customize the node heirachy as well.
+
+#+begin_src emacs-lisp
+(cl-defmethod org-roam-node-filetitle ((node org-roam-node))
+  "Return the file TITLE for the node."
+  (org-roam-get-keyword "TITLE" (org-roam-node-file node)))
+
+(cl-defmethod org-roam-node-hierarchy ((node org-roam-node))
+  "Return the hierarchy for the node."
+  (let ((title (org-roam-node-title node))
+        (olp (org-roam-node-olp node))
+        (level (org-roam-node-level node))
+        (filetitle (org-roam-node-filetitle node)))
+    (concat
+     (if (> level 0) (concat filetitle " > "))
+     (if (> level 1) (concat (string-join olp " > ") " > "))
+     title)))
+#+end_src
+
+Once we have the custom functions configured for backlinks and hierachy, we can now incoporate it with the display template.
+
+#+begin_src emacs-lisp
+(setq org-roam-node-display-template "${directories:14} ${hierarchy:100} ${backlinkscount:6} ${tags:50}")
 #+end_src
 
 ** Capture Templates
@@ -92,87 +133,31 @@ Capture templates, not much to explain here.
 
 #+begin_src emacs-lisp
 (setq org-roam-capture-templates
-      `(("d" "default" plain (function org-roam--capture-get-point)
-         "\n%?"
-         :file-name "notes/${slug}"
-         :head ,(concat "#+TITLE: ${title}\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "#+STARTUP: content\n")
+      `(("d" "default" plain "\n%?"
+         :if-new (file+head "notes/${slug}.org"
+                            ,(concat "#+TITLE: ${title}\n"
+                                     "#+AUTHOR: %n (%(user-login-name))\n"
+                                     "#+CREATED: %U\n"
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+STARTUP: content\n"))
          :unnarrowed t)
-        ("p" "private" plain (function org-roam--capture-get-point)
-         "\n%?"
-         :file-name "private/${slug}"
-         :head ,(concat "#+TITLE: ${title}\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "#+STARTUP: content\n")
+        ("p" "private" plain "\n%?"
+         :if-new (file+head "private/${slug}.org"
+                            ,(concat "#+TITLE: ${title}\n"
+                                     "#+AUTHOR: %n (%(user-login-name))\n"
+                                     "#+CREATED: %U\n"
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+STARTUP: content\n"))
          :unnarrowed t)
-        ("c" "config" plain (function org-roam--capture-get-point)
-         "\n%?"
-         :file-name "config/${slug}"
-         :head ,(concat "#+TITLE: ${title}\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS: CONFIG SOFTWARE\n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "#+STARTUP: content\n")
-         :unnarrowed t)
-        ("w" "webpages/bookmarks" plain (function org-roam--capture-get-point)
-         "\n%?"
-         :file-name "bookmarks/${slug}"
-         :head ,(concat "#+TITLE: ${title}\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS: BOOKMARK\n"
-                        "#+ROAM_KEY: %x\n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "#+STARTUP: content\n")
-         :unnarrowed t)
-        ("b" "blogpost" plain (function org-roam--capture-get-point)
-         "\n%?"
-         :file-name "blog/${slug}"
-         :head ,(concat "#+TITLE: ${title}\n"
-                        "#+AUTHOR: %n (%(user-login-name))\n"
-                        "#+ROAM_TAGS: BLOGPOST\n"
-                        "#+CREATED: %U\n"
-                        "#+LAST_MODIFIED: %U\n"
-                        "#+STARTUP: content\n")
-         :unnarrowed t)
-        ))
-#+end_src
-
-** Custom Property Setters
-=Org-roam= already comes with prety good property setters, but we only have two here, =org-roam-tag-add= and =org-roam-alias-add=. We should create our own function here for setting the =ROAM_KEY= property since a function for it doesn't exist.
-
-#+begin_src emacs-lisp
-(defun zamlz/org-roam-key-add ()
-  "Add a key to Org-roam file.
-
-Return added key."
-  (interactive)
-  (unless org-roam-mode (org-roam-mode))
-  (let ((key (read-string "Key: " )))
-    (when (string-empty-p key)
-      (user-error "Key can't be empty"))
-    (org-roam--set-global-prop
-     "roam_key" key)
-    (org-roam-db--update-file (buffer-file-name (buffer-base-buffer)))
-    alias))
-#+end_src
-
-All the properties that get set are not in caps unfortunately, and I prefer to see them in caps as I like the idea of global properties being in caps. To fix this, we should /advice/ the =org-roam--set-global-props= function and configure it such that the argument for the global property is always caps.
-
-#+begin_src emacs-lisp
-(defun zamlz/org-roam-uppercase-global-props (args)
-  "Ensure that car of ARGS are uppercase"
-  (append (list (upcase (car args))) (cdr args)))
-#+end_src
-
-#+begin_src emacs-lisp
-(advice-add 'org-roam--set-global-prop :filter-args #'zamlz/org-roam-uppercase-global-props)
+        ("c" "config" plain "\n%?"
+         :if-new (file+head "config/${slug}.org"
+                            ,(concat "#+TITLE: ${title}\n"
+                                     "#+AUTHOR: %n (%(user-login-name))\n"
+                                     "#+CREATED: %U\n"
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+STARTUP: content\n"
+                                     "#+FILETAGS: CONFIG SOFTWARE\n"))
+         :unnarrowed t)))
 #+end_src
 
 ** Feature Provide
