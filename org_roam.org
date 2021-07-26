@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-07-26 Mon 09:51:38]
+#+LAST_MODIFIED: [2021-07-26 Mon 11:58:50]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -33,6 +33,12 @@ Before loading up any =org-roam= related things, let's import [[id:ef93dff4-b19f
 
 #+begin_src emacs-lisp
 (require 'init-org)
+#+end_src
+
+We also import [[id:36dbad05-71b2-47b1-ae87-9f8334a4f554][All The Icons]] here because we use them to create icons in our search buffer.
+
+#+begin_src emacs-lisp
+(require 'init-all-the-icons)
 #+end_src
 
 ** Package Install
@@ -91,49 +97,142 @@ Let's manually start up =org-roam=
 #+end_src
 
 ** Update Display Template
-In =org-roam-node-find=, we want to see various metadata as well.
+In =org-roam-node-find=, we want to see various metadata as well and prettify it with icons.
 
-Here are some helper functions for figuring out backlinks count.
-
-#+begin_src emacs-lisp
-(cl-defmethod org-roam-node-directories ((node org-roam-node))
-  (if-let ((dirs (file-name-directory (file-relative-name (org-roam-node-file node) org-roam-directory))))
-      (format "(%s)" (car (f-split dirs)))
-    ""))
-
-(cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
-  (let* ((count (caar (org-roam-db-query
-                       [:select (funcall count source)
-                                :from links
-                                :where (= dest $s1)
-                                :and (= type "id")]
-                       (org-roam-node-id node)))))
-    (format "[%d]" count)))
-#+end_src
-
-We can also customize the node heirachy as well.
+This first function is pretty straightforward, we simply get the node title.
 
 #+begin_src emacs-lisp
 (cl-defmethod org-roam-node-filetitle ((node org-roam-node))
   "Return the file TITLE for the node."
   (org-roam-get-keyword "TITLE" (org-roam-node-file node)))
+#+end_src
 
+This function computes the backlinks and creates an output message using [[id:36dbad05-71b2-47b1-ae87-9f8334a4f554][all-the-icons]].
+
+#+begin_src emacs-lisp
+(cl-defmethod org-roam-node-backlinkscount ((node org-roam-node))
+   (let* ((count (caar (org-roam-db-query
+                        [:select (funcall count source)
+                                 :from links
+                                 :where (= dest $s1)
+                                 :and (= type "id")]
+                        (org-roam-node-id node))))
+          )
+     (if (> count 0)
+         (concat (propertize "=has:backlinks=" 'display
+                             (all-the-icons-material "link"
+                                                     :face 'all-the-icons-dblue
+                                                     :height 0.9))
+                 " "
+                 (format "%d" count))
+       (concat (propertize "=not-backlinks=" 'display
+                           (all-the-icons-material "link"
+                                                   :face 'org-roam-dim
+                                                   :height 0.9))
+               " "))))
+#+end_src
+
+We use a certain collection of variables to denote the primary tags. This will be useful for filtering. The remaining tags will be displayed later in the output.
+
+#+begin_src emacs-lisp
+(setq zamlz/roam-primary-tags '("CONFIG" "CONTACTS" "JOURNAL" "LOCATION"))
+#+end_src
+
+This function displays the primary tag and incorporates [[id:36dbad05-71b2-47b1-ae87-9f8334a4f554][all-the-icons]] as well.
+
+#+begin_src emacs-lisp
+(cl-defmethod org-roam-node-functiontag ((node org-roam-node))
+  "The first tag of notes are used to denote note type"
+  (let* ((specialtags zamlz/roam-primary-tags)
+         (tags (seq-filter (lambda (tag) (not (string= tag "ATTACH"))) (org-roam-node-tags node)))
+         (functiontag (seq-intersection specialtags tags 'string=))
+         )
+    (concat
+     ;; (if functiontag
+     ;;     (propertize "=has:functions=" 'display (all-the-icons-octicon "gear"
+     ;;                 :face 'all-the-icons-silver :v-adjust 0.02 :height 0.8))
+     ;;   (propertize "=not-functions=" 'display (all-the-icons-octicon "gear"
+     ;;               :face 'org-roam-dim :v-adjust 0.02 :height 0.8))
+     ;;   )
+     (if functiontag
+         (propertize "=@=" 'display (all-the-icons-faicon "tags"
+                                                          :face 'all-the-icons-dgreen
+                                                          :v-adjust 0.02
+                                                          :height 0.7))
+       (propertize "= =" 'display (all-the-icons-faicon "tags"
+                                                        :face 'all-the-icons-dgreen
+                                                        :v-adjust 0.02
+                                                        :height 0.7)))
+     " "
+     (string-join functiontag ", ")
+     )))
+#+end_src
+
+This secondary function displays the remaining tags.
+
+#+begin_src emacs-lisp
+(cl-defmethod org-roam-node-othertags ((node org-roam-node))
+  "Return the file TITLE for the node."
+  (let* ((tags (seq-filter (lambda (tag) (not (string= tag "ATTACH"))) (org-roam-node-tags node)))
+         (specialtags zamlz/roam-primary-tags)
+         (othertags (seq-difference tags specialtags 'string=))
+         )
+    (concat
+     ;; " "
+     ;; (if othertags
+     ;;     (propertize "=has:tags=" 'display (all-the-icons-faicon "tags"
+     ;;           :face 'all-the-icons-dgreen :v-adjust 0.02 :height 0.8))
+     ;;   (propertize "=not-tags=" 'display (all-the-icons-faicon "tags"
+     ;;           :face 'all-the-icons-dgreen :v-adjust 0.02 :height 0.8))
+     ;;   )
+     ;; " "
+     (if othertags
+         (propertize "=@=" 'display "")
+       (propertize "= =" 'display "")
+       )
+     (if othertags "[" "")
+     (propertize (string-join othertags ", ") 'face 'all-the-icons-dgreen)
+     (if othertags "]" "")
+     )))
+#+end_src
+
+This function shows the full heirarchy of the node should such a node exist.
+
+#+begin_src emacs-lisp
 (cl-defmethod org-roam-node-hierarchy ((node org-roam-node))
   "Return the hierarchy for the node."
-  (let ((title (org-roam-node-title node))
-        (olp (org-roam-node-olp node))
-        (level (org-roam-node-level node))
-        (filetitle (org-roam-node-filetitle node)))
-    (concat
-     (if (> level 0) (concat filetitle " > "))
-     (if (> level 1) (concat (string-join olp " > ") " > "))
-     title)))
+  (let* ((title (org-roam-node-title node))
+         (olp (mapcar (lambda (s) (if (> (length s) 10) (concat (substring s 0 10)  "...") s))
+                      (org-roam-node-olp node)))
+         (level (org-roam-node-level node))
+         (filetitle (org-roam-get-keyword "TITLE" (org-roam-node-file node)))
+         (shortentitle (if (> (length filetitle) 20)
+                           (concat (substring filetitle 0 20)  "...") filetitle))
+         (separator (concat " " (all-the-icons-material "chevron_right") " ")))
+    (cond
+     ((>= level 1) (concat (propertize (format "=level:%d=" level) 'display
+                                       (all-the-icons-material "list" :face 'all-the-icons-blue))
+                           " "
+                           (propertize shortentitle 'face 'org-roam-dim)
+                           (propertize separator 'face 'org-roam-dim)
+                           title))
+     (t (concat (propertize (format "=level:%d=" level) 'display
+                            (all-the-icons-material "insert_drive_file"
+                                                    :face 'all-the-icons-blue))
+                " "
+                title)))))
 #+end_src
 
 Once we have the custom functions configured for backlinks and hierachy, we can now incoporate it with the display template.
 
 #+begin_src emacs-lisp
-(setq org-roam-node-display-template "${directories:14} ${hierarchy:100} ${backlinkscount:6} ${tags:50}")
+(setq org-roam-node-display-template
+      (concat
+       "${backlinkscount:18} "
+       "${functiontag:16} "
+       "${hierarchy:125}"
+       "${othertags:50} "
+       ))
 #+end_src
 
 ** Capture Templates
