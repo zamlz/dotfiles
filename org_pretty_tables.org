@@ -6,7 +6,7 @@
 #+TITLE: Org Pretty Tables
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-06-01 Tue 08:48]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-07-27 Tue 19:40:15]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -37,6 +37,7 @@ Install the =org-pretty-table= package. It's not on any upstream repo so let's m
 
 #+begin_src emacs-lisp
 (use-package org-pretty-table
+  :disabled
   :straight (org-pretty-table :type git :host github :repo "Fuco1/org-pretty-table")
   :hook (org-mode . org-pretty-table-mode))
 #+end_src
