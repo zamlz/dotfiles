@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-07-26 Mon 11:58:50]
+#+LAST_MODIFIED: [2021-08-17 Tue 18:46:20]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -93,7 +93,7 @@ Provides completion without the use of =[[=.
 Let's manually start up =org-roam=
 
 #+begin_src emacs-lisp
-(org-roam-setup)
+(org-roam-db-autosync-mode)
 #+end_src
 
 ** Update Display Template
