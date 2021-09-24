@@ -5,7 +5,7 @@
 #+TITLE: Qutebrowser
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-29 Mon 20:08]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-09-22 Wed 10:57:16]
 #+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-31 18:52:55
@@ -543,16 +543,4 @@ config.bind(
      "'org-protocol://roam-ref?template=w"
      "&ref='+encodeURIComponent(location.href)+'"
      "&title='+encodeURIComponent(document.title)"))
-#+end_src
-
-** Set as Default Browser
-:PROPERTIES:
-:header-args:shell: :tangle ~/.config/xinitrc.d/xdg-mime-qutebrowser.sh :comments both :mkdirp yes :shebang #!/bin/sh
-:END:
-
-By using [[id:5b41aa58-7edc-4467-957d-d2383e816d57][XDG Utils]], we can set the default browser for the system to be =qutebrowser=.
-
-#+begin_src shell
-xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/https
-xdg-mime default org.qutebrowser.qutebrowser.desktop x-scheme-handler/http
 #+end_src
