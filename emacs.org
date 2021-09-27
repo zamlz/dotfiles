@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-07-22 Thu 07:23:14]
+#+LAST_MODIFIED: [2021-09-27 Mon 10:43:42]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -373,14 +373,14 @@ Let us import the rest of the modules in whatever order we want.
 
 * Summon the Daemon
 :PROPERTIES:
-:header-args:shelly: :tangle ~/.config/xinitrc.d/emacs-daemon-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
+:header-args:shell: :tangle ~/.config/xinitrc.d/emacs-daemon-refresh.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
 
 *Very Important!* Make sure we start the emacs daemon here! But do not start it if it's already running. Add this to the [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user-level scripts.
 
 #+begin_src shell
-if [ -z "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon --with-x-toolkit=lucid')"]; then
-    emacs --daemon=xorg-emacs-daemon --with-x-toolkit=lucid
+if [ -z "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon')" ]; then
+    emacs --daemon=xorg-emacs-daemon
 fi
 #+end_src
 
