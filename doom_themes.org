@@ -5,9 +5,9 @@
 #+TITLE: Doom Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-05 Mon 19:40]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-09-27 Mon 00:05:26]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+filetags: :EMACS:CONFIG SOFTWARE:
 
 * An Opinionated Pack of Modern Color-Themes
 =doom-themes= provides a bunch of very nice color themes. The benefit of using this package is that is also provides theme configuration for a lot of different packages.
@@ -28,6 +28,7 @@ I'm not entirely sure how to get [[id:93d0e947-ed12-4798-834c-4a0c029b49bf][Sola
 
 #+begin_src emacs-lisp
 (use-package doom-themes
+  :disabled
   :after (solaire-mode))
 #+end_src
 
@@ -42,20 +43,21 @@ I'm not entirely sure how to get [[id:93d0e947-ed12-4798-834c-4a0c029b49bf][Sola
 ** Load Theme
 
 #+begin_src emacs-lisp
-(load-theme 'doom-opera t)
+(load-theme 'gruvbox-black t)
+;;(load-theme 'doom-opera t)
 #+end_src
 
 ** Flashing Modeline on Errors
 
 #+begin_src emacs-lisp
-(doom-themes-visual-bell-config)
+;;(doom-themes-visual-bell-config)
 #+end_src
 
 ** Org-mode Fixes
 This fixes [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]'s native fontifaction with =doom-themes=
 
 #+begin_src emacs-lisp
-(doom-themes-org-config)
+;; (doom-themes-org-config)
 #+end_src
 
 ** Feature Provide

@@ -5,7 +5,7 @@
 #+TITLE: Getting Things Done Framework
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 09:04]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-09-27 Mon 00:08:02]
 #+filetags: CONFIG SOFTWARE GTD
 
 * Useful Resources
@@ -78,46 +78,46 @@ We can define a workflow that achieves this with the following set of sequences 
 We make use of =doom-themes= built in functions to get the primary colors of the current theme we are using. This also means that we have to use a =doom-theme=.
 
 #+begin_src emacs-lisp
-(defun zamlz/configure-org-todo-keyword-faces ()
-  (interactive)
-  (message "Configure org todo keyword faces")
-  (let
-      ((black   (doom-color 'bg))
-       (grey    (doom-color 'base1))
-       (red     (doom-color 'red))
-       (orange  (doom-color 'orange))
-       (green   (doom-color 'green))
-       (yellow  (doom-color 'yellow))
-       (blue    (doom-color 'blue))
-       (violet  (doom-color 'violet))
-       (cyan    (doom-color 'cyan))
-       (white   (doom-color 'white)))
-    (setq org-todo-keyword-faces
-          `(("TODO"      . (:weight bold :foreground ,black  :background ,red))
-            ("BLOCKED"   . (:weight bold :foreground ,black  :background ,yellow))
-            ("BACKLOG"   . (:weight bold :foreground ,black  :background ,violet))
-            ("CANCELLED" . (:weight bold :foreground ,black  :background ,grey))
-            ("DONE"      . (:weight bold :foreground ,black  :background ,green))))))
+  ;; (defun zamlz/configure-org-todo-keyword-faces ()
+  ;;   (interactive)
+  ;;   (message "Configure org todo keyword faces")
+  ;;   (let
+  ;;       ((black   (doom-color 'bg))
+  ;;        (grey    (doom-color 'base1))
+  ;;        (red     (doom-color 'red))
+  ;;        (orange  (doom-color 'orange))
+  ;;        (green   (doom-color 'green))
+  ;;        (yellow  (doom-color 'yellow))
+  ;;        (blue    (doom-color 'blue))
+  ;;        (violet  (doom-color 'violet))
+  ;;        (cyan    (doom-color 'cyan))
+  ;;        (white   (doom-color 'white)))
+  ;;     (setq org-todo-keyword-faces
+  ;;           `(("TODO"      . (:weight bold :foreground ,black  :background ,red))
+  ;;             ("BLOCKED"   . (:weight bold :foreground ,black  :background ,yellow))
+  ;;             ("BACKLOG"   . (:weight bold :foreground ,black  :background ,violet))
+  ;;             ("CANCELLED" . (:weight bold :foreground ,black  :background ,grey))
+  ;;             ("DONE"      . (:weight bold :foreground ,black  :background ,green))))))
 #+end_src
 
 Alternate simpler version
 
 #+begin_src emacs-lisp
-;; (defun zamlz/configure-org-todo-keyword-faces ()
-;;   (interactive)
-;;   (message "Configure org todo keyword faces")
-;;   (let ((red     "#cc241d")
-;;         (green   "#98971a")
-;;         (blue    "#458588")
-;;         (magenta "#b16286")
-;;         (yellow  "#d79921")
-;;         (white   "#181818"))
-;;     (setq org-todo-keyword-faces
-;;           `(("TODO"      . (:weight bold :foreground ,white :background ,red))
-;;             ("BLOCKED"   . (:weight bold :foreground ,white :background ,magenta))
-;;             ("BACKLOG"   . (:weight bold :foreground ,white :background ,blue))
-;;             ("CANCELLED" . (:weight bold :foreground ,white :background ,yellow))
-;;             ("DONE"      . (:weight bold :foreground ,white :background ,green))))))
+  (defun zamlz/configure-org-todo-keyword-faces ()
+    (interactive)
+    (message "Configure org todo keyword faces")
+    (let ((red     "#cc241d")
+          (green   "#98971a")
+          (blue    "#458588")
+          (magenta "#b16286")
+          (yellow  "#d79921")
+          (white   "#181818"))
+      (setq org-todo-keyword-faces
+            `(("TODO"      . (:weight bold :foreground ,white :background ,red))
+              ("BLOCKED"   . (:weight bold :foreground ,white :background ,magenta))
+              ("BACKLOG"   . (:weight bold :foreground ,white :background ,blue))
+              ("CANCELLED" . (:weight bold :foreground ,white :background ,yellow))
+              ("DONE"      . (:weight bold :foreground ,white :background ,green))))))
 #+end_src
 
 We should call this function in order to set those colors.
