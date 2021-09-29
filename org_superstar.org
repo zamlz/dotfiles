@@ -5,7 +5,7 @@
 #+TITLE: Org Superstar
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-10 Mon 12:51]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-09-28 Tue 23:49:01]
 #+filetags: CONFIG SOFTWARE
 
 * What is it?
@@ -29,8 +29,8 @@ Now we can configure =org-superstar-mode=.
 
 #+begin_src emacs-lisp
 (use-package org-superstar
-  :after org
-  :hook (org-mode . org-superstar-mode))
+  :after org)
+  ;;:hook (org-mode . org-superstar-mode))
 #+end_src
 
 ** Hide Leading Bullets
