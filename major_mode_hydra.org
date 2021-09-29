@@ -5,7 +5,7 @@
 #+TITLE: Major Mode Hydra
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-07-26 Mon 09:51:02]
+#+LAST_MODIFIED: [2021-09-28 Tue 13:12:22]
 #+filetags: CONFIG SOFTWARE
 
 * Major Mode Hydra and Pretty Hydra
@@ -48,6 +48,18 @@ Let's define a =hydra= for accessing all notetaking related functions in package
 (pretty-hydra-define zamlz/hydra-notes
   (:title "Notetaking Commands" :color blue :quit-key "q" :exit t)
   (
+   "Org Roam"
+   (("l" org-roam-buffer-toggle "Toggle Roam Buffer")
+    ("/" org-roam-node-find "Find Node")
+    ("?" org-roam-ref-find "Find Reference")
+    ("i" org-roam-node-insert "Insert Node")
+    ("t" org-roam-tag-add "Tag Add")
+    ("T" org-roam-tag-remove "Tag Remove")
+    ("a" org-roam-alias-add "Alias Add")
+    ("A" org-roam-alias-remove "Alias Remove")
+    ("r" org-roam-ref-add "Reference Add")
+    ("R" org-roam-ref-remove "Reference Remove")
+    ("d" org-roam-db-sync " DB Sync"))
    "BibTeX"
    (("b" bibtex-actions-open "Library")
     ("n" bibtex-actions-open-notes "Notes")
@@ -57,7 +69,7 @@ Let's define a =hydra= for accessing all notetaking related functions in package
    "Journal"
    ()
    "Misc"
-   (("r" zamlz/notetaking-system-refresh "Refresh"))))
+   (("!" zamlz/notetaking-system-refresh "Full Refresh"))))
 #+end_src
 
 Add the notetaking =hydra= to [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
