@@ -5,7 +5,7 @@
 #+TITLE: Doom Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-05 Mon 19:40]
-#+LAST_MODIFIED: [2021-09-29 Wed 00:15:12]
+#+LAST_MODIFIED: [2021-09-29 Wed 12:50:31]
 #+STARTUP: content
 #+filetags: :EMACS:CONFIG:SOFTWARE:
 
@@ -42,8 +42,9 @@ I'm not entirely sure how to get [[id:93d0e947-ed12-4798-834c-4a0c029b49bf][Sola
 ** Load Theme
 
 #+begin_src emacs-lisp
-;; (load-theme 'gruvbox-black t)
-(load-theme 'doom-old-hope t)
+(load-theme 'gruvbox-black t)
+;; (load-theme 'doom-old-hope t)
+;; (load-theme 'doom-nord t)
 #+end_src
 
 ** Flashing Modeline on Errors

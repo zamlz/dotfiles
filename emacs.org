@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-09-29 Wed 00:13:44]
+#+LAST_MODIFIED: [2021-09-29 Wed 12:54:13]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -292,7 +292,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
   (dolist (face '(default fixed-pitch))
     (set-face-attribute `,face nil :font "Iosevka Term" :height 120))
   ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "ETBembo" :height 140))
+  (set-face-attribute 'variable-pitch nil :font "Arial" :height 120))
 #+end_src
 
 *** Themes and Appearance
@@ -344,7 +344,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 96))))
+                  (zamlz/set-transparency 90))))
   (zamlz/set-font-faces))
 #+end_src
 

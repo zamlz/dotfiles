@@ -5,7 +5,7 @@
 #+TITLE: Org Superstar
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-10 Mon 12:51]
-#+LAST_MODIFIED: [2021-09-28 Tue 23:49:01]
+#+LAST_MODIFIED: [2021-09-29 Wed 11:48:06]
 #+filetags: CONFIG SOFTWARE
 
 * What is it?
@@ -29,8 +29,8 @@ Now we can configure =org-superstar-mode=.
 
 #+begin_src emacs-lisp
 (use-package org-superstar
-  :after org)
-  ;;:hook (org-mode . org-superstar-mode))
+  :after org
+  :hook (org-mode . org-superstar-mode))
 #+end_src
 
 ** Hide Leading Bullets
@@ -48,7 +48,7 @@ We should make the leading stars here, truly invisible.
 Let's also define our own custom bullets.
 
 #+begin_src emacs-lisp
-;;(setq org-superstar-headline-bullets-list '("◉" "●""○" "▷"))
+;; (setq org-superstar-headline-bullets-list '("◉" "●" "○" "▷"))
 (setq org-superstar-headline-bullets-list '("•"))
 (setq org-superstar-cycle-headline-bullets nil)
 #+end_src
