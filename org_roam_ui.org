@@ -1,0 +1,56 @@
+:PROPERTIES:
+:ID:       35a045cf-09f3-4a47-9a2d-b9cedd97c183
+:ROAM_REFS: https://github.com/org-roam/org-roam-ui
+:END:
+#+TITLE: Org-roam UI
+#+AUTHOR: Amlesh Sivanantham (zamlz)
+#+CREATED: [2021-09-29 Wed 13:06]
+#+LAST_MODIFIED: [2021-09-29 Wed 13:14:30]
+#+STARTUP: content
+#+FILETAGS: CONFIG SOFTWARE
+
+* Frontend for Org-roam
+=org-roam-ui= is meant as the successor for [[id:01e8ab76-49c1-49f8-99f7-621ae8bb3ca6][Org-roam Server]].
+
+* Configuration
+:PROPERTIES:
+:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-org-roam-ui.el :comments both :mkdirp yes
+:END:
+
+** Setup Dependencies
+We need to make sure [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]] is setup first.
+
+#+begin_src emacs-lisp
+(require 'init-org-roam)
+#+end_src
+
+** Package Install
+
+#+begin_src emacs-lisp
+(use-package org-roam-ui
+  :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
+  :after org-roam
+  :hook (after-init . org-roam-ui-mode))
+#+end_src
+
+** Customize Parameters
+
+#+begin_src emacs-lisp
+(setq org-roam-ui-sync-theme t)
+(setq org-roam-ui-follow t)
+(setq org-roam-ui-update-on-save t)
+(setq org-roam-ui-open-on-start nil)
+#+end_src
+
+** Initialize Server
+Run the server if we are running in =daemon= mode.
+
+#+begin_src emacs-lisp
+;; (when (daemonp) (org-roam-server-mode))
+#+end_src
+
+** Feature Provide
+
+#+begin_src emacs-lisp
+(provide 'init-org-roam-ui)
+#+end_src
