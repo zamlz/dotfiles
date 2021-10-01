@@ -4,8 +4,8 @@
 #+TITLE: Python Venv Wrapper
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-02 Sun 12:53]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
-#+filetags: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-09-30 Thu 09:53:55]
+#+filetags: :PROGRAMMING:CONFIG SOFTWARE:
 
 This is a helper script I wrote to manage [[id:793b435f-ac8c-4140-a6f3-bb4b5575412a][Python]] virtual environments.
 
