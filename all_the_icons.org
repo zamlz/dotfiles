@@ -6,7 +6,7 @@
 #+TITLE: All The Icons
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-24 Mon 17:24]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
+#+LAST_MODIFIED: [2021-10-03 Sun 11:43:14]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -52,6 +52,12 @@ Install the =all-the-icons= package. An important bit is that we need to manuall
 
 #+begin_src emacs-lisp
 (use-package all-the-icons)
+#+end_src
+
+#+begin_src emacs-lisp
+(use-package all-the-icons-completion
+  :after all-the-icons
+  :init (all-the-icons-completion-mode))
 #+end_src
 
 ** Helper Functions

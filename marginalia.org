@@ -6,7 +6,7 @@
 #+TITLE: Marginalia
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-18 Tue 20:57]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-10-03 Sun 11:40:33]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -24,6 +24,7 @@ Before anything else, we should make sure [[id:cc5f32f8-c334-448a-9970-08d037f2d
 
 #+begin_src emacs-lisp
 (require 'init-vertico)
+(require 'init-all-the-icons)
 #+end_src
 
 ** Package Install
@@ -33,8 +34,8 @@ Setup =marginalia= but make sure we don't load it up before [[id:cc5f32f8-c334-4
 #+begin_src emacs-lisp
 (use-package marginalia
   :after vertico
-  :init
-  (marginalia-mode))
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init (marginalia-mode))
 #+end_src
 
 ** Feature Provide
