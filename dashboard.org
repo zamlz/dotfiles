@@ -5,7 +5,7 @@
 #+TITLE: Dashboard
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-13 Thu 19:13]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-04 Mon 09:38:43]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -35,8 +35,8 @@ Lot of options here for the startup banner, but I like the ascii art of the appl
 
 #+begin_src emacs-lisp
 ;; (setq dashboard-startup-banner "~/org/config/lib/emacs-themes/navi.png")
-;; (setq dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
-(setq dashboard-startup-banner "~/org/config/lib/emacs-themes/name.txt")
+(setq dashboard-startup-banner "~/org/config/lib/emacs-themes/black-hole.png")
+;; (setq dashboard-startup-banner "~/org/config/lib/emacs-themes/name.txt")
 #+end_src
 
 Center content because that looks way nicer
