@@ -5,7 +5,7 @@
 #+TITLE: Org Superstar
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-10 Mon 12:51]
-#+LAST_MODIFIED: [2021-09-29 Wed 11:48:06]
+#+LAST_MODIFIED: [2021-10-04 Mon 09:37:15]
 #+filetags: CONFIG SOFTWARE
 
 * What is it?
@@ -49,7 +49,8 @@ Let's also define our own custom bullets.
 
 #+begin_src emacs-lisp
 ;; (setq org-superstar-headline-bullets-list '("◉" "●" "○" "▷"))
-(setq org-superstar-headline-bullets-list '("•"))
+;; (setq org-superstar-headline-bullets-list '("•"))
+(setq org-superstar-headline-bullets-list '("*"))
 (setq org-superstar-cycle-headline-bullets nil)
 #+end_src
 
