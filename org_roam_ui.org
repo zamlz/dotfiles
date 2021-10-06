@@ -5,7 +5,7 @@
 #+TITLE: Org-roam UI
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-09-29 Wed 13:06]
-#+LAST_MODIFIED: [2021-09-29 Wed 13:14:30]
+#+LAST_MODIFIED: [2021-10-04 Mon 09:31:37]
 #+STARTUP: content
 #+FILETAGS: CONFIG SOFTWARE
 
@@ -29,8 +29,7 @@ We need to make sure [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]] is se
 #+begin_src emacs-lisp
 (use-package org-roam-ui
   :straight (:host github :repo "org-roam/org-roam-ui" :branch "main" :files ("*.el" "out"))
-  :after org-roam
-  :hook (after-init . org-roam-ui-mode))
+  :after org-roam)
 #+end_src
 
 ** Customize Parameters
@@ -46,7 +45,8 @@ We need to make sure [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]] is se
 Run the server if we are running in =daemon= mode.
 
 #+begin_src emacs-lisp
-;; (when (daemonp) (org-roam-server-mode))
+(when (daemonp)
+  (add-hook 'after-init-hook #'org-roam-ui-mode))
 #+end_src
 
 ** Feature Provide
