@@ -5,7 +5,7 @@
 #+TITLE: Modus Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-10-07 Thu 08:17]
-#+LAST_MODIFIED: [2021-10-07 Thu 08:26:18]
+#+LAST_MODIFIED: [2021-10-07 Thu 09:21:32]
 #+STARTUP: content
 #+FILETAGS: CONFIG SOFTWARE
 
@@ -24,7 +24,8 @@
 ** Package Install
 
 #+begin_src emacs-lisp
-(use-package modus-themes)
+(use-package modus-themes
+  :bind ("<f5>" . modus-themes-toggle))
 #+end_src
 
 ** Custom Parameters
