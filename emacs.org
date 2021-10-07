@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-09-29 Wed 12:54:13]
+#+LAST_MODIFIED: [2021-10-07 Thu 08:28:58]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -344,7 +344,7 @@ I have a lot of fonts commented out right now because I can't decide on which on
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/set-font-faces)
-                  (zamlz/set-transparency 90))))
+                  (zamlz/set-transparency 100))))
   (zamlz/set-font-faces))
 #+end_src
 
@@ -369,6 +369,23 @@ Let us import the rest of the modules in whatever order we want.
 (dolist
     (dir (directory-files (expand-file-name "lisp" user-emacs-directory) nil ".*\\.el"))
   (require (intern (replace-regexp-in-string "\\.el" "" dir))))
+#+end_src
+
+** Post Module Configuration
+At this point all our modules have been loaded, but there are some settings that we may wish to configure once everything is done loading.
+
+*** Load Theme
+We want to select one of the many themes I may have installed here.
+List of installed themes:
+- [[id:85bb4296-3142-4357-9db3-339a18f05e97][Doom Themes]]
+- Gruvbox Black /(my own custom theme I'm working on)/
+- [[id:397b3f52-7bc9-4d02-88fa-d7f0665fe556][Modus Themes]]
+
+#+begin_src emacs-lisp
+;; (load-theme 'gruvbox-black t)
+;; (load-theme 'doom-old-hope t)
+;; (load-theme 'doom-nord t)
+(modus-themes-load-vivendi)
 #+end_src
 
 * Summon the Daemon

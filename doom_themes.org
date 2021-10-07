@@ -5,7 +5,7 @@
 #+TITLE: Doom Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-05 Mon 19:40]
-#+LAST_MODIFIED: [2021-09-29 Wed 12:50:31]
+#+LAST_MODIFIED: [2021-10-07 Thu 08:16:04]
 #+STARTUP: content
 #+filetags: :EMACS:CONFIG:SOFTWARE:
 
@@ -39,25 +39,17 @@ I'm not entirely sure how to get [[id:93d0e947-ed12-4798-834c-4a0c029b49bf][Sola
 (setq doom-themes-treemacs-theme "doom-colors") ; use the colorful treemacs theme
 #+end_src
 
-** Load Theme
-
-#+begin_src emacs-lisp
-(load-theme 'gruvbox-black t)
-;; (load-theme 'doom-old-hope t)
-;; (load-theme 'doom-nord t)
-#+end_src
-
 ** Flashing Modeline on Errors
 
 #+begin_src emacs-lisp
-;;(doom-themes-visual-bell-config)
+(doom-themes-visual-bell-config)
 #+end_src
 
 ** Org-mode Fixes
 This fixes [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]'s native fontifaction with =doom-themes=
 
 #+begin_src emacs-lisp
-;; (doom-themes-org-config)
+(doom-themes-org-config)
 #+end_src
 
 ** Feature Provide
