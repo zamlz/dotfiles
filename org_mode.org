@@ -5,7 +5,7 @@
 #+TITLE: Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-09-29 Wed 13:01:06]
+#+LAST_MODIFIED: [2021-10-08 Fri 08:50:20]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -238,6 +238,10 @@ Just quick access to my most used org-mode functions via the [[id:c4e4923e-2180-
 ** LaTeX Inline Preview
 
 Pretty straightforward except that you need to have [[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]] installed and also =dvipng= as well. We'll add =dvipng= to this file's package set.
+
+\begin{equation}
+R_{\mu \nu} - {1 \over 2}R \, g_{\mu \nu} + \Lambda g_{\mu \nu}= {8 \pi G \over c^4} T_{\mu \nu}
+\end{equation}
 
 #+begin_src emacs-lisp
 (setq org-startup-with-latex-preview t)
