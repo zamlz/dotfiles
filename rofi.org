@@ -6,7 +6,7 @@
 #+TITLE: Rofi Dmenu
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-01 Thu 10:32]
-#+LAST_MODIFIED: [2021-10-11 Mon 10:55:56]
+#+LAST_MODIFIED: [2021-10-11 Mon 11:01:46]
 #+filetags: CONFIG SOFTWARE
 
 Rofi is a window switcher, application launcher and dmenu program for [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][X11]].
@@ -197,6 +197,7 @@ window {
     background-color: var(background);
     border:           1;
     width:            1000;
+    y-offset:         -15%;
 }
 mainbox {
     padding: 0;
@@ -215,7 +216,8 @@ listview {
     scrollbar:    true;
     border-color: var(separatorcolor);
     spacing:      2px ;
-    fixed-height: 0;
+    fixed-height: false;
+    dynamic:      true;
     border:       2px dash 0px 0px ;
 }
 scrollbar {
