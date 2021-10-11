@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-10-07 Thu 08:28:58]
+#+LAST_MODIFIED: [2021-10-10 Sun 20:39:07]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -281,18 +281,85 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 #+end_src
 
 ** Interface (Reorganize This)
-** Font Configuration
-
-I have a lot of fonts commented out right now because I can't decide on which ones to keep lol.
+*** Font Configuration
 
 #+begin_src emacs-lisp
-(defun zamlz/set-font-faces ()
+;; (defun zamlz/set-font-faces ()
+;;   (interactive)
+;;   ;; Set default and fixed pitch face
+;;   (dolist (face '(default fixed-pitch))
+;;     (set-face-attribute `,face nil :font "Iosevka Term" :height 120))
+;;   ;; Set the variable pitch face
+;;   (set-face-attribute 'variable-pitch nil :font "Arial" :height 120))
+#+end_src
+
+Going to copy the font setup that [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][hrs's emacs config]] has for font configuration. We start by setting the default fixed font and setting it for the =default= and =fixed-pitch= faces.
+
+#+begin_src emacs-lisp
+(setq zamlz/default-fixed-font "Iosevka Term")
+(setq zamlz/default-fixed-font-size 120)
+(setq zamlz/current-fixed-font-size zamlz/default-fixed-font-size)
+
+(set-face-attribute 'default nil
+                    :family zamlz/default-fixed-font
+                    :height zamlz/current-fixed-font-size)
+(set-face-attribute 'fixed-pitch nil
+                    :family zamlz/default-fixed-font
+                    :height zamlz/current-fixed-font-size)
+#+end_src
+
+Next, we do the same procedure for the variable width font
+
+#+begin_src emacs-lisp
+(setq zamlz/default-variable-font "Libre Baskerville")
+(setq zamlz/default-variable-font-size 120)
+(setq zamlz/current-variable-font-size zamlz/default-variable-font-size)
+
+(set-face-attribute 'variable-pitch nil
+                    :family zamlz/default-variable-font
+                    :height zamlz/current-variable-font-size)
+#+end_src
+
+With this setup, we can define a set of functions that we will use to update the font size.
+
+#+begin_src emacs-lisp
+(setq zamlz/font-change-increment 1.1)
+
+(defun zamlz/set-font-size ()
+  "Change default, fixed-pitch, and variable-pitch font sizes to match respective variables."
+  (set-face-attribute 'default nil
+                      :height zamlz/current-fixed-font-size)
+  (set-face-attribute 'fixed-pitch nil
+                      :height zamlz/current-fixed-font-size)
+  (set-face-attribute 'variable-pitch nil
+                      :height zamlz/current-variable-font-size))
+
+(defun zamlz/reset-font-size ()
+  "Revert font sizes back to defaults."
   (interactive)
-  ;; Set default and fixed pitch face
-  (dolist (face '(default fixed-pitch))
-    (set-face-attribute `,face nil :font "Iosevka Term" :height 120))
-  ;; Set the variable pitch face
-  (set-face-attribute 'variable-pitch nil :font "Arial" :height 120))
+  (setq zamlz/current-fixed-font-size zamlz/default-fixed-font-size)
+  (setq zamlz/current-variable-font-size zamlz/default-variable-font-size)
+  (zamlz/set-font-size))
+
+(defun zamlz/increase-font-size ()
+  "Increase current font sizes by a factor of `zamlz/font-change-increment'."
+  (interactive)
+  (setq zamlz/current-fixed-font-size
+        (ceiling (* zamlz/current-fixed-font-size zamlz/font-change-increment)))
+  (setq zamlz/current-variable-font-size
+        (ceiling (* zamlz/current-variable-font-size zamlz/font-change-increment)))
+  (zamlz/set-font-size))
+
+(defun zamlz/decrease-font-size ()
+  "Decrease current font sizes by a factor of `zamlz/font-change-increment', down to a minimum size of 1."
+  (interactive)
+  (setq zamlz/current-fixed-font-size
+        (max 1
+             (floor (/ zamlz/current-fixed-font-size zamlz/font-change-increment))))
+  (setq zamlz/current-variable-font-size
+        (max 1
+             (floor (/ zamlz/current-variable-font-size zamlz/font-change-increment))))
+  (zamlz/set-font-size))
 #+end_src
 
 *** Themes and Appearance
@@ -343,9 +410,9 @@ I have a lot of fonts commented out right now because I can't decide on which on
               (lambda (frame)
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
-                  (zamlz/set-font-faces)
+                  (zamlz/reset-font-size)
                   (zamlz/set-transparency 100))))
-  (zamlz/set-font-faces))
+  (zamlz/reset-font-size))
 #+end_src
 
 ** Configure System

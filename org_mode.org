@@ -5,7 +5,7 @@
 #+TITLE: Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-10-08 Fri 08:50:20]
+#+LAST_MODIFIED: [2021-10-10 Sun 20:36:57]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -109,37 +109,27 @@ We can configure =org-mode= font faces via a seperate function that we define. W
   (setq org-fontify-quote-and-verse-blocks t)
   ;; set basic title font
   (set-face-attribute 'org-level-8 nil :weight 'normal :slant 'italic :inherit 'outline-8
-                      :font "ETBembo"
                       :height 1.0)
   ;; Low levels are unimportant => no scaling
   (set-face-attribute 'org-level-7 nil :weight 'normal :slant 'italic :inherit 'outline-7
-                      :font "ETBembo"
                       :height 1.1)
   (set-face-attribute 'org-level-6 nil :weight 'normal :slant 'italic :inherit 'outline-6
-                      :font "ETBembo"
                       :height 1.2)
   (set-face-attribute 'org-level-5 nil :weight 'normal :slant 'italic :inherit 'outline-5
-                      :font "ETBembo"
                       :height 1.3)
   (set-face-attribute 'org-level-4 nil :weight 'normal :slant 'italic :inherit 'outline-4
-                      :font "ETBembo"
                       :height 1.4)
   (set-face-attribute 'org-level-3 nil :weight 'normal :slant 'italic :inherit 'outline-3
-                      :font "ETBembo"
                       :height 1.5)
   (set-face-attribute 'org-level-2 nil :weight 'normal :slant 'italic :inherit 'outline-2
-                      :font "ETBembo"
                       :height 1.6)
   (set-face-attribute 'org-level-1 nil :weight 'normal :slant 'italic :inherit 'outline-1
-                      :font "ETBembo"
                       :height 1.7)
   ;; Only use the first 4 styles and do not cycle.
   (setq org-cycle-level-faces nil)
   (setq org-n-level-faces 4)
-  (set-face-attribute 'org-document-info nil :font "ETBembo" :slant 'italic)
   ;; Document Title, (\huge)
   (set-face-attribute 'org-document-title nil
-                      :font "ETBembo"
                       :slant 'normal
                       :weight 'normal
                       :height 2.5

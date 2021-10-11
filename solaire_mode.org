@@ -5,7 +5,7 @@
 #+TITLE: Solaire Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-06-13 Sun 13:10]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:13]
+#+LAST_MODIFIED: [2021-10-10 Sun 20:46:06]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -27,7 +27,7 @@ Let's setup =solaire-mode=
 ** Activate Mode
 
 #+begin_src emacs-lisp
-(solaire-global-mode +1)
+;; (solaire-global-mode +1)
 #+end_src
 
 ** Feature Provide
