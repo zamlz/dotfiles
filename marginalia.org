@@ -6,7 +6,7 @@
 #+TITLE: Marginalia
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-18 Tue 20:57]
-#+LAST_MODIFIED: [2021-10-03 Sun 11:40:33]
+#+LAST_MODIFIED: [2021-10-10 Sun 17:48:10]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -24,7 +24,17 @@ Before anything else, we should make sure [[id:cc5f32f8-c334-448a-9970-08d037f2d
 
 #+begin_src emacs-lisp
 (require 'init-vertico)
+#+end_src
+
+We also use [[id:36dbad05-71b2-47b1-ae87-9f8334a4f554][All The Icons]] to display custom icons in the =marginalia= output. We make use of =all-the-icons-completion= package which adds icons t ocompletion items.
+
+#+begin_src emacs-lisp
 (require 'init-all-the-icons)
+
+(use-package all-the-icons-completion
+  :after all-the-icons
+  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :init (all-the-icons-completion-mode))
 #+end_src
 
 ** Package Install
@@ -34,7 +44,8 @@ Setup =marginalia= but make sure we don't load it up before [[id:cc5f32f8-c334-4
 #+begin_src emacs-lisp
 (use-package marginalia
   :after vertico
-  :hook (marginalia-mode . all-the-icons-completion-marginalia-setup)
+  :bind (:map minibuffer-local-map
+         ("M-m" . marginalia-cycle))
   :init (marginalia-mode))
 #+end_src
 

@@ -6,7 +6,7 @@
 #+TITLE: Vertico
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+LAST_MODIFIED: [2021-10-10 Sun 17:39:25]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -38,6 +38,7 @@ Setup the =vertico= package.
 #+begin_src emacs-lisp
 (use-package vertico
   :bind (:map vertico-map
+         ("?"   . minibuffer-completion-help)
          ("M-j" . vertico-next)
          ("M-k" . vertico-previous)
          ("M-f" . vertico-exit)
@@ -60,11 +61,10 @@ Let's also set the max size of =vertico= minibuffers.
 (setq vertico-count 16)
 #+end_src
 
-** Custom Faces
+But let's also make sure =vertico= is able to resize itself
 
 #+begin_src emacs-lisp
-(with-eval-after-load 'vertico
-  (set-face-attribute 'vertico-current nil :inherit 'custom-modified))
+(setq vertico-resize t)
 #+end_src
 
 ** Persist History
@@ -86,7 +86,8 @@ Resize the minibuffer on the fly as completion shrinks.
 Do not allow the cursor in minibuffer prompts
 
 #+begin_src emacs-lisp
-(setq minibuffer-prompt-properties '(read-only t cursor-intangible t face minibuffer-prompt))
+(setq minibuffer-prompt-properties
+      '(read-only t cursor-intangible t face minibuffer-prompt))
 (add-hook 'minibuffer-setup-hook #'cursor-intangible-mode)
 #+end_src
 
