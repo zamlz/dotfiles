@@ -6,7 +6,7 @@
 #+TITLE: Rofi Dmenu
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-01 Thu 10:32]
-#+LAST_MODIFIED: [2021-10-11 Mon 09:20:54]
+#+LAST_MODIFIED: [2021-10-11 Mon 10:55:56]
 #+filetags: CONFIG SOFTWARE
 
 Rofi is a window switcher, application launcher and dmenu program for [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][X11]].
@@ -108,35 +108,35 @@ configuration {
 :END:
 
 #+begin_src conf
-*{
+,*{
     red:                         rgba ( 220, 50, 47, 100 % );
-    selected-active-foreground:  var(background);
-    lightfg:                     rgba ( 88, 104, 117, 100 % );
-    separatorcolor:              var(foreground);
-    urgent-foreground:           var(red);
-    alternate-urgent-background: var(lightbg);
-    lightbg:                     rgba ( 238, 232, 213, 100 % );
-    background-color:            rgba ( 0, 0, 0, 0 % );
-    border-color:                var(foreground);
-    normal-background:           var(background);
-    selected-urgent-background:  var(red);
-    alternate-active-background: var(lightbg);
-    spacing:                     2;
     blue:                        rgba ( 38, 139, 210, 100 % );
-    alternate-normal-foreground: var(foreground);
-    urgent-background:           var(background);
-    selected-normal-foreground:  var(lightbg);
-    active-foreground:           var(blue);
-    background:                  rgba ( 253, 246, 227, 100 % );
-    selected-active-background:  var(blue);
-    active-background:           var(background);
-    selected-normal-background:  var(lightfg);
-    alternate-normal-background: var(lightbg);
-    foreground:                  rgba ( 0, 43, 54, 100 % );
-    selected-urgent-foreground:  var(background);
+    background:                  rgba ( 0, 0, 0, 100 % );
+    foreground:                  rgba ( 225, 225, 225, 100 % );
+    background-color:            rgba ( 0, 0, 0, 0 % );
+    normal-background:           var(background);
     normal-foreground:           var(foreground);
-    alternate-urgent-foreground: var(red);
+    lightbg:                     rgba ( 32, 32, 32, 100 % );
+    lightfg:                     var(foreground);
+    selected-normal-background:  var(lightfg);
+    selected-normal-foreground:  var(lightbg);
+    alternate-normal-background: var(lightbg);
+    alternate-normal-foreground: var(foreground);
+    active-background:           var(background);
+    active-foreground:           var(blue);
+    selected-active-background:  var(blue);
+    selected-active-foreground:  var(background);
+    alternate-active-background: var(lightbg);
     alternate-active-foreground: var(blue);
+    urgent-background:           var(background);
+    urgent-foreground:           var(red);
+    selected-urgent-background:  var(red);
+    selected-urgent-foreground:  var(background);
+    alternate-urgent-background: var(lightbg);
+    alternate-urgent-foreground: var(red);
+    separatorcolor:              var(foreground);
+    border-color:                var(foreground);
+    spacing:                     2;
 }
 element {
     padding: 1px ;
@@ -196,6 +196,7 @@ window {
     padding:          5;
     background-color: var(background);
     border:           1;
+    width:            1000;
 }
 mainbox {
     padding: 0;
@@ -277,267 +278,4 @@ textbox-prompt-colon {
     str:        ":";
     text-color: inherit;
 }
-#+end_src
-
-** Xresources
-:PROPERTIES:
-:header-args:C: :tangle ~/.config/xresources.d/rofi :mkdirp yes
-:END:
-
-We configure rofi with it's [[id:560ce224-98e4-4b11-a7d9-fedd64b3fc14][Xresources]] file.
-
-*** Enabled Modes
-
-#+begin_src C
-! "Enabled modi" Set from: Default
-rofi.modi:                           window,run,ssh
-#+end_src
-
-*** Window Geometry
-
-#+begin_src C
-! "Window width" Set from: Default
- rofi.width:                          30
-
-! "Number of lines" Set from: Default
- rofi.lines:                          15
-
-! "Number of columns" Set from: Default
-! rofi.columns:                        1
-#+end_src
-
-*** Colorscheme and Font
-
-#+begin_src C
-! "Font to use" Set from: XResources
-rofi.font:                            Iosevka Term 12
-
-! Color Guidlines                       BG -  FG - BG_ALT - HL_BG - HL_FG
-! "Color scheme for normal row"
- rofi.color-normal:                     xbackground, xforeground, xbackground, xcolor0, xforeground
-! "Color scheme for urgent row"
- rofi.color-urgent:                     xbackground, xforeground, xbackground, xcolor0, xforeground
-! "Color scheme for active row"
- rofi.color-active:                     xbackground, xforeground, xbackground, xcolor0, xforeground
-
-! Color Guidlines                       BG          BORDER      SEPEARATOR
-! "Color scheme window"
- rofi.color-window:                     xbackground,    xcolor8,    xcolor8
-! "Border width" Set from: XResources
-rofi.bw:                             4
-#+end_src
-
-*** Unused Rofi Settings
-
-#+begin_src C
-! "Location on screen" Set from: Default
-! rofi.location:                       0
-! "Padding" Set from: Default
-! rofi.padding:                        5
-! "Y-offset relative to location" Set from: Default
-! rofi.yoffset:                        0
-! "X-offset relative to location" Set from: Default
-! rofi.xoffset:                        0
-! "Always show number of lines" Set from: Default
-! rofi.fixed-num-lines:                true
-
-! "Terminal to use" Set from: XResources
-rofi.terminal:                       urxvtc
-! "Ssh client to use" Set from: Default
-! rofi.ssh-client:                     ssh
-! "Ssh command to execute" Set from: Default
-! rofi.ssh-command:                    {terminal} -e {ssh-client} {host}
-! "Run command to execute" Set from: Default
-! rofi.run-command:                    {cmd}
-! "Command to get extra run targets" Set from: Default
-! rofi.run-list-command:
-! "Run command to execute that runs in shell" Set from: Default
-! rofi.run-shell-command:              {terminal} -e {cmd}
-! "Command executed on accep-entry-custom for window modus" Set from: Default
-! rofi.window-command:                 xkill -id {window}
-
-! "Disable history in run/ssh" Set from: Default
-! rofi.disable-history:                false
-! "Use levenshtein sorting" Set from: Default
-! rofi.levenshtein-sort:               false
-! "Set case-sensitivity" Set from: Default
-! rofi.case-sensitive:                 false
-
-! "Cycle through the results list" Set from: Default
-! rofi.cycle:                          true
-! "Enable sidebar-mode" Set from: Default
-! rofi.sidebar-mode:                   false
-! "Row height (in chars)" Set from: Default
-! rofi.eh:                             1
-! "Enable auto select mode" Set from: Default
-! rofi.auto-select:                    false
-
-! "Parse hosts file for ssh mode" Set from: Default
-! rofi.parse-hosts:                    false
-! "Parse known_hosts file for ssh mode" Set from: Default
-! rofi.parse-known-hosts:              true
-
-! "Set the modi to combine in combi mode" Set from: Default
-! rofi.combi-modi:                     window,run
-! "Set the matching algorithm. (normal, regex, glob, fuzzy)" Set from: Default
-! rofi.matching:                       normal
-! "Tokenize input string" Set from: Default
-! rofi.tokenize:                       true
-! "Monitor id to show on" Set from: Default
-! rofi.m:                              -5
-
-! "Margin between rows" Set from: Default
-! rofi.line-margin:                    2
-! "Padding within rows" Set from: Default
-! rofi.line-padding:                   1
-! "Pre-set filter" Set from: Default
-! rofi.filter:
-! "Separator style (none, dash, solid)" Set from: Default
-! rofi.separator-style:                dash
-! "Hide scroll-bar" Set from: Default
-! rofi.hide-scrollbar:                 false
-! "Fullscreen" Set from: Default
-! rofi.fullscreen:                     false
-! "Fake transparency" Set from: Default
-! rofi.fake-transparency:              false
-! "DPI" Set from: Default
-! rofi.dpi:                            -1
-
-! "Threads to use for string matching" Set from: Default
-! rofi.threads:                        0
-
-! "Scrollbar width" Set from: Default
-! rofi.scrollbar-width:                8
-! "Scrolling method. (0: Page, 1: Centered)" Set from: Default
-! rofi.scroll-method:                  0
-
-! "Background to use for fake transparency. (background or screenshot)" Set from: Default
-! rofi.fake-background:                screenshot
-! "Window Format. w (desktop name), t (title), n (name), r (role), c (class)" Set from: Default
-! rofi.window-format:                  {w}   {c}   {t}
-! "Click outside the window to exit" Set from: Default
-! rofi.click-to-exit:                  true
-
-! "Indicate how it match by underlining it." Set from: Default
-! rofi.show-match:                     true
-! "Pidfile location" Set from: Default
-! rofi.pid:                            /home/zamlz/.cache/rofi.pid
-
-! "Paste primary selection" Set from: Default
-! rofi.kb-primary-paste:               Control+V,Shift+Insert
-! "Paste clipboard" Set from: Default
-! rofi.kb-secondary-paste:             Control+v,Insert
-! "Clear input line" Set from: Default
-! rofi.kb-clear-line:                  Control+w
-! "Beginning of line" Set from: Default
-! rofi.kb-move-front:                  Control+a
-! "End of line" Set from: Default
-! rofi.kb-move-end:                    Control+e
-! "Move back one word" Set from: Default
-! rofi.kb-move-word-back:              Alt+b
-! "Move forward one word" Set from: Default
-! rofi.kb-move-word-forward:           Alt+f
-! "Move back one char" Set from: Default
-! rofi.kb-move-char-back:              Left,Control+b
-! "Move forward one char" Set from: Default
-! rofi.kb-move-char-forward:           Right,Control+f
-! "Delete previous word" Set from: Default
-! rofi.kb-remove-word-back:            Control+Alt+h,Control+BackSpace
-! "Delete next word" Set from: Default
-! rofi.kb-remove-word-forward:         Control+Alt+d
-! "Delete next char" Set from: Default
-! rofi.kb-remove-char-forward:         Delete,Control+d
-! "Delete previous char" Set from: Default
-! rofi.kb-remove-char-back:            BackSpace,Control+h
-! "Delete till the end of line" Set from: Default
-! rofi.kb-remove-to-eol:               Control+k
-! "Delete till the start of line" Set from: Default
-! rofi.kb-remove-to-sol:               Control+u
-! "Accept entry" Set from: Default
-! rofi.kb-accept-entry:                Control+j,Control+m,Return,KP_Enter
-! "Use entered text as command (in ssh/run modi)" Set from: Default
-! rofi.kb-accept-custom:               Control+Return
-! "Use alternate accept command." Set from: Default
-! rofi.kb-accept-alt:                  Shift+Return
-! "Delete entry from history" Set from: Default
-! rofi.kb-delete-entry:                Shift+Delete
-! "Switch to the next mode." Set from: Default
-! rofi.kb-mode-next:                   Shift+Right,Control+Tab
-! "Switch to the previous mode." Set from: Default
-! rofi.kb-mode-previous:               Shift+Left,Control+Shift+Tab
-! "Go to the previous column" Set from: Default
-! rofi.kb-row-left:                    Control+Page_Up
-! "Go to the next column" Set from: Default
-! rofi.kb-row-right:                   Control+Page_Down
-! "Select previous entry" Set from: Default
-! rofi.kb-row-up:                      Up,Control+p,Shift+Tab,Shift+ISO_Left_Tab
-! "Select next entry" Set from: Default
-! rofi.kb-row-down:                    Down,Control+n
-! "Go to next row, if one left, accept it, if no left next mode." Set from: Default
-! rofi.kb-row-tab:                     Tab
-! "Go to the previous page" Set from: Default
-! rofi.kb-page-prev:                   Page_Up
-! "Go to the next page" Set from: Default
-! rofi.kb-page-next:                   Page_Down
-! "Go to the first entry" Set from: Default
-! rofi.kb-row-first:                   Home,KP_Home
-! "Go to the last entry" Set from: Default
-! rofi.kb-row-last:                    End,KP_End
-! "Set selected item as input text" Set from: Default
-! rofi.kb-row-select:                  Control+space
-! "Take a screenshot of the rofi window" Set from: Default
-! rofi.kb-screenshot:                  Alt+S
-! "Toggle case sensitivity" Set from: Default
-! rofi.kb-toggle-case-sensitivity:     grave,dead_grave
-! "Toggle sort" Set from: Default
-! rofi.kb-toggle-sort:                 Alt+grave
-! "Quit rofi" Set from: Default
-! rofi.kb-cancel:                      Escape,Control+g,Control+bracketleft
-! "Custom keybinding 1" Set from: Default
-! rofi.kb-custom-1:                    Alt+1
-! "Custom keybinding 2" Set from: Default
-! rofi.kb-custom-2:                    Alt+2
-! "Custom keybinding 3" Set from: Default
-! rofi.kb-custom-3:                    Alt+3
-! "Custom keybinding 4" Set from: Default
-! rofi.kb-custom-4:                    Alt+4
-! "Custom Keybinding 5" Set from: Default
-! rofi.kb-custom-5:                    Alt+5
-! "Custom keybinding 6" Set from: Default
-! rofi.kb-custom-6:                    Alt+6
-! "Custom Keybinding 7" Set from: Default
-! rofi.kb-custom-7:                    Alt+7
-! "Custom keybinding 8" Set from: Default
-! rofi.kb-custom-8:                    Alt+8
-! "Custom keybinding 9" Set from: Default
-! rofi.kb-custom-9:                    Alt+9
-! "Custom keybinding 10" Set from: Default
-! rofi.kb-custom-10:                   Alt+0
-! "Custom keybinding 11" Set from: Default
-! rofi.kb-custom-11:                   Alt+exclam
-! "Custom keybinding 12" Set from: Default
-! rofi.kb-custom-12:                   Alt+at
-! "Csutom keybinding 13" Set from: Default
-! rofi.kb-custom-13:                   Alt+numbersign
-! "Custom keybinding 14" Set from: Default
-! rofi.kb-custom-14:                   Alt+dollar
-! "Custom keybinding 15" Set from: Default
-! rofi.kb-custom-15:                   Alt+percent
-! "Custom keybinding 16" Set from: Default
-! rofi.kb-custom-16:                   Alt+dead_circumflex
-! "Custom keybinding 17" Set from: Default
-! rofi.kb-custom-17:                   Alt+ampersand
-! "Custom keybinding 18" Set from: Default
-! rofi.kb-custom-18:                   Alt+asterisk
-! "Custom Keybinding 19" Set from: Default
-! rofi.kb-custom-19:                   Alt+parenleft
-
-! "The display name of this browser" Set from: Default
-! rofi.display-ssh:
-! "The display name of this browser" Set from: Default
-! rofi.display-run:
-! "The display name of this browser" Set from: Default
-! rofi.display-drun:
-! "The display name of this browser" Set from: Default
-! rofi.display-combi:
 #+end_src
