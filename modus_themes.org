@@ -5,8 +5,7 @@
 #+TITLE: Modus Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-10-07 Thu 08:17]
-#+LAST_MODIFIED: [2021-10-07 Thu 09:21:32]
-#+STARTUP: content
+#+LAST_MODIFIED: [2021-10-10 Sun 22:05:11]
 #+FILETAGS: CONFIG SOFTWARE
 
 * Highly Accessible Themes for GNU/Emacs
@@ -29,84 +28,171 @@
 #+end_src
 
 ** Custom Parameters
-All customizations for the modus themes must be applied before loading a theme /(see next section)/
+All customizations for the modus themes must be applied before loading a theme /(see next section)/.
+
+*** Inhibiting Theme Reload
+The first option prevents theme relaoding to occur when using the =M-x customize-set-variable= method.
 
 #+begin_src emacs-lisp
-;; (setq modus-themes-italic-constructs t
-;;       modus-themes-bold-constructs nil
-;;       modus-themes-mixed-fonts nil
-;;       modus-themes-subtle-line-numbers nil
-;;       modus-themes-intense-markup t
-;;       modus-themes-success-deuteranopia t
-;;       modus-themes-tabs-accented t
-;;       modus-themes-inhibit-reload t ; only applies to `customize-set-variable' and related
+(setq modus-themes-inhibit-reload t)
+#+end_src
 
-;;       modus-themes-fringes nil ; {nil,'subtle,'intense}
+*** Color-coding Success State (Deuteranopia)
+The next option is for color-coding success state for people who had deuteranopia (also known as red-green color blindness).
 
+#+begin_src emacs-lisp
+(setq modus-themes-success-deuteranopia nil)
+#+end_src
+
+*** Option for more Italic/Bold Constructs
+The next set of optinos cover adding /italics/ and *bold* constructs to code syntax.
+
+#+begin_src emacs-lisp
+(setq modus-themes-italic-constructs t)
+(setq modus-themes-bold-constructs t)
+#+end_src
+
+*** Syntax Highlighting
+Next we have the option to configure how the syntax would be highlighted. It can include any combination of the following symbols.
+
+- =faint=
+- =yellow-comments=
+- =green-strings=
+- =alt-syntax=
+
+#+begin_src emacs-lisp
+(setq modus-themes-syntax nil)
+#+end_src
+
+*** Font Mixing
+Let =modus-themes= know that we are going to be having mixed fonts.
+
+#+begin_src emacs-lisp
+(setq modus-themes-mixed-fonts t)
+#+end_src
+
+*** Links
+The links itself can be customized with the following parameters
+- =neutral-underline= or =no-underline=
+- =faint= or =no-color=
+- =bold=
+- =italic=
+- =background=
+
+#+begin_src emacs-lisp
+(setq modus-themes-links '(no-underline background))
+#+end_src
+
+*** Command Prompt
+The following can customzie the command prompt style.
+
+#+begin_src emacs-lisp
+(setq modus-themes-prompts '(background italic))
+#+end_src
+
+*** Modeline
+We can also customize the theme of the modeline
+
+#+begin_src emacs-lisp
+(setq modus-themes-mode-line '(accented padded borderless))
+#+end_src
+
+*** Tab Interface
+We can also configure the accented background for tab interfaces. However I do not use any tab based interface as of yet.
+
+#+begin_src emacs-lisp
+(setq modus-themes-tabs-accented nil)
+#+end_src
+
+*** Completion Framework Aesthetics
+We have a couple different ways to customize the completion framework UI.
+- =nil=
+- ='moderate=
+- ='opinionated=
+
+#+begin_src emacs-lisp
+(setq modus-themes-completions nil)
+#+end_src
+
+#+begin_src emacs-lisp
+(modus-themes-load-themes)
+#+end_src
+
+#+begin_src emacs-lisp
+;;(setq modus-themes-subtle-line-numbers nil)
+;;(setq modus-themes-intense-markup t)
+#+end_src
+
+Available options for =modus-themes-fringes= is =nil=, ='subtle=, and ='intense=
+
+#+begin_src emacs-lisp
+;; (setq modus-themes-fringes nil) ; {nil,'subtle,'intense}
+#+end_src
+
+#+begin_src emacs-lisp
 ;;       ;; Options for `modus-themes-lang-checkers' are either nil (the
 ;;       ;; default), or a list of properties that may include any of those
 ;;       ;; symbols: `straight-underline', `text-also', `background',
 ;;       ;; `intense' OR `faint'.
 ;;       modus-themes-lang-checkers nil
+#+end_src
 
-;;       ;; Options for `modus-themes-mode-line' are either nil, or a list
-;;       ;; that can combine any of `3d' OR `moody', `borderless',
-;;       ;; `accented', `padded'.
-;;       modus-themes-mode-line '(padded accented borderless)
 
-;;       ;; Options for `modus-themes-syntax' are either nil (the default),
-;;       ;; or a list of properties that may include any of those symbols:
-;;       ;; `faint', `yellow-comments', `green-strings', `alt-syntax'
-;;       modus-themes-syntax nil
-
+#+begin_src emacs-lisp
 ;;       ;; Options for `modus-themes-hl-line' are either nil (the default),
 ;;       ;; or a list of properties that may include any of those symbols:
 ;;       ;; `accented', `underline', `intense'
 ;;       modus-themes-hl-line '(underline accented)
+#+end_src
 
+#+begin_src emacs-lisp
 ;;       ;; Options for `modus-themes-paren-match' are either nil (the
 ;;       ;; default), or a list of properties that may include any of those
 ;;       ;; symbols: `bold', `intense', `underline'
 ;;       modus-themes-paren-match '(bold intense)
+#+end_src
 
-;;       ;; Options for `modus-themes-links' are either nil (the default),
-;;       ;; or a list of properties that may include any of those symbols:
-;;       ;; `neutral-underline' OR `no-underline', `faint' OR `no-color',
-;;       ;; `bold', `italic', `background'
-;;       modus-themes-links '(neutral-underline background)
 
-;;       ;; Options for `modus-themes-prompts' are either nil (the
-;;       ;; default), or a list of properties that may include any of those
-;;       ;; symbols: `background', `bold', `gray', `intense', `italic'
-;;       modus-themes-prompts '(intense bold)
 
-;;       modus-themes-completions 'moderate ; {nil,'moderate,'opinionated}
 
+#+begin_src emacs-lisp
 ;;       modus-themes-mail-citations nil ; {nil,'faint,'monochrome}
+#+end_src
 
+#+begin_src emacs-lisp
 ;;       ;; Options for `modus-themes-region' are either nil (the default),
 ;;       ;; or a list of properties that may include any of those symbols:
 ;;       ;; `no-extend', `bg-only', `accented'
 ;;       modus-themes-region '(bg-only no-extend)
+#+end_src
 
+#+begin_src emacs-lisp
 ;;       ;; Options for `modus-themes-diffs': nil, 'desaturated,
 ;;       ;; 'bg-only, 'deuteranopia, 'fg-only-deuteranopia
 ;;       modus-themes-diffs 'fg-only-deuteranopia
+#+end_src
 
+#+begin_src emacs-lisp
 ;;       modus-themes-org-blocks 'gray-background ; {nil,'gray-background,'tinted-background}
+#+end_src
 
+#+begin_src emacs-lisp
 ;;       modus-themes-org-agenda ; this is an alist: read the manual or its doc string
 ;;       '((header-block . (variable-pitch scale-title))
 ;;         (header-date . (grayscale workaholic bold-today))
 ;;         (event . (accented scale-small))
 ;;         (scheduled . uniform)
 ;;         (habit . traffic-light-deuteranopia))
+#+end_src
 
+#+begin_src emacs-lisp
 ;;       modus-themes-headings ; this is an alist: read the manual or its doc string
 ;;       '((1 . (overline background))
 ;;         (2 . (rainbow overline))
 ;;         (t . (no-bold)))
+#+end_src
 
+#+begin_src emacs-lisp
 ;;       modus-themes-variable-pitch-ui nil
 ;;       modus-themes-variable-pitch-headings t
 ;;       modus-themes-scale-headings t
