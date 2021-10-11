@@ -6,7 +6,7 @@
 #+TITLE: Vertico
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-10-10 Sun 17:39:25]
+#+LAST_MODIFIED: [2021-10-11 Mon 00:00:23]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -99,7 +99,7 @@ I actually I'm kinda unsure about the purpose of this block. I saw it in the ori
 (advice-add #'completing-read-multiple :filter-args #'crm-indicator)
 #+end_src
 
-** Upwards Directory Movement in =find-file=
+** Upwards Directory Movement in find-file
 
 I stole this little snippet of code [[https://systemcrafters.cc/live-streams/may-21-2021/#going-up-a-directory-in-kbdfind-filekbd][from David (System Crafters)]].  It basically mimics the same behaviour that =counsel-find-file= has when using =<Backspace>=, that is, it would essentially delete the characters in the path string such that it would go up a directory. This does the same thing now, but in =vertico=.
 

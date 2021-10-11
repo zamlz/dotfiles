@@ -5,7 +5,7 @@
 #+TITLE: Corfu
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-26 Mon 09:24]
-#+LAST_MODIFIED: [2021-07-26 Mon 09:32:07]
+#+LAST_MODIFIED: [2021-10-11 Mon 01:13:02]
 #+STARTUP: content
 #+FILETAGS: CONFIG SOFTWARE
 
@@ -28,7 +28,57 @@ It is useful to incorporate [[id:6d690d97-0791-4225-bb3c-8b0deeb95045][Orderless
 
 #+begin_src emacs-lisp
 (use-package corfu
-  :init (corfu-global-mode))
+  :straight '(corfu :host github
+                    :repo "minad/corfu")
+  :bind (:map corfu-map
+         ("M-h" . corfu-show-documentation)
+         ("M-j" . corfu-next)
+         ("M-k" . corfu-previous)
+         ("M-l" . corfu-quit))
+  :config (corfu-global-mode))
+  #+end_src
+
+** Customizations
+Enable auto completion engine automatically.
+
+#+begin_src emacs-lisp
+(setq corfu-auto t)
+#+end_src
+
+Allow cycling between entries.
+
+#+begin_src emacs-lisp
+(setq corfu-cycle t)
+#+end_src
+
+This allows me to use tab to start autocompletion.
+
+#+begin_src emacs-lisp
+(setq tab-always-indent 'complete)
+#+end_src
+
+Do not commit selected candidates on next input.
+
+#+begin_src emacs-lisp
+(setq corfu-commit-predicate nil)
+#+end_src
+
+Automatically quit at word boundary.
+
+#+begin_src emacs-lisp
+(setq corfu-quit-at-boundary nil)
+#+end_src
+
+Automatically quit if there is no match.
+
+#+begin_src emacs-lisp
+(setq corfu-quit-no-match t)
+#+end_src
+
+Show documentation in the echo area.
+
+#+begin_src emacs-lisp
+(setq corfu-echo-documentation t)
 #+end_src
 
 ** Feature Provide
