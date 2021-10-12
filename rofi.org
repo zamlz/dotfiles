@@ -6,7 +6,7 @@
 #+TITLE: Rofi Dmenu
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-01 Thu 10:32]
-#+LAST_MODIFIED: [2021-10-11 Mon 11:01:46]
+#+LAST_MODIFIED: [2021-10-11 Mon 23:39:44]
 #+filetags: CONFIG SOFTWARE
 
 Rofi is a window switcher, application launcher and dmenu program for [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13][X11]].
@@ -23,7 +23,7 @@ Install the rofi package. Ensure that [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13]
 (require 'init-xorg)
 (zamlz/system-packages-ensure "rofi")
 (provide 'init-rofi-dmenu)
-#+end_srca
+#+end_src
 
 ** Configuration
 :PROPERTIES:
@@ -32,15 +32,10 @@ Install the rofi package. Ensure that [[id:9d70bac0-d660-47f4-b9bc-2f2531951f13]
 
 Here is a simple function that will capture the current fixed font that we have setup in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
-#+name: fixed-font-name
-#+begin_src emacs-lisp
-(symbol-value 'zamlz/default-fixed-font)
-#+end_src
-
 #+begin_src conf :noweb yes
 configuration {
       modi: "window,run,ssh";
-      font: "<<fixed-font-name()>> 14";
+      font: "Iosevka Term 14";
       location: 0;
       yoffset: 0;
       xoffset: 0;
