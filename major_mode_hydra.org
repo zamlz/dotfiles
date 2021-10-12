@@ -5,7 +5,7 @@
 #+TITLE: Major Mode Hydra
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-08 Sat 17:00]
-#+LAST_MODIFIED: [2021-09-28 Tue 13:12:22]
+#+LAST_MODIFIED: [2021-10-11 Mon 23:46:53]
 #+filetags: CONFIG SOFTWARE
 
 * Major Mode Hydra and Pretty Hydra
@@ -38,83 +38,6 @@ We also want to be able to access the =major-mode-hydra= menu as easily as possi
 (require 'init-general)
 (zamlz/leader-keys
   "SPC" 'major-mode-hydra)
-#+end_src
-
-** Personal Hydras
-*** Notetaking
-Let's define a =hydra= for accessing all notetaking related functions in packages like [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]] and [[id:e84b4798-89bd-4bca-adb1-15878b6a8f50][BibTeX Actions]]. We don't need to worry about setting up the dependencies as they will be setup at some point, =hydra= will automatically find them when the function is run.
-
-#+begin_src emacs-lisp
-(pretty-hydra-define zamlz/hydra-notes
-  (:title "Notetaking Commands" :color blue :quit-key "q" :exit t)
-  (
-   "Org Roam"
-   (("l" org-roam-buffer-toggle "Toggle Roam Buffer")
-    ("/" org-roam-node-find "Find Node")
-    ("?" org-roam-ref-find "Find Reference")
-    ("i" org-roam-node-insert "Insert Node")
-    ("t" org-roam-tag-add "Tag Add")
-    ("T" org-roam-tag-remove "Tag Remove")
-    ("a" org-roam-alias-add "Alias Add")
-    ("A" org-roam-alias-remove "Alias Remove")
-    ("r" org-roam-ref-add "Reference Add")
-    ("R" org-roam-ref-remove "Reference Remove")
-    ("d" org-roam-db-sync " DB Sync"))
-   "BibTeX"
-   (("b" bibtex-actions-open "Library")
-    ("n" bibtex-actions-open-notes "Notes")
-    ("p" bibtex-actions-open-pdf "PDF")
-    ("L" bibtex-actions-open-link "Open Link")
-    ("e" bibtex-actions-open-entry "View Entry"))
-   "Journal"
-   ()
-   "Misc"
-   (("!" zamlz/notetaking-system-refresh "Full Refresh"))))
-#+end_src
-
-Add the notetaking =hydra= to [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
-
-#+begin_src emacs-lisp
-(zamlz/leader-keys
-  "n" 'zamlz/hydra-notes/body)
-#+end_src
-
-We also create a single function that will refresh all parts of our notetaking system.
-
-#+begin_src emacs-lisp
-(defun zamlz/notetaking-system-refresh()
-  "Refreshes Org-Roam and Bibtex-Actions"
-  (interactive)
-  (org-roam-db-build-cache)
-  (bibtex-actions-refresh))
-#+end_src
-
-*** Documentation & Help
-Create a =hydra= for accessing all help documentation super easily and also provide bindings for packages like [[id:9a2fb807-5ab2-4c0d-8c41-b0fda0d8cc7a][Helpful]].
-
-#+begin_src emacs-lisp
-(pretty-hydra-define zamlz/hydra-documentation
-  (:title "Help & Documentation Commands" :color green :quit-key "q" :exit t)
-  ("CMDs/Funcs/Macros"
-   (("h" helpful-callable "[ALL]")
-    ("c" helpful-command "Command")
-    ("f" helpful-function "Function")
-    ("m" helpful-macro "Macro"))
-  "Variable"
-   (("v" helpful-variable "Variable")
-    ("V" set-variable "Set Variable")
-    ("s" helpful-at-point "Symbol at Point"))
-  "Keybindings"
-   (("k" helpful-key "Describe Key")
-    ("b" embark-bindings "List Bindings")
-    )))
-#+end_src
-
-Add the documentation & help =hydra= to [[id:c4e4923e-2180-4a79-baf1-0dcf0f795c41][General Leader Keybindings Definer]].
-
-#+begin_src emacs-lisp
-(zamlz/leader-keys
-  "h" 'zamlz/hydra-documentation/body)
 #+end_src
 
 ** Feature Provide
