@@ -6,7 +6,7 @@
 #+TITLE: All The Icons
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-24 Mon 17:24]
-#+LAST_MODIFIED: [2021-10-10 Sun 17:46:59]
+#+LAST_MODIFIED: [2021-10-12 Tue 17:57:11]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -55,7 +55,7 @@ Install the =all-the-icons= package. An important bit is that we need to manuall
 #+end_src
 
 ** Helper Functions
-I found these useful helper functions from [[https://github.com/jerrypnz/.emacs.d/blob/master/lisp/jp-icons.el][this repo]] and snagged it for myself. I haven't really used it yet, but good to have lol.
+I found these useful helper functions from [[https://github.com/jerrypnz/.emacs.d/blob/master/lisp/jp-icons.el][this repo]] and snagged it for myself. +I haven't really used it yet, but good to have lol.+ (check [[id:e6532b52-0b06-406f-a7ed-89591de98b40][Org-roam]])
 
 #+begin_src emacs-lisp
 ;;
