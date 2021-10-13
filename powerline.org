@@ -5,12 +5,12 @@
 #+TITLE: Powerline
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-05 Mon 20:08]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:11]
+#+LAST_MODIFIED: [2021-10-12 Tue 23:28:54]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
 * Emacs Version of Vim Powerline
-=powerline= is a fork of the popular vim package of the same name.
+=powerline= is a fork of the popular[[id:8c181e91-9d27-4fda-89da-e3d3c732c55b][ vim]] package of the same name but for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]
 
 * Configuration
 :PROPERTIES:
