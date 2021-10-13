@@ -5,7 +5,7 @@
 #+TITLE: Org-ref
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-29 Sat 12:27]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-10-12 Tue 15:54:58]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -18,6 +18,24 @@ y = \sinh x
 \end{equation}
 
 We can also insert links to papers like so, citet:holden2017
+
+#+begin_src
+Warning (:warning): Warning: You are using deprecated variables in org-ref that will be removed in version 3.
+
+The following variables will not be used in version 3:
+- org-ref-bibliography-notes
+- org-ref-default-bibliography
+- org-ref-pdf-directory
+
+They are replaced by these variables in `bibtex-completion':
+- bibtex-completion-notes-path
+- bibtex-completion-bibliography
+- bibtex-completion-library-path
+
+There are some other changes that are likely to break existing workflows, for example all non-LaTeX exports will be handled by CSL, and all the old export code has been removed.
+
+For more details see https://github.com/jkitchin/org-ref/tree/org-ref-3#readme.
+#+end_src
 
 * Configuration
 :PROPERTIES:
