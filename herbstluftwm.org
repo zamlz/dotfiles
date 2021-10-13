@@ -6,7 +6,7 @@
 #+TITLE: Herbstluftwm Tiling Window Manager
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-13 Wed 11:39:42]
 #+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
@@ -67,6 +67,12 @@ hc rule class~'(Discord|DiscordCanary)' focus=off
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on
 hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
+#+end_src
+
+This is an import rule. What I'm trying to do here is make my =surf= browser be floating and on the bottom of all windows.
+
+#+begin_src shell
+hc rule class='Surf' focus=off floating=on # fullscreen=on
 #+end_src
 
 ** Keybindings
