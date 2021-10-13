@@ -6,8 +6,8 @@
 #+TITLE: Vertico
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-18 Tue 19:38]
-#+LAST_MODIFIED: [2021-10-11 Mon 00:00:23]
-#+filetags: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-10-13 Wed 08:47:56]
+#+filetags: :EMACS:CONFIG:SOFTWARE:
 
 * Vertical Interactive Completion
 =vertico= is a minimal completion UI for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. It is built ontop of the regular completion system unlike other alternatives.
