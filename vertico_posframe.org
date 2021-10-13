@@ -5,7 +5,7 @@
 #+TITLE: Vertico Posframe
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-10-11 Mon 11:14]
-#+LAST_MODIFIED: [2021-10-11 Mon 11:21:44]
+#+LAST_MODIFIED: [2021-10-12 Tue 22:42:17]
 #+STARTUP: content
 #+FILETAGS: CONFIG SOFTWARE
 
@@ -29,11 +29,11 @@ Now let's get on with install =vertico-posframe=. We need to install it directly
 
 #+begin_src emacs-lisp
 (use-package vertico-posframe
-  :disabled
   :straight '(vertico-posframe
               :host github
               :repo "tumashu/vertico-posframe")
-  :init (vertico-posframe-mode 1))
+  ;; :init (vertico-posframe-mode 1)
+)
 #+end_src
 
 ** Customize Appearance
