@@ -5,7 +5,7 @@
 #+TITLE: Org Babel
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-07-20 Tue 09:43:29]
+#+LAST_MODIFIED: [2021-10-12 Tue 16:52:00]
 #+filetags: CONFIG SOFTWARE EMACS
 
 * Babel: Multi-Language Computing Environment for Literate-Programming/Reproducible-Research
@@ -58,6 +58,7 @@ Now we confiugre some of the parameters for =babel=.
    (latex      . t)
    (plantuml   . t)
    (shell      . t)
+   (org        . t)
    ))
 #+end_src
 
