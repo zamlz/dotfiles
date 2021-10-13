@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-10-12 Tue 18:15:37]
+#+LAST_MODIFIED: [2021-10-12 Tue 23:08:05]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -163,7 +163,7 @@ The following provides which directory the node file belongs to:
   (if-let ((dirs (file-name-directory
                   (file-relative-name (org-roam-node-file node) org-roam-directory))))
       (concat (all-the-icons-material "folder"
-                                      :face 'all-the-icons-dired-dir-face
+                                      :face 'all-the-icons-dblue
                                       :height 0.9)
               (format " %s/" (car (f-split dirs))))
     ""))
