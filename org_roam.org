@@ -5,14 +5,13 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-10-12 Tue 18:15:37]
-#+STARTUP: content
+#+LAST_MODIFIED: [2021-10-13 Wed 12:43:59]
 #+filetags: CONFIG SOFTWARE EMACS
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
 
-* A Plain Text Personal Knowledge Management System
+* A Knowledge Management System for Org-mode
 
 Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]. The project aims to implement [[id:1c9102c5-5e91-450a-ace9-e0ebdd73204f][Zettelkasten Method]] through software.
 
@@ -149,10 +148,11 @@ We also want the heirachy of the node too
   (let ((title (org-roam-node-title node))
         (olp (org-roam-node-olp node))
         (level (org-roam-node-level node))
-        (filetitle (org-roam-node-filetitle node)))
+        (filetitle (org-roam-node-filetitle node))
+        (sepicon (all-the-icons-material "chevron_right")))
     (concat
-     (if (> level 0) (concat filetitle " > "))
-     (if (> level 1) (concat (string-join olp " > ") " > "))
+     (if (> level 0) (concat filetitle sepicon))
+     (if (> level 1) (concat (string-join olp sepicon) sepicon))
      title)))
 #+end_src
 
