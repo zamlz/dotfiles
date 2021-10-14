@@ -5,7 +5,7 @@
 #+TITLE: Org-roam UI
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-09-29 Wed 13:06]
-#+LAST_MODIFIED: [2021-10-13 Wed 11:39:33]
+#+LAST_MODIFIED: [2021-10-14 Thu 10:52:05]
 #+FILETAGS: CONFIG SOFTWARE
 
 * Frontend for Org-roam
@@ -68,7 +68,14 @@ In order to keep my browser session seperate from the =org-roam-ui= webapp, I us
     if [ -n "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon')" ] && \
        [ -z "$(pgrep -f 'surf http://127.0.0.1:35901/')" ]; then
 
+        fix_surf_window() {
+            herbstclient lower "$1"
+            xdotool windowmove "$1" 0 0
+            xdotool windowsize "$1" $(xwininfo -root|grep -E '  (Width|Height):'|cut -d ':' -f2)
+        }
+
         # fork this too so we don't block things
+        fix_surf_window $(herbstclient --last-arg --wait rule surfdesktop) &
         surf "http://127.0.0.1:35901/" &
     fi
 

@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-10-12 Tue 17:22:28]
+#+LAST_MODIFIED: [2021-10-14 Thu 11:10:31]
 #+filetags: CONFIG SOFTWARE EMACS
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -410,7 +410,7 @@ With this setup, we can define a set of functions that we will use to update the
                 (setq doom-modeline-icon t)
                 (with-selected-frame frame
                   (zamlz/reset-font-size)
-                  (zamlz/set-transparency 100))))
+                  (zamlz/set-transparency 90))))
   (zamlz/reset-font-size))
 #+end_src
 
