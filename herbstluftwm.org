@@ -6,7 +6,7 @@
 #+TITLE: Herbstluftwm Tiling Window Manager
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-10-14 Thu 11:06:40]
+#+LAST_MODIFIED: [2021-10-14 Thu 11:40:56]
 #+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
@@ -69,7 +69,7 @@ hc rule windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on
 hc rule windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off
 #+end_src
 
-This is an import rule. What I'm trying to do here is make my =surf= browser be floating and on the bottom of all windows.
+This is an import rule. What I'm trying to do here is make my [[id:72c745dd-8faa-4926-b84e-ed9761c8ce9d][Surf Browser]] be floating and on the bottom of all windows.
 
 #+begin_src shell
 hc rule class='Surf' manage=off hook=surfdesktop

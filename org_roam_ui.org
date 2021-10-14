@@ -5,11 +5,11 @@
 #+TITLE: Org-roam UI
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-09-29 Wed 13:06]
-#+LAST_MODIFIED: [2021-10-14 Thu 10:52:05]
+#+LAST_MODIFIED: [2021-10-14 Thu 11:40:29]
 #+FILETAGS: CONFIG SOFTWARE
 
 * Frontend for Org-roam
-=org-roam-ui= is meant as the successor for [[id:01e8ab76-49c1-49f8-99f7-621ae8bb3ca6][Org-roam Server]].
+=org-roam-ui= is meant as the successor for [[https://github.com/org-roam/org-roam-server][Org-roam-server]]
 
 * Configuration
 :PROPERTIES:
@@ -58,7 +58,7 @@ Run the server if we are running in =daemon= mode.
 :PROPERTIES:
 :header-args:shell: :tangle ~/.config/xinitrc.d/surf-org-roam-ui.sh :mkdirp yes :shebang #!/bin/sh :comments both
 :END:
-In order to keep my browser session seperate from the =org-roam-ui= webapp, I use the surf browser. Let's ensure that it gets started at login by adding it to my [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user level scripts. There are also some [[id:3c22f3fd-a4a1-4c08-9ee4-336d5c6491fa][herbstluftwm]] rules for =surf= as well.
+In order to keep my browser session seperate from the =org-roam-ui= webapp, I use the [[id:72c745dd-8faa-4926-b84e-ed9761c8ce9d][Surf Browser]]. Let's ensure that it gets started at login by creating a [[id:64c66aeb-1b89-4f51-8e36-2931fb24399a][xinit]] user level scripts. Here we control the position and size of the browser with [[id:3c22f3fd-a4a1-4c08-9ee4-336d5c6491fa][herbstluftwm]].
 
 #+begin_src shell
 # start a subshell so we don't block other things from loading
