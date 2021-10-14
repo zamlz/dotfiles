@@ -5,9 +5,9 @@
 #+TITLE: Solaire Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-06-13 Sun 13:10]
-#+LAST_MODIFIED: [2021-10-10 Sun 20:46:06]
+#+LAST_MODIFIED: [2021-10-14 Thu 11:28:44]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+filetags: :CONFIG:SOFTWARE:EMACS:
 
 * If only certain buffers could be so grossly Incandescent
 =solaire-mode= is a package that makes visual distinctions between real text buffers and popups/sidebars etc.

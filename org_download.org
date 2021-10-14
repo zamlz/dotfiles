@@ -5,7 +5,7 @@
 #+TITLE: Org-Download
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-30 Sun 11:26]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+LAST_MODIFIED: [2021-10-13 Wed 17:11:32]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
@@ -37,6 +37,13 @@ Install =Org-download=.
 (setq-default org-download-image-dir "./data")
 (setq-default org-download-heading-lvl nil)
 (setq-default org-download-method 'directory)
+#+end_src
+
+** Update Link Format
+The existing format for =org-download-link-format= was ~"[[file:%s]]\n"~ but this is not needed as the ~file:~ causes problems for other engines that want to display images.
+
+#+begin_src emacs-lisp
+(setq org-download-link-format "[[%s]]\n")
 #+end_src
 
 ** Feature Provide
