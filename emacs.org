@@ -5,8 +5,8 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-10-14 Thu 11:17:41]
-#+filetags: :CONFIG:SOFTWARE:EMACS:
+#+LAST_MODIFIED: [2021-10-14 Thu 17:16:12]
+#+FILETAGS: :config:emacs:
 
 * The Extensible, Customizable Free/Libre Text Editor
 #+DOWNLOADED: screenshot @ 2021-05-13 10:02:43

@@ -5,9 +5,9 @@
 #+TITLE: Evil Goggles
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-25 Tue 11:15]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:19:05]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Visual Hints of Evil Operations
 =evil-goggles-mode= provides visual hints of various different [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][evil-mode]] operations.

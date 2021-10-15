@@ -6,9 +6,9 @@
 #+TITLE: Evil Org
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-25 Tue 16:30]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:21:35]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Make Org-Mode More Evil
 =evil-org-mode= adds [[id:6125052e-63a9-4165-a194-cfc12cb7beb2][Evil Mode]] keybindings to [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]].

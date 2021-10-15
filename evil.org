@@ -5,9 +5,9 @@
 #+TITLE: Evil Mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-04 Sun 13:10]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:21:21]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE EMACS
+#+FILETAGS: :config:emacs:
 
 * Extensible Vi Layer for Emacs
 #+DOWNLOADED: screenshot @ 2021-04-04 13:11:33

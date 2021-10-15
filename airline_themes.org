@@ -4,9 +4,9 @@
 #+TITLE: Airline Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-05 Mon 20:13]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-14 Thu 16:25:58]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Custom Themes for Powerline
 =airline-themes= provides custom themes for [[id:c66413fa-4d8b-4183-b690-8b015a42b194][Powerline]].

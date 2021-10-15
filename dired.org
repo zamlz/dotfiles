@@ -4,8 +4,8 @@
 #+TITLE: Dired File Manager
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-07 Wed 18:57]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
-#+filetags: CONFIG SOFTWARE EMACS
+#+LAST_MODIFIED: [2021-10-14 Thu 17:11:04]
+#+FILETAGS: :config:emacs:
 
 Dired is a file manager for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 

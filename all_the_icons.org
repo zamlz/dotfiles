@@ -6,9 +6,9 @@
 #+TITLE: All The Icons
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-24 Mon 17:24]
-#+LAST_MODIFIED: [2021-10-12 Tue 17:57:11]
+#+LAST_MODIFIED: [2021-10-14 Thu 16:25:49]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Utility Package for Icon Fonts
 =all-the-icons= is an amazing package that provides a great deal of icons but also have them categorized very nicely. The following functions can be used to infer the icons.

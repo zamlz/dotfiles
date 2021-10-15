@@ -5,9 +5,9 @@
 #+TITLE: Company LSP
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-06-08 Tue 23:49]
-#+LAST_MODIFIED: [2021-07-26 Mon 09:23:37]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:05:37]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Company Completion Backend for LSP Mode
 =company-lsp= provides a [[id:866f3d9a-d071-49cb-97f8-53ce0076df7a][Company Autocompletion System]] backend for [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][LSP Mode]].

@@ -5,8 +5,8 @@
 #+TITLE: Circe
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-24 Sat 22:34]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
-#+filetags: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-10-14 Thu 17:04:42]
+#+FILETAGS: :config:emacs:
 
 * Circe, a Client for IRC in Emacs
 Circe is an IRC Client for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].

@@ -5,9 +5,9 @@
 #+TITLE: BibTeX
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-26 Wed 08:08]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:02:58]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Manage Bibliography Entries
 =BibTeX= is pimarily used by [[id:81f184a7-8c7a-40c7-9384-b7bd117a0e1c][LaTeX]] to manage bibliography entries.

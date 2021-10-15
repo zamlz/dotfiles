@@ -6,9 +6,9 @@
 #+TITLE: Embark
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-19 Wed 20:58]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:18:05]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Minibuffer Actions Rooted in Keymaps
 =embark= provides actions for minibuffer stuff.

@@ -4,9 +4,9 @@
 #+TITLE: Andromeda
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-06-20 Sun 12:51]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+LAST_MODIFIED: [2021-10-14 Thu 16:24:50]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE WORKSTATION
+#+FILETAGS: :config:workstation:
 
 * System Specs
 #+begin_src shell :results verbatim

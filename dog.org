@@ -4,8 +4,8 @@
 #+TITLE: dog
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-28 Wed 23:22]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
-#+filetags: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-10-14 Thu 17:12:21]
+#+FILETAGS: :config:
 
 Dog is a script that I wrote which sort of functions like =cat=. However, it will highlight syntax for you as well.
 

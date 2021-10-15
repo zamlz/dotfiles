@@ -5,7 +5,7 @@
 #+TITLE: Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-10-12 Tue 17:02:31]
+#+LAST_MODIFIED: [2021-10-14 Thu 16:17:25]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 

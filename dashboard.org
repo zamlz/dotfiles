@@ -5,9 +5,9 @@
 #+TITLE: Dashboard
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-13 Thu 19:13]
-#+LAST_MODIFIED: [2021-10-07 Thu 08:11:04]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:10:23]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * An Extensible Emacs Dashboard
 

@@ -6,8 +6,8 @@
 #+TITLE: Flycheck Ledger Integration
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-08 Sat 15:48]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
-#+filetags: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-10-14 Thu 17:25:22]
+#+FILETAGS: :config:emacs:
 
 * Flycheck Integration for Ledger-Mode
 :PROPERTIES:

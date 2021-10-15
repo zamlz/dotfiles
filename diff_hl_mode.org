@@ -5,8 +5,8 @@
 #+TITLE: diff-hl
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-09 Sun 01:34]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
-#+filetags: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-10-14 Thu 17:10:38]
+#+FILETAGS: :config:emacs:
 
 * Diff-HL: Highlight Uncommited Changes
 

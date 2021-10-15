@@ -5,8 +5,8 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-10-13 Wed 16:21:19]
-#+filetags: CONFIG SOFTWARE EMACS
+#+LAST_MODIFIED: [2021-10-14 Thu 16:18:48]
+#+FILETAGS: :config:emacs:
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
@@ -241,14 +241,16 @@ Capture templates, not much to explain here.
                             ,(concat "#+TITLE: ${title}\n"
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
-                                     "#+LAST_MODIFIED: %U\n"))
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+FILETAGS:\n"))
          :unnarrowed t)
         ("p" "private" plain "\n%?"
          :if-new (file+head "private/${slug}.org"
                             ,(concat "#+TITLE: ${title}\n"
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
-                                     "#+LAST_MODIFIED: %U\n"))
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+FILETAGS:\n"))
          :unnarrowed t)
         ("c" "config" plain "\n%?"
          :if-new (file+head "config/${slug}.org"
@@ -256,7 +258,7 @@ Capture templates, not much to explain here.
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
                                      "#+LAST_MODIFIED: %U\n"
-                                     "#+FILETAGS: CONFIG SOFTWARE\n"))
+                                     "#+FILETAGS: :config:\n"))
          :unnarrowed t)))
 #+end_src
 

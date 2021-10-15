@@ -4,9 +4,9 @@
 #+TITLE: BibTeX Actions
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-20 Thu 19:43]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-10-14 Thu 16:27:28]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAG: :config:emacs:
 
 * Quickly Find and Act on BibTeX Entries
 

@@ -4,9 +4,9 @@
 #+TITLE: Feh
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-14 Fri 08:30]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:22:12]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:
 
 * Tiny X11 Image Viewer
 

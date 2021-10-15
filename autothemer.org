@@ -5,9 +5,9 @@
 #+TITLE: Autothemer
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-05 Mon 19:36]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:12]
+#+LAST_MODIFIED: [2021-10-14 Thu 16:25:42]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Conveniently create Emacs Themes
 =autothemer= provides a wrapper on the existing =deftheme= and =custom-theme-set-faces= functionality.

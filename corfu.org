@@ -5,9 +5,9 @@
 #+TITLE: Corfu
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-26 Mon 09:24]
-#+LAST_MODIFIED: [2021-10-11 Mon 01:13:02]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:09:22]
 #+STARTUP: content
-#+FILETAGS: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Completion Overlay Region Function
 =corfu= enhances the defeault completion in region functions with a improved and minimal completion overlay.

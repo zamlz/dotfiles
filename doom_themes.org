@@ -5,9 +5,9 @@
 #+TITLE: Doom Themes
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-07-05 Mon 19:40]
-#+LAST_MODIFIED: [2021-10-07 Thu 08:16:04]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:14:59]
 #+STARTUP: content
-#+filetags: :EMACS:CONFIG:SOFTWARE:
+#+FILETAGS: :config:emacs:
 
 * An Opinionated Pack of Modern Color-Themes
 =doom-themes= provides a bunch of very nice color themes. The benefit of using this package is that is also provides theme configuration for a lot of different packages.

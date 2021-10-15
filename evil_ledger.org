@@ -5,8 +5,8 @@
 #+TITLE: Evil Ledger
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-08 Sat 15:40]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
-#+filetags: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-10-14 Thu 17:20:39]
+#+FILETAGS: :config:emacs:
 
 * Making Ledger-Mode more Evil
 

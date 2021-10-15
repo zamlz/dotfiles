@@ -5,9 +5,9 @@
 #+TITLE: Consult
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-18 Tue 21:41]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:07:33]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Consulting Completing-Read
 Provides various practical commands for completing-read. It essentially is meant to be used on top of completion systems like [[id:cc5f32f8-c334-448a-9970-08d037f2d83a][Vertico]].

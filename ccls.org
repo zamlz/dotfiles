@@ -5,9 +5,9 @@
 #+TITLE: ccls
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-06-08 Tue 00:29]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-14 Thu 17:04:24]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * C/C++/ObjC Language Server
 =ccls= is a language server for the [[id:546352d0-57b6-4efa-b772-36f53ec830f6][C Programming Language]] and the C++ Programming Language. =ccls= is an external package which must be installed, but it also has package that connects it to the [[id:034feb71-fa05-43cd-87a6-88bd22d27f23][Lsp Mode]].

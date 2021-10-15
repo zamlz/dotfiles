@@ -5,9 +5,9 @@
 #+TITLE: BibTeX Completions
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-29 Sat 12:05]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-14 Thu 16:28:12]
 #+STARTUP: content
-#+filetags: CONFIG SOFTWARE
+#+FILETAGS: :config:emacs:
 
 * Search and Manage Bibliographies in Emacs
 =bibtex-completions= is *the* package for interfacing with your BibTeX references on your filesystem. It is used my many other packages.
