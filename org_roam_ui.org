@@ -5,7 +5,7 @@
 #+TITLE: Org-roam UI
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-09-29 Wed 13:06]
-#+LAST_MODIFIED: [2021-10-14 Thu 14:13:02]
+#+LAST_MODIFIED: [2021-10-14 Thu 14:23:49]
 #+FILETAGS: CONFIG SOFTWARE
 
 * Frontend for Org-roam
@@ -66,6 +66,7 @@ In order to keep my browser session seperate from the =org-roam-ui= webapp, I us
     # delay by 2 seconds so emacs daemon has time to load
     sleep 2
     if [ -n "$(pgrep -f 'emacs --daemon=xorg-emacs-daemon')" ] && \
+       [ -f "~/.config/enable_surf" ]; &&
        [ -z "$(pgrep -f 'surf http://127.0.0.1:35901/')" ]; then
 
         fix_surf_window() {
