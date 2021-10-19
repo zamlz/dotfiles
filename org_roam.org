@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-10-14 Thu 16:18:48]
+#+LAST_MODIFIED: [2021-10-18 Mon 19:38:50]
 #+FILETAGS: :config:emacs:
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
@@ -223,7 +223,7 @@ Finally, update the display template.
 #+begin_src emacs-lisp
 (setq org-roam-node-display-template
       (concat
-       "${directories:12}"
+       "${directories:14}"
        "${backlinkscount:7}"
        "${hierarchy:80}"
        "${refindicator:3}"
