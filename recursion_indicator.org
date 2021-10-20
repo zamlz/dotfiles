@@ -5,12 +5,12 @@
 #+TITLE: Recursion Indicator
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-24 Mon 09:55]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-19 Tue 16:48:52]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE
 
 * Recursion Indicator for the Modeline
-A simple package which indicates the recursion level of recursive minibuffers in the modeline for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
+A simple package which indicates the recursion level of recursive minibuffers in the modeline for [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]]. This is extremely important for [[id:cc5f32f8-c334-448a-9970-08d037f2d83a][Vertico]]!
 
 * Configuration
 :PROPERTIES:
