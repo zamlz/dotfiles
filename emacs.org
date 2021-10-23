@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-10-14 Thu 17:16:12]
+#+LAST_MODIFIED: [2021-10-23 Sat 13:48:37]
 #+FILETAGS: :config:emacs:
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -415,7 +415,7 @@ With this setup, we can define a set of functions that we will use to update the
 #+end_src
 
 ** Configure System
-Before we do anything to crazy, lets load up some system specific settings. Usually this should just contain variable definitions used for other packages to use. Also the contents of this file could be any =system= file. Currently there are only two being managed right now ([[id:41f09830-6fd1-4f9c-8656-44470647c061][Andromeda Workstation]] and Sagitarrius Workstation).
+Before we do anything to crazy, lets load up some system specific settings. Usually this should just contain variable definitions used for other packages to use. Also the contents of this file could be any =system= file. Currently there are only two being managed right now ([[id:41f09830-6fd1-4f9c-8656-44470647c061][Andromeda]] and [[id:07af4012-45cd-4738-adb0-032b8fba60b5][Sagittarius]]).
 
 #+begin_src emacs-lisp
 (require 'init-system)
