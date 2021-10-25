@@ -3,15 +3,15 @@
 :ROAM_REFS: https://www.orgroam.com/
 :END:
 #+TITLE: Org-roam
+#+SUBTITLE: A Knowledge Management System for Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-10-25 Mon 11:57:35]
+#+LAST_MODIFIED: [2021-10-25 Mon 14:14:00]
 #+FILETAGS: :config:emacs:
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
 [[file:data/org_roam_logo.png]]
 
-* A Knowledge Management System for Org-mode
 
 Org-roam is a really cool piece of software thats built to emulate the feature of Roam Research using the system provided by [[id:ef93dff4-b19f-4835-9002-9d4215f8a6fe][Org-mode]]. The project aims to implement [[id:1c9102c5-5e91-450a-ace9-e0ebdd73204f][Zettelkasten Method]] through software.
 
