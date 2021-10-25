@@ -4,12 +4,11 @@
 :ROAM_ALIASES: gitconfig gitattributes gitignore
 :END:
 #+TITLE: Git
+#+SUBTITLE: The Stupid Content Tracker
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-09-23 Thu 18:57:03]
-#+filetags: SOFTWARE CONFIG EMACS
-
-* Git: The Stupid Content Tracker
+#+LAST_MODIFIED: [2021-10-25 Mon 11:11:06]
+#+filetags: :emacs:config:
 
 #+DOWNLOADED: file:///tmp/qutebrowser-JkgLEz/Git-Logo-2Color.png @ 2021-05-23 12:00:13
 [[file:data/git_logo.png]]
@@ -160,21 +159,4 @@ Attributes let us assign file types to specific behaviours within git. In this c
 ,*.lisp  diff=lisp
 ,*.el    diff=lisp
 ,*.org   diff=org
-#+end_src
-
-* Emacs Configuration
-:PROPERTIES:
-:header-args:emacs-lisp: :tangle ~/.config/emacs/lisp/init-git.el :comments both :mkdirp yes
-:END:
-
-These are grouped together as you don't need to configure it, but it adds modes for git related files so they won't be =Fundamental=.
-
-#+begin_src emacs-lisp
-(use-package gitconfig-mode)
-(use-package gitignore-mode)
-(use-package gitattributes-mode)
-#+end_src
-
-#+begin_src emacs-lisp
-(provide 'init-git)
 #+end_src
