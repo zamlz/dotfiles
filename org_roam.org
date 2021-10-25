@@ -5,7 +5,7 @@
 #+TITLE: Org-roam
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-10-18 Mon 19:38:50]
+#+LAST_MODIFIED: [2021-10-25 Mon 11:57:35]
 #+FILETAGS: :config:emacs:
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
@@ -239,6 +239,7 @@ Capture templates, not much to explain here.
       `(("d" "default" plain "\n%?"
          :if-new (file+head "notes/${slug}.org"
                             ,(concat "#+TITLE: ${title}\n"
+                                     "#+SUBTITLE:\n"
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
                                      "#+LAST_MODIFIED: %U\n"
@@ -247,6 +248,7 @@ Capture templates, not much to explain here.
         ("p" "private" plain "\n%?"
          :if-new (file+head "private/${slug}.org"
                             ,(concat "#+TITLE: ${title}\n"
+                                     "#+SUBTITLE:\n"
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
                                      "#+LAST_MODIFIED: %U\n"
@@ -255,6 +257,7 @@ Capture templates, not much to explain here.
         ("c" "config" plain "\n%?"
          :if-new (file+head "config/${slug}.org"
                             ,(concat "#+TITLE: ${title}\n"
+                                     "#+SUBTITLE:\n"
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
                                      "#+LAST_MODIFIED: %U\n"
