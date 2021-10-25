@@ -7,7 +7,7 @@
 #+SUBTITLE: The Stupid Content Tracker
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 09:36]
-#+LAST_MODIFIED: [2021-10-25 Mon 11:11:06]
+#+LAST_MODIFIED: [2021-10-25 Mon 11:39:55]
 #+filetags: :emacs:config:
 
 #+DOWNLOADED: file:///tmp/qutebrowser-JkgLEz/Git-Logo-2Color.png @ 2021-05-23 12:00:13
@@ -22,7 +22,6 @@ No, really, look at the =man= page, thats the full title!
 * Useful Resources
 - [[https://git-scm.com/doc][Official Git Documentation]]
 - [[https://protesilaos.com/codelog/2021-01-26-git-diff-hunk-elisp-org/][Informative Diff Hunks for Emacs Lisp ad Org]]
-- [[https://youtu.be/j-k-lkilbEs][John Wiegley's Magit Demonstration]]
 
 * Tips and Tricks
 Nothing yet, but as I remember them, I'll add them here.
