@@ -5,7 +5,7 @@
 #+TITLE: Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-10-14 Thu 16:17:25]
+#+LAST_MODIFIED: [2021-10-28 Thu 15:47:38]
 #+STARTUP: content
 #+filetags: CONFIG SOFTWARE EMACS
 
@@ -107,8 +107,8 @@ I should probably split this bloody mess up.
 #+begin_src emacs-lisp
 (use-package org
   :hook
-  ;; (org-mode    . zamlz/org-mode-setup-simple)
-  (org-mode    . zamlz/org-mode-setup-fancy)
+  (org-mode    . zamlz/org-mode-setup-simple)
+  ;; (org-mode    . zamlz/org-mode-setup-fancy)
   (before-save . zamlz/update-org-modified-property-hook)
   :bind (:map org-mode-map
               ("C-M-h" . org-previous-link)
@@ -156,7 +156,10 @@ These are some hooks that we would like to run when =org-mode= is started. We ha
 
 #+begin_src emacs-lisp
 (defun zamlz/org-mode-setup-simple ()
-  ;; (org-indent-mode)
+  (org-indent-mode)
+  (org-num-mode)
+  (visual-line-mode +1)
+  (setq fill-column 10000)
   (zamlz/org-level-face-setup-simple))
 #+end_src
 
