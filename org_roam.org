@@ -6,7 +6,7 @@
 #+SUBTITLE: A Knowledge Management System for Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:15]
-#+LAST_MODIFIED: [2021-10-25 Mon 14:14:00]
+#+LAST_MODIFIED: [2021-10-25 Mon 19:41:42]
 #+FILETAGS: :config:emacs:
 
 #+DOWNLOADED: screenshot @ 2021-03-27 00:26:48
@@ -237,32 +237,52 @@ Capture templates, not much to explain here.
 #+begin_src emacs-lisp
 (setq org-roam-capture-templates
       `(("d" "default" plain "\n%?"
+         :unnarrowed t
          :if-new (file+head "notes/${slug}.org"
                             ,(concat "#+TITLE: ${title}\n"
                                      "#+SUBTITLE:\n"
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
                                      "#+LAST_MODIFIED: %U\n"
-                                     "#+FILETAGS:\n"))
-         :unnarrowed t)
-        ("p" "private" plain "\n%?"
-         :if-new (file+head "private/${slug}.org"
-                            ,(concat "#+TITLE: ${title}\n"
-                                     "#+SUBTITLE:\n"
-                                     "#+AUTHOR: %n (%(user-login-name))\n"
-                                     "#+CREATED: %U\n"
-                                     "#+LAST_MODIFIED: %U\n"
-                                     "#+FILETAGS:\n"))
-         :unnarrowed t)
+                                     "#+FILETAGS:\n")))
         ("c" "config" plain "\n%?"
+         :unnarrowed t
          :if-new (file+head "config/${slug}.org"
                             ,(concat "#+TITLE: ${title}\n"
                                      "#+SUBTITLE:\n"
                                      "#+AUTHOR: %n (%(user-login-name))\n"
                                      "#+CREATED: %U\n"
                                      "#+LAST_MODIFIED: %U\n"
-                                     "#+FILETAGS: :config:\n"))
-         :unnarrowed t)))
+                                     "#+FILETAGS: :config:\n")))
+        ("b" "blog" plain "\n%?"
+         :unnarrowed t
+         :if-new (file+head "blog/${slug}.org"
+                            ,(concat "#+TITLE: ${title}\n"
+                                     "#+SUBTITLE:\n"
+                                     "#+AUTHOR: %n (%(user-login-name))\n"
+                                     "#+CREATED: %U\n"
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+FILETAGS: :blog:\n")))
+        ("p" "private")
+        ("pp" "notes" plain "\n%?"
+         :unnarrowed t
+         :if-new (file+head "private/${slug}.org"
+                            ,(concat "#+TITLE: ${title}\n"
+                                     "#+SUBTITLE:\n"
+                                     "#+AUTHOR: %n (%(user-login-name))\n"
+                                     "#+CREATED: %U\n"
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+FILETAGS:\n")))
+        ("pd" "pathfinder" plain "\n%?"
+         :unnarrowed t
+         :if-new (file+head "private/pathfinder/${slug}.org"
+                            ,(concat "#+TITLE: ${title}\n"
+                                     "#+SUBTITLE:\n"
+                                     "#+AUTHOR: %n (%(user-login-name))\n"
+                                     "#+CREATED: %U\n"
+                                     "#+LAST_MODIFIED: %U\n"
+                                     "#+FILETAGS: :pathfinder:\n")))
+        ))
 #+end_src
 
 ** Feature Provide
