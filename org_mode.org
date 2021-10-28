@@ -5,8 +5,7 @@
 #+TITLE: Org-mode
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:18]
-#+LAST_MODIFIED: [2021-10-28 Thu 15:47:38]
-#+STARTUP: content
+#+LAST_MODIFIED: [2021-10-28 Thu 16:04:10]
 #+filetags: CONFIG SOFTWARE EMACS
 
 * Your Life in Plain Text
@@ -118,8 +117,8 @@ I should probably split this bloody mess up.
   (org-directory "~/org/gtd/")
   (org-agenda-files (list org-directory))
   ;; Add some nice visuals changes
-  ;;(org-ellipsis " ▾")
-  (org-ellipsis " ")
+  (org-ellipsis " ▾")
+  ;; (org-ellipsis " ")
   ;; This is so that the imenu displays all levels in ivy
   (org-imenu-depth 6)
   ;; dont use C-c C-o for opening links REEEEEEEEEEEE
@@ -229,14 +228,14 @@ Here is an alternate that is simpler.
                       :height 1.0
                       :underline t
                       :foreground 'unspecified)
-  (set-face-attribute 'org-level-8 nil :weight 'bold :slant 'italic :inherit 'outline-8)
-  (set-face-attribute 'org-level-7 nil :weight 'bold :slant 'italic :inherit 'outline-7)
-  (set-face-attribute 'org-level-6 nil :weight 'bold :slant 'italic :inherit 'outline-6)
-  (set-face-attribute 'org-level-5 nil :weight 'bold :slant 'italic :inherit 'outline-5)
-  (set-face-attribute 'org-level-4 nil :weight 'bold :slant 'italic :inherit 'outline-4)
-  (set-face-attribute 'org-level-3 nil :weight 'bold :slant 'italic :inherit 'outline-3)
-  (set-face-attribute 'org-level-2 nil :weight 'bold :slant 'italic :inherit 'outline-2)
-  (set-face-attribute 'org-level-1 nil :weight 'bold :slant 'italic :inherit 'outline-1))
+  (set-face-attribute 'org-level-8 nil :inherit 'outline-8)
+  (set-face-attribute 'org-level-7 nil :inherit 'outline-7)
+  (set-face-attribute 'org-level-6 nil :inherit 'outline-6)
+  (set-face-attribute 'org-level-5 nil :inherit 'outline-5)
+  (set-face-attribute 'org-level-4 nil :inherit 'outline-4)
+  (set-face-attribute 'org-level-3 nil :inherit 'outline-3)
+  (set-face-attribute 'org-level-2 nil :inherit 'outline-2)
+  (set-face-attribute 'org-level-1 nil :inherit 'outline-1))
 #+end_src
 
 Thanks to [[https://protesilaos.com/codelog/2020-07-17-emacs-mixed-fonts-org/][this blog post]] from Protesliaos, I was able to properly configure variable pitched fonts in these =org-mode= buffers.
