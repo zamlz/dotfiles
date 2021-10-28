@@ -5,7 +5,7 @@
 #+TITLE: Lemonbar
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-29 Mon 19:25]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:24]
+#+LAST_MODIFIED: [2021-10-28 Thu 15:55:32]
 #+filetags: CONFIG SOFTWARE
 
 Lemonbar (XFT Fork) is a lightweight bar based on XCB. Its pretty neat tool that you just pipe output into to display the bar of your design. Unfortunately, it seems like the repo is archived so it is unmaintained. It will likely break at some point so I should look for alternatives.
@@ -97,7 +97,7 @@ Setup the argument string to pass send to lemonbar. Uncomment fonts as needed.
 Other fonts:
 - =-f dina:size=12=
 - =-f xos4Terminus:style=Bold:size=12=
-- =-f IosevkaTerm:size=12=
+- =-f Iosevka\ Term:size=12=
 - =-f PowerlineSymbols:style=Medium:size=12=
 - =-f -wuncon-siji-medium-r-normal--10-100-75-75-c-80-iso10646-1=
 
@@ -105,7 +105,7 @@ Other fonts:
 OPTS="-g x20
 -F ${XBACKGROUND}
 -B ${XBACKGROUND}
--f Iosevka\ Term:size=12
+-f dina:size=12
 -f FontAwesome5Free:style=Regular:size=14
 -f FontAwesome5Free:style=Solid:size=14
 -f FontAwesome5Brands:style=Regular:size=14
