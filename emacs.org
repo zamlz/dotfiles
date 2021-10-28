@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-10-23 Sat 13:48:37]
+#+LAST_MODIFIED: [2021-10-28 Thu 15:49:16]
 #+FILETAGS: :config:emacs:
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -448,10 +448,10 @@ List of installed themes:
 - [[id:397b3f52-7bc9-4d02-88fa-d7f0665fe556][Modus Themes]]
 
 #+begin_src emacs-lisp
-;; (load-theme 'gruvbox-black t)
+(load-theme 'gruvbox-black t)
 ;; (load-theme 'doom-old-hope t)
 ;; (load-theme 'doom-nord t)
-(modus-themes-load-vivendi)
+;; (modus-themes-load-vivendi)
 #+end_src
 
 *** Notetaking Hydra
@@ -555,23 +555,23 @@ fi
 The colorscheme defined in [[id:560ce224-98e4-4b11-a7d9-fedd64b3fc14][Xresources]] below doesn't actually matter. Emacs will override it anyway when you load our actual colorscheme. *However*, Emacs does in fact load this before rendering the GUI Window where as our actual colorscheme is loaded after the GUI Window is drawn. /Therefore/, this simple setup prevents the blinding white flash from appearing at startup! *Secondly*, if the Emacs config is bricked for some reason, our barebones environment will still be in /dark/ mode.
 
 #+begin_src C
-Emacs.foreground: xforeground
-Emacs.background: xbackground
+emacs*foreground: xforeground
+emacs*background: xbackground
 
-Emacs.color0:  xcolor0
-Emacs.color1:  xcolor1
-Emacs.color2:  xcolor2
-Emacs.color3:  xcolor3
-Emacs.color4:  xcolor4
-Emacs.color5:  xcolor5
-Emacs.color6:  xcolor6
-Emacs.color7:  xcolor7
-Emacs.color8:  xcolor8
-Emacs.color9:  xcolor9
-Emacs.color10: xcolor10
-Emacs.color11: xcolor11
-Emacs.color12: xcolor12
-Emacs.color13: xcolor13
-Emacs.color14: xcolor14
-Emacs.color15: xcolor15
+emacs*color0:  xcolor0
+emacs*color1:  xcolor1
+emacs*color2:  xcolor2
+emacs*color3:  xcolor3
+emacs*color4:  xcolor4
+emacs*color5:  xcolor5
+emacs*color6:  xcolor6
+emacs*color7:  xcolor7
+emacs*color8:  xcolor8
+emacs*color9:  xcolor9
+emacs*color10: xcolor10
+emacs*color11: xcolor11
+emacs*color12: xcolor12
+emacs*color13: xcolor13
+emacs*color14: xcolor14
+emacs*color15: xcolor15
 #+end_src
