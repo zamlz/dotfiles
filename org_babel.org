@@ -5,7 +5,7 @@
 #+TITLE: Org Babel
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-04-02 Fri 10:18]
-#+LAST_MODIFIED: [2021-10-12 Tue 16:52:00]
+#+LAST_MODIFIED: [2021-10-28 Thu 15:32:10]
 #+filetags: CONFIG SOFTWARE EMACS
 
 * Babel: Multi-Language Computing Environment for Literate-Programming/Reproducible-Research
@@ -103,7 +103,7 @@ Hook to configure auto-tangling of config files. This needs to be updated to loo
 
 #+begin_src emacs-lisp
 (defun zamlz/org-babel-tangle-config ()
-  (when (member "CONFIG" (org-get-tags))
+  (when (or (member "CONFIG" (org-get-tags)) (member "config" (org-get-tags)))
     ;; Dynamic scoping to the rescue
     (let ((org-confirm-babel-evaluate nil))
       (org-babel-tangle))))
