@@ -5,7 +5,7 @@
 #+SUBTITLE: Emacs Major Modes for Various Git Configuration Files
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-10-25 Mon 10:21]
-#+LAST_MODIFIED: [2021-10-25 Mon 10:52:25]
+#+LAST_MODIFIED: [2021-10-28 Thu 07:42:34]
 #+FILETAGS: :emacs:config:
 
 This package aims to create =Major-modes= for varioous [[id:907ccf31-cf51-441c-a6d1-f9f7f58fe112][Git]] configuration file types in [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
@@ -20,5 +20,5 @@ This package aims to create =Major-modes= for varioous [[id:907ccf31-cf51-441c-a
 #+end_src
 
 #+begin_src emacs-lisp
-(provide 'init-git)
+(provide 'init-git-modes)
 #+end_src
