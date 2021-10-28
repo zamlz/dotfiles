@@ -5,7 +5,7 @@
 #+TITLE: X Resources
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-02 Sun 17:14]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-10-28 Thu 15:42:30]
 #+filetags: CONFIG SOFTWARE
 
 * User-level Dotfile for X11
@@ -55,6 +55,5 @@ We need to source the xresources of [[id:397019f9-e2ea-4c92-bd5c-c1a4666132ee][U
 
 #+begin_src C
 #include ".config/xresources.d/urxvt"
-#include ".config/xresources.d/rofi"
 #include ".config/xresources.d/emacs"
 #+end_src
