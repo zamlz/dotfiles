@@ -203,7 +203,7 @@ We can configure =org-mode= font faces via a seperate function that we define. W
                       :height 1.7)
   ;; Only use the first 4 styles and do not cycle.
   (setq org-cycle-level-faces nil)
-  (setq org-n-level-faces 4)
+  (setq org-n-level-faces 8)
   ;; Document Title, (\huge)
   (set-face-attribute 'org-document-title nil
                       :slant 'normal
