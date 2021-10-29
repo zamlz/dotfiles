@@ -5,9 +5,8 @@
 #+TITLE: Vertico Posframe
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-10-11 Mon 11:14]
-#+LAST_MODIFIED: [2021-10-12 Tue 22:42:17]
-#+STARTUP: content
-#+FILETAGS: CONFIG SOFTWARE
+#+LAST_MODIFIED: [2021-10-28 Thu 17:05:36]
+#+FILETAGS: :config:emacs:
 
 * A Posframe for Vertico
 This package lets you use [[id:cc5f32f8-c334-448a-9970-08d037f2d83a][Vertico]] in posframe mode. Currently has some issues with [[id:d83d2508-561e-49c6-96db-9ab8785fa1f3][Marginalia]] so I've disabled it.
