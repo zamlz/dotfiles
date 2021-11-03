@@ -4,14 +4,14 @@
 #+TITLE: Python Venv Wrapper
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-02 Sun 12:53]
-#+LAST_MODIFIED: [2021-09-30 Thu 09:53:55]
+#+LAST_MODIFIED: [2021-11-03 Wed 08:56:19]
 #+filetags: :PROGRAMMING:CONFIG SOFTWARE:
 
-This is a helper script I wrote to manage [[id:793b435f-ac8c-4140-a6f3-bb4b5575412a][Python]] virtual environments.
+This is a helper script I wrote to manage [[id:793b435f-ac8c-4140-a6f3-bb4b5575412a][Python]] virtual environments within [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]].
 
 * Wrapper Script
 :PROPERTIES:
-:header-args:shell: :tangle ~/.config/bin/venv :mkdirp yes :comments both :shebang #!/bin/zsh
+:header-args:shell: :tangle ~/.config/zsh/functions/venv :mkdirp yes :comments both :shebang #!/bin/zsh
 :END:
 
 We set the python venv directory for my venv helper script here.

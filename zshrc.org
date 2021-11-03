@@ -4,7 +4,7 @@
 #+TITLE: zshrc
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-03 Mon 21:17]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-11-03 Wed 08:56:02]
 #+filetags: CONFIG SOFTWARE
 
 This is configuration file for the interactive session for [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]].
@@ -215,6 +215,22 @@ Adding another zsh hook to capture changes in directory I believe. This ultimate
 #+begin_src shell
 autoload -U add-zsh-hook
 add-zsh-hook -Uz chpwd (){ print -Pn "\e]2;%m:%2~\a" }
+#+end_src
+
+**  Setup Shell Functions
+
+This will source the =ZSH= functions.
+
+#+begin_src shell
+fpath=("$HOME/.config/zsh/functions" $fpath)
+#+end_src
+
+Now we have to this painful process of autoloading. *Note:*, that if the file being autoloading, includes functions, it will be to be autoloaded and run once like so =autoload foo && foo=.
+
+Let's load the [[id:cc7d9ff0-7de7-4d18-8ffc-e9b4d7fa2c56][Python Venv Wrapper]] here.
+
+#+begin_src shell
+autoload venv
 #+end_src
 
 ** X Window Terminal Info
