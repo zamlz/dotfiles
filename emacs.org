@@ -5,7 +5,7 @@
 #+TITLE: GNU/Emacs
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-27 Sat 00:17]
-#+LAST_MODIFIED: [2021-10-28 Thu 16:42:54]
+#+LAST_MODIFIED: [2021-11-03 Wed 09:05:11]
 #+FILETAGS: :config:emacs:
 
 * The Extensible, Customizable Free/Libre Text Editor
@@ -295,7 +295,7 @@ The auth-source-pass package, formerly known as auth-password-store, integrates 
 Going to copy the font setup that [[https://github.com/hrs/dotfiles/blob/main/emacs/dot-emacs.d/configuration.org][hrs's emacs config]] has for font configuration. We start by setting the default fixed font and setting it for the =default= and =fixed-pitch= faces.
 
 #+begin_src emacs-lisp
-(setq zamlz/default-fixed-font "dina")
+(setq zamlz/default-fixed-font "Iosevka Term")
 (setq zamlz/default-fixed-font-size 120)
 (setq zamlz/current-fixed-font-size zamlz/default-fixed-font-size)
 
