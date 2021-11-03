@@ -5,8 +5,7 @@
 #+TITLE: xinit
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-14 Fri 07:54]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:23]
-#+STARTUP: content
+#+LAST_MODIFIED: [2021-11-03 Wed 13:43:44]
 #+filetags: CONFIG SOFTWARE
 
 * X Window System Initializer
@@ -49,6 +48,17 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 #+end_src
 
+Make sure to source this stuff to before reloading it for the first time.
+
+#+begin_src shell
+if [ -d $HOME/.config/xinitrc.d ] ; then
+    find "$HOME/.config/xinitrc.d" -name "*.sh" | while read -r f; do
+        [ -x "$f" ] && . "$f"
+    done
+    unset f
+fi
+#+end_src
+
 This part of the script decides which window manager to start. This is ultimately passed as an argument to =starx=. It is configured from =$1= which must be passed to it. Currently we have options to trigger the [[id:3c22f3fd-a4a1-4c08-9ee4-336d5c6491fa][Herbstluftwm Tiling Window Manager]] and [[id:cf447557-1f87-4a07-916a-160cfd2310cf][GNU/Emacs]].
 
 #+begin_src shell
@@ -65,6 +75,7 @@ esac
 ** User-Level Configurations
 :PROPERTIES:
 :header-args:shell: :tangle ~/.config/bin/refresh-xinitrc.sh :shebang #!/bin/sh :comments both
+:ID:       3621b49d-7628-4ac6-9289-308741764bc6
 :END:
 
 We create a seperate shell script for invoking the user-level scripts. The reason is seperate is so that other window managers can run them as well when refreshing their configuraiton. *NOTE:* This also means that any window manager that is started, should make a call to this script (=refresh-xinitrc.sh=).

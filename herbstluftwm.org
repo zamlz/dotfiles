@@ -6,7 +6,7 @@
 #+TITLE: Herbstluftwm Tiling Window Manager
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-03-29 Mon 18:35]
-#+LAST_MODIFIED: [2021-10-14 Thu 11:40:56]
+#+LAST_MODIFIED: [2021-11-03 Wed 13:51:08]
 #+filetags: CONFIG SOFTWARE
 
 #+DOWNLOADED: screenshot @ 2021-03-29 18:45:00
@@ -32,14 +32,6 @@ hc() {
 }
 
 hc emit_hook reload
-#+end_src
-
-** Source Xorg Universal Settings
-
-We need to configure some X11 specific things that are universally needed regardless of window manager.
-
-#+begin_src shell
-$HOME/.config/bin/refresh-xinitrc.sh
 #+end_src
 
 ** WM Custom Rules
@@ -90,10 +82,12 @@ Super=Mod4
 
 *** Reload WM and Close Window
 
-Define the reload and close window keybindings.
+Define the reload and close window keybindings. We also want to make sure we are reloading the Xinitrc [[id:3621b49d-7628-4ac6-9289-308741764bc6][User-Level Configurations]] here througha keybinding as well.
 
 #+begin_src shell
-hc keybind $Super-Ctrl-Alt-r reload
+hc keybind $Super-Ctrl-Alt-r chain , \
+        spawn $HOME/.config/bin/refresh-xinitrc.sh
+hc keybind $Super-Ctrl-r reload
 hc keybind $Super-q close
 #+end_src
 
