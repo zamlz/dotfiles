@@ -5,7 +5,7 @@
 #+TITLE: X Resources
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-02 Sun 17:14]
-#+LAST_MODIFIED: [2021-10-28 Thu 15:42:30]
+#+LAST_MODIFIED: [2021-11-11 Thu 21:32:36]
 #+filetags: CONFIG SOFTWARE
 
 * User-level Dotfile for X11
@@ -45,8 +45,8 @@ Xft.hintstyle:              hintslight
 #+begin_src C
 !*font: xft:Iosevka Term:size=11
 !*font: xft:xos4 Terminus:size=12
-#define system_font xft:Terminus:size=12
-!#define system_font xft:Iosevka Term:size=8
+!#define system_font xft:Terminus:size=12
+#define system_font xft:Iosevka Term:size=12
 #+end_src
 
 ** External Configurations
