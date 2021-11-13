@@ -4,7 +4,7 @@
 #+TITLE: Zsh Aliases
 #+AUTHOR: Amlesh Sivanantham (zamlz)
 #+CREATED: [2021-05-03 Mon 20:50]
-#+LAST_MODIFIED: [2021-07-19 Mon 09:43:22]
+#+LAST_MODIFIED: [2021-11-13 Sat 11:14:14]
 #+filetags: CONFIG SOFTWARE
 
 Aliases let us create shortcuts for commonly used terminal commands within [[id:be81e6a6-e2cf-489c-b563-5452c27a3382][Zsh]].
@@ -86,4 +86,10 @@ This is just to configure =vi= to actually just be an alias pointing to the defa
 
 #+begin_src shell
 alias vi=$EDITOR # lmao
+#+end_src
+
+Add a custom alias for this because I dont ever remember this flag
+
+#+begin_src shell
+alias emacs-cli="emacs -nw"
 #+end_src
