@@ -1,6 +1,0 @@
-#!/bin/sh
-
-get_logger() {
-    namespace=${1}
-    echo "/usr/bin/logger -t $namespace[$$]"
-}
