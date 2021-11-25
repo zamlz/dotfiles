@@ -1,9 +1,0 @@
-:PROPERTIES:
-:ID:       546352d0-57b6-4efa-b772-36f53ec830f6
-:END:
-#+TITLE: C Programming Language
-#+AUTHOR: Amlesh Sivanantham (zamlz)
-#+CREATED: [2021-06-08 Tue 00:31]
-#+LAST_MODIFIED: [2021-10-14 Thu 17:09:35]
-#+STARTUP: content
-#+filetags: :config:
