@@ -1,0 +1,36 @@
+#!/bin/zsh
+
+# Configure Zsh Interactive Session Options
+setopt EXTENDED_HISTORY
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_IGNORE_SPACE
+setopt AUTO_CD
+unsetopt BEEP 
+
+# Setup Vim Bindings in Zsh.
+bindkey -v
+
+# Load various modules
+autoload -U compinit && compinit -d "$HOME/.local/share/zsh_compdump"
+autoload -U bashcompinit && bashcompinit
+#autoload -U colors && colors
+autoload -U zcalc
+
+# Source some extra plugins
+zplugin="/usr/share/zsh/zsh-syntax-highlighting.zsh"
+if [ -f $zplugin ]; then
+    source $zplugin
+fi
+
+# Source Shell Aliases
+source $HOME/etc/zsh/aliases
+
+# Setup Shell Environment
+source $HOME/etc/zsh/env
+
+# Setup Shell Prompt
+source $HOME/etc/zsh/prompt
+
+# Setup Shell Functions
+fpath=("$HOME/etc/zsh/functions" $fpath)
+autoload venv
