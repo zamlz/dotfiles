@@ -1,0 +1,29 @@
+[user]
+    signingkey = 0x882C395C3B28902C
+    name = Amlesh Sivanantham (zamlz)
+    email = zamlz@pm.me
+
+[core]
+    pager = less
+
+[init]
+    defaultBranch = main
+
+[commit]
+    gpgsign = true
+
+
+[diff "gpg"]
+    textconv = gpg --no-tty --decrypt
+
+[pull]
+    ff = only
+
+[gpg]
+    program = gpg
+
+[alias]
+    branches = for-each-ref --sort=-committerdate --format=\"%(color:blue)%(authordate:relative)\t%(color:red)%(authorname)\t%(color:white)%(color:bold)%(refname:short)\" refs/remotes
+    root = rev-parse --show-toplevel
+    lol = log --graph --decorate --pretty=oneline --abbrev-commit
+    lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
