@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# WARNING: THIS CODE IS DANGEROUS
+# This must be fixed at some point to utilize proper escaping of the
+# $namepsace argument. As it stands now, the code has the potential
+# to be misused and let other commands be injected in. Luckily, it is
+# only used internally and deliberately. Regardless, use with
+# caution!!!
+
+get_logger() {
+    namespace=${1}
+    opts="--stderr --tag $(whoami):$namespace[$$]"
+    echo "logger() { /usr/bin/logger $opts \$@; }"
+}
