@@ -1,0 +1,10 @@
+# Z Shell
+app-shells/zsh
+app-shells/zsh-completions
+app-shells/zsh-syntax-highlighting
+app-shells/gentoo-zsh-completions
+
+# Misc Tools
+app-text/tree
+app-misc/tmux
+sys-process/htop
