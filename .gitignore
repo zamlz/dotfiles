@@ -2,9 +2,6 @@
 .*
 
 # Other folders/symlinks to avoid
-bin/
-etc/
-lib/
 sys/
 src/
 tmp
