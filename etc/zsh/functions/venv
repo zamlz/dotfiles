@@ -1,0 +1,41 @@
+#!/bin/zsh
+
+# Try using pipenv as much as possible instead of these o_O
+
+export PYTHON_VENVS_DIR="$HOME/.local/share/python-venvs"
+if [ -d "$PYTHON_VENVS_DIR" ]; then
+    mkdir -p "$PYTHON_VENVS_DIR"
+fi
+
+# There may be a better solution to this, but I just like using the built in
+# venv that is part of python3. But its a pain to write out every command
+# so this does a lot of things.
+
+if [ ! -z "$@" ]; then
+
+    vname=$1;
+    shift;
+
+    if [ -z "$@" ]; then
+        if [ ! -d "$PYTHON_VENVS_DIR/$vname" ]; then
+
+            echo "Create a new virtual environment named '$vname' ?";
+            echo 'Press any key to continue or Ctrl+C to exit...\n'
+
+            # note this is zsh read
+            read -k1 -rs
+            echo "Creating new venv: $vname";
+            python3 -m venv $PYTHON_VENVS_DIR/$vname
+
+        fi
+        echo "Starting venv: $vname"
+        source $PYTHON_VENVS_DIR/${vname}/bin/activate
+        save_window_info
+    else
+        python -m venv $PYTHON_VENVS_DIR/$vname $@
+        save_window_info
+    fi
+else
+    echo "Python Virtual Environments (venvs)"
+    tree -L 1 -d --noreport $PYTHON_VENVS_DIR/ | tail -n +2
+fi
