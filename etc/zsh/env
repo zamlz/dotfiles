@@ -1,0 +1,80 @@
+#!/bin/zsh
+
+# Source my main repositories
+source $HOME/lib/repos
+
+# Update PATH with local binary directories
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
+
+# Useful to have the distro name easily accessible
+export DISTRO=$(grep --color=none ^ID= /etc/os-release \
+    | sed -e 's/^ID=//g' \
+    | tr -d '"')
+
+# This will let us know if we're in windows (WSL) or not
+export WSL=$(uname -r | grep "microsoft")
+
+# The less program does not behave correctly when using windows. Some of these
+# arguments are not supported for some reason.
+if [ -z "$WSL" ]; then
+    export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
+else
+    export LESS='-R --no-init --quit-if-one-screen'
+fi
+
+# Ledger Journal File
+export LEDGER_FILE="$LEDGER_DIR/main.journal"
+
+# Configure Zsh command history
+export HISTFILE=$HOME/.local/share/zhistory
+export HISTSIZE=10000
+export SAVEHIST=5000
+
+# Override LS Colors (my own custom choices)
+eval $(dircolors -b $HOME/lib/shell/lscolors)
+
+# Enter a Python Virtual Environment (if exists)
+if [ -n "$VIRTUAL_ENV" ]; then
+    source ${VIRTUAL_ENV}/bin/activate
+fi
+
+# Save X Window Terminal Info
+if [ -n "$DISPLAY" ]; then
+
+    # Writes otu $PWD and $VIRTUAL_ENV
+    function window_info() {
+        echo "WINDOW_PWD='$(pwd)'";
+        echo "VIRTUAL_ENV='${VIRTUAL_ENV}'";
+    }
+
+    # Save window info for given window ID 
+    function save_window_info() {
+        window_info > /tmp/.wid_${WINDOWID}
+    }
+
+    # Build our custom cd
+    function cd () {
+        builtin cd $@
+        save_window_info
+    }
+
+    # Every terminal should generate its id file on spawn
+    if [ -z "$WINDOWID" ]; then
+        # echo "Terminal doesn't have a Window ID!!!"
+    else
+        save_window_info
+    fi
+fi
+
+# I don't know what to make of this. I thought I could have this code block in
+# the =~/.zshenv= file but I was unable to do so as it causing many issues.
+# Seems like it needs to be set during an interactive session. Very strange
+# indeed. Essentially this configured what pinentry program should be used for
+# GnuPG and OpenSSH. Furthermore, it also tells OpenSSH that it should look
+# into GnuPG to get the ssh authentication key.
+export GPG_TTY=$(tty)
+export PINENTRY_USER_DATA='tty'
+export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket);
+
+
