@@ -12,7 +12,7 @@ logger "Initializing herbstluftwm window manager"
 # Create a helper function
 alias hc="herbstclient"
 
-logger "emitting the reload hood"
+logger "emitting the reload hook"
 hc emit_hook reload
 
 # Setup the window manager rules
