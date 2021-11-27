@@ -1,0 +1,11 @@
+# Linux Kernel & Drivers
+sys-kernel/genkernel
+sys-kernel/gentoo-sources
+sys-kernel/linux-firmware
+
+# Boot Loader
+sys-boot/grub:2
+
+# LVM and LUKS
+sys-fs/cryptsetup
+sys-fs/lvm2
