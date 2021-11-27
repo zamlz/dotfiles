@@ -2,5 +2,6 @@
 x11-apps/xset
 x11-base/xorg-server
 
-# Window Managers
+# Window Managers and related tools
 x11-wm/herbstluftwm
+x11-misc/sxhkd
