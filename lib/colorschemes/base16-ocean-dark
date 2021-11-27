@@ -1,0 +1,39 @@
+! base16 Ocean Dark
+
+! special
+#define xforeground   #c0c5ce
+#define xbackground   #2b303b
+#define xcursorColor  #c0c5ce
+#define xfade         0
+
+! black
+#define xcolor0       #2b303b
+#define xcolor8       #65737e
+
+! red
+#define xcolor1       #bf616a
+#define xcolor9       #bf616a
+
+! green
+#define xcolor2       #a3be8c
+#define xcolor10      #a3be8c
+
+! yellow
+#define xcolor3       #ebcb8b
+#define xcolor11      #ebcb8b
+
+! blue
+#define xcolor4       #8fa1b3
+#define xcolor12      #8fa1b3
+
+! magenta
+#define xcolor5       #b48ead
+#define xcolor13      #b48ead
+
+! cyan
+#define xcolor6       #96b5b4
+#define xcolor14      #96b5b4
+
+! white
+#define xcolor7       #c0c5ce
+#define xcolor15      #eff1f5

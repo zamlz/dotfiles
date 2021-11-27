@@ -1,0 +1,39 @@
+! Creamy
+
+! special
+#define xforeground   #222e35
+#define xbackground   #d0c4bd
+#define xcursorColor  #222e35
+#define xfade         0
+
+! Black + DarkGrey
+#define xcolor0       #726e6b
+#define xcolor8       #797673
+
+! DarkRed + Red
+#define xcolor1       #9b3030
+#define xcolor9       #b43838
+
+! DarkGreen + Green
+#define xcolor2       #4e3428
+#define xcolor10      #684435
+
+! DarkYellow + Yellow
+#define xcolor3       #a67c52
+#define xcolor11      #b28558
+
+! DarkBlue + Blue
+#define xcolor4       #4b749b
+#define xcolor12      #5381ac
+
+! DarkMagenta + Magenta
+#define xcolor5       #a3305a
+#define xcolor13      #ae426a
+
+! DarkCyan + Cyan
+#define xcolor6       #558881
+#define xcolor14      #5f9891
+
+! LightGrey + White
+#define xcolor7       #363c2f
+#define xcolor15      #4e4944
