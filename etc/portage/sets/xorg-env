@@ -5,3 +5,4 @@ x11-base/xorg-server
 # Window Managers and related tools
 x11-wm/herbstluftwm
 x11-misc/sxhkd
+x11-terms/rxvt-unicode
