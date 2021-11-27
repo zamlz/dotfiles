@@ -58,4 +58,4 @@ set -g set-titles-string '#T'
 #set -g pane-border-fg '#555555'
 
 # Reload Config
-bind r source-file ~/etc/tmux/config
+bind r source-file ~/etc/tmux/config \; display "Reloaded Tmux Config"
