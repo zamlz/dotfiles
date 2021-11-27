@@ -9,6 +9,6 @@
 
 get_logger() {
     namespace=${1}
-    opts="--stderr --tag $(whoami):$namespace[$$]"
+    opts="--stderr --tag '$(whoami).${namespace} [$$]'"
     echo "logger() { /usr/bin/logger $opts \$@; }"
 }
