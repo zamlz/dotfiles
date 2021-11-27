@@ -12,3 +12,9 @@ get_logger() {
     opts="--stderr --tag '$(whoami).${namespace} [$$]'"
     echo "logger() { /usr/bin/logger $opts \$@; }"
 }
+
+get_logger_no_stderr() {
+    namespace=${1}
+    opts="--tag '$(whoami).${namespace} [$$]'"
+    echo "logger() { /usr/bin/logger $opts \$@; }"
+}
