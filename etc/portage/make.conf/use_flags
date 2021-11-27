@@ -2,7 +2,7 @@
 USE="${USE}"
 
 # Avoid these like the plague
-USE="${USE} -elogind -systemd"
+USE="${USE} elogind -systemd"
 
 # Provide a network manager
 USE="${USE} networkmanager"

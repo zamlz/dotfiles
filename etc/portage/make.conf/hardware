@@ -1,0 +1,5 @@
+# Input Devices like mouse, keyboard, etc.
+INPUT_DEVICES="libinput synaptics"
+
+# Only a single video card at the moment
+VIDEO_CARDS="intel"
