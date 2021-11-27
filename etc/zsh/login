@@ -4,12 +4,12 @@
 . $HOME/lib/shell/logging && eval "$(get_logger etc.zsh.login)"
 
 if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
+    logger "Starting xinitrc parameterized on herbstluftwm"
+    export WINDOW_MANAGER='herbstluftwm'
+    exec startx # $HOME/.config/xinitrc herbstluftwm
+
+elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
     logger "Starting tmux session"
     export WINDOW_MANAGER='tmux'
     exec tmux -f $HOME/etc/tmux/config
-
-#elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
-    #logger "Starting xinitrc parameterized on herbstluftwm"
-    #export WINDOW_MANAGER='herbstluftwm'
-    #exec startx $HOME/.config/xinitrc herbstluftwm
 fi
