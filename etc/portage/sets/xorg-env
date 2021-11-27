@@ -1,11 +1,12 @@
 # X11 Tools
+x11-apps/xrandr
 x11-apps/xset
 x11-base/xorg-server
 
 # Window Managers and related tools
-x11-wm/herbstluftwm
 x11-misc/sxhkd
 x11-terms/rxvt-unicode
+x11-wm/herbstluftwm
 
 # Fonts
 media-fonts/iosevka
