@@ -1,4 +1,5 @@
 # X11 Tools
+x11-apps/setxkbmap
 x11-apps/xrandr
 x11-apps/xset
 x11-apps/xsetroot
