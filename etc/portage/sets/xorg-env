@@ -6,3 +6,6 @@ x11-base/xorg-server
 x11-wm/herbstluftwm
 x11-misc/sxhkd
 x11-terms/rxvt-unicode
+
+# Fonts
+media-fonts/iosevka
