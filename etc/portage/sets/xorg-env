@@ -1,6 +1,7 @@
 # X11 Tools
 x11-apps/xrandr
 x11-apps/xset
+x11-apps/xsetroot
 x11-base/xorg-server
 
 # Window Managers and related tools
