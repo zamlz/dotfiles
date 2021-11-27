@@ -1,0 +1,111 @@
+#!/bin/sh
+
+# Keybindings
+
+# Setup the logger
+. $HOME/lib/shell/logging && eval "$(get_logger etc.herbstluftwm.keybinds)"
+logger "Initializing herbstluftwm keybindings"
+
+# Create a helper function
+alias hc="herbstclient"
+
+# You can use xev to identify X11 keys very easily!
+
+logger "Remove all existing keybinding"
+hc keyunbind --all
+
+logger "Using the super key as the main modifier."
+Super=Mod4
+
+# Reload WM and Close Window
+
+logger "defining the reload and close window keybindings"
+hc keybind $Super-Ctrl-Alt-r reload
+hc keybind $Super-q close
+
+# Window Focus
+
+logger "defining keybindings for changing the focused client"
+hc keybind $Super-Left  focus left
+hc keybind $Super-Down  focus down
+hc keybind $Super-Up    focus up
+hc keybind $Super-Right focus right
+hc keybind $Super-h     focus left
+hc keybind $Super-j     focus down
+hc keybind $Super-k     focus up
+hc keybind $Super-l     focus right
+
+logger "defining keybindings for cycling the focused client"
+hc keybind $Super-BackSpace   cycle_monitor
+hc keybind $Super-Tab         cycle +1
+hc keybind $Super-Shift-Tab   cycle_frame +1
+hc keybind $Super-c           cycle_all +1
+hc keybind $Super-i jumpto urgent
+
+# Window Movement
+
+logger "defining keybindings for moving windows around"
+hc keybind $Super-Shift-Left  shift left
+hc keybind $Super-Shift-Down  shift down
+hc keybind $Super-Shift-Up    shift up
+hc keybind $Super-Shift-Right shift right
+hc keybind $Super-Shift-h     shift left
+hc keybind $Super-Shift-j     shift down
+hc keybind $Super-Shift-k     shift up
+hc keybind $Super-Shift-l     shift right
+
+# Splitting Frames
+
+logger "defining keybindings for splitting frames"
+hc keybind $Super-u       split   bottom  0.5
+hc keybind $Super-o       split   right   0.5
+hc keybind $Super-Control-space split explode
+
+# Resizing Frames
+
+logger "defining keybindings for resizing frames"
+resizestep=0.01
+hc keybind $Super-Control-h       resize left +$resizestep
+hc keybind $Super-Control-j       resize down +$resizestep
+hc keybind $Super-Control-k       resize up +$resizestep
+hc keybind $Super-Control-l       resize right +$resizestep
+hc keybind $Super-Control-Left    resize left +$resizestep
+hc keybind $Super-Control-Down    resize down +$resizestep
+hc keybind $Super-Control-Up      resize up +$resizestep
+hc keybind $Super-Control-Right   resize right +$resizestep
+
+# Workspace Movement
+
+logger "defining keybindings for workspace movement"
+hc keybind $Super-grave use_previous
+hc keybind $Super-bracketright use_index +1 --skip-visible
+hc keybind $Super-bracketleft  use_index -1 --skip-visible
+
+# Layout Control
+
+logger "defining keybindings for layout management"
+hc keybind $Super-r remove
+hc keybind $Super-s floating toggle
+hc keybind $Super-f fullscreen toggle
+hc keybind $Super-t pseudotile toggle
+
+# The following cycles through the available layouts within a frame, but skips
+# layouts, if the layout change wouldn't affect the actual window positions.
+# (I.e. if there are two windows within a frame, the grid layout is skipped.)
+hc keybind $Super-space                                                       \
+            or , and . compare tags.focus.curframe_wcount = 2                 \
+                     . cycle_layout +1 vertical horizontal max vertical grid  \
+               , cycle_layout +1
+
+logger "setting up mouse controls"
+hc mouseunbind --all
+hc mousebind $Super-Button1 move
+hc mousebind $Super-Button2 zoom
+hc mousebind $Super-Button3 resize
+
+logger "create keybindings for cycling colorschemes"
+hc keybind $Super-Ctrl-Alt-bracketright chain , \
+        spawn $HOME/org/config/bin/xcolorscheme --next , reload
+
+hc keybind $Super-Ctrl-Alt-bracketleft chain , \
+        spawn $HOME/org/config/bin/xcolorscheme --prev , reload

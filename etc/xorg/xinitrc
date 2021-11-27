@@ -29,8 +29,10 @@ fi
 session=${1:-herbstluftwm}
 logger "Starting session: $session"
 
+HERBSTLUFTWM_CONFIG=$HOME/etc/herbstluftwm/autostart
+
 case $session in
-    herbstluftwm)   exec herbstluftwm;;
+    herbstluftwm)   exec herbstluftwm --autostart $HERBSTLUFTWM_CONFIG;;
     *)              exec $1;;
 esac
 
