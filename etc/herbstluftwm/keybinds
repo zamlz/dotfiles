@@ -20,7 +20,8 @@ Super=Mod4
 # Reload WM and Close Window
 
 logger "defining the reload and close window keybindings"
-hc keybind $Super-Ctrl-Alt-r reload
+hc keybind $Super-Ctrl-Alt-r chain , spawn $HOME/etc/xorg/refresh.sh , reload
+hc keybind $Super-Ctrl-r reload
 hc keybind $Super-q close
 
 # Window Focus
