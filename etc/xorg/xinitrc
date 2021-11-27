@@ -30,7 +30,7 @@ session=${1:-herbstluftwm}
 logger "Starting session: $session"
 
 case $session in
-    herbstluftwm)   herbstluftwm;;
+    herbstluftwm)   exec herbstluftwm;;
     *)              exec $1;;
 esac
 

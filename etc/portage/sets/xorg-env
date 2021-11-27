@@ -1,3 +1,6 @@
 # X11 Tools
 x11-apps/xset
 x11-base/xorg-server
+
+# Window Managers
+x11-wm/herbstluftwm
