@@ -1,0 +1,103 @@
+# sxhkd configuration
+
+# Terminal spawner
+super + Return
+    $SXHKD_TERMINAL
+
+# Spawn Terminal matching environment of focused terminal. This is incredibly
+# useful if I want to create another terminal instance in the same directory as
+# the one I'm currently in.
+super + shift + Return
+    $HOME/org/config/lib/pwdcfw/$SXHKD_TERMINAL
+
+# Here we make use of Rofi Dmenu to create various dmenus to do various tasks.
+# Half of these are probably deprecated now that I'm using emacs, but
+# nonetheless, here they are.
+
+# Dmenu for launching a program from $PATH.
+super + e
+    rofi -show run
+
+# Dmenu for listing all open windows and changing focus.
+super + w
+    rofi -show window
+
+# Dmenu for interacting with password store and also getting QR Code view.
+super + p
+    $HOME/org/config/lib/rofi/rofi-pass
+super + shift + p
+    $HOME/org/config/lib/rofi/rofi-pass --qrcode
+
+# Dmenu for retrieving and saving personal bookmarks
+super + b
+    $HOME/org/config/lib/rofi/rofi-book
+
+# Dmenu for looking up my vimwiki files in read-only mode. Also generate PDF
+# views as well.
+super + n
+    $HOME/org/config/lib/rofi/rofi-wiki
+super + shift + n
+    $HOME/org/config/lib/rofi/rofi-wiki --pdf
+
+# Choose which Qutebrowser session to load. Unforunately its pretty buggy and
+# is not working the way I expect.
+super + shift + w
+    $HOME/org/config/lib/rofi/rofi-browser
+
+# Toggle between different display/power profile (multi-monitor, single
+# monitor, etc.)
+super + d
+    $HOME/org/config/lib/rofi/rofi-profile
+XF86Display
+    $HOME/org/config/lib/rofi/rofi-profile
+
+# Dmenu to control system state (locked, reboot, poweroff, etc.)
+#super + Escape
+#    $HOME/org/config/lib/rofi/rofi-system LOCK SCREEN
+super + ctrl + alt + Escape
+    $HOME/org/config/lib/rofi/rofi-system
+
+# Interactively select a window or rectangle with the mouse to take a screen
+# shot of it. It's important that these keybindings are prefaces with the =@=
+# token as it implies that the command should be executed on key release as
+# opposed to key press. Scrot and xclip here will not work properly unless they
+# are on key release.
+@Print
+    scrot -q 100 -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+@shift + Print
+    scrot -q 100 '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+
+# Various media keybindings that both actually do the what the media key
+# describes and also (usually) sends a signal to the Lemonbar FIFOs.
+XF86MonBrightnessUp
+    xbacklight -inc 1 -time 10; \
+    $HOME/.config/lemonbar/utils/trigger_fifos bkl
+
+XF86MonBrightnessDown
+    xbacklight -dec 1 -time 10; \
+    $HOME/.config/lemonbar/utils/trigger_fifos bkl
+
+XF86AudioMute
+    pulsemixer --toggle-mute; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioMicMute
+    pulsemixer --toggle-mute; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioRaiseVolume
+    pulsemixer --change-volume +1; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioLowerVolume
+    pulsemixer --change-volume -1; \
+    $HOME/.config/lemonbar/utils/trigger_fifos vol
+
+XF86AudioPlay
+    $HOME/src/spotify-cli/spotify-cli toggle
+
+XF86AudioNext
+    $HOME/src/spotify-cli/spotify-cli next
+
+XF86AudioPrev
+    $HOME/src/spotify-cli/spotify-cli prev
