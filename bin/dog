@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for item in $@; do
+    echo "[$item]"
+    echo ""
+    highlight -O ansi --force -n $item
+    echo ""
+done
