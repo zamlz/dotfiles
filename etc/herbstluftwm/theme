@@ -10,7 +10,7 @@ logger "Initializing herbstluftwm theme"
 alias hc="herbstclient"
 
 # Source Colorscheme
-. $HOME/org/config/lib/shell/xrdb_colors
+. $HOME/lib/shell/xrdb_colors
 
 # Reset Tiling and Floating states
 hc attr theme.tiling.reset 1
