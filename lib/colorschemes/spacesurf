@@ -1,0 +1,38 @@
+! special
+#define xforeground   #d8d8d8
+#define xbackground   #181818
+#define xcursorColor  #d8d8d8
+#define xfade         0
+
+! black
+#define xcolor0       #282828
+#define xcolor8       #585858
+
+! red
+#define xcolor1       #ab4642
+#define xcolor9       #ab4642
+
+! green
+#define xcolor2       #a1b56c
+#define xcolor10      #a1b56c
+
+! yellow
+!#define xcolor3       #f7ca88
+#define xcolor3       #f7ac3e
+#define xcolor11      #f7ac3e
+
+! blue
+#define xcolor4       #7cafc2
+#define xcolor12      #7cafc2
+
+! magenta
+#define xcolor5       #ba8baf
+#define xcolor13      #ba8baf
+
+! cyan
+#define xcolor6       #86c1b9
+#define xcolor14      #86c1b9
+
+! white
+#define xcolor7       #d8d8d8
+#define xcolor15      #f8f8f8
