@@ -1,0 +1,5 @@
+# required by x11-base/xorg-server-1.20.13-r1::gentoo[elogind]
+# required by x11-drivers/xf86-input-libinput-1.2.0::gentoo
+# required by x11-base/xorg-drivers-1.20-r2::gentoo[input_devices_libinput]
+# required by @xorg-env (argument)
+>=sys-auth/pambase-20210201.1 elogind
