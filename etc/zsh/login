@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Need a logger just to keep track of things
-. $HOME/lib/shell/logging && eval "$(get_logger etc.zsh.login)"
+. $HOME/lib/shell/logging && eval "$(get_logger_no_stderr etc.zsh.login)"
 
 if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
     logger "Starting xinitrc parameterized on herbstluftwm"
