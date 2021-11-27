@@ -16,16 +16,16 @@ logger "emitting the reload hook"
 hc emit_hook reload
 
 # Setup the window manager rules
-$HOME/etc/herbstluftwm/rules
+. $HOME/etc/herbstluftwm/rules
 
 # Setup the window manager workspaces
-$HOME/etc/herbstluftwm/workspaces
+. $HOME/etc/herbstluftwm/workspaces
 
 # Setup the window manager keybindings
-$HOME/etc/herbstluftwm/keybinds
+. $HOME/etc/herbstluftwm/keybinds
 
 # Rice the window manager
-$HOME/etc/herbstluftwm/theme
+. $HOME/etc/herbstluftwm/theme
 
 # CLEAN THIS UP
 #$HOME/etc/herbstlftwm/FIXME
