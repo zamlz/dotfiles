@@ -3,7 +3,7 @@
 # GnuPG Setup Script
 # ------------------
 
-. $HOME/lib/shell/logging && eval "$(get_logger etc.git.setup)"
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
 logger "Setting up Git"
 

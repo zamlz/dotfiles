@@ -48,7 +48,7 @@ if [ -n "$DISPLAY" ]; then
         echo "VIRTUAL_ENV='${VIRTUAL_ENV}'";
     }
 
-    # Save window info for given window ID 
+    # Save window info for given window ID
     function save_window_info() {
         window_info > /tmp/.wid_${WINDOWID}
     }

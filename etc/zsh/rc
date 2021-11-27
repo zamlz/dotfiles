@@ -1,7 +1,7 @@
 #!/bin/zsh
 
 # Get the logger
-. $HOME/lib/shell/logging && eval "$(get_logger_no_stderr etc.zsh.rc)"
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
 logger "configure zsh interactive session options"
 setopt EXTENDED_HISTORY

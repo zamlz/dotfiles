@@ -1,5 +1,5 @@
 # Setup the logger
-. $HOME/lib/shell/logging && eval "$(get_logger etc.xorg.xinitrc)"
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
 # Some linux distros have predefined scripts in these locations that
 # need to be sourced in order for proper Xorg operation. Source the

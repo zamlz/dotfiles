@@ -6,7 +6,7 @@
 # the frames follow one of many tiling algorithms.
 
 # Setup the logger
-. $HOME/lib/shell/logging && eval "$(get_logger etc.herbstluftwm.autostart)"
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
 logger "Initializing herbstluftwm window manager"
 
 # Create a helper function
