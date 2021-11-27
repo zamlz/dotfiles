@@ -4,9 +4,12 @@
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
 # Set some important variables for sxhkd
+SXHKD_CONFIG=$HOME/etc/sxhkd/rc
 export SXHKD_SHELL=sh
 export SXHKD_TERMINAL=urxvt
 
-# Kill an existing sxhkd session and start a new one
+logger "killing any existing sxhkd daemon"
 pkill -x sxhkd
-sxhkd &
+
+logger "starting new sxhkd daemon"
+sxhkd -c $SXHKD_CONFIG &
