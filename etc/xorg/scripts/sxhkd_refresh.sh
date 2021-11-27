@@ -7,4 +7,3 @@ export SXHKD_TERMINAL=urxvt
 # Kill an existing sxhkd session and start a new one
 pkill -x sxhkd
 sxhkd &
-
