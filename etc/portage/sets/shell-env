@@ -7,4 +7,5 @@ app-shells/gentoo-zsh-completions
 # Misc Tools
 app-misc/neofetch
 app-misc/tmux
+app-text/highlight
 app-text/tree
