@@ -1,20 +1,20 @@
-/* Source Colorscheme */
+! Source Colorscheme
 #include ".config/xcolor/scheme"
 
-/* Xft Font Settings */
+! Xft Font Settings
 Xft.dpi:                    96
 Xft.antialias:              true
 Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
-/* Default Font Face */
+! Default Font Face
 !*font: xft:Iosevka Term:size=11
 !*font: xft:xos4 Terminus:size=12
 !#define system_font xft:Terminus:size=12
-#define system_font xft:Iosevka Term:size=12
+#define system_font xft:Iosevka Term:size=16
 
-/* External Configurations */
+! External Configurations
 
-# We need to source the xresources of URxvt
+! We need to source the xresources of URxvt
 #include "etc/urxvt/xresources"
