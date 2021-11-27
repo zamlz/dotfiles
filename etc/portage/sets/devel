@@ -1,0 +1,6 @@
+# Editors
+app-editors/neovim
+
+# Version Control Systems
+dev-vcs/git
+dev-vcs/rcs

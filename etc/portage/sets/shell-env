@@ -5,6 +5,6 @@ app-shells/zsh-syntax-highlighting
 app-shells/gentoo-zsh-completions
 
 # Misc Tools
-app-text/tree
+app-misc/neofetch
 app-misc/tmux
-sys-process/htop
+app-text/tree
