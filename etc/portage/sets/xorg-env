@@ -8,6 +8,7 @@ x11-misc/xdotool
 
 # Window Managers and related tools
 media-gfx/feh
+x11-misc/i3lock
 x11-misc/picom
 x11-misc/rofi
 x11-misc/sxhkd
