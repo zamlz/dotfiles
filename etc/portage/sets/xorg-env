@@ -10,6 +10,7 @@ x11-misc/xdotool
 media-gfx/feh
 x11-misc/i3lock
 x11-misc/picom
+x11-misc/polybar
 x11-misc/rofi
 x11-misc/sxhkd
 x11-terms/rxvt-unicode
