@@ -8,7 +8,7 @@ super + Return
 # useful if I want to create another terminal instance in the same directory as
 # the one I'm currently in.
 super + shift + Return
-    $HOME/org/config/lib/pwdcfw/$SXHKD_TERMINAL
+    $HOME/etc/sxhkd/pwdcfw/$SXHKD_TERMINAL
 
 # Here we make use of Rofi Dmenu to create various dmenus to do various tasks.
 # Half of these are probably deprecated now that I'm using emacs, but
