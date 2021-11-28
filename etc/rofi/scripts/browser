@@ -1,0 +1,13 @@
+#!/bin/sh
+
+# Find the password I want
+
+SESSIONS_DIR="$HOME/.local/share/qutebrowser/sessions"
+
+# There must be a cleaner way to get this choice
+session=$(find $SESSIONS_DIR -name "*.yml" | sed -e 's|\.yml$||g' | \
+    sed -e "s|${SESSIONS_DIR}/||g" | rofi -dmenu -i -lines 6 -p "QuteBrowser" )
+
+if [ -n "$session" ]; then
+    qutebrowser --restore $session &
+fi
