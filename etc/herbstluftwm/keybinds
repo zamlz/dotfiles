@@ -11,9 +11,6 @@ alias hc="herbstclient"
 
 # You can use xev to identify X11 keys very easily!
 
-logger "Remove all existing keybinding"
-hc keyunbind --all
-
 logger "Using the super key as the main modifier."
 Super=Mod4
 
