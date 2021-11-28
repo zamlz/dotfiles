@@ -1,0 +1,1 @@
+../../polybar/refresh.sh
