@@ -24,38 +24,38 @@ super + w
 
 # Dmenu for interacting with password store and also getting QR Code view.
 super + p
-    $HOME/org/config/lib/rofi/rofi-pass
+    $HOME/etc/rofi/scripts/pass
 super + shift + p
-    $HOME/org/config/lib/rofi/rofi-pass --qrcode
+    $HOME/etc/rofi/scripts/pass --qrcode
 
 # Dmenu for retrieving and saving personal bookmarks
 super + b
-    $HOME/org/config/lib/rofi/rofi-book
+    $HOME/etc/rofi/scripts/book
 
 # Dmenu for looking up my vimwiki files in read-only mode. Also generate PDF
 # views as well.
 super + n
-    $HOME/org/config/lib/rofi/rofi-wiki
+    $HOME/etc/rofi/scripts/wiki
 super + shift + n
-    $HOME/org/config/lib/rofi/rofi-wiki --pdf
+    $HOME/etc/rofi/scripts/wiki --pdf
 
 # Choose which Qutebrowser session to load. Unforunately its pretty buggy and
 # is not working the way I expect.
 super + shift + w
-    $HOME/org/config/lib/rofi/rofi-browser
+    $HOME/etc/rofi/scripts/browser
 
 # Toggle between different display/power profile (multi-monitor, single
 # monitor, etc.)
 super + d
-    $HOME/org/config/lib/rofi/rofi-profile
+    $HOME/etc/rofi/scripts/profile
 XF86Display
-    $HOME/org/config/lib/rofi/rofi-profile
+    $HOME/etc/rofi/scripts/profile
 
 # Dmenu to control system state (locked, reboot, poweroff, etc.)
 #super + Escape
 #    $HOME/org/config/lib/rofi/rofi-system LOCK SCREEN
 super + ctrl + alt + Escape
-    $HOME/org/config/lib/rofi/rofi-system
+    $HOME/etc/rofi/scripts/system
 
 # Interactively select a window or rectangle with the mouse to take a screen
 # shot of it. It's important that these keybindings are prefaces with the =@=
