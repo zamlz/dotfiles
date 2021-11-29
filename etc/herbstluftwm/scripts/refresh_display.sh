@@ -4,7 +4,9 @@
 
 # Setup the logger
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
-logger "Initializing herbstluftwm keybindings"
+logger "Refreshing herbstluftwm display/monitor settings"
+
+alias hc="herbstclient"
 
 hc unlock
 hc detect_monitors
