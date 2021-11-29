@@ -29,6 +29,6 @@ hc keyunbind --all
 # Rice the window manager
 . $HOME/etc/herbstluftwm/theme
 
-# CLEAN THIS UP
-# $HOME/etc/herbstlftwm/FIXME
+# Setup basic monitor functionality
+$HOME/etc/herbstlftwm/monitors
 
