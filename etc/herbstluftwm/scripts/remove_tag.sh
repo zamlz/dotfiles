@@ -8,7 +8,7 @@
 
 # Setup the logger
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
-logger "Initializing herbstluftwm window manager"
+logger "Attempting to delete herbstluftwm tag"
 
 hc() {
     herbstclient $@
