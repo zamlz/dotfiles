@@ -70,28 +70,22 @@ super + ctrl + alt + Escape
 # Various media keybindings that both actually do the what the media key
 # describes and also (usually) sends a signal to the Lemonbar FIFOs.
 XF86MonBrightnessUp
-    xbacklight -inc 1 -time 10; \
-    $HOME/.config/lemonbar/utils/trigger_fifos bkl
+    xbacklight -inc 1 -time 10
 
 XF86MonBrightnessDown
-    xbacklight -dec 1 -time 10; \
-    $HOME/.config/lemonbar/utils/trigger_fifos bkl
+    xbacklight -dec 1 -time 10
 
 XF86AudioMute
-    pulsemixer --toggle-mute; \
-    $HOME/.config/lemonbar/utils/trigger_fifos vol
+    pulsemixer --toggle-mute
 
 XF86AudioMicMute
-    pulsemixer --toggle-mute; \
-    $HOME/.config/lemonbar/utils/trigger_fifos vol
+    pulsemixer --toggle-mute
 
 XF86AudioRaiseVolume
-    pulsemixer --change-volume +1; \
-    $HOME/.config/lemonbar/utils/trigger_fifos vol
+    pulsemixer --change-volume +1
 
 XF86AudioLowerVolume
-    pulsemixer --change-volume -1; \
-    $HOME/.config/lemonbar/utils/trigger_fifos vol
+    pulsemixer --change-volume -1
 
 XF86AudioPlay
     $HOME/src/spotify-cli/spotify-cli toggle
