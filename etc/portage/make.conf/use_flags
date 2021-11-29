@@ -1,8 +1,6 @@
-# Main Globals to add
-USE="${USE}"
 
-# Avoid these like the plague
+# We must make a choice between elogind and systemd
 USE="${USE} elogind -systemd"
 
-# Provide a network manager
+# Provide a network manager, incidentally, it is named the same...
 USE="${USE} networkmanager"
