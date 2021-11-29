@@ -2,7 +2,7 @@
     red:                         rgba ( 220, 50, 47, 100 % );
     blue:                        rgba ( 38, 139, 210, 100 % );
     background:                  rgba ( 0, 0, 0, 100 % );
-    foreground:                  rgba ( 225, 225, 225, 100 % );
+    foreground:                  rgba ( 235, 219, 178, 100 % );
     background-color:            rgba ( 0, 0, 0, 0 % );
     normal-background:           var(background);
     normal-foreground:           var(foreground);
