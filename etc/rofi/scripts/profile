@@ -1,14 +1,26 @@
 #!/bin/sh
 
-# Find the password I want
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
+logger "Initializing profile dmenu"
 
-PROFILE_DIR="$HOME/org/config/lib/profiles"
+# Find the profile I want
+PROFILE_DIR="$HOME/lib/profiles/$(hostname)"
 
 # There must be a cleaner way to get this choice
-profile=$( find  $PROFILE_DIR -not -path '*/.*' -type f | \
+profile=$( find  $PROFILE_DIR -not -path '*/.*' -type f,l | \
     sed -e "s|${PROFILE_DIR}/||g" | \
     rofi -dmenu -i -lines 3 -p "Profile" )
 
 if [ -n "$profile" ]; then
+    logger "profile selected: $profile"
     $PROFILE_DIR/$profile
+    logger "attempting to refresh ${WINDOW_MANAGER} monitors"
+    REFRESH_SCRIPT=$HOME/etc/${WINDOW_MANAGER}/scripts/refresh_display.sh
+    if [ -f $REFRESH_SCRIPT ]; then
+        $REFRESH_SCRIPT
+    else
+        logger "refresh_display.sh script missing for $WINDOW_MANAGER"
+    fi
+else
+    logger "no profile selected, aborting..."
 fi

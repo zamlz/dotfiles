@@ -28,7 +28,3 @@ hc keyunbind --all
 
 # Rice the window manager
 . $HOME/etc/herbstluftwm/theme
-
-# Setup basic monitor functionality
-$HOME/etc/herbstlftwm/monitors
-
