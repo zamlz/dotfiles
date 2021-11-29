@@ -9,6 +9,8 @@
 # Exit Status:
 # 0: Success
 # 1: Unkown error code from internal failure
+# 2: Default tag is attempted to be merged
+# 3: Merge tag is focused tag
 
 # Setup the logger
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
@@ -26,17 +28,20 @@ tag=$(tag_list | rofi -dmenu -i -p "Goto Tag")
 
 if [ -z "$tag" ]; then
     logger "no tag selected, aborting..."
+elif [ "$tag" = "[λ]" ]; then
+    logger "Cannot delete default tag! Aborting..."
+    rofi -e "Cannot delete default tag! Aborting..."
+    exit 2
 else
     logger "tag selected: $tag"
-    hc use "$tag"
+    hc merge_tag "$tag"
     error_code=$?
     if  [ $error_code -eq 0 ]; then
         logger "success!"
     elif  [ $error_code -eq 3 ]; then
-        fmt_tag=$(echo "[$tag]" | tr -t ' ' '-')
-        logger "creating new workspace $fmt_tag"
-        hc add "$fmt_tag"
-        hc use "$fmt_tag"
+        logger "merge_tag: Cannot merge the currently viewed tag"
+        rofi -e "merge_tag: Cannot merge the currently viewed tag"
+        exit 3
     else
         logger "unknown error code: $error_code"
         exit 1
