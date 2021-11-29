@@ -6,10 +6,6 @@
 #   - wmctrl
 #   - rofi
 
-# Exit Status:
-# 0: Success
-# 1: Unkown error code from internal failure
-
 # Setup the logger
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 logger "Initializing herbstluftwm window manager"
