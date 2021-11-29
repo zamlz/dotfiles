@@ -1,0 +1,27 @@
+#!/bin/sh
+
+# Tag Definitions (workspaces)
+
+# Setup the logger
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
+logger "Initializing herbstluftwm tags"
+
+# Create a helper function
+alias hc="herbstclient"
+
+hc rename default "[#]" || true
+
+#tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
+#tag_keys=( {1..9} 0 )
+
+#hc rename default "${tag_names[0]}" || true
+#for i in ${!tag_names[@]} ; do
+#    hc add "${tag_names[$i]}"
+#    key="${tag_keys[$i]}"
+#    if ! [ -z "$key" ] ; then
+#        hc keybind "$Super-$key" use_index "$i"
+#        hc keybind "$Super-Shift-$key" move_index "$
+#    fi
+#done
+
+# vim:ft=sh

@@ -1,10 +1,10 @@
 # X11 Tools
 x11-apps/setxkbmap
+x11-apps/xev
 x11-apps/xrandr
 x11-apps/xset
 x11-apps/xsetroot
 x11-base/xorg-server
-x11-misc/xdotool
 
 # Window Managers and related tools
 media-gfx/feh
@@ -14,6 +14,8 @@ x11-misc/picom
 x11-misc/polybar
 x11-misc/rofi
 x11-misc/sxhkd
+x11-misc/xdotool
+x11-misc/wmctrl
 x11-terms/rxvt-unicode
 x11-wm/herbstluftwm
 

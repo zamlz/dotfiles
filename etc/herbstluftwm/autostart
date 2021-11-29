@@ -21,7 +21,7 @@ hc keyunbind --all
 . $HOME/etc/herbstluftwm/rules
 
 # Setup the window manager workspaces
-. $HOME/etc/herbstluftwm/workspaces
+. $HOME/etc/herbstluftwm/tags
 
 # Setup the window manager keybindings
 . $HOME/etc/herbstluftwm/keybinds
