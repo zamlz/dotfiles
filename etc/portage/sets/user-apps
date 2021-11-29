@@ -1,2 +1,5 @@
 # Web Browsers
 www-client/qutebrowser
+
+# Document viewers
+app-text/zathura
