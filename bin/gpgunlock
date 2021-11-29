@@ -1,0 +1,17 @@
+#!/bin/sh
+
+# Like the gpg-lock but instead this is for decrypting. Like before, it uses
+# ~/.gpg-id for the key-id to use.
+
+if [ ! -f ~/.gpg-id ]; then
+    echo "~/.gpg-id file is not set"
+    exit 1
+fi
+
+infile=$1
+if [ -n "$(echo $infile | grep -E '.+\.gpg$')" ]; then
+    outfile=$(echo ${infile} | sed -e 's/\.gpg$//g')
+    gpg --output $outfile --decrypt $infile
+else
+    echo "Not a valid gpg locked file; Unable to unlock!"
+fi
