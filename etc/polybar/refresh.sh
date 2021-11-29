@@ -7,9 +7,8 @@ killall -q polybar
 while pgrep -u $UID -x polybar >/dev/null; do sleep 1; done
 
 # Launch the bars ...
-
-polybar="polybar --config=$HOME/etc/polybar/bar.conf"
-$polybar top &
-$polybar bot &
+opts="--config=$HOME/etc/polybar/bar.conf"
+polybar $opts top &
+polybar $opts bot &
 
 echo "Polybar has been started."
