@@ -4,3 +4,6 @@ USE="${USE} elogind -systemd"
 
 # Provide a network manager, incidentally, it is named the same...
 USE="${USE} networkmanager"
+
+# We also will use pulseaudio as the default audio system
+USE="${USE} pulseaudio"
