@@ -44,18 +44,18 @@ set -g set-titles-string '#T'
 # ----------
 
 # Improvement the status bar aesthetic and also add cpu load and datetime info as well.
-#set -g status-bg '#4e4e4e'
-#set -g status-fg '#ffffff'
-#set -g status-left ' '
+set -g status-bg '#181818'
+set -g status-fg '#ebdbb2'
+set -g status-left ' '
 #set -g status-right '#[bg=#bbbbbb]#[fg=#000000]#(cut -d " " -f -3 /proc/loadavg) #[bg=#4e4e4e]#[fg=#ffffff]#(date +" %H:%M ")'
-#set -g window-status-format '#I #W'
-#set -g window-status-current-format ' #I #W '
-#setw -g window-status-current-bg '#55ff55'
-#setw -g window-status-current-fg '#000000'
+set -g window-status-format '#I #W'
+set -g window-status-current-format ' #I #W '
+setw -g window-status-current-bg '#55ff55'
+setw -g window-status-current-fg '#000000'
 
 # Customize colors of the panes.
-#set -g pane-active-border-fg '#bbbbbb'
-#set -g pane-border-fg '#555555'
+set -g pane-active-border-fg '#bbbbbb'
+set -g pane-border-fg '#555555'
 
 # Reload Config
 bind r source-file ~/etc/tmux/config \; display "Reloaded Tmux Config"
