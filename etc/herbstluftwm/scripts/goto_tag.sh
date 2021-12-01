@@ -10,6 +10,7 @@
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 logger "Attempting to goto herbstluftwm tag"
 
+Super=Mod4
 hc() {
     herbstclient $@
 }
@@ -17,6 +18,9 @@ hc() {
 tag_list() {
     wmctrl -d | awk '{print $9}'
 }
+
+# Num tags also gives us the index of the next new tag!
+num_tags=$(wmctrl -d | wc -l)
 
 tag=$(tag_list | rofi -dmenu -i -p "Goto Tag")
 
@@ -29,7 +33,7 @@ else
     if  [ $error_code -eq 0 ]; then
         logger "success!"
     elif  [ $error_code -eq 3 ]; then
-        fmt_tag=$(echo "[$tag]" | tr -t ' ' '-')
+        fmt_tag=$(echo "[$num_tags:$tag]" | tr -t ' ' '-')
         logger "creating new workspace $fmt_tag"
         hc add "$fmt_tag"
         hc use "$fmt_tag"
