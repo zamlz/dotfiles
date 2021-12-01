@@ -20,3 +20,6 @@ ln -s $CONFIG_SOURCE/rc $CONFIG_TARGET/.zshrc
 
 logger "Creating symlink for ~/.zlogin"
 ln -s $CONFIG_SOURCE/login $CONFIG_TARGET/.zlogin
+
+logger "Creating symlink for ~/.zlogout"
+ln -s $CONFIG_SOURCE/logout $CONFIG_TARGET/.zlogout
