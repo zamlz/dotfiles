@@ -1,5 +1,6 @@
 # Portage
 app-portage/gentoolkit
+app-portage/eix
 
 # Operating System
 app-admin/sudo
