@@ -22,7 +22,7 @@ tag_list() {
 # Num tags also gives us the index of the next new tag!
 num_tags=$(wmctrl -d | wc -l)
 
-tag=$(tag_list | rofi -dmenu -i -p "Goto Tag")
+tag=$(tag_list | rofi -dmenu -i -p "GOTO TAG")
 
 if [ -z "$tag" ]; then
     logger "no tag selected, aborting..."
@@ -33,7 +33,8 @@ else
     if  [ $error_code -eq 0 ]; then
         logger "success!"
     elif  [ $error_code -eq 3 ]; then
-        fmt_tag=$(echo "[$num_tags:$tag]" | tr -t ' ' '-')
+        #fmt_tag=$(echo "[$tag]" | tr -t ' ' '-')
+        fmt_tag=$tag
         logger "creating new workspace $fmt_tag"
         hc add "$fmt_tag"
         hc use "$fmt_tag"

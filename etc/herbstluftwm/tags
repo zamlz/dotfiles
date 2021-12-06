@@ -10,13 +10,18 @@ logger "Initializing herbstluftwm tags"
 alias hc="herbstclient"
 Super=Mod4
 
-hc rename default "[λ]" || true
+hc rename default "λ" || true
 
-for index in $(seq 0 9); do
-    hc keybind "$Super-$index" use_index "$index"
-    hc keybind "$Super-Shift-$index" move_index "$index"
+for key in $(seq 1 9); do
+    index=$(($key - 1))
+    hc keybind "$Super-$key" use_index "$index"
+    hc keybind "$Super-Shift-$key" move_index "$index"
 done
 
+key=0
+index=9
+hc keybind "$Super-$key" use_index "$index"
+hc keybind "$Super-Shift-$key" move_index "$index"
 
 #tag_names=([1] [2] [3] [4] [5] [6] [7] [8] [9] [0])
 #tag_keys=( {1..9} 0 )

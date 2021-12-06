@@ -15,10 +15,10 @@ hc() {
 }
 
 tag_list() {
-    wmctrl -d | awk '{print $9}'
+    wmctrl -d | grep -v "\*" | awk '{print $9}'
 }
 
-tag=$(tag_list | rofi -dmenu -i -p "Goto Tag")
+tag=$(tag_list | rofi -dmenu -i -p "REMOVE TAG")
 
 if [ -z "$tag" ]; then
     logger "no tag selected, aborting..."
