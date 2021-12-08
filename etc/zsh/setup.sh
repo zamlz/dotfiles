@@ -1,7 +1,7 @@
 #!/bin/sh
 
-# GnuPG Setup Script
-# ------------------
+# Z Shell Setup Script
+# --------------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
