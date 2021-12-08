@@ -1,0 +1,61 @@
+#!/usr/bin/env sh
+
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
+
+# A simple script that manages dotfiles repo and beyond
+. $HOME/lib/repos
+. $HOME/lib/shell/colorenv
+
+help_prompt() {
+    echo "Usage:"
+}
+
+# Configure dotfiles in the current directory
+# (Used when installing new distros)
+configure_dots() {
+    HOME="${1:-$HOME}"
+    
+    # setup phase
+    $HOME/etc/git/setup.sh
+    $HOME/etc/gnupg/setup.sh
+    $HOME/etc/picom/setup.sh
+    $HOME/etc/polybar/setup.sh
+    $HOME/etc/qutebrowser/setup.sh
+    $HOME/etc/rofi/setup.sh
+    $HOME/etc/ssh/setup.sh
+    $HOME/etc/vim/setup.sh
+    $HOME/etc/zsh/setup.sh
+
+    # post setup phase
+    logger "Setting up color info for xorg apps"
+    logger "Setting colorscheme to gruvbox-black"
+    $HOME/bin/xcolorscheme --set gruvbox-black
+    $HOME/bin/colors --set hex
+
+}
+
+# Run a git command (${2-}) in a given repo (${1})
+run_git() {
+    REPO_DIR=$1 && shift && GIT_ARGS=$@;
+    echo -e "[${Bold}REPOSITORY: ${Blue}${REPO_DIR}${Rst}]"
+    echo "git -C $REPO_DIR $GIT_ARGS"
+    git -C $REPO_DIR $GIT_ARGS
+}
+
+run_git_over_all() {
+    GIT_ARGS=$@;
+    run_git ${DOTFILES_DIR} $GIT_ARGS;
+}
+
+if [ -z "$@" ]; then
+    CMD="" && ARGS=""
+else
+    CMD=$1 && shift && ARGS=$@
+fi
+
+case "$CMD" in
+    "fetch")        run_git_over_all "fetch --all"     ;;
+    "info")         cat $HOME/lib/repos               ;;
+    "configure")    configure_dots $ARGS              ;;
+    *)              run_git_over_all "status --short" ;;
+esac
