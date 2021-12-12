@@ -10,4 +10,12 @@ default_action() {
     list_targets
 }
 
+default_action_with_args() {
+    if [ -f $SYM_SOURCE_DIR/$1 ]; then
+        cat $SYM_SOURCE_DIR/$1
+    else
+        echo "No such colorscheme file: $1"
+    fi
+}
+
 symlinkmgr $@
