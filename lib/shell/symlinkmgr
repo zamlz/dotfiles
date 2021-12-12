@@ -64,6 +64,10 @@ default_action() {
     echo "Dummy function for default action"
 }
 
+default_action_with_args() {
+    default_action
+}
+
 # Main function that you need to call
 symlinkmgr() {
     if [[ -z "$@" ]]; then
@@ -76,5 +80,7 @@ symlinkmgr() {
         cycle_link next
     elif [ "$1" = "--prev" ]; then
         cycle_link prev
+    else
+        default_action_with_args $@
     fi
 }
