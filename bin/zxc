@@ -12,7 +12,13 @@
 help_prompt() {
     echo "Usage: $(basename $0) [CMD]"
     echo "    Commands:"
-    echo "      - setup: Runs dotfiles setup files (and xcolor symlinks setup)"
+    echo "      - setup: Runs dotfiles setup files"
+    echo "      - info: Show shell variable info for primary repos"
+    echo "      - status: Show git status for primary repos (default command)"
+    echo "      - clone: Clone the primary repos"
+    echo "      - fetch: Fetch latest over all primary repos"
+    echo "      - git: Run any git command over all primary repos"
+    echo "      - help: Show this help dialogue"
 }
 
 # Configure dotfiles in the current directory
@@ -33,30 +39,62 @@ setup_dots() {
     $HOME/etc/zsh/setup.sh
 }
 
+clone_repo() {
+    COLOR=$1 && shift && REPO_DIR=$1 && shift && REPO_URL=$1
+    echo -e "[${Bold}REPOSITORY: ${COLOR}${REPO_DIR}${Rst}]"
+    if [ ! -d "$REPO_DIR" ] && [ -n "$REPO_URL" ]; then
+        echo "Cloning ${REPO_URL} to ${REPO_DIR}"
+        git clone ${REPO_URL} ${REPO_DIR}
+    elif [ -d "$REPO_DIR" ]; then
+        echo "Repo directory already exists!"
+    fi
+    # If all else fails, it means that the URL has not be set.
+    # we want to quietly fail here in that case.
+}
+
+clone_repos_over_all() {
+    clone_repo ${Red} ${BOOKMARKS_DIR} ${BOOKMARKS_GIT_REPO}
+    clone_repo ${Red} ${LEDGER_DIR} ${LEDGER_GIT_REPO}
+    #clone_repo ${Red} ${PAPERS_DIR} ${PAPERS_GIT_REPO}
+    clone_repo ${Red} ${PASSWORD_STORE_DIR} ${PASSWORD_STORE_GIT_REPO}
+    clone_repo ${Red} ${WEBSITE_DIR} ${WEBSITE_GIT_REPO}
+}
+
 # Run a git command (${2-}) in a given repo (${1})
 run_git() {
-    REPO_DIR=$1 && shift && GIT_ARGS=$@;
-    echo -e "[${Bold}REPOSITORY: ${Blue}${REPO_DIR}${Rst}]"
-    echo "git -C $REPO_DIR $GIT_ARGS"
-    git -C $REPO_DIR $GIT_ARGS
+    COLOR=$1 && shift && REPO_DIR=$1 && shift && GIT_ARGS=$@;
+    if [ -d "$REPO_DIR" ] ; then
+        echo -e "[${Bold}REPOSITORY: ${COLOR}${REPO_DIR}${Rst}]"
+        echo "git -C $REPO_DIR $GIT_ARGS"
+        git -C $REPO_DIR $GIT_ARGS
+    fi
 }
 
 run_git_over_all() {
-    GIT_ARGS=$@;
-    run_git ${DOTFILES_DIR} $GIT_ARGS;
+    COLOR=$1 && shift && GIT_ARGS=$@;
+    run_git ${COLOR} ${DOTFILES_DIR} $GIT_ARGS;
+    run_git ${COLOR} ${BOOKMARKS_DIR} $GIT_ARGS;
+    run_git ${COLOR} ${LEDGER_DIR} $GIT_ARGS;
+    run_git ${COLOR} ${PAPERS_DIR} $GIT_ARGS;
+    run_git ${COLOR} ${PASSWORD_STORE_DIR} $GIT_ARGS;
+    run_git ${COLOR} ${WEBSITE_DIR} $GIT_ARGS;
 }
 
-if [ -z "$@" ]; then
+if [[ -z "$@" ]]; then
     CMD="" && ARGS=""
 else
     CMD=$1 && shift && ARGS=$@
 fi
 
 case "$CMD" in
-    "fetch")        run_git_over_all "fetch --all"    ;;
-    "info")         cat $HOME/lib/repos               ;;
-    "setup")        setup_dots $ARGS                  ;;
-    "-h")           help_prompt                       ;;
-    "help")         help_prompt                       ;;
-    *)              run_git_over_all "status --short" ;;
+    "clone")        clone_repos_over_all ;;
+    "fetch")        run_git_over_all ${Yellow} "fetch --all" ;;
+    "git")          run_git_over_all ${Green} $ARGS ;;
+    "info")         cat $HOME/lib/repos ;;
+    "setup")        setup_dots ;;
+    "status")       run_git_over_all ${Blue} "status --short" ;;
+    "")             run_git_over_all ${Blue} "status --short" ;;
+    "-h")           help_prompt ;;
+    "help")         help_prompt ;;
+    *)              echo "Unkown Command: $CMD $ARGS" && help_prompt ;;
 esac
