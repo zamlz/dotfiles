@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# [z]amlz's e[x]treme [c]onfigurator
+# IDK, I had to think of an acronym for zxc
+
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
 # A simple script that manages dotfiles repo and beyond
@@ -7,14 +10,16 @@
 . $HOME/lib/shell/colorenv
 
 help_prompt() {
-    echo "Usage:"
+    echo "Usage: $(basename $0) [CMD]"
+    echo "    Commands:"
+    echo "      - setup: Runs dotfiles setup files (and xcolor symlinks setup)"
 }
 
 # Configure dotfiles in the current directory
 # (Used when installing new distros)
-configure_dots() {
+setup_dots() {
     HOME="${1:-$HOME}"
-    
+
     # setup phase
     $HOME/etc/git/setup.sh
     $HOME/etc/gnupg/setup.sh
@@ -24,14 +29,8 @@ configure_dots() {
     $HOME/etc/rofi/setup.sh
     $HOME/etc/ssh/setup.sh
     $HOME/etc/vim/setup.sh
+    $HOME/etc/xorg/setup.sh
     $HOME/etc/zsh/setup.sh
-
-    # post setup phase
-    logger "Setting up color info for xorg apps"
-    logger "Setting colorscheme to gruvbox-black"
-    $HOME/bin/xcolorscheme --set gruvbox-black
-    $HOME/bin/colors --set hex
-
 }
 
 # Run a git command (${2-}) in a given repo (${1})
@@ -54,8 +53,10 @@ else
 fi
 
 case "$CMD" in
-    "fetch")        run_git_over_all "fetch --all"     ;;
+    "fetch")        run_git_over_all "fetch --all"    ;;
     "info")         cat $HOME/lib/repos               ;;
-    "configure")    configure_dots $ARGS              ;;
+    "setup")        setup_dots $ARGS                  ;;
+    "-h")           help_prompt                       ;;
+    "help")         help_prompt                       ;;
     *)              run_git_over_all "status --short" ;;
 esac
