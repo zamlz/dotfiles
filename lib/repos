@@ -1,0 +1,22 @@
+
+# Primary dotfiles directory is just my home directory
+DOTFILES_DIR="$HOME"
+DORFILES_GIT_REPO="git@github.com:zamlz/dotfiles.git"
+
+# All other git repos exist in ~/usr.
+PAPERS_DIR="$HOME/usr/papers"
+PAPERS_GIT_REPO="git@github.com:zamlz/papers.git"
+
+WEBSITE_DIR="$HOME/usr/website"
+WEBSITE_GIT_REPO="git@github.com:zamlz/blog.git"
+
+# this might be deprecated
+BOOKMARKS_DIR="$HOME/usr/bookmarks"
+BOOKMARKS_GIT_REPO="git@github.com:zamlz/bookmarks.git"
+
+# I plan to deprecate this soon
+LEDGER_DIR="$HOME/usr/ledger"
+LEDGER_GIT_REPO="git@github.com:zamlz/ledger.git"
+
+PASSWORD_STORE_DIR="$HOME/usr/passwords"
+PASSWORD_STORE_GIT_REPO=""
