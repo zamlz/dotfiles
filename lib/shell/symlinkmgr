@@ -66,7 +66,7 @@ default_action() {
 
 # Main function that you need to call
 symlinkmgr() {
-    if [ -z "$@" ]; then
+    if [[ -z "$@" ]]; then
         default_action
     elif [ "$1" = "--list" ]; then
         list_targets
