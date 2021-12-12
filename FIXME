@@ -1,6 +1,20 @@
 # Things I need to fix!
 
 - Backlight controls from keyboard
+
 - Touchpad sensitivity and scrolling
+
 - Tmux support in all terminals?
+
 - RANDOM POWEROFFS!
+
+- bluetooth kernel options:
+ *   CONFIG_BT:	 is not set when it should be.
+ *   CONFIG_BT_RFCOMM:	 is not set when it should be.
+ *   CONFIG_BT_RFCOMM_TTY:	 is not set when it should be.
+ *   CONFIG_BT_BNEP:	 is not set when it should be.
+ *   CONFIG_BT_BNEP_MC_FILTER:	 is not set when it should be.
+ *   CONFIG_BT_BNEP_PROTO_FILTER:	 is not set when it should be.
+ *   CONFIG_BT_HIDP:	 is not set when it should be.
+ *   CONFIG_CRYPTO_USER:	 is not set when it should be.
+ *   CONFIG_CRYPTO_USER_API_AEAD:	 is not set when it should be.
