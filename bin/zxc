@@ -17,6 +17,7 @@ help_prompt() {
     echo "      - status: Show git status for primary repos (default command)"
     echo "      - clone: Clone the primary repos"
     echo "      - fetch: Fetch latest over all primary repos"
+    echo "      - pull: Pull latest over all primary repos"
     echo "      - git: Run any git command over all primary repos"
     echo "      - help: Show this help dialogue"
 }
@@ -89,6 +90,7 @@ fi
 case "$CMD" in
     "clone")        clone_repos_over_all ;;
     "fetch")        run_git_over_all ${Yellow} "fetch --all" ;;
+    "pull")         run_git_over_all ${Purple} "pull" ;;
     "git")          run_git_over_all ${Green} $ARGS ;;
     "info")         cat $HOME/lib/repos ;;
     "setup")        setup_dots ;;
