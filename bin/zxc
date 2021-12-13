@@ -59,6 +59,7 @@ clone_repos_over_all() {
     #clone_repo ${Red} ${PAPERS_DIR} ${PAPERS_GIT_REPO}
     clone_repo ${Red} ${PASSWORD_STORE_DIR} ${PASSWORD_STORE_GIT_REPO}
     clone_repo ${Red} ${WEBSITE_DIR} ${WEBSITE_GIT_REPO}
+    clone_repo ${Red} ${COLORSCRIPT_DIR} ${COLORSCRIPT_GIT_REPO}
 }
 
 # Run a git command (${2-}) in a given repo (${1})
