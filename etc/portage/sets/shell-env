@@ -5,6 +5,7 @@ app-shells/zsh-syntax-highlighting
 app-shells/gentoo-zsh-completions
 
 # Misc Tools
+app-admin/pass
 app-misc/neofetch
 app-misc/tmux
 app-text/highlight
