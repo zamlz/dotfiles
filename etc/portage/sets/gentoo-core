@@ -1,6 +1,8 @@
-# Linux Kernel & Drivers
+# Linux Kernel
+<=sys-kernel/gentoo-sources-5.10.76-r1
+
+# Kernel Utils & Drivers
 sys-kernel/genkernel
-sys-kernel/gentoo-sources
 sys-kernel/linux-firmware
 
 # Boot Loader
