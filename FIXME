@@ -7,7 +7,3 @@
 - Tmux support in all terminals?
 
 - RANDOM POWEROFFS!
-
-- dev-libs/ell
- *   CONFIG_CRYPTO_SHA1:	 is not set when it should be.
- *   CONFIG_KEY_DH_OPERATIONS:	 is not set when it should be.
