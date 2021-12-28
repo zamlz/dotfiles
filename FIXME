@@ -8,17 +8,6 @@
 
 - RANDOM POWEROFFS!
 
-- bluetooth kernel options:
- *   CONFIG_BT:	 is not set when it should be.
- *   CONFIG_BT_RFCOMM:	 is not set when it should be.
- *   CONFIG_BT_RFCOMM_TTY:	 is not set when it should be.
- *   CONFIG_BT_BNEP:	 is not set when it should be.
- *   CONFIG_BT_BNEP_MC_FILTER:	 is not set when it should be.
- *   CONFIG_BT_BNEP_PROTO_FILTER:	 is not set when it should be.
- *   CONFIG_BT_HIDP:	 is not set when it should be.
- *   CONFIG_CRYPTO_USER:	 is not set when it should be.
- *   CONFIG_CRYPTO_USER_API_AEAD:	 is not set when it should be.
-
 - dev-libs/ell
  *   CONFIG_CRYPTO_SHA1:	 is not set when it should be.
  *   CONFIG_KEY_DH_OPERATIONS:	 is not set when it should be.
