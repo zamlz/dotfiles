@@ -105,7 +105,7 @@ hc mousebind $Super-Button3 resize
 
 logger "create keybindings for cycling colorschemes"
 hc keybind $Super-Ctrl-Alt-bracketright chain , \
-        spawn $HOME/bin/xcolorscheme --next , reload
+        spawn $HOME/bin/xcolorscheme --next , spawn $HOME/etc/xorg/refresh.sh , reload
 
 hc keybind $Super-Ctrl-Alt-bracketleft chain , \
-        spawn $HOME/bin/xcolorscheme --prev , reload
+        spawn $HOME/bin/xcolorscheme --prev , spawn $HOME/etc/xorg/refresh.sh , reload
