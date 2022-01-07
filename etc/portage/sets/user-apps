@@ -1,5 +1,6 @@
 # Web Browsers
-www-client/qutebrowser
+#www-client/qutebrowser
+www-client/firefox-bin
 
 # Document viewers
 app-text/zathura
