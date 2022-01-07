@@ -35,6 +35,7 @@ setup_dots() {
     $HOME/etc/qutebrowser/setup.sh
     $HOME/etc/rofi/setup.sh
     $HOME/etc/ssh/setup.sh
+    $HOME/etc/taskwarrior/setup.sh
     $HOME/etc/vim/setup.sh
     $HOME/etc/xorg/setup.sh
     $HOME/etc/zsh/setup.sh
