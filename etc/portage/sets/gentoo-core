@@ -1,5 +1,6 @@
 # Linux Kernel
-<=sys-kernel/gentoo-sources-5.10.76-r1
+=sys-kernel/gentoo-sources-5.10.76-r1
+=sys-kernel/gentoo-sources-5.10.88
 
 # Kernel Utils & Drivers
 sys-kernel/genkernel
