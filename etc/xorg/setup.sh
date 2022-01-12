@@ -9,6 +9,8 @@
 logger "Setting up color info for xorg apps"
 logger "Setting colorscheme to gruvbox-black"
 . $HOME/bin/xcolorscheme --set gruvbox-black
-. $HOME/bin/colors --set hex
+
+# FIXME: Remove this comment when I figure out how to setup colorscripts
+# . $HOME/bin/colors --set hex
 
 

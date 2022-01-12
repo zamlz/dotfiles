@@ -41,6 +41,8 @@ setup_dots() {
     . $HOME/etc/vim/setup.sh
     . $HOME/etc/xorg/setup.sh
     . $HOME/etc/zsh/setup.sh
+
+    echo "Setup scripts complete :)"
 }
 
 clone_repo() {
