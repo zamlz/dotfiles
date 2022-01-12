@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 
-# [z]amlz's e[x]treme [c]onfigurator
-# IDK, I had to think of an acronym for zxc
+# [a]mlesh's [s]cript for [d]otfiles
+# IDK, I had to think of an acronym for asd
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
