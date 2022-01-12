@@ -22,7 +22,7 @@ tag=$(tag_list | rofi -dmenu -i -p "REMOVE TAG")
 
 if [ -z "$tag" ]; then
     logger "no tag selected, aborting..."
-elif [ "$tag" = "[λ]" ]; then
+elif [ "$tag" = "λ" ]; then
     logger "Cannot delete default tag! Aborting..."
     rofi -e "Cannot delete default tag! Aborting..."
     exit 1
