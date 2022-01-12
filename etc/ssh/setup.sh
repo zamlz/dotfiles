@@ -12,7 +12,7 @@ CONFIG_TARGET=$HOME/.ssh
 
 if [ ! -d "$CONFIG_TARGET" ]; then
     logger "Making directory $CONFIG_TARGET"
-    mkdir $CONFIG_TARGET
+    mkdir -p $CONFIG_TARGET
 fi
 
 logger "Creating symlink for ssh config file"
