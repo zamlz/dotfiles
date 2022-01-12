@@ -27,18 +27,20 @@ help_prompt() {
 setup_dots() {
     HOME="${1:-$HOME}"
 
-    # setup phase
-    $HOME/etc/git/setup.sh
-    $HOME/etc/gnupg/setup.sh
-    $HOME/etc/picom/setup.sh
-    $HOME/etc/polybar/setup.sh
-    $HOME/etc/qutebrowser/setup.sh
-    $HOME/etc/rofi/setup.sh
-    $HOME/etc/ssh/setup.sh
-    $HOME/etc/taskwarrior/setup.sh
-    $HOME/etc/vim/setup.sh
-    $HOME/etc/xorg/setup.sh
-    $HOME/etc/zsh/setup.sh
+    # setup phase:
+    # - We source them instead of running them so that they can
+    #   get access to the ${HOME} variable defined above.
+    . $HOME/etc/git/setup.sh
+    . $HOME/etc/gnupg/setup.sh
+    . $HOME/etc/picom/setup.sh
+    . $HOME/etc/polybar/setup.sh
+    . $HOME/etc/qutebrowser/setup.sh
+    . $HOME/etc/rofi/setup.sh
+    . $HOME/etc/ssh/setup.sh
+    . $HOME/etc/taskwarrior/setup.sh
+    . $HOME/etc/vim/setup.sh
+    . $HOME/etc/xorg/setup.sh
+    . $HOME/etc/zsh/setup.sh
 }
 
 clone_repo() {
@@ -95,7 +97,7 @@ case "$CMD" in
     "pull")         run_git_over_all ${Purple} "pull" ;;
     "git")          run_git_over_all ${Green} $ARGS ;;
     "info")         cat $HOME/lib/repos ;;
-    "setup")        setup_dots ;;
+    "setup")        setup_dots $ARGS ;;
     "status")       run_git_over_all ${Blue} "status --short" ;;
     "")             run_git_over_all ${Blue} "status --short" ;;
     "-h")           help_prompt ;;
