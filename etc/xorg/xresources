@@ -12,7 +12,7 @@ Xft.hintstyle:              hintslight
 !*font: xft:Iosevka Term:size=11
 !*font: xft:xos4 Terminus:size=12
 !#define system_font xft:Terminus:size=12
-#define system_font xft:Iosevka Term:size=16
+#define system_font xft:Iosevka Term:size=12
 
 ! External Configurations
 
