@@ -3,6 +3,7 @@
 
 # Other folders/symlinks to avoid
 lib/colorscripts
+mnt/
 sys/
 src/
 tmp
