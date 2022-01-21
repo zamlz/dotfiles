@@ -10,9 +10,6 @@ done
 rmdir dotfiles
 git remote set-url origin --push "git@github.com:zamlz/dotfiles.git"
 
-# FIXME: Remove once branch is merged
-git checkout purge
-
 # Setup Dotfiles
 # --------------
 ./bin/asd setup $(realpath .)
