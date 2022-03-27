@@ -6,7 +6,7 @@
 # Set some important variables for sxhkd
 SXHKD_CONFIG=$HOME/etc/sxhkd/rc
 export SXHKD_SHELL=sh
-export SXHKD_TERMINAL=urxvt
+export SXHKD_TERMINAL=kitty
 
 logger "killing any existing sxhkd daemon"
 pkill -x sxhkd
