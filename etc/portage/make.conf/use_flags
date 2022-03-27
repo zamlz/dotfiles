@@ -1,9 +1,11 @@
+# If using a distribution kernel
+USE="${USE} dist-kernel"
 
 # We must make a choice between elogind and systemd
-USE="${USE} elogind -systemd"
+#USE="${USE} elogind -systemd"
 
 # Provide a network manager, incidentally, it is named the same...
 USE="${USE} networkmanager"
 
 # We also will use pulseaudio as the default audio system
-USE="${USE} pulseaudio"
+#USE="${USE} pulseaudio"

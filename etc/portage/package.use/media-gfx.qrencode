@@ -1,0 +1,4 @@
+x11-terms/rxvt-unicode 256-color blink fading-colors xft
+# required by app-admin/pass-1.7.4-r2::gentoo
+# required by @shell-env (argument)
+>=media-gfx/qrencode-4.1.1 png

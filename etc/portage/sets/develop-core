@@ -4,6 +4,3 @@ app-editors/neovim
 # Version Control Systems
 dev-vcs/git
 dev-vcs/rcs
-
-# Python Packages
-dev-python/pipenv

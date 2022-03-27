@@ -1,0 +1,9 @@
+# Operating System
+app-admin/sudo
+app-admin/sysklogd
+sys-apps/mlocate
+sys-process/cronie
+sys-process/htop
+
+# Add this here so it isn't removed
+app-editors/nano

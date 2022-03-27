@@ -1,16 +1,3 @@
-# Portage
-app-portage/gentoolkit
-app-portage/eix
-
-# Operating System
-app-admin/sudo
-app-admin/sysklogd
-app-editors/nano
-net-misc/networkmanager
-sys-apps/mlocate
-sys-process/cronie
-sys-process/htop
-
 # Hardware Utils
 sys-apps/nvme-cli
 sys-apps/pciutils
