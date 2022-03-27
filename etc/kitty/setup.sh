@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# Picom Setup Script
+# Kitty Setup Script
 # ------------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
