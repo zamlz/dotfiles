@@ -1,3 +1,0 @@
-# required by www-client/qutebrowser-2.4.0::gentoo
-# required by @user-apps (argument)
->=dev-qt/qtcore-5.15.2-r10 icu

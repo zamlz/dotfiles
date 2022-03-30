@@ -1,7 +1,0 @@
-# required by dev-qt/qtgui-5.15.2-r13::gentoo[X]
-# required by dev-qt/qtmultimedia-5.15.2-r2::gentoo
-# required by dev-python/PyQt5-5.15.4-r1::gentoo[multimedia]
-# required by dev-python/PyQtWebEngine-5.15.4::gentoo
-# required by www-client/qutebrowser-2.4.0::gentoo[python_single_target_python3_9]
-# required by @user-apps (argument)
->=x11-libs/libxkbcommon-1.3.1 X

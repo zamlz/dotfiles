@@ -1,5 +1,0 @@
-# required by dev-qt/qtwebengine-5.15.2_p20211019::gentoo
-# required by dev-python/PyQtWebEngine-5.15.4::gentoo
-# required by www-client/qutebrowser-2.4.0::gentoo[python_single_target_python3_9]
-# required by @user-apps (argument)
->=dev-libs/libxml2-2.9.12-r5 icu

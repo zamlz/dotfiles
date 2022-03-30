@@ -1,4 +1,0 @@
-# # required by @xorg-env
-# required by @selected
-# required by @world (argument)
-=media-fonts/iosevka-7.0.4 ~amd64

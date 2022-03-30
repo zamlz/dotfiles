@@ -1,5 +1,0 @@
-# Input Devices like mouse, keyboard, etc.
-INPUT_DEVICES="libinput"
-
-# Only a single video card at the moment
-VIDEO_CARDS="intel"

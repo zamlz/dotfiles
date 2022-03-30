@@ -1,3 +1,0 @@
-# required by www-client/qutebrowser-2.4.0::gentoo[widevine]
-# required by @user-apps (argument)
->=www-plugins/chrome-binary-plugins-96.0.4664.45:stable google-chrome
