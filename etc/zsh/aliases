@@ -8,12 +8,16 @@ alias ll="ls -oh"
 alias la="ls -lah"
 
 # Shell aliases to make using git easier.
-alias gs="git status"
+alias gs='echo "origin = $(git remote get-url origin --push)"; git status'
 alias ga="git add"
 alias gc="git commit"
 alias gd="git diff"
 alias gds="git diff --staged"
-alias gl="git log --graph --stat -p"
+alias gl="git log --graph"
+alias gls="git log --graph --stat"
+alias gll="git log --graph --stat -p"
+alias gllo="git log --graph --pretty=oneline --abbrev-commit"
+alias glla="git log --graph --pretty=oneline --abbrev-commit --all"
 alias gp="git push"
 alias gf="git fetch"
 alias gm="git merge"
