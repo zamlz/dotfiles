@@ -1,0 +1,12 @@
+# The Shell
+zsh
+
+# Useful Extensions
+zsh-completions
+
+# Misc shell tools
+cmatrix
+neofetch
+tree
+figlet
+highlight

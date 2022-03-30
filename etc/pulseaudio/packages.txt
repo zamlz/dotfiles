@@ -1,0 +1,8 @@
+# Audio Server
+pulseaudio
+pulseaudio-alsa
+pulseaudio-bluetooth
+
+# Utilities
+pulsemixer
+pavucontrol-qt

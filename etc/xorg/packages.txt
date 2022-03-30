@@ -1,0 +1,12 @@
+# The X11 Display Server
+xorg-server
+
+# Xorg Utilities
+xorg-xinit
+xorg-xrdb
+
+# Display Drivers
+xf86-video-intel
+
+# Fonts
+ttc-iosevka

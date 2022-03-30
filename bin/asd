@@ -87,6 +87,24 @@ run_git_over_all() {
     run_git ${COLOR} ${WEBSITE_DIR} $GIT_ARGS;
 }
 
+sync_packages() {
+    HOME="${1:-$HOME}"
+
+    if [ -z "$(grep 'Arch Linux' /etc/os-release)" ]; then
+        echo -e "${Red}ERROR:${Rst} This doesn't appear to be a Arch Linux machine!?"
+        exit 1
+    fi
+
+    package_list=$(cat $(find $HOME/etc/ -type f -name packages.txt) \
+        | awk '!/^ *#/ && NF' \
+        | sort | uniq)
+
+    echo -e "[${Blue} RUNNING FULL SYSTEM UPGRADE ${Rst}]"
+    sudo pacman -Syu
+    echo -e "[${Green} SYNCING LOCAL PACKAGE LIST ${Rst}]"
+    sudo pacman -S --needed ${package_list}
+}
+
 if [[ -z "$@" ]]; then
     CMD="" && ARGS=""
 else
@@ -100,9 +118,10 @@ case "$CMD" in
     "git")          run_git_over_all ${Green} $ARGS ;;
     "info")         cat $HOME/lib/repos ;;
     "setup")        setup_dots $ARGS ;;
+    "sync")         sync_packages $ARGS ;;
     "status")       run_git_over_all ${Blue} "status --short" ;;
     "")             run_git_over_all ${Blue} "status --short" ;;
     "-h")           help_prompt ;;
     "help")         help_prompt ;;
-    *)              echo "Unkown Command: $CMD $ARGS" && help_prompt ;;
+    *)              echo "Unknown Command: $CMD $ARGS" && help_prompt ;;
 esac

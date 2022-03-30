@@ -1,0 +1,28 @@
+# Arch Linux Base System
+base
+base-devel
+
+# Linux Kernel, Drivers, Microcode
+linux
+linux-firmware
+intel-ucode
+
+# Bootloader
+grub
+efibootmgr
+lvm2
+
+# Filesystem Utilties
+dosfstools
+e2fsprogs
+
+# Networking Utilities
+inetutils
+net-tools
+networkmanager
+
+# Admin Utilities
+sudo
+man-db
+mlocate
+which
