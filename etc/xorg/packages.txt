@@ -4,6 +4,7 @@ xorg-server
 # Xorg Utilities
 xorg-xinit
 xorg-xrdb
+feh
 
 # Display Drivers
 xf86-video-intel
