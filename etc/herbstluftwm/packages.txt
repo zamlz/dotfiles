@@ -1,1 +1,5 @@
+# Window Manager
 herbstluftwm
+
+# Dependencies
+wmctrl
