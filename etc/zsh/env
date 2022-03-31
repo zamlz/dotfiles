@@ -1,7 +1,9 @@
 #!/bin/zsh
 
-# Source my main repositories
-source $HOME/lib/repos
+# Source some configurations
+. $HOME/lib/repos
+. $HOME/etc/pass/config
+. $HOME/etc/ledger/config
 
 # Update PATH with local binary directories
 export PATH="$HOME/.local/bin:$PATH"

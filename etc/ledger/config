@@ -1,0 +1,8 @@
+# Ledger Plaintext Accounting System
+
+# Source directory for the ledger file
+
+LEDGER_DIR="$HOME/usr/ledger"
+
+# (internal) Used for clone my ledger files
+LEDGER_GIT_REPO="git@github.com:zamlz/ledger.git"

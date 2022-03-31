@@ -11,9 +11,14 @@ logger "Setting colorscheme to gruvbox-black"
 . $HOME/bin/xcolorscheme --set gruvbox-black
 
 logger "Setting up colorscripts"
+
+# FIXME: This variable needs to be in sync with `bin/colors` but it is being
+# defined in two places, get it from some shared location
 COLORSCRIPT_DIR=$HOME/lib/colorscripts
+COLORSCRIPT_GIT_REPO="https://github.com/zamlz/colorscripts.git"
+
 if [ ! -d "$COLORSCRIPT_DIR" ]; then
-    git clone https://github.com/zamlz/colorscripts.git $COLORSCRIPT_DIR
+    git clone $COLORSCRIPT_GIT_REPO $COLORSCRIPT_DIR
 fi
 . $HOME/bin/colors --set hex
 

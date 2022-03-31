@@ -3,11 +3,19 @@
 # [a]mlesh's [s]cript for [d]otfiles
 # IDK, I had to think of an acronym for asd
 
+# WE SOURCE ALL THINGS!!!
+# - this is because we want to be able to override $HOME and have
+#   that propagate to all configuration scripts downstream.
+
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
 # A simple script that manages dotfiles repo and beyond
-. $HOME/lib/repos
+. $HOME/etc/pass/config
+. $HOME/etc/ledger/config
 . $HOME/lib/shell/colorenv
+
+DOTFILES_DIR="$HOME"
+DOTFILES_GIT_REPO="git@github.com:zamlz/dotfiles.git"
 
 help_prompt() {
     echo "Usage: $(basename $0) [CMD]"
@@ -25,11 +33,6 @@ help_prompt() {
 # Configure dotfiles in the current directory
 # (Used when installing new distros)
 setup_dots() {
-    HOME="${1:-$HOME}"
-
-    # setup phase:
-    # - We source them instead of running them so that they can
-    #   get access to the ${HOME} variable defined above.
     . $HOME/etc/git/setup.sh
     . $HOME/etc/gnupg/setup.sh
     . $HOME/etc/picom/setup.sh
@@ -41,7 +44,6 @@ setup_dots() {
     . $HOME/etc/vim/setup.sh
     . $HOME/etc/xorg/setup.sh
     . $HOME/etc/zsh/setup.sh
-
     echo "Setup scripts complete :)"
 }
 
@@ -59,12 +61,11 @@ clone_repo() {
 }
 
 clone_repos_over_all() {
-    clone_repo ${Red} ${BOOKMARKS_DIR} ${BOOKMARKS_GIT_REPO}
+    read -p "Enter pass repo (leave blank to skip): " pass_git_repo
+    if [ -n "${pass_git_repo}" ]; then
+        clone_repo ${Red} ${PASSWORD_STORE_DIR} ${pass_git_repo}
+    fi
     clone_repo ${Red} ${LEDGER_DIR} ${LEDGER_GIT_REPO}
-    #clone_repo ${Red} ${PAPERS_DIR} ${PAPERS_GIT_REPO}
-    clone_repo ${Red} ${PASSWORD_STORE_DIR} ${PASSWORD_STORE_GIT_REPO}
-    clone_repo ${Red} ${WEBSITE_DIR} ${WEBSITE_GIT_REPO}
-    clone_repo ${Red} ${COLORSCRIPT_DIR} ${COLORSCRIPT_GIT_REPO}
 }
 
 # Run a git command (${2-}) in a given repo (${1})
@@ -80,11 +81,8 @@ run_git() {
 run_git_over_all() {
     COLOR=$1 && shift && GIT_ARGS=$@;
     run_git ${COLOR} ${DOTFILES_DIR} $GIT_ARGS;
-    run_git ${COLOR} ${BOOKMARKS_DIR} $GIT_ARGS;
-    run_git ${COLOR} ${LEDGER_DIR} $GIT_ARGS;
-    run_git ${COLOR} ${PAPERS_DIR} $GIT_ARGS;
     run_git ${COLOR} ${PASSWORD_STORE_DIR} $GIT_ARGS;
-    run_git ${COLOR} ${WEBSITE_DIR} $GIT_ARGS;
+    run_git ${COLOR} ${LEDGER_DIR} $GIT_ARGS;
 }
 
 sync_packages() {
