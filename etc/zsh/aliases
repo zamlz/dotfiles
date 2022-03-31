@@ -22,6 +22,8 @@ alias gp="git push"
 alias gf="git fetch"
 alias gm="git merge"
 alias gb="git branch -av"
+alias gr="git rev-parse --show-toplevel"
+alias grr="git rev-parse --show-toplevel | xargs"
 
 # Make various commands pretty by default
 alias grep="grep --color=always"
