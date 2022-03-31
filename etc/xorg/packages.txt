@@ -4,10 +4,14 @@ xorg-server
 # Xorg Utilities
 xorg-xinit
 xorg-xrdb
-feh
+xorg-xset
+xorg-setxkbmap
 
 # Display Drivers
 xf86-video-intel
+
+# Wallpaper setter
+feh
 
 # Fonts
 ttc-iosevka

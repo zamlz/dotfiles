@@ -23,6 +23,7 @@ networkmanager
 
 # Admin Utilities
 sudo
+htop
 man-db
 mlocate
 which
