@@ -1,7 +1,6 @@
 #!/bin/zsh
 
 # Source some configurations
-. $HOME/lib/repos
 . $HOME/etc/pass/config
 . $HOME/etc/ledger/config
 
