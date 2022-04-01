@@ -5,7 +5,7 @@
 # need to be sourced in order for proper Xorg operation. Source the
 # global defaults and then the local files if any exist.
 
-logger "Sourcing xinitrc.d files if they exist"
+logger "Sourcing global xinitrc.d files if they exist"
 if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     for f in /etc/X11/xinit/xinitrc.d/*.sh ; do
         [ -x "$f" ] && . "$f"
