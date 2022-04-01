@@ -3,6 +3,9 @@ zsh
 
 # Useful Extensions
 zsh-completions
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-history-substring-search
 
 # Misc shell tools
 cmatrix

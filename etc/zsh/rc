@@ -19,11 +19,24 @@ autoload -U bashcompinit && bashcompinit
 #autoload -U colors && colors
 autoload -U zcalc
 
-logger "setup syntax highlighting"
-zplugin="/usr/share/zsh/zsh-syntax-highlighting.zsh"
-if [ -f $zplugin ]; then
-    source $zplugin
-fi
+logger "setup zsh plugins"
+zsh_plugin_list=$(cat <<EOF
+/usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+/usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+/usr/share/zsh/plugins/zsh-history-substring-search/zsh-history-substring-search.zsh
+EOF
+)
+echo "$zsh_plugin_list" | while read -r zplugin; do
+    logger "sourcing $zplugin"
+    if [ -f $zplugin ]; then
+        source $zplugin
+        logger "success!"
+    fi
+done
+
+# zsh-history-substring-search plugin post-install configuration
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
 
 logger "sourcing shell aliases"
 source $HOME/etc/zsh/aliases
