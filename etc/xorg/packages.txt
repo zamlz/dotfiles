@@ -8,6 +8,8 @@ xorg-xset
 xorg-setxkbmap
 
 # Display Drivers
+# (make sure to blacklist nouveau if on nvidia machine!)
+nvidia
 xf86-video-intel
 
 # Wallpaper setter
