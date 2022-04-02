@@ -33,6 +33,7 @@ help_prompt() {
 # Configure dotfiles in the current directory
 # (Used when installing new distros)
 setup_dots() {
+    logger "Preparing to setup dotfiles in $HOME"
     export HOME=$HOME
     $HOME/etc/git/setup.sh
     $HOME/etc/gnupg/setup.sh
