@@ -10,7 +10,7 @@ logger "Setting up OpenSSH"
 
 CONFIG_SOURCE=$HOME/etc/ssh/config
 CONFIG_TARGET=$HOME/.ssh/config
-CONFIG_TARGET_DIR=$(dirname CONFIG_TARGET)
+CONFIG_TARGET_DIR=$(dirname $CONFIG_TARGET)
 
 if [ ! -d "$CONFIG_TARGET_DIR" ]; then
     logger "Making directory $CONFIG_TARGET_DIR"
