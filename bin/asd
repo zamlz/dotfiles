@@ -35,6 +35,7 @@ help_prompt() {
 setup_dots() {
     . $HOME/etc/git/setup.sh
     . $HOME/etc/gnupg/setup.sh
+    . $HOME/etc/kitty/setup.sh
     . $HOME/etc/picom/setup.sh
     . $HOME/etc/polybar/setup.sh
     . $HOME/etc/qutebrowser/setup.sh
