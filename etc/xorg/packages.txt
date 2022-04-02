@@ -2,10 +2,11 @@
 xorg-server
 
 # Xorg Utilities
+xorg-setxkbmap
+xorg-xbacklight
 xorg-xinit
 xorg-xrdb
 xorg-xset
-xorg-setxkbmap
 
 # Display Drivers
 # (make sure to blacklist nouveau if on nvidia machine!)
