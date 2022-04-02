@@ -1,1 +1,6 @@
+# The most basic password manager of all!
 pass
+
+# Optional dependencies
+xclip
+qrencode
