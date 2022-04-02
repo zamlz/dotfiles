@@ -1,0 +1,7 @@
+# Interpretor
+python
+
+# Useful tools
+ipython
+python-pipenv
+python-tox
