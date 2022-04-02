@@ -4,16 +4,17 @@
 # --------------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
 
 logger "Setting up Polybar"
 
-CONFIG_SOURCE=$HOME/etc/polybar/systems
-CONFIG_TARGET=$HOME/.config/polybar
+CONFIG_SOURCE=$HOME/etc/polybar/systems/$(hostname).conf
+CONFIG_TARGET=$HOME/.config/polybar/system.conf
+CONFIG_TARGET_DIR=$(dirname $CONFIG_TARGET)
 
-if [ ! -d "$CONFIG_TARGET" ]; then
-    logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET
+if [ ! -d "$CONFIG_TARGET_DIR" ]; then
+    logger "Making directory $CONFIG_TARGET_DIR"
+    mkdir -p $CONFIG_TARGET_DIR
 fi
 
-logger "Creating symlink for system.conf"
-ln -s $CONFIG_SOURCE/$(hostname).conf $CONFIG_TARGET/system.conf
+create_symlink "polybar config" $CONFIG_SOURCE $CONFIG_TARGET

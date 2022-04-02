@@ -4,22 +4,21 @@
 # --------------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
 
 logger "Setting up Z Shell"
 
-CONFIG_SOURCE=$HOME/etc/zsh
-CONFIG_TARGET=$HOME
+CONFIG_SOURCE_DIR=$HOME/etc/zsh
+CONFIG_TARGET_DIR=$HOME
 
-if [ ! -d "$CONFIG_TARGET" ]; then
-    logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET
+if [ ! -d "$CONFIG_TARGET_DIR" ]; then
+    logger "Making directory $CONFIG_TARGET_DIR"
+    mkdir -p $CONFIG_TARGET_DIR
 fi
 
-logger "Creating symlink for ~/.zshrc"
-ln -s $CONFIG_SOURCE/rc $CONFIG_TARGET/.zshrc
-
-logger "Creating symlink for ~/.zlogin"
-ln -s $CONFIG_SOURCE/login $CONFIG_TARGET/.zlogin
-
-logger "Creating symlink for ~/.zlogout"
-ln -s $CONFIG_SOURCE/logout $CONFIG_TARGET/.zlogout
+create_symlink "zshrc" $CONFIG_SOURCE_DIR/rc \
+    $CONFIG_TARGET_DIR/.zshrc
+create_symlink "zlogin" $CONFIG_SOURCE_DIR/login \
+    $CONFIG_TARGET_DIR/.zlogin
+create_symlink "zlogout" $CONFIG_SOURCE_DIR/logout \
+    $CONFIG_TARGET_DIR/.zlogout

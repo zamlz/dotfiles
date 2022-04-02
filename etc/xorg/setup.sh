@@ -18,7 +18,7 @@ xdg-user-dirs-update --set TEMPLATES    "$HOME/lib/templates"
 # post setup phase
 logger "Setting up color info for xorg apps"
 logger "Setting colorscheme to gruvbox-black"
-. $HOME/bin/xcolorscheme --set gruvbox-black
+$HOME/bin/xcolorscheme --set gruvbox-black
 
 logger "Setting up colorscripts"
 
@@ -30,4 +30,4 @@ COLORSCRIPT_GIT_REPO="https://github.com/zamlz/colorscripts.git"
 if [ ! -d "$COLORSCRIPT_DIR" ]; then
     git clone $COLORSCRIPT_GIT_REPO $COLORSCRIPT_DIR
 fi
-. $HOME/bin/colors --set hex
+$HOME/bin/colors --set hex

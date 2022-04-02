@@ -4,16 +4,17 @@
 # ----------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
 
 logger "Setting up Git"
 
-CONFIG_SOURCE=$HOME/etc/git
-CONFIG_TARGET=$HOME/.config/git
+CONFIG_SOURCE=$HOME/etc/git/config
+CONFIG_TARGET=$HOME/.config/git/config
+CONFIG_TARGET_DIR=$(dirname $CONFIG_TARGET)
 
-if [ ! -d "$CONFIG_TARGET" ]; then
-    logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET
+if [ ! -d "$CONFIG_TARGET_DIR" ]; then
+    logger "Making directory $CONFIG_TARGET_DIR"
+    mkdir -p $CONFIG_TARGET_DIR
 fi
 
-logger "Creating symlink for git config"
-ln -s $CONFIG_SOURCE/config $CONFIG_TARGET/config
+create_symlink "git config" $CONFIG_SOURCE $CONFIG_TARGET

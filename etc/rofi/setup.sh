@@ -4,19 +4,19 @@
 # -----------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
 
 logger "Setting up Rofi"
 
-CONFIG_SOURCE=$HOME/etc/rofi
-CONFIG_TARGET=$HOME/.config/rofi
+CONFIG_SOURCE_DIR=$HOME/etc/rofi
+CONFIG_TARGET_DIR=$HOME/.config/rofi
 
-if [ ! -d "$CONFIG_TARGET" ]; then
-    logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET
+if [ ! -d "$CONFIG_TARGET_DIR" ]; then
+    logger "Making directory $CONFIG_TARGET_DIR"
+    mkdir -p $CONFIG_TARGET_DIR
 fi
 
-logger "Creating symlink for config.rasi"
-ln -s $CONFIG_SOURCE/config.rasi $CONFIG_TARGET/config.rasi
-
-logger "Creating symlink for default-theme.rasi"
-ln -s $CONFIG_SOURCE/default-theme.rasi $CONFIG_TARGET/default-theme.rasi
+create_symlink "rofi config" $CONFIG_SOURCE_DIR/config.rasi \
+    $CONFIG_TARGET_DIR/config.rasi
+create_symlink "rofi theme" $CONFIG_SOURCE_DIR/default-theme.rasi \
+    $CONFIG_TARGET_DIR/default-theme.rasi

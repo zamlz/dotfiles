@@ -3,25 +3,29 @@
 # (Neo)Vim Setup Script
 # ---------------------
 
-. $HOME/lib/shell/logging && eval "$(get_logger etc.vim.setup)"
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
 
-logger "Setting up (Neo)Vim"
+logger "Setting up NeoVim"
 
-CONFIG_SOURCE=$HOME/etc/vim
-CONFIG_TARGET=$HOME/.config/nvim
+CONFIG_SOURCE=$HOME/etc/vim/rc
+CONFIG_TARGET=$HOME/.config/nvim/init.vim
+CONFIG_TARGET_DIR=$(dirname $CONFIG_TARGET)
 
-if [ ! -d "$CONFIG_TARGET" ]; then
-    logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET
+if [ ! -d "$CONFIG_TARGET_DIR" ]; then
+    logger "Making directory $CONFIG_TARGET_DIR"
+    mkdir -p $CONFIG_TARGET_DIR
 fi
 
-logger "Creating symlink for $CONFIG_TARGET/init.vim"
-ln -s $CONFIG_SOURCE/rc $CONFIG_TARGET/init.vim
+create_symlink "nvim config" $CONFIG_SOURCE $CONFIG_TARGET
 
 # Installing Vim-Plug
 VIM_PLUG_URL=https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 SAVE_PATH=$HOME/.local/share/nvim/site/autoload/plug.vim
 
-logger "Setting up vim-plug"
-curl -fLo $SAVE_PATH --create-dirs $VIM_PLUG_URL
-
+if [ ! -f "$SAVE_PATH" ]; then
+    logger "Setting up vim-plug"
+    curl -fLo $SAVE_PATH --create-dirs $VIM_PLUG_URL
+else
+    logger "skipping vim-plug install (already exists)"
+fi

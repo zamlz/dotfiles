@@ -1,5 +1,8 @@
 #!/bin/sh
 
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
+
+# These must be defined beforing sourcing the script
 SYM_SOURCE_DIR="$HOME/lib/colorscripts"
 SYM_TARGET_FILE="$HOME/.config/xcolor/test"
 
@@ -14,7 +17,7 @@ default_action_with_args() {
     if [ -f $SYM_SOURCE_DIR/$1 ]; then
         $SYM_SOURCE_DIR/$1
     else
-        echo "No such color preview script: $1"
+        logger "No such color preview script: $1"
     fi
 }
 

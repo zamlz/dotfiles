@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+. $HOME/lib/shell/logging && eval "$(get_logger $0)"
+
 # Simple lib script for managing symbolic links by defining a core set of
 # functions that can be used by other scripts
 
@@ -15,10 +17,10 @@ list_targets() {
 set_target() {
     target=$1
     if [ ! -f $SYM_SOURCE_DIR/$target ]; then
-        echo "Invalid target selection: $target";
+        logger "Invalid target selection: $target";
         exit 1
     fi
-    echo "Attempting to set target: $target"
+    logger "Attempting to set target: $target"
 
     sym_target_dir=$(dirname $SYM_TARGET_FILE)
     [ ! -d $sym_target_dir ] && mkdir -p $sym_target_dir
@@ -39,7 +41,7 @@ cycle_link() {
         elif [ "next" = "$action" ]; then
             updater=1
         else
-            echo "Internal Error, Invalid argument!"
+            logger "Internal Error, Invalid argument!"
             exit 1
         fi
 
@@ -61,7 +63,7 @@ cycle_link() {
 }
 
 default_action() {
-    echo "Dummy function for default action"
+    logger "Dummy function for default action"
 }
 
 default_action_with_args() {

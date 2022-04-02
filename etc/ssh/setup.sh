@@ -4,16 +4,17 @@
 # --------------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
 
 logger "Setting up OpenSSH"
 
-CONFIG_SOURCE=$HOME/etc/ssh
-CONFIG_TARGET=$HOME/.ssh
+CONFIG_SOURCE=$HOME/etc/ssh/config
+CONFIG_TARGET=$HOME/.ssh/config
+CONFIG_TARGET_DIR=$(dirname CONFIG_TARGET)
 
-if [ ! -d "$CONFIG_TARGET" ]; then
-    logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET
+if [ ! -d "$CONFIG_TARGET_DIR" ]; then
+    logger "Making directory $CONFIG_TARGET_DIR"
+    mkdir -p $CONFIG_TARGET_DIR
 fi
 
-logger "Creating symlink for ssh config file"
-ln -s $CONFIG_SOURCE/config $CONFIG_TARGET/config
+create_symlink "ssh config" $CONFIG_SOURCE $CONFIG_TARGET

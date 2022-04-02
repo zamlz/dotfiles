@@ -4,16 +4,17 @@
 # ------------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
 
 logger "Setting up taskwarrior"
 
-CONFIG_SOURCE=$HOME/etc/taskwarrior
-CONFIG_TARGET=$HOME
+CONFIG_SOURCE=$HOME/etc/taskwarrior/rc
+CONFIG_TARGET=$HOME/.taskrc
+CONFIG_TARGET_DIR=$(dirname $CONFIG_TARGET)
 
-if [ ! -d "$CONFIG_TARGET" ]; then
-    logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET
+if [ ! -d "$CONFIG_TARGET_DIR" ]; then
+    logger "Making directory $CONFIG_TARGET_DIR"
+    mkdir -p $CONFIG_TARGET_DIR
 fi
 
-logger "Creating symlink for taskrc"
-ln -s $CONFIG_SOURCE/rc $CONFIG_TARGET/.taskrc
+create_symlink "taskwarrior config" $CONFIG_SOURCE $CONFIG_TARGET

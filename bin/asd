@@ -33,19 +33,20 @@ help_prompt() {
 # Configure dotfiles in the current directory
 # (Used when installing new distros)
 setup_dots() {
-    . $HOME/etc/git/setup.sh
-    . $HOME/etc/gnupg/setup.sh
-    . $HOME/etc/kitty/setup.sh
-    . $HOME/etc/picom/setup.sh
-    . $HOME/etc/polybar/setup.sh
-    . $HOME/etc/qutebrowser/setup.sh
-    . $HOME/etc/rofi/setup.sh
-    . $HOME/etc/ssh/setup.sh
-    . $HOME/etc/taskwarrior/setup.sh
-    . $HOME/etc/vim/setup.sh
-    . $HOME/etc/xorg/setup.sh
-    . $HOME/etc/zsh/setup.sh
-    echo "Setup scripts complete :)"
+    export HOME=$HOME
+    $HOME/etc/git/setup.sh
+    $HOME/etc/gnupg/setup.sh
+    $HOME/etc/kitty/setup.sh
+    $HOME/etc/picom/setup.sh
+    $HOME/etc/polybar/setup.sh
+    $HOME/etc/qutebrowser/setup.sh
+    $HOME/etc/rofi/setup.sh
+    $HOME/etc/ssh/setup.sh
+    $HOME/etc/taskwarrior/setup.sh
+    $HOME/etc/vim/setup.sh
+    $HOME/etc/xorg/setup.sh
+    $HOME/etc/zsh/setup.sh
+    logger "Setup scripts complete :)"
 }
 
 clone_repo() {
