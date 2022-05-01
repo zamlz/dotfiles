@@ -1,0 +1,1 @@
+../../xscreensaver/refresh.sh
