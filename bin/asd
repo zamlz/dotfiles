@@ -46,6 +46,7 @@ setup_dots() {
     $HOME/etc/taskwarrior/setup.sh
     $HOME/etc/vim/setup.sh
     $HOME/etc/xorg/setup.sh
+    $HOME/etc/xscreensaver/setup.sh
     $HOME/etc/zsh/setup.sh
     logger "Setup scripts complete :)"
 }
