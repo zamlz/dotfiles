@@ -1,9 +1,14 @@
 
+;; Evil collection expects evil-want-keybinding and evil-want-integration to
+;; be configured as (nil, t) respectively before both evil and evil-collection
+;; is initialized.
 (use-package evil
-  :init (setq evil-want-keybinding nil))
-(use-package evil-collection)
-(use-package evil-commentary)
-(use-package evil-goggles)
+  :init
+  (setq evil-want-keybinding nil)
+  (setq evil-want-integration t))
+(use-package evil-collection :after evil)
+(use-package evil-commentary :after evil)
+(use-package evil-goggles :after evil)
 
 ;; Here are some saner editor defaults
 (setq show-paren-delay 0)
@@ -15,6 +20,10 @@
 
 ;; Let's make GNU/Emacs more EVIL!!
 (evil-mode 1)
+(evil-commentary-mode 1)
+(evil-collection-init)
+
+;; while this is a UI change, this makes emacs "visually" more evil
 (evil-goggles-mode 1)
 (evil-goggles-use-diff-faces)
 
