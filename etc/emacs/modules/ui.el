@@ -55,4 +55,12 @@
 (add-hook 'prog-mode-hook #'highlight-numbers-mode)
 (add-hook 'prog-mode-hook #'hes-mode) ;; highlight-escape-sequences-mode
 
+;; Let's also make the UI transparent
+(defun +set-transparency (value)
+  "Sets the transparency of the frame window. 0=max-transparency/100-opaque"
+  (interactive "nTransparency Value 0 - 100: ")
+  (set-frame-parameter (selected-frame) 'alpha value))
+;; set the default transparency here
+(+set-transparency 100)
+
 (provide 'ui)
