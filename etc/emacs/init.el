@@ -40,6 +40,7 @@
 (require 'lang)
 (require 'checkers)
 (require 'apps)
+(require 'zorg)
 
 ;; Finally load up our configuration
 (require 'config)
