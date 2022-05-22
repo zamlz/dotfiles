@@ -8,4 +8,5 @@ org-roam.db
 auto-save-list/
 recentf
 bookmarks
+transient
 eshell/
