@@ -5,4 +5,10 @@
 ;; It provides a very nice interface to work with git repos.
 (use-package magit)
 
+;; Improve the magit experience with the following plugin
+(use-package magit-todos
+  :after magit
+  :config
+  (magit-todos-mode 1))
+
 (provide 'apps)
