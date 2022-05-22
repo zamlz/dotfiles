@@ -1,8 +1,10 @@
 ;; Yeah I don't have a good name for this module, but this should
 ;; house everything related to org-mode. (zorg -> zamlz's org-mode)
 
-;; Shared variables for org modules
-(setq +org-directory (file-truename "~/org"))
+
+;; Create org directory if it doesn't exist
+(unless (file-directory-p +org-directory)
+  (make-directory +org-directory))
 
 ;; setup org
 (use-package org

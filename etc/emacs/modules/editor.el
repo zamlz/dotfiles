@@ -40,10 +40,12 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
   :config
-  (evil-mode 1)
-  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-  (define-key evil-normal-state-map (kbd "J") nil)
-  (define-key evil-normal-state-map (kbd "K") nil))
+  (evil-mode 1))
+
+;; Let's improve the keybindings of evil
+(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+(define-key evil-normal-state-map (kbd "J") 'next-buffer)
+(define-key evil-normal-state-map (kbd "K") 'previous-buffer)
 
 ;; Now that evil and undo-tree are  both loaded, let's link them together
 (evil-set-undo-system 'undo-tree)

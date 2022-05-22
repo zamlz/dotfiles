@@ -35,14 +35,18 @@
 
 (update-load-path)
 
+;; First load up our configuration
+(require 'config)
+
 ;; Load up our modules
 (require 'ui)
 (require 'editor)
 (require 'completion)
 (require 'lang)
 (require 'checkers)
-(require 'apps)
 (require 'zorg)
+(require 'apps)
 
-;; Finally load up our configuration
-(require 'config)
+;; Finally load any cross module integrations that were not able to be
+;; put in the module files themselves (ex: magit and evil integration)
+(require 'integrations)
