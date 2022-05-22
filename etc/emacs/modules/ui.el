@@ -17,7 +17,7 @@
 (set-fringe-mode 8)
 
 ;; Let's also make sure line numbers appear in programming modes 
-(dolist (mode '(prog-mode-hook))
+(dolist (mode '(prog-mode-hook conf-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 1))))
 
 ;; Let's also make the UI transparent
@@ -103,12 +103,12 @@
 ;; Let's us make sure numbers are highlighted
 (use-package highlight-numbers
   :hook
-  (prog-mode . highlight-numbers-mode))
+  ((prog-mode conf-mode) . highlight-numbers-mode))
 
 ;; And also make sure that escape sequences are also highlighted
 (use-package highlight-escape-sequences
   :hook
-  (prog-mode . hes-mode))
+  ((prog-mode conf-mode) . hes-mode))
 
 ;; which-key is a nice tool to see available keybindings on the fly
 ;; in case we forget about it
@@ -125,7 +125,7 @@
 ;; VERY useful for lisp
 (use-package rainbow-delimiters
   :hook
-  (prog-mode . rainbow-delimiters-mode))
+  ((prog-mode conf-mode) . rainbow-delimiters-mode))
 
 ;; Let's add some visual git integration to the editor
 (use-package diff-hl
