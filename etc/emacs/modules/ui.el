@@ -59,13 +59,33 @@
 ;; Let's configure Protesilaos Stavrou's Modus theme
 (use-package modus-themes
   :init
+  (setq modus-themes-inhibit-reload t)
   (setq modus-themes-italic-constructs t)
   (setq modus-themes-bold-constructs t)
+  (setq modus-themes-syntax nil)
+  (setq modus-themes-mixed-fonts nil)
+  (setq modus-themes-links '(no-underline background))
+  (setq modus-themes-prompts '(background italic))
+  (setq modus-themes-mode-line '(accented))
+  (setq modus-themes-tabs-accented nil)
+  (setq modus-themes-completions nil)
+  (setq modus-themes-mail-citations nil)
+  (setq modus-themes-fringes nil)
+  (setq modus-themes-lang-checkers nil)
+  (setq modus-themes-hl-line nil)
+  (setq modus-themes-subtle-line-numbers t)
+  (setq modus-themes-paren-match '(bold intense))
+  (setq modus-themes-region '(bg-only accented))
+  (setq modus-themes-diffs nil)
+  (setq modus-themes-org-blocks 'gray-background)
+  (setq modus-themes-org-agenda nil)
+  (setq modus-themes-headings nil)
   (modus-themes-load-themes)
   :config
   (modus-themes-load-vivendi)
   :bind
   ("<f5>" . modus-themes-toggle))
+
 
 ;; You need to manually install all-the-icons-install-fonts
 (use-package all-the-icons)
