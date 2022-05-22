@@ -107,4 +107,11 @@
   :hook
   (prog-mode . rainbow-delimiters-mode))
 
+;; Let's add some visual git integration to the editor
+(use-package diff-hl
+  :config
+  (global-diff-hl-mode)
+  (global-diff-hl-show-hunk-mouse-mode)
+  (diff-hl-flydiff-mode))
+
 (provide 'ui)
