@@ -18,6 +18,6 @@
   (setq org-roam-v2-ack t)
   (setq org-roam-directory +org-directory)
   :config
-  (org-roam-db-autosync-mode))
+  (org-roam-db-autosync-mode +1))
 
 (provide 'zorg)

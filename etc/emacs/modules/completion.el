@@ -2,12 +2,12 @@
 ;; A very lightweight minibuffer completion system
 (use-package vertico
   :config
-  (vertico-mode))
+  (vertico-mode +1))
 
 ;; helps make vertico look nice by annotating completions
 (use-package marginalia
   :config
-  (marginalia-mode))
+  (marginalia-mode +1))
 
 ;; Cycle between marignalia annotations in vertico
 (define-key vertico-map (kbd "M-m") #'marginalia-cycle)
@@ -23,7 +23,7 @@
 ;; Let's us add icons to the completion annotations
 (use-package all-the-icons-completion
   :config
-  (all-the-icons-completion-mode))
+  (all-the-icons-completion-mode +1))
 
 ;; We need to add the icons setup to marginalia's annotations with this hook
 (add-hook 'marginalia-mode-hook #'all-the-icons-completion-marginalia-setup)

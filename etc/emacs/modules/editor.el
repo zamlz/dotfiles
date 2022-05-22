@@ -5,7 +5,7 @@
 
 ;; Here are some saner editor defaults
 (setq show-paren-delay 0)
-(show-paren-mode 1)
+(show-paren-mode +1)
 
 ;; Don't create backup files and lockdirs
 (setq create-lockfiles nil)
@@ -32,7 +32,7 @@
   (setq undo-tree-visualizer-relative-timestamps nil)
   (setq undo-tree-visualizer-timestamps t)
   :config
-  (global-undo-tree-mode 1))
+  (global-undo-tree-mode +1))
 
 ;; Let's make GNU/Emacs more EVIL!!
 (use-package evil
@@ -40,7 +40,7 @@
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
   :config
-  (evil-mode 1))
+  (evil-mode +1))
 
 ;; Let's improve the keybindings of evil
 (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
@@ -67,13 +67,13 @@
   :diminish
   :after evil
   :config
-  (evil-commentary-mode 1))
+  (evil-commentary-mode +1))
 
 ;; while this is a UI change, this makes emacs "visually" more evil
 (use-package evil-goggles
   :after evil
   :config
-  (evil-goggles-mode 1)
+  (evil-goggles-mode +1)
   (evil-goggles-use-diff-faces))
 
 (provide 'editor)

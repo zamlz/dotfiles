@@ -11,7 +11,7 @@
 (set-fringe-mode 0)
 
 ;; regardless of modeline we use, we want to see line and column numbers in it
-(column-number-mode 1)
+(column-number-mode +1)
 
 ;; We shoudl add a little bit of a fringe so things can be drawn there if needed
 (set-fringe-mode 8)
@@ -98,7 +98,7 @@
 ;; With our themes enabled, let's configure the modeline
 (use-package doom-modeline
   :config
-  (doom-modeline-mode 1))
+  (doom-modeline-mode +1))
 
 ;; Let's us make sure numbers are highlighted
 (use-package highlight-numbers
@@ -119,7 +119,7 @@
   (setq which-key-secondary-delay 0.0)
   (which-key-setup-side-window-bottom)
   :config
-  (which-key-mode 1))
+  (which-key-mode +1))
 
 ;; A nice cosmetic for parens that make all them colored differently.
 ;; VERY useful for lisp
