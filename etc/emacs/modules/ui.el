@@ -13,6 +13,9 @@
 ;; regardless of modeline we use, we want to see line and column numbers in it
 (column-number-mode 1)
 
+;; We shoudl add a little bit of a fringe so things can be drawn there if needed
+(set-fringe-mode 8)
+
 ;; Let's also make sure line numbers appear in programming modes 
 (dolist (mode '(prog-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 1))))
@@ -67,6 +70,11 @@
 ;; You need to manually install all-the-icons-install-fonts
 (use-package all-the-icons)
 
+;; Dired is lacking some icons so let's get it some icons
+(use-package all-the-icons-dired
+  :hook
+  (dired-mode . all-the-icons-dired-mode))
+
 ;; With our themes enabled, let's configure the modeline
 (use-package doom-modeline
   :config
@@ -92,5 +100,11 @@
   (which-key-setup-side-window-bottom)
   :config
   (which-key-mode 1))
+
+;; A nice cosmetic for parens that make all them colored differently.
+;; VERY useful for lisp
+(use-package rainbow-delimiters
+  :hook
+  (prog-mode . rainbow-delimiters-mode))
 
 (provide 'ui)
