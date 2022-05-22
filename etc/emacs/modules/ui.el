@@ -110,6 +110,16 @@
   :hook
   ((prog-mode conf-mode) . hes-mode))
 
+;; Let's enable indentation hints
+(use-package highlight-indent-guides
+  :hook
+  ((prog-mode conf-mode) . highlight-indent-guides-mode)
+  :init
+  (setq highlight-indent-guides-method 'character)
+  (setq highlight-indent-guides-suppress-auto-error t)
+  :config
+  (highlight-indent-guides-auto-set-faces))
+
 ;; which-key is a nice tool to see available keybindings on the fly
 ;; in case we forget about it
 (use-package which-key
