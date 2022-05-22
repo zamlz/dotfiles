@@ -20,9 +20,11 @@
 ;; =use-package= is a very nice wrapper over =package.el=, unfortunately, it
 ;; does not support =straight.el= out of the box. The following will install
 ;; and enable that functionality.
-
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
+
+;; This is a package that is used by use-package to diminish major modes
+(straight-use-package 'diminish)
 
 ;; Update the load path to load other configuration files.
 
