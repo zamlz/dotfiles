@@ -3,13 +3,6 @@
 ;; The UI in Emacs needs a lot of changes to make it more modern
 ;; -------------------------------------------------------------
 
-;; Alright we have to start with sane defaults here, first let's disable the
-;; ugly GUI
-(tool-bar-mode -1)
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(set-fringe-mode 0)
-
 ;; regardless of modeline we use, we want to see line and column numbers in it
 (column-number-mode +1)
 

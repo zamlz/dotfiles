@@ -1,28 +1,36 @@
+;;; early-init.el --- Early Init File -*- lexical-binding: t; no-byte-compile: t -*-
 
-;; Prevent =package.el= from being used at all
-(setq package-enable-at-startup nil)
-
-;; Configure Garbage Collection Hooks
-;; TODO: Review this code. Do i really need it?
-(defvar file-name-handler-alist-original file-name-handler-alist)
-
+;; Defer garbage collection further back in the startup process
 (setq gc-cons-threshold most-positive-fixnum
-      gc-cons-percentage 0.6
-      file-name-handler-alist nil
-      site-run-file nil)
+      gc-cons-percentage 0.6)
 
-(defvar zamlz/gc-cons-threshold 100000000)
+;; In Emacs 27+, package initialization occurs before `user-init-file' is
+;; loaded, but after `early-init-file'. Doom handles package initialization, so
+;; we must prevent Emacs from doing it early!
+(setq package-enable-at-startup nil)
+;; Do not allow loading from the package cache (same reason).
+(setq package-quickstart nil)
 
-(add-hook 'emacs-startup-hook ; hook run after loading init files
-          (lambda ()
-            (setq gc-cons-threshold zamlz/gc-cons-threshold
-                  gc-cons-percentage 0.1
-                  file-name-handler-alist file-name-handler-alist-original)))
+;; Prevent the glimpse of un-styled Emacs by disabling these UI elements early.
+(push '(menu-bar-lines . 0) default-frame-alist)
+(push '(tool-bar-lines . 0) default-frame-alist)
+(push '(vertical-scroll-bars) default-frame-alist)
 
-(add-hook 'minibuffer-setup-hook
-          (lambda ()
-            (setq gc-cons-threshold (* zamlz/gc-cons-threshold 2))))
-(add-hook 'minibuffer-exit-hook
-          (lambda ()
-            (garbage-collect)
-            (setq gc-cons-threshold zamlz/gc-cons-threshold)))
+;; Resizing the Emacs frame can be a terribly expensive part of changing the
+;; font. By inhibiting this, we easily halve startup times with fonts that are
+;; larger than the system default.
+(setq frame-inhibit-implied-resize t)
+
+;; Disable GUI elements
+(menu-bar-mode -1)
+(tool-bar-mode -1)
+(scroll-bar-mode -1)
+(setq inhibit-splash-screen t)
+(setq use-file-dialog nil)
+
+;; Prevent unwanted runtime builds in gccemacs (native-comp); packages are
+;; compiled ahead-of-time when they are installed and site files are compiled
+;; when gccemacs is installed.
+(setq comp-deferred-compilation nil)
+
+;;; early-init.el ends here

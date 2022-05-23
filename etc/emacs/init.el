@@ -22,12 +22,17 @@
 ;; and enable that functionality.
 (straight-use-package 'use-package)
 (setq straight-use-package-by-default t)
+(setq use-package-compute-statistics t)
 
 ;; This is a package that is used by use-package to diminish major modes
-(straight-use-package 'diminish)
+(use-package diminish)
+
+;; We need to also install general so it's used by use-package
+(use-package general
+  :config
+  (general-evil-setup))
 
 ;; Update the load path to load other configuration files.
-
 (defun update-load-path (&rest _)
   "Update `load-path'."
   (dolist (dir '("modules"))
