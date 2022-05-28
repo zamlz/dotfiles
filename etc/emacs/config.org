@@ -386,9 +386,7 @@ be using it to interface with =straight.el=.
   ;; setup org
   (use-package org
     :init
-    (setq org-directory +org-directory)
-    :config
-    (org-indent-mode +1))
+    (setq org-directory +org-directory))
 
   ;; Let's configure org-roam as well
   (use-package org-roam
