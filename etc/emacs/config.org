@@ -62,12 +62,14 @@
   (setq +org-directory (file-truename "~/org"))
 #+END_SRC
 
-** Package Management
+** Package Management System
+*** Straight Package Manager 
+
+=straight.el= is a modern and powerful package manager. Unfortunately,
+it's not part of GNU/Emacs, so we need to bootstrap the package
+manager manually.
 
 #+BEGIN_SRC emacs-lisp
-  ;; Configure Package Manager :: straight.el
-  ;; Unfortunately, this package is not built into the package manager so must
-  ;; boostrap =straight.el= package manager manually
   (defvar bootstrap-version)
   (let ((bootstrap-file
 	 (expand-file-name "straight/repos/straight.el/bootstrap.el" user-emacs-directory))
@@ -81,13 +83,26 @@
 	(eval-print-last-sexp)))
     (load bootstrap-file nil 'nomessage))
 
-  ;; =use-package= is a very nice wrapper over =package.el=, unfortunately, it
-  ;; does not support =straight.el= out of the box. The following will install
-  ;; and enable that functionality.
-  (straight-use-package 'use-package)
   (setq straight-use-package-by-default t)
-  (setq use-package-compute-statistics t)
+  (setq straight-vc-git-default-clone-depth 1)
+#+END_SRC
 
+*** Use-package Wrapper 
+
+=use-package= isn't a package manager, but rather a wrapper utility to
+make package configuration self contained and easier to setup. We'll
+be using it to interface with =straight.el=.
+
+#+BEGIN_SRC emacs-lisp
+  (straight-use-package 'use-package)
+  
+  (setq use-package-compute-statistics t)
+  ;;(setq use-package-always-defer t)
+#+END_SRC
+
+*** Plugins
+
+#+BEGIN_SRC emacs-lisp
   ;; This is a package that is used by use-package to diminish major modes
   (use-package diminish)
 
@@ -369,7 +384,9 @@
   ;; setup org
   (use-package org
     :init
-    (setq org-directory +org-directory))
+    (setq org-directory +org-directory)
+    :config
+    (org-indent-mode +1))
 
   ;; Let's configure org-roam as well
   (use-package org-roam
