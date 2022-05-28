@@ -189,10 +189,12 @@ be using it to interface with =straight.el=.
     (setq modus-themes-headings nil)
     (modus-themes-load-themes)
     :config
-    (modus-themes-load-vivendi)
+    ;;(modus-themes-load-vivendi)
     :bind
     ("<f5>" . modus-themes-toggle))
 
+  (use-package doom-themes)
+  (load-theme 'doom-tomorrow-night t)
 
   ;; You need to manually install all-the-icons-install-fonts
   (use-package all-the-icons)
