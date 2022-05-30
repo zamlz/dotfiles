@@ -531,6 +531,10 @@ block sets up the hooks.
   (add-to-list 'org-structure-template-alist '("py" . "src python")))
 #+END_SRC
 
+#+BEGIN_SRC emacs-lisp
+(setq org-ellipsis " ▾")
+#+END_SRC
+
 *** Org-roam
 
 #+BEGIN_SRC emacs-lisp
@@ -542,10 +546,6 @@ block sets up the hooks.
 	(setq org-roam-directory zamlz/org-directory)
 	:config
 	(org-roam-db-autosync-mode +1))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-(setq org-ellipsis " ▾")
 #+END_SRC
 
 ** Completion System
