@@ -517,6 +517,13 @@ block sets up the hooks.
        (org-num-mode)))) 
 #+END_SRC
 
+Create org directory if it doesn't exist.
+
+#+BEGIN_SRC emacs-lisp
+(unless (file-directory-p zamlz/org-directory)
+  (make-directory zamlz/org-directory))
+#+END_SRC
+
 #+BEGIN_SRC emacs-lisp
 (setq org-directory zamlz/org-directory)
 (setq org-src-preserve-indentation t)
@@ -587,27 +594,39 @@ block sets up the hooks.
 
 ** Language Support
 
-#+BEGIN_SRC emacs-lisp
-;; gitattributes, gitconfig, gitignore, etc.
-(use-package git-modes)
+*** Git Configuration Files
 
-;; Create org directory if it doesn't exist
-(unless (file-directory-p zamlz/org-directory)
-  (make-directory zamlz/org-directory))
+gitattributes, gitconfig, gitignore, etc.
+
+#+BEGIN_SRC emacs-lisp
+(use-package git-modes)
 #+END_SRC
 
 ** Applications
+*** Magit
+
+Magit is an amazing interface for git through emacs.
 
 #+BEGIN_SRC emacs-lisp
 (use-package magit)
+#+END_SRC
 
-;; Improve the magit experience with the following plugin
+Scan =TODO=-like statments in source files of a git repo and display it
+in the magit status buffer with the following plugin.
+
+#+BEGIN_SRC emacs-lisp
 (use-package magit-todos
   :after magit
   :config
   (magit-todos-mode +1))
+#+END_SRC
 
-;; It's also useful to have projectile, a useful project management tool
+*** Projectile
+
+This is also incredibly useful! It provides various project management
+utilites.
+
+#+BEGIN_SRC emacs-lisp
 (use-package projectile
   :diminish
   :bind-keymap
@@ -619,9 +638,14 @@ block sets up the hooks.
 (add-to-list 'projectile-project-search-path project-dir)))
   :config
   (projectile-mode +1))
+#+END_SRC
 
-;; Helpful is a replacement for the emacs help pages with far more info
-;; and context
+*** Helpful
+
+Helpful is a replacement for the emacs help pages with far more info
+and context.
+
+#+BEGIN_SRC emacs-lisp
 (use-package helpful
   :bind
   (("C-h f" . helpful-callable)
@@ -635,11 +659,12 @@ block sets up the hooks.
 
 ** Cross Package Integrations
 
-#+BEGIN_SRC emacs-lisp
-;; Finally load any cross module integrations that were not able to be
-;; put in the module files themselves (ex: magit and evil integration)
+Finally load any cross module integrations that were not able to be
+put in the module files themselves (ex: magit and evil integration)
 
-;; unfortunately, magit's editor doesn't start in "insert" mode which
-;; is really inconvenient. Add this hook to enable that.
+Unfortunately, magit's editor doesn't start in "insert" mode which is
+really inconvenient. Add this hook to enable that.
+
+#+BEGIN_SRC emacs-lisp
 (add-hook 'with-editor-mode-hook #'evil-insert-state)
 #+END_SRC
