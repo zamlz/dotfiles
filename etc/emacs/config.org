@@ -400,6 +400,22 @@ while this is a UI change, this makes emacs "visually" more evil.
   (evil-goggles-use-diff-faces))
 #+END_SRC
 
+*** Which Key
+
+=which-key= is a nice tool to see available keybindings on the fly in
+case we forget about it.
+
+#+BEGIN_SRC emacs-lisp
+(use-package which-key
+  :diminish which-key-mode
+  :init
+  (setq which-key-idle-delay 1.0)
+  (setq which-key-secondary-delay 0.0)
+  (which-key-setup-side-window-bottom)
+  :config
+  (which-key-mode +1))
+#+END_SRC
+
 ** User Interface
 *** Font Setup
 
@@ -550,19 +566,6 @@ Let's add some keybindings for controlling the zoom.
   (setq highlight-indent-guides-suppress-auto-error t)
   :config
   (highlight-indent-guides-auto-set-faces))
-#+END_SRC
-
-#+BEGIN_SRC emacs-lisp
-;; which-key is a nice tool to see available keybindings on the fly
-;; in case we forget about it
-(use-package which-key
-  :diminish which-key-mode
-  :init
-  (setq which-key-idle-delay 1.0)
-  (setq which-key-secondary-delay 0.0)
-  (which-key-setup-side-window-bottom)
-  :config
-  (which-key-mode +1))
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
