@@ -498,7 +498,7 @@ Let's add some keybindings for controlling the zoom.
 (set-fringe-mode 8)
 
 ;; Let's also make sure line numbers appear in programming modes
-(dolist (mode '(prog-mode-hook conf-mode-hook))
+(dolist (mode '(prog-mode-hook conf-mode-hook text-mode-hook))
   (add-hook mode (lambda () (display-line-numbers-mode 1))))
 
 ;; Let's also make the UI transparent
