@@ -343,7 +343,7 @@ Let's add some custom stuff for controlling emacs buffers.
 
 #+BEGIN_SRC emacs-lisp
 (zamlz/leader-keys
-	"b" '(:ignore t :which-key "Buffer")
+	"b" '(:ignore t :which-key "buffer")
 	"bb" '((lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))) :which-key "previous buffer")
 	"br" '(revert-buffer :which-key "revert buffer")
 	"bd" '(kill-current-buffer :which-key "kill current buffer"))
@@ -353,7 +353,7 @@ Add some useful functionality for file management.
 
 #+BEGIN_SRC emacs-lisp
 (zamlz/leader-keys
-	"f" '(:ignore t :which-key "File")
+	"f" '(:ignore t :which-key "file")
 	"ff" '(find-file :which-key "find file")
 	"fs" '(save-buffer :which-key "save file"))
 #+END_SRC
@@ -629,7 +629,9 @@ Let's add some keybindings for controlling the zoom.
 ;; Don't create backup files and lockdirs
 (setq create-lockfiles nil)
 (setq buckup-directory-alist `(("." . "~/.config/emacs/backup")))
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
 ;; Let's also add some saner dired defaults for ordering
 (setq dired-listing-switches "-lahF --group-directories-first")
 
@@ -641,7 +643,9 @@ Let's add some keybindings for controlling the zoom.
 (use-package dired-hide-dotfiles
   :hook
   (dired-mode . dired-hide-dotfiles-mode))
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
 ;; Let's improve the undo system
 (use-package undo-tree
   :init
@@ -655,7 +659,9 @@ Let's add some keybindings for controlling the zoom.
 
 ;; Now that evil and undo-tree are  both loaded, let's link them together
 (evil-set-undo-system 'undo-tree)
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
 ;; Now that evil-collection and dired is setup, we need to integrate the two
 (evil-collection-define-key 'normal 'dired-mode-map
   "h" 'dired-single-up-directory ;; dired-single version of 'dired-up-directory
