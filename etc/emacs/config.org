@@ -116,7 +116,9 @@ manager manually.
 (goto-char (point-max))
 (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
+#+END_SRC
 
+#+BEGIN_SRC emacs-lisp
 (setq straight-use-package-by-default t)
 (setq straight-vc-git-default-clone-depth 1)
 #+END_SRC
@@ -129,9 +131,7 @@ be using it to interface with =straight.el=.
 
 #+BEGIN_SRC emacs-lisp
 (straight-use-package 'use-package)
-
 (setq use-package-compute-statistics t)
-;;(setq use-package-always-defer t)
 #+END_SRC
 
 Let's also install some packages that extend the =use-package=.
