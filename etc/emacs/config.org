@@ -47,8 +47,8 @@
 :PROPERTIES:
 :header-args:emacs-lisp: :tangle ~/.config/emacs/init.el :comments link :mkdirp yes
 :END:
-** Custom Variables
-
+** Customizations
+*** Custom Variables
 My personal information
 
 #+BEGIN_SRC emacs-lisp
@@ -96,7 +96,7 @@ Org mode related variables
 	:group 'zamlz)
 #+END_SRC
 
-** Environment Variables
+*** Environment Variables
 
 Unfortunately, there are certain environment variables that need to be overwritten.
 
@@ -142,14 +142,16 @@ be using it to interface with =straight.el=.
 (setq use-package-compute-statistics t)
 #+END_SRC
 
-Let's also install some packages that extend the =use-package=.
+Let's also install some packages that extend the =use-package=. This
+package in particular let's us use the =:dminish= keyword in our package
+definitions.
 
 #+BEGIN_SRC emacs-lisp
 ;; This is a package that is used by use-package to diminish major modes
 (use-package diminish)
 #+END_SRC
 
-** Emacs
+** GNU/Emacs
 *** Internals
 
 #+BEGIN_SRC emacs-lisp
