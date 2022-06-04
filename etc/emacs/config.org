@@ -701,7 +701,14 @@ gitattributes, gitconfig, gitignore, etc.
 Magit is an amazing interface for git through emacs.
 
 #+BEGIN_SRC emacs-lisp
-(use-package magit)
+(use-package magit
+	:general
+	(zamlz/leader-keys
+		"g" '(:ignore t :which-key "git")
+		"gg" 'magit-status
+		"gG" 'magit-status-here
+		"gl" 'magit-log
+		"gb" 'magit-blame))
 #+END_SRC
 
 Scan =TODO=-like statments in source files of a git repo and display it
@@ -722,6 +729,9 @@ utilites.
 #+BEGIN_SRC emacs-lisp
 (use-package projectile
   :diminish
+	:general
+	(zamlz/leader-keys
+		"p" '(:keymap projectile-command-map :which-key "project"))
   :bind-keymap
   ("C-c p" . projectile-command-map)
   :init
