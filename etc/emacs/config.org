@@ -249,15 +249,49 @@ that doom uses. We shall install it and use it too.
 #+END_SRC
 
 ** Keybindings
-*** General
-
+*** Leader Keybindings with General
+**** General Setup
 General let's use use leader keys to bind things. Instead of having to
-do /crazy control sequences/.
+do /crazy control sequences/. We *MUST* load this before =evil= so that
+=:general= will work in our =use-package= definitions downstream.
 
 #+BEGIN_SRC emacs-lisp
 (use-package general
   :config
   (general-evil-setup))
+#+END_SRC
+
+**** Supreme Leader Key Function
+
+Using =general= We need to define some leader functions now. I believe this is for the
+supreme leader, while the latter is for local leaders.
+
+#+BEGIN_SRC emacs-lisp
+(general-create-definer zamlz/leader-keys
+	:states '(normal insert visual emacs)
+	:keymaps 'override
+	:prefix "SPC"
+	:global-prefix "C-SPC")
+#+END_SRC
+
+Let's define some global leader keys.
+
+#+BEGIN_SRC emacs-lisp
+(zamlz/leader-keys
+ "SPC" '(execute-extended-command :which-key "execute command"))
+#+END_SRC
+
+**** Local Leader Key Function
+
+#+BEGIN_SRC emacs-lisp
+(general-create-definer zamlz/local-leader-keys
+  :states '(normal visual)
+  :keymaps 'override
+  :prefix ","
+  :global-prefix "SPC m")
+#+END_SRC
+
+#+BEGIN_SRC emacs-lisp
 #+END_SRC
 
 ** User Interface
