@@ -147,11 +147,6 @@ Let's also install some packages that extend the =use-package=.
 #+BEGIN_SRC emacs-lisp
 ;; This is a package that is used by use-package to diminish major modes
 (use-package diminish)
-
-;; We need to also install general so it's used by use-package
-(use-package general
-  :config
-  (general-evil-setup))
 #+END_SRC
 
 ** Emacs
@@ -249,6 +244,18 @@ that doom uses. We shall install it and use it too.
 	:demand
 	:config
 	(gcmh-mode 1))
+#+END_SRC
+
+** Keybindings
+*** General
+
+General let's use use leader keys to bind things. Instead of having to
+do /crazy control sequences/.
+
+#+BEGIN_SRC emacs-lisp
+(use-package general
+  :config
+  (general-evil-setup))
 #+END_SRC
 
 ** User Interface
