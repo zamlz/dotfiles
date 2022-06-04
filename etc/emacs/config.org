@@ -248,6 +248,20 @@ that doom uses. We shall install it and use it too.
 	(gcmh-mode 1))
 #+END_SRC
 
+*** Helpful
+
+Helpful is a replacement for the emacs help pages with far more info
+and context.
+
+#+BEGIN_SRC emacs-lisp
+(use-package helpful
+  :bind
+  (([remap describe-function] . helpful-callable)
+   ([remap describe-command] . helpful-command)
+   ([remap describe-variable] . helpful-variable)
+   ([remap describe-key] . helpful-key)))
+#+END_SRC
+
 ** Keybindings
 *** Leader Keybindings with General
 **** General Keybinding System
@@ -286,6 +300,26 @@ Let's define general purpose commands for our global leader keys.
 	"ESC" '(keyboard-escape-quit :which-key "(do nothing)")
 	"SPC" '(execute-extended-command :which-key "execute command")
 	";" '(eval-expression :which-key "eval sexp"))
+#+END_SRC
+
+Probably the most frequent thing that I'll be using is the help
+feature. We enriched it by using the =helpful= package, but let's make
+that and some other functions accessbile through =general=
+
+#+BEGIN_SRC emacs-lisp
+(zamlz/leader-keys
+	"h" '(:ignore t :which-key "describe")
+	"he" 'view-echo-area-messages
+	"hf" 'describe-function
+	"hF" 'describe-face
+	"hl" 'view-lossage
+	"hL" 'find-library
+	"hm" 'describe-mode
+	"hk" 'describe-key
+	"hK" 'describe-keymap
+	"hp" 'describe-package
+	"hv" 'describe-variable
+	"hx" 'describe-command)
 #+END_SRC
 
 We definetly need some keybindings to manage windwos.
@@ -773,24 +807,6 @@ gitattributes, gitconfig, gitignore, etc.
 
 #+BEGIN_SRC emacs-lisp
 (use-package git-modes)
-#+END_SRC
-
-** Applications
-*** Helpful
-
-Helpful is a replacement for the emacs help pages with far more info
-and context.
-
-#+BEGIN_SRC emacs-lisp
-(use-package helpful
-  :bind
-  (("C-h f" . helpful-callable)
-   ("C-h v" . helpful-variable)
-   ("C-h k" . helpful-key)
-   ("C-h F" . helpful-function)
-   ("C-h C" . helpful-command)
-   ("C-h C-d" . helpful-at-point)))
-
 #+END_SRC
 
 ** Cross Package Integrations
