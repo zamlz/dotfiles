@@ -274,16 +274,58 @@ supreme leader, while the latter is for local leaders.
 	:global-prefix "C-SPC")
 #+END_SRC
 
-Let's define some global leader keys.
+Let's define general purpose commands for our global leader keys.
+- escape should quit out of the leaders key menu ASAP
+- Define space --> M-x
+- It's kind of a pain to run C-x C-e to run expressions
 
 #+BEGIN_SRC emacs-lisp
 (zamlz/leader-keys
- "SPC" '(execute-extended-command :which-key "execute command"))
+	"ESC" '(keyboard-escape-quit :which-key "(do nothing)")
+	"SPC" '(execute-extended-command :which-key "execute command")
+	";" '(eval-expression :which-key "eval sexp"))
+#+END_SRC
+
+We definetly need some keybindings to manage windwos.
+
+#+BEGIN_SRC emacs-lisp
+(zamlz/leader-keys
+	"w" '(:ignore t :which-key "window")
+	"wk" '(windmove-up :which-key "move focus up")
+	"wj" '(windmove-down :which-key "move focus down")
+	"wh" '(windmove-left :which-key "move focus left")
+	"wl" '(windmove-right :which-key "move focus right")
+	"wm" '(delete-other-windows :which-key "maximize")
+	"w=" 'balance-windows-area
+	"wd" 'delete-window
+	"wD" 'kill-buffer-and-window
+	"wr" 'winner-redo
+	"wu" 'winner-undo)
+#+END_SRC
+
+Let's add some custom stuff for controlling emacs buffers.
+
+#+BEGIN_SRC emacs-lisp
+(zamlz/leader-keys
+	"b" '(:ignore t :which-key "Buffer")
+	"bb" '((lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))) :which-key "previous buffer")
+	"br" '(revert-buffer :which-key "revert buffer")
+	"bd" '(kill-current-buffer :which-key "kill current buffer"))
+#+END_SRC
+
+Add some useful functionality for file management.
+
+#+BEGIN_SRC emacs-lisp
+(zamlz/leader-keys
+	"f" '(:ignore t :which-key "File")
+	"ff" '(find-file :which-key "find file")
+	"fs" '(save-buffer :which-key "save file"))
 #+END_SRC
 
 **** Local Leader Key Function
 
 #+BEGIN_SRC emacs-lisp
+;; TODO: WTF does this do exactly...
 (general-create-definer zamlz/local-leader-keys
   :states '(normal visual)
   :keymaps 'override
