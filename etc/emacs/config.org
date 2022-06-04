@@ -719,18 +719,29 @@ Create org directory if it doesn't exist.
 (use-package embark-consult)
 #+END_SRC
 
-** Language Support
+** Software Development
+*** Project Management
+**** Projectile
 
-*** Git Configuration Files
-
-gitattributes, gitconfig, gitignore, etc.
+This is an incredibly useful tool for quickly jumping between projects! It provides various project management
+utilites.
 
 #+BEGIN_SRC emacs-lisp
-(use-package git-modes)
+(use-package projectile
+  :diminish
+	:general
+	(zamlz/leader-keys
+		"p" '(:keymap projectile-command-map :which-key "project"))
+  :init
+  (setq projectile-project-search-path '())
+  (dolist (project-dir '("~/src" "~/usr"))
+    (when (file-directory-p project-dir)
+(add-to-list 'projectile-project-search-path project-dir)))
+  :config
+  (projectile-mode +1))
 #+END_SRC
 
-** Applications
-*** Magit
+**** Magit
 
 Magit is an amazing interface for git through emacs.
 
@@ -755,28 +766,16 @@ in the magit status buffer with the following plugin.
   (magit-todos-mode +1))
 #+END_SRC
 
-*** Projectile
+*** Language Support
+**** Git Configs 
 
-This is also incredibly useful! It provides various project management
-utilites.
+gitattributes, gitconfig, gitignore, etc.
 
 #+BEGIN_SRC emacs-lisp
-(use-package projectile
-  :diminish
-	:general
-	(zamlz/leader-keys
-		"p" '(:keymap projectile-command-map :which-key "project"))
-  :bind-keymap
-  ("C-c p" . projectile-command-map)
-  :init
-  (setq projectile-project-search-path '())
-  (dolist (project-dir '("~/src" "~/usr"))
-    (when (file-directory-p project-dir)
-(add-to-list 'projectile-project-search-path project-dir)))
-  :config
-  (projectile-mode +1))
+(use-package git-modes)
 #+END_SRC
 
+** Applications
 *** Helpful
 
 Helpful is a replacement for the emacs help pages with far more info
