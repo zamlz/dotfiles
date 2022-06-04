@@ -96,6 +96,14 @@ Org mode related variables
 	:group 'zamlz)
 #+END_SRC
 
+** Environment Variables
+
+Unfortunately, there are certain environment variables that need to be overwritten.
+
+#+BEGIN_SRC emacs-lisp
+(setenv "PINENTRY_USER_DATA" "rofi")
+#+END_SRC
+
 ** Package Management System
 *** Straight Package Manager 
 
