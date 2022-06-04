@@ -338,6 +338,68 @@ Add some useful functionality for file management.
 #+BEGIN_SRC emacs-lisp
 #+END_SRC
 
+*** Evil
+**** Evil Mode
+
+Let's make GNU/Emacs more EVIL!! Okay we should also change the keybindings a bit to make it more sane.
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil
+  :demand
+	:general
+	(zamlz/leader-keys
+		;; Extends window operations in leader keys
+		"wv" 'evil-window-vsplit
+		"ws" 'evil-window-split)
+  :init
+  (setq evil-want-keybinding nil)
+  (setq evil-want-integration t)
+  :config
+  (evil-mode +1)
+  (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
+	(define-key evil-normal-state-map (kbd "J") 'next-buffer)
+	(define-key evil-normal-state-map (kbd "K") 'previous-buffer))
+#+END_SRC
+
+**** Evil Collection
+
+This adds a bunch of extra useful evil functionality to other emacs modes
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil-collection
+  :demand
+  :after evil
+  :config
+  (evil-collection-init))
+#+END_SRC
+
+**** Evil Commentary
+
+Really nice vi commenting keybindings.
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil-commentary
+  :diminish
+  :after evil
+  :config
+  (evil-commentary-mode +1))
+#+END_SRC
+
+**** Evil Goggles
+
+while this is a UI change, this makes emacs "visually" more evil.
+
+#+BEGIN_SRC emacs-lisp
+(use-package evil-goggles
+  :diminish
+  :after evil
+	:init
+	(setq evil-goggles-duration 0.05)
+  :config
+  (evil-goggles-mode +1)
+  (evil-goggles-use-diff-faces))
+#+END_SRC
+
 ** User Interface
 *** Font Setup
 
@@ -554,47 +616,14 @@ Let's add some keybindings for controlling the zoom.
   :config
   (global-undo-tree-mode +1))
 
-;; Let's make GNU/Emacs more EVIL!!
-(use-package evil
-  :init
-  (setq evil-want-keybinding nil)
-  (setq evil-want-integration t)
-  :config
-  (evil-mode +1))
-
-;; Let's improve the keybindings of evil
-(define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
-(define-key evil-normal-state-map (kbd "J") 'next-buffer)
-(define-key evil-normal-state-map (kbd "K") 'previous-buffer)
-
 ;; Now that evil and undo-tree are  both loaded, let's link them together
 (evil-set-undo-system 'undo-tree)
-
-;; This adds a bunch of extra useful evil functionality to other emacs modes
-(use-package evil-collection
-  :after evil
-  :config
-  (evil-collection-init))
 
 ;; Now that evil-collection and dired is setup, we need to integrate the two
 (evil-collection-define-key 'normal 'dired-mode-map
   "h" 'dired-single-up-directory ;; dired-single version of 'dired-up-directory
   "l" 'dired-single-buffer ;; dired-single version of 'dired-find-file
   "H" 'dired-hide-dotfiles-mode)
-
-;; Really nice vi commenting keybindings
-(use-package evil-commentary
-  :diminish
-  :after evil
-  :config
-  (evil-commentary-mode +1))
-
-;; while this is a UI change, this makes emacs "visually" more evil
-(use-package evil-goggles
-  :after evil
-  :config
-  (evil-goggles-mode +1)
-  (evil-goggles-use-diff-faces))
 #+END_SRC
 
 ** Org Mode
