@@ -673,7 +673,7 @@ Create org directory if it doesn't exist.
 #+BEGIN_SRC emacs-lisp
 (setq org-directory zamlz/org-directory)
 (setq org-src-preserve-indentation t)
-(setq org-hide-emphasis-markers t)
+(setq org-hide-emphasis-markers nil)
 #+END_SRC
 
 #+BEGIN_SRC emacs-lisp
