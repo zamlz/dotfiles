@@ -712,6 +712,8 @@ A very lightweight minibuffer completion system.
   (vertico-mode +1))
 #+END_SRC
 
+*** Orderless
+
 Configure =orderless= for =vertico= completion.
 
 #+BEGIN_SRC emacs-lisp
@@ -721,6 +723,8 @@ Configure =orderless= for =vertico= completion.
   (setq completion-category-defaults nil)
   (setq completion-category-overrides '((file (styles partial-completion)))))
 #+END_SRC
+
+*** Savehist
 
 Let's also save minibuffer history for =vertico=.
 
