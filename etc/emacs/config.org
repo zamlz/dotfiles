@@ -71,7 +71,8 @@ My default font configuration
 	:type 'string
 	:group 'zamlz)
 
-(defcustom zamlz/default-font-family-size 110
+(defcustom zamlz/default-font-family-size
+	(if (string= system-name "framework") 130 110)
 	"Font size for default font family"
 	:type 'int
 	:group 'zamlz)
