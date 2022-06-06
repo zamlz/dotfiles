@@ -760,7 +760,12 @@ We need to add the icons setup to marginalia's annotations with this hook
 *** Consult
 
 #+BEGIN_SRC emacs-lisp
-(use-package consult)
+(use-package consult
+	:after vertico
+	:bind
+  (([remap switch-to-buffer] . consult-buffer)
+	 ("C-s" . consult-line)))
+
 #+END_SRC
 
 *** Embark
