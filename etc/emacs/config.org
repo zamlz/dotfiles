@@ -388,6 +388,9 @@ Let's make GNU/Emacs more EVIL!! Okay we should also change the keybindings a bi
   :init
   (setq evil-want-keybinding nil)
   (setq evil-want-integration t)
+	;; move to window when splitting
+  (setq evil-split-window-below t)
+  (setq evil-vsplit-window-right t)
   :config
   (evil-mode +1)
   (define-key evil-insert-state-map (kbd "C-g") 'evil-normal-state)
