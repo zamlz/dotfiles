@@ -346,6 +346,9 @@ Let's add some custom stuff for controlling emacs buffers.
 (zamlz/leader-keys
 	"b" '(:ignore t :which-key "buffer")
 	"bb" '((lambda () (interactive) (switch-to-buffer (other-buffer (current-buffer) 1))) :which-key "previous buffer")
+	"bx" '(switch-to-buffer :which-key "switch buffer")
+	"bw" '(switch-to-buffer-other-window :which-key "switch buffer (window)")
+	"bf" '(switch-to-buffer-other-frame :which-key "switch buffer (frame)")
 	"br" '(revert-buffer :which-key "revert buffer")
 	"bd" '(kill-current-buffer :which-key "kill current buffer"))
 #+END_SRC
@@ -768,6 +771,8 @@ We need to add the icons setup to marginalia's annotations with this hook
 	:after vertico
 	:bind
   (([remap switch-to-buffer] . consult-buffer)
+	 ([remap switch-to-buffer-other-window] . consult-buffer-other-window)
+	 ([remap switch-to-buffer-other-frame] . consult-buffer-other-frame)
 	 ("C-s" . consult-line)))
 
 #+END_SRC
