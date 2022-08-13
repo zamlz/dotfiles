@@ -13,3 +13,7 @@ git remote set-url origin --push "git@github.com:zamlz/dotfiles.git"
 # Setup Dotfiles
 # --------------
 ./bin/asd setup $(realpath .)
+
+# Install Packages
+# ----------------
+./bin/asd sync
