@@ -102,9 +102,10 @@ sync_packages() {
         | sort | uniq)
 
     echo -e "[${Blue} RUNNING FULL SYSTEM UPGRADE ${Rst}]"
-    sudo pacman -Syu
+    sudo pacman -Sy archlinux-keyring || exit 1
+    sudo pacman -Su || exit 1
     echo -e "[${Green} SYNCING LOCAL PACKAGE LIST ${Rst}]"
-    sudo pacman -S --needed ${package_list}
+    sudo pacman -S --needed ${package_list} || exit 1
 }
 
 if [[ -z "$@" ]]; then
