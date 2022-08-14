@@ -78,8 +78,9 @@ logger "defining keybindings for workspace movement"
 hc keybind $Super-grave use_previous
 hc keybind $Super-bracketright use_index +1 --skip-visible
 hc keybind $Super-bracketleft  use_index -1 --skip-visible
-hc keybind $Super-slash spawn $HOME/etc/herbstluftwm/scripts/goto_tag.sh
-hc keybind $Super-BackSpace spawn $HOME/etc/herbstluftwm/scripts/remove_tag.sh
+hc keybind $Super-slash spawn $HOME/etc/herbstluftwm/scripts/tag_utils.sh goto
+hc keybind $Super-Shift-slash spawn $HOME/etc/herbstluftwm/scripts/tag_utils.sh move
+hc keybind $Super-BackSpace spawn $HOME/etc/herbstluftwm/scripts/tag_utils.sh remove
 
 # Layout Control
 
