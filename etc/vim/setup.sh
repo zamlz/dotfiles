@@ -8,8 +8,8 @@
 
 logger "Setting up NeoVim"
 
-CONFIG_SOURCE=$HOME/etc/vim/init.vimrc
-CONFIG_TARGET=$HOME/.config/nvim/init.vim
+CONFIG_SOURCE=$HOME/etc/vim/runtime
+CONFIG_TARGET=$HOME/.config/nvim
 CONFIG_TARGET_DIR=$(dirname $CONFIG_TARGET)
 
 if [ ! -d "$CONFIG_TARGET_DIR" ]; then
