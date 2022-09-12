@@ -86,10 +86,11 @@ function prompt_generate() {
 
 # I have this commented out, otherwise it would be using my old prompt. Maybe I
 # should have this setup in only tty environments...
-if [ -z "$DISPLAY" ]; then
-    precmd() {
-        export PROMPT=$(prompt_generate)
-    }
-fi
+#   (if i want to disable it again, use the following.
+#   if [ -z "$DISPLAY" ]; then
+#   fi
+precmd() {
+    export PROMPT=$(prompt_generate)
+}
 
 
