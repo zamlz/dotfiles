@@ -11,7 +11,6 @@
 " keys for moving the cursor around. When Bill Joy developed vi, he used
 " hjkl for the arrow keys as it was only naturally having used the ADM-32.
 
-
 " ====================
 "  VIM PLUGIN INSTALL
 " ====================
@@ -21,27 +20,21 @@ call plug#begin('~/.vim/plugged')
 " vim-airline: Lean & mean status/tabline for vim thats light as air
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'morhetz/gruvbox'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-
-Plug 'jamessan/vim-gnupg'
-Plug 'chrisbra/csv.vim'
-Plug 'godlygeek/tabular'
-Plug 'plasticboy/vim-markdown'
-Plug 'vimwiki/vimwiki', { 'branch': 'dev' }
-Plug 'mattn/calendar-vim'
-
-" Plug 'valloric/youcompleteme'
-Plug 'yggdroot/indentline'
 Plug 'mbbill/undotree'
 
+Plug 'jamessan/vim-gnupg'
+
+" Language Server
+" - Install support for other langauges via:
+"   > PYTHON :CocInstall coc-pyright
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 " Language Based Plugins
-Plug 'JuliaEditorSupport/julia-vim'
 Plug 'ledger/vim-ledger'
 Plug 'nathangrigg/vim-beancount'
-Plug 'vim-scripts/gnuplot.vim'
 
 call plug#end()
 
@@ -61,19 +54,9 @@ let g:airline#extensions#tabline#enabled = 1
 
 " git-gutter
 " ----------
-nmap <C-M-j> <Plug>GitGutterNextHunk
-nmap <C-M-k> <Plug>GitGutterPrevHunk
+nmap <C-M-j> <Plug>(GitGutterNextHunk)
+nmap <C-M-k> <Plug>(GitGutterPrevHunk)
 let g:gitgutter_set_sign_backgrounds = 1
-
-" indent lines
-" ------------
-"let g:indentLine_char = '.'
-let g:indentLine_char_list = ['|', '¦', '┆', '┊']
-let g:indentLine_setColors = 1
-"let g:indentLine_bgcolor_term = 0
-let g:indentLine_color_term = 8
-let g:indentLine_conceallevel = 2
-let g:indentLine_concealcursor = "n"
 
 " vim ledger
 " ----------
@@ -82,32 +65,6 @@ let g:ledger_bin = 'ledger'
 let g:ledger_extra_options = '--pedantic --explicit'
 let g:ledger_align_at = 77
 let g:ledger_date_format = '%Y-%m-%d'
-
-" markdown conceal
-" ----------------
-let g:vim_markdown_conceal = 0
-let g:vim_markdown_conceal_code_blocks = 0
-
-" vim wiki
-" --------
-let personal_wiki = {}
-let personal_wiki.name = 'Tabula Rasa'
-let personal_wiki.path = '~/usr/wiki/src'
-let personal_wiki.path_html = '~/usr/wiki/.html'
-let personal_wiki.syntax = 'markdown'
-let personal_wiki.ext = '.md'
-let personal_wiki.maxhi = 1
-let personal_wiki.diary_rel_path = "journal/"
-let personal_wiki.diary_index = "toc"
-let personal_wiki.diary_header = "Personal Journal"
-let personal_wiki.diary_caption_level = 0
-let personal_wiki.auto_diary_index = 1
-
-let g:vimwiki_list = [personal_wiki]
-let g:vimwiki_global_ext = 1
-let g:vimwiki_listsyms = ' ○◐●✓' " '✗○◐●✓'
-let g:vimwiki_folding = 'expr'
-let g:vimwiki_hl_cb_checked = 2
 
 " ===================
 "  VIM CONFIGURATION

@@ -8,7 +8,7 @@
 
 logger "Setting up NeoVim"
 
-CONFIG_SOURCE=$HOME/etc/vim/rc
+CONFIG_SOURCE=$HOME/etc/vim/init.vimrc
 CONFIG_TARGET=$HOME/.config/nvim/init.vim
 CONFIG_TARGET_DIR=$(dirname $CONFIG_TARGET)
 
