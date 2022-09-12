@@ -1,0 +1,14 @@
+#!/bin/sh
+
+INSTANCE_ID=two
+
+DISCORD_CONFIG_DIR=$HOME/.config/discord-${INSTANCE_ID}
+DISCORD_TMP_DIR=/tmp/.discord-${INSTANCE_ID}
+
+mkdir $DISCORD_CONFIG_DIR
+mkdir $DISCORD_TMP_DIR
+
+export XDG_CONFIG_HOME=${DISCORD_CONFIG_DIR};
+export TMPDIR=${DISCORD_TMP_DIR};
+
+discord
