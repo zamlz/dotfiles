@@ -14,9 +14,11 @@
 # ~ λ
 export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
 
-#.-|ssh|-(amlesh@xanadu)-[debian::~/src/website]-<website.master>
-#`-->
+#.-|ssh|-(zamlz@andromeda)-[arch::~]-<dotfiles.main>-{env:alchemy}
+#`--[λ]->
 function prompt_generate() {
+    EXIT_CODE=$1
+
     echo -ne "%B%F{cyan}.-"
 
     # Check if we are in an SSH connection
@@ -31,6 +33,7 @@ function prompt_generate() {
     echo -ne "%F{cyan}-%F{black}[%b%F{cyan}${DISTRO}"
     echo -ne "%F{white}::%F{blue}%~%B%F{black}]"
 
+    # git_repo_name . git_repo_branch
     if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
 
         GIT_NAME=$(basename -s .git `git config --get remote.origin.url` \
@@ -58,30 +61,51 @@ function prompt_generate() {
         echo -ne "%F{cyan}-%F{black}<%b%F{$C}$GIT_NAME.$GIT_BRANCH%B%F{black}>"
 
     fi
-    if [ -n "${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
 
-        echo -ne "%F{cyan}-%F{black}{%b%F{yellow}"
-        MOD=""
+    # Environment Variables
+    if [ -n "${AWS_PROFILE}${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
 
-        if [ -n "$VIRTUAL_ENV" ]; then
-            # Support both the old way of using venvs and new way
-            echo -ne "venv:$(basename $VIRTUAL_ENV /.venv)"
-            MOD="/"
-        fi
+        echo -ne "%B%F{cyan}-%F{black}{%b%F{yellow}"
+        SEPERATOR=""
 
-        if [ -n "$PIPENV_ACTIVE" ]; then
-            echo -ne "${MOD}pipenv"
-            MOD="/"
+        if [ -n "$AWS_PROFILE" ]; then
+            echo -ne "${SEPERATOR}aws:$AWS_PROFILE"
+            SEPERATOR=" "
         fi
 
         if [ -n "$ENV_NAME" ]; then
-            echo -ne "$MOD$ENV_NAME"
+            echo -ne "${SEPERATOR}env:$ENV_NAME"
+            SEPERATOR=" "
+        fi
+
+        if [ -n "$VIRTUAL_ENV" ]; then
+            # Support both the old way of using venvs and new way
+            if [ -n "$PIPENV_ACTIVE" ]; then
+                PROGRAM="pipenv"
+            else
+                PROGRAM="venv"
+            fi
+            echo -ne "${PROGRAM}:$(basename $VIRTUAL_ENV /.venv)"
+            SEPERATOR=" "
         fi
 
         echo -ne "%B%F{black}}"
     fi
-    echo -ne "\n"
-    echo -ne "%F{cyan}\`--%B%F{white}> %{\e[0m%}"
+
+    # continue the curve on the next line of the prompt
+    echo -ne "\n%B%F{cyan}\`--"
+
+    # λ : exit_code
+    echo -ne "%B%F{black}["
+    if [ ${EXIT_CODE} -eq 0 ]; then
+        echo -ne "%B%F{green}λ"
+    else
+        echo -ne "%B%F{red}λ:${EXIT_CODE}"
+    fi
+    echo -ne "%B%F{black}]"
+
+    # end the prompt
+    echo -ne "%B%F{cyan}-%B%F{white}> %{\e[0m%}"
 }
 
 # I have this commented out, otherwise it would be using my old prompt. Maybe I
@@ -90,7 +114,7 @@ function prompt_generate() {
 #   if [ -z "$DISPLAY" ]; then
 #   fi
 precmd() {
-    export PROMPT=$(prompt_generate)
+    export PROMPT=$(prompt_generate $?)
 }
 
 

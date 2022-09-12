@@ -8,3 +8,6 @@ sys/
 src/
 tmp
 usr/
+
+# why is this here?
+go/
