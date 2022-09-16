@@ -85,7 +85,7 @@ function prompt_generate() {
             else
                 PROGRAM="venv"
             fi
-            echo -ne "${PROGRAM}:$(basename $VIRTUAL_ENV /.venv)"
+            echo -ne "${SEPERATOR}${PROGRAM}:$(basename $VIRTUAL_ENV /.venv)"
             SEPERATOR=" "
         fi
 
