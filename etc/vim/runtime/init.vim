@@ -16,11 +16,13 @@
 " keys for moving the cursor around. When Bill Joy developed vi, he used
 " hjkl for the arrow keys as it was only naturally having used the ADM-32.
 
-runtime init_plugins.vim
-
 " ===================
 "  VIM CONFIGURATION
 " ===================
+
+" make sure vimplug loads all plugins we want first, then we'll let the
+" runtime handle configuring this at the right time
+runtime init_plugins.vim
 
 " some saner defaults
 " -------------------
@@ -141,59 +143,9 @@ au FileType ledger nnoremap <silent> <C-s>
 " Vimwiki doc pubs open
 autocmd FileType vimwiki nnoremap <Leader>p :silent !pubs doc open %:r<CR>
 
-" ======================
-"  Custom Vim Functions
-" ======================
-
-" Trim Whitespace
-" ---------------
-" Trim the whitespace present in a file
-
-fun! TrimWhitespace()
-    let l:save = winsaveview()
-    keeppatterns %s/\s\+$//e
-    call winrestview(l:save)
-endfun
-command! TrimWhitespace call TrimWhitespace()
-
-" Toggle Calendar
-" ---------------
-" Toggle calendar view within view if in vim wiki
-
-function! ToggleCalendar()
-    execute ":Calendar"
-    if exists("g:calendar_open")
-        if g:calendar_open == 1
-            execute "q"
-            unlet g:calendar_open
-        else
-            g:calendar_open = 1
-        end
-    else
-        let g:calendar_open = 1
-    end
-endfunction
-:autocmd FileType vimwiki map <leader>c :call ToggleCalendar()<CR>
-
-" Workspace Management
-" --------------------
-
-function! WinMove(key)
-    let t:curwin = winnr()
-    exec "wincmd ".a:key
-    if (t:curwin == winnr())
-        if (match(a:key,'[jk]'))
-            wincmd v
-        else
-            wincmd s
-        endif
-        exec "wincmd ".a:key
-    endif
-endfunction
-
-nnoremap <silent> <C-h> :call WinMove('h')<CR>
-nnoremap <silent> <C-j> :call WinMove('j')<CR>
-nnoremap <silent> <C-k> :call WinMove('k')<CR>
-nnoremap <silent> <C-l> :call WinMove('l')<CR>
+nnoremap <silent> <C-h> :call WindowMoveAutoCreate('h')<CR>
+nnoremap <silent> <C-j> :call WindowMoveAutoCreate('j')<CR>
+nnoremap <silent> <C-k> :call WindowMoveAutoCreate('k')<CR>
+nnoremap <silent> <C-l> :call WindowMoveAutoCreate('l')<CR>
 
 " vim:ft=vim
