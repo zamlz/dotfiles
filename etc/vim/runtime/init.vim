@@ -73,12 +73,12 @@ let g:ledger_date_format = '%Y-%m-%d'
 " some saner defaults
 " -------------------
 set nocompatible
-set number               " Show Line numbers
-set ruler                " Show line and column number of the cursor
-set cursorline           " highlight current line
-set cursorcolumn         " Create a column for where the cursor is
-set colorcolumn=80       " Create a column to show where 80 chars are
-set modeline             " Allow source files to configure vim as well
+set relativenumber number " Show Line numbers
+set ruler                 " Show line and column number of the cursor
+set cursorline            " highlight current line
+set cursorcolumn          " Create a column for where the cursor is
+set colorcolumn=80        " Create a column to show where 80 chars are
+set modeline              " Allow source files to configure vim as well
 set nowrap
 
 set tabstop=4            " number of visual spaces per TAB
@@ -123,7 +123,7 @@ highlight CursorColumn ctermbg=black
 highlight VertSplit ctermfg=black
 
 " Change the default coloring of line numbers
-highlight LineNr ctermfg=black
+highlight LineNr ctermfg=darkgrey
 
 " Change colorscheme of Pmenus
 highlight Pmenu ctermfg=darkgrey ctermbg=black
