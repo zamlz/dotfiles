@@ -1,6 +1,11 @@
-" ========================
-"  Vim Configuration File
-" ========================
+" ----------------------------------------------------------------------------
+"  _    ___              ______            _____          ____      _ __
+" | |  / (_)___ ___     / ____/___  ____  / __(_)___ _   /  _/___  (_) /_
+" | | / / / __ `__ \   / /   / __ \/ __ \/ /_/ / __ `/   / // __ \/ / __/
+" | |/ / / / / / / /  / /___/ /_/ / / / / __/ / /_/ /  _/ // / / / / /_
+" |___/_/_/ /_/ /_/   \____/\____/_/ /_/_/ /_/\__, /  /___/_/ /_/_/\__/
+"                                            /____/
+" ----------------------------------------------------------------------------
 
 " Fun Fact :
 " According to (hillelwayne.com/post/always-more-history/),
@@ -12,28 +17,6 @@
 " hjkl for the arrow keys as it was only naturally having used the ADM-32.
 
 runtime init_plugins.vim
-
-" ======================
-"  PLUGIN CONFIGURATION
-" ======================
-
-" vim-airline-themes
-" ------------------
-" let g:airline_theme = 'base16_gruvbox_dark_hard'
-
-" git-gutter
-" ----------
-nmap <C-M-j> <Plug>(GitGutterNextHunk)
-nmap <C-M-k> <Plug>(GitGutterPrevHunk)
-let g:gitgutter_set_sign_backgrounds = 1
-
-" vim ledger
-" ----------
-let g:ledger_maxwidth = 80
-let g:ledger_bin = 'ledger'
-let g:ledger_extra_options = '--pedantic --explicit'
-let g:ledger_align_at = 77
-let g:ledger_date_format = '%Y-%m-%d'
 
 " ===================
 "  VIM CONFIGURATION
