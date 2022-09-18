@@ -11,42 +11,11 @@
 " keys for moving the cursor around. When Bill Joy developed vi, he used
 " hjkl for the arrow keys as it was only naturally having used the ADM-32.
 
-" ====================
-"  VIM PLUGIN INSTALL
-" ====================
-
-call plug#begin('~/.vim/plugged')
-
-" vim-airline: Lean & mean status/tabline for vim thats light as air
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
-Plug 'mbbill/undotree'
-
-Plug 'jamessan/vim-gnupg'
-
-" Language Server
-" - Install support for other langauges via:
-"   > PYTHON :CocInstall coc-pyright
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
-" Language Based Plugins
-Plug 'ledger/vim-ledger'
-Plug 'nathangrigg/vim-beancount'
-
-call plug#end()
+runtime init_plugins.vim
 
 " ======================
 "  PLUGIN CONFIGURATION
 " ======================
-
-" vim-airline
-" -----------
-let laststatus = 2
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
 
 " vim-airline-themes
 " ------------------
