@@ -7,7 +7,15 @@
 "                                  /____/
 " ----------------------------------------------------------------------------
 
+" PLUGINS TO TRY:
+" vim-which-key
+
+" ----------------------------------------------------------------------------
+
 call plug#begin('~/.vim/plugged')
+
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 
 " vim-airline: Lean & mean status/tabline for vim thats light as air
 Plug 'vim-airline/vim-airline'

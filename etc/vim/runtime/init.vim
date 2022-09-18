@@ -65,6 +65,10 @@ set foldmethod=indent    " fold based on ident level
 
 set path+=**             " Custom file search
 
+" Finally, let's remap the leader key (clear any prexisting uses of <SPACE>)
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 " vim colorschemes
 " ----------------
 
@@ -147,5 +151,16 @@ nnoremap <silent> <C-h> :call WindowMoveAutoCreate('h')<CR>
 nnoremap <silent> <C-j> :call WindowMoveAutoCreate('j')<CR>
 nnoremap <silent> <C-k> :call WindowMoveAutoCreate('k')<CR>
 nnoremap <silent> <C-l> :call WindowMoveAutoCreate('l')<CR>
+
+" FIXME: figure out a better way to utilize my leader keys
+" fzf functions
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>w :Windows<CR>
+
+nnoremap <leader><C-s> :Lines<CR>
+nnoremap <leader>s :BLines<CR>
+
+nnoremap <leader>m :Marks<CR>
 
 " vim:ft=vim
