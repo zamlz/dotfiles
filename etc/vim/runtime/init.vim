@@ -26,6 +26,7 @@ runtime init_plugins.vim
 
 " some saner defaults
 " -------------------
+
 set nocompatible
 set relativenumber number " Show Line numbers
 set ruler                 " Show line and column number of the cursor
@@ -66,6 +67,7 @@ set foldmethod=indent    " fold based on ident level
 set path+=**             " Custom file search
 
 " Finally, let's remap the leader key (clear any prexisting uses of <SPACE>)
+" FIXME: figure out a better way to utilize my leader keys
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
@@ -101,14 +103,6 @@ highlight GitGutterAdd ctermbg=None ctermfg=green
 highlight GitGutterChange ctermbg=None ctermfg=yellow
 highlight GitGutterDelete ctermbg=None ctermfg=red
 
-" Change colors to be more intuitive for vimwiki
-highlight VimwikiHeader1 ctermbg=None ctermfg=darkred
-highlight VimwikiHeader2 ctermbg=None ctermfg=darkblue
-highlight VimwikiHeader3 ctermbg=None ctermfg=darkgreen
-highlight VimwikiHeader4 ctermbg=None ctermfg=yellow
-highlight VimwikiHeader5 ctermbg=None ctermfg=cyan
-highlight VimwikiHeader6 ctermbg=None ctermfg=magenta
-
 highlight Conceal ctermbg=None ctermfg=darkblue
 
 " custom keybindings
@@ -121,46 +115,9 @@ nnoremap <leader><space> :nohlsearch<CR>
 noremap <S-j> :bn<CR>
 noremap <S-k> :bp<CR>
 
-" Custom git mappings (is fugitive or gitgutter better to use instead?)
-noremap <F2> :Git <CR>
-noremap <F3> :Git diff<CR>
-noremap <F4> :Gclog<CR>
-
-" Key binds to toggle the Undo Tree
-noremap <F5> :UndotreeToggle<CR>
-
 noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
     \ '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
     \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" .
     \ " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
-
-" Ledger remap tab completion
-au FileType ledger inoremap <silent> <Tab>
-            \ <C-r>=ledger#autocomplete_and_align()<CR>
-au FileType ledger vnoremap <silent> <Tab>
-            \ :LedgerAlign<CR>
-au FileType ledger nnoremap <silent> <C-m>
-            \ :silent<space>make<bar>redraw!<bar>cwindow<CR>
-au FileType ledger nnoremap <silent> <C-s>
-            \ :call ledger#transaction_state_toggle(line('.'), ' !*?')<CR>
-
-" Vimwiki doc pubs open
-autocmd FileType vimwiki nnoremap <Leader>p :silent !pubs doc open %:r<CR>
-
-nnoremap <silent> <C-h> :call WindowMoveAutoCreate('h')<CR>
-nnoremap <silent> <C-j> :call WindowMoveAutoCreate('j')<CR>
-nnoremap <silent> <C-k> :call WindowMoveAutoCreate('k')<CR>
-nnoremap <silent> <C-l> :call WindowMoveAutoCreate('l')<CR>
-
-" FIXME: figure out a better way to utilize my leader keys
-" fzf functions
-nnoremap <leader>f :Files<CR>
-nnoremap <leader>b :Buffers<CR>
-nnoremap <leader>w :Windows<CR>
-
-nnoremap <leader><C-s> :Lines<CR>
-nnoremap <leader>s :BLines<CR>
-
-nnoremap <leader>m :Marks<CR>
 
 " vim:ft=vim

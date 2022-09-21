@@ -23,11 +23,13 @@ Plug 'vim-airline/vim-airline-themes'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
+
 Plug 'mbbill/undotree'
 
 Plug 'jamessan/vim-gnupg'
 
 " Language Server
+" (Needs nodejs; but something in my package list pulls this dependency)
 " - Install support for other langauges via:
 "   > PYTHON :CocInstall coc-pyright
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
