@@ -35,27 +35,29 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin(plugin_dir)
 
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
 
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
 
-Plug 'mbbill/undotree'
+  Plug 'mbbill/undotree'
 
-Plug 'jamessan/vim-gnupg'
+  Plug 'preservim/nerdtree'
 
-" Language Server
-" (Needs nodejs; but something in my package list pulls this dependency)
-" - Install support for other langauges via:
-"   > PYTHON :CocInstall coc-pyright
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'jamessan/vim-gnupg'
 
-" Language Based Plugins
-Plug 'ledger/vim-ledger'
-Plug 'nathangrigg/vim-beancount'
+  " Language Server
+  " (Needs nodejs; but something in my package list pulls this dependency)
+  " - Install support for other langauges via:
+  "   > PYTHON :CocInstall coc-pyright
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
+  " Language Based Plugins
+  Plug 'ledger/vim-ledger'
+  Plug 'nathangrigg/vim-beancount'
 
 call plug#end()
