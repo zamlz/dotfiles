@@ -3,15 +3,6 @@
 
 LOCAL_XINITRC_DIR=$HOME/etc/xorg/scripts
 
-
-logger "Source local user-defined xinitrc.d files if they exist"
-if [ -d $LOCAL_XINITRC_DIR ] ; then
-    find "$LOCAL_XINITRC_DIR" -name "*.sh" | while read -r f; do
-        [ -x "$f" ] && $f &
-    done
-    unset f
-fi
-
 # We must run this outside of the scripts above because the window manager
 # wants to know which display configuration to configure it's internal
 # rules against. However, if we included it as part of the sourced scripts
@@ -19,3 +10,11 @@ fi
 # running commands.
 logger "Reset default display profile"
 $HOME/etc/xorg/reset_display_profile.sh
+
+logger "Source local user-defined xinitrc.d files if they exist"
+if [ -d "$LOCAL_XINITRC_DIR" ] ; then
+    find "$LOCAL_XINITRC_DIR" -name "*.sh" | while read -r f; do
+        [ -x "$f" ] && $f &
+    done
+    unset f
+fi
