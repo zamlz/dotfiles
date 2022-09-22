@@ -12,7 +12,28 @@
 
 " ----------------------------------------------------------------------------
 
-call plug#begin('~/.vim/plugged')
+" Install VimPlug
+" ---------------
+
+let url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+let vimplug_file = data_dir.'/autoload/plug.vim'
+let plugin_dir = data_dir.'/plugged'
+
+" download the plugin manager if it isn't installed already
+if empty(glob(vimplug_file))
+  silent execute '!curl -fLo '.vimplug_file.' --create-dirs '.url
+endif
+
+" installing any missing plugins
+autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  \| PlugInstall --sync | source $MYVIMRC
+\| endif
+
+" Use VimPlug to specify plguins
+" ------------------------------
+
+call plug#begin(plugin_dir)
 
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
