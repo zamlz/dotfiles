@@ -38,7 +38,6 @@ call plug#begin(plugin_dir)
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 
-" vim-airline: Lean & mean status/tabline for vim thats light as air
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
