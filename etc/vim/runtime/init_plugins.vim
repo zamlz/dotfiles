@@ -50,10 +50,7 @@ call plug#begin(plugin_dir)
 
   Plug 'jamessan/vim-gnupg'
 
-  " Language Server
-  " (Needs nodejs; but something in my package list pulls this dependency)
-  " - Install support for other langauges via:
-  "   > PYTHON :CocInstall coc-pyright
+  " Language Server Support
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Language Based Plugins
