@@ -16,6 +16,8 @@
 " keys for moving the cursor around. When Bill Joy developed vi, he used
 " hjkl for the arrow keys as it was only naturally having used the ADM-32.
 
+" NOTE: To debug runtime, make sure to take a look at `:scriptnames`
+
 " ===================
 "  VIM CONFIGURATION
 " ===================
