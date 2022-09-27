@@ -11,5 +11,3 @@
 noremap <leader>g :Git <CR>
 noremap <F3> :Git diff<CR>
 noremap <F4> :Gclog<CR>
-
-

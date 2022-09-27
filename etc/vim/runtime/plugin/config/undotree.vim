@@ -9,4 +9,3 @@
 
 " Key binds to toggle the Undo Tree
 noremap <leader>u :UndotreeToggle<CR>
-
