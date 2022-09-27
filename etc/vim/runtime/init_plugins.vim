@@ -51,7 +51,7 @@ call plug#begin(plugin_dir)
   Plug 'jamessan/vim-gnupg'
 
   " Language Server Support
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'neovim/nvim-lspconfig'
 
   " Language Based Plugins
   Plug 'ledger/vim-ledger'
