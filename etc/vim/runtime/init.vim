@@ -68,44 +68,13 @@ set foldmethod=indent    " fold based on ident level
 
 set path+=**             " Custom file search
 
+" my choice in colorscheme
+colorscheme peachpuff_custom
+
 " Finally, let's remap the leader key (clear any prexisting uses of <SPACE>)
 " FIXME: figure out a better way to utilize my leader keys
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-
-" vim colorschemes
-" ----------------
-
-" Use peachpuff built-in colorscheme as the base
-colorscheme peachpuff
-
-" Color of the Columns
-highlight ColorColumn ctermbg=black
-highlight CursorColumn ctermbg=black
-highlight VertSplit ctermfg=black
-
-" Change the default coloring of line numbers
-highlight LineNr ctermfg=darkgrey
-
-" Change colorscheme of Pmenus
-highlight Pmenu ctermfg=darkgrey ctermbg=black
-
-" Set background color of folded blocks
-highlight Folded ctermbg=black
-
-" Some syntax highlighting changes (maybe move this to its own file)
-highlight Function ctermfg=darkblue
-highlight String ctermfg=darkgreen
-"highlight Comment ctermfg=darkgrey
-highlight Exception ctermfg=darkred
-
-" Fix colors on gitgutter after colorscheme has been set
-highlight SignColumn ctermbg=None
-highlight GitGutterAdd ctermbg=None ctermfg=green
-highlight GitGutterChange ctermbg=None ctermfg=yellow
-highlight GitGutterDelete ctermbg=None ctermfg=red
-
-highlight Conceal ctermbg=None ctermfg=darkblue
 
 " custom keybindings
 " ------------------
