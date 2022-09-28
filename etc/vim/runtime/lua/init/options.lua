@@ -1,49 +1,60 @@
+--[[--------------------------------------------------------------------------
+   ____        __  _                _____      __          __
+  / __ \____  / /_(_)___  ____     / ___/___  / /__  _____/ /_
+ / / / / __ \/ __/ / __ \/ __ \    \__ \/ _ \/ / _ \/ ___/ __/
+/ /_/ / /_/ / /_/ / /_/ / / / /   ___/ /  __/ /  __/ /__/ /_
+\____/ .___/\__/_/\____/_/ /_/   /____/\___/_/\___/\___/\__/
+    /_/
+--------------------------------------------------------------------------]]--
 
--- Lua conversion time
-vim.cmd([[
+-- FIXME: convert vim.cmd statements to proper opt statements
 
-" some saner defaults
-" -------------------
+local opt = vim.opt
 
-set nocompatible
-set relativenumber number " Show Line numbers
-set ruler                 " Show line and column number of the cursor
-set cursorline            " highlight current line
-set cursorcolumn          " Create a column for where the cursor is
-set colorcolumn=80        " Create a column to show where 80 chars are
-set modeline              " Allow source files to configure vim as well
-set nowrap
+-- fringe line numbers
+opt.number         = true
+opt.relativenumber = true
 
-set tabstop=4            " number of visual spaces per TAB
-set softtabstop=4        " number of space in TAB while editing
-set expandtab            " TABs are now SPACEs
-set shiftwidth=4         " Allows helps to make it 4 spaces in neovim
+-- cursor crosshair and soft-thresholds
+opt.ruler        = true
+opt.cursorline   = true
+opt.cursorcolumn = true
+opt.colorcolumn  = {80, 128}
 
-filetype plugin on
-filetype indent on       " Load filetype-specific indent files
-syntax on
+-- text display
+opt.wrap = false
 
-set wildmenu             " visual autocomplete for command menu
-set lazyredraw           " redraw only when we need to
+-- put and end to this tab vs. spaces war
+opt.tabstop     = 4    -- visual spaces per tab character
+opt.expandtab   = true -- expand <TAB> key to spaces in insert mode
+opt.softtabstop = 4    -- number of spaces to insert for a tab
+opt.shiftwidth  = 4    -- number of spaces used for each autoindent step
 
-set showmatch            " highlight matching brackets [{()}]
-set incsearch            " search as characters are entered
-set hlsearch             " highlight matches
+-- code concealing
+opt.conceallevel = 2
+--set concealcursor-=n
 
-set noshowmode           " Stop showing the default mode
+-- code folding
+opt.foldenable     = true
+opt.foldlevelstart = 10
+opt.foldnestmax    = 10
+opt.foldmethod     = "indent"
 
-set mouse=a              " Set mouse wheel to scroll
+-- filetype specific options
+vim.cmd("filetype plugin on")
+vim.cmd("filetype indent on")
 
-set conceallevel=2       " Code concealing
-set concealcursor-=n
+-- dynamic configuration via source files
+opt.modeline = true
 
-set foldenable           " Enable Code Folding
-set foldlevelstart=10
-set foldnestmax=10
-set foldmethod=indent    " fold based on ident level
+-- let's use the mouse scrolling cause we can
+opt.mouse = "a"
 
-set path+=**             " Custom file search
+-- Custom file search path
+vim.cmd("set path+=**")
 
-" my choice in colorscheme
-colorscheme peachpuff_custom
-]])
+-- rice out neovim
+opt.syntax     = "on"
+opt.lazyredraw = true
+opt.showmode   = false -- don't show the current mode under the modeline
+vim.cmd("colorscheme peachpuff_custom")
