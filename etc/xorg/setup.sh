@@ -4,6 +4,13 @@
 # ------------------
 
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. $HOME/lib/shell/utils
+
+logger "Setting up xinitrc"
+CONFIG_SOURCE=$HOME/etc/xorg/xinitrc
+CONFIG_TARGET=$HOME/.xinitrc
+
+create_symlink "xinitrc config" $CONFIG_SOURCE $CONFIG_TARGET
 
 logger "Setting XDG user-dirs.dirs"
 xdg-user-dirs-update --set DESKTOP      "$HOME"

@@ -1,3 +1,5 @@
+#!/bin/sh
+
 # Setup the logger
 . $HOME/lib/shell/logging && eval "$(get_logger $0)"
 
