@@ -1,64 +1,65 @@
-vim.cmd([[
-" ----------------------------------------------------------------------------
-"  _    ___              ____  __            _
-" | |  / (_)___ ___     / __ \/ /_  ______ _(_)___  _____
-" | | / / / __ `__ \   / /_/ / / / / / __ `/ / __ \/ ___/
-" | |/ / / / / / / /  / ____/ / /_/ / /_/ / / / / (__  )
-" |___/_/_/ /_/ /_/  /_/   /_/\__,_/\__, /_/_/ /_/____/
-"                                  /____/
-" ----------------------------------------------------------------------------
+--[[--------------------------------------------------------------------------
+_    ___              ____  __            _
+| |  / (_)___ ___     / __ \/ /_  ______ _(_)___  _____
+| | / / / __ `__ \   / /_/ / / / / / __ `/ / __ \/ ___/
+| |/ / / / / / / /  / ____/ / /_/ / /_/ / / / / (__  )
+|___/_/_/ /_/ /_/  /_/   /_/\__,_/\__, /_/_/ /_/____/
+                                 /____/
+--------------------------------------------------------------------------]]--
 
-" PLUGINS TO TRY:
-" vim-which-key
-" nvim-cmp
-" telescope
+--[[
+PLUGINS TO TRY:
+    - vim-which-key
+    - nvim-cmp
+    - telescope
+    - fzf
+--]]
 
-" ----------------------------------------------------------------------------
+local ensure_packer = function()
+  local fn = vim.fn
+  local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+  if fn.empty(fn.glob(install_path)) > 0 then
+    fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+    vim.cmd [[packadd packer.nvim]]
+    return true
+  end
+  return false
+end
 
-" Install VimPlug
-" ---------------
+local packer_bootstrap = ensure_packer()
 
-let url = 'https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-let vimplug_file = data_dir.'/autoload/plug.vim'
-let plugin_dir = data_dir.'/plugged'
+return require('packer').startup(function(use)
 
-" download the plugin manager if it isn't installed already
-if empty(glob(vimplug_file))
-  silent execute '!curl -fLo '.vimplug_file.' --create-dirs '.url
-endif
+  -- Packer can manage itself
+  use 'wbthomason/packer.nvim'
 
-" installing any missing plugins
-autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
-  \| PlugInstall --sync | source $MYVIMRC
-\| endif
+  -- Aesthetic Status Bar
+  use 'vim-airline/vim-airline'
+  use 'vim-airline/vim-airline-themes'
 
-" Use VimPlug to specify plguins
-" ------------------------------
+  -- Git plugis
+  use 'tpope/vim-fugitive'
+  use 'airblade/vim-gitgutter'
 
-call plug#begin(plugin_dir)
+  -- Undo Tree
+  use 'mbbill/undotree'
 
-  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-  Plug 'junegunn/fzf.vim'
+  -- Nerd Tree
+  use 'preservim/nerdtree'
 
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  -- Encrypted File Support
+  use 'jamessan/vim-gnupg'
 
-  Plug 'tpope/vim-fugitive'
-  Plug 'airblade/vim-gitgutter'
+  -- Language Server Support
+  use 'neovim/nvim-lspconfig'
 
-  Plug 'mbbill/undotree'
+  -- Language Based Plugins
+  use 'ledger/vim-ledger'
+  use 'nathangrigg/vim-beancount'
 
-  Plug 'preservim/nerdtree'
-
-  Plug 'jamessan/vim-gnupg'
-
-  " Language Server Support
-  Plug 'neovim/nvim-lspconfig'
-
-  " Language Based Plugins
-  Plug 'ledger/vim-ledger'
-  Plug 'nathangrigg/vim-beancount'
-
-call plug#end()
-]])
+  -- Automatically set up your configuration after cloning packer.nvim
+  -- Put this at the end after all plugins
+  if packer_bootstrap then
+    require('packer').sync()
+  end
+end)
