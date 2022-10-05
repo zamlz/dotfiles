@@ -9,16 +9,16 @@
 require('lualine').setup {
     options = {
         icons_enabled = true,
-        theme = 'powerline_dark',
-        --component_separators = { left = '\ue0b1', right = '\ue0b3' },
-        --section_separators = { left = '\ue0b0', right = '\ue0b2' },
+        theme = 'codedark',
+        component_separators = { left = '', right = ''},
+        section_separators = { left = '', right = ''},
         disabled_filetypes = {
             statusline = {},
             winbar = {},
         },
         ignore_focus = {},
         always_divide_middle = true,
-        globalstatus = false,
+        globalstatus = true,
         refresh = {
             statusline = 1000,
             tabline = 1000,
@@ -27,9 +27,15 @@ require('lualine').setup {
     },
     sections = {
         lualine_a = {'mode'},
-        lualine_b = {'branch', 'diff', 'diagnostics'},
-        lualine_c = {'filename'},
-        lualine_x = {'encoding', 'fileformat', 'filetype'},
+        lualine_b = {
+            'branch',
+            {
+                'filename',
+                path = 1,
+            }
+        },
+        lualine_c = {'diff', 'diagnostics'},
+        lualine_x = {'encoding', 'filetype'},
         lualine_y = {'progress'},
         lualine_z = {'location'}
     },
@@ -41,8 +47,42 @@ require('lualine').setup {
         lualine_y = {},
         lualine_z = {}
     },
-    tabline = {},
-    winbar = {},
-    inactive_winbar = {},
+    tabline = {
+        lualine_a = {
+            {
+                'buffers',
+                symbols = {
+                    modified = ' ●',
+                    alternate_file = '',
+                    directory =  ''
+                },
+            }
+        },
+        lualine_b = {},
+        lualine_c = {},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {'tabs'}
+    },
+    winbar = {
+        --[[ FIXME: What is winbar?
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}    
+        --]]
+    },
+    inactive_winbar = {
+        --[[ FIXME: What is winbar?
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = {'filename'},
+        lualine_x = {},
+        lualine_y = {},
+        lualine_z = {}
+        --]]
+    },
     extensions = {}
 }
