@@ -15,8 +15,6 @@ PLUGINS TO TRY:
       - nvim-lspinstall
       - lspsaga.nvim
       - nvim-compe
-    - gitsigns
-    - lualine
 --]]
 
 local ensure_packer = function()
@@ -47,8 +45,7 @@ return require('packer').startup(function(use)
     }
 
     -- Git plugis
-    use 'tpope/vim-fugitive'
-    use 'airblade/vim-gitgutter'
+    use 'lewis6991/gitsigns.nvim'
 
     -- Undo Tree
     use 'mbbill/undotree'
