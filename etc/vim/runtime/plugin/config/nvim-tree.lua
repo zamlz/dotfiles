@@ -14,4 +14,5 @@ vim.g.loaded_netrwPlugin = 1
 require('nvim-tree').setup()
 
 -- Set leader keybinding
---noremap <leader>n :NERDTreeToggle<CR>
+require("common.keybinder")
+nmap("<leader>n", ":NvimTreeToggle<CR>")
