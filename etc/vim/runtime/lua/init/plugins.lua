@@ -38,13 +38,11 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Aesthetic Status Bar
-    --use 'vim-airline/vim-airline'
-    --use 'vim-airline/vim-airline-themes'
     use {
         'nvim-lualine/lualine.nvim',
         requires = {
           'kyazdani42/nvim-web-devicons',
-          opt=true
+          opt = true
         }
     }
 
@@ -55,8 +53,15 @@ return require('packer').startup(function(use)
     -- Undo Tree
     use 'mbbill/undotree'
 
-    -- Nerd Tree
-    use 'preservim/nerdtree'
+    -- Filesystem Tree
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons',
+            opt = true
+        },
+        tag = 'nightly' -- optional, updated every week. (see issue #1193)
+    }
 
     -- Encrypted File Support
     use 'jamessan/vim-gnupg'
