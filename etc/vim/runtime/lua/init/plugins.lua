@@ -46,6 +46,7 @@ return require('packer').startup(function(use)
 
     -- Git plugis
     use 'lewis6991/gitsigns.nvim'
+    use 'jreybert/vimagit'
 
     -- Undo Tree
     use 'mbbill/undotree'
