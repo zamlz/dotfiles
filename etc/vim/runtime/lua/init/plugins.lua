@@ -68,8 +68,14 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
 
     -- Language Based Plugins
-    use 'ledger/vim-ledger'
-    use 'nathangrigg/vim-beancount'
+    use {
+        'ledger/vim-ledger',
+        ft = {'ledger'}
+    }
+    use {
+        'nathangrigg/vim-beancount',
+        ft = {'beancount'}
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
