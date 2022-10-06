@@ -76,10 +76,7 @@ highlight String ctermfg=darkgreen
 highlight Comment ctermfg=darkgrey
 highlight Exception ctermfg=darkred
 
-" Fix colors on gitgutter after colorscheme has been set
+" Fix colors on gitsign background
 highlight SignColumn ctermbg=None
-highlight GitGutterAdd ctermbg=None ctermfg=green
-highlight GitGutterChange ctermbg=None ctermfg=yellow
-highlight GitGutterDelete ctermbg=None ctermfg=red
 
 highlight Conceal ctermbg=None ctermfg=darkblue
