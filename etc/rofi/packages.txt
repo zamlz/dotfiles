@@ -1,5 +1,0 @@
-# Rofi Dmenu
-rofi
-
-# used for locking
-i3lock

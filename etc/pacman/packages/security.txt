@@ -1,0 +1,16 @@
+# Security Tools
+# ==============
+
+# Network Communication
+# ---------------------
+openssh
+ufw
+
+# Encryption and Password Management
+# ----------------------------------
+gnupg
+pass
+
+# [Dependencies for pass]
+xclip
+qrencode

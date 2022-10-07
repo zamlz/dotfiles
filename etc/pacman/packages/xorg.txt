@@ -1,0 +1,44 @@
+# The X11 Window System
+# =====================
+
+# Display Server
+# --------------
+xorg-server
+
+# Display Server Utilities
+# ------------------------
+arandr
+xdg-user-dirs
+xorg-setxkbmap
+xorg-xbacklight
+xorg-xinit
+xorg-xrdb
+xorg-xset
+
+# Window Managers
+# ---------------
+herbstluftwm
+
+# Generic Window Manager Utilities
+# --------------------------------
+xdotool
+sxhkd
+rofi
+i3lock
+wmctrl
+
+# Display Drivers
+# ---------------
+# (make sure to blacklist nouveau if on nvidia machine!)
+nvidia
+xf86-video-intel
+
+# Ricing Utilities
+# ----------------
+feh
+picom
+
+# Fonts
+# -----
+ttc-iosevka
+ttf-fira-code

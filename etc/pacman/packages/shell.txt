@@ -1,0 +1,24 @@
+# Shell Environment
+# =================
+
+# Shells and Plugins
+# ------------------
+zsh
+zsh-completions
+zsh-autosuggestions
+zsh-syntax-highlighting
+zsh-history-substring-search
+
+# Shell Utilies
+# -------------
+neovim
+tree
+figlet
+highlight
+neofetch
+tmux
+
+# Shell Fun Stuff
+# ---------------
+cmatrix
+asciiquarium

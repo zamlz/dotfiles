@@ -1,0 +1,18 @@
+# GUI Applications
+# ----------------
+
+# Terminal Application
+kitty
+
+# Web Browsers
+firefox
+qutebrowser
+
+# Social Apps
+discord
+
+# Text Editors
+emacs
+
+# Document Viewers
+zathura

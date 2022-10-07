@@ -1,0 +1,15 @@
+# Developer Tools
+# ===============
+
+# Version Control Systems
+# -----------------------
+git
+
+# Programming Languages
+# ---------------------
+
+# [Python]
+python
+ipython
+python-pipenv
+python-tox
