@@ -2,7 +2,6 @@
 
 # Source some configurations
 . $HOME/etc/pass/config
-. $HOME/etc/ledger/config
 
 # Update PATH with local binary directories
 export PATH="$HOME/.local/bin:$PATH"
@@ -23,9 +22,6 @@ if [ -z "$WSL" ]; then
 else
     export LESS='-R --no-init --quit-if-one-screen'
 fi
-
-# Ledger Journal File
-export LEDGER_FILE="$LEDGER_DIR/main.journal"
 
 # Configure Zsh command history
 export HISTFILE=$HOME/.local/share/zhistory
