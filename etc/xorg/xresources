@@ -17,4 +17,4 @@ Xft.hintstyle:              hintslight
 ! External Configurations
 
 ! We need to source the xresources of URxvt
-#include "etc/urxvt/xresources"
+#include "etc/xorg/urxvt/xresources"
