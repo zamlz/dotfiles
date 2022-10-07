@@ -13,3 +13,6 @@ python
 ipython
 python-pipenv
 python-tox
+
+# [Rust]
+rust
