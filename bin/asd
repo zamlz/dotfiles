@@ -11,7 +11,6 @@
 
 # A simple script that manages dotfiles repo and beyond
 . $HOME/etc/pass/config
-. $HOME/etc/ledger/config
 . $HOME/lib/shell/colorenv
 
 DOTFILES_DIR="$HOME"
