@@ -25,6 +25,13 @@ nmap("<S-j>", ":bn<CR>")
 -- noremap <S-k> :bp<CR>
 nmap("<S-k>", ":bp<CR>")
 
+-- Keybinds to quickly move through window panes
+-- refer to the custom window plugin I've written for autocreation commands
+nmap("<C-h>", ":wincmd h<CR>")
+nmap("<C-j>", ":wincmd j<CR>")
+nmap("<C-k>", ":wincmd k<CR>")
+nmap("<C-l>", ":wincmd l<CR>")
+
 -- FIXME: translate this into a meaninful command to use for lua
 --[[
 noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
