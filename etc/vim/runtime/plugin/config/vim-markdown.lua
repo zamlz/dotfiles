@@ -11,6 +11,7 @@ vim.g.markdown_syntax_conceal = 0
 vim.g.markdown_minlines = 100
 vim.g.markdown_fenced_languages = {
     'html',
+    'yaml',
     'python',
     'bash=sh',
     'rust'
