@@ -81,6 +81,9 @@ return require('packer').startup(function(use)
         ft = {'beancount'}
     }
 
+    -- Markup Language System
+    use 'tpope/vim-markdown'
+
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
     if packer_bootstrap then

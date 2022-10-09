@@ -31,7 +31,7 @@ opt.softtabstop = 4    -- number of spaces to insert for a tab
 opt.shiftwidth  = 4    -- number of spaces used for each autoindent step
 
 -- code concealing
-opt.conceallevel = 2
+opt.conceallevel = 0
 --set concealcursor-=n
 
 -- code folding

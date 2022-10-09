@@ -33,9 +33,9 @@ nmap("<C-k>", ":wincmd k<CR>")
 nmap("<C-l>", ":wincmd l<CR>")
 
 -- FIXME: translate this into a meaninful command to use for lua
---[[
+vim.cmd([[
 noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
     \ '> trans<' . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
     \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">" .
     \ " FG:" . synIDattr(synIDtrans(synID(line("."),col("."),1)),"fg#")<CR>
---]]
+]])
