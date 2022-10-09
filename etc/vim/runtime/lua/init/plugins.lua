@@ -69,6 +69,10 @@ return require('packer').startup(function(use)
 
     -- Language Based Plugins
     use {
+        'rust-lang/rust.vim',
+        ft = {'rust'}
+    }
+    use {
         'ledger/vim-ledger',
         ft = {'ledger'}
     }
