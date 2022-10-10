@@ -50,3 +50,6 @@ alias cp="cp -i"
 
 # Config Overrides
 alias tmux="tmux -f ~/etc/tmux/config"
+
+# Develoepr Aliases
+alias py="ipython"
