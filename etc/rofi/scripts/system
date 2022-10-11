@@ -15,10 +15,13 @@ if [ "$systask" = "LOCK SCREEN" ]; then
 
     # Refresh gpg-agent
     gpg-connect-agent --no-autostart RELOADAGENT /bye > /dev/null
+
     # Start the locker
-    HUBBLE_LEGACY_FIELD="$HOME/usr/walls/hubble_legacy_field.png"
-    if [ -f $HUBBLE_LEGACY_FIELD ]; then
-        exec i3lock -nefi $HUBBLE_LEGACY_FIELD
+    WALLPAPER_FILE=$(grep feh $HOME/.fehbg \
+        | awk '{print substr($(NF), 2, length($(NF)) - 2)}')
+    echo $WALLPAPER_FILE
+    if [ -f $WALLPAPER_FILE ]; then
+        exec i3lock -nefi $WALLPAPER_FILE
     else
         exec i3lock -nef --color=000000
     fi
