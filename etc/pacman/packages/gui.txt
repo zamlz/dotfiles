@@ -6,7 +6,6 @@ kitty
 
 # Web Browsers
 firefox
-qutebrowser
 
 # Social Apps
 discord

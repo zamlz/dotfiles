@@ -39,7 +39,6 @@ setup_dots() {
     $HOME/etc/kitty/setup.sh
     $HOME/etc/picom/setup.sh
     $HOME/etc/polybar/setup.sh
-    $HOME/etc/qutebrowser/setup.sh
     $HOME/etc/rofi/setup.sh
     $HOME/etc/ssh/setup.sh
     $HOME/etc/taskwarrior/setup.sh

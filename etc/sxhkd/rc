@@ -39,11 +39,6 @@ super + n
 super + shift + n
     $HOME/etc/rofi/scripts/wiki --pdf
 
-# Choose which Qutebrowser session to load. Unforunately its pretty buggy and
-# is not working the way I expect.
-super + shift + w
-    $HOME/etc/rofi/scripts/browser
-
 # Toggle between different display/power profile (multi-monitor, single
 # monitor, etc.)
 super + d
