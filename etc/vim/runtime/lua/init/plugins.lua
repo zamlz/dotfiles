@@ -74,9 +74,6 @@ return require('packer').startup(function(use)
         ft = {'beancount'}
     }
 
-    -- Configuration File Plugins
-    use 'lepture/vim-jinja'
-
     -- Markup Language System
     use 'tpope/vim-markdown'
 
