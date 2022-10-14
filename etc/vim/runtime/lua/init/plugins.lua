@@ -52,14 +52,7 @@ return require('packer').startup(function(use)
     use 'mbbill/undotree'
 
     -- Filesystem Tree
-    use {
-        'kyazdani42/nvim-tree.lua',
-        requires = {
-            'kyazdani42/nvim-web-devicons',
-            opt = true
-        },
-        tag = 'nightly' -- optional, updated every week. (see issue #1193)
-    }
+    use 'preservim/nerdtree'
 
     -- Encrypted File Support
     use 'jamessan/vim-gnupg'
