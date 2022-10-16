@@ -16,13 +16,10 @@ vim.cmd('nnoremap <SPACE> <Nop>')
 vim.cmd('let mapleader=" "')
 
 -- Sets a keybind to turn off highlighted searches
--- nnoremap <leader><space> :nohlsearch<CR>
 nmap("<leader><space>", ":nohlsearch<CR>")
 
 -- Keybinds to quickly switch buffers
--- noremap <S-j> :bn<CR>
 nmap("<S-j>", ":bn<CR>")
--- noremap <S-k> :bp<CR>
 nmap("<S-k>", ":bp<CR>")
 
 -- Keybinds to quickly move through window panes
