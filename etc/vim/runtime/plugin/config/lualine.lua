@@ -75,7 +75,7 @@ require('lualine').setup {
         --]]
     },
     inactive_winbar = {
-        --[[ FIXME: What is winbar?
+        --[[ FIXME: What is inactive winbar?
         lualine_a = {},
         lualine_b = {},
         lualine_c = {'filename'},
