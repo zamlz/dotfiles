@@ -8,4 +8,4 @@
 --------------------------------------------------------------------------]]--
 
 require('common.keybinder')
-nmap("<leader>g", ":Magit<CR>")
+nmap("<leader>gg", ":MagitOnly<CR>")
