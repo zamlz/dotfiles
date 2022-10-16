@@ -54,6 +54,12 @@ return require('packer').startup(function(use)
     -- Filesystem Tree
     use 'preservim/nerdtree'
 
+    --
+    use {
+        'nvim-telescope/telescope.nvim', tag = '0.1.0',
+        requires = { {'nvim-lua/plenary.nvim'} }
+    }
+
     -- Encrypted File Support
     use 'jamessan/vim-gnupg'
 
