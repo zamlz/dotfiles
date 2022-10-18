@@ -38,30 +38,15 @@ fi
 
 # Save X Window Terminal Info
 if [ -n "$DISPLAY" ]; then
-
-    # Writes otu $PWD and $VIRTUAL_ENV
+    # Writes out $PWD and $VIRTUAL_ENV
     function window_info() {
         echo "WINDOW_PWD='$(pwd)'";
         echo "VIRTUAL_ENV='${VIRTUAL_ENV}'";
     }
-
     # Save window info for given window ID
     function save_window_info() {
         window_info > /tmp/.wid_${WINDOWID}
     }
-
-    # Build our custom cd
-    function cd () {
-        builtin cd $@
-        save_window_info
-    }
-
-    # Every terminal should generate its id file on spawn
-    if [ -z "$WINDOWID" ]; then
-        # echo "Terminal doesn't have a Window ID!!!"
-    else
-        save_window_info
-    fi
 fi
 
 # I don't know what to make of this. I thought I could have this code block in

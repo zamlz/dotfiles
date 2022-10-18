@@ -50,3 +50,12 @@ source $HOME/etc/zsh/prompt
 logger "sourcing shell functions"
 fpath=("$HOME/etc/zsh/functions" $fpath)
 autoload venv
+
+# register hooks
+precmd() {
+    # Every terminal should generate its id file on spawn
+    if [ -n "$WINDOWID" ]; then
+        save_window_info
+    fi
+    export PROMPT=$(prompt_generate $?)
+}
