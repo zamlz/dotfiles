@@ -15,4 +15,4 @@ python-pipenv
 python-tox
 
 # [Rust]
-rust
+rustup
