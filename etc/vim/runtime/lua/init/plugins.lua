@@ -9,12 +9,7 @@ _    ___              ____  __            _
 
 --[[
 PLUGINS TO TRY:
-    - nvim-cmp?
-    - telescope (alt to fzf)
-    - nvim-lspconfig
-      - nvim-lspinstall
-      - lspsaga.nvim
-      - nvim-compe
+- nvim-cmp
 --]]
 
 local ensure_packer = function()
@@ -54,7 +49,7 @@ return require('packer').startup(function(use)
     -- Filesystem Tree
     use 'preservim/nerdtree'
 
-    --
+    -- Nice Fuzzy searcher
     use {
         'nvim-telescope/telescope.nvim', tag = '0.1.0',
         requires = { {'nvim-lua/plenary.nvim'} }
@@ -64,6 +59,8 @@ return require('packer').startup(function(use)
     use 'jamessan/vim-gnupg'
 
     -- Language Server Support
+    use 'williamboman/mason.nvim'
+    use 'williamboman/mason-lspconfig.nvim'
     use 'neovim/nvim-lspconfig'
 
     -- Language Based Plugins
