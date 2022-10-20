@@ -20,6 +20,11 @@ if [ $? -eq 0 ]; then
     # Don't start picom too soon in case xorg just came up
     sleep 1
 
+    if [ -f "$HOME/.config/picom/disable" ]; then
+        logger "picom is set to be disabled, aborting refresh"
+        exit 0
+    fi
+
     logger "checking for picom configuration"
     if [ -L $PICOM_CONFIG ]; then
 
