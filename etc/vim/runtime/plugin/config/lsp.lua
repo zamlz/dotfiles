@@ -5,7 +5,7 @@
 -- You need to configure lsp down below as well...
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "pyright", "rust_analyzer" }
+    ensure_installed = { "sumneko_lua", "pyright", "rust_analyzer" , "bashls"}
 })
 
 -- LSP Config configuration
@@ -70,3 +70,4 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
+require('lspconfig')['bashls'].setup{}
