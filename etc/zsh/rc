@@ -51,6 +51,9 @@ logger "sourcing shell functions"
 fpath=("$HOME/etc/zsh/functions" $fpath)
 autoload venv
 
+logger "sourcing machine specific environment"
+source $HOME/sys/path.sh
+
 # register hooks
 precmd() {
     # Every terminal should generate its id file on spawn
