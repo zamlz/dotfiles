@@ -52,7 +52,9 @@ fpath=("$HOME/etc/zsh/functions" $fpath)
 autoload venv
 
 logger "sourcing machine specific environment"
-source $HOME/sys/path.sh
+if [ -f "$HOME/sys/path.sh" ]; then
+    source $HOME/sys/path.sh
+fi
 
 # register hooks
 precmd() {
