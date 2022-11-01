@@ -14,6 +14,11 @@ profile=$( find  $PROFILE_DIR -not -path '*/.*' -type f,l | \
 if [ -n "$profile" ]; then
     logger "profile selected: $profile"
     $PROFILE_DIR/$profile
+
+    # FIXME: Need to generalize polybar refreshing in this script
+    logger "refreshing polybar"
+    $HOME/etc/polybar/refresh.sh
+
     logger "attempting to refresh ${WINDOW_MANAGER} monitors"
     REFRESH_SCRIPT=$HOME/etc/${WINDOW_MANAGER}/scripts/refresh_display.sh
     if [ -f $REFRESH_SCRIPT ]; then
