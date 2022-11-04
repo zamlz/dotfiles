@@ -21,7 +21,7 @@ if [ "$systask" = "LOCK SCREEN" ]; then
         | awk '{print substr($(NF), 2, length($(NF)) - 2)}')
     echo $WALLPAPER_FILE
     if [ -f $WALLPAPER_FILE ]; then
-        exec i3lock -nefi $WALLPAPER_FILE
+        exec i3lock -tnefi $WALLPAPER_FILE
     else
         exec i3lock -nef --color=000000
     fi
