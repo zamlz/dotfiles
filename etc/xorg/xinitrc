@@ -15,6 +15,9 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
     unset f
 fi
 
+# Before running any user level scripts, let's set the default profile up
+echo __DEFAULT__ > $HOME/tmp/.$(hostname).xorg.current_profile
+
 # Source user level scripts
 $HOME/etc/xorg/refresh.sh
 
