@@ -9,7 +9,7 @@ if [ $? -eq 0 ]; then
     # HACK: This is some voodoo magic. For some reason, I need run xrandr
     # atleast once before changing my system resolution
     xrandr > /dev/null
-    . $HOME/lib/profiles/$(hostname)/$(cat $HOME/tmp/.$(hostname).xorg.current_profile
+    . $HOME/lib/profiles/$(hostname)/$(cat $HOME/tmp/.$(hostname).xorg.current_profile)
     logger "default display profile configured"
 else
     logger "ERROR: 'xrandr' is not found!"
