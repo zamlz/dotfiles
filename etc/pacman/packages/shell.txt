@@ -17,6 +17,7 @@ figlet
 highlight
 neofetch
 tmux
+unzip
 
 # Shell Fun Stuff
 # ---------------

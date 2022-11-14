@@ -14,5 +14,9 @@ ipython
 python-pipenv
 python-tox
 
+# [Node]
+nodejs
+npm
+
 # [Rust]
 rustup
