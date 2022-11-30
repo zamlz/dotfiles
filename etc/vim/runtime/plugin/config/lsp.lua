@@ -58,10 +58,12 @@ require('lspconfig')['sumneko_lua'].setup{
         }
     }
 }
+
 require('lspconfig')['pyright'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
 }
+
 require('lspconfig')['rust_analyzer'].setup{
     on_attach = on_attach,
     flags = lsp_flags,
@@ -70,4 +72,6 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
+
+-- Note this will use shellcheck if it's installed externally!
 require('lspconfig')['bashls'].setup{}
