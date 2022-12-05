@@ -13,6 +13,7 @@ python
 ipython
 python-pipenv
 python-tox
+python-ipdb
 
 # [Node]
 nodejs
