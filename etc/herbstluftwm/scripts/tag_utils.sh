@@ -45,7 +45,7 @@ get_hc_command() {
 
 get_tag() {
     tag=$(tag_list | rofi -dmenu -i -p "$(get_rofi_prompt) TAG")
-    echo ${tag}
+    echo "${tag}" | tr ' ' '-'
 }
 
 main() {
