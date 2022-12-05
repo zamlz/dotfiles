@@ -26,7 +26,7 @@ sxhkd
 rofi
 i3lock
 wmctrl
-scrot
+maim
 
 # Display Drivers
 # ---------------

@@ -58,9 +58,9 @@ super + ctrl + alt + Escape
 # opposed to key press. Scrot and xclip here will not work properly unless they
 # are on key release.
 @Print
-    scrot -q 100 -s '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+    $HOME/bin/screenshot -s
 @shift + Print
-    scrot -q 100 '/tmp/%F_%T_$wx$h.png' -e 'xclip -selection clipboard -target image/png -i $f'
+    $HOME/bin/screenshot
 
 # Various media keybindings that both actually do the what the media key
 # describes and also (usually) sends a signal to the Lemonbar FIFOs.
