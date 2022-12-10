@@ -7,17 +7,16 @@
 # - this is because we want to be able to override $HOME and have
 #   that propagate to all configuration scripts downstream.
 
-. $HOME/lib/shell/logging && eval "$(get_logger $0)"
+. "$HOME/lib/shell/logging" && eval "$(get_logger "$0")"
 
 # A simple script that manages dotfiles repo and beyond
-. $HOME/etc/pass/config
-. $HOME/lib/shell/colorenv
+. "$HOME/etc/pass/config"
+. "$HOME/lib/shell/colorenv"
 
 DOTFILES_DIR="$HOME"
-DOTFILES_GIT_REPO="git@github.com:zamlz/dotfiles.git"
 
 help_prompt() {
-    echo "Usage: $(basename $0) [CMD]"
+    echo "Usage: $(basename "$0") [CMD]"
     echo "    Commands:"
     echo "      - setup: Runs dotfiles setup files"
     echo "      - info: Show shell variable info for primary repos"
@@ -34,17 +33,17 @@ help_prompt() {
 setup_dots() {
     logger "Preparing to setup dotfiles in $HOME"
     export HOME=$HOME
-    $HOME/etc/git/setup.sh
-    $HOME/etc/gnupg/setup.sh
-    $HOME/etc/ipython/setup.sh
-    $HOME/etc/kitty/setup.sh
-    $HOME/etc/picom/setup.sh
-    $HOME/etc/polybar/setup.sh
-    $HOME/etc/rofi/setup.sh
-    $HOME/etc/ssh/setup.sh
-    $HOME/etc/vim/setup.sh
-    $HOME/etc/xorg/setup.sh
-    $HOME/etc/zsh/setup.sh
+    "$HOME/etc/git/setup.sh"
+    "$HOME/etc/gnupg/setup.sh"
+    "$HOME/etc/ipython/setup.sh"
+    "$HOME/etc/kitty/setup.sh"
+    "$HOME/etc/picom/setup.sh"
+    "$HOME/etc/polybar/setup.sh"
+    "$HOME/etc/rofi/setup.sh"
+    "$HOME/etc/ssh/setup.sh"
+    "$HOME/etc/vim/setup.sh"
+    "$HOME/etc/xorg/setup.sh"
+    "$HOME/etc/zsh/setup.sh"
     logger "Setup scripts complete :)"
 }
 
@@ -53,7 +52,7 @@ clone_repo() {
     echo -e "[${Bold}REPOSITORY: ${COLOR}${REPO_DIR}${Rst}]"
     if [ ! -d "$REPO_DIR" ] && [ -n "$REPO_URL" ]; then
         echo "Cloning ${REPO_URL} to ${REPO_DIR}"
-        git clone ${REPO_URL} ${REPO_DIR}
+        git clone "${REPO_URL}" "${REPO_DIR}"
     elif [ -d "$REPO_DIR" ]; then
         echo "Repo directory already exists!"
     fi
@@ -62,39 +61,39 @@ clone_repo() {
 }
 
 clone_repos_over_all() {
-    read -p "Enter pass repo (leave blank to skip): " pass_git_repo
+    read -rp "Enter pass repo (leave blank to skip): " pass_git_repo
     if [ -n "${pass_git_repo}" ]; then
-        clone_repo ${Red} ${PASSWORD_STORE_DIR} ${pass_git_repo}
+        clone_repo "${Red}" "${PASSWORD_STORE_DIR}" "${pass_git_repo}"
     fi
-    clone_repo ${Red} ${LEDGER_DIR} ${LEDGER_GIT_REPO}
+    clone_repo "${Red}" "${LEDGER_DIR}" "${LEDGER_GIT_REPO}"
 }
 
 # Run a git command (${2-}) in a given repo (${1})
 run_git() {
-    COLOR=$1 && shift && REPO_DIR=$1 && shift && GIT_ARGS=$@;
+    COLOR=$1 && shift && REPO_DIR=$1 && shift && GIT_ARGS="$*";
     if [ -d "$REPO_DIR" ] ; then
         echo -e "[${Bold}REPOSITORY: ${COLOR}${REPO_DIR}${Rst}]"
         echo "git -C $REPO_DIR $GIT_ARGS"
-        git -C $REPO_DIR $GIT_ARGS
+        git -C "$REPO_DIR" $GIT_ARGS
     fi
 }
 
 run_git_over_all() {
-    COLOR=$1 && shift && GIT_ARGS=$@;
-    run_git ${COLOR} ${DOTFILES_DIR} $GIT_ARGS;
-    run_git ${COLOR} ${PASSWORD_STORE_DIR} $GIT_ARGS;
-    run_git ${COLOR} ${LEDGER_DIR} $GIT_ARGS;
+    COLOR=$1 && shift && GIT_ARGS="$*";
+    run_git "${COLOR}" "${DOTFILES_DIR}" "$GIT_ARGS";
+    run_git "${COLOR}" "${PASSWORD_STORE_DIR}" "$GIT_ARGS";
+    run_git "${COLOR}" "${LEDGER_DIR}" "$GIT_ARGS";
 }
 
 sync_packages() {
     HOME="${1:-$HOME}"
 
-    if [ -z "$(grep 'Arch Linux' /etc/os-release)" ]; then
+    if ! grep -q 'Arch Linux' /etc/os-release; then
         echo -e "${Red}ERROR:${Rst} This doesn't appear to be a Arch Linux machine!?"
         exit 1
     fi
 
-    package_list=$(cat $(find $HOME/etc/pacman/packages -type f -name "*.txt") \
+    package_list=$(cat "$(find "$HOME/etc/pacman/packages" -type f -name "*.txt")" \
         | awk '!/^ *#/ && NF' \
         | sort | uniq)
 
@@ -102,25 +101,25 @@ sync_packages() {
     sudo pacman -Sy archlinux-keyring || exit 1
     sudo pacman -Su || exit 1
     echo -e "[${Green} SYNCING LOCAL PACKAGE LIST ${Rst}]"
-    sudo pacman -S --needed ${package_list} || exit 1
+    sudo pacman -S --needed "${package_list}" || exit 1
 }
 
-if [[ -z "$@" ]]; then
+if [ -z "$*" ]; then
     CMD="" && ARGS=""
 else
-    CMD=$1 && shift && ARGS=$@
+    CMD=$1 && shift && ARGS=$*
 fi
 
 case "$CMD" in
     "clone")        clone_repos_over_all ;;
-    "fetch")        run_git_over_all ${Yellow} "fetch --all" ;;
-    "pull")         run_git_over_all ${Purple} "pull" ;;
-    "git")          run_git_over_all ${Green} $ARGS ;;
-    "info")         cat $HOME/lib/repos ;;
-    "setup")        setup_dots $ARGS ;;
-    "sync")         sync_packages $ARGS ;;
-    "status")       run_git_over_all ${Blue} "status --short" ;;
-    "")             run_git_over_all ${Blue} "status --short" ;;
+    "fetch")        run_git_over_all "${Yellow}" "fetch --all" ;;
+    "pull")         run_git_over_all "${Purple}" "pull" ;;
+    "git")          run_git_over_all "${Green}" "$ARGS" ;;
+    "info")         cat "$HOME/lib/repos" ;;
+    "setup")        setup_dots "$ARGS" ;;
+    "sync")         sync_packages "$ARGS" ;;
+    "status")       run_git_over_all "${Blue}" "status --short" ;;
+    "")             run_git_over_all "${Blue}" "status --short" ;;
     "-h")           help_prompt ;;
     "help")         help_prompt ;;
     *)              echo "Unknown Command: $CMD $ARGS" && help_prompt ;;
