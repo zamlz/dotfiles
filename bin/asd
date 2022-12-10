@@ -33,6 +33,7 @@ help_prompt() {
 setup_dots() {
     logger "Preparing to setup dotfiles in $HOME"
     export HOME="$HOME"
+    "$HOME/etc/alacritty/setup.sh"
     "$HOME/etc/git/setup.sh"
     "$HOME/etc/gnupg/setup.sh"
     "$HOME/etc/ipython/setup.sh"

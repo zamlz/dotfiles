@@ -1,0 +1,64 @@
+#     ___    __                _ __  __
+#    /   |  / /___ ___________(_) /_/ /___  __
+#   / /| | / / __ `/ ___/ ___/ / __/ __/ / / /
+#  / ___ |/ / /_/ / /__/ /  / / /_/ /_/ /_/ /
+# /_/  |_/_/\__,_/\___/_/  /_/\__/\__/\__, /
+#                                    /____/
+
+
+# Configuration for Alacritty, the GPU enhanced terminal emulator.
+
+# Import additional configuration files
+import:
+  - ~/etc/alacritty/colors/user77.yaml
+  #- ~/etc/alacritty/colors/nancy.yaml
+  #- ~/etc/alacritty/colors/jwr-dark.yaml
+  # - ~/etc/alacritty/colors/awesthetic.yaml
+  #- ~/etc/alacritty/colors/gruvbox-black.yaml
+
+# We should set this for compatibility with other apps
+env:
+  TERM: xterm-256color
+
+window:
+  opacity: 1.0
+  padding:
+    x: 16
+    y: 16
+  dynamic_padding: false
+
+scrolling:
+  history: 10000
+  multiplier: 3
+
+font:
+  size: 12.0
+  glyph_offset:
+    x: 0
+    y: 0
+  normal:
+    family: Iosevka Term
+    style: Regular
+  bold:
+    family: Iosevka Term
+    style: Bold
+  italic:
+    family: Iosevka Term
+    style: Italic
+  bold_italic:
+    family: Iosevka Term
+    style: Bold Italic
+
+draw_bold_text_with_bright_colors: false
+
+selection:
+  semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  save_to_clipboard: true
+
+cursor:
+  style:
+    shape: Beam
+    blinking: On
+  vi_mode_style: Block
+
+live_config_reload: true
