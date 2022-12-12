@@ -6,9 +6,9 @@ OPTS="LOCK SCREEN|QUIT HERBSTLUFTWM|SYSTEM POWEROFF|SYSTEM REBOOT"
 
 # Either pass what we want to do as an argument to the script
 # or get it through rofi
-systask="$@"
-if [ -z $systask ]; then
-    systask=$( echo $OPTS | rofi -sep '|' -dmenu -i -p "SYSTEM" -lines 4)
+systask="$*"
+if [ -z "$systask" ]; then
+    systask=$( echo "$OPTS" | rofi -sep '|' -dmenu -i -p "SYSTEM" -lines 4)
 fi
 
 if [ "$systask" = "LOCK SCREEN" ]; then
@@ -17,11 +17,11 @@ if [ "$systask" = "LOCK SCREEN" ]; then
     gpg-connect-agent --no-autostart RELOADAGENT /bye > /dev/null
 
     # Start the locker
-    WALLPAPER_FILE=$(grep feh $HOME/.fehbg \
+    WALLPAPER_FILE=$(grep feh "$HOME/.fehbg" \
         | awk '{print substr($(NF), 2, length($(NF)) - 2)}')
-    echo $WALLPAPER_FILE
-    if [ -f $WALLPAPER_FILE ]; then
-        exec i3lock -tnefi $WALLPAPER_FILE
+    logger "Found wallapaper file: $WALLPAPER_FILE"
+    if [ -f "$WALLPAPER_FILE" ]; then
+        exec i3lock -tnefi "$WALLPAPER_FILE"
     else
         exec i3lock -nef --color=000000
     fi
