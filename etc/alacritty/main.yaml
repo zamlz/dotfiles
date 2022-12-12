@@ -10,8 +10,8 @@
 
 # Import additional configuration files
 import:
-  - ~/etc/alacritty/colors/user77.yaml
-  #- ~/etc/alacritty/colors/nancy.yaml
+  #- ~/etc/alacritty/colors/user77.yaml
+  - ~/etc/alacritty/colors/nancy.yaml
   #- ~/etc/alacritty/colors/jwr-dark.yaml
   # - ~/etc/alacritty/colors/awesthetic.yaml
   #- ~/etc/alacritty/colors/gruvbox-black.yaml
