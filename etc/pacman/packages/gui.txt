@@ -2,6 +2,7 @@
 # ----------------
 
 # Terminal Application
+alacritty
 kitty
 
 # Web Browsers
