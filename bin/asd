@@ -95,7 +95,7 @@ sync_packages() {
         exit 1
     fi
 
-    package_list=$(cat "$(find "$HOME/etc/pacman/packages" -type f -name "*.txt")" \
+    package_list=$(cat $(find "$HOME/etc/pacman/packages" -type f -name "*.txt") \
         | awk '!/^ *#/ && NF' \
         | sort | uniq)
 
@@ -103,7 +103,7 @@ sync_packages() {
     sudo pacman -Sy archlinux-keyring || exit 1
     sudo pacman -Su || exit 1
     echo -e "[${Green} SYNCING LOCAL PACKAGE LIST ${Rst}]"
-    sudo pacman -S --needed "${package_list}" || exit 1
+    sudo pacman -S --needed ${package_list} || exit 1
 }
 
 if [ -z "$*" ]; then
