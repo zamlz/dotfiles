@@ -1,4 +1,5 @@
 #!/usr/bin/env sh
 
-maim "$@" "/tmp/$(date +'%Y-%m-%dT%H:%M:%S%:z').png" \
+maim "$@" /dev/stdout \
+    | tee "/tmp/$(date +'%Y-%m-%dT%H:%M:%S%:z').png" \
     | xclip -selection clipboard -target image/png
