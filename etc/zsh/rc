@@ -59,8 +59,7 @@ fi
 # register hooks
 precmd() {
     # Every terminal should generate its id file on spawn
-    if [ -n "$WINDOWID" ]; then
-        save_window_info
-    fi
+    load_window_info > /dev/null
+    save_window_info > /dev/null
     export PROMPT=$(prompt_generate $?)
 }
