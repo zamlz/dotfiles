@@ -58,8 +58,9 @@ fi
 
 # register hooks
 precmd() {
+    # This must happen first so we can send in the exit code of the previous ran command
+    export PROMPT=$(prompt_generate $?)
     # Every terminal should generate its id file on spawn
     load_window_info > /dev/null
     save_window_info > /dev/null
-    export PROMPT=$(prompt_generate $?)
 }
