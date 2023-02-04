@@ -16,8 +16,14 @@ if [ "$pass_name" != "" ]; then
     export PINENTRY_USER_DATA='rofi'
     export PASSWORD_STORE_DIR="$HOME/usr/passwords"
     if [ -z "$QRMODE" ]; then
-        pass -c $pass_name
+        pass -c "$pass_name"
+        result_status=$?
     else
-        pass --qrcode $pass_name
+        pass --qrcode "$pass_name"
+        result_status=$?
+    fi
+
+    if [ $result_status -ne 0 ]; then
+        rofi -e "Password decryption failed: [ERROR CODE: ${result_status}]"
     fi
 fi
