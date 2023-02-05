@@ -64,6 +64,7 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
 
     -- Language Based Plugins
+    use 'nvim-treesitter/nvim-treesitter'
     use {
         'rust-lang/rust.vim',
         ft = {'rust'}
@@ -79,6 +80,11 @@ return require('packer').startup(function(use)
 
     -- Markup Language System
     use 'tpope/vim-markdown'
+    use {
+        'nvim-neorg/neorg',
+        run = ":Neorg sync-parsers",
+        requires = "nvim-lua/plenary.nvim",
+    }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
