@@ -5,7 +5,16 @@
 -- You need to configure lsp down below as well...
 require("mason").setup()
 require("mason-lspconfig").setup({
-    ensure_installed = { "sumneko_lua", "pyright", "rust_analyzer" , "bashls"}
+    ensure_installed = {
+        "bashls",
+        "clangd",
+        "cssls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        "pyright",
+        "rust_analyzer",
+    }
 })
 
 -- LSP Config configuration
@@ -49,7 +58,18 @@ local lsp_flags = {
     debounce_text_changes = 150,
 }
 
-require('lspconfig')['sumneko_lua'].setup{
+-- Note this will use shellcheck if it's installed externally!
+require('lspconfig')['bashls'].setup{}
+
+require('lspconfig')['clangd'].setup{}
+
+require('lspconfig')['cssls'].setup{}
+
+require('lspconfig')['html'].setup{}
+
+require('lspconfig')['jsonls'].setup{}
+
+require('lspconfig')['lua_ls'].setup{
     settings = {
         Lua = {
             diagnostics = {
@@ -72,6 +92,3 @@ require('lspconfig')['rust_analyzer'].setup{
       ["rust-analyzer"] = {}
     }
 }
-
--- Note this will use shellcheck if it's installed externally!
-require('lspconfig')['bashls'].setup{}
