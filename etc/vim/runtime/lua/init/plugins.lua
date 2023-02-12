@@ -10,6 +10,7 @@ _    ___              ____  __            _
 --[[
 PLUGINS TO TRY:
 - nvim-cmp
+- treesitter-playground
 --]]
 
 local ensure_packer = function()
@@ -64,7 +65,10 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
 
     -- Language Based Plugins
-    use 'nvim-treesitter/nvim-treesitter'
+    use {
+        'nvim-treesitter/nvim-treesitter',
+        run = ':TSUpdate'
+    }
     use {
         'rust-lang/rust.vim',
         ft = {'rust'}

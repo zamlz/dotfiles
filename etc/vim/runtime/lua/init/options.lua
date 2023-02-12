@@ -35,10 +35,11 @@ opt.conceallevel = 0
 --set concealcursor-=n
 
 -- code folding
-opt.foldenable     = true
+opt.foldenable     = false
+opt.foldmethod     = "expr"
+opt.foldexpr       = "nvim_treesitter#foldexpr()"
 opt.foldlevelstart = 10
 opt.foldnestmax    = 10
-opt.foldmethod     = "indent"
 
 -- filetype specific options
 vim.cmd("filetype plugin on")
