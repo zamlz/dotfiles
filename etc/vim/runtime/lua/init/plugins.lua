@@ -32,17 +32,11 @@ return require('packer').startup(function(use)
     use 'wbthomason/packer.nvim'
 
     -- Aesthetic Status Bar
-    use {
-        'nvim-lualine/lualine.nvim',
-        requires = {
-          'kyazdani42/nvim-web-devicons',
-          opt = true
-        }
-    }
+    use { 'nvim-lualine/lualine.nvim', requires = { 'kyazdani42/nvim-web-devicons' } }
 
     -- Git plugis
     use 'lewis6991/gitsigns.nvim'
-    use 'jreybert/vimagit'
+    use { 'TimUntersberger/neogit', requires = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' } }
 
     -- Undo Tree
     use 'mbbill/undotree'
@@ -51,10 +45,7 @@ return require('packer').startup(function(use)
     use 'preservim/nerdtree'
 
     -- Nice Fuzzy searcher
-    use {
-        'nvim-telescope/telescope.nvim', tag = '0.1.0',
-        requires = { {'nvim-lua/plenary.nvim'} }
-    }
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0', requires = 'nvim-lua/plenary.nvim' }
 
     -- Encrypted File Support
     use 'jamessan/vim-gnupg'
@@ -65,30 +56,14 @@ return require('packer').startup(function(use)
     use 'neovim/nvim-lspconfig'
 
     -- Language Based Plugins
-    use {
-        'nvim-treesitter/nvim-treesitter',
-        run = ':TSUpdate'
-    }
-    use {
-        'rust-lang/rust.vim',
-        ft = {'rust'}
-    }
-    use {
-        'ledger/vim-ledger',
-        ft = {'ledger'}
-    }
-    use {
-        'nathangrigg/vim-beancount',
-        ft = {'beancount'}
-    }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+    use { 'rust-lang/rust.vim', ft = {'rust'} }
+    use { 'ledger/vim-ledger', ft = {'ledger'} }
+    use { 'nathangrigg/vim-beancount', ft = {'beancount'} }
 
     -- Markup Language System
     use 'tpope/vim-markdown'
-    use {
-        'nvim-neorg/neorg',
-        run = ":Neorg sync-parsers",
-        requires = "nvim-lua/plenary.nvim",
-    }
+    use { 'nvim-neorg/neorg', run = ":Neorg sync-parsers", requires = "nvim-lua/plenary.nvim" }
 
     -- Automatically set up your configuration after cloning packer.nvim
     -- Put this at the end after all plugins
