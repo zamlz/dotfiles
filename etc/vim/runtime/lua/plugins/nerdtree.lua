@@ -4,17 +4,20 @@
   /  |/ / | / / / __ `__ \______/ / / ___/ _ \/ _ \
  / /|  /| |/ / / / / / / /_____/ / / /  /  __/  __/
 /_/ |_/ |___/_/_/ /_/ /_/     /_/ /_/   \___/\___/ 
---------------------------------------------------------------------------]]--
 
--- FIXME: Nvim Tree icons don't work well so I'm not using it for now.
+--------------------------------------------------------------------------]]--
 
 -- disable netrw (maybe do it at the start of init?)
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
 
--- FIXME: Configure tree view properly
---require('nvim-tree').setup()
 
 -- Set leader keybinding
 require("common.keybinder")
 nmap("<leader>n", ":NERDTreeToggle<CR>")
+
+-- FIXME: Configure tree view properly
+-- FIXME: Nvim Tree icons don't work well so I'm not using it for now.
+return {
+    'preservim/nerdtree'
+}

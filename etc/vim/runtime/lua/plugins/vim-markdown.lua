@@ -4,6 +4,7 @@
 | | / // // /|_/ /  / /|_/ / __ `/ ___/ //_/ __  / __ \ | /| / / __ \
 | |/ // // /  / /  / /  / / /_/ / /  / ,< / /_/ / /_/ / |/ |/ / / / /
 |___/___/_/  /_/  /_/  /_/\__,_/_/  /_/|_|\__,_/\____/|__/|__/_/ /_/
+
 --------------------------------------------------------------------------]]--
 
 -- Enable programming language syntax highlighting in markdown files
@@ -38,3 +39,8 @@ vim.cmd("highlight markdownLinkText ctermfg=darkblue")
 vim.cmd("highlight markdownUrl ctermfg=darkblue")
 
 vim.cmd("highlight markdownCodeDelimiter ctermfg=darkred")
+
+return {
+    'tpope/vim-markdown',
+    ft = 'markdown'
+}

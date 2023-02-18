@@ -20,9 +20,40 @@ Fun Fact :
 
 -- NOTE: To debug runtime, make sure to take a look at `:scriptnames`
 
--- VIM CONFIGURATION: Load our init files first.
-require('init.plugins')
-require('init.options')
-require('init.keybindings')
+require('config.options')
+require('config.keybindings')
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.runtimepath:prepend(lazypath)
+
+--[[
+PLUGINS TO TRY:
+- nvim-cmp
+- treesitter-playground
+--]]
+--
+require('lazy').setup({{import = 'plugins'}})
+
 -- The runtime files will sourced after init is finished (:h :runtime)
+--[[
+
+    -- Language Server Support
+    'williamboman/mason.nvim',
+    'williamboman/mason-lspconfig.nvim',
+    'neovim/nvim-lspconfig',
+
+    -- Language Based Plugins
+
+    -- Markup Language System
+--]]
 

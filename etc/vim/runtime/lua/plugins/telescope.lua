@@ -17,3 +17,9 @@ nmap('<leader>th', ":Telescope help_tags<CR>")
 
 -- LSP stuff
 nmap('<leader>lr', ":Telescope lsp_references theme=dropdown<CR>")
+
+return {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.0',
+    dependencies = 'nvim-lua/plenary.nvim'
+}

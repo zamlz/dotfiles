@@ -9,6 +9,10 @@
 
 -- FIXME: convert vim.cmd statements to proper opt statements
 
+-- make sure to set `mapleader` before lazy so your mappings are correct
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
+
 local opt = vim.opt
 
 -- fringe line numbers
