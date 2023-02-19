@@ -1,6 +1,5 @@
 {
   "diffview.nvim": { "branch": "main", "commit": "11827d46e939b4748dbdb7e0df4982a63bd59d26" },
-  "gruvbox.nvim": { "branch": "main", "commit": "73f009df5ed929a853244c413bb52c1d02c117ce" },
   "lazy.nvim": { "branch": "main", "commit": "7339145a223dab7e7ddccf0986ffbf9d2cb804e8" },
   "lualine.nvim": { "branch": "master", "commit": "e99d733e0213ceb8f548ae6551b04ae32e590c80" },
   "neo-tree.nvim": { "branch": "v2.x", "commit": "245cf1e68840defcc75a16297740f6203f5a045d" },
