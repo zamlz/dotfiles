@@ -13,11 +13,11 @@ vim.g.loaded_netrwPlugin = 1
 
 
 -- Set leader keybinding
-require("common.keybinder")
-nmap("<leader>n", ":NERDTreeToggle<CR>")
+--require("common.keybinder")
+--nmap("<leader>n", ":NERDTreeToggle<CR>")
 
 -- FIXME: Configure tree view properly
 -- FIXME: Nvim Tree icons don't work well so I'm not using it for now.
 return {
-    'preservim/nerdtree'
+    'preservim/nerdtree',
 }

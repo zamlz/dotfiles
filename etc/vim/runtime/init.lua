@@ -21,7 +21,7 @@ Fun Fact :
 -- NOTE: To debug runtime, make sure to take a look at `:scriptnames`
 
 require('config.options')
-require('config.keybindings')
+require('config.keymaps')
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
