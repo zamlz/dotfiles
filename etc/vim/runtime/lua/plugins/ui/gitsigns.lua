@@ -9,6 +9,7 @@
 
 return {
     'lewis6991/gitsigns.nvim',
+    enabled = false,
     opts = {
         signs = {
             add          = {hl = 'GitSignsAdd'   , text = '│', numhl='GitSignsAddNr'   , linehl='GitSignsAddLn'},
