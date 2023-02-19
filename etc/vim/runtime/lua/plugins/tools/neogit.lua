@@ -7,11 +7,11 @@
 
 --------------------------------------------------------------------------]]--
 
-require('common.keybinder')
-nmap("<leader>g", ":Neogit<CR>")
-
 return {
     'TimUntersberger/neogit',
+    keys = {
+        { "<leader>g", "<cmd>Neogit<cr>", desc = "NeoGit" },
+    },
     dependencies = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' },
     opts = {
         integrations = {

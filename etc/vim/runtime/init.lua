@@ -46,14 +46,9 @@ require('lazy').setup({{import = 'plugins'}})
 
 -- The runtime files will sourced after init is finished (:h :runtime)
 --[[
-
     -- Language Server Support
     'williamboman/mason.nvim',
     'williamboman/mason-lspconfig.nvim',
     'neovim/nvim-lspconfig',
-
-    -- Language Based Plugins
-
-    -- Markup Language System
 --]]
 

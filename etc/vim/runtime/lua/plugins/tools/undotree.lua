@@ -7,10 +7,9 @@
 
  --------------------------------------------------------------------------]]--
 
--- Set leader keybinding
-require("common.keybinder")
-nmap("<leader>u", ":UndotreeToggle<CR>")
-
 return {
-    'mbbill/undotree'
+    'mbbill/undotree',
+    keys = {
+        { "<leader>u", "<cmd>UndotreeToggle<cr>", desc = "UndoTree" },
+    },
 }
