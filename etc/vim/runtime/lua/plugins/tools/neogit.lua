@@ -12,10 +12,14 @@ return {
     keys = {
         { "<leader>g", "<cmd>Neogit<cr>", desc = "NeoGit" },
     },
-    dependencies = { 'nvim-lua/plenary.nvim', 'sindrets/diffview.nvim' },
+    dependencies = {
+        'nvim-lua/plenary.nvim',
+        'sindrets/diffview.nvim'
+    },
     opts = {
         integrations = {
             diffview = true
-        }
+        },
+        use_magit_keybindings = true
     }
 }
