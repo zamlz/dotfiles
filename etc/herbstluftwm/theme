@@ -19,7 +19,7 @@ hc attr theme.floating.reset 1
 # Frame Appearance
 hc set frame_transparent_width 0
 hc set frame_border_width 2
-hc set frame_border_active_color "${XCOLOR8}55"
+hc set frame_border_active_color "${XCOLOR8}"
 hc set frame_border_normal_color "#00000000"
 
 hc set frame_bg_transparent 1
@@ -52,7 +52,7 @@ hc attr theme.floating.outer_width 4
 hc attr theme.floating.outer_color "$XBACKGROUND"
 hc attr theme.background_color "#141414"
 
-hc set window_gap 16
+hc set window_gap 0
 hc set smart_window_surroundings 0
 hc set smart_frame_surroundings 1
 hc set mouse_recenter_gap 0

@@ -23,8 +23,8 @@ env:
 window:
   opacity: 1.0
   padding:
-    x: 16
-    y: 16
+    x: 0
+    y: 0
   dynamic_padding: false
 
 scrolling:
