@@ -34,10 +34,10 @@ hi WarningMsg term=standout ctermfg=1 gui=bold guifg=Red
 hi WildMenu term=standout ctermfg=0 ctermbg=3 guifg=Black guibg=Yellow
 hi Folded term=standout ctermfg=4 ctermbg=7 guifg=Black guibg=#e3c1a5
 hi FoldColumn term=standout ctermfg=4 ctermbg=7 guifg=DarkBlue guibg=Gray80
-hi DiffAdd term=bold ctermbg=4 guibg=White
-hi DiffChange term=bold ctermbg=5 guibg=#edb5cd
-hi DiffDelete term=bold cterm=bold ctermfg=4 ctermbg=6 gui=bold guifg=LightBlue guibg=#f6e8d0
-hi DiffText term=reverse cterm=bold ctermbg=1 gui=bold guibg=#ff8060
+hi DiffAdd term=bold ctermfg=green ctermbg=None
+hi DiffChange term=bold ctermfg=green ctermbg=None
+hi DiffDelete term=bold ctermfg=red ctermbg=None
+hi DiffText term=bold ctermfg=green ctermbg=None
 hi Cursor guifg=bg guibg=fg
 hi lCursor guifg=bg guibg=fg
 
