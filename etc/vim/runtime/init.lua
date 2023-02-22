@@ -40,6 +40,7 @@ vim.opt.runtimepath:prepend(lazypath)
 PLUGINS TO TRY:
 - nvim-cmp
 - treesitter-playground
+- oil
 --]]
 --
 require('lazy').setup({{import = 'plugins'}})
