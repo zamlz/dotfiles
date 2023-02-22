@@ -11,21 +11,29 @@ return {
     'nvim-neorg/neorg',
     run = ":Neorg sync-parsers",
     dependencies = "nvim-lua/plenary.nvim",
-    ft = 'norg',
+    -- ft = 'norg',
     opts = {
         load = {
-            ["core.defaults"] = {}, -- Loads default behaviour
-            ["core.norg.dirman"] = { -- Manages Neorg workspaces
+            -- Loads default behaviour
+            ["core.defaults"] = {},
+            -- Adds pretty icons to your documents
+            ["core.norg.concealer"] = {
+                config = {
+                    icon_preset = 'diamond'
+                }
+            },
+            -- Manages Neorg workspaces
+            ["core.norg.dirman"] = {
                 config = {
                     workspaces = {
-                        docs = "~/usr/documents",
-                        work = "~/usr/work"
+                        notes= "~/usr/notes",
+                        work = "~/usr/work",
                     },
+                    default_workspace = 'notes'
                 },
                 index = "index.norg",
                 open_last_workspace = true
             },
-            ["core.norg.concealer"] = {}, -- Adds pretty icons to your documents
         },
     }
 }
