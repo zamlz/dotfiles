@@ -1,4 +1,5 @@
 # sxhkd configuration
+# vim: ft=sxhkdrc
 
 # Terminal spawner
 super + Return
