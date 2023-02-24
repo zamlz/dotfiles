@@ -13,7 +13,7 @@ vim.g.neo_tree_remove_legacy_commands = 1
 return {
     "nvim-neo-tree/neo-tree.nvim",
     keys = {
-        { "<leader>n", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
+        { "<leader>d", "<cmd>Neotree toggle<cr>", desc = "NeoTree" },
     },
     branch = "v2.x",
     dependencies = { 
