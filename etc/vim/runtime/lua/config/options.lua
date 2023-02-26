@@ -23,7 +23,7 @@ opt.relativenumber = true
 opt.ruler        = true
 opt.cursorline   = true
 opt.cursorcolumn = true
-opt.colorcolumn  = {80, 128}
+opt.colorcolumn  = {80}
 
 -- text display
 opt.wrap = false
