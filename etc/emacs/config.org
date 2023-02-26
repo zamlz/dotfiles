@@ -822,14 +822,17 @@ in the magit status buffer with the following plugin.
   (magit-todos-mode +1))
 #+END_SRC
 
-*** Language Support
-**** Git Configs 
+*** Integrated Development Environment
+**** Treesitter
 
-gitattributes, gitconfig, gitignore, etc.
-
-#+BEGIN_SRC emacs-lisp
-(use-package git-modes)
-#+END_SRC
+#+begin_src emacs-lisp
+(use-package tree-sitter)
+(use-package tree-sitter-langs
+	:hook
+	(tree-sitter-after-on-hook . tree-sitter-hl-mode)
+	:config
+	(global-tree-sitter-mode))
+#+end_src
 
 ** Cross Package Integrations
 
