@@ -91,7 +91,7 @@ My default font configuration
 Org mode related variables
 
 #+BEGIN_SRC emacs-lisp
-(defcustom zamlz/org-directory (file-truename "~/org")
+(defcustom zamlz/org-directory (file-truename "~/usr/org")
 	"My org directory"
 	:type 'string
 	:group 'zamlz)
@@ -693,19 +693,6 @@ Create org directory if it doesn't exist.
 
 #+BEGIN_SRC emacs-lisp
 (setq org-ellipsis " ▾")
-#+END_SRC
-
-*** Org-roam
-
-#+BEGIN_SRC emacs-lisp
-;; Let's configure org-roam as well
-(use-package org-roam
-	:after org
-	:init
-	(setq org-roam-v2-ack t)
-	(setq org-roam-directory zamlz/org-directory)
-	:config
-	(org-roam-db-autosync-mode +1))
 #+END_SRC
 
 ** Completion System
