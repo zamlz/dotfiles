@@ -1,6 +1,7 @@
 return {
     'm4xshen/smartcolumn.nvim',
     opts = {
-        colorcolumn = vim.opt.colorcolumn[0]
+        -- FIXME: Why does this not work with `vim.opt.colorcolumn`?
+        colorcolumn = {80, 128}
     }
 }

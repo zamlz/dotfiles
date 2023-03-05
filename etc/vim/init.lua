@@ -41,6 +41,9 @@ PLUGINS TO TRY:
 - nvim-cmp
 - treesitter-playground
 - oil
+- hydra.nvim
+- harpoon
+- snippets
 --]]
 --
 require('lazy').setup({{import = 'plugins'}})
