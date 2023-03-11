@@ -38,7 +38,6 @@ return {
             "json",
             "julia",
             "latex",
-            "ledger",
             "lua",
             "make",
             "markdown",
