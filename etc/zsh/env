@@ -31,6 +31,10 @@ export SAVEHIST=5000
 # Override LS Colors (my own custom choices)
 eval $(dircolors -b $HOME/lib/shell/lscolors)
 
+# Change default python caching directory
+# (no longer creates __pycache__ folders)
+export PYTHONPYCACHEPREFIX="${HOME}/.cache/__pycache__"
+
 # Save X Window Terminal Info
 # ---------------------------
 
