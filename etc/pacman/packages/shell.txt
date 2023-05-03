@@ -11,6 +11,7 @@ zsh-history-substring-search
 
 # Shell Utilies
 # -------------
+imagemagick
 neovim
 tree
 figlet
