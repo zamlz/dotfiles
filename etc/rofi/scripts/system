@@ -20,10 +20,14 @@ if [ "$systask" = "LOCK SCREEN" ]; then
     WALLPAPER_FILE=$(grep feh "$HOME/.fehbg" \
         | awk '{print substr($(NF), 2, length($(NF)) - 2)}')
     logger "Found wallapaper file: $WALLPAPER_FILE"
+
     if [ -f "$WALLPAPER_FILE" ]; then
-        magick -size "$(xrandr | awk '/\*/ {print $1}')" xc:black "$WALLPAPER_FILE" \
-            -gravity center -composite /tmp/.i3lock.png
-        exec i3lock -tnefi "/tmp/.i3lock.png"
+        # TODO: Fix this code if I'm using the navi wallpaper
+        #resolution=$(xrandr | awk '/\*/ {print $1}')
+        #magick -size "$resolution" xc:black "$WALLPAPER_FILE" \
+        #    -gravity center -composite /tmp/.i3lock.png
+        #exec i3lock -tnefi "/tmp/.i3lock.png"
+        exec i3lock -tnefi "$WALLPAPER_FILE"
     else
         exec i3lock -nef --color=000000
     fi
