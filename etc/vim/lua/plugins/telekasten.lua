@@ -1,10 +1,10 @@
 --[[--------------------------------------------------------------------------
-  ______     __     __              __           
- /_  __/__  / /__  / /______ ______/ /____  ____ 
+  ______     __     __              __
+ /_  __/__  / /__  / /______ ______/ /____  ____
   / / / _ \/ / _ \/ //_/ __ `/ ___/ __/ _ \/ __ \
  / / /  __/ /  __/ ,< / /_/ (__  ) /_/  __/ / / /
-/_/  \___/_/\___/_/|_|\__,_/____/\__/\___/_/ /_/ 
-                                                 
+/_/  \___/_/\___/_/|_|\__,_/____/\__/\___/_/ /_/
+
 --------------------------------------------------------------------------]]--
 
 -- custom colorscheme
@@ -38,19 +38,21 @@ return {
     'renerocksai/telekasten.nvim',
     dependencies = {'nvim-telescope/telescope.nvim'},
     opts = {
-        home = home,
+        -- dir names for special notes (absolute path or subdir name)
+        home         = home,
+        dailies      = home .. '/journal/daily',
+        weeklies     = home .. '/journal/weekly',
+        templates    = home .. '/templates',
+
 
         -- if true, telekasten will be enabled when opening a note within the configured home
         take_over_my_home = true,
 
-        -- auto-set telekasten filetype: if false, the telekasten filetype will not be used
-        --                               and thus the telekasten syntax will not be loaded either
-        auto_set_filetype = true,
-
-        -- dir names for special notes (absolute path or subdir name)
-        dailies      = home .. '/journal/daily',
-        weeklies     = home .. '/journal/weekly',
-        templates    = home .. '/templates',
+        -- template for new notes (new_note, follow_link)
+        -- set to `nil` or do not specify if you do not want a template
+        template_new_note   = home .. '/templates/new_note.md',
+        template_new_daily  = home .. '/templates/daily.md',
+        template_new_weekly = home .. '/templates/weekly.md',
 
         -- image (sub)dir for pasting
         -- dir name (absolute path or subdir name)
@@ -60,27 +62,58 @@ return {
         -- markdown file extension
         extension    = ".md",
 
+        -- auto-set telekasten filetype: if false, the telekasten filetype will not be used
+        --                               and thus the telekasten syntax will not be loaded either
+        auto_set_filetype = true,
+
+        -- Generate note filenames. One of:
+        -- "title" (default) - Use title if supplied, uuid otherwise
+        -- "uuid" - Use uuid
+        -- "uuid-title" - Prefix title by uuid
+        -- "title-uuid" - Suffix title with uuid
+        new_note_filename = "uuid-title",
+        -- file uuid type ("rand" or input for os.date such as "%Y%m%d%H%M")
+        uuid_type = "%Y%m%d%H%M",
+        -- UUID separator
+        uuid_sep = "-",
+        -- space substitution
+        filename_space_subst = '-',
+
         -- following a link to a non-existing note will create it
         follow_creates_nonexisting = true,
         dailies_create_nonexisting = true,
         weeklies_create_nonexisting = true,
 
-        -- template for new notes (new_note, follow_link)
-        -- set to `nil` or do not specify if you do not want a template
-        template_new_note = home .. '/' .. 'templates/new_note.md',
-
-        -- template for newly created daily notes (goto_today)
-        -- set to `nil` or do not specify if you do not want a template
-        template_new_daily = home .. '/' .. 'templates/daily.md',
-
-        -- template for newly created weekly notes (goto_thisweek)
-        -- set to `nil` or do not specify if you do not want a template
-        template_new_weekly= home .. '/' .. 'templates/weekly.md',
-
         -- image link style
         -- wiki:     ![[image name]]
         -- markdown: ![](image_subdir/xxxxx.png)
         image_link_style = "markdown",
+
+        -- Default sort option: 'filename', 'modified'
+        sort = "filename",
+
+        -- Make syntax available to markdown buffers and telescope previewers
+        install_syntax = true,
+
+        -- tag notation: '#tag', ':tag:', 'yaml-bare'
+        tag_notation = "yaml-bare",
+
+        -- when linking to a note in subdir/, create a [[subdir/title]] link
+        -- instead of a [[title only]] link
+        subdirs_in_links = true,
+
+        -- command palette theme: dropdown (window) or ivy (bottom panel)
+        command_palette_theme = "dropdown",
+
+        -- tag list theme:
+        -- get_cursor: small tag list at cursor; ivy and dropdown like above
+        show_tags_theme = "dropdown",
+
+        -- Previewer for media files (images mostly)
+        -- "telescope-media-files" if you have telescope-media-files.nvim installed
+        -- "catimg-previewer" if you have catimg installed
+        -- "viu-previewer" if you have viu installed
+        media_previewer = "telescope-media-files",
 
         -- integrate with calendar-vim
         plug_into_calendar = true,
@@ -96,20 +129,6 @@ return {
         -- telescope actions behavior
         close_after_yanking = false,
         insert_after_inserting = true,
-
-        -- tag notation: '#tag', ':tag:', 'yaml-bare'
-        tag_notation = "yaml-bare",
-
-        -- command palette theme: dropdown (window) or ivy (bottom panel)
-        command_palette_theme = "dropdown",
-
-        -- tag list theme:
-        -- get_cursor: small tag list at cursor; ivy and dropdown like above
-        show_tags_theme = "dropdown",
-
-        -- when linking to a note in subdir/, create a [[subdir/title]] link
-        -- instead of a [[title only]] link
-        subdirs_in_links = true,
 
         -- template_handling
         -- What to do when creating a new note via `new_note()` or `follow_link()`
