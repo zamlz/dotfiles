@@ -21,11 +21,11 @@ vim.keymap.set("n", "<leader>/", "<cmd>Telekasten panel<CR>")
 -- Most used functions
 vim.keymap.set("n", "<leader>/f", "<cmd>Telekasten find_notes<CR>")
 vim.keymap.set("n", "<leader>/g", "<cmd>Telekasten search_notes<CR>")
-vim.keymap.set("n", "<leader>/d", "<cmd>Telekasten goto_today<CR>")
-vim.keymap.set("n", "<leader>/z", "<cmd>Telekasten follow_link<CR>")
-vim.keymap.set("n", "<leader>/n", "<cmd>Telekasten new_note<CR>")
 vim.keymap.set("n", "<leader>/c", "<cmd>Telekasten show_calendar<CR>")
+vim.keymap.set("n", "<leader>/n", "<cmd>Telekasten new_note<CR>")
+vim.keymap.set("n", "<leader>/d", "<cmd>Telekasten goto_today<CR>")
 vim.keymap.set("n", "<leader>/b", "<cmd>Telekasten show_backlinks<CR>")
+vim.keymap.set("n", "<leader>/z", "<cmd>Telekasten follow_link<CR>")
 vim.keymap.set("n", "<leader>/I", "<cmd>Telekasten insert_img_link<CR>")
 
 -- Call insert link automatically when we start typing a link
@@ -36,7 +36,10 @@ local home = vim.fn.expand("~/usr/notes")
 
 return {
     'renerocksai/telekasten.nvim',
-    dependencies = {'nvim-telescope/telescope.nvim'},
+    dependencies = {
+        'nvim-telescope/telescope.nvim',
+        'renerocksai/calendar-vim'
+    },
     opts = {
         -- dir names for special notes (absolute path or subdir name)
         home         = home,
