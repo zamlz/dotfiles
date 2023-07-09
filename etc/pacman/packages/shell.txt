@@ -20,6 +20,7 @@ neofetch
 shellcheck
 tmux
 unzip
+ripgrep
 
 # Shell Fun Stuff
 # ---------------
