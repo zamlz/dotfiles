@@ -4,7 +4,7 @@ which nvim > /dev/null
 if [ $? -eq 0 ]; then
     # FIXME: figure out how to use pinentry within nvim?
     export PINENTRY_USER_DATA=rofi
-    nvim $@
+    nvim "$@"
 else
-    /usr/bin/vi $@
+    /usr/bin/vi "$@"
 fi
