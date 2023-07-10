@@ -1,6 +1,31 @@
 -- Basically use LSP Zero to setup my IDE environment
 -- This kinda configures a lot of different plugins
 
+-- colors for nvim-cmp
+
+-- deprecated results
+vim.api.nvim_set_hl(0, 'CmpItemAbbrDeprecated', { strikethrough=true })
+-- matching text
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatch', { ctermfg='blue' })
+vim.api.nvim_set_hl(0, 'CmpItemAbbrMatchFuzzy', { link='CmpItemAbbrMatch' })
+-- Class
+vim.api.nvim_set_hl(0, 'CmpItemKindClass', { ctermfg='darkyellow' })
+-- Variables
+vim.api.nvim_set_hl(0, 'CmpItemKindVariable', { ctermfg='darkcyan' })
+vim.api.nvim_set_hl(0, 'CmpItemKindInterface', { link='CmpItemKindVariable' })
+vim.api.nvim_set_hl(0, 'CmpItemKindText', { link='CmpItemKindVariable' })
+-- Functions
+vim.api.nvim_set_hl(0, 'CmpItemKindFunction', { ctermfg='darkmagenta' })
+vim.api.nvim_set_hl(0, 'CmpItemKindMethod', { link='CmpItemKindFunction' })
+-- Keywords
+vim.api.nvim_set_hl(0, 'CmpItemKindKeyword', {})
+vim.api.nvim_set_hl(0, 'CmpItemKindProperty', { link='CmpItemKindKeyword' })
+vim.api.nvim_set_hl(0, 'CmpItemKindUnit', { link='CmpItemKindKeyword' })
+-- Constants
+vim.api.nvim_set_hl(0, 'CmpItemKindConstant', { ctermfg='darkred' })
+-- Snippets
+vim.api.nvim_set_hl(0, 'CmpItemKindSnippet', { ctermfg='darkblue' })
+
 return {
     'VonHeikemen/lsp-zero.nvim',
     branch = 'v2.x',
@@ -88,7 +113,7 @@ return {
                 ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
 
                 -- `Enter` key to confirm completion
-                ['<CR>'] = cmp.mapping.confirm({select = true}),
+                --['<CR>'] = cmp.mapping.confirm({select = true}),
                 ['<C-e>'] = cmp.mapping.abort(),
 
                 -- Ctrl+Space to trigger completion menu
@@ -99,8 +124,14 @@ return {
                 ['<C-b>'] = cmp_action.luasnip_jump_backward(),
             },
             window = {
-                completion = cmp.config.window.bordered(),
-                documentation = cmp.config.window.bordered(),
+                -- FIXME: do not use telescope highlight for this and find a suitable alternative
+                completion = cmp.config.window.bordered({
+                    winhighlight = 'Normal:None,FloatBorder:None,CursorLine:TelescopeSelection,Search:None'
+                }),
+                -- FIXME: do not use telescope highlight for this and find a suitable alternative
+                documentation = cmp.config.window.bordered({
+                    winhighlight = 'Normal:None,FloatBorder:None,CursorLine:TelescopeSelection,Search:None'
+                }),
             },
             formatting = {
                 fields = {'abbr', 'kind', 'menu'},
