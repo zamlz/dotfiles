@@ -7,6 +7,9 @@
                                /_/           
 --------------------------------------------------------------------------]]--
 
+vim.api.nvim_set_hl(0, 'TelescopeSelection', {ctermbg='black'})
+vim.api.nvim_set_hl(0, 'TelescopePreviewLine', {ctermbg='black'})
+
 return {
     'nvim-telescope/telescope.nvim',
     lazy = false,

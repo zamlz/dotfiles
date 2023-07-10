@@ -39,7 +39,7 @@ vim.g.markdown_fenced_languages = {
 }
 -- Let's also theme the markdown syntax
 -- Headers
-color_priority = {
+local color_priority = {
     'darkred',
     'darkblue',
     'darkgreen',
@@ -48,12 +48,12 @@ color_priority = {
     'darkyellow'
 }
 for i = 1, 6 do
-    vim.cmd("highlight markdownH"..i.." ctermfg="..color_priority[i])
-    vim.cmd("highlight markdownH"..i.."Delimiter ctermfg="..color_priority[i])
+    vim.api.nvim_set_hl(0, 'markdownH'..i, {ctermfg=color_priority[i]})
+    vim.api.nvim_set_hl(0, 'markdownH'..i..'Delimiter', {ctermfg=color_priority[i]})
 end
-vim.cmd("highlight markdownLinkText ctermfg=darkblue")
-vim.cmd("highlight markdownUrl ctermfg=darkblue")
-vim.cmd("highlight markdownCodeDelimiter ctermfg=darkred")
+vim.api.nvim_set_hl(0, 'markdownLinkText', {ctermfg='darkblue'})
+vim.api.nvim_set_hl(0, 'markdownUrl', {ctermfg='darkblue'})
+vim.api.nvim_set_hl(0, 'markdownCodeDelimiter', {ctermfg='darkred'})
 
 --[[--------------------------------------------------------------------------
 -- RUST ----------------------------------------------------------------------
