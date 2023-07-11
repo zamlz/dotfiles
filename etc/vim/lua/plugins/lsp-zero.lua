@@ -113,7 +113,7 @@ return {
                 ['<S-Tab>'] = cmp_action.luasnip_shift_supertab(),
 
                 -- `Enter` key to confirm completion
-                --['<CR>'] = cmp.mapping.confirm({select = true}),
+                ['<CR>'] = cmp.mapping.confirm({select = false}),
                 ['<C-e>'] = cmp.mapping.abort(),
 
                 -- Ctrl+Space to trigger completion menu
