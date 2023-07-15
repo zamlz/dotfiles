@@ -44,6 +44,8 @@ nmap("<C-j>", ":wincmd j<CR>")
 nmap("<C-k>", ":wincmd k<CR>")
 nmap("<C-l>", ":wincmd l<CR>")
 
+nmap("<leader>i", ":Inspect<CR>")
+
 -- FIXME: translate this into a meaninful command to use for lua
 vim.cmd([[
 noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .

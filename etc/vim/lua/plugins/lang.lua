@@ -24,38 +24,6 @@ vim.cmd("au FileType ledger nnoremap <silent> <C-m> :silent<space>make<bar>redra
 vim.cmd("au FileType ledger nnoremap <silent> <C-s> :call ledger#transaction_state_toggle(line('.'), ' !*?')<CR>")
 
 --[[--------------------------------------------------------------------------
--- MARKDOWN ------------------------------------------------------------------
---------------------------------------------------------------------------]]--
-
--- Enable programming language syntax highlighting in markdown files
-vim.g.markdown_syntax_conceal = 0
-vim.g.markdown_minlines = 100
-vim.g.markdown_fenced_languages = {
-    'html',
-    'yaml',
-    'python',
-    'bash=sh',
-    'rust'
-}
--- Let's also theme the markdown syntax
--- Headers
-local color_priority = {
-    'darkred',
-    'darkblue',
-    'darkgreen',
-    'darkcyan',
-    'darkmagenta',
-    'darkyellow'
-}
-for i = 1, 6 do
-    vim.api.nvim_set_hl(0, 'markdownH'..i, {ctermfg=color_priority[i]})
-    vim.api.nvim_set_hl(0, 'markdownH'..i..'Delimiter', {ctermfg=color_priority[i]})
-end
-vim.api.nvim_set_hl(0, 'markdownLinkText', {ctermfg='darkblue'})
-vim.api.nvim_set_hl(0, 'markdownUrl', {ctermfg='darkblue'})
-vim.api.nvim_set_hl(0, 'markdownCodeDelimiter', {ctermfg='darkred'})
-
---[[--------------------------------------------------------------------------
 -- RUST ----------------------------------------------------------------------
 --------------------------------------------------------------------------]]--
 
@@ -70,6 +38,5 @@ vim.g.rustfmt_fail_silently = 0
 return {
     {'nathangrigg/vim-beancount', ft = 'beancount'},
     {'ledger/vim-ledger', ft = 'ledger'},
-    {'tpope/vim-markdown', ft = 'markdown'},
     {'rust-lang/rust.vim', ft = 'rust'},
 }

@@ -7,6 +7,25 @@
 
 --------------------------------------------------------------------------]]--
 
+-- Let's also theme the markdown syntax (using treesitter highlighting)
+-- Headers
+local color_priority = {
+    'darkred',
+    'darkblue',
+    'darkgreen',
+    'darkcyan',
+    'darkmagenta',
+    'darkyellow'
+}
+for i = 1, 6 do
+    vim.api.nvim_set_hl(0, '@text.title.'..i..'.markdown', {ctermfg=color_priority[i]})
+    vim.api.nvim_set_hl(0, '@text.title.'..i..'.marker.markdown', {ctermfg=color_priority[i]})
+end
+vim.api.nvim_set_hl(0, '@punctuation.bracket.markdown_inline', {ctermfg='darkmagenta'})
+vim.api.nvim_set_hl(0, '@text.reference.markdown_inline', {ctermfg='darkmagenta'})
+vim.api.nvim_set_hl(0, '@text.uri.markdown_inline', {ctermfg='darkmagenta'})
+vim.api.nvim_set_hl(0, 'Todo', {ctermfg='darkyellow', ctermbg='black'})
+
 return {
     'nvim-treesitter/nvim-treesitter',
     build = ':TSUpdate',
