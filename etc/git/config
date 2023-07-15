@@ -1,3 +1,5 @@
+# vim: ft=gitconfig
+
 [user]
     signingkey = 0x882C395C3B28902C
     name = Amlesh Sivanantham (zamlz)
@@ -11,7 +13,6 @@
 
 [commit]
     gpgsign = true
-
 
 [diff "gpg"]
     textconv = gpg --no-tty --decrypt
