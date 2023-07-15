@@ -8,6 +8,7 @@ alias ll="ls -oh"
 alias la="ls -lah"
 
 # Shell aliases to make using git easier.
+alias gg='lazygit'
 alias gs='echo "origin = $(git remote get-url origin --push)" | lolcat; git status'
 alias ga="git add"
 alias gc="git commit"

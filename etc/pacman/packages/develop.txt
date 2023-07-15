@@ -4,6 +4,7 @@
 # Version Control Systems
 # -----------------------
 git
+lazygit
 
 # Programming Languages
 # ---------------------
