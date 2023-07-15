@@ -1,0 +1,16 @@
+os:
+  edit: 'floaterm'
+
+git:
+  paging:
+    useConfig: true
+
+gui:
+  theme:
+    activeBorderColor:
+      - blue
+      - bold
+    selectedLineBgColor:
+      - black
+    selectedRangeBgColor:
+      - black
