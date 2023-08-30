@@ -61,6 +61,7 @@
       keyid-format = "0xlong";
     };
   };
+
   services.gpg-agent = {
     enable = true;
     enableScDaemon = true;
@@ -131,7 +132,29 @@
       grr = "git rev-parse --show-toplevel | xargs";
     };
   };
- 
+
+  xsession.windowManager.herbstluftwm = {
+    enable = true;
+    extraConfig = ''
+    herbstclient emit_hook reload
+    herbstclient keyunbind --all
+    herbstclient unrule --all
+    herbstclient detect_monitors
+    '';
+    keybinds = {};
+    mousebinds = {};
+    rules = [
+      "focus=on"
+      "class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on"
+      "class~'(Discord|DiscordCanary)' focus=off"
+      "windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on"
+      "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
+      "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"
+    ];
+    settings = {};
+    tags = [ "λ" ];
+  };
+
   systemd.user.startServices = "sd-switch";
 
   # This determines the Home Manager release that your configuration is
