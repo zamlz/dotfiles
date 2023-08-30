@@ -8,9 +8,3 @@
 # this command before every SSH command.
 
 Match host * exec "gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye"
-
-# Looks like an update to SSH caused some issues with GitLab. Hopefully there
-# is a better fix because this seems janky (and could be insecure?)
-
-Host gitlab.com
-  UpdateHostKeys no
