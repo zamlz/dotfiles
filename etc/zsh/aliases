@@ -2,29 +2,6 @@
 
 # Z Shell Aliases
 
-# Shortcuts for ls
-alias ls="LC_COLLATE=C ls -F --color=always"
-alias ll="ls -oh"
-alias la="ls -lah"
-
-# Shell aliases to make using git easier.
-alias gg='lazygit'
-alias gs='echo "origin = $(git remote get-url origin --push)" | lolcat; git status'
-alias ga="git add"
-alias gc="git commit"
-alias gd="git diff"
-alias gds="git diff --staged"
-alias gl="git log --graph"
-alias gls="git log --graph --stat"
-alias gll="git log --graph --stat -p"
-alias gllo="git log --graph --pretty=oneline --abbrev-commit"
-alias glla="git log --graph --pretty=oneline --abbrev-commit --all"
-alias gp="git push"
-alias gf="git fetch"
-alias gm="git merge"
-alias gb="git branch -av"
-alias gr="git rev-parse --show-toplevel"
-alias grr="git rev-parse --show-toplevel | xargs"
 
 # Make various commands pretty by default
 alias grep="grep --color=always"

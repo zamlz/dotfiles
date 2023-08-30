@@ -1,27 +1,10 @@
 # vim: ft=gitconfig
 
-[user]
-    signingkey = 0x882C395C3B28902C
-    name = Amlesh Sivanantham (zamlz)
-    email = zamlz@pm.me
-
 [core]
     pager = less
-
-[init]
-    defaultBranch = main
-
-[commit]
-    gpgsign = true
 
 [diff "gpg"]
     textconv = gpg --no-tty --decrypt
 
-[pull]
-    ff = only
-
 [gpg]
     program = gpg
-
-[alias]
-    root = rev-parse --show-toplevel
