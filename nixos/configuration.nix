@@ -25,6 +25,13 @@
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
+
+    gc = {
+      automatic = true;
+      persistent = true;
+      dates = "weekly";
+      options = "--delete-older-than 30d";
+    };
   };
 
   boot.loader = {
@@ -57,7 +64,7 @@
 
   console = {
     earlySetup = true;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-132n.psf.gz";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-122n.psf.gz";
     packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
@@ -77,8 +84,6 @@
     description = "Amlesh Sivanantham";
     initialPassword = "pleasechangeme";
     extraGroups = [
-      "audio"
-      "docker"
       "networkmanager"
       "wheel"
     ];

@@ -133,6 +133,7 @@
     };
   };
 
+  xsession.enable = true;
   xsession.windowManager.herbstluftwm = {
     enable = true;
     extraConfig = ''
