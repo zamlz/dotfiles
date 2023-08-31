@@ -13,16 +13,15 @@
   home.username = "zamlz";
   home.homeDirectory = "/home/zamlz";
 
-  home.packages = [
+  home.packages = with pkgs; [
     # CLI Tools
-    pkgs.cmatrix
-    pkgs.figlet
-    pkgs.htop
-    pkgs.lolcat
-    pkgs.neofetch
-    pkgs.pstree
-    pkgs.tmux
-    pkgs.tree
+    cmatrix
+    figlet
+    htop
+    lolcat
+    neofetch
+    pstree
+    tree
   ];
 
   # Let Home Manager install and manage itself.
@@ -133,28 +132,35 @@
     };
   };
 
-  xsession.enable = true;
-  xsession.windowManager.herbstluftwm = {
+  programs.tmux = {
     enable = true;
-    extraConfig = ''
-    herbstclient emit_hook reload
-    herbstclient keyunbind --all
-    herbstclient unrule --all
-    herbstclient detect_monitors
-    '';
-    keybinds = {};
-    mousebinds = {};
-    rules = [
-      "focus=on"
-      "class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on"
-      "class~'(Discord|DiscordCanary)' focus=off"
-      "windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on"
-      "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
-      "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"
+    prefix = "C-x";
+    plugins = with pkgs; [
+      tmuxPlugins.pain-control
     ];
-    settings = {};
-    tags = [ "λ" ];
   };
+
+  # xsession.windowManager.herbstluftwm = {
+  #   enable = true;
+  #   extraConfig = ''
+  #   herbstclient emit_hook reload
+  #   herbstclient keyunbind --all
+  #   herbstclient unrule --all
+  #   herbstclient detect_monitors
+  #   '';
+  #   keybinds = {};
+  #   mousebinds = {};
+  #   rules = [
+  #     "focus=on"
+  #     "class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on"
+  #     "class~'(Discord|DiscordCanary)' focus=off"
+  #     "windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on"
+  #     "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
+  #     "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"
+  #   ];
+  #   settings = {};
+  #   tags = [ "λ" ];
+  # };
 
   systemd.user.startServices = "sd-switch";
 

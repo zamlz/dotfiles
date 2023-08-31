@@ -64,7 +64,7 @@
 
   console = {
     earlySetup = true;
-    font = "${pkgs.terminus_font}/share/consolefonts/ter-122n.psf.gz";
+    font = "${pkgs.terminus_font}/share/consolefonts/ter-128n.psf.gz";
     packages = with pkgs; [ terminus_font ];
     keyMap = "us";
   };
@@ -95,6 +95,23 @@
     settings = {
       PermitRootLogin = "no";
       PasswordAuthentication = false;
+    };
+  };
+
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
+  };
+
+  xdg = {
+    portal = {
+      enable = true;
+      extraPortals = with pkgs; [
+        xdg-desktop-portal-wlr
+        xdg-desktop-portal-gtk
+      ];
     };
   };
 
