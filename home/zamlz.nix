@@ -100,7 +100,7 @@
     dotDir = ".config/zsh";
     enableAutosuggestions = true;
     enableCompletion = true;
-    defaultKeymap = "vicmd";
+    defaultKeymap = "viins";
     enableSyntaxHighlighting = true;
     history = {
       extended = true;
