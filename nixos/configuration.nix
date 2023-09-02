@@ -105,14 +105,9 @@
     };
   };
 
-  xdg = {
-    portal = {
-      enable = true;
-      extraPortals = with pkgs; [
-        xdg-desktop-portal-wlr
-        xdg-desktop-portal-gtk
-      ];
-    };
+  services.xserver = {
+    enable = true;
+    displayManager.startx.enable = true;
   };
 
   # This value determines the NixOS release from which the default
