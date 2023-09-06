@@ -148,6 +148,9 @@
     enable = true;
     keybindings = {
       "super + Return" = "${sxhkdTerminal}";
+      # ROFI
+      "super + e" = "rofi -show run";
+      "super + w" = "rofi -show window";
     };
   };
 
@@ -273,6 +276,11 @@
     ];
     settings = {};
     tags = [ "λ" ];
+  };
+
+  programs.rofi = {
+    enable = true;
+    theme = ../etc/rofi/default-theme.rasi;
   };
 
   # Wayland Stuff
