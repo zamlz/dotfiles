@@ -1,8 +1,0 @@
-
-# Setup the window manager keybindings
-. $HOME/etc/herbstluftwm/keybinds
-
-# Rice the window manager
-. $HOME/etc/herbstluftwm/theme
-
-logger "Finished setting up herbstluftwm window manager"

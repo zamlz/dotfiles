@@ -157,12 +157,29 @@
   xsession.windowManager.herbstluftwm =
   {
     enable = true;
-    extraConfig = ''
+    extraConfig = let
+      XBACKGROUND = "#000000";
+      XCOLOR0 = "#181818";
+      XCOLOR7 = "#a89984";
+    in ''
+      herbstclient attr theme.active.outer_color "${XBACKGROUND}"
+      herbstclient attr theme.active.inner_color "${XBACKGROUND}"
+      herbstclient attr theme.normal.color "${XCOLOR0}"
+      herbstclient attr theme.active.color "${XCOLOR7}"
+      herbstclient attr theme.urgent.color orange
+      herbstclient attr theme.border_width 9
+      herbstclient attr theme.inner_width 3
+      herbstclient attr theme.outer_width 4
+      herbstclient attr theme.inner_color "${XBACKGROUND}"
+      herbstclient attr theme.outer_color "${XBACKGROUND}"
+      herbstclient attr theme.floating.border_width 9
+      herbstclient attr theme.floating.inner_width 3
+      herbstclient attr theme.floating.outer_width 4
+      herbstclient attr theme.floating.outer_color "${XBACKGROUND}"
+      herbstclient attr theme.background_color "#141414"
+
       herbstclient emit_hook reload
-      herbstclient keyunbind --all
-      herbstclient unrule --all
       herbstclient detect_monitors
-      etc/xorg/scripts/refresh_sxhkd.sh
     '';
     # mod4 is SUPER
     # You can use xev to identify X11 keys very easily!
@@ -265,7 +282,13 @@
       "${super}-Shift-9" = "move_index 8";
       "${super}-Shift-0" = "move_index 9";
     };
-    mousebinds = {};
+    mousebinds = let
+      super = "Mod4";
+    in {
+      "${super}-Button1" = "move";
+      "${super}-Button2" = "zoom";
+      "${super}-Button3" = "resize";
+    };
     rules = [
       "focus=on"
       "class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on"
@@ -274,7 +297,27 @@
       "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
       "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"
     ];
-    settings = {};
+    settings = let
+      XBACKGROUND = "#000000";
+      XCOLOR0 = "#181818";
+      XCOLOR8 = "#928374";
+    in {
+      "frame_transparent_width" = 0;
+      "frame_border_width" = 2;
+      "frame_border_active_color" = "${XCOLOR8}";
+      "frame_border_normal_color" = "#00000000";
+      "frame_bg_transparent" = 1;
+      "frame_bg_normal_color" = "${XBACKGROUND}";
+      "frame_bg_active_color" = "${XCOLOR0}";
+      "always_show_frame" = 0;
+      "frame_gap" = 0;
+      "frame_padding" = 0;
+      "window_gap" = 0;
+      "smart_window_surroundings" = 0;
+      "smart_frame_surroundings" = 1;
+      "mouse_recenter_gap" = 0;
+      "tree_style" = "╾│ ├└╼─┐";
+    };
     tags = [ "λ" ];
   };
 
