@@ -22,6 +22,9 @@
     neofetch
     pstree
     tree
+    # GUI Tools
+    qutebrowser
+    feh
   ];
 
   # Let Home Manager install and manage itself.
@@ -145,25 +148,25 @@
   programs.kitty = {
     enable = true;
     settings = {
-      "foreground" = "#ebdbb2";
-      "background" = "#000000";
       "background_opacity" = "1.0";
-      "color0" = "#181818";
-      "color8" = "#928374";
-      "color1" = "#cc241d";
-      "color9" = "#fb4934";
-      "color2" = "#98971a";
-      "color10" = "#b8bb26";
-      "color3" = "#d79921";
-      "color11" = "#fabd2f";
-      "color4" = "#458588";
-      "color12" = "#83a598";
-      "color5" = "#b16286";
-      "color13" = "#d3869b";
-      "color6" = "#689d6a";
-      "color14" = "#8ec07c";
-      "color7" = "#a89984";
-      "color15" = "#ebdbb2";
+      "foreground"         = "#ebdbb2";
+      "background"         = "#000000";
+      "color0"             = "#181818";
+      "color1"             = "#cc241d";
+      "color2"             = "#98971a";
+      "color3"             = "#d79921";
+      "color4"             = "#458588";
+      "color5"             = "#b16286";
+      "color6"             = "#689d6a";
+      "color7"             = "#a89984";
+      "color8"             = "#928374";
+      "color9"             = "#fb4934";
+      "color10"            = "#b8bb26";
+      "color11"            = "#fabd2f";
+      "color12"            = "#83a598";
+      "color13"            = "#d3869b";
+      "color14"            = "#8ec07c";
+      "color15"            = "#ebdbb2";
     };
   };
 
@@ -205,6 +208,9 @@
 
       herbstclient emit_hook reload
       herbstclient detect_monitors
+
+      pkill sxhkd || sxhkd &
+      ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '/home/zamlz/usr/walls/nixos-wallpaper.png' 
     '';
     # mod4 is SUPER
     # You can use xev to identify X11 keys very easily!
@@ -343,7 +349,7 @@
       "mouse_recenter_gap" = 0;
       "tree_style" = "╾│ ├└╼─┐";
     };
-    tags = [ "λ" ];
+    tags = [ "λ" "2" "3" "4" ];
   };
 
   programs.rofi = {

@@ -108,6 +108,8 @@
 
   services.xserver = {
     enable = true;
+    autoRepeatDelay = 400;
+    autoRepeatInterval = 50;
     libinput.enable = true;
     displayManager.startx.enable = true;
   };
