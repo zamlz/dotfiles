@@ -46,6 +46,7 @@
       XBACKGROUND = "#000000";
       XCOLOR0 = "#181818";
       XCOLOR7 = "#a89984";
+      WALLPAPER = "/home/zamlz/usr/walls/nature/mountains_valley.jpg";
     in ''
       herbstclient attr theme.active.outer_color "${XBACKGROUND}"
       herbstclient attr theme.active.inner_color "${XBACKGROUND}"
@@ -66,8 +67,16 @@
       herbstclient emit_hook reload
       herbstclient detect_monitors
 
-      pkill sxhkd || sxhkd &
-      ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '/home/zamlz/usr/walls/nixos-wallpaper.png' 
+      # services
+      # FIXME: this shouldn't be here either
+      (pkill sxhkd; sleep 0.1; ${pkgs.sxhkd}/bin/sxhkd) &
+      ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '${WALLPAPER}' 
+
+      # xorg settings
+      # FIXME: this shouldn't belong here, atleast not with NIXOS
+      xset r rate 400 50
+      xset s off
+      setxkbmap -option caps:escape
     '';
     # mod4 is SUPER
     # You can use xev to identify X11 keys very easily!
