@@ -1,30 +1,58 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }: let
+  colorScheme = {
+    foreground = "#ebdbb2";
+    background = "#000000";
+    black      = "#181818";
+    red        = "#cc241d";
+    green      = "#98971a";
+    yellow     = "#d79921";
+    blue       = "#458588";
+    magenta    = "#b16286";
+    cyan       = "#689d6a";
+    white      = "#a89984";
+    blackAlt   = "#928374";
+    redAlt     = "#fb4934";
+    greenAlt   = "#b8bb26";
+    yellowAlt  = "#fabd2f";
+    blueAlt    = "#83a598";
+    magentaAlt = "#d3869b";
+    cyanAlt    = "#8ec07c";
+    whiteAlt   = "#ebdbb2";
+  };
+in {
 
   imports = [];
   
   programs.kitty = {
     enable = true;
-    settings = {
-      "background_opacity" = "1.0";
-      "foreground"         = "#ebdbb2";
-      "background"         = "#000000";
-      "color0"             = "#181818";
-      "color1"             = "#cc241d";
-      "color2"             = "#98971a";
-      "color3"             = "#d79921";
-      "color4"             = "#458588";
-      "color5"             = "#b16286";
-      "color6"             = "#689d6a";
-      "color7"             = "#a89984";
-      "color8"             = "#928374";
-      "color9"             = "#fb4934";
-      "color10"            = "#b8bb26";
-      "color11"            = "#fabd2f";
-      "color12"            = "#83a598";
-      "color13"            = "#d3869b";
-      "color14"            = "#8ec07c";
-      "color15"            = "#ebdbb2";
+    font = {
+      package = pkgs.iosevka;
+      # FIXME: font not working?
+      name = "Iosevka Term";
+      size = 10.0;
     };
+    settings = {
+      "background_opacity" = "0.9";
+      "foreground"         = "${colorScheme.foreground}";
+      "background"         = "${colorScheme.background}";
+      "color0"             = "${colorScheme.black}";
+      "color1"             = "${colorScheme.red}";
+      "color2"             = "${colorScheme.green}";
+      "color3"             = "${colorScheme.yellow}";
+      "color4"             = "${colorScheme.blue}";
+      "color5"             = "${colorScheme.magenta}";
+      "color6"             = "${colorScheme.cyan}";
+      "color7"             = "${colorScheme.white}";
+      "color8"             = "${colorScheme.blackAlt}";
+      "color9"             = "${colorScheme.redAlt}";
+      "color10"            = "${colorScheme.greenAlt}";
+      "color11"            = "${colorScheme.yellowAlt}";
+      "color12"            = "${colorScheme.blueAlt}";
+      "color13"            = "${colorScheme.magentaAlt}";
+      "color14"            = "${colorScheme.cyanAlt}";
+      "color15"            = "${colorScheme.whiteAlt}";
+    };
+    shellIntegration.enableZshIntegration = true;
   };
 
   services.sxhkd = let
@@ -43,25 +71,22 @@
   {
     enable = true;
     extraConfig = let
-      XBACKGROUND = "#000000";
-      XCOLOR0 = "#181818";
-      XCOLOR7 = "#a89984";
       WALLPAPER = "/home/zamlz/usr/walls/nature/mountains_valley.jpg";
     in ''
-      herbstclient attr theme.active.outer_color "${XBACKGROUND}"
-      herbstclient attr theme.active.inner_color "${XBACKGROUND}"
-      herbstclient attr theme.normal.color "${XCOLOR0}"
-      herbstclient attr theme.active.color "${XCOLOR7}"
+      herbstclient attr theme.active.outer_color "${colorScheme.background}"
+      herbstclient attr theme.active.inner_color "${colorScheme.background}"
+      herbstclient attr theme.normal.color "${colorScheme.black}"
+      herbstclient attr theme.active.color "${colorScheme.white}"
       herbstclient attr theme.urgent.color orange
       herbstclient attr theme.border_width 9
       herbstclient attr theme.inner_width 3
       herbstclient attr theme.outer_width 4
-      herbstclient attr theme.inner_color "${XBACKGROUND}"
-      herbstclient attr theme.outer_color "${XBACKGROUND}"
+      herbstclient attr theme.inner_color "${colorScheme.background}"
+      herbstclient attr theme.outer_color "${colorScheme.background}"
       herbstclient attr theme.floating.border_width 9
       herbstclient attr theme.floating.inner_width 3
       herbstclient attr theme.floating.outer_width 4
-      herbstclient attr theme.floating.outer_color "${XBACKGROUND}"
+      herbstclient attr theme.floating.outer_color "${colorScheme.background}"
       herbstclient attr theme.background_color "#141414"
 
       herbstclient emit_hook reload
@@ -195,24 +220,20 @@
       "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
       "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"
     ];
-    settings = let
-      XBACKGROUND = "#000000";
-      XCOLOR0 = "#181818";
-      XCOLOR8 = "#928374";
-    in {
+    settings = {
       "frame_transparent_width" = 0;
       "frame_border_width" = 2;
-      "frame_border_active_color" = "${XCOLOR8}";
+      "frame_border_active_color" = "${colorScheme.blackAlt}";
       "frame_border_normal_color" = "#00000000";
       "frame_bg_transparent" = 1;
-      "frame_bg_normal_color" = "${XBACKGROUND}";
-      "frame_bg_active_color" = "${XCOLOR0}";
+      "frame_bg_normal_color" = "${colorScheme.background}";
+      "frame_bg_active_color" = "${colorScheme.black}";
       "always_show_frame" = 0;
-      "frame_gap" = 0;
+      "frame_gap" = 20;
       "frame_padding" = 0;
       "window_gap" = 0;
       "smart_window_surroundings" = 0;
-      "smart_frame_surroundings" = 1;
+      "smart_frame_surroundings" = 0;
       "mouse_recenter_gap" = 0;
       "tree_style" = "╾│ ├└╼─┐";
     };
