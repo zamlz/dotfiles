@@ -70,6 +70,7 @@
       # services
       # FIXME: this shouldn't be here either
       (pkill sxhkd; sleep 0.1; ${pkgs.sxhkd}/bin/sxhkd) &
+      (pkill picom; sleep 0.1; ${pkgs.picom}/bin/picom) &
       ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '${WALLPAPER}' 
 
       # xorg settings
@@ -221,5 +222,16 @@
   programs.rofi = {
     enable = true;
     theme = ../etc/rofi/default-theme.rasi;
+  };
+
+  services.picom = {
+    enable = true;
+    fade = true;
+    fadeDelta = 5;
+    shadow = true;
+    vSync = true;
+    settings = {
+      inactive-dim = 0.3;
+    };
   };
 }
