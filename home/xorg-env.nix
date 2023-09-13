@@ -96,6 +96,8 @@ in {
       # FIXME: this shouldn't be here either
       (pkill sxhkd; sleep 0.1; ${pkgs.sxhkd}/bin/sxhkd) &
       (pkill picom; sleep 0.1; ${pkgs.picom}/bin/picom) &
+      (pkill polybar; sleep 0.1; ${pkgs.polybar}/bin/polybar top) &
+      (sleep 0.1; ${pkgs.polybar}/bin/polybar bot) &
       ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '${WALLPAPER}' 
 
       # xorg settings
@@ -253,6 +255,104 @@ in {
     vSync = true;
     settings = {
       inactive-dim = 0.3;
+    };
+  };
+
+  services.polybar = {
+    enable = true;
+    # FIXME: What does this option even do?
+    script = "polybar top &";
+    config = {
+      "bar/super" = {
+        monitor = "\${env:MONITOR:eDP-1}";
+        width = "100%";
+        height = "3%";
+        radius = 0;
+	# FIXME: font not working?
+	font-0 = "Iosevka Term:size=12";
+	separator = "|";
+      };
+      "bar/top" = {
+        "inherit" = "bar/super"; 
+	bottom = false;
+	modules-left = "";
+	modules-center= "date";
+	modules-right = "battery";
+      };
+      "bar/bot" = {
+        "inherit" = "bar/super"; 
+	bottom = true;
+	modules-left = "workspaces";
+	modules-center= "";
+	modules-right = "";
+      };
+      "module/battery" = {
+        type = "internal/battery";
+	full-at = 99;
+	battry = "BAT0";
+	adapter = "";
+	poll-interval = 5;
+	time-format = "%H:%M";
+	format-background = "${colorScheme.background}";
+	format-foreground = "${colorScheme.foreground}";
+	format-padding = 2;
+	format-charging = "bat: <label-charging>";
+	format-charging-background = "${colorScheme.background}";
+	format-charging-foreground = "${colorScheme.foreground}";
+	format-charging-padding = 2;
+	format-discharging = "bat: <label-discharging>";
+	format-discharging-background = "${colorScheme.background}";
+	format-discharging-foreground = "${colorScheme.foreground}";
+	format-discharging-padding = 2;
+	format-full = "bat: <label-full>";
+	format-full-background = "${colorScheme.background}";
+	format-full-foreground = "${colorScheme.foreground}";
+	format-full-padding = 2;
+	label-foreground = "${colorScheme.green}";
+	label-charging = "%percentage%";
+	label-charging-foreground = "${colorScheme.green}";
+	label-discharging = "%percentage%";
+	label-discharging-foreground = "${colorScheme.green}";
+	label-full = "%percentage%";
+	label-full-foreground = "${colorScheme.green}";
+      };
+      "module/date" = {
+        type = "internal/date";
+        internal = 1;
+        date = "%B %d, %Y (%A)";
+        time = "%l:%M:%S %p";
+	date-alt = "%Y-%m-%d";
+	time-alt = "%H:%M:%S";
+	format = "date: <label>";
+	format-background = "${colorScheme.background}";
+	format-foreground = "${colorScheme.foreground}";
+        label = "%date% %time%";
+	label-foreground = "${colorScheme.cyan}";
+      };
+      "module/workspaces" = {
+        type = "internal/xworkspaces";
+	pin-workspaces = false;
+	enable-click = true;
+	enable-scroll = true;
+	format = "wksp: <label-state>";
+	format-background = "${colorScheme.background}";
+	format-foreground = "${colorScheme.foreground}";
+	label-monitor = "%name%";
+	label-monitor-background = "${colorScheme.background}";
+	label-monitor-foreground = "${colorScheme.red}";
+	label-active = " [%index%:%name%] ";
+        label-active-background = "${colorScheme.background}";
+	label-active-foreground = "${colorScheme.red}";
+	label-occupied = " [%index%:%name%] ";
+        label-occupied-background = "${colorScheme.background}";
+	label-occupied-foreground = "${colorScheme.white}";
+	label-urgent = " [%index%:%name%] ";
+        label-urgent-background = "${colorScheme.background}";
+	label-urgent-foreground = "${colorScheme.yellow}";
+	label-empty = " [%index%:%name%] ";
+        label-empty-background = "${colorScheme.background}";
+	label-empty-foreground = "#484848";
+      };
     };
   };
 }
