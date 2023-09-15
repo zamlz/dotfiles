@@ -60,13 +60,21 @@
     pinentryFlavor =  "tty"; # FIXME: use custom pinentry?
     sshKeys = [ "FA508B6D901BA2A59DE2B7E521EBE58F4CDD6C0D" ];
   };
-  
+
   programs.neovim = {
     enable = true;
     defaultEditor = true;
     viAlias = true;
     vimAlias = true;
     vimdiffAlias = true;
+    extraConfig = ''
+      fun! TrimWhitespace()
+          let l:save = winsaveview()
+          keeppatterns %s/\s\+$//e
+          call winrestview(l:save)
+      endfun
+      command! TrimWhitespace call TrimWhitespace()
+    '';
   };
 
   programs.ssh = {
