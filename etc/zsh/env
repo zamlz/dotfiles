@@ -23,11 +23,6 @@ else
     export LESS='-R --no-init --quit-if-one-screen'
 fi
 
-# Configure Zsh command history
-export HISTFILE=$HOME/.local/share/zhistory
-export HISTSIZE=10000
-export SAVEHIST=5000
-
 # Override LS Colors (my own custom choices)
 eval $(dircolors -b $HOME/lib/shell/lscolors)
 

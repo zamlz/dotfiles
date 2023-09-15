@@ -112,15 +112,22 @@
 
   programs.zsh = {
     enable = true;
-    autocd = true;
     dotDir = ".config/zsh";
+    autocd = true;
+    defaultKeymap = "viins";
     enableAutosuggestions = true;
     enableCompletion = true;
-    defaultKeymap = "viins";
     enableSyntaxHighlighting = true;
+    enableVteIntegration = true;
     history = {
       extended = true;
       ignoreSpace = true;
+      ignorePatterns = [
+        "rm *"
+	"pkill *"
+      ];
+      save = 100000;
+      path = ".local/share/zsh_history.db";
     };
     shellAliases = {
       # Shortcuts for ls
