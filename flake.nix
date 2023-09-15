@@ -13,7 +13,7 @@
 
     # NixOS Configuration Entrypoint
     # ( available through `nixos-rebuild switch --flake .#${hostname}` )
-    
+
     nixosConfigurations = {
       NAVI-CoplandOS = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };

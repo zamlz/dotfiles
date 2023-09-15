@@ -4,15 +4,15 @@
 
 { inputs, lib, config, pkgs, ... }: {
 
-  imports = [ 
+  imports = [
     # Import your generated (nixos-generate-config) hardware configuration
     ./hardware-configuration.nix
   ];
-  
+
   nixpkgs = {
     config.allowUnfree = true;
   };
-  
+
   nix = {
     # This will add each flake input as a registry
     # to make nix3 commands consistent with your flake
@@ -38,7 +38,7 @@
     systemd-boot.enable = true;
     efi.canTouchEfiVariables = true;
   };
-  
+
   boot.initrd = {
     secrets = {
       "/crypto_keyfile.bin" = null;
@@ -46,7 +46,7 @@
     luks.devices."luks-0224b369-12c1-4ea0-a732-6ee6ec2e1192" = {
       device = "/dev/disk/by-uuid/0224b369-12c1-4ea0-a732-6ee6ec2e1192";
       keyFile = "/crypto_keyfile.bin";
-    }; 
+    };
   };
 
   networking = {
@@ -74,7 +74,7 @@
     systemPackages = with pkgs; [ git vim curl ];
     variables.EDITOR = "vim";
   };
-  
+
   programs.zsh.enable = true;
 
   # User Accounts
@@ -90,7 +90,7 @@
     ];
     shell = pkgs.zsh;
   };
-  
+
   services.openssh = {
     enable = true;
     settings = {

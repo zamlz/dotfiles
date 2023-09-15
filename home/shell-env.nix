@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
 
   imports = [];
-   
+
   programs.git = {
     enable = true;
     userName = "Amlesh Sivanantham (zamlz)";
@@ -91,7 +91,7 @@
       gpgAgentFix.match = "host * exec \"gpg-connect-agent --no-autostart UPDATESTARTUPTTY /bye\"";
     };
   };
-  
+
   programs.tmux = {
     enable = true;
     prefix = "C-x";

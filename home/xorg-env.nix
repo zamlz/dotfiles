@@ -22,7 +22,7 @@
 in {
 
   imports = [];
-  
+
   programs.kitty = {
     enable = true;
     font = {
@@ -96,7 +96,7 @@ in {
       (pkill picom; sleep 0.1; ${pkgs.picom}/bin/picom) &
       (pkill polybar; sleep 0.1; ${pkgs.polybar}/bin/polybar top) &
       (sleep 0.1; ${pkgs.polybar}/bin/polybar bot) &
-      ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '${WALLPAPER}' 
+      ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '${WALLPAPER}'
 
       # xorg settings
       # FIXME: this shouldn't belong here, atleast not with NIXOS
@@ -117,7 +117,7 @@ in {
       "${super}-Ctrl-Alt-r" = "chain , spawn $HOME/etc/xorg/refresh.sh , reload";
       "${super}-Ctrl-r" = "reload";
       "${super}-q" = "close";
-      
+
       # Window Focus
       "${super}-Left" = "focus left";
       "${super}-Down" = "focus down";
@@ -167,7 +167,7 @@ in {
       "${super}-slash" = "spawn $HOME/etc/herbstluftwm/scripts/tag_utils.sh goto";
       "${super}-Shift-slash" = "spawn $HOME/etc/herbstluftwm/scripts/tag_utils.sh move";
       "${super}-BackSpace" = "spawn $HOME/etc/herbstluftwm/scripts/tag_utils.sh remove";
-      
+
       # Layout Control
       "${super}-r" = "remove";
       "${super}-s" = "floating toggle";
@@ -271,14 +271,14 @@ in {
 	separator = "|";
       };
       "bar/top" = {
-        "inherit" = "bar/super"; 
+        "inherit" = "bar/super";
 	bottom = false;
 	modules-left = "";
 	modules-center= "date";
 	modules-right = "battery";
       };
       "bar/bot" = {
-        "inherit" = "bar/super"; 
+        "inherit" = "bar/super";
 	bottom = true;
 	modules-left = "workspaces";
 	modules-center= "";

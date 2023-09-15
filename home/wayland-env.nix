@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
 
   imports = [];
-  
+
   programs.foot = {
     enable = true;
     server.enable = true;
