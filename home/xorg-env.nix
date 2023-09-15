@@ -30,6 +30,7 @@ in {
       size = 10.0;
     };
     settings = {
+      "scrollback_lines"   = 100000;
       "background_opacity" = "0.9";
       "foreground"         = "${colorScheme.foreground}";
       "background"         = "${colorScheme.background}";
