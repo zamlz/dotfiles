@@ -26,8 +26,6 @@ in {
   programs.kitty = {
     enable = true;
     font = {
-      package = pkgs.iosevka;
-      # FIXME: font not working?
       name = "Iosevka Term";
       size = 10.0;
     };
@@ -269,7 +267,7 @@ in {
         height = "3%";
         radius = 0;
 	# FIXME: font not working?
-	font-0 = "Iosevka Term:size=12";
+	font-0 = "Iosevka Term:size=10";
 	separator = "|";
       };
       "bar/top" = {

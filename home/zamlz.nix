@@ -29,6 +29,7 @@
     # GUI Tools
     qutebrowser
     feh
+    iosevka
   ];
 
   # Let Home Manager install and manage itself.
