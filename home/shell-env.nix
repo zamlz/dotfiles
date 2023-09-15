@@ -69,6 +69,14 @@
     vimdiffAlias = true;
   };
   
+  programs.tmux = {
+    enable = true;
+    prefix = "C-x";
+    plugins = with pkgs; [
+      tmuxPlugins.pain-control
+    ];
+  };
+
   programs.zsh = {
     enable = true;
     autocd = true;
@@ -105,13 +113,5 @@
       gr = "git rev-parse --show-toplevel";
       grr = "git rev-parse --show-toplevel | xargs";
     };
-  };
-
-  programs.tmux = {
-    enable = true;
-    prefix = "C-x";
-    plugins = with pkgs; [
-      tmuxPlugins.pain-control
-    ];
   };
 }
