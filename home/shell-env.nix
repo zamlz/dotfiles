@@ -153,5 +153,10 @@
       gr = "git rev-parse --show-toplevel";
       grr = "git rev-parse --show-toplevel | xargs";
     };
+    loginExtra = ''
+      if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
+          exec startx
+      fi
+    '';
   };
 }
