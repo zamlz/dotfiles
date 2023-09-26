@@ -1,5 +1,5 @@
 { inputs, lib, config, pkgs, ... }: let
-  colorScheme = {
+  gruvboxBlack = {
     foreground = "#ebdbb2";
     background = "#000000";
     black      = "#181818";
@@ -19,6 +19,7 @@
     cyanAlt    = "#8ec07c";
     whiteAlt   = "#ebdbb2";
   };
+  colorScheme = gruvboxBlack;
 in {
 
   imports = [];
@@ -31,7 +32,7 @@ in {
     };
     settings = {
       "scrollback_lines"   = 100000;
-      "background_opacity" = "0.9";
+      "background_opacity" = "1.0";
       "foreground"         = "${colorScheme.foreground}";
       "background"         = "${colorScheme.background}";
       "color0"             = "${colorScheme.black}";
@@ -70,12 +71,12 @@ in {
   {
     enable = true;
     extraConfig = let
-      WALLPAPER = "/home/zamlz/usr/walls/nature/mountains_valley.jpg";
+      WALLPAPER = "/home/zamlz/usr/walls/mountains.jpg";
     in ''
       herbstclient attr theme.active.outer_color "${colorScheme.background}"
       herbstclient attr theme.active.inner_color "${colorScheme.background}"
       herbstclient attr theme.normal.color "${colorScheme.black}"
-      herbstclient attr theme.active.color "${colorScheme.white}"
+      herbstclient attr theme.active.color "${colorScheme.foreground}"
       herbstclient attr theme.urgent.color orange
       herbstclient attr theme.border_width 9
       herbstclient attr theme.inner_width 3
@@ -95,8 +96,7 @@ in {
       # FIXME: this shouldn't be here either
       (pkill sxhkd; sleep 0.1; ${pkgs.sxhkd}/bin/sxhkd) &
       (pkill picom; sleep 0.1; ${pkgs.picom}/bin/picom) &
-      (pkill polybar; sleep 0.1; ${pkgs.polybar}/bin/polybar top) &
-      (sleep 0.1; ${pkgs.polybar}/bin/polybar bot) &
+      (pkill polybar; sleep 0.1; ${pkgs.polybar}/bin/polybar) &
       ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '${WALLPAPER}'
 
       # xorg settings
@@ -224,13 +224,13 @@ in {
     settings = {
       "frame_transparent_width" = 0;
       "frame_border_width" = 2;
-      "frame_border_active_color" = "${colorScheme.blackAlt}";
+      "frame_border_active_color" = "${colorScheme.foreground}";
       "frame_border_normal_color" = "#00000000";
       "frame_bg_transparent" = 1;
       "frame_bg_normal_color" = "${colorScheme.background}";
       "frame_bg_active_color" = "${colorScheme.black}";
       "always_show_frame" = 0;
-      "frame_gap" = 20;
+      "frame_gap" = 20; # 20 is what you want if you want gaps
       "frame_padding" = 0;
       "window_gap" = 0;
       "smart_window_surroundings" = 0;
@@ -253,87 +253,72 @@ in {
     shadow = true;
     vSync = true;
     settings = {
-      inactive-dim = 0.3;
+      # FIXME: need only selective dimming
+      # inactive-dim = 0.3;
     };
   };
 
   services.polybar = {
     enable = true;
     # FIXME: What does this option even do?
-    script = "polybar top &";
+    script = "polybar &";
     config = {
-      "bar/super" = {
+      "bar/top" = {
         monitor = "\${env:MONITOR:eDP-1}";
         width = "100%";
         height = "3%";
         radius = 0;
-	# FIXME: font not working?
 	font-0 = "Iosevka Term:size=10";
-	separator = "|";
-      };
-      "bar/top" = {
-        "inherit" = "bar/super";
+	separator = " ";
+	background = "${colorScheme.background}";
+	foreground = "${colorScheme.foreground}";
+	padding = 2;
+	module-margin = 2;
+	border-size = 0;
+	border-color = "${colorScheme.foreground}";
 	bottom = false;
-	modules-left = "";
-	modules-center= "date";
-	modules-right = "battery";
-      };
-      "bar/bot" = {
-        "inherit" = "bar/super";
-	bottom = true;
-	modules-left = "workspaces";
+	modules-left = "kernel workspaces";
 	modules-center= "";
-	modules-right = "";
+	modules-right = "cpu memory battery wired wireless date";
       };
       "module/battery" = {
         type = "internal/battery";
 	full-at = 99;
+	low-at = 10;
 	battry = "BAT0";
 	adapter = "";
 	poll-interval = 5;
 	time-format = "%H:%M";
 	format-background = "${colorScheme.background}";
 	format-foreground = "${colorScheme.foreground}";
-	format-padding = 2;
-	format-charging = "bat: <label-charging>";
-	format-charging-background = "${colorScheme.background}";
-	format-charging-foreground = "${colorScheme.foreground}";
-	format-charging-padding = 2;
-	format-discharging = "bat: <label-discharging>";
-	format-discharging-background = "${colorScheme.background}";
-	format-discharging-foreground = "${colorScheme.foreground}";
-	format-discharging-padding = 2;
-	format-full = "bat: <label-full>";
-	format-full-background = "${colorScheme.background}";
-	format-full-foreground = "${colorScheme.foreground}";
-	format-full-padding = 2;
-	label-foreground = "${colorScheme.green}";
-	label-charging = "%percentage%";
-	label-charging-foreground = "${colorScheme.green}";
-	label-discharging = "%percentage%";
+	format-charging = "[<label-charging>]";
+	format-discharging = "[<label-discharging>]";
+	format-full = "[<label-full>]";
+	label-full = "%percentage%!";
+	label-full-foreground = "${colorScheme.white}";
+	label-charging = "%percentage%* %time%";
+	label-charging-foreground = "${colorScheme.greenAlt}";
+	label-discharging = "%percentage%% %time%";
 	label-discharging-foreground = "${colorScheme.green}";
-	label-full = "%percentage%";
-	label-full-foreground = "${colorScheme.green}";
+	label-low = "BATTERY LOW %percentage%% %time%";
+	label-low-foreground = "${colorScheme.red}";
       };
       "module/date" = {
         type = "internal/date";
         internal = 1;
-        date = "%B %d, %Y (%A)";
-        time = "%l:%M:%S %p";
-	date-alt = "%Y-%m-%d";
-	time-alt = "%H:%M:%S";
-	format = "date: <label>";
-	format-background = "${colorScheme.background}";
-	format-foreground = "${colorScheme.foreground}";
+	date = "%Y-%m-%d";
+	time = "%r";
+        date-alt = "%B %d, %Y (%A)";
+        time-alt = "%l:%M:%S %p";
         label = "%date% %time%";
-	label-foreground = "${colorScheme.cyan}";
+	label-foreground = "${colorScheme.blue}";
       };
       "module/workspaces" = {
         type = "internal/xworkspaces";
 	pin-workspaces = false;
 	enable-click = true;
 	enable-scroll = true;
-	format = "wksp: <label-state>";
+	format = "<label-state>";
 	format-background = "${colorScheme.background}";
 	format-foreground = "${colorScheme.foreground}";
 	label-monitor = "%name%";
@@ -341,7 +326,7 @@ in {
 	label-monitor-foreground = "${colorScheme.red}";
 	label-active = " [%index%:%name%] ";
         label-active-background = "${colorScheme.background}";
-	label-active-foreground = "${colorScheme.red}";
+	label-active-foreground = "${colorScheme.blue}";
 	label-occupied = " [%index%:%name%] ";
         label-occupied-background = "${colorScheme.background}";
 	label-occupied-foreground = "${colorScheme.white}";
@@ -351,6 +336,43 @@ in {
 	label-empty = " [%index%:%name%] ";
         label-empty-background = "${colorScheme.background}";
 	label-empty-foreground = "#484848";
+      };
+      "module/kernel" = {
+        type = "custom/script";
+	exec = "~/dotfiles/etc/polybar/scripts/kernel_info.sh";
+	interval = 90;
+	format = "<label>";
+	label-foreground = "${colorScheme.foreground}";
+      };
+      "module/cpu" = {
+        type = "internal/cpu";
+	interval = 1;
+	warn-percentage = 50;
+	format = "";
+	format-warn = "<label-warn>";
+	label-warn = "cpu:%percentage%%";
+	label-warn-foreground = "${colorScheme.red}";
+      };
+      "module/memory" = {
+        type = "internal/memory";
+	interval = 1;
+	warn-percentage = 75;
+	format = "";
+	format-warn = "<label-warn>";
+	label-warn = "mem:%percentage_used%%(%percentage_swap_used%%)";
+	label-warn-foreground = "${colorScheme.red}";
+      };
+      "module/wireless" = {
+        type = "internal/network";
+	interface-type = "wireless";
+	label-connected = "%ifname%: %essid% (%local_ip%)";
+	label-connected-foreground = "${colorScheme.cyan}";
+      };
+      "module/wired" = {
+        type = "internal/network";
+	interface-type = "wired";
+	label-connected = "%ifname%: (%local_ip%)";
+	label-connected-foreground = "${colorScheme.cyan}";
       };
     };
   };
