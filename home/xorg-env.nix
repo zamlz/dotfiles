@@ -268,12 +268,12 @@ in {
         width = "100%";
         height = "3%";
         radius = 0;
-	font-0 = "Iosevka Term:size=10";
+	font-0 = "DejaVu Sans Mono:size=8";
 	separator = " ";
 	background = "${colorScheme.background}";
 	foreground = "${colorScheme.foreground}";
 	padding = 2;
-	module-margin = 2;
+	module-margin = 1;
 	border-size = 0;
 	border-color = "${colorScheme.foreground}";
 	bottom = false;
@@ -294,14 +294,19 @@ in {
 	format-charging = "[<label-charging>]";
 	format-discharging = "[<label-discharging>]";
 	format-full = "[<label-full>]";
+	format-low = "[<label-low> <animation-low>]";
 	label-full = "%percentage%!";
 	label-full-foreground = "${colorScheme.white}";
 	label-charging = "%percentage%* %time%";
 	label-charging-foreground = "${colorScheme.greenAlt}";
 	label-discharging = "%percentage%% %time%";
 	label-discharging-foreground = "${colorScheme.green}";
-	label-low = "BATTERY LOW %percentage%% %time%";
+	label-low = "%percentage%% %time%";
 	label-low-foreground = "${colorScheme.red}";
+	animation-low-0 = "(LOW BATTERY)";
+        animation-low-1 = "( . . . . . )";
+        animation-low-framerate = 400;
+	animation-low-foreground = "${colorScheme.red}";
       };
       "module/date" = {
         type = "internal/date";
