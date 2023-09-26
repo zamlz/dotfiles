@@ -1,35 +1,3 @@
-# The shadow exclude options are helpful if you have shadows enabled. Due to
-# the way compton draws its shadows, certain applications will have visual
-# glitches (most applications are fine, only apps that do weird things with
-# xshapes or argb are affected). This list includes all the affected apps I
-# found in my testing. The "! name~=''" part excludes shadows on any "Unknown"
-# windows, this prevents a visual glitch with the XFWM alt tab switcher.
-shadow-exclude = [
-    "! name~=''",
-    "name = 'Notification'",
-    "name = 'Plank'",
-    "name = 'Docky'",
-    "name = 'Kupfer'",
-    "name = 'xfce4-notifyd'",
-    "name *= 'VLC'",
-    "name *= 'compton'",
-    "name *= 'Chromium'",
-    "name *= 'Chrome'",
-    "class_g = 'Conky'",
-    "class_g = 'Kupfer'",
-    "class_g = 'Synapse'",
-    "class_g ?= 'Notify-osd'",
-    "class_g ?= 'Cairo-dock'",
-    "class_g ?= 'Xfce4-notifyd'",
-    "class_g ?= 'Xfce4-power-manager'",
-    "_GTK_FRAME_EXTENTS@:c"
-];
-
-# Avoid drawing shadow on all shaped windows (see also: --detect-rounded-corners)
-shadow-ignore-shaped = false;
-
-# Opacity
-
 # Define opacity
 inactive-opacity = 1;
 active-opacity = 1;
@@ -56,28 +24,6 @@ blur-background-exclude = [
     "window_type = 'desktop'"
 ];
 
-# Fading
-
-# Fade windows during opacity changes.
-fading = true;
-
-# The time between steps in a fade in milliseconds. (default 10).
-fade-delta = 4;
-
-# Opacity change between steps while fading in. (default 0.028).
-fade-in-step = 0.03;
-
-# Opacity change between steps while fading out. (default 0.03).
-fade-out-step = 0.03;
-
-# Fade windows in/out when opening/closing
-# no-fading-openclose = true;
-
-# Specify a list of conditions of windows that should not be faded.
-fade-exclude = [ ];
-
-# Other
-
 # Try to detect WM windows and mark them as active.
 mark-wmwin-focused = true;
 
@@ -97,28 +43,6 @@ detect-rounded-corners = true;
 # opacity being ignored for some apps. For example without this enabled my
 # xfce4-notifyd is 100% opacity no matter what.
 detect-client-opacity = true;
-
-# Specify refresh rate of the screen. If not specified or 0, compton will try
-# detecting this with X RandR extension.
-refresh-rate = 0;
-
-# Set VSync method. VSync methods currently available:
-#- none: No VSync
-# - drm: VSync with DRM_IOCTL_WAIT_VBLANK. May only work on some drivers.
-# - opengl: Try to VSync with SGI_video_sync OpenGL extension. Only work on
-#       some drivers.
-# - opengl-oml: Try to VSync with OML_sync_control OpenGL extension. Only work
-#       on some drivers.
-# - opengl-swc: Try to VSync with SGI_swap_control OpenGL extension. Only work
-#       on some drivers. Works only with GLX backend. Known to be most
-#       effective on many drivers. Does not actually control paint timing,
-#       only buffer swap is affected, so it doesn’t have the effect of
-#       --sw-opti unlike other methods. Experimental.
-# - opengl-mswc: Try to VSync with MESA_swap_control OpenGL extension.
-#       Basically the same as opengl-swc above, except the extension we use.
-
-# (Note some VSync methods may not be enabled at compile time.)
-vsync = true;
 
 # Enable DBE painting mode, intended to use with VSync to (hopefully) eliminate
 # tearing. Reported to have no effect, though.
@@ -143,18 +67,3 @@ detect-transient = true;
 # --detect-transient is enabled, too.
 detect-client-leader = true;
 
-# Window Type Settings
-wintypes:
-{
-    tooltip =
-    {
-        # fade: Fade the particular type of windows.
-        fade = true;
-        # shadow: Give those windows shadow
-        shadow = false;
-        # opacity: Default opacity for the type of windows.
-        opacity = 0.85;
-        # focus: Whether to always consider windows of this type focused.
-        focus = true;
-    };
-};
