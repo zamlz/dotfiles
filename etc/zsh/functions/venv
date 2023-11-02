@@ -32,7 +32,7 @@ if [[ -n "${@}" ]]; then
         fi
         echo "Using python binary: ${python_binary}"
 
-        ${python_binary} -m venv --copies --upgrade-deps "${PYTHON_VENVS_DIR}/${vname}"
+        ${python_binary} -m venv --copies "${PYTHON_VENVS_DIR}/${vname}"
 
     fi
     echo "Starting venv: ${vname}"
