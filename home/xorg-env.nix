@@ -268,7 +268,7 @@ in {
         width = "100%";
         height = "3%";
         radius = 0;
-	font-0 = "DejaVu Sans Mono:size=8";
+	font-0 = "DejaVu Sans Mono:size=10";
 	separator = " ";
 	background = "${colorScheme.background}";
 	foreground = "${colorScheme.foreground}";
@@ -344,7 +344,7 @@ in {
       };
       "module/kernel" = {
         type = "custom/script";
-	exec = "~/dotfiles/etc/polybar/scripts/kernel_info.sh";
+	exec = "~/nix/etc/polybar/scripts/kernel_info.sh";
 	interval = 90;
 	format = "<label>";
 	label-foreground = "${colorScheme.foreground}";
