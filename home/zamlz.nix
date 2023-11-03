@@ -30,6 +30,7 @@
     qutebrowser
     feh
     iosevka
+    emacs29
   ];
 
   # Let Home Manager install and manage itself.
