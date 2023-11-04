@@ -1,4 +1,4 @@
 #!/usr/bin/env sh
 
 # userathost with kernel info
-echo "$(uname -o) $(uname -r)"
+echo "$(uname -n) :: $(uname -o) $(uname -r)"
