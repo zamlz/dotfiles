@@ -243,7 +243,7 @@ in {
 
   programs.rofi = {
     enable = true;
-    theme = ../etc/rofi/default-theme.rasi;
+    theme = ../../../__legacy__/etc/rofi/default-theme.rasi;
   };
 
   services.picom = {
@@ -344,7 +344,7 @@ in {
       };
       "module/kernel" = {
         type = "custom/script";
-	exec = "~/nix/etc/polybar/scripts/kernel_info.sh";
+	exec = "~/nix/__legacy__/etc/polybar/scripts/kernel_info.sh";
 	interval = 90;
 	format = "<label>";
 	label-foreground = "${colorScheme.foreground}";

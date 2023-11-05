@@ -18,11 +18,11 @@
   programs.home-manager.enable = true;
 
   home = {
-    username = "zamlz";
-    homeDirectory = "/home/zamlz";
     # This determines the Home Manager release that your configuration is
     # compatible with. DO NOT CHANGE
-    home.stateVersion = "23.05";
+    stateVersion = "23.05";
+    username = "zamlz";
+    homeDirectory = "/home/zamlz";
     packages = with pkgs; [
       # CLI Tools
       cmatrix

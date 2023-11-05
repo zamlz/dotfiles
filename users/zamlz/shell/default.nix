@@ -29,7 +29,7 @@
     homedir = "${config.xdg.configHome}/gnupg";
     mutableKeys = false;
     mutableTrust = false;
-    publicKeys = [{ source = ./public.key; trust = 5; }];
+    publicKeys = [{ source = ../public.key; trust = 5; }];
     settings = {
       default-key = "0FA6 FF80 89E9 C767 0A22  54C7 9731 7FD0 FC2D B3CC";
       keyid-format = "0xlong";
@@ -106,7 +106,7 @@
     extraConfig = ''
       set -g set-titles on
       set -g set-titles-string '#T'
-      bind r source-file ~/etc/tmux/config \; display "Reloaded Tmux Config"
+      bind r source-file ~/.config/tmux/tmux.conf \; display "Reloaded Tmux Config"
     '';
   };
 
