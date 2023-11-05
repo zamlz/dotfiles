@@ -18,7 +18,7 @@
     nixosConfigurations = {
       NAVI-CoplandOS = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-	modules = [ ./hosts/navi/default.nix ];
+	modules = [ ./hosts/navi ];
       };
     };
 
@@ -29,7 +29,7 @@
       zamlz = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 	extraSpecialArgs = { inherit inputs; };
-	modules = [ ./users/zamlz/default.nix ];
+	modules = [ ./users/zamlz ];
       };
     };
   };
