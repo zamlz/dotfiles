@@ -241,9 +241,11 @@ in {
     tags = [ "λ" "2" "3" "4" ];
   };
 
+  xdg.configFile."rofi/default-theme.rasi".source = ../../../__legacy__/etc/rofi/default-theme.rasi;
   programs.rofi = {
     enable = true;
-    theme = ../../../__legacy__/etc/rofi/default-theme.rasi;
+    # FIXME: can I get this to use xdg.configFile in the future?
+    theme = "~/.config/rofi/default-theme.rasi"; 
   };
 
   services.picom = {
@@ -258,6 +260,10 @@ in {
     };
   };
 
+  xdg.configFile."polybar/kernel_info.sh" = {
+    source = ../../../__legacy__/etc/polybar/scripts/kernel_info.sh;
+    executable = true;
+  };
   services.polybar = {
     enable = true;
     # FIXME: What does this option even do?
@@ -344,7 +350,8 @@ in {
       };
       "module/kernel" = {
         type = "custom/script";
-	exec = "~/nix/__legacy__/etc/polybar/scripts/kernel_info.sh";
+	# FIXME: can I get this to use xdg.configFile in the future?
+	exec = "~/.config/polybar/kernel_info.sh";
 	interval = 90;
 	format = "<label>";
 	label-foreground = "${colorScheme.foreground}";
