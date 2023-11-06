@@ -1,7 +1,7 @@
 { inputs, lib, config, pkgs, ... }: {
 
   imports = [
-    ./shell
+    ./core
     ./xorg
     ./wayland
   ];
