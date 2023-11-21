@@ -6,10 +6,6 @@
 #   - wmctrl
 #   - rofi
 
-# Setup the logger
-. $HOME/lib/shell/logging && eval "$(get_logger $0)"
-logger "herbstluftwm tag utility"
-
 # Get command line arguments
 operation_name=$1
 

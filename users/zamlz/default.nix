@@ -37,6 +37,7 @@
       feh
       iosevka
       emacs29
+      wmctrl
     ];
   };
 

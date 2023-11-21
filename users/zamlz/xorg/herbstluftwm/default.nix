@@ -196,6 +196,6 @@ in {
       "mouse_recenter_gap" = 0;
       "tree_style" = "╾│ ├└╼─┐";
     };
-    tags = [ "λ" "2" "3" "4" ];
+    tags = [ "λ" ];
   };
 }
