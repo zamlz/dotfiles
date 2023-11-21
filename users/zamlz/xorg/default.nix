@@ -4,7 +4,7 @@
     ./kitty.nix
     ./picom.nix
     ./polybar.nix
-    ./rofi.nix
+    ./rofi
     ./sxhkd.nix
   ];
 }
