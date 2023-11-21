@@ -1,6 +1,6 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
-    ./herbstluftwm.nix
+    ./herbstluftwm
     ./kitty.nix
     ./picom.nix
     ./polybar.nix
