@@ -13,7 +13,12 @@ CONFIG_TARGET=$HOME/.config/ranger
 
 if [ ! -d "$CONFIG_TARGET" ]; then
     logger "Making directory $CONFIG_TARGET"
-    mkdir -p $CONFIG_TARGET -m 700
+    mkdir -p "$CONFIG_TARGET"
 fi
 
-create_symlink "gpg config" $CONFIG_SOURCE/rc.conf $CONFIG_TARGET/rc.conf
+create_symlink "gpg config" $CONFIG_SOURCE/rc.conf "$CONFIG_TARGET/rc.conf"
+
+if [ ! -d "$CONFIG_TARGET/plugins" ]; then
+    logger "Cloning devicons plugin for ranger"
+    git clone https://github.com/alexanderjeurissen/ranger_devicons "$CONFIG_TARGET/plugins/ranger_devicons"
+fi
