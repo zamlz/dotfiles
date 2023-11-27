@@ -13,5 +13,6 @@ return {
         { "<leader>t", "<CMD>FloatermNew --title=Terminal<CR>", desc = "Terminal Session" },
         { "<leader>p", "<CMD>FloatermNew --title=IPython ipython<CR>", desc = "IPython Shell" },
         { "<leader>g", "<CMD>FloatermNew --height=1.0 --width=1.0 --title=LazyGit lazygit<CR>", desc = "LazyGit" },
+        { "<leader>d", "<CMD>FloatermNew --height=1.0 --width=1.0 --opener=edit --title=Ranger ranger<CR>", desc = "Ranger" },
     },
 }

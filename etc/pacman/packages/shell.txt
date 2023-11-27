@@ -17,6 +17,7 @@ tree
 figlet
 highlight
 neofetch
+ranger
 shellcheck
 tmux
 unzip
