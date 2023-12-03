@@ -15,13 +15,23 @@ return {
     lazy = false,
     keys = {
         -- FIXME: Configure more of telescope
-        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
+        { "<leader>f", "<cmd>Telescope find_files<cr>", desc = "Find Files" },
         { "<leader>sg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
-        { "<leader>bb", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
+        { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffers" },
         { "<leader>th", "<cmd>Telescope help_tags<cr>", desc = "Help Tags" },
     },
-    tag = '0.1.0',
+    tag = '0.1.4',
     dependencies = {
         'nvim-lua/plenary.nvim'
     },
+    config = function()
+        require('telescope').setup{
+            pickers = {
+                buffers = {
+                    theme = "dropdown",
+                }
+            }
+        }
+    end
+
 }
