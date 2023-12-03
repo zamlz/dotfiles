@@ -31,12 +31,14 @@
       lolcat
       neofetch
       pstree
+      ranger
       tree
       # GUI Tools
-      qutebrowser
-      feh
-      iosevka
       emacs29
+      feh
+      firefox
+      iosevka
+      qutebrowser
       wmctrl
     ];
   };
