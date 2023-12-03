@@ -8,7 +8,7 @@
     ../../shell/password-store.nix
     ../../shell/ssh.nix
     ../../shell/tmux.nix
-    ../../shell/zsh.nix
+    ../../shell/zsh
     # Graphical Utilties
     ../../graphical/xorg/herbstluftwm
     ../../graphical/xorg/kitty.nix

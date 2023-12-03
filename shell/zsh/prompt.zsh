@@ -12,27 +12,33 @@
 # overkill.
 
 # ~ λ
-export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
+export PROMPT="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
+
+
 
 #.-|ssh|-(zamlz@andromeda)-[arch::~]-<dotfiles.main>-{env:alchemy}
 #`--[λ]->
+#    https://symbl.cc/en/unicode/blocks/box-drawing/
 function prompt_generate() {
     EXIT_CODE=$1
 
-    echo -ne "%B%F{cyan}.-"
+    echo -ne "\n\r%B%F{cyan}┌─"
 
     # Check if we are in an SSH connection
     if [ -n "$SSH_TTY" ]; then
-        echo -ne "%F{black}|%b%F{blue}ssh%F{black}%B|%F{cyan}-"
+        echo -ne "%F{black}|%b%F{blue}ssh%F{black}%B|%F{cyan}─"
     fi
 
     # user @ hostname
-    echo -ne "%F{black}(%b%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)"
+    echo -ne "%F{black}(%b%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)%F{cyan}─"
 
     # distro :: current working directory
-    echo -ne "%F{cyan}-%F{black}[%b%F{cyan}${DISTRO}"
-    echo -ne "%F{white}::%F{blue}%~%B%F{black}]"
-
+    export distro=$(grep --color=none ^ID= /etc/os-release \
+        | sed -e 's/^ID=//g' \
+        | tr -d '"')
+    echo -ne "%F{black}<%b%F{cyan}${distro}"
+    echo -ne "%F{white}::%F{blue}%~%B%F{black}>"
+    
     # git_repo_name . git_repo_branch
     if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
 
@@ -58,14 +64,14 @@ function prompt_generate() {
         else
             C='red'
         fi
-        echo -ne "%F{cyan}-%F{black}<%b%F{$C}$GIT_NAME.$GIT_BRANCH%B%F{black}>"
+        echo -ne "\n%F{cyan}├─%F{black}[%b%F{$C}$GIT_NAME.$GIT_BRANCH%B%F{black}]"
 
     fi
 
     # Environment Variables
     if [ -n "${AWS_PROFILE}${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
 
-        echo -ne "%B%F{cyan}-%F{black}{%b%F{yellow}"
+        echo -ne "\n%B%F{cyan}├─%F{black}{%b%F{yellow}"
         SEPERATOR=""
 
         if [ -n "$AWS_PROFILE" ]; then
@@ -93,7 +99,7 @@ function prompt_generate() {
     fi
 
     # continue the curve on the next line of the prompt
-    echo -ne "\n%B%F{cyan}\`--"
+    echo -ne "\n%B%F{cyan}└─"
 
     # λ : exit_code
     echo -ne "%B%F{black}["
@@ -105,5 +111,5 @@ function prompt_generate() {
     echo -ne "%B%F{black}]"
 
     # end the prompt
-    echo -ne "%B%F{cyan}-%B%F{white}> %{\e[0m%}"
+    echo -ne "%B%F{cyan}─%B%F{white}> %{\e[0m%}"
 }

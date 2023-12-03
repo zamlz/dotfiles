@@ -1,16 +1,10 @@
 #!/bin/zsh
 
-# Source some configurations
-. $HOME/etc/pass/config
-
 # Update PATH with local binary directories
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 
 # Useful to have the distro name easily accessible
-export DISTRO=$(grep --color=none ^ID= /etc/os-release \
-    | sed -e 's/^ID=//g' \
-    | tr -d '"')
 
 # This will let us know if we're in windows (WSL) or not
 export WSL=$(uname -r | grep "microsoft")

@@ -50,5 +50,15 @@
           exec startx
       fi
     '';
+    initExtra = ''
+    source $HOME/nix/shell/zsh/prompt.zsh
+    precmd() {
+    	# load terminal window info if it exists
+	# FIXME: enable load_window_info > /dev/null
+	export PROMPT=$(prompt_generate $?)
+    	# save terminal window info (creates id file)
+	# FIXME: enable save_window_info > /dev/null 
+    }
+    '';
   };
 }
