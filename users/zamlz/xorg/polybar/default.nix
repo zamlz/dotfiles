@@ -23,7 +23,7 @@
 in {
   imports = [];
   xdg.configFile."polybar/kernel_info.sh" = {
-    source = ../../../__legacy__/etc/polybar/scripts/kernel_info.sh;
+    source = ./__legacy__/scripts/kernel_info.sh;
     executable = true;
   };
   services.polybar = {

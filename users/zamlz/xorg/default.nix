@@ -3,7 +3,7 @@
     ./herbstluftwm
     ./kitty.nix
     ./picom.nix
-    ./polybar.nix
+    ./polybar
     ./rofi
     ./sxhkd.nix
   ];
