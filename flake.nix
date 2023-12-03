@@ -18,7 +18,7 @@
     nixosConfigurations = {
       NAVI-CoplandOS = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-	modules = [ ./hosts/navi ];
+	modules = [ ./hosts/navi.nix ];
       };
     };
 
