@@ -1,7 +1,15 @@
 { inputs, lib, config, pkgs, ... }: {
 
   imports = [
-    ./core
+    # Shell Utilties
+    ../../shell/git.nix
+    ../../shell/gpg.nix
+    ../../shell/neovim
+    ../../shell/password-store.nix
+    ../../shell/ssh.nix
+    ../../shell/tmux.nix
+    ../../shell/zsh.nix
+    # Graphical Utilties
     ./xorg
     ./wayland
   ];
