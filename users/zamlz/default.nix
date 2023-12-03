@@ -10,8 +10,13 @@
     ../../shell/tmux.nix
     ../../shell/zsh.nix
     # Graphical Utilties
-    ./xorg
-    ./wayland
+    ../../graphical/xorg/herbstluftwm
+    ../../graphical/xorg/kitty.nix
+    ../../graphical/xorg/picom.nix
+    ../../graphical/xorg/polybar
+    ../../graphical/xorg/rofi
+    ../../graphical/xorg/sxhkd.nix
+    ../../graphical/wayland
   ];
 
   nixpkgs = {
