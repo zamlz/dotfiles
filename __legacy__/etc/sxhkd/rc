@@ -7,32 +7,12 @@
 super + shift + Return
     $HOME/etc/sxhkd/pwdcfw.sh $SXHKD_TERMINAL
 
-# Dmenu for interacting with password store and also getting QR Code view.
-super + p
-    $HOME/etc/rofi/scripts/pass
-super + shift + p
-    $HOME/etc/rofi/scripts/pass --qrcode
-
-# Dmenu for retrieving and saving personal bookmarks
-super + b
-    $HOME/etc/rofi/scripts/book
-
-# Dmenu for looking up my vimwiki files in read-only mode. Also generate PDF
-# views as well.
-super + n
-    $HOME/etc/rofi/scripts/wiki
-super + shift + n
-    $HOME/etc/rofi/scripts/wiki --pdf
-
 # Toggle between different display/power profile (multi-monitor, single
 # monitor, etc.)
 super + d
     $HOME/etc/rofi/scripts/profile
 XF86Display
     $HOME/etc/rofi/scripts/profile
-
-super + ctrl + alt + Escape
-    $HOME/etc/rofi/scripts/system
 
 # Interactively select a window or rectangle with the mouse to take a screen
 # shot of it. It's important that these keybindings are prefaces with the =@=

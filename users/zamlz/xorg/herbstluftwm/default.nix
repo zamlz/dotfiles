@@ -67,8 +67,8 @@ in {
       super = "Mod4";
       resizestep = "0.01";
     in {
-      # FIXME: SXHKD WORKAROUND STUFF
-      "${super}-Ctrl-Alt-Escape" = "quit";
+      # FIXME: Dynamically set this is sxhkd is not used
+      # "${super}-Ctrl-Alt-Escape" = "quit";
 
       # Reload WM and Close Window
       "${super}-Ctrl-Alt-r" = "chain , spawn $HOME/etc/xorg/refresh.sh , reload";
