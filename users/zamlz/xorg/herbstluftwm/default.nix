@@ -27,7 +27,7 @@ in {
   {
     enable = true;
     extraConfig = let
-      WALLPAPER = "/home/zamlz/usr/walls/mountains.jpg";
+      WALLPAPER = "/home/zamlz/usr/walls/flower.jpg";
     in ''
       herbstclient attr theme.active.outer_color "${colorScheme.background}"
       herbstclient attr theme.active.inner_color "${colorScheme.background}"
