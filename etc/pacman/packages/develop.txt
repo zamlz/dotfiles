@@ -16,6 +16,9 @@ python-pipenv
 python-tox
 python-ipdb
 
+# [Nix]
+nix
+
 # [Node]
 nodejs
 npm

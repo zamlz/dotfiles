@@ -12,7 +12,7 @@
 # overkill.
 
 # ~ λ
-export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
+#export PS1="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
 
 #.-|ssh|-(zamlz@andromeda)-[arch::~]-<dotfiles.main>-{env:alchemy}
 #`--[λ]->
