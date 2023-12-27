@@ -19,6 +19,7 @@ export PROMPT="%F{blue}%~%f %B%(?.%F{green}.%F{red})λ%f%b "
 #.-|ssh|-(zamlz@andromeda)-[arch::~]-<dotfiles.main>-{env:alchemy}
 #`--[λ]->
 #    https://symbl.cc/en/unicode/blocks/box-drawing/
+#    https://unix.stackexchange.com/questions/124407/what-color-codes-can-i-use-in-my-bash-ps1-prompt/124409#124409
 function prompt_generate() {
     EXIT_CODE=$1
 
@@ -26,18 +27,18 @@ function prompt_generate() {
 
     # Check if we are in an SSH connection
     if [ -n "$SSH_TTY" ]; then
-        echo -ne "%F{black}|%b%F{blue}ssh%F{black}%B|%F{cyan}─"
+        echo -ne "%F{white}|%b%F{yellow}ssh%F{white}%B|%F{cyan}─"
     fi
 
     # user @ hostname
-    echo -ne "%F{black}(%b%F{cyan}%n%F{white}@%F{magenta}%M%F{black}%B)%F{cyan}─"
+    echo -ne "%F{white}[%b%F{blue}%n%F{white}@%F{magenta}%M%F{white}%B]%F{cyan}─"
 
     # distro :: current working directory
     export distro=$(grep --color=none ^ID= /etc/os-release \
         | sed -e 's/^ID=//g' \
         | tr -d '"')
-    echo -ne "%F{black}<%b%F{cyan}${distro}"
-    echo -ne "%F{white}::%F{blue}%~%B%F{black}>"
+    echo -ne "%F{white}/%b%F{cyan}${distro}"
+    echo -ne "%F{white}::%F{blue}%~%B%F{white}/"
     
     # git_repo_name . git_repo_branch
     if [ -d "`git rev-parse --show-toplevel 2> /dev/null`/.git" ]; then
@@ -64,24 +65,25 @@ function prompt_generate() {
         else
             C='red'
         fi
-        echo -ne "\n%F{cyan}├─%F{black}[%b%F{$C}$GIT_NAME.$GIT_BRANCH%B%F{black}]"
+        echo -ne "\n%F{cyan}├─%F{white}<%b%F{$C}$GIT_NAME.$GIT_BRANCH%B%F{white}>"
 
     fi
 
     # Environment Variables
     if [ -n "${AWS_PROFILE}${ENV_NAME}${PIPENV_ACTIVE}${VIRTUAL_ENV}" ]; then
 
-        echo -ne "\n%B%F{cyan}├─%F{black}{%b%F{yellow}"
+        echo -ne "\n%B%F{cyan}├─%F{white}{%b%F{202}"
         SEPERATOR=""
+	ALT_SEPERATOR="%F{white}, %F{202}"
 
         if [ -n "$AWS_PROFILE" ]; then
             echo -ne "${SEPERATOR}aws:$AWS_PROFILE"
-            SEPERATOR=" "
+            SEPERATOR=$ALT_SEPERATOR
         fi
 
         if [ -n "$ENV_NAME" ]; then
             echo -ne "${SEPERATOR}env:$ENV_NAME"
-            SEPERATOR=" "
+            SEPERATOR=$ALT_SEPERATOR
         fi
 
         if [ -n "$VIRTUAL_ENV" ]; then
@@ -92,24 +94,24 @@ function prompt_generate() {
                 PROGRAM="venv"
             fi
             echo -ne "${SEPERATOR}${PROGRAM}:$(basename $VIRTUAL_ENV /.venv)"
-            SEPERATOR=" "
+            SEPERATOR=$ALT_SEPERATOR
         fi
 
-        echo -ne "%B%F{black}}"
+        echo -ne "%B%F{white}}"
     fi
 
     # continue the curve on the next line of the prompt
     echo -ne "\n%B%F{cyan}└─"
 
     # λ : exit_code
-    echo -ne "%B%F{black}["
+    echo -ne "%B%F{white}("
     if [ ${EXIT_CODE} -eq 0 ]; then
         echo -ne "%B%F{green}λ"
     else
         echo -ne "%B%F{red}λ:${EXIT_CODE}"
     fi
-    echo -ne "%B%F{black}]"
+    echo -ne "%B%F{white})"
 
     # end the prompt
-    echo -ne "%B%F{cyan}─%B%F{white}> %{\e[0m%}"
+    echo -ne "%B%F{cyan}─%B%F{cyan}> %{\e[0m%}"
 }
