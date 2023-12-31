@@ -1,0 +1,54 @@
+import = ["/home/zamlz/etc/alacritty/colors/gruvbox-black.toml"]
+live_config_reload = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[cursor]
+vi_mode_style = "Block"
+
+[cursor.style]
+blinking = "On"
+shape = "Beam"
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 12.0
+
+[font.bold]
+family = "Iosevka Term"
+style = "Bold"
+
+[font.bold_italic]
+family = "Iosevka Term"
+style = "Bold Italic"
+
+[font.glyph_offset]
+x = 0
+y = 0
+
+[font.italic]
+family = "Iosevka Term"
+style = "Italic"
+
+[font.normal]
+family = "Iosevka Term"
+style = "Regular"
+
+[scrolling]
+history = 10000
+multiplier = 3
+
+[selection]
+save_to_clipboard = true
+semantic_escape_chars = ",│`|:\"' ()[]{}<>\t"
+
+[window]
+dynamic_padding = false
+opacity = 1.0
+
+[window.padding]
+x = 0
+y = 0

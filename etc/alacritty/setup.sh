@@ -8,8 +8,8 @@
 
 logger "Setting up Alacritty"
 
-CONFIG_SOURCE=$HOME/etc/alacritty/main.yaml
-CONFIG_TARGET=$HOME/.config/alacritty/alacritty.yml
+CONFIG_SOURCE=$HOME/etc/alacritty/main.toml
+CONFIG_TARGET=$HOME/.config/alacritty/alacritty.toml
 CONFIG_TARGET_DIR=$(dirname "$CONFIG_TARGET")
 
 if [ ! -d "$CONFIG_TARGET_DIR" ]; then
