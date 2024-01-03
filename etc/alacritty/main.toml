@@ -1,4 +1,4 @@
-import = ["/home/zamlz/etc/alacritty/colors/gruvbox-black.toml"]
+import = ["~/etc/alacritty/colors/gruvbox-black.toml"]
 live_config_reload = true
 
 [colors]
