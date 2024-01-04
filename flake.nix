@@ -15,7 +15,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim}@inputs: {
 
     # NixOS Configuration Entrypoint
     # ( available through `nixos-rebuild switch --flake .#${hostname}` )
@@ -34,7 +34,10 @@
       zamlz = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
 	extraSpecialArgs = { inherit inputs; };
-	modules = [ ./users/zamlz ];
+	modules = [ 
+          ./users/zamlz
+	  nixvim.homeManagerModules.nixvim
+	];
       };
     };
   };
