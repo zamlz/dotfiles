@@ -10,8 +10,8 @@
     ../../shell/tmux.nix
     ../../shell/zsh
     # Graphical Utilties
+    ../../graphical/kitty.nix
     ../../graphical/xorg/herbstluftwm
-    ../../graphical/xorg/kitty.nix
     ../../graphical/xorg/picom.nix
     ../../graphical/xorg/polybar
     ../../graphical/xorg/rofi
@@ -43,6 +43,7 @@
       htop
       lolcat
       neofetch
+      pciutils
       pstree
       ranger
       tree
