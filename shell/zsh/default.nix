@@ -19,7 +19,7 @@
 	"pkill *"
       ];
       save = 100000;
-      path = ".local/share/zsh_history.db";
+      path = "~/.local/share/zsh_history.db";
     };
     shellAliases = {
       # Shortcuts for ls
@@ -47,7 +47,7 @@
     };
     loginExtra = ''
       if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
-          exec sway 
+          exec Hyprland
       fi
     '';
     initExtra = ''

@@ -54,6 +54,9 @@
       iosevka
       qutebrowser
       wmctrl
+      # wayland tools
+      swww
+      waypaper
     ];
   };
 
