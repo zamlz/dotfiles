@@ -9,7 +9,7 @@
     defaultKeymap = "viins";
     enableAutosuggestions = true;
     enableCompletion = true;
-    enableSyntaxHighlighting = true;
+    syntaxHighlighting.enable = true;
     enableVteIntegration = true;
     history = {
       extended = true;
@@ -47,7 +47,7 @@
     };
     loginExtra = ''
       if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
-          exec startx
+          exec sway 
       fi
     '';
     initExtra = ''
