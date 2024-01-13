@@ -16,6 +16,7 @@
     ../../graphical/xorg/polybar
     ../../graphical/xorg/rofi
     ../../graphical/xorg/sxhkd.nix
+    ../../graphical/xorg/xinit.nix
     ../../graphical/wayland
   ];
 
