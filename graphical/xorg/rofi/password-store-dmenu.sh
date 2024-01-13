@@ -14,13 +14,12 @@ if [ "$1" = "--qrcode" ]; then
     PROMPT="${PROMPT} [QrCode]"
 fi
 
-pass_name=$(find ~/usr/passwords -type f | grep -v "\.gpg-id" | \
-    grep "\.gpg" | sed -e "s|$HOME\/usr\/passwords\/||g" -e "s|\.gpg||g" | \
+pass_name=$(find $PASSWORD_STORE_DIR -type f | grep -v "\.gpg-id" | \
+    grep "\.gpg" | sed -e "s|$PASSWORD_STORE_DIR\/||g" -e "s|\.gpg||g" | \
     rofi -dmenu -i -p "$PROMPT" )
 
 if [ "$pass_name" != "" ]; then
     export PINENTRY_USER_DATA='rofi'
-    export PASSWORD_STORE_DIR="$HOME/usr/passwords"
     if [ -z "$QRMODE" ]; then
         pass -c "$pass_name"
         result_status=$?

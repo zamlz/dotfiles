@@ -5,7 +5,7 @@
   programs.password-store = {
     enable = true;
     settings = {
-      PASSWORD_STORE_DIR = "$HOME/usr/passwords";
+      PASSWORD_STORE_DIR = "$HOME/sys/passwords";
     };
   };
 }
