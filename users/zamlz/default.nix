@@ -37,27 +37,30 @@
     username = "zamlz";
     homeDirectory = "/home/zamlz";
     packages = with pkgs; [
-      # CLI Tools
-      cmatrix
-      figlet
+      # System CLI Tools
       htop
-      lolcat
-      neofetch
       pciutils
+      neofetch
       pstree
       ranger
       tree
-      # GUI Tools
-      emacs29
-      feh
-      firefox
+      # Fun CLI Tools
+      cmatrix
+      figlet
+      lolcat
+      # Fonts
       iosevka
-      qutebrowser
+      # Desktop Environment Utilities
+      feh
       wmctrl
-      qtile
+      # GUI Apps
+      firefox
+      qutebrowser
       # wayland tools
       swww
       waypaper
+      # Misc Experiments
+      qtile
     ];
   };
 
