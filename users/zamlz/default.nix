@@ -54,6 +54,7 @@
       iosevka
       qutebrowser
       wmctrl
+      qtile
       # wayland tools
       swww
       waypaper

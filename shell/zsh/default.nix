@@ -19,7 +19,6 @@
 	"pkill *"
       ];
       save = 100000;
-      path = "~/.local/share/zsh_history.db";
     };
     shellAliases = {
       # Shortcuts for ls
@@ -47,7 +46,10 @@
     };
     loginExtra = ''
       if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
-          exec Hyprland
+          # exec Hyprland
+          exec startx herbstluftwm
+      elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
+          exec qtile start -b wayland
       fi
     '';
     initExtra = ''
