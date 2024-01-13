@@ -21,6 +21,5 @@
         ff = "only";
       };
     };
-    diff-so-fancy.enable = true;
   };
 }
