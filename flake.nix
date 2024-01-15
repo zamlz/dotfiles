@@ -13,9 +13,11 @@
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixgl.url = "github:nix-community/nixGL";
   };
 
-  outputs = { self, nixpkgs, home-manager, nixvim}@inputs: {
+  outputs = { self, nixpkgs, home-manager, nixvim, nixgl}@inputs: {
 
     # NixOS Configuration Entrypoint
     # ( available through `nixos-rebuild switch --flake .#${hostname}` )
@@ -23,7 +25,7 @@
     nixosConfigurations = {
       NAVI-CoplandOS = nixpkgs.lib.nixosSystem {
         specialArgs = { inherit inputs; };
-	modules = [ ./hosts/navi.nix ];
+        modules = [ ./hosts/navi.nix ];
       };
     };
 
@@ -33,11 +35,11 @@
     homeConfigurations = {
       zamlz = home-manager.lib.homeManagerConfiguration {
         pkgs = nixpkgs.legacyPackages.x86_64-linux;
-	extraSpecialArgs = { inherit inputs; };
-	modules = [ 
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
           ./users/zamlz
-	  nixvim.homeManagerModules.nixvim
-	];
+          nixvim.homeManagerModules.nixvim
+        ];
       };
     };
   };
