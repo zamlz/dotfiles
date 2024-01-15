@@ -11,6 +11,13 @@
       maplocalleader = " ";
     };
 
+    colorschemes.gruvbox = {
+      enable = true;
+      trueColor = false;
+      contrastDark = "hard";
+      bold = true;
+    };
+
     options = {
       # fringe line numbers
       number         = true;
@@ -43,14 +50,9 @@
       # rice out neovim
       syntax     = "on";
       lazyredraw = true;
-      showmode   = false; # don't show the current mode under the modeline
+      showmode   = true; # FIXME: don't show the current mode under the modeline
     };
 
-    plugins = {
-      lualine = {
-        enable = true;
-        theme = "codedark";
-      };
-    };
+    plugins = {};
   };
 }
