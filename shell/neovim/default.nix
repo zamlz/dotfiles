@@ -1,4 +1,18 @@
-{ inputs, lib, config, pkgs, ... }: {
+{ inputs, lib, config, pkgs, ... }: let
+  leaderAction = key: action: description: {
+    key = "<leader>${key}";
+    action = action;
+    options.desc = description;
+  };
+  leaderFloatermSetup = key: title: exec: description: width: height:
+    let
+      action = "<CMD>FloatermNew --width=${width} --height=${height} --title=${title} ${exec}<CR>";
+    in leaderAction key action description;
+  leaderFloaterm = key: title: exec: description:
+    leaderFloatermSetup key title exec description "0.6" "0.6";
+  leaderFloatermMax = key: title: exec: description:
+    leaderFloatermSetup key title exec description "1.0" "1.0";
+in {
   
   imports = [];
 
@@ -11,12 +25,7 @@
       maplocalleader = " ";
     };
 
-    colorschemes.gruvbox = {
-      enable = true;
-      trueColor = false;
-      contrastDark = "hard";
-      bold = true;
-    };
+    colorschemes.one.enable = true;
 
     options = {
       # fringe line numbers
@@ -50,9 +59,33 @@
       # rice out neovim
       syntax     = "on";
       lazyredraw = true;
-      showmode   = true; # FIXME: don't show the current mode under the modeline
+      showmode   = false;
     };
 
-    plugins = {};
+    extraPlugins = with pkgs.vimPlugins; [
+      vim-floaterm
+      smartcolumn-nvim
+    ];
+
+    plugins = {
+      gitsigns.enable = true;
+      which-key.enable = true;
+      neogit.enable = true;
+      lualine = {
+        enable = true;
+        globalstatus = true;
+      };
+    };
+
+    keymaps = [
+      # useful so you don't have to press "shift" when trying to run commands
+      { key = ";"; action = ":"; }
+      # Git
+      (leaderAction "g" "<CMD>Neogit<CR>" "Neogit")
+      # Floaterm
+      (leaderFloaterm "t" "Terminal" "" "Terminal")
+      (leaderFloaterm "p" "IPython" "ipython" "IPython")
+      (leaderFloatermMax "d" "Ranger" "ranger" "Ranger")
+    ];
   };
 }
