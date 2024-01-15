@@ -45,6 +45,7 @@
       pstree
       ranger
       tree
+      less
       # Fun CLI Tools
       cmatrix
       figlet
