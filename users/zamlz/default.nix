@@ -55,6 +55,7 @@
       # Desktop Environment Utilities
       feh
       wmctrl
+      i3lock
       # GUI Apps
       firefox
       qutebrowser
