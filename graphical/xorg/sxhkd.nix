@@ -1,5 +1,5 @@
 { inputs, lib, config, pkgs, ... }: let
-  sxhkdTerminal = "kitty";
+  sxhkdTerminal = "alacritty";
 in {
   imports = [];
   services.sxhkd = {
