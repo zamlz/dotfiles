@@ -26,9 +26,7 @@ in {
   xsession.windowManager.herbstluftwm =
   {
     enable = true;
-    extraConfig = let
-      WALLPAPER = "/home/zamlz/usr/walls/flower.jpg";
-    in ''
+    extraConfig = ''
       herbstclient attr theme.active.outer_color "${colorScheme.background}"
       herbstclient attr theme.active.inner_color "${colorScheme.background}"
       herbstclient attr theme.normal.color "${colorScheme.black}"
@@ -50,10 +48,10 @@ in {
 
       # services
       # FIXME: this shouldn't be here either
+      $HOME/.fehbg
       (pkill sxhkd; sleep 0.1; ${pkgs.sxhkd}/bin/sxhkd) &
       (pkill picom; sleep 0.1; ${pkgs.picom}/bin/picom) &
       (pkill polybar; sleep 0.1; ${pkgs.polybar}/bin/polybar) &
-      ${pkgs.feh}/bin/feh --no-fehbg --bg-fill '${WALLPAPER}'
 
       # xorg settings
       # FIXME: this shouldn't belong here, atleast not with NIXOS
