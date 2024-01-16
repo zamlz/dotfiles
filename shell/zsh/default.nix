@@ -43,6 +43,8 @@
       gb = "git branch -av";
       gr = "git rev-parse --show-toplevel";
       grr = "git rev-parse --show-toplevel | xargs";
+      vi = "nvim";
+      vim = "nvim";
     };
     loginExtra = ''
       if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
