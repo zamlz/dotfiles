@@ -29,12 +29,12 @@ in {
 
     options = {
       # fringe line numbers
-      number         = true;
-      relativenumber = true;
+      number         = false;
+      relativenumber = false;
       # cursor crosshair and soft-thresholds
       ruler        = true;
       cursorline   = true;
-      cursorcolumn = true;
+      cursorcolumn = false;
       colorcolumn  = [ 80 128 ];
       # text display
       wrap = false;
