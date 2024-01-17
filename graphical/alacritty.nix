@@ -68,7 +68,7 @@ in {
       };
 
       font = {
-        size = 8.0;
+        size = 7.0;
         glyph_offset = {
           x = 0;
           y = 0;
