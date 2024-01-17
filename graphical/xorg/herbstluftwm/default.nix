@@ -181,12 +181,12 @@ in {
       "frame_transparent_width" = 0;
       "frame_border_width" = 2;
       "frame_border_active_color" = "${colorScheme.foreground}";
-      "frame_border_normal_color" = "#00000000";
+      "frame_border_normal_color" = "#000000"; # add extra "00" for transparency
       "frame_bg_transparent" = 1;
       "frame_bg_normal_color" = "${colorScheme.background}";
       "frame_bg_active_color" = "${colorScheme.black}";
       "always_show_frame" = 0;
-      "frame_gap" = 20; # 20 is what you want if you want gaps
+      "frame_gap" = 0; # 20 is what you want if you want gaps
       "frame_padding" = 0;
       "window_gap" = 0;
       "smart_window_surroundings" = 0;
