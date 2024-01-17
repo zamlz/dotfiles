@@ -27,7 +27,7 @@
       la = "ls -lah";
       # Shell aliases to make using git easier.
       gg = "lazygit";
-      gs = "echo \"origin = $(git remote get-url origin --push)\" | lolcat; git status";
+      gs = "echo \"\\e[0;36morigin\\e[0m = \\e[0;34m$(git remote get-url origin --push)\\e[0m\"; git status";
       ga = "git add";
       gc = "git commit";
       gd = "git diff";
