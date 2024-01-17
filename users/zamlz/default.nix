@@ -11,7 +11,6 @@
     ../../shell/zsh
     # Graphical Utilties
     ../../graphical/alacritty.nix
-    ../../graphical/kitty.nix
     ../../graphical/xorg/herbstluftwm
     ../../graphical/xorg/picom.nix
     ../../graphical/xorg/polybar
