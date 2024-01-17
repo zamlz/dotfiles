@@ -4,6 +4,7 @@
     # Shell Utilties
     ../../shell/git.nix
     ../../shell/gpg.nix
+    ../../shell/neofetch
     ../../shell/neovim
     ../../shell/password-store.nix
     ../../shell/ssh.nix
