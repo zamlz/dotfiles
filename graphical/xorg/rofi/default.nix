@@ -11,10 +11,10 @@ in {
       inherit (config.lib.formats.rasi) mkLiteral;
     in {
       "*" = {
-        red =                         mkLiteral "rgba ( 220, 50, 47, 100 % )";
-        blue =                        mkLiteral "rgba ( 38, 139, 210, 100 % )";
-        background =                  mkLiteral "rgba ( 0, 0, 0, 100 % )";
-        foreground =                  mkLiteral "rgba ( 235, 219, 178, 100 % )";
+        red =                         mkLiteral colorScheme.red;
+        blue =                        mkLiteral colorScheme.blue;
+        background =                  mkLiteral colorScheme.background;
+        foreground =                  mkLiteral colorScheme.foreground;
         background-color =            mkLiteral "rgba ( 0, 0, 0, 0 % )";
         normal-background =           mkLiteral "var(background)";
         normal-foreground =           mkLiteral "var(foreground)";
