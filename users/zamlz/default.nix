@@ -31,6 +31,7 @@
       ranger
       tree
       less
+      ripgrep
       # Fun CLI Tools
       cmatrix
       figlet

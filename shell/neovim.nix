@@ -69,9 +69,62 @@ in {
       gitsigns.enable = true;
       which-key.enable = true;
       neogit.enable = true;
+      
       lualine = {
         enable = true;
         globalstatus = true;
+      };
+
+      telescope = {
+        enable = true;
+        extraOptions = {
+          pickers = {
+            buffers = {
+              theme = "ivy";
+            };
+            find_files = {
+              theme = "ivy";
+            };
+            git_files = {
+              theme = "ivy";
+            };
+            oldfiles = {
+              theme = "ivy";
+            };
+            live_grep = {
+              theme = "ivy";
+            };
+            builtin = {
+              theme = "ivy";
+            };
+          };
+        };
+        keymaps = {
+          "<leader>b" = {
+            action = "buffers";
+            desc = "Buffers";
+          };
+          "<leader>ff" = {
+            action = "git_files";
+            desc = "Telescope Git Files";
+          };
+          "<leader>f/" = {
+            action = "find_files";
+            desc = "Find Files";
+          };
+          "<leader>fr" = {
+            action = "oldfiles";
+            desc = "Recent Files";
+          };
+          "<leader>sg" = {
+            action = "live_grep";
+            desc = "Live Grep";
+          };
+          "<leader>tt" = {
+            action = "builtin";
+            desc = "Telescope";
+          };
+        };
       };
     };
 
