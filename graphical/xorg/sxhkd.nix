@@ -10,9 +10,9 @@ in {
       "super + e" = "rofi -show run";
       "super + w" = "rofi -show window";
       # FIXME: This configuration should somehow be owned by password-store
-      "super + p" = "$HOME/nix/graphical/xorg/rofi/password-store-dmenu.sh";
-      "super + shift + p" = "$HOME/nix/graphical/xorg/rofi/password-store-dmenu.sh --qrcode";
-      "super + ctrl + alt + Escape" = "$HOME/nix/graphical/xorg/rofi/system-manager.sh";
+      "super + p" = "$HOME/.config/rofi/password-store-dmenu.sh";
+      "super + shift + p" = "$HOME/.config/rofi/password-store-dmenu.sh --qrcode";
+      "super + ctrl + alt + Escape" = "$HOME/.config/rofi/system-manager.sh";
     };
   };
 }

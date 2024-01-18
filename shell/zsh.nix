@@ -1,7 +1,5 @@
 { inputs, lib, config, pkgs, ... }: {
-
-  imports = [];
-
+  xdg.configFile."zsh/prompt.zsh".source = ./prompt.zsh;
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
@@ -55,7 +53,7 @@
       fi
     '';
     initExtra = ''
-    source $HOME/nix/shell/zsh/prompt.zsh
+    source $HOME/.config/zsh/prompt.zsh
     precmd() {
     	# load terminal window info if it exists
 	# FIXME: enable load_window_info > /dev/null

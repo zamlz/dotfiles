@@ -13,9 +13,6 @@
   leaderFloatermMax = key: title: exec: description:
     leaderFloatermSetup key title exec description "1.0" "1.0";
 in {
-  
-  imports = [];
-
   programs.nixvim = {
     enable = true;
     enableMan = true;

@@ -1,3 +1,3 @@
 { inputs, lib, config, pkgs, ... }: {
-  home.file.".xinitrc".source = ./xinitrc;
+  home.file.".xinitrc".source = ./scripts/xinitrc;
 }

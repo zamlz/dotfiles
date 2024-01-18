@@ -1,7 +1,9 @@
 { inputs, lib, config, pkgs, ... }: let
-  colorScheme = (import ../../../common/colorscheme.nix).defaultColorScheme;
+  colorScheme = (import ../../common/colorscheme.nix).defaultColorScheme;
 in {
-  imports = [];
+  xdg.configFile."rofi/password-store-dmenu.sh".source = ./scripts/rofi-password-store-dmenu.sh;
+  xdg.configFile."rofi/profile-switcher.sh".source = ./scripts/rofi-profile-switcher.sh;
+  xdg.configFile."rofi/system-manager.sh".source = ./scripts/rofi-system-manager.sh;
   programs.rofi = {
     enable = true;
     location = "center";

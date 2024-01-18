@@ -1,9 +1,9 @@
 { inputs, lib, config, pkgs, ... }: let
-  colorScheme = (import ../../../common/colorscheme.nix).defaultColorScheme;
+  colorScheme = (import ../../common/colorscheme.nix).defaultColorScheme;
 in {
   imports = [];
-  xdg.configFile."polybar/kernel_info.sh" = {
-    source = ./__legacy__/scripts/kernel_info.sh;
+  xdg.configFile."polybar/kernel-info.sh" = {
+    source = ./scripts/polybar-kernel-info.sh;
     executable = true;
   };
   services.polybar = {
@@ -120,7 +120,7 @@ in {
       "module/kernel" = {
         type = "custom/script";
         # FIXME: can I get this to use xdg.configFile in the future?
-        exec = "~/.config/polybar/kernel_info.sh";
+        exec = "~/.config/polybar/kernel-info.sh";
         interval = 90;
         format = "<label>";
         label-foreground = "${colorScheme.foreground}";

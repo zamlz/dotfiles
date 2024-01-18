@@ -1,7 +1,4 @@
 { inputs, lib, config, pkgs, ... }: {
-
-  imports = [];
-
   programs.password-store = {
     enable = true;
     settings = {

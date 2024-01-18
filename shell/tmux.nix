@@ -1,7 +1,4 @@
 { inputs, lib, config, pkgs, ... }: {
-
-  imports = [];
-
   programs.tmux = {
     enable = true;
     prefix = "C-b";

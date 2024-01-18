@@ -1,8 +1,8 @@
 { inputs, lib, config, pkgs, ... }: let
-  colorScheme = (import ../../../common/colorscheme.nix).defaultColorScheme;
+  colorScheme = (import ../../common/colorscheme.nix).defaultColorScheme;
 in {
   imports = [];
-  xdg.configFile."herbstluftwm/tag_utils.sh".source = ./tag_utils.sh;
+  xdg.configFile."herbstluftwm/tag-utils.sh".source = ./scripts/herbstluftwm-tag-utils.sh;
   xsession.windowManager.herbstluftwm =
   {
     enable = true;
@@ -101,9 +101,9 @@ in {
       "${super}-bracketleft" = "use_index -1 --skip-visible";
       # FIXME: use xdg.configFile?
       # FIXME: anyway to specify that there is a dependency on rofi here?
-      "${super}-slash" = "spawn $HOME/.config/herbstluftwm//tag_utils.sh goto";
-      "${super}-Shift-slash" = "spawn $HOME/.config/herbstluftwm/tag_utils.sh move";
-      "${super}-BackSpace" = "spawn $HOME/.config/herbstluftwm/tag_utils.sh remove";
+      "${super}-slash" = "spawn $HOME/.config/herbstluftwm//tag-utils.sh goto";
+      "${super}-Shift-slash" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh move";
+      "${super}-BackSpace" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh remove";
 
       # Layout Control
       "${super}-r" = "remove";

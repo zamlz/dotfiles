@@ -1,24 +1,8 @@
 { inputs, lib, config, pkgs, ... }: {
 
   imports = [
-    # Shell Utilties
-    ../../shell/git.nix
-    ../../shell/gpg.nix
-    ../../shell/neofetch
-    ../../shell/neovim
-    ../../shell/password-store.nix
-    ../../shell/ssh.nix
-    ../../shell/tmux.nix
-    ../../shell/zsh
-    # Graphical Utilties
-    ../../graphical/alacritty.nix
-    ../../graphical/xorg/herbstluftwm
-    ../../graphical/xorg/picom.nix
-    ../../graphical/xorg/polybar
-    ../../graphical/xorg/rofi
-    ../../graphical/xorg/sxhkd.nix
-    ../../graphical/xorg/xinit.nix
-    ../../graphical/wayland
+    ../../shell # Shell Utilties
+    ../../graphical # Graphical Utilties
   ];
 
   nixpkgs = {
@@ -70,6 +54,4 @@
 
   # FIXME: What is this?
   systemd.user.startServices = "sd-switch";
-
 }
-

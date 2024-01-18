@@ -1,7 +1,4 @@
 { inputs, lib, config, pkgs, ... }: {
-
-  imports = [];
-
   programs.gpg = {
     enable = true;
     homedir = "${config.xdg.configHome}/gnupg";

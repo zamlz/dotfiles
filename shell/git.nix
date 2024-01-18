@@ -1,7 +1,4 @@
 { inputs, lib, config, pkgs, ... }: {
-
-  imports = [];
-
   programs.git = {
     enable = true;
     userName = "Amlesh Sivanantham (zamlz)";
