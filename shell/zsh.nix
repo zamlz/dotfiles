@@ -1,5 +1,5 @@
 { inputs, lib, config, pkgs, ... }: {
-  xdg.configFile."zsh/prompt.zsh".source = ./prompt.zsh;
+  xdg.configFile."zsh/prompt.zsh".source = ./resources/zsh-prompt.zsh;
   programs.zsh = {
     enable = true;
     dotDir = ".config/zsh";
