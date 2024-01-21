@@ -42,6 +42,7 @@
       feh
       wmctrl
       i3lock
+      pavucontrol
       # GUI Apps
       firefox
       qutebrowser

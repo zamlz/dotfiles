@@ -75,6 +75,13 @@
     variables.EDITOR = "vim";
   };
 
+  hardware = {
+    opengl = {
+      enable = true;
+      driSupport = true;
+    };
+  };
+
   programs.zsh.enable = true;
 
   # User Accounts
@@ -99,11 +106,13 @@
     };
   };
 
-  hardware = {
-    opengl = {
-      enable = true;
-      driSupport = true;
-    };
+  security.rtkit.enable = true;
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    jack.enable = true;
   };
 
   services.xserver = {
