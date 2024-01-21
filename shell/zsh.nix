@@ -41,8 +41,16 @@
       gb = "git branch -av";
       gr = "git rev-parse --show-toplevel";
       grr = "git rev-parse --show-toplevel | xargs";
+      # make all vi/vim point to neovim
       vi = "nvim";
       vim = "nvim";
+      # aliasing these guys to make them safer
+      rm = "rm -I --preserve-root";
+      mv = "mv -i";
+      cp = "cp -i";
+      # misc aliases that are useful/fun
+      please = "sudo";
+      weather = "curl wttr.in";
     };
     loginExtra = ''
       if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then

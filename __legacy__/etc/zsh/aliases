@@ -1,33 +1,9 @@
-#!/usr/bin/env zsh
-
-# Z Shell Aliases
-
-
-# Make various commands pretty by default
 alias grep="grep --color=always"
-alias tree="tree -C"
-
-# Misc things
-alias fping="ping -c 3 www.google.com"
-alias weather="curl wttr.in"
-
-# Ricing info commands
-alias info="clear;echo;neofetch;colors;"
-alias infos="info;$HOME/bin/screenshot --delay 3"
 
 # Sudo improvements...
-alias please="sudo"
 if [ $UID -ne 0 ]; then
     alias fuck='eval "sudo $(fc -ln -1)"'
 fi
 
-# Make certain commands safer to use by default
-alias rm="rm -I --preserve-root"
-alias mv="mv -i"
-alias cp="cp -i"
-
 # Config Overrides
 alias tmux="tmux -f ~/etc/tmux/config"
-
-# Develoepr Aliases
-alias py="ipython"
