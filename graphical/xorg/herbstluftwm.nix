@@ -31,7 +31,7 @@ in {
       $HOME/.fehbg
       (pkill sxhkd; sleep 0.1; ${pkgs.sxhkd}/bin/sxhkd) &
       (pkill picom; sleep 0.1; ${pkgs.picom}/bin/picom) &
-      (pkill polybar; sleep 0.1; ${pkgs.polybar}/bin/polybar) &
+      (pkill polybar; sleep 0.1; ${pkgs.polybar}/bin/polybar top; ${pkgs.polybar}/bin/polybar bot) &
 
       # xorg settings
       # FIXME: this shouldn't belong here, atleast not with NIXOS
