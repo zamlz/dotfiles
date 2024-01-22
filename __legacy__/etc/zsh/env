@@ -1,29 +1,5 @@
 #!/bin/zsh
 
-# Update PATH with local binary directories
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/bin:$PATH"
-
-# Useful to have the distro name easily accessible
-
-# This will let us know if we're in windows (WSL) or not
-export WSL=$(uname -r | grep "microsoft")
-
-# The less program does not behave correctly when using windows. Some of these
-# arguments are not supported for some reason.
-if [ -z "$WSL" ]; then
-    export LESS='-R --mouse --wheel-lines=3 --no-init --quit-if-one-screen'
-else
-    export LESS='-R --no-init --quit-if-one-screen'
-fi
-
-# Override LS Colors (my own custom choices)
-eval $(dircolors -b $HOME/lib/shell/lscolors)
-
-# Change default python caching directory
-# (no longer creates __pycache__ folders)
-export PYTHONPYCACHEPREFIX="${HOME}/.cache/__pycache__"
-
 # Save X Window Terminal Info
 # ---------------------------
 

@@ -14,7 +14,7 @@
       ignoreSpace = true;
       ignorePatterns = [
         "rm *"
-	"pkill *"
+        "pkill *"
       ];
       save = 100000;
     };
@@ -63,12 +63,17 @@
     initExtra = ''
     source $HOME/.config/zsh/prompt.zsh
     precmd() {
-    	# load terminal window info if it exists
-	# FIXME: enable load_window_info > /dev/null
-	export PROMPT=$(prompt_generate $?)
-    	# save terminal window info (creates id file)
-	# FIXME: enable save_window_info > /dev/null 
+        # load terminal window info if it exists
+        # FIXME: enable load_window_info > /dev/null
+        export PROMPT=$(prompt_generate $?)
+        # save terminal window info (creates id file)
+        # FIXME: enable save_window_info > /dev/null
     }
     '';
+    localVariables = {
+      LESS = "-R --no-init --quit-if-one-screen";
+      # no longer creates __pycache__ folders in the same folder as *.py files
+      PYTHONPYCACHEPREFIX = "$HOME/.cache/__pycache__";
+    };
   };
 }
