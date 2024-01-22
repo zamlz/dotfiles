@@ -123,7 +123,7 @@ in {
         label-warn-foreground = "${colorScheme.red}";
       };
       
-      wiredConfig{
+      wiredConfig = {
         type = "internal/network";
         interface-type = "wired";
         label-connected = "%ifname%: (%local_ip%)";
@@ -164,9 +164,9 @@ in {
       "module/wired" = wiredConfig;
       "module/wireless" = wirelessConfig;
 
-      "module/date" = dateConfig
+      "module/date" = dateConfig;
       "module/kernel" = systemInfoConfig;
-      "module/workspaces" = workspaceConfig;
+      "module/workspace" = workspaceConfig;
       "module/window" = windowConfig;
     };
   };
