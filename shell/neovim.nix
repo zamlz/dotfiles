@@ -1,17 +1,21 @@
 { inputs, lib, config, pkgs, ... }: let
-  leaderAction = key: action: description: {
-    key = "<leader>${key}";
+  keyAction = keyCombination: action: description: {
+    key = "${keyCombination}";
     action = action;
     options.desc = description;
   };
-  leaderFloatermSetup = key: title: exec: description: width: height:
+  leaderAction = key: action: description:
+    keyAction "<leader>${key}" action description;
+  windowMoveAction = key:
+    keyAction "<C-${key}>" "<CMD>wincmd ${key}<CR>" "Window Move (${key})";
+  floatermActionHelper = key: title: exec: description: width: height:
     let
       action = "<CMD>FloatermNew --width=${width} --height=${height} --title=${title} ${exec}<CR>";
     in leaderAction key action description;
-  leaderFloaterm = key: title: exec: description:
-    leaderFloatermSetup key title exec description "0.6" "0.6";
-  leaderFloatermMax = key: title: exec: description:
-    leaderFloatermSetup key title exec description "1.0" "1.0";
+  floatermAction = key: title: exec: description:
+    floatermActionHelper key title exec description "0.6" "0.6";
+  floatermMaxAction = key: title: exec: description:
+    floatermActionHelper key title exec description "1.0" "1.0";
 in {
   programs.nixvim = {
     enable = true;
@@ -120,7 +124,7 @@ in {
             action = "live_grep";
             desc = "Live Grep";
           };
-          "<leader>tt" = {
+          "<leader>st" = {
             action = "builtin";
             desc = "Telescope";
           };
@@ -131,12 +135,24 @@ in {
     keymaps = [
       # useful so you don't have to press "shift" when trying to run commands
       { key = ";"; action = ":"; }
+      (leaderAction "<space>" "<CMD>nohlsearch<CR>" "Clear Search")
+      (leaderAction "i" "<CMD>Inspect<CR>" "Inspect Element")
+      # Buffer movement
+      (keyAction "<S-j>" "<CMD>bn<CR>" "Next Buffer")
+      (keyAction "<S-k>" "<CMD>bp<CR>" "Previous Buffer")
+      # Window movement
+      (windowMoveAction "h")
+      (windowMoveAction "j")
+      (windowMoveAction "k")
+      (windowMoveAction "l")
+      # Treesitter
+      (leaderAction "I" "<CMD>InspectTree<CR>" "Inspect Treesitter")
       # Git
       (leaderAction "g" "<CMD>Neogit<CR>" "Neogit")
       # Floaterm
-      (leaderFloaterm "t" "Terminal" "" "Terminal")
-      (leaderFloaterm "p" "IPython" "ipython" "IPython")
-      (leaderFloatermMax "d" "Ranger" "ranger" "Ranger")
+      (floatermAction "t" "Terminal" "" "Terminal")
+      (floatermAction "p" "IPython" "ipython" "IPython")
+      (floatermMaxAction "d" "Ranger" "ranger" "Ranger")
     ];
   };
 }

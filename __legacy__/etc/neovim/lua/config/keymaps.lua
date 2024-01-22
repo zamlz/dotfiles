@@ -30,22 +30,6 @@ end
 vim.cmd('nnoremap <SPACE> <Nop>')
 vim.cmd('let mapleader=" "')
 
--- Sets a keybind to turn off highlighted searches
-nmap("<leader><space>", ":nohlsearch<CR>")
-
--- Keybinds to quickly switch buffers
-nmap("<S-j>", ":bn<CR>")
-nmap("<S-k>", ":bp<CR>")
-
--- Keybinds to quickly move through window panes
--- refer to the custom window plugin I've written for autocreation commands
-nmap("<C-h>", ":wincmd h<CR>")
-nmap("<C-j>", ":wincmd j<CR>")
-nmap("<C-k>", ":wincmd k<CR>")
-nmap("<C-l>", ":wincmd l<CR>")
-
-nmap("<leader>i", ":Inspect<CR>")
-
 -- FIXME: translate this into a meaninful command to use for lua
 vim.cmd([[
 noremap <F6> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") .
