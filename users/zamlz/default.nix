@@ -25,13 +25,13 @@
     packages = with pkgs; [
       # System CLI Tools
       htop
-      pciutils
+      less
       neofetch
+      pciutils
       pstree
       ranger
-      tree
-      less
       ripgrep
+      tree
       # Fun CLI Tools
       cmatrix
       figlet
@@ -40,9 +40,9 @@
       iosevka
       # Desktop Environment Utilities
       feh
-      wmctrl
       i3lock
       pavucontrol
+      wmctrl
       # GUI Apps
       firefox
       qutebrowser
