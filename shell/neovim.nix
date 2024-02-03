@@ -26,8 +26,6 @@ in {
       maplocalleader = " ";
     };
 
-    colorscheme = "modus_vivendi";
-
     options = {
       # fringe line numbers
       number         = false;
@@ -66,7 +64,6 @@ in {
     extraPlugins = with pkgs.vimPlugins; [
       vim-floaterm
       smartcolumn-nvim
-      modus-themes-nvim
     ];
 
     plugins = {

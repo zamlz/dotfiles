@@ -43,5 +43,5 @@ let
   #   - { index: 17, color: '0xff9580' }
   };
 in {
-  defaultColorScheme = modusVivendi;
+  defaultColorScheme = gruvboxBlack;
 }
