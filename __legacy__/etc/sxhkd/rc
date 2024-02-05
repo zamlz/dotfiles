@@ -1,6 +1,3 @@
-# sxhkd configuration
-# vim: ft=sxhkdrc
-
 # Spawn Terminal matching environment of focused terminal. This is incredibly
 # useful if I want to create another terminal instance in the same directory as
 # the one I'm currently in.
@@ -13,16 +10,6 @@ super + d
     $HOME/etc/rofi/scripts/profile
 XF86Display
     $HOME/etc/rofi/scripts/profile
-
-# Interactively select a window or rectangle with the mouse to take a screen
-# shot of it. It's important that these keybindings are prefaces with the =@=
-# token as it implies that the command should be executed on key release as
-# opposed to key press. Scrot and xclip here will not work properly unless they
-# are on key release.
-@Print
-    $HOME/bin/screenshot -s
-@shift + Print
-    $HOME/bin/screenshot
 
 # Various media keybindings that both actually do the what the media key
 # describes and also (usually) sends a signal to the Lemonbar FIFOs.
