@@ -62,14 +62,13 @@ in {
     };
 
     extraPlugins = with pkgs.vimPlugins; [
-      vim-floaterm
       smartcolumn-nvim
+      vim-floaterm
     ];
 
     plugins = {
       gitsigns.enable = true;
       which-key.enable = true;
-      neogit.enable = true;
       
       lualine = {
         enable = true;
@@ -145,7 +144,7 @@ in {
       # Treesitter
       (leaderAction "I" "<CMD>InspectTree<CR>" "Inspect Treesitter")
       # Git
-      (leaderAction "g" "<CMD>Neogit<CR>" "Neogit")
+      (floatermMaxAction "g" "Git" "lazygit" "Git")
       # Floaterm
       (floatermAction "t" "Terminal" "" "Terminal")
       (floatermAction "p" "IPython" "ipython" "IPython")
