@@ -1,8 +1,12 @@
 { inputs, lib, config, pkgs, ... }: let
   colorScheme = (import ../../common/colorscheme.nix).defaultColorScheme;
+  fzfAlacritty = script: "spawn alacritty --class 'fzf,fzf' --command=${script}";
 in {
   imports = [];
   xdg.configFile."herbstluftwm/tag-utils.sh".source = ./scripts/herbstluftwm-tag-utils.sh;
+  xdg.configFile."herbstluftwm/tag-utils-goto.sh".source = ./scripts/herbstluftwm-tag-utils-goto.sh;
+  xdg.configFile."herbstluftwm/tag-utils-move.sh".source = ./scripts/herbstluftwm-tag-utils-move.sh;
+  xdg.configFile."herbstluftwm/tag-utils-remove.sh".source = ./scripts/herbstluftwm-tag-utils-remove.sh;
   xsession.windowManager.herbstluftwm =
   {
     enable = true;
@@ -102,9 +106,9 @@ in {
       "${super}-bracketleft" = "use_index -1 --skip-visible";
       # FIXME: use xdg.configFile?
       # FIXME: anyway to specify that there is a dependency on rofi here?
-      "${super}-slash" = "spawn $HOME/.config/herbstluftwm//tag-utils.sh goto";
-      "${super}-Shift-slash" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh move";
-      "${super}-BackSpace" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh remove";
+      "${super}-slash" = fzfAlacritty "$HOME/.config/herbstluftwm//tag-utils-goto.sh";
+      "${super}-Shift-slash" = fzfAlacritty "$HOME/.config/herbstluftwm/tag-utils-move.sh";
+      "${super}-BackSpace" = fzfAlacritty "$HOME/.config/herbstluftwm/tag-utils-remove.sh";
 
       # Layout Control
       "${super}-r" = "remove";
@@ -152,8 +156,7 @@ in {
     };
     rules = [
       "focus=on"
-      "class~'(.*[Rr]xvt.*|.*[Tt]erm|Konsole)' focus=on"
-      "class~'(Discord|DiscordCanary)' focus=off"
+      "class~'fzf' floating=on floatplacement=center floating_geometry=800x300"
       "windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on"
       "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
       "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"

@@ -33,7 +33,7 @@
     # '';
     maxCacheTtl = 7200;
     maxCacheTtlSsh = 7200;
-    pinentryFlavor =  "tty"; # FIXME: use custom pinentry?
+    pinentryFlavor =  "curses";
     sshKeys = [ "FA508B6D901BA2A59DE2B7E521EBE58F4CDD6C0D" ];
   };
 }

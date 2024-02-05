@@ -1,11 +1,13 @@
 { inputs, lib, config, pkgs, ... }: let
   terminal = "${pkgs.alacritty}/bin/alacritty";
+  fzfLauncher = script: "${terminal} --class 'fzf,fzf' --command=${script}";
   rofi = "${pkgs.rofi}/bin/rofi";
   rofiPasswordStoreScript = "$HOME/.config/rofi/password-store-dmenu.sh";
   rofiSystemManagerScript = "$HOME/.config/rofi/system-manager.sh";
   maimScreenshotScript = "$HOME/.config/sxhkd/maim-screenshot.sh";
 in {
   xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
+  xdg.configFile."sxhkd/fzf-password-store.sh".source = ../../scripts/fzf-password-store.sh;
   services.sxhkd = {
     enable = true;
     keybindings = {
@@ -15,7 +17,7 @@ in {
       "super + w" = "${rofi} -show window";
       
       # FIXME: This configuration should somehow be owned by password-store?
-      "super + p" = "${rofiPasswordStoreScript}";
+      "super + p" = fzfLauncher "$HOME/.config/sxhkd/fzf-password-store.sh";
       "super + shift + p" = "${rofiPasswordStoreScript} --qrcode";
       "super + ctrl + alt + Escape" = "${rofiSystemManagerScript}";
       

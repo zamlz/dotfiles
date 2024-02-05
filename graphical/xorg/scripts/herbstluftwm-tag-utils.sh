@@ -4,10 +4,7 @@
 
 # Dependencies:
 #   - wmctrl
-#   - rofi
-
-# Get command line arguments
-operation_name=$1
+#   - fzf 
 
 # Num tags also gives us the index of the next new tag!
 NUM_TAGS=$(wmctrl -d | wc -l)
@@ -21,10 +18,10 @@ tag_list() {
     wmctrl -d | grep -v "\*" | awk '{print $9}'
 }
 
-get_rofi_prompt() {
+get_fzf_prompt() {
     case "${operation_name}" in
-        "goto") echo "GO TO";;
-        "move") echo "MOVE" ;;
+        "goto") echo "JUMP TO";;
+        "move") echo "MOVE WINDOW TO" ;;
         "remove") echo "REMOVE";;
         *) logger "unknown operation name: ${operation_name}"; exit 1;;
     esac
@@ -40,11 +37,12 @@ get_hc_command() {
 }
 
 get_tag() {
-    tag=$(tag_list | rofi -dmenu -i -p "$(get_rofi_prompt) TAG")
+    tag=$(tag_list | fzf --print-query --reverse --prompt="$(get_fzf_prompt) TAG:" | awk 'END {print}')
     echo "${tag}" | tr ' ' '-'
 }
 
 main() {
+    operation_name=$1
     if [ -z "$operation_name" ]; then
         logger "ERROR: operation name must be specified!"
         exit 1
@@ -57,7 +55,7 @@ main() {
         exit 2
     elif [ "$tag" = "λ" ] && [ "$operation_name" = "remove" ]; then
         logger "Cannot delete default tag! Aborting..."
-        rofi -e "Cannot delete default tag! Aborting..."
+        # FIXME: wait for user to press enter to close prompt
         exit 1
     fi
 
@@ -84,12 +82,9 @@ main() {
         hc $hc_command "$tag"
     elif  [ $error_code -eq 5 ] && [ "$operation_name" = "remove" ]; then
         logger "merge_tag: Cannot merge the currently viewed tag"
-        rofi -e "merge_tag: Cannot merge the currently viewed tag"
         exit 1
     else
         logger "unknown error code: $error_code"
         exit 1
     fi
 }
-
-main
