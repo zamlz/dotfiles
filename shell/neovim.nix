@@ -17,9 +17,11 @@
   floatermMaxAction = key: title: exec: description:
     floatermActionHelper key title exec description "1.0" "1.0";
 in {
+  xdg.configFile."nvim/colors/peachpuff_custom.vim".source = ./resources/neovim-peachpuff-custom.vim;
   programs.nixvim = {
     enable = true;
     enableMan = true;
+    colorscheme = "peachpuff_custom";
 
     globals = {
       mapleader = " ";
@@ -73,6 +75,7 @@ in {
       lualine = {
         enable = true;
         globalstatus = true;
+        theme = "codedark";
       };
 
       telescope = {
