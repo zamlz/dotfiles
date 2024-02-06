@@ -3,7 +3,7 @@
 # actions
 LOCK="Lock Screen"
 QUIT="Quit Herbstluftwm"
-SHUTDOWN="Shut Down"
+SHUTDOWN="Power Off"
 REBOOT="Reboot"
 
 # Either pass what we want to do as an argument to the script
