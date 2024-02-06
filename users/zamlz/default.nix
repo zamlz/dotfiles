@@ -53,7 +53,8 @@
       swww
       waypaper
       # Misc Experiments
-      qtile
+      python311Full
+      # qtile
     ];
   };
 

@@ -1,12 +1,10 @@
 { inputs, lib, config, pkgs, ... }: let
   colorScheme = (import ../../common/colorscheme.nix).defaultColorScheme;
-  fzfAlacritty = script: "spawn alacritty --class 'fzf,fzf' --command=${script}";
 in {
   imports = [];
+  xdg.configFile."herbstluftwm/window-list.sh".source = ./scripts/herbstluftwm-window-list.sh;
   xdg.configFile."herbstluftwm/tag-utils.sh".source = ./scripts/herbstluftwm-tag-utils.sh;
-  xdg.configFile."herbstluftwm/tag-utils-goto.sh".source = ./scripts/herbstluftwm-tag-utils-goto.sh;
-  xdg.configFile."herbstluftwm/tag-utils-move.sh".source = ./scripts/herbstluftwm-tag-utils-move.sh;
-  xdg.configFile."herbstluftwm/tag-utils-remove.sh".source = ./scripts/herbstluftwm-tag-utils-remove.sh;
+  xdg.configFile."herbstluftwm/fzf.sh".source = ./scripts/herbstluftwm-fzf.sh;
   xsession.windowManager.herbstluftwm =
   {
     enable = true;
@@ -106,9 +104,9 @@ in {
       "${super}-bracketleft" = "use_index -1 --skip-visible";
       # FIXME: use xdg.configFile?
       # FIXME: anyway to specify that there is a dependency on rofi here?
-      "${super}-slash" = fzfAlacritty "$HOME/.config/herbstluftwm//tag-utils-goto.sh";
-      "${super}-Shift-slash" = fzfAlacritty "$HOME/.config/herbstluftwm/tag-utils-move.sh";
-      "${super}-BackSpace" = fzfAlacritty "$HOME/.config/herbstluftwm/tag-utils-remove.sh";
+      "${super}-slash" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh GOTO";
+      "${super}-Shift-slash" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh MOVE";
+      "${super}-BackSpace" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh REMOVE";
 
       # Layout Control
       "${super}-r" = "remove";
