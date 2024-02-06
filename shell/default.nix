@@ -1,5 +1,6 @@
 { inputs, lib, config, pkgs, ... }: {
   imports = [
+    ./fzf.nix
     ./git.nix
     ./gpg.nix
     ./lazygit.nix

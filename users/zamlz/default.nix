@@ -24,7 +24,6 @@
     homeDirectory = "/home/zamlz";
     packages = with pkgs; [
       # System CLI Tools
-      fzf
       htop
       less
       neofetch
