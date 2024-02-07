@@ -154,7 +154,7 @@ in {
     };
     rules = [
       "focus=on"
-      "class~'fzf' floating=on floatplacement=center floating_geometry=800x300"
+      "class~'fzf' floating=on floatplacement=center"
       "windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on"
       "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
       "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"
