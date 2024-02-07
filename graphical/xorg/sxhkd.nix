@@ -7,21 +7,25 @@
       columnOption = "--option 'window.dimensions.columns=${builtins.toString columnNum}'";
     in
     "${terminal} --class 'fzf,fzf' ${fontOption} ${lineOption} ${columnOption} --command ${script}";
+  fzfProgramLauncherScript = fzfLauncher "$HOME/.config/sxhkd/fzf-program-launcher.sh" 16 80 8;
+  fzfWindowSwitcherScript = fzfLauncher "$HOME/.config/sxhkd/fzf-window-switcher.sh" 16 100 8;
   fzfPasswordStoreScript = fzfLauncher "$HOME/.config/sxhkd/fzf-password-store.sh" 10 100 8;
   fzfSystemManagerScript = fzfLauncher "$HOME/.config/sxhkd/fzf-system-manager.sh" 6 40 8;
   maimScreenshotScript = "$HOME/.config/sxhkd/maim-screenshot.sh";
   rofi = "${pkgs.rofi}/bin/rofi";
 in {
-  xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
+  xdg.configFile."sxhkd/fzf-program-launcher.sh".source = ../../scripts/fzf-program-launcher.sh;
+  xdg.configFile."sxhkd/fzf-window-switcher.sh".source = ../../scripts/fzf-window-switcher.sh;
   xdg.configFile."sxhkd/fzf-password-store.sh".source = ../../scripts/fzf-password-store.sh;
   xdg.configFile."sxhkd/fzf-system-manager.sh".source = ../../scripts/fzf-system-manager.sh;
+  xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
   services.sxhkd = {
     enable = true;
     keybindings = {
       # Core utils
       "super + Return" = "${terminal}";
-      "super + e" = "${rofi} -show run";
-      "super + w" = "${rofi} -show window";
+      "super + e" = "${fzfProgramLauncherScript}";
+      "super + w" = "${fzfWindowSwitcherScript}";
       
       # FIXME: This configuration should somehow be owned by password-store?
       "super + p" = "${fzfPasswordStoreScript}";
