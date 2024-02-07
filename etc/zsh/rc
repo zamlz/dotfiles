@@ -34,6 +34,10 @@ echo "$zsh_plugin_list" | while read -r zplugin; do
     fi
 done
 
+# source fzf stuff
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
 # zsh-history-substring-search plugin post-install configuration
 bindkey -M vicmd 'k' history-substring-search-up
 bindkey -M vicmd 'j' history-substring-search-down

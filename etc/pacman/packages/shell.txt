@@ -13,6 +13,7 @@ zsh-history-substring-search
 # -------------
 imagemagick
 neovim
+fzf
 tree
 figlet
 highlight
