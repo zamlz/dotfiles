@@ -103,7 +103,6 @@ in {
       "${super}-bracketright" = "use_index +1 --skip-visible";
       "${super}-bracketleft" = "use_index -1 --skip-visible";
       # FIXME: use xdg.configFile?
-      # FIXME: anyway to specify that there is a dependency on rofi here?
       "${super}-slash" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh GOTO";
       "${super}-Shift-slash" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh MOVE";
       "${super}-BackSpace" = "spawn $HOME/.config/herbstluftwm/tag-utils.sh REMOVE";

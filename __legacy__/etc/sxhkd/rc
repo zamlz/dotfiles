@@ -4,13 +4,6 @@
 super + shift + Return
     $HOME/etc/sxhkd/pwdcfw.sh $SXHKD_TERMINAL
 
-# Toggle between different display/power profile (multi-monitor, single
-# monitor, etc.)
-super + d
-    $HOME/etc/rofi/scripts/profile
-XF86Display
-    $HOME/etc/rofi/scripts/profile
-
 # Various media keybindings that both actually do the what the media key
 # describes and also (usually) sends a signal to the Lemonbar FIFOs.
 XF86MonBrightnessUp

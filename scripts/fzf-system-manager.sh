@@ -6,8 +6,7 @@ QUIT="Quit Herbstluftwm"
 SHUTDOWN="Power Off"
 REBOOT="Reboot"
 
-# Either pass what we want to do as an argument to the script
-# or get it through rofi
+# Either pass what we want to do as an argument to the script or through fzf
 systask="$*"
 if [ -z "$systask" ]; then
     systask=$(echo "${LOCK}\n${QUIT}\n${REBOOT}\n${SHUTDOWN}" \
