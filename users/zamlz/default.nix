@@ -45,6 +45,7 @@
       pavucontrol
       wmctrl
       xclip # needed by sxhkd (screenshot script)
+      xdotool
       # GUI Apps
       firefox
       qutebrowser

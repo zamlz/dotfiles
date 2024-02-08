@@ -12,12 +12,14 @@
   fzfPasswordStoreScript = fzfLauncher "$HOME/.config/sxhkd/fzf-password-store.sh" 10 100 8;
   fzfSystemManagerScript = fzfLauncher "$HOME/.config/sxhkd/fzf-system-manager.sh" 6 40 8;
   maimScreenshotScript = "$HOME/.config/sxhkd/maim-screenshot.sh";
+  launchLazygitScript = "$HOME/.config/sxhkd/launch-lazygit.sh";
 in {
   xdg.configFile."sxhkd/fzf-program-launcher.sh".source = ../../scripts/fzf-program-launcher.sh;
   xdg.configFile."sxhkd/fzf-window-switcher.sh".source = ../../scripts/fzf-window-switcher.sh;
   xdg.configFile."sxhkd/fzf-password-store.sh".source = ../../scripts/fzf-password-store.sh;
   xdg.configFile."sxhkd/fzf-system-manager.sh".source = ../../scripts/fzf-system-manager.sh;
   xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
+  xdg.configFile."sxhkd/launch-lazygit.sh".source = ./scripts/sxhkd-launch-lazygit.sh;
   services.sxhkd = {
     enable = true;
     keybindings = {
@@ -41,6 +43,9 @@ in {
       #   are on key release.
       "@Print" = "${maimScreenshotScript} -s";
       "@shift + Print" = "${maimScreenshotScript}";
+
+      # Launch a floating git session for lazygit
+      "super + g" = "${launchLazygitScript}";
       
       # Multimedia and Physical Switches
       # "XF86MonBrightnessUp" = "";

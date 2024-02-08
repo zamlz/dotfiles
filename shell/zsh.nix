@@ -62,12 +62,34 @@
     '';
     initExtra = ''
     source $HOME/.config/zsh/prompt.zsh
+    
+    # prepare the window id directory
+    WINDIR=/tmp/.wid
+    mkdir -p $WINDIR
+    
+    # Load window info for given Target Window ID (used with pwdcfw.sh)
+    function load_window_info() {
+        if [ -n "$DISPLAY" ] && [ -n "$TARGET_WINDOWID" ]; then
+            source "$WINDIR/$TARGET_WINDOWID"
+            cd $WINDOW_PWD
+            unset TARGET_WINDOWID
+        fi
+    }
+    
+    # Save window info for given Window ID (used with pwdcfw.sh)
+    function save_window_info() {
+        if [ -n "$DISPLAY" ] && [ -n "$WINDOWID" ]; then
+            WINDOWID_FILE="$WINDIR/$WINDOWID"
+            echo "WINDOW_PWD='$(pwd)'" | tee $WINDOWID_FILE
+        fi
+    }
+
     precmd() {
         # load terminal window info if it exists
-        # FIXME: enable load_window_info > /dev/null
+        load_window_info > /dev/null 2>&1
         export PROMPT=$(prompt_generate $?)
         # save terminal window info (creates id file)
-        # FIXME: enable save_window_info > /dev/null
+        save_window_info > /dev/null 2>&1
     }
     '';
     localVariables = {
