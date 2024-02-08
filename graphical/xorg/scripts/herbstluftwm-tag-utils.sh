@@ -19,6 +19,8 @@ CMD_GOTO="GOTO"
 CMD_MOVE="MOVE"
 CMD_REMOVE="REMOVE"
 
+TEMP_DIR="/tmp/.htu"
+
 hc() {
     herbstclient $@
 }
@@ -41,14 +43,16 @@ get_hc_command() {
 
 get_tag() {
     operation_name=$1
-    full_options_file=$(mktemp)
-    selected_option_file=$(mktemp)
+    
+    mkdir -p $TEMP_DIR
+    full_options_file=$(mktemp -p $TEMP_DIR)
+    selected_option_file=$(mktemp -p $TEMP_DIR)
 
     # if you ever need to launch this without alacritty, it should just work!
     tag_list > ${full_options_file}
     # FIXME: how do I sync the font option with the one in sxhkd?
     alacritty \
-        --class 'fzf,fzf' \
+        --class 'termprompt,termprompt' \
         --option "font.size=8" \
         --option "window.dimensions.lines=10" \
         --option "window.dimensions.columns=80" \

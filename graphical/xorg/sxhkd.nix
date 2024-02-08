@@ -6,7 +6,7 @@
       lineOption = "--option 'window.dimensions.lines=${builtins.toString lineNum}'";
       columnOption = "--option 'window.dimensions.columns=${builtins.toString columnNum}'";
     in
-    "${terminal} --class 'fzf,fzf' ${fontOption} ${lineOption} ${columnOption} --command ${script}";
+    "${terminal} --class 'termprompt,termprompt' ${fontOption} ${lineOption} ${columnOption} --command ${script}";
   fzfProgramLauncherScript = fzfLauncher "$HOME/.config/sxhkd/fzf-program-launcher.sh" 16 80 8;
   fzfWindowSwitcherScript = fzfLauncher "$HOME/.config/sxhkd/fzf-window-switcher.sh" 16 100 8;
   fzfPasswordStoreScript = fzfLauncher "$HOME/.config/sxhkd/fzf-password-store.sh" 10 100 8;
