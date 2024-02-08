@@ -64,6 +64,7 @@ in {
     };
 
     extraPlugins = with pkgs.vimPlugins; [
+      fzf-vim
       smartcolumn-nvim
       vim-floaterm
     ];
@@ -77,58 +78,6 @@ in {
         globalstatus = true;
         theme = "codedark";
       };
-
-      telescope = {
-        enable = true;
-        extraOptions = {
-          pickers = {
-            buffers = {
-              theme = "ivy";
-            };
-            find_files = {
-              theme = "ivy";
-            };
-            git_files = {
-              theme = "ivy";
-            };
-            oldfiles = {
-              theme = "ivy";
-            };
-            live_grep = {
-              theme = "ivy";
-            };
-            builtin = {
-              theme = "ivy";
-            };
-          };
-        };
-        keymaps = {
-          "<leader>b" = {
-            action = "buffers";
-            desc = "Buffers";
-          };
-          "<leader>ff" = {
-            action = "git_files";
-            desc = "Telescope Git Files";
-          };
-          "<leader>f/" = {
-            action = "find_files";
-            desc = "Find Files";
-          };
-          "<leader>fr" = {
-            action = "oldfiles";
-            desc = "Recent Files";
-          };
-          "<leader>sg" = {
-            action = "live_grep";
-            desc = "Live Grep";
-          };
-          "<leader>st" = {
-            action = "builtin";
-            desc = "Telescope";
-          };
-        };
-      };
     };
 
     keymaps = [
@@ -136,6 +85,13 @@ in {
       { key = ";"; action = ":"; }
       (leaderAction "<space>" "<CMD>nohlsearch<CR>" "Clear Search")
       (leaderAction "i" "<CMD>Inspect<CR>" "Inspect Element")
+      # Fzf actions
+      (leaderAction "b" "<CMD>Buffers!<CR>" "Buffers")
+      (leaderAction "G" "<CMD>GFiles!<CR>" "Git Files")
+      (leaderAction "f" "<CMD>Files!<CR>" "Files")
+      (leaderAction "/" "<CMD>Lines!<CR>" "Search in Current Buffer")
+      (leaderAction "s" "<CMD>Rg!<CR>" "Search in Current Buffer")
+      (leaderAction ";" "<CMD>Commands!<CR>" "Commands")
       # Buffer movement
       (keyAction "<S-j>" "<CMD>bn<CR>" "Next Buffer")
       (keyAction "<S-k>" "<CMD>bp<CR>" "Previous Buffer")
