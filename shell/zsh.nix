@@ -55,7 +55,7 @@
     loginExtra = ''
       if [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 1 ]; then
           # exec Hyprland
-          exec startx herbstluftwm
+          exec startx $HOME/.config/xinit/rc.sh herbstluftwm
       elif [ -z "$DISPLAY" ] && [ "$(fgconsole 2>/dev/null)" -eq 2 ]; then
           exec qtile start -b wayland
       fi

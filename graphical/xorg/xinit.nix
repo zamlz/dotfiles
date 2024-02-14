@@ -1,3 +1,3 @@
 { inputs, lib, config, pkgs, ... }: {
-  home.file.".xinitrc".source = ./scripts/xinitrc;
+  xdg.configFile."xinit/rc.sh".source = ./scripts/xinitrc.sh;
 }
