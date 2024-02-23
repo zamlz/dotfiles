@@ -71,8 +71,7 @@
   };
 
   environment = {
-    systemPackages = with pkgs; [ git vim curl ];
-    variables.EDITOR = "vim";
+    systemPackages = with pkgs; [ curl git vim ];
   };
 
   hardware = {
