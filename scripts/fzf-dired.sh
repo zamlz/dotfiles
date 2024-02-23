@@ -31,6 +31,8 @@ while [ -d $FILESYSTEM_POINTER ] || [ -f $FILESYSTEM_POINTER ]; do
                 --preview $HOME'/.config/sxhkd/fzf-file-preview.sh {9}' \
                 --bind "ctrl-h:become(echo ${TOGGLE_HIDDEN_ACTION})" \
                 --bind "alt-h:become(echo ..)" \
+                --bind "alt-j:down" \
+                --bind "alt-k:up" \
                 --bind "alt-l:become(echo {})" \
             | awk '{print $NF}')
 
