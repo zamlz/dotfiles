@@ -40,6 +40,8 @@
       iosevka
       # Desktop Environment Utilities
       feh
+      imagemagick
+      qrencode
       i3lock
       maim  # needed by sxhkd (screenshot script)
       pavucontrol

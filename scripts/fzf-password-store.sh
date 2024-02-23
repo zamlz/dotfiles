@@ -1,10 +1,9 @@
 #!/usr/bin/env zsh
 
-# TODO: Need to figure out a way to deal with missing keycards. This causes
-#       scdaemon to continously search for it (unclear if there is a timeout).
-#       We should instead error out very quickly so the user knows that there
-#       is no card inserted. Ideally, GPG should do this, but if we need an
-#       workaround, it should belong in here.
+# Depends on:
+# - feh
+# - imagemagick
+# - xclip
 
 # Reset pinentry?
 GPG_TTY=$(tty)
@@ -24,15 +23,23 @@ pass_name=$(find $PASSWORD_STORE_DIR -type f | grep -v "\.gpg-id" | \
 
 # retrieve password
 if [ "$pass_name" != "" ]; then
-    if [ -z "$QRMODE" ]; then
-        pass -c "$pass_name"
-        result_status=$?
-    else
-        pass --qrcode "$pass_name"
-        result_status=$?
-    fi
-
+    echo "Retrieving password: [${pass_name}]"
+    PASSWORD=$(pass "$pass_name" | head -n1)
+    result_status=$?
     if [ $result_status -ne 0 ]; then
         echo "Password decryption failed: [ERROR CODE: ${result_status}]"
     fi
+
+    pwfile=/tmp/.pws
+    touch $pwfile
+    if [ -z "$QRMODE" ]; then
+        echo $PASSWORD > $pwfile
+        nohup xclip -selection clipboard $pwfile > /dev/null 2>&1 &
+    else
+        echo -n "$PASSWORD" | qrencode --size 14 -o $pwfile
+        convert $pwfile -negate $pwfile
+        nohup feh -x --title "feh:pass: $pass_name" -g +200+200 $pwfile > /dev/null 2>&1 &
+    fi
+    sleep 0.1
+    rm $pwfile
 fi

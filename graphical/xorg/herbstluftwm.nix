@@ -154,6 +154,7 @@ in {
     rules = [
       "focus=on"
       "class~'termprompt' floating=on floatplacement=center"
+      "title~'feh:pass:.*' floating=on floatplacement=center"
       "windowtype~'_NET_WM_WINDOW_TYPE_(DIALOG|UTILITY|SPLASH)' pseudotile=on"
       "windowtype='_NET_WM_WINDOW_TYPE_DIALOG' focus=on"
       "windowtype~'_NET_WM_WINDOW_TYPE_(NOTIFICATION|DOCK|DESKTOP)' manage=off"
