@@ -2,6 +2,7 @@
 
 # lol made my own dired
 
+# get the last focused wid by running the save-window-id.sh script
 source /tmp/.wid/$(cat /tmp/.last_focused_wid)
 if [ -z "${WINDOW_PWD}" ]; then
     echo "no previouw window: ${HOME}"

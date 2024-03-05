@@ -1,45 +1,47 @@
 { inputs, lib, config, pkgs, ... }: let
   terminal = "${pkgs.alacritty}/bin/alacritty";
-  fzfLauncher = script: lineNum: columnNum: fontSize:
+  termPromptLauncher = script: lineNum: columnNum: fontSize:
     let
       fontOption = "--option 'font.size=${builtins.toString fontSize}'";
       lineOption = "--option 'window.dimensions.lines=${builtins.toString lineNum}'";
       columnOption = "--option 'window.dimensions.columns=${builtins.toString columnNum}'";
     in
     "${terminal} --class 'termprompt,termprompt' ${fontOption} ${lineOption} ${columnOption} --command ${script}";
-  fzfProgramLauncherScript = fzfLauncher "$HOME/.config/sxhkd/fzf-program-launcher.sh" 16 80 8;
-  fzfWindowSwitcherScript = fzfLauncher "$HOME/.config/sxhkd/fzf-window-switcher.sh" 16 100 8;
-  fzfPasswordStoreScript = fzfLauncher "$HOME/.config/sxhkd/fzf-password-store.sh" 10 100 8;
-  fzfSystemManagerScript = fzfLauncher "$HOME/.config/sxhkd/fzf-system-manager.sh" 6 40 8;
-  fzfDiredScript = fzfLauncher "$HOME/.config/sxhkd/fzf-dired.sh" 40 200 7;
+  termPromptProgramLauncherScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-program-launcher.sh" 16 80 8;
+  termPromptWindowSwitcherScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-window-switcher.sh" 16 100 8;
+  termPromptPasswordStoreScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-password-store.sh" 10 100 8;
+  termPromptSystemManagerScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-system-manager.sh" 6 40 8;
+  termPromptDiredScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-dired.sh" 40 200 7;
+  termPromptLazyGit = termPromptLauncher "$HOME/.config/sxhkd/launch-lazygit.sh" 40 200 7;
   maimScreenshotScript = "$HOME/.config/sxhkd/maim-screenshot.sh";
-  launchLazygitScript = "$HOME/.config/sxhkd/launch-lazygit.sh";
   saveWindowIdScript = "$HOME/.config/sxhkd/save-window-id.sh";
 in {
-  xdg.configFile."sxhkd/fzf-program-launcher.sh".source = ../../scripts/fzf-program-launcher.sh;
-  xdg.configFile."sxhkd/fzf-window-switcher.sh".source = ../../scripts/fzf-window-switcher.sh;
-  xdg.configFile."sxhkd/fzf-password-store.sh".source = ../../scripts/fzf-password-store.sh;
-  xdg.configFile."sxhkd/fzf-system-manager.sh".source = ../../scripts/fzf-system-manager.sh;
+  xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
   xdg.configFile."sxhkd/save-window-id.sh".source = ../../scripts/save-window-id.sh;
+  xdg.configFile."sxhkd/launch-lazygit.sh".source = ../../scripts/launch-lazygit.sh;
   xdg.configFile."sxhkd/fzf-dired.sh".source = ../../scripts/fzf-dired.sh;
   xdg.configFile."sxhkd/fzf-file-preview.sh".source = ../../scripts/fzf-file-preview.sh;
-  xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
-  xdg.configFile."sxhkd/launch-lazygit.sh".source = ./scripts/sxhkd-launch-lazygit.sh;
+  xdg.configFile."sxhkd/fzf-password-store.sh".source = ../../scripts/fzf-password-store.sh;
+  xdg.configFile."sxhkd/fzf-program-launcher.sh".source = ../../scripts/fzf-program-launcher.sh;
+  xdg.configFile."sxhkd/fzf-system-manager.sh".source = ../../scripts/fzf-system-manager.sh;
+  xdg.configFile."sxhkd/fzf-window-switcher.sh".source = ../../scripts/fzf-window-switcher.sh;
+
   services.sxhkd = {
     enable = true;
     keybindings = {
       # Core utils
       "super + Return" = "${terminal}";
-      "super + e" = "${fzfProgramLauncherScript}";
-      "super + w" = "${fzfWindowSwitcherScript}";
-      "super + d" = "${saveWindowIdScript}; ${fzfDiredScript}";
+      "super + e" = "${termPromptProgramLauncherScript}";
+      "super + w" = "${termPromptWindowSwitcherScript}";
+      "super + d" = "${saveWindowIdScript}; ${termPromptDiredScript}";
+      "super + g" = "${saveWindowIdScript}; ${termPromptLazyGit}";
       
       # FIXME: This configuration should somehow be owned by password-store?
-      "super + p" = "${fzfPasswordStoreScript}";
-      "super + shift + p" = "${fzfPasswordStoreScript} --qrcode";
+      "super + p" = "${termPromptPasswordStoreScript}";
+      "super + shift + p" = "${termPromptPasswordStoreScript} --qrcode";
 
       # System Controls
-      "super + ctrl + alt + Escape" = "${fzfSystemManagerScript}";
+      "super + ctrl + alt + Escape" = "${termPromptSystemManagerScript}";
       
       # Screenshot tool:
       #   Interactively select a window or rectangle with the mouse to take a screen
@@ -49,9 +51,6 @@ in {
       #   are on key release.
       "@Print" = "${maimScreenshotScript} -s";
       "@shift + Print" = "${maimScreenshotScript}";
-
-      # Launch a floating git session for lazygit
-      "super + g" = "${launchLazygitScript}";
       
       # Multimedia and Physical Switches
       # "XF86MonBrightnessUp" = "";
