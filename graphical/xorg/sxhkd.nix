@@ -16,15 +16,16 @@
   maimScreenshotScript = "$HOME/.config/sxhkd/maim-screenshot.sh";
   saveWindowIdScript = "$HOME/.config/sxhkd/save-window-id.sh";
 in {
-  xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
-  xdg.configFile."sxhkd/save-window-id.sh".source = ../../scripts/save-window-id.sh;
-  xdg.configFile."sxhkd/launch-lazygit.sh".source = ../../scripts/launch-lazygit.sh;
   xdg.configFile."sxhkd/fzf-dired.sh".source = ../../scripts/fzf-dired.sh;
   xdg.configFile."sxhkd/fzf-file-preview.sh".source = ../../scripts/fzf-file-preview.sh;
   xdg.configFile."sxhkd/fzf-password-store.sh".source = ../../scripts/fzf-password-store.sh;
   xdg.configFile."sxhkd/fzf-program-launcher.sh".source = ../../scripts/fzf-program-launcher.sh;
   xdg.configFile."sxhkd/fzf-system-manager.sh".source = ../../scripts/fzf-system-manager.sh;
   xdg.configFile."sxhkd/fzf-window-switcher.sh".source = ../../scripts/fzf-window-switcher.sh;
+  xdg.configFile."sxhkd/get-window-info.sh".source = ../../scripts/get-window-info.sh;
+  xdg.configFile."sxhkd/launch-lazygit.sh".source = ../../scripts/launch-lazygit.sh;
+  xdg.configFile."sxhkd/maim-screenshot.sh".source = ./scripts/maim-screenshot.sh;
+  xdg.configFile."sxhkd/save-window-id.sh".source = ../../scripts/save-window-id.sh;
 
   services.sxhkd = {
     enable = true;
