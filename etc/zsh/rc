@@ -60,7 +60,7 @@ if [ -f "$HOME/sys/path.sh" ]; then
     source $HOME/sys/path.sh
 fi
 
-# register hooks
+# register hooks before the user is given the oppurtunity to enter a command
 precmd() {
     # Load terminal window info if it exists
     load_window_info > /dev/null
@@ -68,4 +68,13 @@ precmd() {
     export PROMPT=$(prompt_generate $?)
     # save terminal window info (creates id file)
     save_window_info > /dev/null
+    # update the terminal title
+    print -Pn "\e]0;zsh %(1j,%j job%(2j|s|); ,)%~\a"
+}
+
+# register hooks to run after accepting a command but before executing it
+preexec() {
+    # writes the command and it's arguments to the title
+    # FIXME: does not work with fg well
+    printf "\033]0;%s\a" "$1"
 }
