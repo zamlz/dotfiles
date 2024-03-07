@@ -8,6 +8,6 @@ workspace="$1"
 workspace_id=$(wmctrl -d \
     | awk -v workspace="$workspace" '{ if ($NF == workspace) print $1 }')
 
-wmctrl -lx \
+wmctrl -lxp \
     | awk -v workspace_id="$workspace_id" \
-      '{ if ($2 == workspace_id) print $1 " " $3 " " $5 }'
+      '{ if ($2 == workspace_id) {printf "%s ", $1; for(i=6;i<=NF;++i) printf "%s ", $i; print ""} }'

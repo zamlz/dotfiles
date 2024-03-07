@@ -32,5 +32,6 @@ fzf --print-query \
     --prompt="${FZF_PROMPT} workspace: " \
     --preview="$HOME/.config/herbstluftwm/window-list.sh {}" \
     --preview-label='[Window List]' < ${FULL_OPTIONS_FILE} \
+    --preview-window=right,80 \
     | awk 'END {print}' \
     | tr ' ' '-' > ${SELECTION_OPTION_FILE}

@@ -55,7 +55,7 @@ get_tag() {
         --class 'termprompt,termprompt' \
         --option "font.size=8" \
         --option "window.dimensions.lines=10" \
-        --option "window.dimensions.columns=80" \
+        --option "window.dimensions.columns=120" \
         --command $HOME/.config/herbstluftwm/fzf.sh \
         ${operation_name} ${full_options_file} ${selected_option_file}
     tag=$(cat ${selected_option_file})
