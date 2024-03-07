@@ -15,6 +15,9 @@ vim.g.maplocalleader = " "
 
 local opt = vim.opt
 
+-- set window title
+opt.title = true
+
 -- fringe line numbers
 opt.number         = true
 opt.relativenumber = true
