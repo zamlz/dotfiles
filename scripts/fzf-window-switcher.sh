@@ -9,7 +9,13 @@ get_window() {
             --preview $HOME'/.config/sxhkd/get-window-info.sh {1}'
 }
 
-window=$(get_window)
+window=$(get_window | awk '{print $1}')
 if [ -n "${window}" ]; then
-    wmctrl -i -a $(echo $window | awk '{print $1}')
+    # This command should set focus of the window but it doesn't work when
+    # the windows are in herbstluftwm frames. It does handly workspace
+    # switching correctly
+    wmctrl -i -a $window
+    # this command fails at changing workspace but does work with herbstluftwm
+    # titles so I'm running both.
+    xdotool windowfocus $window
 fi
