@@ -29,6 +29,8 @@ in {
     };
 
     options = {
+      # set window title
+      title = true;
       # fringe line numbers
       number         = false;
       relativenumber = false;
