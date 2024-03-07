@@ -30,7 +30,11 @@ if [ "$systask" = "${LOCK}" ]; then
         #magick -size "$resolution" xc:black "$WALLPAPER_FILE" \
         #    -gravity center -composite /tmp/.i3lock.png
         #exec i3lock -tnefi "/tmp/.i3lock.png"
-        exec i3lock -tnefi "$WALLPAPER_FILE"
+        blur_image=/tmp/.blur
+        if [ ! -f "$blur_image" ]; then
+            convert "$WALLPAPER_FILE" -blur 0x8 "$blur_image"
+        fi
+        exec i3lock -tnefi "$blur_image"
     else
         exec i3lock -nef --color=000000
     fi
