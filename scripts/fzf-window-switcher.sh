@@ -6,7 +6,9 @@ get_window() {
         | sed -e "/termprompt.termprompt.*Alacritty/d" \
         | awk '{printf "%s ", $1; for(i=6;i<=NF;++i) printf "%s ", $i; print ""}' \
         | fzf --reverse --prompt "Switch Window: " \
-            --preview $HOME'/.config/sxhkd/get-window-info.sh {1}'
+            --preview $HOME'/.config/sxhkd/get-window-info.sh {1}' \
+            --preview-window=down,7 \
+            --ansi
 }
 
 window=$(get_window | awk '{print $1}')

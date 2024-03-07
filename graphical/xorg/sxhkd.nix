@@ -8,7 +8,7 @@
     in
     "${terminal} --class 'termprompt,termprompt' ${fontOption} ${lineOption} ${columnOption} --command ${script}";
   termPromptProgramLauncherScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-program-launcher.sh" 16 80 8;
-  termPromptWindowSwitcherScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-window-switcher.sh" 16 100 8;
+  termPromptWindowSwitcherScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-window-switcher.sh" 20 100 8;
   termPromptPasswordStoreScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-password-store.sh" 10 100 8;
   termPromptSystemManagerScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-system-manager.sh" 6 40 8;
   termPromptDiredScript = termPromptLauncher "$HOME/.config/sxhkd/fzf-dired.sh" 40 200 7;
